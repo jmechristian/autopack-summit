@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@heroicons/react": "^2.0.13",
     "@sanity/client": "^3.4.1",
     "next": "13.0.4",
     "next-sanity": "^3.0.2",

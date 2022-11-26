@@ -6,7 +6,7 @@ import { createClient } from 'next-sanity';
 export default function Home() {
   return (
     <div>
-      <div className='text-5xl font-bold font-oswald text-ap-yellow'>
+      <div className='text-5xl font-bold font-oswald text-ap-yellow py-24'>
         Hello World!
       </div>
     </div>
