@@ -6,7 +6,7 @@ const FooterHeadline = () => {
     <div className='flex flex-col gap-5'>
       <div className='flex justify-center'>
         <div className='flex flex-col'>
-          <div className='w-36 h-36 mx-auto mb-2 relative left-10'>
+          <div className='w-36 h-36 mx-auto relative left-10'>
             <TextWheel />
           </div>
           <div className='uppercase font-bold text-lg text-white tracking-[.15em]'>

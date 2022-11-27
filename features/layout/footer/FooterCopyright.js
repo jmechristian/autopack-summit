@@ -1,0 +1,25 @@
+import React from 'react';
+import Logo from '../../../shared/Logo';
+import Divider from '../../../shared/Divider';
+
+const FooterCopyright = () => {
+  return (
+    <div className='flex flex-col gap-6 px-6'>
+      <Divider />
+      <div className='grid grid-cols-5 gap-x-4 justify-center align-middle py-1'>
+        <div className='col-span-2'>
+          <Logo />
+        </div>
+        <div className='col-span-3 text-[10px] text-white/70'>
+          Copyright © 2015-2022 The Packaging School, LLC. All Rights Reserved.
+        </div>
+      </div>
+      <div className='flex gap-4'>
+        <div className='text-xs text-white/70'>Privacy Policy</div>
+        <div className='text-xs text-white/70'>Terms of Use</div>
+      </div>
+    </div>
+  );
+};
+
+export default FooterCopyright;
