@@ -20,12 +20,12 @@ const client = createClient({
   useCdn: false,
 });
 
-export async function getStaticProps() {
-  const speakers = await client.fetch(`*[_type == "speaker" ]`);
+// export async function getStaticProps() {
+//   const speakers = await client.fetch(`*[_type == "speaker" ]`);
 
-  return {
-    props: {
-      speakers,
-    },
-  };
-}
+//   return {
+//     props: {
+//       speakers,
+//     },
+//   };
+// }

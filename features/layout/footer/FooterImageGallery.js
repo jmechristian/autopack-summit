@@ -1,15 +1,20 @@
 import React from 'react';
 
-const FooterImageGallery = () => {
+const FooterImageGallery = ({ images }) => {
   return (
-    <div className='grid grid-flow-col gap-3 overflow-hidden'>
-      <div className='w-40 h-56 bg-gray-400'></div>
-      <div className='w-40 h-56 bg-gray-400'></div>
-      <div className='w-40 h-56 bg-gray-400'></div>
-      <div className='w-40 h-56 bg-gray-400'></div>
-      <div className='w-40 h-56 bg-gray-400'></div>
-      <div className='w-40 h-56 bg-gray-400'></div>
-      <div className='w-40 h-56 bg-gray-400'></div>
+    <div className='grid grid-flow-col gap-3 overflow-scroll'>
+      {images &&
+        images.map((img, i) => (
+          <div
+            className='w-40 md:w-52 h-56 md:h-60'
+            style={{
+              backgroundImage: `url(${img.url})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center center',
+            }}
+            key={img._key}
+          ></div>
+        ))}
     </div>
   );
 };

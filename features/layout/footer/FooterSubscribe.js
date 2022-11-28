@@ -4,7 +4,7 @@ import FooterSocials from './FooterSocials';
 const FooterSubscribe = () => {
   const [isEmail, setIsEmail] = useState('');
   return (
-    <div className='flex flex-col gap-3 px-6 w-full'>
+    <div className='flex flex-col gap-3 px-6 xl:px-0 w-full'>
       <div>
         <h4 className=' tracking-widest uppercase font-bold text-white'>
           Stay in the Know
