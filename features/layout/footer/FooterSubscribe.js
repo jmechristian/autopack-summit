@@ -17,8 +17,8 @@ const FooterSubscribe = () => {
             name='subscribe'
             value={isEmail}
             onChange={(e) => setIsEmail(e.target.value)}
-            placeholder='You@Email.com'
-            className='flex-grow'
+            placeholder='Your@Email.com'
+            className='flex-grow bg-slate-300 border border-ap-yellow'
           />
           <button type='submit'>
             <div className='bg-ap-yellow text-white py-3 px-4'>Subscribe</div>
