@@ -9,7 +9,7 @@ const HeroHeadline = ({ headline, subheadline }) => {
       <div className='relative flex justify-center'>
         {headline.map((item, i) => (
           <div
-            className={`yellow_headline text-[2.6rem] md:text-7xl lg:text-8xl leading-none text-center overflow-hidden absolute z-[${
+            className={`yellow_headline text-[2.6rem] md:text-7xl lg:text-8xl xl:text-9xl leading-none text-center overflow-hidden absolute z-[${
               i + 40
             } ]`}
             key={i}

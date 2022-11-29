@@ -26,3 +26,8 @@ body {
 * {
   box-sizing: border-box;
 }
+
+#scrollers::-webkit-scrollbar {
+  display: none;
+  width: 0;
+}

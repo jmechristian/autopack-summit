@@ -2,7 +2,7 @@ import React from 'react';
 
 const FooterImageGallery = ({ images }) => {
   return (
-    <div className='grid grid-flow-col gap-3 overflow-scroll'>
+    <div className='grid grid-flow-col gap-3 overflow-scroll' id='scrollers'>
       {images &&
         images.map((img, i) => (
           <div
