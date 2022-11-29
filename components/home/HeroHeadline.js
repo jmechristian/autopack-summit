@@ -6,14 +6,18 @@ const HeroHeadline = ({ headline, subheadline }) => {
       <div className='white_subheadline text-xl md:text-2xl text-center'>
         {subheadline}
       </div>
-      {headline.map((item, i) => (
-        <div
-          className='yellow_headline text-[2.6rem] md:text-7xl leading-none text-center overflow-hidden'
-          key={i}
-        >
-          {item}
-        </div>
-      ))}
+      <div className='relative flex justify-center'>
+        {headline.map((item, i) => (
+          <div
+            className={`yellow_headline text-[2.6rem] md:text-7xl lg:text-8xl leading-none text-center overflow-hidden absolute z-[${
+              i + 40
+            } ]`}
+            key={i}
+          >
+            {item}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

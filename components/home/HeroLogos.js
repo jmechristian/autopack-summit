@@ -2,12 +2,12 @@ import React from 'react';
 
 const HeroLogos = ({ logos }) => {
   return (
-    <div className='inline'>
-      <div className='uppercase font-semibold text-xs md:text-base text-white tracking-wider w-full text-center pt-20'>
+    <div className='flex flex-col relative'>
+      <div className='uppercase font-semibold text-xs md:text-base text-white tracking-wider w-full text-center'>
         Subject Matter Experts From:
       </div>
-      <div className='overflow-scroll w-full pt-4'>
-        <div className='flex flex-row  gap-5 justify-center'>
+      <div className='absolute left-0 top-0 z-30 w-full overflow-scroll pt-8'>
+        <div className='flex flex-row gap-5 justify-center w-full px-6'>
           {logos &&
             logos.map((logo, i) => (
               <div>
