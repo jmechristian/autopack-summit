@@ -40,7 +40,7 @@ const MobileMenu = ({ close, isOpen }) => {
         initial='hidden'
         animate={isOpen ? 'show' : 'hidden'}
       >
-        <motion.div className='flex flex-col w-full p-6 bg-slate-700'>
+        <motion.div className='flex flex-col w-full p-6 md:p-10 bg-slate-700'>
           <div className='flex justify-between'>
             <div className='w-2/5'>
               <Logo />
@@ -49,12 +49,12 @@ const MobileMenu = ({ close, isOpen }) => {
               <XMarkIcon className='w-10 h-10 stroke-white/60' />
             </div>
           </div>
-          <motion.div className='flex flex-col gap-4 top-40 relative'>
+          <motion.div className='flex flex-col gap-4 md:gap-5 top-40 relative'>
             {navMenu.map((item, i) => (
               <motion.div key={item.name} onClick={() => close()}>
                 <Link href={item.link}>
                   <motion.div
-                    className='font-bold text-5xl text-white'
+                    className='font-bold text-5xl md:text-7xl text-white'
                     key={isOpen}
                     variants={items}
                     initial='hidden'

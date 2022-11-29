@@ -6,8 +6,8 @@ const HeroInfo = ({ location, date }) => {
   return (
     <div className='flex flex-col text-center gap-2'>
       <div className='flex flex-col'>
-        <div className='text-white font-bold uppercase'>{date}</div>
-        <div className='text-white font-semibold'>{location}</div>
+        <div className='text-white/60 font-bold uppercase'>{date}</div>
+        <div className='text-white/60 font-semibold'>{location}</div>
       </div>
       <div className='flex items-center justify-center text-white/60 text-center gap-1'>
         <Link href='/travel'>Accommodations</Link>
