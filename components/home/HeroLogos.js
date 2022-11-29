@@ -8,7 +8,7 @@ const HeroLogos = ({ logos }) => {
       transition: {
         ease: 'easeIn',
         duration: 0.4,
-        delay: 0.8,
+        delay: 0.4,
       },
     },
     hide: {

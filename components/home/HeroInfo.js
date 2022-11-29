@@ -10,7 +10,7 @@ const HeroInfo = ({ location, date }) => {
       transition: {
         ease: 'easeIn',
         duration: 0.4,
-        delay: 0.6,
+        delay: 0.4,
       },
     },
     hide: {
