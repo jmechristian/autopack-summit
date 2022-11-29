@@ -3,7 +3,7 @@ import React from 'react';
 const HeroHeadline = ({ headline, subheadline }) => {
   return (
     <div className='flex flex-col justify-center gap-1'>
-      <div className='white_subheadline text-xl md:text-2xl text-center'>
+      <div className='white_subheadline text-xl md:text-2xl xl:text-3xl text-center'>
         {subheadline}
       </div>
       <div className='relative flex justify-center'>
