@@ -1,10 +1,30 @@
 import React from 'react';
 import Link from 'next/link';
 import { ArrowLongRightIcon } from '@heroicons/react/24/outline';
+import { motion } from 'framer-motion';
 
 const HeroInfo = ({ location, date }) => {
+  const textVariants = {
+    show: {
+      opacity: 1,
+      transition: {
+        ease: 'easeIn',
+        duration: 0.4,
+        delay: 0.6,
+      },
+    },
+    hide: {
+      opacity: 0,
+    },
+  };
+
   return (
-    <div className='flex flex-col text-center justify-center gap-1 lg:w-1/2 lg:text-left lg:items-end lg:mt-6'>
+    <motion.div
+      className='flex flex-col text-center text-sm md:text-base justify-center gap-1 lg:w-1/2 lg:text-left lg:items-end lg:mt-6'
+      variants={textVariants}
+      initial='hide'
+      animate='show'
+    >
       <div className='flex flex-col'>
         <div className='text-white/60 font-bold uppercase'>{date}</div>
         <div className='text-white/60 font-semibold'>{location}</div>
@@ -13,7 +33,7 @@ const HeroInfo = ({ location, date }) => {
           <ArrowLongRightIcon className='w-6 h-6 stroke-white/60' />
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

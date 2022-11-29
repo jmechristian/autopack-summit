@@ -7,14 +7,14 @@ import HeroText from './HeroText';
 const HeroMain = ({ data }) => {
   return (
     <div
-      className='w-full pt-40 pb-32 md:pt-44 lg:pb-10 lg:pt-56 xl:pb-12 xl:pt-72  bg-slate-800 relative'
+      className='w-full pt-44 pb-32 md:pt-44 lg:pb-10 lg:pt-56 xl:pb-12 xl:pt-72 bg-slate-800 relative'
       style={{
         backgroundImage: `url('https://res.cloudinary.com/dno7xxmmy/image/upload/v1669674364/AutoPack%20Summit/main_hero_bujof4.webp')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}
     >
-      <div className='w-full h-full flex flex-col justify-center items-center gap-20 md:gap-32 lg:gap-44 xl:gap-52'>
+      <div className='w-full h-full flex flex-col justify-center items-center gap-20 md:gap-32 lg:gap-44 xl:gap-56'>
         <div className='flex flex-col gap-16 md:gap-24 lg:gap-32 xl:gap-40'>
           <HeroHeadline
             headline={data[0].heroHeadline}
