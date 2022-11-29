@@ -10,10 +10,10 @@ const FooterHeadline = () => {
             <TextWheel />
           </div>
           <div>
-            <div className='uppercase font-bold text-lg md:text-xl xl:text-2xl text-white tracking-[.15em]'>
+            <div className='text-lg md:text-xl xl:text-2xl white_subheadline'>
               Moments To
             </div>
-            <div className='text-ap-yellow font-medium font-oswald tracking-[.2em] uppercase text-4xl md:text-5xl xl:text-6xl ml-8 md:ml-5'>
+            <div className='yellow_headline tracking-[.2em] text-4xl md:text-5xl xl:text-6xl ml-10 md:ml-7'>
               Remember
             </div>
           </div>

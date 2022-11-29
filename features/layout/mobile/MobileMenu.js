@@ -1,18 +1,17 @@
 import React from 'react';
 import Logo from '../../../shared/Logo';
 import Link from 'next/link';
-import { navMenu } from '../../../../../data/navigation';
+import { navMenu } from '../../../data/navigation';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import { AnimatePresence, motion } from 'framer-motion';
 
 const MobileMenu = ({ close, isOpen }) => {
   const menuVariants = {
     hidden: {
-      x: -1050,
+      x: -1000,
       transition: {
         duration: 0.3,
         ease: 'easeInOut',
-        delayChildren: 1,
       },
     },
     show: {
@@ -36,7 +35,7 @@ const MobileMenu = ({ close, isOpen }) => {
   return (
     <AnimatePresence>
       <motion.div
-        className='fixed z-50 top-0 left-0 right-0 bottom-0 flex drop-shadow-lg'
+        className='lg:hidden fixed z-50 top-0 left-0 right-0 bottom-0 flex drop-shadow-lg'
         variants={menuVariants}
         initial='hidden'
         animate={isOpen ? 'show' : 'hidden'}
@@ -52,17 +51,18 @@ const MobileMenu = ({ close, isOpen }) => {
           </div>
           <motion.div className='flex flex-col gap-4 top-40 relative'>
             {navMenu.map((item, i) => (
-              <motion.div
-                key={item.name}
-                variants={items}
-                initial='hidden'
-                animate='show'
-                exit='hidden'
-              >
+              <motion.div key={item.name} onClick={() => close()}>
                 <Link href={item.link}>
-                  <div className='font-bold text-5xl text-white'>
+                  <motion.div
+                    className='font-bold text-5xl text-white'
+                    key={isOpen}
+                    variants={items}
+                    initial='hidden'
+                    animate='show'
+                    transition={{ delay: 0.4 + i * 0.05 }}
+                  >
                     {item.name}
-                  </div>
+                  </motion.div>
                 </Link>
               </motion.div>
             ))}

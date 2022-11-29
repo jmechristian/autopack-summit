@@ -2,13 +2,12 @@ import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 import { createClient } from 'next-sanity';
+import HeroMain from '../components/home/HeroMain';
 
-export default function Home() {
+export default function Home({ homepageData }) {
   return (
-    <div>
-      <div className='text-5xl font-bold font-oswald text-ap-yellow py-24'>
-        Hello World!
-      </div>
+    <div className='flex flex-col'>
+      <HeroMain data={homepageData} />
     </div>
   );
 }
@@ -20,12 +19,14 @@ const client = createClient({
   useCdn: false,
 });
 
-// export async function getStaticProps() {
-//   const speakers = await client.fetch(`*[_type == "speaker" ]`);
+export async function getStaticProps() {
+  const homepageData = await client.fetch(
+    `*[_type == "homepage" && version == 1]`
+  );
 
-//   return {
-//     props: {
-//       speakers,
-//     },
-//   };
-// }
+  return {
+    props: {
+      homepageData,
+    },
+  };
+}

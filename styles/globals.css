@@ -4,6 +4,14 @@
   html {
     @apply text-slate-900 font-inter;
   }
+
+  .yellow_headline {
+    @apply text-ap-yellow font-medium font-oswald tracking-[.2em] uppercase;
+  }
+
+  .white_subheadline {
+    @apply uppercase font-bold text-white tracking-[.2em];
+  }
 }
 
 @tailwind components;

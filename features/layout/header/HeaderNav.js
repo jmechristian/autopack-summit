@@ -1,5 +1,5 @@
 import React from 'react';
-import { navMenu } from '../../../../../data/navigation';
+import { navMenu } from '../../../data/navigation';
 import Link from 'next/link';
 
 const HeaderNav = () => {
