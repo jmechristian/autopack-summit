@@ -39,7 +39,7 @@ const HeroHeadline = ({ headline, subheadline }) => {
       transition: {
         delay: 0.5,
         type: 'spring',
-        stiffness: 540,
+        stiffness: 600,
         damping: 45,
         mass: 1.5,
       },
@@ -47,6 +47,13 @@ const HeroHeadline = ({ headline, subheadline }) => {
     exit: {
       x: 200,
       opacity: 0,
+      transition: {
+        delay: 0.5,
+        type: 'spring',
+        stiffness: 600,
+        damping: 45,
+        mass: 1.5,
+      },
     },
     initial: {
       x: -200,
