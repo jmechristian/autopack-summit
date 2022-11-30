@@ -1,6 +1,4 @@
 import Head from 'next/head';
-import Image from 'next/image';
-import styles from '../styles/Home.module.css';
 import { createClient } from 'next-sanity';
 import HeroMain from '../components/home/HeroMain';
 import SecondMain from '../components/home/SecondMain';

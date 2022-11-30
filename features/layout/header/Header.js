@@ -1,10 +1,25 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Logo from '../../../shared/Logo';
 import { Bars3Icon } from '@heroicons/react/24/solid';
 import HeaderNav from './HeaderNav';
-import { motion } from 'framer-motion';
+import { motion, useScroll } from 'framer-motion';
 
 const Header = ({ openMenu }) => {
+  const [showMenu, setShowMenu] = useState(false);
+  const { scrollY } = useScroll();
+
+  useEffect(() => {
+    return scrollY.onChange(() => updateY());
+  });
+
+  const updateY = () => {
+    if (scrollY.current > 10) {
+      setShowMenu(true);
+    } else {
+      setShowMenu(false);
+    }
+  };
+
   const textVariants = {
     show: {
       opacity: 1,
@@ -19,8 +34,32 @@ const Header = ({ openMenu }) => {
     },
   };
 
+  const menuVariants = {
+    show: {
+      backgroundColor: showMenu ? 'rgba(0, 88, 146, 1)' : 'rgba(0, 88, 146, 0)',
+      boxShadow:
+        '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
+      transition: {
+        duration: 0.2,
+        ease: 'easeInOut',
+      },
+    },
+    hidden: {
+      backgroundColor: showMenu ? 'rgba(0, 88, 146, 1)' : 'rgba(0, 88, 146, 0)',
+      transition: {
+        duration: 0.2,
+        ease: 'easeInOut',
+      },
+    },
+  };
+
   return (
-    <div className='w-full py-4 md:py-5 lg:py-6 xl:py-8 px-4 md:px-5 xl:px-0 drop-shadow fixed z-40 left-0 right-0'>
+    <motion.div
+      className='w-full py-4 md:py-5 lg:py-6 px-4 md:px-5 xl:px-0 drop-shadow fixed z-40 left-0 right-0'
+      variants={menuVariants}
+      initial={false}
+      animate={showMenu ? 'show' : 'hidden'}
+    >
       <motion.div
         className='w-full flex justify-between items-center xl:max-w-7xl mx-auto'
         variants={textVariants}
@@ -39,7 +78,7 @@ const Header = ({ openMenu }) => {
           </div>
         </div>
       </motion.div>
-    </div>
+    </motion.div>
   );
 };
 

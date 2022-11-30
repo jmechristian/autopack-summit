@@ -1,6 +1,8 @@
 import React, { useRef } from 'react';
-import { PlayCircleIcon } from '@heroicons/react/24/outline';
+import { PlayCircleIcon } from '@heroicons/react/24/solid';
 import { useInView, motion } from 'framer-motion';
+import { useDispatch, useSelector } from 'react-redux';
+import { openVideoEmbed } from '../features/layout/layoutSlice';
 
 const OverlayWithText = ({
   background,
@@ -11,6 +13,8 @@ const OverlayWithText = ({
 }) => {
   const overlayRef = useRef();
   const overlayInView = useInView(overlayRef);
+  const dispatch = useDispatch();
+  const { videoOpen } = useSelector((state) => state.layout);
 
   const overlayVariants = {
     show: {
@@ -19,7 +23,7 @@ const OverlayWithText = ({
       transition: {
         delay: 0.4,
         type: 'spring',
-        stiffness: 400,
+        stiffness: 200,
         damping: 45,
         mass: 1.5,
         delayChildren: 0.7,
@@ -61,10 +65,13 @@ const OverlayWithText = ({
           backgroundPosition: 'center',
         }}
       >
-        <div className='flex justify-center items-center rounded-md h-full'>
+        <div
+          className='flex justify-center items-center rounded-md h-full'
+          onClick={() => dispatch(openVideoEmbed())}
+        >
           {' '}
           {video && (
-            <PlayCircleIcon className='w-32 h-32 lg:w-52 lg:h-52 stroke-white/50 stroke-1' />
+            <PlayCircleIcon className='w-32 h-32 lg:w-40 lg:h-40 fill-white/50 shadow-xl rounded-full backdrop-blur-md' />
           )}
         </div>
       </div>
@@ -74,7 +81,7 @@ const OverlayWithText = ({
         >
           {headline}
         </div>
-        <div className='text-slate-500 leading-snug'>{description}</div>
+        <div className='text-slate-500 leading-snug xl:px-8'>{description}</div>
       </div>
     </motion.div>
   );
