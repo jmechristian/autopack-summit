@@ -4,12 +4,14 @@ import styles from '../styles/Home.module.css';
 import { createClient } from 'next-sanity';
 import HeroMain from '../components/home/HeroMain';
 import SecondMain from '../components/home/SecondMain';
+import WhyMain from '../components/home/WhyMain';
 
 export default function Home({ homepageData }) {
   return (
     <div className='flex flex-col'>
       <HeroMain data={homepageData} />
       <SecondMain />
+      <WhyMain />
     </div>
   );
 }

@@ -12,6 +12,10 @@
   .white_subheadline {
     @apply uppercase font-bold text-white tracking-[.2em];
   }
+
+  .blue_subheadline {
+    @apply uppercase font-bold text-ap-darkblue tracking-[.2em];
+  }
 }
 
 @tailwind components;

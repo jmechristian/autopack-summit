@@ -68,7 +68,7 @@ const SecondMain = () => {
           animate={videoInView ? 'show' : 'hidden'}
         >
           <motion.div>
-            <PlayCircleIcon className='w-32 h-32 lg:w-52 lg:h-52 stroke-white/50' />
+            <PlayCircleIcon className='w-32 h-32 lg:w-52 lg:h-52 stroke-white/50 stroke-1' />
           </motion.div>
         </motion.div>
       </div>
