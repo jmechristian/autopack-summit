@@ -13,7 +13,7 @@ const SecondMain = () => {
     show: {
       opacity: 1,
       transition: {
-        delay: 0.5,
+        delay: 0.4,
         ease: 'easeInOut',
         duration: 0.3,
       },
@@ -30,7 +30,7 @@ const SecondMain = () => {
       transition: {
         ease: 'easeInOut',
         duration: 0.4,
-        delay: 0.3,
+        delay: 0.2,
       },
     },
     hidden: {
