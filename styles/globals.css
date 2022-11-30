@@ -9,6 +9,10 @@
     @apply text-ap-yellow font-medium font-oswald tracking-[.2em] uppercase;
   }
 
+  .white_headline {
+    @apply text-white font-medium font-oswald tracking-[.2em] uppercase;
+  }
+
   .white_subheadline {
     @apply uppercase font-bold text-white tracking-[.2em];
   }

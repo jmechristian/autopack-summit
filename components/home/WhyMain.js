@@ -22,7 +22,7 @@ const WhyMain = () => {
 
   return (
     <div className='w-full h-full relative'>
-      <div className='py-12 md:py-16 lg:py-24 px-8 lg:px-16 max-w-7xl grid grid-cols-1 md:grid-cols-2 md:gap-x-16 lg:gap-x-28 xl:gap-x-40  gap-y-12 mx-auto'>
+      <div className='py-16 md:py-20 lg:py-24 px-8 lg:px-16 max-w-7xl grid grid-cols-1 md:grid-cols-2 md:gap-x-16 lg:gap-x-28 xl:gap-x-40  gap-y-12 mx-auto'>
         <div className='flex flex-col gap-12 md:gap-32'>
           <motion.div
             className='flex flex-col items-center xl:gap-2 mx-auto md:mt-16 lg:mt-20'

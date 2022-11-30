@@ -3,6 +3,7 @@ import { createClient } from 'next-sanity';
 import HeroMain from '../components/home/HeroMain';
 import SecondMain from '../components/home/SecondMain';
 import WhyMain from '../components/home/WhyMain';
+import TestimonialMain from '../components/home/TestimonialMain';
 
 export default function Home({ homepageData }) {
   return (
@@ -10,6 +11,7 @@ export default function Home({ homepageData }) {
       <HeroMain data={homepageData} />
       <SecondMain />
       <WhyMain />
+      <TestimonialMain />
     </div>
   );
 }
