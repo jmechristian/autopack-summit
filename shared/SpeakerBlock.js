@@ -27,7 +27,7 @@ const SpeakerBlock = () => {
 
   return (
     <motion.div
-      className='shadow-lg relative max-w-7xl'
+      className='h-full shadow-lg relative max-w-7xl'
       ref={speakerRef}
       variants={speakerVariants}
       initial='hide'
