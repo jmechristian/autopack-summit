@@ -4,6 +4,7 @@ const initialState = {
   navOpen: false,
   videoOpen: false,
   videoUrl: null,
+  speakerOpen: false,
 };
 
 export const layoutSlice = createSlice({
@@ -24,10 +25,22 @@ export const layoutSlice = createSlice({
       state.videoOpen = false;
       state.videoUrl = null;
     },
+    openSpeakerModal: (state) => {
+      state.speakerOpen = true;
+    },
+    closeSpeakerModal: (state) => {
+      state.speakerOpen = false;
+    },
   },
 });
 
-export const { openNavMenu, closeNavMenu, openVideoEmbed, closeVideoEmbed } =
-  layoutSlice.actions;
+export const {
+  openNavMenu,
+  closeNavMenu,
+  openVideoEmbed,
+  closeVideoEmbed,
+  openSpeakerModal,
+  closeSpeakerModal,
+} = layoutSlice.actions;
 
 export default layoutSlice.reducer;
