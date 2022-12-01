@@ -19,7 +19,7 @@ const SpeakerModal = () => {
                 backgroundPosition: 'center',
               }}
             ></div>
-            <div className='flex flex-col gap-6 bg-white rounded-b-md py-6 px-5'>
+            <div className='flex flex-col gap-6 bg-white rounded-b-md pb-6 px-5'>
               <div className='flex flex-col'>
                 <div className='font-oswald font-semibold text-[1.75rem] leading-none uppercase text-ap-darkblue'>
                   Gauri Awalgaonkar
