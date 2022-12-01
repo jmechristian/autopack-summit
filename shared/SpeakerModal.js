@@ -2,6 +2,7 @@ import React from 'react';
 import { XCircleIcon } from '@heroicons/react/24/outline';
 import { useDispatch, useSelector } from 'react-redux';
 import { closeSpeakerModal } from '../features/layout/layoutSlice';
+import { SocialIcon } from 'react-social-icons';
 
 const SpeakerModal = () => {
   const dispatch = useDispatch();
@@ -9,18 +10,26 @@ const SpeakerModal = () => {
   return (
     <div className='fixed top-0 left-0 right-0 bottom-0 bg-black/60 z-[60]'>
       <div className='flex w-full h-full justify-center items-center'>
-        <div className='w-11/12 mx-auto'>
-          <div className='flex flex-col'>
-            <div
-              className='w-full aspect-square rounded-t-lg'
-              style={{
-                backgroundImage: `url('https://res.cloudinary.com/dno7xxmmy/image/upload/v1669843504/AutoPack%20Summit/speaker1_gpjeap.webp')`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-              }}
-            ></div>
-            <div className='flex flex-col gap-6 bg-white rounded-b-md pb-6 px-5'>
-              <div className='flex flex-col'>
+        <div className='w-11/12 mx-auto bg-white rounded'>
+          <div className='flex flex-col gap-4 py-6 px-6'>
+            <div className='flex justify-between'>
+              <div
+                className='w-52 h-56 rounded-t-lg'
+                style={{
+                  backgroundImage: `url('https://res.cloudinary.com/dno7xxmmy/image/upload/v1669843504/AutoPack%20Summit/speaker1_gpjeap.webp')`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                }}
+              ></div>
+              <div className='mt-6'>
+                <SocialIcon
+                  url='https://www.linkedin.com/school/the-packaging-school-llc'
+                  style={{ height: 40, width: 40 }}
+                />
+              </div>
+            </div>
+            <div className='flex flex-col gap-6 -mt-7'>
+              <div className='flex flex-col ml-5'>
                 <div className='font-oswald font-semibold text-[1.75rem] leading-none uppercase text-ap-darkblue'>
                   Gauri Awalgaonkar
                 </div>
