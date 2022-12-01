@@ -14,7 +14,7 @@ const SpeakerModal = () => {
           <div className='flex flex-col gap-4 py-6 px-6'>
             <div className='flex justify-between'>
               <div
-                className='w-52 h-56 rounded-t-lg'
+                className='w-60 h-60 rounded-t-lg'
                 style={{
                   backgroundImage: `url('https://res.cloudinary.com/dno7xxmmy/image/upload/v1669843504/AutoPack%20Summit/speaker1_gpjeap.webp')`,
                   backgroundSize: 'cover',
@@ -36,7 +36,7 @@ const SpeakerModal = () => {
                 <div className='text-sm font-semibold'>Nissan</div>
                 <div className='text-sm'>Packaging Senior Supervisor</div>
               </div>
-              <div className='text-sm max-h-48 overflow-y-scroll text-slate-500'>
+              <div className='text-sm max-h-44 overflow-y-scroll text-slate-500'>
                 Nate Franck has been involved in the reusable packaging industry
                 for nearly 20 years. He graduated from the University of Kansas
                 with a BS in Mechanical Engineering. Nate has utilized his
