@@ -10,8 +10,8 @@ const SpeakerModal = () => {
   return (
     <div className='fixed top-0 left-0 right-0 bottom-0 bg-black/60 z-[60]'>
       <div className='flex w-full h-full justify-center items-center'>
-        <div className='w-11/12 mx-auto bg-white rounded'>
-          <div className='flex flex-col gap-4 py-6 px-6'>
+        <div className='w-11/12 mx-auto bg-white rounded-md'>
+          <div className='flex flex-col gap-4 pt-4 pb-9 px-6'>
             <div className='flex justify-between'>
               <div
                 className='w-60 h-60 rounded-t-lg'
@@ -36,7 +36,7 @@ const SpeakerModal = () => {
                 <div className='text-sm font-semibold'>Nissan</div>
                 <div className='text-sm'>Packaging Senior Supervisor</div>
               </div>
-              <div className='text-sm max-h-44 overflow-y-scroll text-slate-500'>
+              <div className='text-sm max-h-44 overflow-y-scroll relative text-slate-500'>
                 Nate Franck has been involved in the reusable packaging industry
                 for nearly 20 years. He graduated from the University of Kansas
                 with a BS in Mechanical Engineering. Nate has utilized his
@@ -49,6 +49,7 @@ const SpeakerModal = () => {
                 solutions for the automotive sector, especially to help develop
                 new products to help ship batteries safely and securely ship
                 many automotive components anywhere in the World.
+                <div className='sticky left-0 right-0 bottom-0 bg-gradient-to-t from-white h-12'></div>
               </div>
             </div>
           </div>
