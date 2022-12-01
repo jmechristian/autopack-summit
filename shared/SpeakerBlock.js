@@ -34,7 +34,7 @@ const SpeakerBlock = () => {
       animate={speakerInView ? 'show' : 'hide'}
     >
       <div className='w-64 lg:w-full h-80 bg-white'>
-        <div className='grid grid-cols-12'>
+        <div className='grid grid-cols-12 overflow-hidden'>
           <div
             className='col-span-10 h-64 bg-ap-yellow'
             style={{
