@@ -10,11 +10,11 @@ const SpeakerModal = () => {
   return (
     <div className='fixed top-0 left-0 right-0 bottom-0 bg-black/60 z-[60]'>
       <div className='flex w-full h-full justify-center items-center'>
-        <div className='w-11/12 mx-auto bg-white rounded-md'>
-          <div className='flex flex-col gap-4 pt-4 pb-9 px-6'>
-            <div className='flex justify-between'>
+        <div className='w-11/12 md:w-7/12 lg:w-9/12 mx-auto bg-white rounded-md'>
+          <div className='flex flex-col lg:flex-row lg:gap-12 gap-4 pt-4 pb-9 px-6'>
+            <div className='flex justify-between lg:flex-col'>
               <div
-                className='w-60 h-60 rounded-t-lg'
+                className='w-60 md:w-72 h-60 md:h-72 lg:h-80 rounded-t-lg'
                 style={{
                   backgroundImage: `url('https://res.cloudinary.com/dno7xxmmy/image/upload/v1669843504/AutoPack%20Summit/speaker1_gpjeap.webp')`,
                   backgroundSize: 'cover',
@@ -28,15 +28,17 @@ const SpeakerModal = () => {
                 />
               </div>
             </div>
-            <div className='flex flex-col gap-6 -mt-7'>
-              <div className='flex flex-col ml-5'>
-                <div className='font-oswald font-semibold text-[1.75rem] leading-none uppercase text-ap-darkblue'>
+            <div className='flex flex-col gap-6 -mt-7 lg:mt-0'>
+              <div className='flex flex-col ml-5 lg:ml-0'>
+                <div className='font-oswald font-semibold text-[1.75rem] md:text-3xl leading-none uppercase text-ap-darkblue'>
                   Gauri Awalgaonkar
                 </div>
-                <div className='text-sm font-semibold'>Nissan</div>
-                <div className='text-sm'>Packaging Senior Supervisor</div>
+                <div className='text-sm md:text-base font-semibold'>Nissan</div>
+                <div className='text-sm md:text-base'>
+                  Packaging Senior Supervisor
+                </div>
               </div>
-              <div className='text-sm max-h-44 overflow-y-scroll relative text-slate-500'>
+              <div className='text-sm md:text-base max-h-44 md:max-h-72 overflow-y-scroll relative text-slate-500 max-w-prose'>
                 Nate Franck has been involved in the reusable packaging industry
                 for nearly 20 years. He graduated from the University of Kansas
                 with a BS in Mechanical Engineering. Nate has utilized his
@@ -49,7 +51,7 @@ const SpeakerModal = () => {
                 solutions for the automotive sector, especially to help develop
                 new products to help ship batteries safely and securely ship
                 many automotive components anywhere in the World.
-                <div className='sticky left-0 right-0 bottom-0 bg-gradient-to-t from-white h-12'></div>
+                <div className='sticky left-0 right-0 bottom-0 bg-gradient-to-t from-white h-12 lg:hidden'></div>
               </div>
             </div>
           </div>
