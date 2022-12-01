@@ -7,7 +7,7 @@ import HeroText from './HeroText';
 const HeroMain = ({ data }) => {
   return (
     <div
-      className='w-full pt-52 pb-32 md:pt-56 lg:pb-10 lg:pt-56 xl:pb-12 xl:pt-[17rem] bg-slate-800 relative'
+      className='w-full pt-52 pb-32 md:pt-56 lg:pb-10 lg:pt-56 xl:pb-12 xl:pt-[17rem] bg-slate-800 relative overflow-hidden'
       style={{
         backgroundImage: `url('https://res.cloudinary.com/dno7xxmmy/image/upload/v1669674364/AutoPack%20Summit/main_hero_bujof4.webp')`,
         backgroundSize: 'cover',
