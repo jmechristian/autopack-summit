@@ -3,11 +3,11 @@ import Sponsor from './Sponsor';
 
 const SilverSponsorBlock = () => {
   return (
-    <div className='flex flex-col gap-5'>
-      <div className='border-b border-b-slate-500 pb-2 font-bold tracking-widest uppercase text-sm'>
+    <div className='flex flex-col gap-5 md:gap-6'>
+      <div className='border-b border-b-slate-500 pb-2 font-bold tracking-widest uppercase text-sm lg:text-lg'>
         Silver
       </div>
-      <div className='grid grid-cols-3 gap-x-10 gap-y-5 w-full'>
+      <div className='grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-10 md:gap-x-16 gap-y-5 md:gap-y-10 w-full'>
         <Sponsor
           logo='https://res.cloudinary.com/dno7xxmmy/image/upload/v1670261559/AutoPack%20Summit/big3_n1girf.png'
           w={400}

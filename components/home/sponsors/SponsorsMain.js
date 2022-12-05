@@ -4,7 +4,7 @@ import SponsorsMainHead from './SponsorsMainHead';
 
 const SponsorsMain = () => {
   return (
-    <div>
+    <div className='overflow-hidden'>
       <SponsorsMainHead />
       <SponsorMainBody />
     </div>

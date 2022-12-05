@@ -14,7 +14,7 @@ const Sponsor = ({ logo, url, alt, w, h }) => {
       className='h-full flex justify-center items-center'
       onClick={logoClick}
     >
-      <div className='max-h-16'>
+      <div>
         <Image src={logo} width={w} height={h} alt={alt} />
       </div>
     </div>

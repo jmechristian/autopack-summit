@@ -51,7 +51,7 @@ const SpeakerBlock = () => {
               className='bg-ap-red text-white flex w-full px-2 py-4 font-oswald font-medium tracking-widest'
               style={{ textOrientation: 'mixed', writingMode: 'vertical-rl' }}
             >
-              TriEnd Holdings
+              TriEnda Holdings
             </div>
           </div>
         </div>
