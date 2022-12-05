@@ -1,7 +1,7 @@
 import React from 'react';
 import Sponsor from './Sponsor';
 
-const SponsorBlock = () => {
+const GoldSponsorBlock = () => {
   return (
     <div className='flex flex-col gap-5'>
       <div className='border-b border-b-slate-500 pb-2 font-bold tracking-widest uppercase text-sm'>
@@ -41,4 +41,4 @@ const SponsorBlock = () => {
   );
 };
 
-export default SponsorBlock;
+export default GoldSponsorBlock;

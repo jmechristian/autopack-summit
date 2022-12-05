@@ -1,13 +1,15 @@
 import React from 'react';
 import PlatinumSponsorBlock from './PlatinumSponsorBlock';
-import SponsorBlock from './SponsorBlock';
+import GoldSponsorBlock from './GoldSponsorBlock';
+import SilverSponsorBlock from './SilverSponsorBlock';
 
 const SponsorMainBody = () => {
   return (
     <div className='default_wrapper'>
       <div className='flex flex-col gap-12'>
         <PlatinumSponsorBlock />
-        <SponsorBlock />
+        <GoldSponsorBlock />
+        <SilverSponsorBlock />
       </div>
     </div>
   );
