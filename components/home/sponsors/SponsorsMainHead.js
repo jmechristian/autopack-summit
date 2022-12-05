@@ -1,5 +1,7 @@
 import React, { useRef } from 'react';
 import LeftTextCTA from '../../../shared/LeftTextCTA';
+import TitleSponsorBody from './TitleSponsorBody';
+import TitleSponsorHead from './TitleSponsorHead';
 
 const SponsorsMainHead = () => {
   return (
@@ -14,6 +16,12 @@ const SponsorsMainHead = () => {
           headlineText='Sponsors'
           buttonText='Become a Sponsor'
         />
+        <div className='w-full h-full bg-bgImage_blue p-6 rounded-lg bg-cover bg-center'>
+          <div className='bg-white/80 backdrop-blur rounded-lg px-6 py-8 flex flex-col gap-5 drop-shadow-lg'>
+            <TitleSponsorHead />
+            <TitleSponsorBody />
+          </div>
+        </div>
       </div>
     </div>
   );

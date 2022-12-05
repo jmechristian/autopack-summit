@@ -21,6 +21,8 @@ module.exports = {
       backgroundImage: {
         'testimonial-yellow':
           "url('https://res.cloudinary.com/dno7xxmmy/image/upload/v1669772597/AutoPack%20Summit/IMG_2874_iijxzx.webp')",
+        bgImage_blue:
+          "url('https://res.cloudinary.com/dno7xxmmy/image/upload/v1669772597/AutoPack%20Summit/IMG_2022_hbtevz.webp')",
       },
     },
   },
