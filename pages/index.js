@@ -5,6 +5,7 @@ import SecondMain from '../components/home/SecondMain';
 import WhyMain from '../components/home/WhyMain';
 import TestimonialMain from '../components/home/TestimonialMain';
 import SpeakersMain from '../components/home/SpeakersMain';
+import SponsorsMain from '../components/home/sponsors/SponsorsMain';
 
 export default function Home({ homepageData }) {
   return (
@@ -14,6 +15,7 @@ export default function Home({ homepageData }) {
       <WhyMain />
       <TestimonialMain />
       <SpeakersMain />
+      <SponsorsMain />
     </div>
   );
 }

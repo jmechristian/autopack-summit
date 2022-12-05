@@ -33,7 +33,10 @@ const SpeakerBlock = () => {
       initial='hide'
       animate={speakerInView ? 'show' : 'hide'}
     >
-      <div className='w-64 lg:w-full h-80 bg-white'>
+      <div
+        className='w-64 lg:w-full h-80 bg-white cursor-pointer'
+        onClick={() => dispatch(openSpeakerModal())}
+      >
         <div className='grid grid-cols-12 overflow-hidden'>
           <div
             className='col-span-10 h-64 bg-ap-yellow'
@@ -53,7 +56,10 @@ const SpeakerBlock = () => {
           </div>
         </div>
       </div>
-      <div className='flex absolute bottom-3 pb-3 mx-4 z-30'>
+      <div
+        className='flex absolute bottom-3 pb-3 mx-4 z-30 cursor-pointer'
+        onClick={() => dispatch(openSpeakerModal())}
+      >
         <div className='flex flex-col'>
           <div className='font-oswald font-semibold text-[1.75rem] leading-none uppercase text-ap-darkblue'>
             Gauri Awalgaonkar
@@ -62,7 +68,7 @@ const SpeakerBlock = () => {
         </div>
       </div>
       <div className='flex absolute bottom-1 right-1 z-[40]'>
-        <button onClick={() => dispatch(openSpeakerModal())}>
+        <button>
           <InformationCircleIcon className='w-7 h-7 fill-ap-darkblue' />
         </button>
       </div>

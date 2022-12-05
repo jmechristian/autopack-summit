@@ -57,7 +57,7 @@ const SpeakerModal = () => {
           </div>
         </div>
       </div>
-      <div className='absolute right-5 top-4'>
+      <div className='absolute right-5 top-4 cursor-pointer'>
         <div
           className='flex items-center gap-1'
           onClick={() => dispatch(closeSpeakerModal())}
