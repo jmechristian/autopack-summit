@@ -25,7 +25,7 @@ const SponsorshipBody = () => {
             headlineColor='text-ap-yellow'
           />
         </div>
-        <div className='flex flex-col gap-16 md:gap-24 lg:gap-40 md:mt-24 lg:mt-56'>
+        <div className='flex flex-col gap-16 md:gap-24 lg:gap-40 md:mt-24 lg:mt-60'>
           <OverlayWithText
             background='https://res.cloudinary.com/dno7xxmmy/image/upload/v1669772597/AutoPack%20Summit/IMG_2022_hbtevz.webp'
             headline='Innovate'
