@@ -9,6 +9,7 @@ const LeftTextCTA = ({
   subText,
   headlineText,
   buttonText,
+  buttonColor,
 }) => {
   const textRef = useRef();
   const textInView = useInView(textRef);
@@ -87,8 +88,8 @@ const LeftTextCTA = ({
       </motion.div>
       <motion.button
         className={`${
-          headlineColor === 'blue' ? 'bg-ap-darkblue' : 'bg-ap-yellow'
-        } rounded-lg w-3/4 lg:w-1/2 mx-auto lg:mx-12`}
+          buttonColor === 'blue' ? 'bg-ap-darkblue' : 'bg-ap-yellow'
+        } rounded-lg w-fit mx-auto lg:mx-12 px-6`}
         variants={itemVariants}
         initial='hide'
         animate={textInView ? 'show' : 'hide'}

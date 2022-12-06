@@ -9,6 +9,8 @@ const AgendaBody = () => {
           <AgendaItem />
           <AgendaItem />
           <AgendaItem />
+          <AgendaItem />
+          <AgendaItem />
         </div>
       </div>
     </div>

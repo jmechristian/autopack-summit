@@ -8,8 +8,8 @@ export const navMenu = [
     link: '/#speakers',
   },
   {
-    name: 'Sponsors',
-    link: '/sponors',
+    name: 'Sponsorship',
+    link: '/sponsorship',
   },
   {
     name: 'Travel',

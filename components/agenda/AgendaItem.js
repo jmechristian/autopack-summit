@@ -3,8 +3,8 @@ import Image from 'next/image';
 
 const AgendaItem = () => {
   return (
-    <div className='grid grid-cols-1 md:grid-cols-5 gap-8 border-t border-t-slate-800 py-9 lg:py-12 md:px-4'>
-      <div className='flex flex-col lg:grid lg:grid-cols-5 gap-1 lg:gap-8 md:col-span-3 lg:col-span-4'>
+    <div className='grid grid-cols-1 md:grid-cols-5 gap-8 xl:gap-12 border-t border-t-slate-800 py-9 lg:py-12 md:px-4'>
+      <div className='flex flex-col lg:grid lg:grid-cols-5 gap-1 lg:gap-8 xl:gap-12 md:col-span-3 lg:col-span-4'>
         <div className='flex flex-col gap-6'>
           <div className='text-slate-400 hidden lg:inline-block uppercase tracking-widest font-bold text-sm'>
             time
@@ -34,7 +34,7 @@ const AgendaItem = () => {
       <div className=' md:col-span-2 lg:col-span-1 flex justify-end items-center lg:items-start'>
         <div className='flex flex-col gap-6 lg:col-span-2'>
           <div className='text-slate-400 uppercase tracking-widest font-bold text-sm hidden lg:inline-block'>
-            speaker
+            sponsor
           </div>
           <div className='p-2 w-1/2 md:w-2/3 lg:w-full'>
             <Image
