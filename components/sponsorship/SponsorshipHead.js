@@ -85,7 +85,7 @@ const SponsorshipHead = () => {
         </motion.div>
       </motion.div>
       <motion.div
-        className='bg-slate-200 aspect-video w-11/12 md:w-9/12 lg:w-7/12 xl:w-1/2 absolute shadow-lg -bottom-24 md:-bottom-52 lg:-bottom-52 xl:-bottom-64 2xl:-bottom-72 right-0 z-30'
+        className='bg-slate-200 aspect-video w-11/12 md:w-9/12 lg:w-7/12 xl:w-1/2 absolute shadow-lg -bottom-24 md:-bottom-52 lg:-bottom-52 xl:-bottom-64 2xl:-bottom-72 right-0 z-30 overflow-hidden'
         variants={videoVariants}
         initial='hidden'
         animate='show'
