@@ -31,7 +31,8 @@ const SponsorshipHead = () => {
 
   const videoVariants = {
     show: {
-      x: '0%',
+      x: 0,
+      opacity: 1,
       transition: {
         type: 'spring',
         damping: 20,
@@ -41,7 +42,8 @@ const SponsorshipHead = () => {
       },
     },
     hidden: {
-      x: '100%',
+      x: 200,
+      opacity: 0,
     },
   };
 
