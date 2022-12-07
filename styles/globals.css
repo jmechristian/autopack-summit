@@ -6,27 +6,27 @@
   }
 
   .yellow_headline {
-    @apply text-ap-yellow font-medium font-oswald tracking-[.2em] uppercase;
+    @apply text-ap-yellow font-medium font-oswald tracking-[.18em] uppercase;
   }
 
   .white_headline {
-    @apply text-white font-medium font-oswald tracking-[.2em] uppercase;
+    @apply text-white font-medium font-oswald tracking-[.18em] uppercase;
   }
 
   .blue_headline {
-    @apply text-ap-darkblue font-medium font-oswald tracking-[.2em] uppercase;
+    @apply text-ap-darkblue font-medium font-oswald tracking-[.18em] uppercase;
   }
 
   .white_subheadline {
-    @apply uppercase font-bold text-white tracking-[.2em];
+    @apply uppercase font-bold text-white tracking-[.18em];
   }
 
   .blue_subheadline {
-    @apply uppercase font-bold text-ap-darkblue tracking-[.2em];
+    @apply uppercase font-bold text-ap-darkblue tracking-[.18em];
   }
 
   .yellow_subheadline {
-    @apply uppercase font-bold text-ap-yellow tracking-[.2em];
+    @apply uppercase font-bold text-ap-yellow tracking-[.18em];
   }
 }
 
