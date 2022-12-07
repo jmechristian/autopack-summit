@@ -4,7 +4,7 @@ import SponsorshipHead from '../components/sponsorship/SponsorshipHead';
 
 const sponsorship = () => {
   return (
-    <div className='w-full'>
+    <div className='w-full relative'>
       <SponsorshipHead />
       <SponsorshipBody />
     </div>

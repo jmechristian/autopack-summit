@@ -35,7 +35,7 @@ const MobileMenu = ({ close, isOpen }) => {
   return (
     <AnimatePresence>
       <motion.div
-        className='lg:hidden fixed z-50 top-0 left-0 right-0 bottom-0 flex drop-shadow-lg'
+        className='lg:hidden absolute z-50 top-0 left-0 right-0 bottom-0 flex drop-shadow-lg'
         variants={menuVariants}
         initial='hidden'
         animate={isOpen ? 'show' : 'hidden'}
