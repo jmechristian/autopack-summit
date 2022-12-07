@@ -8,6 +8,7 @@ const LeftTextCTA = ({
   text,
   subText,
   headlineText,
+  hasButton,
   buttonText,
   buttonColor,
 }) => {
@@ -50,7 +51,7 @@ const LeftTextCTA = ({
       ref={textRef}
     >
       <motion.div
-        className='flex flex-col px-12'
+        className='flex flex-col'
         variants={textVariants}
         initial='hide'
         animate={textInView ? 'show' : 'hide'}
@@ -79,25 +80,27 @@ const LeftTextCTA = ({
       <motion.div
         className={`${
           textColor === 'gray' ? 'text-gray-600' : 'text-white'
-        } lg:text-lg px-12 md:max-w-prose md:mx-auto`}
+        } lg:text-lg xl:text-xl px-12 md:max-w-prose md:mx-auto lg:px-0 lg:pr-8`}
         variants={itemVariants}
         initial='hide'
         animate={textInView ? 'show' : 'hide'}
       >
         {text}
       </motion.div>
-      <motion.button
-        className={`${
-          buttonColor === 'blue' ? 'bg-ap-darkblue' : 'bg-ap-yellow'
-        } rounded-lg w-fit mx-auto lg:mx-12 px-6`}
-        variants={itemVariants}
-        initial='hide'
-        animate={textInView ? 'show' : 'hide'}
-      >
-        <motion.div className='font-semibold uppercase tracking-widest text-white text-sm py-4'>
-          {buttonText}
-        </motion.div>
-      </motion.button>
+      {hasButton && (
+        <motion.button
+          className={`${
+            buttonColor === 'blue' ? 'bg-ap-darkblue' : 'bg-ap-yellow'
+          } rounded-lg w-fit px-6`}
+          variants={itemVariants}
+          initial='hide'
+          animate={textInView ? 'show' : 'hide'}
+        >
+          <motion.div className='font-semibold uppercase tracking-widest text-white text-sm py-4'>
+            {buttonText}
+          </motion.div>
+        </motion.button>
+      )}
     </motion.div>
   );
 };
