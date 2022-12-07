@@ -10,10 +10,7 @@ const Sponsor = ({ logo, url, alt, w, h }) => {
   };
 
   return (
-    <div
-      className='h-full flex justify-center items-center'
-      onClick={logoClick}
-    >
+    <div className='flex justify-center items-center' onClick={logoClick}>
       <div>
         <Image src={logo} width={w} height={h} alt={alt} />
       </div>
