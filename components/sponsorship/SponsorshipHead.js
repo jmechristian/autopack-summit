@@ -1,13 +1,10 @@
 import React from 'react';
-import {
-  TrophyIcon,
-  SparklesIcon,
-  ArrowLongRightIcon,
-} from '@heroicons/react/24/solid';
+import { SparklesIcon } from '@heroicons/react/24/solid';
+import { motion } from 'framer-motion';
 
 const SponsorshipHead = () => {
   return (
-    <div className='bg-bgImage_blue pt-16 lg:pt-24 xl:pt-28 bg-cover bg-center relative'>
+    <div className='bg-bgImage_blue pt-16 lg:pt-24 xl:pt-32 bg-cover bg-center relative'>
       <div className='flex flex-col gap-5 justify-center items-center mx-auto max-w-7xl py-12 md:py-16 px-8 lg:px-16'>
         <div className='flex flex-col gap-2'>
           <div className='white_headline text-[2.7rem] md:text-7xl lg:text-7xl xl:text-8xl leading-none text-center'>
@@ -23,7 +20,7 @@ const SponsorshipHead = () => {
         </div>
       </div>
       <div className='bg-slate-200 aspect-video w-11/12 md:w-9/12 lg:w-7/12 xl:w-1/2 absolute shadow-lg -bottom-24 md:-bottom-52 lg:-bottom-52 xl:-bottom-64 2xl:-bottom-72 right-0 z-10'></div>
-      <div className='absolute bottom-12 mx-auto max-w-7xl left-0 hidden lg:inline-block z-30 bg-white/20 py-5 px-3 backdrop-blur-md drop-shadow-xl rounded-r-lg'>
+      <div className='fixed bottom-12 mx-auto max-w-7xl left-0 hidden lg:inline-block z-30 bg-white/20 py-5 px-3 backdrop-blur-md drop-shadow-xl rounded-r-lg'>
         <div className='flex gap-2 w-full justify-center px-3'>
           <SparklesIcon className='w-7 h-7 fill-white' />
           <div className='font-medium text-white'>Join The Sponsor Lineup</div>
