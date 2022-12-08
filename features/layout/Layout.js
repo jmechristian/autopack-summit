@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { openNavMenu, closeNavMenu } from '../../features/layout/layoutSlice';
+import RegisterModal from '../../shared/RegisterModal';
 import SponsorshipFormModal from '../../shared/SponsorshipFormModal';
 import VideoModal from '../../shared/VideoModal';
 import Footer from './footer/Footer';
@@ -33,6 +34,7 @@ const Layout = ({ client, children }) => {
       <MobileMenu close={() => dispatch(closeNavMenu())} isOpen={navOpen} />
       {videoOpen && <VideoModal />}
       {sponsorFormOpen && <SponsorshipFormModal />}
+      <RegisterModal />
       {children}
       <Footer footerImages={footerImages} />
     </div>
