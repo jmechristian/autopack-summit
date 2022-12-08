@@ -21,7 +21,10 @@ const SpeakersMain = () => {
   };
 
   return (
-    <div className='bg-ap-darkblue w-full relative h-full py-16 md:py-20 flex flex-col gap-8 overflow-hidden'>
+    <div
+      className='bg-ap-darkblue w-full relative h-full py-16 md:py-20 flex flex-col gap-8 overflow-hidden scroll-mt-72'
+      id='speakers'
+    >
       <div className='flex flex-col gap-6 max-w-7xl mx-auto'>
         <motion.div
           className='flex flex-col items-center xl:gap-2 mx-auto'

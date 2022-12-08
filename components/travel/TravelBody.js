@@ -1,6 +1,7 @@
 import React from 'react';
 import LeftTextCTA from '../../shared/LeftTextCTA';
 import OverlayWithText from '../../shared/OverlayWithText';
+import TravelBlock from './TravelBlock';
 
 const TravelBody = () => {
   return (
@@ -18,23 +19,24 @@ const TravelBody = () => {
             buttonColor='blue'
             hasButton={false}
           />
-          <OverlayWithText
-            background='https://res.cloudinary.com/dno7xxmmy/image/upload/v1669772597/AutoPack%20Summit/IMG_2022_hbtevz.webp'
-            headline='Innovate'
-            description='Learn cutting edge industry knowledge and trends by attending our educational sessions.'
-            video='#'
+          <TravelBlock
+            background='https://res.cloudinary.com/dno7xxmmy/image/upload/v1670463568/AutoPack%20Summit/gspgs-exterior-0881-hor-clsc_bidhsh.webp'
+            headline='Springhill Suites'
+            description='200 East Washington Street
+            Greenville, South Carolina 29601'
             headlineColor='text-ap-yellow'
+            bookNow='https://www.marriott.com/event-reservations/reservation-link.mi?id=1668182963572&key=GRP&app=resvlink'
           />
         </div>
         <div className='flex flex-col gap-16 md:gap-24 lg:gap-40 md:mt-32 lg:mt-56 lg:w-1/2'>
-          <OverlayWithText
+          <TravelBlock
             background='https://res.cloudinary.com/dno7xxmmy/image/upload/v1669772597/AutoPack%20Summit/IMG_2022_hbtevz.webp'
             headline='Innovate'
             description='Learn cutting edge industry knowledge and trends by attending our educational sessions.'
             video='#'
             headlineColor='text-ap-yellow'
           />
-          <OverlayWithText
+          <TravelBlock
             background='https://res.cloudinary.com/dno7xxmmy/image/upload/v1669772597/AutoPack%20Summit/IMG_2022_hbtevz.webp'
             headline='Innovate'
             description='Learn cutting edge industry knowledge and trends by attending our educational sessions.'

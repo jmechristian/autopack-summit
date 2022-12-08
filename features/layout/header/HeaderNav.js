@@ -10,7 +10,7 @@ const HeaderNav = () => {
       <div className='flex gap-6'>
         {menuLinks.map((item, i) => (
           <div className='text-white font-medium' key={item.name}>
-            <Link href={item.link}>{item.name}</Link>
+            <a href={item.link}>{item.name}</a>
           </div>
         ))}
       </div>

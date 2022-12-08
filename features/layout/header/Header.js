@@ -66,7 +66,7 @@ const Header = ({ openMenu }) => {
         initial='hide'
         animate='show'
       >
-        <div className='w-28 md:w-32 lg:w-40 xl:w-44 '>
+        <div className='w-28 md:w-32 lg:w-40 xl:w-44 cursor-pointer'>
           <Logo />
         </div>
         <div className='flex justify-end gap-2'>
