@@ -47,7 +47,7 @@ const LeftTextCTA = ({
 
   return (
     <motion.div
-      className='flex flex-col text-center lg:text-left lg:col-span-2 gap-6'
+      className='flex flex-col text-center lg:col-span-2 gap-6'
       ref={textRef}
     >
       <motion.div
@@ -59,7 +59,7 @@ const LeftTextCTA = ({
         <motion.div
           className={`${
             subColor === 'blue' ? 'blue_subheadline' : 'yellow_subheadline'
-          }  text-lg md:text-xl xl:text-2xl`}
+          }  text-xl md:text-xl xl:text-2xl`}
           variants={itemVariants}
           initial='hide'
           animate={textInView ? 'show' : 'hide'}
@@ -69,7 +69,7 @@ const LeftTextCTA = ({
         <motion.div
           className={`${
             headlineColor === 'blue' ? 'blue_headline' : 'yellow_headline'
-          } text-4xl md:text-5xl xl:text-6xl`}
+          } text-5xl md:text-5xl xl:text-6xl`}
           variants={itemVariants}
           initial='hide'
           animate={textInView ? 'show' : 'hide'}
@@ -80,7 +80,7 @@ const LeftTextCTA = ({
       <motion.div
         className={`${
           textColor === 'gray' ? 'text-gray-600' : 'text-white'
-        } lg:text-lg xl:text-xl px-12 md:max-w-prose md:mx-auto lg:px-0 lg:pr-8`}
+        } lg:text-lg xl:text-2xl px-12 md:max-w-prose md:mx-auto lg:px-0 lg:pr-8 xl:leading-relaxed`}
         variants={itemVariants}
         initial='hide'
         animate={textInView ? 'show' : 'hide'}

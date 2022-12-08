@@ -62,7 +62,7 @@ const TravelHead = () => {
       >
         <motion.div className='flex flex-col gap-2'>
           <motion.div
-            className='white_headline text-[2.7rem] md:text-7xl lg:text-7xl xl:text-8xl leading-none text-center'
+            className='white_headline text-5xl md:text-7xl lg:text-7xl xl:text-8xl leading-none text-center'
             variants={item}
           >
             Travel

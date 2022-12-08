@@ -58,7 +58,7 @@ const OverlayWithText = ({
       ref={overlayRef}
     >
       <div
-        className='w-full h-80 rounded-lg'
+        className='w-full h-80 xl:h-96 rounded-lg'
         style={{
           backgroundImage: `url(${background})`,
           backgroundSize: 'cover',
@@ -77,7 +77,7 @@ const OverlayWithText = ({
       </div>
       <div className='flex flex-col items-center gap-2 -mt-4 relative text-center px-4'>
         <div
-          className={`font-oswald font-medium text-3xl uppercase tracking-[.2em] ${headlineColor}`}
+          className={`font-oswald font-medium text-4xl uppercase tracking-[.18em] ${headlineColor}`}
         >
           {headline}
         </div>

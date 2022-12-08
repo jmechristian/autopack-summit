@@ -53,7 +53,7 @@ const SponsorshipHead = () => {
   };
 
   return (
-    <div className='bg-bgImage_blue pt-20 lg:pt-24 xl:pt-32 bg-cover bg-center relative'>
+    <div className='bg-bgImage_blue pt-16 lg:pt-24 xl:pt-32 bg-cover bg-center relative'>
       <motion.div
         className='flex flex-col gap-5 justify-center items-center mx-auto max-w-7xl py-12 md:py-16 px-8 lg:px-16'
         variants={headlineVariants}
@@ -75,7 +75,7 @@ const SponsorshipHead = () => {
           </motion.div>
         </motion.div>
         <motion.div
-          className='text-slate-300 text-center mb-24 md:mb-28 lg:mb-44 xl:mb-56 max-w-prose md:px-12 xl:text-lg'
+          className='text-slate-300 text-center mb-24 md:mb-28 lg:mb-44 xl:mb-48 max-w-prose md:px-12 xl:text-lg'
           variants={textVariants}
           initial='hidden'
           animate='show'
