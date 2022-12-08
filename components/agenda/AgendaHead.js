@@ -27,7 +27,7 @@ const AgendaHead = () => {
   };
 
   return (
-    <div className='bg-bgImage_blue pt-16 lg:pt-20 xl:pt-28 bg-cover bg-center'>
+    <div className='bg-bgImage_agenda pt-16 lg:pt-20 xl:pt-28 bg-cover bg-center'>
       <div className='flex flex-col gap-8 justify-center items-center mx-auto max-w-7xl py-12 lg:py-16 px-8 lg:px-16'>
         <div className='white_headline text-[2.7rem] md:text-7xl lg:text-7xl xl:text-8xl leading-none text-center'>
           Agenda

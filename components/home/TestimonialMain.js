@@ -59,7 +59,7 @@ const TestimonialMain = () => {
   };
 
   return (
-    <div className='bg-testimonial-yellow bg-cover bg-right w-full py-16 md:py-20 lg:py-32 overflow-hidden'>
+    <div className='bg-bgImage_testimonial bg-cover bg-center w-full py-16 md:py-20 lg:py-32 overflow-hidden'>
       <div className='grid grid-cols-1 lg:grid-cols-5 gap-y-10 items-center mx-auto max-w-7xl '>
         <motion.div
           className='flex flex-col text-center lg:text-left lg:col-span-2 gap-6'
