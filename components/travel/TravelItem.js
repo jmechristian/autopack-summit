@@ -1,8 +1,11 @@
 import React from 'react';
 
-const TravelItem = ({ background, title }) => {
+const TravelItem = ({ background, title, url }) => {
   return (
-    <div className='relative'>
+    <div
+      className='relative cursor-pointer'
+      onClick={() => window.open(url, '_blank')}
+    >
       <div
         className={`bg-white rounded-md md:rounded-lg drop-shadow-xl w-72 aspect-square`}
         style={{

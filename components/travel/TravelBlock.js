@@ -8,14 +8,16 @@ const TravelBlock = ({
   background,
   video,
   headline,
-  description,
+  group,
   headlineColor,
   bookNow,
+  bookDate,
+  line1,
+  line2,
 }) => {
   const overlayRef = useRef();
   const overlayInView = useInView(overlayRef);
   const dispatch = useDispatch();
-  const { videoOpen } = useSelector((state) => state.layout);
 
   const overlayVariants = {
     show: {
@@ -59,7 +61,7 @@ const TravelBlock = ({
       ref={overlayRef}
     >
       <div
-        className='w-full h-80 xl:h-96 rounded-lg'
+        className='w-full h-80 xl:h-96 rounded-lg relative'
         style={{
           backgroundImage: `url(${background})`,
           backgroundSize: 'cover',
@@ -75,25 +77,39 @@ const TravelBlock = ({
             <PlayCircleIcon className='w-32 h-32 lg:w-40 lg:h-40 fill-white/50 shadow-xl rounded-full backdrop-blur-md' />
           )}
         </div>
+        {/* <div className='absolute bottom-0 left-0 right-0 bg-gradient-to-t from-white h-16'></div> */}
       </div>
-      <div className='flex flex-col items-center gap-2 -mt-4 relative text-center px-4'>
-        <div
-          className={`font-oswald font-medium text-4xl uppercase tracking-[.18em] ${headlineColor}`}
-        >
-          {headline}
+      <div className='flex flex-col gap-5 justify-center items-center'>
+        <div className='flex flex-col items-center gap-2 -mt-3 relative text-center px-4'>
+          <div
+            className={`font-oswald font-medium text-4xl uppercase tracking-[.18em] ${headlineColor}`}
+          >
+            {headline}
+          </div>
+          <div className='text-slate-500 leading-snug xl:px-8 flex flex-col'>
+            <div>{line1}</div>
+            <div>{line2}</div>
+          </div>
         </div>
-        <div className='text-slate-500 leading-snug xl:px-8'>{description}</div>
         {bookNow && (
-          <button className='bg-ap-darkblue rounded-md'>
-            <div className='font-bold uppercase text-white px-4 py-3 tracking-widest'>
-              Book Now
+          <button
+            className='bg-ap-darkblue rounded-md w-max'
+            onClick={() => window.open(bookNow, '_blank')}
+          >
+            <div className='flex flex-col px-6 py-4 '>
+              <div className='font-bold text-xl uppercase text-white tracking-widest'>
+                Book Now
+              </div>
+              <div className='text-sm text-white/70'>
+                Must book by {bookDate}
+              </div>
             </div>
           </button>
         )}
       </div>
       <div className='absolute top-4 left-4 bg-white/30 backdrop-blur-md rounded-md drop-shadow-lg'>
         <div className='text-white font-bold text-sm lg:text-base py-3 px-4'>
-          Group Rates: $169/night
+          Group Rates: ${group}/night
         </div>
       </div>
     </motion.div>
