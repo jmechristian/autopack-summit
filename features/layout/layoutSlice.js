@@ -5,6 +5,7 @@ const initialState = {
   videoOpen: false,
   videoUrl: null,
   speakerOpen: false,
+  sponsorFormOpen: false,
 };
 
 export const layoutSlice = createSlice({
@@ -31,6 +32,9 @@ export const layoutSlice = createSlice({
     closeSpeakerModal: (state) => {
       state.speakerOpen = false;
     },
+    openSponsorForm: (state) => {
+      state.sponsorFormOpen = !state.sponsorFormOpen;
+    },
   },
 });
 
@@ -41,6 +45,7 @@ export const {
   closeVideoEmbed,
   openSpeakerModal,
   closeSpeakerModal,
+  openSponsorForm,
 } = layoutSlice.actions;
 
 export default layoutSlice.reducer;

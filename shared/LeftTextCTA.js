@@ -11,6 +11,7 @@ const LeftTextCTA = ({
   hasButton,
   buttonText,
   buttonColor,
+  fn,
 }) => {
   const textRef = useRef();
   const textInView = useInView(textRef);
@@ -47,7 +48,7 @@ const LeftTextCTA = ({
 
   return (
     <motion.div
-      className='flex flex-col text-center lg:col-span-2 gap-6'
+      className='flex flex-col text-center lg:col-span-2 gap-4 lg:gap-6 xl:gap-8'
       ref={textRef}
     >
       <motion.div
@@ -79,7 +80,7 @@ const LeftTextCTA = ({
       </motion.div>
       <motion.div
         className={`${
-          textColor === 'gray' ? 'text-gray-600' : 'text-white'
+          textColor === 'gray' ? 'text-gray-500' : 'text-white'
         } lg:text-lg xl:text-2xl px-12 md:max-w-prose md:mx-auto lg:px-0 lg:pr-8 xl:leading-relaxed`}
         variants={itemVariants}
         initial='hide'
@@ -91,12 +92,13 @@ const LeftTextCTA = ({
         <motion.button
           className={`${
             buttonColor === 'blue' ? 'bg-ap-darkblue' : 'bg-ap-yellow'
-          } rounded-lg w-fit px-6`}
+          } rounded-lg w-fit px-6 xl:mx-auto`}
           variants={itemVariants}
           initial='hide'
           animate={textInView ? 'show' : 'hide'}
+          onClick={() => fn()}
         >
-          <motion.div className='font-semibold uppercase tracking-widest text-white text-sm py-4'>
+          <motion.div className='font-semibold uppercase tracking-widest text-white text-sm lg:text-lg py-4'>
             {buttonText}
           </motion.div>
         </motion.button>

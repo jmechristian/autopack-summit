@@ -49,14 +49,54 @@ const SpeakersMain = () => {
         className='grid grid-flow-col lg:grid-cols-3 xl:grid-cols-4 lg:grid-flow-dense overflow-scroll px-8 md:px-16 lg:px-20 gap-x-5 lg:gap-y-12 lg:gap-x-12 max-w-7xl lg:mx-auto'
         id='scrollers'
       >
-        <SpeakerBlock />
-        <SpeakerBlock />
-        <SpeakerBlock />
-        <SpeakerBlock />
-        <SpeakerBlock />
-        <SpeakerBlock />
-        <SpeakerBlock />
-        <SpeakerBlock />
+        <SpeakerBlock
+          name='Gauri Awalgaonkar'
+          url='https://res.cloudinary.com/dno7xxmmy/image/upload/v1670528114/AutoPack%20Summit/speaker2_kadaef.webp'
+          title='Packaging Engineer'
+          company='Bosch LLC'
+        />
+        <SpeakerBlock
+          name='David Kruger'
+          url='https://res.cloudinary.com/dno7xxmmy/image/upload/v1670528453/AutoPack%20Summit/speaker3_de3kts.webp'
+          title='President'
+          company='TriEnda Holdings'
+        />
+        <SpeakerBlock
+          name='Alondra Lizbeth Compeán García'
+          url='https://res.cloudinary.com/dno7xxmmy/image/upload/v1670528653/AutoPack%20Summit/speaker4_os0kam.webp'
+          title='US logistics Specialist'
+          company='Nissan Mexico'
+        />
+        <SpeakerBlock
+          name='Gauri Awalgaonkar'
+          url='https://res.cloudinary.com/dno7xxmmy/image/upload/v1670528114/AutoPack%20Summit/speaker2_kadaef.webp'
+          title='Packaging Engineer'
+          company='Bosch LLC'
+        />
+        <SpeakerBlock
+          name='David Kruger'
+          url='https://res.cloudinary.com/dno7xxmmy/image/upload/v1670528453/AutoPack%20Summit/speaker3_de3kts.webp'
+          title='President'
+          company='TriEnda Holdings'
+        />
+        <SpeakerBlock
+          name='Alondra Lizbeth Compeán García'
+          url='https://res.cloudinary.com/dno7xxmmy/image/upload/v1670528653/AutoPack%20Summit/speaker4_os0kam.webp'
+          title='US logistics Specialist'
+          company='Nissan Mexico'
+        />
+        <SpeakerBlock
+          name='Gauri Awalgaonkar'
+          url='https://res.cloudinary.com/dno7xxmmy/image/upload/v1670528114/AutoPack%20Summit/speaker2_kadaef.webp'
+          title='Packaging Engineer'
+          company='Bosch LLC'
+        />
+        <SpeakerBlock
+          name='David Kruger'
+          url='https://res.cloudinary.com/dno7xxmmy/image/upload/v1670528453/AutoPack%20Summit/speaker3_de3kts.webp'
+          title='President'
+          company='TriEnda Holdings'
+        />
       </div>
     </div>
   );

@@ -69,7 +69,7 @@ const TravelHead = () => {
           </motion.div>
         </motion.div>
         <motion.div
-          className='text-slate-300 text-center mb-24 md:mb-28 lg:mb-44 xl:mb-56 max-w-prose md:px-12 xl:text-lg'
+          className='text-slate-300 text-center mb-24 md:mb-28 lg:mb-44 xl:mb-56 max-w-prose md:px-12 xl:text-2xl'
           variants={textVariants}
           initial='hidden'
           animate='show'

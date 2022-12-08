@@ -54,7 +54,7 @@ const TravelAside = () => {
               <div>
                 <MapIcon className='w-6 h-6 fill-white' />
               </div>
-              <div className='font-oswald font-semibold text-2xl lg:text-3xl text-white uppercase tracking-wider'>
+              <div className='font-oswald font-medium text-2xl lg:text-3xl text-white uppercase tracking-wider'>
                 Parking
               </div>
             </div>
@@ -67,7 +67,7 @@ const TravelAside = () => {
               <div>
                 <RocketLaunchIcon className='w-6 h-6 fill-white' />
               </div>
-              <div className='font-oswald font-semibold text-2xl lg:text-3xl text-white uppercase tracking-wider'>
+              <div className='font-oswald font-medium text-2xl lg:text-3xl text-white uppercase tracking-wider'>
                 Airport
               </div>
             </div>

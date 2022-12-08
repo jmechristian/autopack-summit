@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { openSpeakerModal } from '../features/layout/layoutSlice';
 import SpeakerModal from './SpeakerModal';
 
-const SpeakerBlock = () => {
+const SpeakerBlock = ({ url, name, company, title }) => {
   const speakerRef = useRef();
   const speakerInView = useInView(speakerRef);
   const dispatch = useDispatch();
@@ -41,7 +41,7 @@ const SpeakerBlock = () => {
           <div
             className='col-span-10 h-64 bg-ap-yellow'
             style={{
-              backgroundImage: `url('https://res.cloudinary.com/dno7xxmmy/image/upload/v1669843504/AutoPack%20Summit/speaker1_gpjeap.webp')`,
+              backgroundImage: `url(${url})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
             }}
@@ -51,7 +51,7 @@ const SpeakerBlock = () => {
               className='bg-ap-red text-white flex w-full px-2 py-4 font-oswald font-medium tracking-widest'
               style={{ textOrientation: 'mixed', writingMode: 'vertical-rl' }}
             >
-              TriEnda Holdings
+              {company}
             </div>
           </div>
         </div>
@@ -62,9 +62,9 @@ const SpeakerBlock = () => {
       >
         <div className='flex flex-col'>
           <div className='font-oswald font-semibold text-[1.75rem] leading-none uppercase text-ap-darkblue'>
-            Gauri Awalgaonkar
+            {name}
           </div>
-          <div className='text-sm'>Packaging Senior Supervisor</div>
+          <div className='text-sm'>{title}</div>
         </div>
       </div>
       <div className='flex absolute bottom-1 right-1 z-[40]'>

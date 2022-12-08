@@ -1,10 +1,14 @@
 import React from 'react';
+import { openSponsorForm } from '../../features/layout/layoutSlice';
+import { useDispatch } from 'react-redux';
 import LeftTextCTA from '../../shared/LeftTextCTA';
 import OverlayWithText from '../../shared/OverlayWithText';
 
 const SponsorshipBody = () => {
+  const dispatch = useDispatch();
+
   return (
-    <div className='w-full mt-16 md:mt-28 lg:mt-12 xl:mt-24'>
+    <div className='w-full mt-16 md:mt-48 lg:mt-12 xl:mt-24'>
       <div className='default_wrapper flex flex-col md:flex-row gap-12 md:gap-16 lg:gap-32 xl:gap-48'>
         <div className='flex flex-col gap-16 md:gap-28 lg:gap-60 xl:gap-80 lg:w-1/2'>
           <LeftTextCTA
@@ -16,6 +20,8 @@ const SponsorshipBody = () => {
             textColor='gray'
             buttonText='Join the Sponsorship Roster'
             buttonColor='blue'
+            hasButton
+            fn={() => dispatch(openSponsorForm())}
           />
           <OverlayWithText
             background='https://res.cloudinary.com/dno7xxmmy/image/upload/v1669772597/AutoPack%20Summit/IMG_2022_hbtevz.webp'

@@ -7,7 +7,7 @@ const TravelBody = () => {
   return (
     <div className='w-full mt-20 md:mt-52 lg:mt-12 xl:mt-24'>
       <div className='default_wrapper flex flex-col md:flex-row gap-16 md:gap-16 lg:gap-32 xl:gap-48'>
-        <div className='flex flex-col gap-16 md:gap-28 lg:gap-60 lg:w-1/2'>
+        <div className='flex flex-col gap-16 md:gap-28 lg:gap-52 lg:w-1/2'>
           <LeftTextCTA
             subColor='blue'
             subText='Small Town'
