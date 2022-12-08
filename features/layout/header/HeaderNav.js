@@ -1,9 +1,11 @@
 import React from 'react';
 import { navMenu } from '../../../data/navigation';
-import Link from 'next/link';
+import { useDispatch } from 'react-redux';
+import { toggleRegistrationModal } from '../layoutSlice';
 
 const HeaderNav = () => {
   const menuLinks = navMenu.slice(0, 5);
+  const dispatch = useDispatch();
 
   return (
     <div className='flex gap-8 justify-between items-center'>
@@ -15,7 +17,10 @@ const HeaderNav = () => {
         ))}
       </div>
       <div className='flex gap-2'>
-        <button className='bg-ap-yellow rounded drop-shadow-md'>
+        <button
+          className='bg-ap-yellow rounded drop-shadow-md'
+          onClick={() => dispatch(toggleRegistrationModal())}
+        >
           <div className='py-2 px-4 font-bold font-oswald uppercase tracking-wider text-slate-800'>
             Register Now!
           </div>

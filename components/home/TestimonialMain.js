@@ -1,12 +1,15 @@
 import React, { useRef } from 'react';
 import TestimonialBlock from '../../shared/TestimonialBlock';
 import { motion, useInView } from 'framer-motion';
+import { useDispatch } from 'react-redux';
+import { toggleRegistrationModal } from '../../features/layout/layoutSlice';
 
 const TestimonialMain = () => {
   const textRef = useRef();
   const testRef = useRef();
   const testInView = useInView(testRef);
   const textInView = useInView(textRef);
+  const dispatch = useDispatch();
 
   const textVariants = {
     show: {
@@ -102,6 +105,7 @@ const TestimonialMain = () => {
             variants={itemVariants}
             initial='hide'
             animate={textInView ? 'show' : 'hide'}
+            onClick={() => dispatch(toggleRegistrationModal())}
           >
             <motion.div className='font-semibold uppercase tracking-widest text-white text-sm py-4'>
               Get Involved

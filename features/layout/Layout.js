@@ -11,7 +11,7 @@ import MobileMenu from './mobile/MobileMenu';
 const Layout = ({ client, children }) => {
   const [footerImages, setFooterImages] = useState(null);
   const dispatch = useDispatch();
-  const { navOpen, videoOpen, sponsorFormOpen } = useSelector(
+  const { navOpen, videoOpen, sponsorFormOpen, registrationOpen } = useSelector(
     (state) => state.layout
   );
 
@@ -34,7 +34,7 @@ const Layout = ({ client, children }) => {
       <MobileMenu close={() => dispatch(closeNavMenu())} isOpen={navOpen} />
       {videoOpen && <VideoModal />}
       {sponsorFormOpen && <SponsorshipFormModal />}
-      <RegisterModal />
+      {registrationOpen && <RegisterModal />}
       {children}
       <Footer footerImages={footerImages} />
     </div>
