@@ -55,7 +55,7 @@ const Header = ({ openMenu }) => {
 
   return (
     <motion.div
-      className='w-full py-4 md:py-5 lg:py-6 px-4 md:px-5 xl:px-0 drop-shadow fixed z-40 left-0 right-0'
+      className='w-full py-4 md:py-5 lg:py-6 px-4 md:px-5 xl:px-8 drop-shadow fixed z-40 left-0 right-0'
       variants={menuVariants}
       initial={false}
       animate={showMenu ? 'show' : 'hidden'}
