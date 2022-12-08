@@ -71,17 +71,19 @@ const OverlayWithText = ({
         >
           {' '}
           {video && (
-            <PlayCircleIcon className='w-32 h-32 lg:w-40 lg:h-40 fill-white/50 shadow-xl rounded-full backdrop-blur-md' />
+            <PlayCircleIcon className='w-32 h-32 lg:w-40 lg:h-40 fill-white/50 shadow-2xl rounded-full backdrop-blur-md' />
           )}
         </div>
       </div>
-      <div className='flex flex-col items-center gap-2 -mt-4 relative text-center px-4'>
+      <div className='flex flex-col items-center gap-3 -mt-4 relative text-center px-4 xl:px-0'>
         <div
           className={`font-oswald font-medium text-4xl uppercase tracking-[.18em] ${headlineColor}`}
         >
           {headline}
         </div>
-        <div className='text-slate-500 leading-snug xl:px-8'>{description}</div>
+        <div className='text-slate-500 leading-snug xl:px-8 xl:text-lg'>
+          {description}
+        </div>
       </div>
     </motion.div>
   );

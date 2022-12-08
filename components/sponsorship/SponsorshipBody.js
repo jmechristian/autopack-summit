@@ -24,25 +24,26 @@ const SponsorshipBody = () => {
             fn={() => dispatch(openSponsorForm())}
           />
           <OverlayWithText
-            background='https://res.cloudinary.com/dno7xxmmy/image/upload/v1669772597/AutoPack%20Summit/IMG_2022_hbtevz.webp'
-            headline='Innovate'
-            description='Learn cutting edge industry knowledge and trends by attending our educational sessions.'
+            background='https://res.cloudinary.com/dno7xxmmy/image/upload/v1670532282/AutoPack%20Summit/header_2_red_i21vhs.png'
+            headline='Evolve Your Network'
+            description='Generate lucrative, highly targeted business leads and support current and future
+            sales campaigns.'
             video='#'
-            headlineColor='text-ap-yellow'
+            headlineColor='text-ap-blue'
           />
         </div>
         <div className='flex flex-col gap-16 md:gap-24 lg:gap-40 md:mt-32 lg:mt-72 lg:w-1/2'>
           <OverlayWithText
-            background='https://res.cloudinary.com/dno7xxmmy/image/upload/v1669772597/AutoPack%20Summit/IMG_2022_hbtevz.webp'
-            headline='Innovate'
-            description='Learn cutting edge industry knowledge and trends by attending our educational sessions.'
+            background='https://res.cloudinary.com/dno7xxmmy/image/upload/v1670532997/AutoPack%20Summit/header_3_yellow_xezbtb.png'
+            headline='Strengthen Your Brand Name'
+            description='This industry relies heavily on trust and reputation, show your prospects you are reliable, trustworthy and serious about their growth.'
             video='#'
-            headlineColor='text-ap-yellow'
+            headlineColor='text-ap-darkblue'
           />
           <OverlayWithText
-            background='https://res.cloudinary.com/dno7xxmmy/image/upload/v1669772597/AutoPack%20Summit/IMG_2022_hbtevz.webp'
-            headline='Innovate'
-            description='Learn cutting edge industry knowledge and trends by attending our educational sessions.'
+            background='https://res.cloudinary.com/dno7xxmmy/image/upload/v1670533262/AutoPack%20Summit/header_5_blue_ti2stu.png'
+            headline='Stay Top Of Mind'
+            description='Create positive PR and raise awareness of your organization. Leave a lasting impression that will outlive the summit. '
             video='#'
             headlineColor='text-ap-yellow'
           />
