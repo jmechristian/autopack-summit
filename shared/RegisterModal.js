@@ -12,7 +12,9 @@ const RegisterModal = () => {
         <div className='bg-white w-full md:w-1/2 lg:w-2/5 max-w-2xl rounded-md relative drop-shadow-lg'>
           <div className='flex flex-col gap-6 px-6 py-8 md:p-8 xl:gap-8 text-center'>
             <div className='flex flex-col gap-2'>
-              <div className='blue_headline text-2xl lg:text-4xl'>Level Up</div>
+              <div className='blue_headline text-2xl lg:text-4xl'>
+                Registration
+              </div>
               <div className='text-slate-500 text-lg'>
                 Find your perfect path to get into the action by choosing below.
               </div>

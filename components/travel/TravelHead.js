@@ -96,7 +96,7 @@ const TravelHead = () => {
         </div>
         <div className='absolute top-0 left-0 right-0 bottom-0 z-20 bg-ap-darkblue/60 backdrop-blur flex justify-center items-center shadow-2xl'>
           <div>
-            <PlayCircleIcon className='w-28 h-28 lg:w-40 lg:h-40 fill-white/80 shadow-2xl rounded-full backdrop-blur-md' />
+            <PlayCircleIcon className='w-28 h-28 lg:w-40 lg:h-40 fill-white/80 drop-shadow-xl rounded-full backdrop-blur-md' />
           </div>
         </div>
       </motion.div>
