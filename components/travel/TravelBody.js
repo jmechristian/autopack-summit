@@ -30,7 +30,7 @@ const TravelBody = () => {
             line2='Greenville, South Carolina 29601'
           />
         </div>
-        <div className='flex flex-col gap-16 md:gap-24 lg:gap-40 md:mt-32 lg:mt-56 lg:w-1/2'>
+        <div className='flex flex-col gap-16 md:gap-24 lg:gap-40 md:mt-32 lg:mt-64 lg:w-1/2'>
           <TravelBlock
             background='https://res.cloudinary.com/dno7xxmmy/image/upload/v1670463568/AutoPack%20Summit/gspal-exterior-7344-hor-clsc_vth9ui.webp'
             headline='Aloft Greenville Downtown'

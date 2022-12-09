@@ -22,7 +22,7 @@ const SpeakersMain = () => {
 
   return (
     <div
-      className='bg-ap-darkblue w-full relative h-full py-16 md:py-20 flex flex-col gap-8 overflow-hidden scroll-mt-72'
+      className='bg-ap-darkblue w-full relative h-full py-16 md:py-20 flex flex-col gap-8 lg:gap-12 overflow-hidden lg:scroll-mt-72'
       id='speakers'
     >
       <div className='flex flex-col gap-6 max-w-7xl mx-auto'>
@@ -39,7 +39,7 @@ const SpeakersMain = () => {
           <motion.div className='yellow_headline text-4xl md:text-5xl xl:text-6xl xl:text-center'>
             Experts
           </motion.div>
-          <motion.div className='text-white text-center max-w-prose px-8 mt-4'>
+          <motion.div className='text-white text-center max-w-prose px-8 mt-4 lg:text-lg'>
             Experience the premier open forum for OEMs to discuss their
             packaging innovations and challenges.
           </motion.div>

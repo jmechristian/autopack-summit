@@ -1,6 +1,8 @@
 import React from 'react';
-import { SparklesIcon } from '@heroicons/react/24/solid';
 import { motion } from 'framer-motion';
+import dynamic from 'next/dynamic';
+import { PlayCircleIcon } from '@heroicons/react/24/solid';
+const ReactPlayer = dynamic(() => import('react-player'), { ssr: false });
 
 const TravelHead = () => {
   const headlineVariants = {
@@ -79,11 +81,25 @@ const TravelHead = () => {
         </motion.div>
       </motion.div>
       <motion.div
-        className='bg-slate-200 aspect-video w-11/12 md:w-9/12 lg:w-7/12 xl:w-1/2 absolute shadow-lg -bottom-24 md:-bottom-52 lg:-bottom-52 xl:-bottom-64 2xl:-bottom-72 right-0 z-30 overflow-hidden'
+        className='bg-slate-200 aspect-video w-11/12 md:w-9/12 lg:w-7/12 xl:w-1/2 absolute shadow-xl -bottom-24 md:-bottom-52 lg:-bottom-52 xl:-bottom-64 2xl:-bottom-72 right-0 z-30 overflow-hidden'
         variants={videoVariants}
         initial='hidden'
         animate='show'
-      ></motion.div>
+      >
+        <div className='w-full h-full relative'>
+          <ReactPlayer
+            url='https://www.youtube.com/embed/bmWvkprpP5A'
+            width='100%'
+            height='100%'
+            light
+          />
+        </div>
+        <div className='absolute top-0 left-0 right-0 bottom-0 z-20 bg-ap-darkblue/60 backdrop-blur flex justify-center items-center shadow-2xl'>
+          <div>
+            <PlayCircleIcon className='w-28 h-28 lg:w-40 lg:h-40 fill-white/80 shadow-2xl rounded-full backdrop-blur-md' />
+          </div>
+        </div>
+      </motion.div>
       {/* <div className='fixed bottom-12 mx-auto max-w-7xl left-0 hidden lg:inline-block z-30 bg-white/20 py-5 px-3 backdrop-blur-md drop-shadow-xl rounded-r-lg'>
         <div className='flex gap-2 w-full justify-center px-3'>
           <SparklesIcon className='w-7 h-7 fill-white' />
