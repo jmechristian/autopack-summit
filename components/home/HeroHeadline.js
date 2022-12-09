@@ -48,7 +48,7 @@ const HeroHeadline = ({ headline, subheadline }) => {
       x: 200,
       opacity: 0,
       transition: {
-        delay: 0.3,
+        delay: 0,
         type: 'spring',
         stiffness: 600,
         damping: 45,
