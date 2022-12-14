@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import OverlayWithText from '../../shared/OverlayWithText';
 
-const WhyMain = () => {
+const WhyMain = ({ headline, subheadline, contentBlocks }) => {
   const whyHeadlineRef = useRef();
   const whyInView = useInView(whyHeadlineRef);
 
@@ -32,16 +32,16 @@ const WhyMain = () => {
             animate={whyInView ? 'show' : 'hide'}
           >
             <motion.div className='blue_subheadline text-lg md:text-xl xl:text-2xl'>
-              More Than Just A
+              {subheadline}
             </motion.div>
             <motion.div className='yellow_headline text-4xl md:text-5xl xl:text-6xl xl:text-center'>
-              Conference
+              {headline}
             </motion.div>
           </motion.div>
           <OverlayWithText
             background='https://res.cloudinary.com/dno7xxmmy/image/upload/v1669772597/AutoPack%20Summit/IMG_2782_adqxqf.webp'
-            headline='Collaborate'
-            description='Learn cutting edge industry knowledge and trends by attending our educational sessions.'
+            headline={contentBlocks[1].contentHeadline}
+            description={contentBlocks[1].contentBody}
             video='#'
             headlineColor='text-ap-blue'
           />
@@ -49,16 +49,16 @@ const WhyMain = () => {
         <div className='flex flex-col gap-12 lg:gap-20'>
           <OverlayWithText
             background='https://res.cloudinary.com/dno7xxmmy/image/upload/v1669772597/AutoPack%20Summit/IMG_2874_iijxzx.webp'
-            headline='Strategize'
-            description='Learn cutting edge industry knowledge and trends by attending our educational sessions.'
+            headline={contentBlocks[0].contentHeadline}
+            description={contentBlocks[0].contentBody}
             video='#'
             headlineColor='text-ap-darkblue'
           />
 
           <OverlayWithText
             background='https://res.cloudinary.com/dno7xxmmy/image/upload/v1669772597/AutoPack%20Summit/IMG_2022_hbtevz.webp'
-            headline='Innovate'
-            description='Learn cutting edge industry knowledge and trends by attending our educational sessions.'
+            headline={contentBlocks[2].contentHeadline}
+            description={contentBlocks[2].contentBody}
             video='#'
             headlineColor='text-ap-yellow'
           />

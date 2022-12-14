@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import SpeakerBlock from '../../shared/SpeakerBlock';
 
-const SpeakersMain = () => {
+const SpeakersMain = ({ headline, subheadline, text, speakers }) => {
   const textRef = useRef();
   const textInView = useInView(textRef);
 
@@ -34,14 +34,13 @@ const SpeakersMain = () => {
           animate={textInView ? 'show' : 'hide'}
         >
           <motion.div className='white_subheadline text-lg md:text-xl xl:text-2xl'>
-            subject-matter
+            {subheadline}
           </motion.div>
           <motion.div className='yellow_headline text-4xl md:text-5xl xl:text-6xl xl:text-center'>
-            Experts
+            {headline}
           </motion.div>
           <motion.div className='text-white text-center max-w-prose px-8 mt-4 lg:text-lg'>
-            Experience the premier open forum for OEMs to discuss their
-            packaging innovations and challenges.
+            {text}
           </motion.div>
         </motion.div>
       </div>
@@ -49,54 +48,21 @@ const SpeakersMain = () => {
         className='grid grid-flow-col lg:grid-cols-3 xl:grid-cols-4 lg:grid-flow-dense overflow-scroll px-8 md:px-16 lg:px-20 gap-x-5 lg:gap-y-12 lg:gap-x-12 max-w-7xl lg:mx-auto'
         id='scrollers'
       >
-        <SpeakerBlock
-          name='Gauri Awalgaonkar'
-          url='https://res.cloudinary.com/dno7xxmmy/image/upload/v1670528114/AutoPack%20Summit/speaker2_kadaef.webp'
-          title='Packaging Engineer'
-          company='Bosch LLC'
-        />
-        <SpeakerBlock
-          name='David Kruger'
-          url='https://res.cloudinary.com/dno7xxmmy/image/upload/v1670528453/AutoPack%20Summit/speaker3_de3kts.webp'
-          title='President'
-          company='TriEnda Holdings'
-        />
-        <SpeakerBlock
-          name='Alondra Lizbeth Compeán García'
-          url='https://res.cloudinary.com/dno7xxmmy/image/upload/v1670528653/AutoPack%20Summit/speaker4_os0kam.webp'
-          title='US logistics Specialist'
-          company='Nissan Mexico'
-        />
-        <SpeakerBlock
-          name='Gauri Awalgaonkar'
-          url='https://res.cloudinary.com/dno7xxmmy/image/upload/v1670528114/AutoPack%20Summit/speaker2_kadaef.webp'
-          title='Packaging Engineer'
-          company='Bosch LLC'
-        />
-        <SpeakerBlock
-          name='David Kruger'
-          url='https://res.cloudinary.com/dno7xxmmy/image/upload/v1670528453/AutoPack%20Summit/speaker3_de3kts.webp'
-          title='President'
-          company='TriEnda Holdings'
-        />
-        <SpeakerBlock
-          name='Alondra Lizbeth Compeán García'
-          url='https://res.cloudinary.com/dno7xxmmy/image/upload/v1670528653/AutoPack%20Summit/speaker4_os0kam.webp'
-          title='US logistics Specialist'
-          company='Nissan Mexico'
-        />
-        <SpeakerBlock
-          name='Gauri Awalgaonkar'
-          url='https://res.cloudinary.com/dno7xxmmy/image/upload/v1670528114/AutoPack%20Summit/speaker2_kadaef.webp'
-          title='Packaging Engineer'
-          company='Bosch LLC'
-        />
-        <SpeakerBlock
-          name='David Kruger'
-          url='https://res.cloudinary.com/dno7xxmmy/image/upload/v1670528453/AutoPack%20Summit/speaker3_de3kts.webp'
-          title='President'
-          company='TriEnda Holdings'
-        />
+        {speakers &&
+          speakers.map((speaker, i) => (
+            <div key={speaker.name}>
+              <SpeakerBlock
+                name={speaker.name}
+                url={speaker.profilePic}
+                title={speaker.title}
+                company={speaker.company}
+                linkedIn={speaker.linkedIn}
+                bio={speaker.bio}
+                session={speaker.session}
+                id={speaker._id}
+              />
+            </div>
+          ))}
       </div>
     </div>
   );

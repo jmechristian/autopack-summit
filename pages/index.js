@@ -10,11 +10,38 @@ import SponsorsMain from '../components/home/sponsors/SponsorsMain';
 export default function Home({ homepageData }) {
   return (
     <div className='flex flex-col'>
-      <HeroMain data={homepageData} />
-      <SecondMain />
-      <WhyMain />
-      <TestimonialMain />
-      <SpeakersMain />
+      <HeroMain
+        data={homepageData}
+        headline={homepageData[0].heroHeadline}
+        subheadline={homepageData[0].heroSubhead}
+        text={homepageData[0].heroText}
+        location={homepageData[0].location}
+        date={homepageData[0].date}
+        logos={homepageData[0].highlightedSponsors}
+      />
+      <SecondMain
+        headline={homepageData[0].whoHeadline}
+        subheadline={homepageData[0].whoSubheadline}
+        text={homepageData[0].whoBodyText}
+      />
+      <WhyMain
+        headline={homepageData[0].whyHeadline}
+        subheadline={homepageData[0].whySubheadline}
+        contentBlocks={homepageData[0].whyContentBlocks}
+      />
+      <TestimonialMain
+        headline={homepageData[0].testimonialHeadline}
+        subheadline={homepageData[0].testimonialSubheadline}
+        text={homepageData[0].testimonialBodyContent}
+        cta={homepageData[0].testimonialCta}
+        testimonials={homepageData[0].testimonials}
+      />
+      <SpeakersMain
+        headline={homepageData[0].speakersHeadline}
+        subheadline={homepageData[0].speakersSubheadline}
+        text={homepageData[0].speakersBodyContent}
+        speakers={homepageData[0].speakers}
+      />
       <SponsorsMain />
     </div>
   );
@@ -28,9 +55,9 @@ const client = createClient({
 });
 
 export async function getStaticProps() {
-  const homepageData = await client.fetch(
-    `*[_type == "homepage" && version == 1]`
-  );
+  const homepageData = await client.fetch(`*[_type == "homepage"]{
+    ..., speakers[]->, sponsors[]->
+  }`);
 
   return {
     props: {

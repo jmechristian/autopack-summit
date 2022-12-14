@@ -2,10 +2,10 @@ import React, { useRef } from 'react';
 import { InformationCircleIcon } from '@heroicons/react/24/solid';
 import { motion, useInView } from 'framer-motion';
 import { useSelector, useDispatch } from 'react-redux';
-import { openSpeakerModal } from '../features/layout/layoutSlice';
+import { openSpeakerModal, setSpeaker } from '../features/layout/layoutSlice';
 import SpeakerModal from './SpeakerModal';
 
-const SpeakerBlock = ({ url, name, company, title }) => {
+const SpeakerBlock = ({ url, name, company, title, id }) => {
   const speakerRef = useRef();
   const speakerInView = useInView(speakerRef);
   const dispatch = useDispatch();
@@ -25,6 +25,10 @@ const SpeakerBlock = ({ url, name, company, title }) => {
     },
   };
 
+  const speakerClickHandler = () => {
+    dispatch(setSpeaker(id));
+  };
+
   return (
     <motion.div
       className='shadow-lg relative max-w-7xl'
@@ -35,7 +39,7 @@ const SpeakerBlock = ({ url, name, company, title }) => {
     >
       <div
         className='w-64 lg:w-full h-80 bg-white cursor-pointer'
-        onClick={() => dispatch(openSpeakerModal())}
+        onClick={speakerClickHandler}
       >
         <div className='grid grid-cols-12 overflow-hidden'>
           <div
@@ -58,7 +62,7 @@ const SpeakerBlock = ({ url, name, company, title }) => {
       </div>
       <div
         className='flex absolute bottom-3 pb-3 mx-4 z-30 cursor-pointer'
-        onClick={() => dispatch(openSpeakerModal())}
+        onClick={speakerClickHandler}
       >
         <div className='flex flex-col'>
           <div className='font-oswald font-semibold text-[1.75rem] leading-none uppercase text-ap-darkblue'>

@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { PlayCircleIcon } from '@heroicons/react/24/outline';
 import { motion, useInView } from 'framer-motion';
 
-const SecondMain = () => {
+const SecondMain = ({ headline, subheadline, text }) => {
   const textRef = useRef();
   const videoRef = useRef();
 
@@ -50,14 +50,13 @@ const SecondMain = () => {
           animate={textInView ? 'show' : 'hide'}
         >
           <motion.div className='yellow_headline text-4xl md:text-5xl xl:text-6xl xl:text-center'>
-            One Meeting
+            {headline}
           </motion.div>
           <motion.div className='white_subheadline text-lg md:text-xl xl:text-2xl'>
-            Can Change it All
+            {subheadline}
           </motion.div>
           <motion.div className='text-white text-center max-w-prose px-8 mt-4'>
-            Experience the premier open forum for OEMs to discuss their
-            packaging innovations and challenges.
+            {text}
           </motion.div>
         </motion.div>
         <motion.div

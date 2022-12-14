@@ -4,7 +4,13 @@ import { motion, useInView } from 'framer-motion';
 import { useDispatch } from 'react-redux';
 import { toggleRegistrationModal } from '../../features/layout/layoutSlice';
 
-const TestimonialMain = () => {
+const TestimonialMain = ({
+  headline,
+  subheadline,
+  text,
+  cta,
+  testimonials,
+}) => {
   const textRef = useRef();
   const testRef = useRef();
   const testInView = useInView(testRef);
@@ -80,7 +86,7 @@ const TestimonialMain = () => {
               initial='hide'
               animate={textInView ? 'show' : 'hide'}
             >
-              Moments To
+              {subheadline}
             </motion.div>
             <motion.div
               className='white_headline text-4xl md:text-5xl xl:text-6xl'
@@ -88,7 +94,7 @@ const TestimonialMain = () => {
               initial='hide'
               animate={textInView ? 'show' : 'hide'}
             >
-              Experience
+              {headline}
             </motion.div>
           </motion.div>
           <motion.div
@@ -97,8 +103,7 @@ const TestimonialMain = () => {
             initial='hide'
             animate={textInView ? 'show' : 'hide'}
           >
-            Experience the premier open forum for OEMs to discuss their
-            packaging innovations and challenges.
+            {text}
           </motion.div>
           <motion.button
             className='bg-ap-darkblue rounded-lg w-1/2 mx-auto lg:mx-12'
@@ -108,7 +113,7 @@ const TestimonialMain = () => {
             onClick={() => dispatch(toggleRegistrationModal())}
           >
             <motion.div className='font-semibold uppercase tracking-widest text-white text-sm py-4'>
-              Get Involved
+              {cta}
             </motion.div>
           </motion.button>
         </motion.div>
@@ -123,12 +128,15 @@ const TestimonialMain = () => {
             className='grid grid-flow-col overflow-scroll  gap-x-4 px-8 md:px-16'
             id='scrollers'
           >
-            <TestimonialBlock />
-            <TestimonialBlock />
-            <TestimonialBlock />
-            <TestimonialBlock />
-            <TestimonialBlock />
-            <TestimonialBlock />
+            {testimonials &&
+              testimonials.map((t, i) => (
+                <div key={i}>
+                  <TestimonialBlock
+                    name={t.name}
+                    testimonialBody={t.testimonial}
+                  />
+                </div>
+              ))}
           </div>
         </motion.div>
       </div>

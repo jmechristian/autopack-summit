@@ -4,7 +4,7 @@ import HeroInfo from './HeroInfo';
 import HeroLogos from './HeroLogos';
 import HeroText from './HeroText';
 
-const HeroMain = ({ data }) => {
+const HeroMain = ({ headline, subheadline, text, location, date, logos }) => {
   return (
     <div
       className='w-full pt-52 pb-32 md:pt-56 lg:pb-10 lg:pt-56 xl:pb-12 xl:pt-[17rem] bg-slate-800 relative overflow-hidden'
@@ -16,15 +16,12 @@ const HeroMain = ({ data }) => {
     >
       <div className='w-full h-full flex flex-col justify-center items-center gap-32 md:gap-40 lg:gap-44 xl:gap-56'>
         <div className='flex flex-col gap-16 md:gap-24 lg:gap-32 xl:gap-40'>
-          <HeroHeadline
-            headline={data[0].heroHeadline}
-            subheadline={data[0].heroSubhead}
-          />
-          <HeroText text={data[0].heroText} />
+          <HeroHeadline headline={headline} subheadline={subheadline} />
+          <HeroText text={text} />
         </div>
         <div className='flex flex-col lg:flex-row-reverse gap-16 w-full lg:justify-between lg:px-5 xl:px-0 xl:max-w-7xl'>
-          <HeroInfo location={data[0].location} date={data[0].date} />
-          <HeroLogos logos={data[0].highlightedSponsors} />
+          <HeroInfo location={location} date={date} />
+          <HeroLogos logos={logos} />
         </div>
       </div>
     </div>
