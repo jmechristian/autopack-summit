@@ -74,7 +74,7 @@ const SpeakerModal = () => {
               <div className='text-sm md:text-base xl:text-lg max-h-44 md:max-h-72 xl:max-h-full overflow-y-scroll xl:overflow-y-hidden relative text-slate-500 max-w-prose'>
                 {currentSpeaker && currentSpeaker[0].bio}
               </div>
-              <div className='flex flex-col gap-4'>
+              <div className='flex flex-col gap-4 xl:mt-8'>
                 <div className='font-oswald text-2xl font-medium'>
                   Featured In:
                 </div>
