@@ -4,6 +4,7 @@ import { XCircleIcon } from '@heroicons/react/24/outline';
 import { useDispatch, useSelector } from 'react-redux';
 import { closeSpeakerModal, setSpeaker } from '../features/layout/layoutSlice';
 import { SocialIcon } from 'react-social-icons';
+import SessionBlock from './SessionBlock';
 
 const SpeakerModal = () => {
   const [currentSpeaker, setCurrentSpeaker] = useState(selectedSpeaker);
@@ -20,7 +21,7 @@ const SpeakerModal = () => {
       const speaker = await client
         .fetch(
           `*[_id == '${selectedSpeaker}']{
-          ..., session[]->
+          ..., "sessions": *[ _type == "session" && references(^._id)]
         }`
         )
         .then((res) => setCurrentSpeaker(res));
@@ -75,36 +76,25 @@ const SpeakerModal = () => {
                 {currentSpeaker && currentSpeaker[0].bio}
               </div>
               <div className='flex flex-col gap-4 xl:mt-8'>
-                <div className='font-oswald text-2xl font-medium'>
-                  Featured In:
-                </div>
-                {currentSpeaker &&
-                  currentSpeaker[0].sessions &&
-                  currentSpeaker[0].sessions.length}
-                <div className='grid grid-cols-1'>
-                  <div className='w-full h-full bg-ap-darkblue p-5 rounded-md'>
-                    <div className='flex flex-col gap-9'>
-                      <div className='flex justify-between'>
-                        <div className='flex flex-col'>
-                          <div className='font-bold tracking-widest uppercase text-white/70 leading-tight'>
-                            Thursday
-                          </div>
-                          <div className='font-bold text-xl font-oswald uppercase leading-none text-ap-yellow tracking-wide'>
-                            7am - 8am
-                          </div>
-                        </div>
-                        <div className='flex flex-col justify-between'>
-                          <div className='text-white text-right text-sm bg-ap-yellow py-1 px-4 rounded'>
-                            the location
-                          </div>
-                        </div>
-                      </div>
-                      <div className='text-white font-bold text-2xl leading-tight'>
-                        Impacts and Factors of Reverse Logistics
-                      </div>
+                {currentSpeaker && currentSpeaker[0].sessions.length > 0 && (
+                  <>
+                    <div className='font-oswald text-2xl font-medium'>
+                      Featured In:
                     </div>
-                  </div>
-                </div>
+                    <div className='grid grid-cols-1 xl:grid-cols-2 gap-6'>
+                      {currentSpeaker[0].sessions.map((sess, i) => (
+                        <div key={sess._id}>
+                          <SessionBlock
+                            day='Thursday'
+                            time={sess.time}
+                            location={sess.location}
+                            name={sess.name}
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </>
+                )}
               </div>
             </div>
           </div>
