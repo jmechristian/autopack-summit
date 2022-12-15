@@ -19,15 +19,6 @@ const FooterHeadline = () => {
           </div>
         </div>
       </div>
-      <div className='text-center text-white text-sm lg:text-lg md:text-base px-8 text-white/70 md:max-w-prose mx-auto'>
-        <p>
-          Experience the premier open forum for OEMs to discuss their packaging
-          innovations and challenges.
-        </p>
-      </div>
-      <button className='px-6 py-4 rounded-md bg-white text-ap-darkblue text-sm md:text-base font-bold tracking-widest uppercase max-w-fit mx-auto'>
-        Ready To Get Involved?
-      </button>
     </div>
   );
 };

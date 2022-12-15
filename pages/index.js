@@ -42,7 +42,7 @@ export default function Home({ homepageData }) {
         text={homepageData[0].speakersBodyContent}
         speakers={homepageData[0].speakers}
       />
-      <SponsorsMain />
+      <SponsorsMain sponsors={homepageData[0].sponsors} />
     </div>
   );
 }

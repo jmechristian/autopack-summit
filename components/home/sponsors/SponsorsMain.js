@@ -2,11 +2,11 @@ import React from 'react';
 import SponsorMainBody from './SponsorMainBody';
 import SponsorsMainHead from './SponsorsMainHead';
 
-const SponsorsMain = () => {
+const SponsorsMain = ({ sponsors }) => {
   return (
     <div className='overflow-hidden'>
       <SponsorsMainHead />
-      <SponsorMainBody />
+      <SponsorMainBody sponsors={sponsors} />
     </div>
   );
 };
