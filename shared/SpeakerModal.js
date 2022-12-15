@@ -38,11 +38,11 @@ const SpeakerModal = () => {
   return (
     <div className='fixed top-0 left-0 right-0 bottom-0 bg-black/40 backdrop-blur z-[60]'>
       <div className='flex w-full h-full justify-center items-center'>
-        <div className='w-11/12 md:w-7/12 lg:w-9/12 mx-auto bg-white rounded-md'>
-          <div className='flex flex-col lg:flex-row lg:gap-12 gap-4 pt-4 pb-9 px-6'>
+        <div className='w-11/12 h-4/5 md:h-auto overflow-scroll xl:overflow-hidden relative md:w-8/12 lg:w-10/12 xl:w-8/12 mx-auto bg-white rounded-md'>
+          <div className='flex flex-col lg:flex-row lg:gap-16 gap-4 pt-4 xl:pt-8 pb-9 px-6 xl:px-8'>
             <div className='flex justify-between lg:flex-col'>
               <div
-                className='w-60 md:w-72 h-60 md:h-72 lg:h-80 rounded-t-lg'
+                className='w-full md:w-96 xl:w-[400px] h-72 md:h-96 lg:h-full rounded-t-lg relative'
                 style={{
                   backgroundImage: `url(${
                     currentSpeaker && currentSpeaker[0].profilePic
@@ -50,32 +50,33 @@ const SpeakerModal = () => {
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                 }}
-              ></div>
-              <div className='mt-6'>
-                <SocialIcon
-                  url={currentSpeaker && currentSpeaker[0].linkedin}
-                  style={{ height: 40, width: 40 }}
-                />
+              >
+                <div className='absolute top-3 right-3 z-50'>
+                  <SocialIcon
+                    url={currentSpeaker && currentSpeaker[0].linkedin}
+                    className='w-16 h-16 bg-white rounded-full'
+                  />
+                </div>
               </div>
             </div>
-            <div className='flex flex-col gap-6 -mt-7 lg:mt-0'>
+            <div className='flex flex-col gap-6'>
               <div className='flex flex-col ml-2 lg:ml-0'>
-                <div className='font-oswald font-semibold text-[1.75rem] md:text-3xl leading-none uppercase text-ap-darkblue'>
+                <div className='font-oswald font-semibold text-[1.75rem] md:text-4xl leading-none uppercase text-ap-darkblue'>
                   {currentSpeaker && currentSpeaker[0].name}
                 </div>
-                <div className='text-sm md:text-base font-semibold'>
+                <div className='text-sm md:text-lg font-semibold'>
                   {currentSpeaker && currentSpeaker[0].company}
                 </div>
-                <div className='text-sm md:text-base'>
+                <div className='text-sm md:text-lg'>
                   {currentSpeaker && currentSpeaker[0].title}
                 </div>
               </div>
-              <div className='text-sm md:text-base max-h-44 md:max-h-72 overflow-y-scroll relative text-slate-500 max-w-prose'>
+              <div className='text-sm md:text-base xl:text-lg max-h-44 md:max-h-72 xl:max-h-full overflow-y-scroll xl:overflow-y-hidden relative text-slate-500 max-w-prose'>
                 {currentSpeaker && currentSpeaker[0].bio}
               </div>
-              <div className='flex flex-col gap-2'>
+              <div className='flex flex-col gap-4'>
                 <div className='font-oswald text-2xl font-medium'>
-                  Sessions:
+                  Featured In:
                 </div>
                 {currentSpeaker &&
                   currentSpeaker[0].sessions &&
@@ -93,7 +94,7 @@ const SpeakerModal = () => {
                           </div>
                         </div>
                         <div className='flex flex-col justify-between'>
-                          <div className='text-white text-right text-sm bg-ap-yellow py-1 px-4 rounded drop-shadow-lg'>
+                          <div className='text-white text-right text-sm bg-ap-yellow py-1 px-4 rounded'>
                             the location
                           </div>
                         </div>
