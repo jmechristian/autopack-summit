@@ -10,11 +10,11 @@ const Sponsor = ({ logo, url, alt, w, h }) => {
   };
 
   return (
-    <div className='flex justify-center items-center' onClick={logoClick}>
-      <div>
-        <Image src={logo} width={w} height={h} alt={alt} />
-      </div>
-    </div>
+    <div
+      className='flex justify-center items-center bg-contain bg-center aspect-video bg-no-repeat cursor-pointer'
+      style={{ backgroundImage: `url(${logo})` }}
+      onClick={logoClick}
+    ></div>
   );
 };
 

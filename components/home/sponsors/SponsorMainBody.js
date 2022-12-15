@@ -4,7 +4,7 @@ import GoldSponsorBlock from './GoldSponsorBlock';
 import SilverSponsorBlock from './SilverSponsorBlock';
 import { motion, useInView } from 'framer-motion';
 
-const SponsorMainBody = () => {
+const SponsorMainBody = ({ sponsors }) => {
   const sponsorBodyRef = useRef();
   const sponsorInView = useInView(sponsorBodyRef);
 
@@ -22,6 +22,10 @@ const SponsorMainBody = () => {
     },
   };
 
+  const filterSponsors = (tier) => {
+    return sponsors.filter((item) => item.teir === tier);
+  };
+
   return (
     <div className='default_wrapper'>
       <motion.div
@@ -31,9 +35,9 @@ const SponsorMainBody = () => {
         animate={sponsorInView ? 'show' : 'hide'}
         ref={sponsorBodyRef}
       >
-        <PlatinumSponsorBlock />
-        <GoldSponsorBlock />
-        <SilverSponsorBlock />
+        <PlatinumSponsorBlock platinum={filterSponsors('platinum')} />
+        <GoldSponsorBlock gold={filterSponsors('gold')} />
+        <SilverSponsorBlock silver={filterSponsors('silver')} />
       </motion.div>
     </div>
   );
