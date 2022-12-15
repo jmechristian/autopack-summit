@@ -23,7 +23,7 @@ const SponsorshipFormModal = () => {
               <div className='text-3xl xl:text-5xl max-w-fit leading-none uppercase font-oswald font-bold text-ap-darkblue tracking-widest text-center lg:text-left'>
                 Join The Sponsor Lineup
               </div>
-              <div className='text-slate-500 font-semibold text-center text-sm lg:text-left'>
+              <div className='text-slate-500 font-semibold text-center text-sm xl:text-base lg:text-left'>
                 Have a question about Sponsorship? Email{' '}
                 <a
                   href='mailto:bianca@packagingschool.com'
