@@ -48,7 +48,7 @@ const LeftTextCTA = ({
 
   return (
     <motion.div
-      className='flex flex-col text-center lg:col-span-2 gap-4 lg:gap-6 xl:gap-8'
+      className='flex flex-col text-center lg:text-left lg:col-span-2 gap-4 lg:gap-6 xl:gap-8'
       ref={textRef}
     >
       <motion.div
@@ -92,7 +92,7 @@ const LeftTextCTA = ({
         <motion.button
           className={`${
             buttonColor === 'blue' ? 'bg-ap-darkblue' : 'bg-ap-yellow'
-          } rounded-lg w-fit px-6 xl:mx-auto`}
+          } rounded-lg w-fit px-6 mx-auto lg:mx-0`}
           variants={itemVariants}
           initial='hide'
           animate={textInView ? 'show' : 'hide'}

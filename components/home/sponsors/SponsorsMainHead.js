@@ -3,10 +3,14 @@ import LeftTextCTA from '../../../shared/LeftTextCTA';
 import TitleSponsorBody from './TitleSponsorBody';
 import TitleSponsorHead from './TitleSponsorHead';
 import { motion, useInView } from 'framer-motion';
+import { useDispatch } from 'react-redux';
+import { openSponsorForm } from '../../../features/layout/layoutSlice';
 
 const SponsorsMainHead = () => {
   const titleRef = useRef();
   const titleInView = useInView(titleRef);
+
+  const dispatch = useDispatch();
 
   const titleVariants = {
     show: {
@@ -30,15 +34,18 @@ const SponsorsMainHead = () => {
 
   return (
     <div className='bg-slate-300'>
-      <div className='default_wrapper grid grid-cols-1 lg:grid-cols-5 gap-y-10 items-center mx-auto'>
+      <div className='default_wrapper grid grid-cols-1 lg:grid-cols-5 gap-y-10 lg:gap-8 items-center mx-auto'>
         <LeftTextCTA
           subColor='yellow'
           headlineColor='blue'
           textColor='gray'
-          text='Experience the premier open forum for OEMs to discuss their packaging innovations and challenges.'
+          text='With their commitment to the industry, our sponsors and the Packaging School continue to amplify the event experience and the industry it serves.'
           subText='Thank You'
           headlineText='Sponsors'
           buttonText='Become a Sponsor'
+          buttonColor='blue'
+          hasButton={true}
+          fn={() => dispatch(openSponsorForm())}
         />
         <motion.div
           className='w-full h-full bg-bgImage_blue p-6 rounded-lg bg-cover bg-center lg:col-span-3'
