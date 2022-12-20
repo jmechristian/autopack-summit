@@ -9,7 +9,7 @@ const HeroMain = ({ headline, subheadline, text, location, date, logos }) => {
     <div
       className='w-full pt-52 pb-32 md:pt-56 lg:pb-10 lg:pt-56 xl:pb-12 xl:pt-[17rem] bg-slate-800 relative overflow-hidden'
       style={{
-        backgroundImage: `url('https://res.cloudinary.com/dno7xxmmy/image/upload/v1669674364/AutoPack%20Summit/main_hero_bujof4.webp')`,
+        backgroundImage: `url('https://res.cloudinary.com/dno7xxmmy/image/upload/v1671549630/AutoPack%20Summit/home_hero_hxrhss.webp')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}

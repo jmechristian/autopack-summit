@@ -1,5 +1,4 @@
 import React, { useRef } from 'react';
-import { PlayCircleIcon } from '@heroicons/react/24/outline';
 import { motion, useInView } from 'framer-motion';
 
 const SecondMain = ({ headline, subheadline, text }) => {
@@ -65,11 +64,7 @@ const SecondMain = ({ headline, subheadline, text }) => {
           variants={videoVariants}
           initial='hidden'
           animate={videoInView ? 'show' : 'hidden'}
-        >
-          <motion.div>
-            <PlayCircleIcon className='w-32 h-32 lg:w-52 lg:h-52 stroke-white/50 stroke-1' />
-          </motion.div>
-        </motion.div>
+        ></motion.div>
       </div>
     </div>
   );
