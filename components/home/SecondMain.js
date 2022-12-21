@@ -75,7 +75,7 @@ const SecondMain = ({ headline, subheadline, text }) => {
           animate={videoInView ? 'show' : 'hidden'}
         >
           <motion.video
-            className='w-full h-full'
+            className='w-full h-full bg-black'
             controls
             ref={actualVideoRef}
             muted
