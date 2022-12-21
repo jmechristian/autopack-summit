@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import TestimonialBlock from '../../shared/TestimonialBlock';
 import { motion, useInView } from 'framer-motion';
 import { useDispatch } from 'react-redux';
@@ -16,6 +16,11 @@ const TestimonialMain = ({
   const testInView = useInView(testRef);
   const textInView = useInView(textRef);
   const dispatch = useDispatch();
+  const [width, setWidth] = useState(0);
+
+  useEffect(() => {
+    setWidth(testRef.current.offsetWidth - testRef.current.scrollWidth);
+  }, []);
 
   const textVariants = {
     show: {
@@ -118,14 +123,14 @@ const TestimonialMain = ({
           </motion.button>
         </motion.div>
         <motion.div
-          className='lg:col-span-3'
+          className='lg:col-span-3 xl:overflow-hidden'
           variants={testimonialVariants}
           initial='hide'
           animate={testInView ? 'show' : 'hide'}
           ref={testRef}
         >
           <div
-            className='grid grid-flow-col overflow-scroll gap-x-4 px-8 md:px-16'
+            className='grid grid-flow-col overflow-scroll gap-x-4 px-8 md:px-16 xl:hidden'
             id='scrollers'
           >
             {testimonials &&
@@ -138,6 +143,22 @@ const TestimonialMain = ({
                 </div>
               ))}
           </div>
+          <motion.div
+            className='hidden xl:grid grid-flow-col gap-x-4 px-8 md:px-16'
+            id='scrollers'
+            drag='x'
+            dragConstraints={{ right: 0, left: width, top: 0, bottom: 0 }}
+          >
+            {testimonials &&
+              testimonials.map((t, i) => (
+                <motion.div key={i} className='h-full'>
+                  <TestimonialBlock
+                    name={t.name}
+                    testimonialBody={t.testimonial}
+                  />
+                </motion.div>
+              ))}
+          </motion.div>
         </motion.div>
       </div>
     </div>
