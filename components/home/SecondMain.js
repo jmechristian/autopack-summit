@@ -79,7 +79,7 @@ const SecondMain = ({ headline, subheadline, text }) => {
             controls
             ref={actualVideoRef}
             muted
-            controlsList='nodownload'
+            controlsList='nodownload nofullscreen'
             loop
           >
             <source
