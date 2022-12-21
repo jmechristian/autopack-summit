@@ -42,7 +42,7 @@ const WhyMain = ({ headline, subheadline, contentBlocks }) => {
             background='https://res.cloudinary.com/dno7xxmmy/image/upload/v1669772597/AutoPack%20Summit/IMG_2782_adqxqf.webp'
             headline={contentBlocks[1].contentHeadline}
             description={contentBlocks[1].contentBody}
-            video='#'
+            video='assets/video/strategize.mp4'
             headlineColor='text-ap-blue'
           />
         </div>
@@ -51,7 +51,7 @@ const WhyMain = ({ headline, subheadline, contentBlocks }) => {
             background='https://res.cloudinary.com/dno7xxmmy/image/upload/v1669772597/AutoPack%20Summit/IMG_2874_iijxzx.webp'
             headline={contentBlocks[0].contentHeadline}
             description={contentBlocks[0].contentBody}
-            video='#'
+            video='assets/video/collaborate.mp4'
             headlineColor='text-ap-darkblue'
           />
 
@@ -59,7 +59,7 @@ const WhyMain = ({ headline, subheadline, contentBlocks }) => {
             background='https://res.cloudinary.com/dno7xxmmy/image/upload/v1669772597/AutoPack%20Summit/IMG_2022_hbtevz.webp'
             headline={contentBlocks[2].contentHeadline}
             description={contentBlocks[2].contentBody}
-            video='#'
+            video='assets/video/innovate.mp4'
             headlineColor='text-ap-yellow'
           />
         </div>

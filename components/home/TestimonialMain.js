@@ -98,7 +98,7 @@ const TestimonialMain = ({
             </motion.div>
           </motion.div>
           <motion.div
-            className='text-white lg:text-lg px-12 md:max-w-prose md:mx-auto'
+            className='text-white lg:text-lg px-12 md:max-w-prose md:mx-auto h-full'
             variants={itemVariants}
             initial='hide'
             animate={textInView ? 'show' : 'hide'}
@@ -125,12 +125,12 @@ const TestimonialMain = ({
           ref={testRef}
         >
           <div
-            className='grid grid-flow-col overflow-scroll  gap-x-4 px-8 md:px-16'
+            className='grid grid-flow-col overflow-scroll gap-x-4 px-8 md:px-16'
             id='scrollers'
           >
             {testimonials &&
               testimonials.map((t, i) => (
-                <div key={i}>
+                <div key={i} className='h-full'>
                   <TestimonialBlock
                     name={t.name}
                     testimonialBody={t.testimonial}

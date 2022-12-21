@@ -67,7 +67,7 @@ const OverlayWithText = ({
       >
         <div
           className='flex justify-center items-center rounded-md h-full'
-          onClick={() => dispatch(openVideoEmbed())}
+          onClick={() => dispatch(openVideoEmbed(video))}
         >
           {' '}
           {video && (
