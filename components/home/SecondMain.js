@@ -67,14 +67,14 @@ const SecondMain = ({ headline, subheadline, text }) => {
             {text}
           </motion.div>
         </motion.div>
-        <Suspense fallback={<p>loading...</p>}>
-          <motion.div
-            className='flex w-full mt-6 justify-center items-center aspect-video'
-            ref={videoRef}
-            variants={videoVariants}
-            initial='hidden'
-            animate={videoInView ? 'show' : 'hidden'}
-          >
+        <motion.div
+          className='flex w-full mt-6 justify-center items-center aspect-video'
+          ref={videoRef}
+          variants={videoVariants}
+          initial='hidden'
+          animate={videoInView ? 'show' : 'hidden'}
+        >
+          {actualVideoRef && (
             <motion.video
               className='w-full h-full'
               controls
@@ -87,8 +87,8 @@ const SecondMain = ({ headline, subheadline, text }) => {
                 type='video/mp4'
               ></source>
             </motion.video>
-          </motion.div>
-        </Suspense>
+          )}
+        </motion.div>
       </div>
     </div>
   );
