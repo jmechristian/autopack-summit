@@ -81,6 +81,7 @@ const SecondMain = ({ headline, subheadline, text }) => {
             muted
             controlsList='nodownload nofullscreen'
             loop
+            playsInline
           >
             <source
               src='assets/video/HomeSecondMain.mp4'
