@@ -1,10 +1,10 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, Suspense, useEffect, use } from 'react';
 import { motion, useInView } from 'framer-motion';
 
 const SecondMain = ({ headline, subheadline, text }) => {
   const textRef = useRef();
   const videoRef = useRef();
-  const actualVideoRef = useRef();
+  const actualVideoRef = useRef(null);
 
   const textInView = useInView(textRef);
   const videoInView = useInView(videoRef);
@@ -12,9 +12,9 @@ const SecondMain = ({ headline, subheadline, text }) => {
   useEffect(() => {
     if (videoInView) {
       actualVideoRef.current.play();
-    } else {
-      actualVideoRef.current.pause();
     }
+
+    return () => actualVideoRef.current.pause();
   }, [videoInView]);
 
   const textVariants = {
@@ -67,14 +67,14 @@ const SecondMain = ({ headline, subheadline, text }) => {
             {text}
           </motion.div>
         </motion.div>
-        <motion.div
-          className='flex w-full mt-6 justify-center items-center aspect-video'
-          ref={videoRef}
-          variants={videoVariants}
-          initial='hidden'
-          animate={videoInView ? 'show' : 'hidden'}
-        >
-          {actualVideoRef && (
+        <Suspense fallback={<p>loading...</p>}>
+          <motion.div
+            className='flex w-full mt-6 justify-center items-center aspect-video'
+            ref={videoRef}
+            variants={videoVariants}
+            initial='hidden'
+            animate={videoInView ? 'show' : 'hidden'}
+          >
             <motion.video
               className='w-full h-full'
               controls
@@ -87,8 +87,8 @@ const SecondMain = ({ headline, subheadline, text }) => {
                 type='video/mp4'
               ></source>
             </motion.video>
-          )}
-        </motion.div>
+          </motion.div>
+        </Suspense>
       </div>
     </div>
   );
