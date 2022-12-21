@@ -144,7 +144,7 @@ const TestimonialMain = ({
               ))}
           </div>
           <motion.div
-            className='hidden xl:grid grid-flow-col gap-x-4 px-8 md:px-16'
+            className='hidden xl:grid grid-flow-col gap-x-4 px-8 md:px-16 relative'
             id='scrollers'
             drag='x'
             dragConstraints={{ right: 0, left: width, top: 0, bottom: 0 }}
