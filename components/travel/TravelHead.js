@@ -1,8 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import dynamic from 'next/dynamic';
 import { PlayCircleIcon } from '@heroicons/react/24/solid';
-const ReactPlayer = dynamic(() => import('react-player'), { ssr: false });
 
 const TravelHead = () => {
   const headlineVariants = {
@@ -86,14 +84,7 @@ const TravelHead = () => {
         initial='hidden'
         animate='show'
       >
-        <div className='w-full h-full relative'>
-          <ReactPlayer
-            url='https://www.youtube.com/embed/bmWvkprpP5A'
-            width='100%'
-            height='100%'
-            light
-          />
-        </div>
+        <div className='w-full h-full relative'></div>
         <div className='absolute top-0 left-0 right-0 bottom-0 z-20 bg-ap-darkblue/60 backdrop-blur flex justify-center items-center shadow-2xl'>
           <div>
             <PlayCircleIcon className='w-28 h-28 lg:w-40 lg:h-40 fill-white/80 drop-shadow-xl rounded-full backdrop-blur-md' />
