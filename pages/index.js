@@ -42,7 +42,7 @@ export default function Home({ homepageData }) {
         text={homepageData[0].speakersBodyContent}
         speakers={homepageData[0].speakers}
       /> */}
-      <SponsorsMain sponsors={homepageData[0].sponsors} />
+      <SponsorsMain sponsors={homepageData[0].sponsorList} />
     </div>
   );
 }
@@ -56,7 +56,9 @@ const client = createClient({
 
 export async function getStaticProps() {
   const homepageData = await client.fetch(`*[_type == "homepage"]{
-    ..., speakers[]->, sponsors[]->
+    ..., speakers[]->, "sponsorList": *[_type == "sponsor"]{
+      logo, name, teir, website
+    }
   }`);
 
   return {

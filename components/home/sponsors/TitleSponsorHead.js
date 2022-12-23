@@ -7,7 +7,7 @@ const TitleSponsorHead = () => {
     <div className='flex flex-col gap-3 items-center'>
       <div className='blue_subheadline text-sm'>Our Title Sponsor</div>
       <Image
-        src='https://res.cloudinary.com/dno7xxmmy/image/upload/v1670252391/AutoPack%20Summit/TriEnda-Logo_bejshl.png'
+        src='https://apsmedia.s3.amazonaws.com/images/sponsors/TriEnda-Logo.png'
         width={400}
         height={184}
         alt='TriEnda Logo'

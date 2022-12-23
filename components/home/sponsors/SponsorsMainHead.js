@@ -6,7 +6,8 @@ import { motion, useInView } from 'framer-motion';
 import { useDispatch } from 'react-redux';
 import { openSponsorForm } from '../../../features/layout/layoutSlice';
 
-const SponsorsMainHead = () => {
+const SponsorsMainHead = ({ titleSponsor }) => {
+  console.log(titleSponsor);
   const titleRef = useRef();
   const titleInView = useInView(titleRef);
 

@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import PlatinumSponsorBlock from './PlatinumSponsorBlock';
 import GoldSponsorBlock from './GoldSponsorBlock';
 import SilverSponsorBlock from './SilverSponsorBlock';
+import HighTopSponsorBlock from './HighTopSponsorBlock';
 import { motion, useInView } from 'framer-motion';
 
 const SponsorMainBody = ({ sponsors }) => {
@@ -38,6 +39,7 @@ const SponsorMainBody = ({ sponsors }) => {
         <PlatinumSponsorBlock platinum={filterSponsors('platinum')} />
         <GoldSponsorBlock gold={filterSponsors('gold')} />
         <SilverSponsorBlock silver={filterSponsors('silver')} />
+        <HighTopSponsorBlock highTop={filterSponsors('highTop')} />
       </motion.div>
     </div>
   );
