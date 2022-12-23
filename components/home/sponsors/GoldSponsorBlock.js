@@ -7,7 +7,7 @@ const GoldSponsorBlock = ({ gold }) => {
       <div className='border-b border-b-slate-500 pb-2 font-bold tracking-widest uppercase text-sm lg:text-lg'>
         Gold
       </div>
-      <div className='grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-10 gap-y-5 md:gap-x-16 w-full overflow-hidden'>
+      <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-x-10 gap-y-5 md:gap-x-16 w-full overflow-hidden'>
         {gold &&
           gold.map((item, i) => (
             <div key={i}>
