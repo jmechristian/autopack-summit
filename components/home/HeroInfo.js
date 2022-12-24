@@ -20,13 +20,15 @@ const HeroInfo = ({ location, date }) => {
 
   return (
     <motion.div
-      className='flex flex-col text-center text-sm md:text-base justify-center gap-1 lg:w-1/2 lg:text-left lg:items-end lg:mt-6'
+      className='flex flex-col text-center text-sm md:text-base justify-center gap-1 lg:w-1/2 lg:text-left lg:items-start lg:mt-6'
       variants={textVariants}
       initial='hide'
       animate='show'
     >
       <div className='flex flex-col'>
-        <div className='text-white/60 font-bold uppercase'>{date}</div>
+        <div className='text-ap-yellow font-bold uppercase text-4xl'>
+          {date}
+        </div>
         <div className='text-white/60 font-semibold'>{location}</div>
         <div className='flex justify-center text-white/60 text-center lg:text-left lg:items-end lg:justify-start gap-1 w-full'>
           <Link href='/travel'>Accommodations</Link>

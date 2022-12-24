@@ -18,28 +18,26 @@ const HeroLogos = ({ logos }) => {
 
   return (
     <motion.div
-      className='flex flex-col relative lg:w-1/2 px-6'
+      className='flex flex-col relative w-full px-6'
       variants={textVariants}
       initial='hide'
       animate='show'
     >
-      <div className='uppercase font-semibold text-xs md:text-sm text-white tracking-wider w-full text-center lg:text-left'>
+      <div className='uppercase  font-semibold text-xs md:text-sm text-white tracking-wider w-full text-center'>
         Subject Matter Experts From:
       </div>
-      <div
-        className='absolute left-0 top-0 z-30 w-full overflow-scroll pt-8'
-        id='scrollers'
-      >
-        <div className='flex flex-row gap-5 justify-center lg:justify-start w-full'>
+      <div className='w-full overflow-scroll pt-10' id='scrollers'>
+        <div className='flex flex-row gap-10 justify-center w-full'>
           {logos &&
             logos.map((logo, i) => (
               <div key={logo._key}>
                 <div
-                  className='w-16 h-16'
+                  className='w-[60px] h-[60px] md:w-[65px] md:h-[65px]'
                   style={{
                     backgroundImage: `url(${logo.url})`,
                     backgroundSize: 'contain',
                     backgroundPosition: 'center center',
+                    backgroundRepeat: 'no-repeat',
                   }}
                 ></div>
               </div>

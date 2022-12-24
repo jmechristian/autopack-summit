@@ -18,7 +18,7 @@ const HeroText = ({ text }) => {
 
   return (
     <motion.div
-      className='px-8 md:px-20 text-white text-center text-xl md:text-2xl max-w-prose'
+      className='px-8 md:px-20 2xl:px-32 text-white text-center text-xl md:text-2xl max-w-prose font-normal'
       variants={textVariants}
       initial='hide'
       animate='show'
