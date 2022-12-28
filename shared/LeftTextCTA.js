@@ -81,7 +81,7 @@ const LeftTextCTA = ({
       <motion.div
         className={`${
           textColor === 'gray' ? 'text-gray-500' : 'text-white'
-        } lg:text-lg xl:text-2xl px-12 md:max-w-prose md:mx-auto lg:px-0 lg:pr-8 xl:leading-relaxed`}
+        } lg:text-lg xl:text-2xl md:max-w-prose md:mx-auto lg:px-0 lg:pr-8 xl:leading-relaxed`}
         variants={itemVariants}
         initial='hide'
         animate={textInView ? 'show' : 'hide'}

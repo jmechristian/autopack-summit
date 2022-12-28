@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { PlayCircleIcon } from '@heroicons/react/24/solid';
+
+import VideoHeader from '../../shared/VideoHeader';
 
 const SponsorshipHead = () => {
   const headlineVariants = {
@@ -75,34 +76,26 @@ const SponsorshipHead = () => {
           </motion.div>
         </motion.div>
         <motion.div
-          className='text-slate-300 text-center mb-24 md:mb-28 lg:mb-44 xl:mb-48 max-w-prose md:px-12 xl:text-lg'
+          className='text-slate-300 text-center mb-24 md:mb-28 lg:mb-44 xl:mb-48 max-w-prose md:px-12 text-lg xl:text-xl leading-snug'
           variants={textVariants}
           initial='hidden'
           animate='show'
         >
-          Experience the premier open forum for OEMs to discuss their packaging
-          innovations and challenges.
+          Position yourself for this unique opportunity to offer packaging and
+          logistics solutions to OEMs and Tier 1 Suppliers.
         </motion.div>
       </motion.div>
       <motion.div
-        className='bg-slate-200 aspect-video w-11/12 md:w-9/12 lg:w-7/12 xl:w-1/2 absolute shadow-xl -bottom-24 md:-bottom-52 lg:-bottom-52 xl:-bottom-64 2xl:-bottom-72 right-0 z-30 overflow-hidden'
+        className='bg-slate-200 aspect-video w-11/12 md:w-9/12 lg:w-7/12 xl:w-1/2 absolute shadow-xl -bottom-28 md:-bottom-52 lg:-bottom-52 xl:-bottom-64 2xl:-bottom-72 right-0 z-30 overflow-hidden'
         variants={videoVariants}
         initial='hidden'
         animate='show'
       >
-        <div className='w-full h-full relative'></div>
-        <div className='absolute top-0 left-0 right-0 bottom-0 z-20 bg-ap-darkblue/60 backdrop-blur flex justify-center items-center shadow-2xl'>
-          <div>
-            <PlayCircleIcon className='w-28 h-28 lg:w-40 lg:h-40 fill-white/80 drop-shadow-xl rounded-full backdrop-blur-md' />
-          </div>
-        </div>
+        <VideoHeader
+          video='/assets/video/sponsor1.mp4'
+          poster={'https://apsmedia.s3.amazonaws.com/images/sponsor1_cover.png'}
+        />
       </motion.div>
-      {/* <div className='fixed bottom-12 mx-auto max-w-7xl left-0 hidden lg:inline-block z-30 bg-white/20 py-5 px-3 backdrop-blur-md drop-shadow-xl rounded-r-lg'>
-        <div className='flex gap-2 w-full justify-center px-3'>
-          <SparklesIcon className='w-7 h-7 fill-white' />
-          <div className='font-medium text-white'>Join The Sponsor Lineup</div>
-        </div>
-      </div> */}
     </div>
   );
 };

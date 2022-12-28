@@ -64,7 +64,7 @@ const HeroHeadline = ({ headline, subheadline }) => {
   return (
     <div className='flex flex-col justify-center gap-0'>
       <motion.div
-        className='white_subheadline text-xl md:text-2xl xl:text-3xl 2xl:text-5xl text-center'
+        className='white_subheadline text-xl md:text-2xl xl:text-3xl text-center'
         variants={subheadVariants}
         initial='hide'
         animate='show'
@@ -74,7 +74,7 @@ const HeroHeadline = ({ headline, subheadline }) => {
       <motion.div className='relative flex justify-center'>
         <AnimatePresence>
           <motion.div
-            className='yellow_headline text-[2.7rem] md:text-8xl lg:text-8xl xl:text-9xl 2xl:text-[11rem] leading-none text-center overflow-hidden absolute'
+            className='yellow_headline text-[2.7rem] md:text-8xl lg:text-8xl xl:text-9xl 2xl:text-[9rem] leading-none text-center overflow-hidden absolute'
             variants={headlineVariants}
             initial='initial'
             animate='enter'
