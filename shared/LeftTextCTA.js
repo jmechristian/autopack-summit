@@ -60,7 +60,7 @@ const LeftTextCTA = ({
         <motion.div
           className={`${
             subColor === 'blue' ? 'blue_subheadline' : 'yellow_subheadline'
-          }  text-xl md:text-xl xl:text-2xl`}
+          }  text-xl md:text-xl lg:text-2xl`}
           variants={itemVariants}
           initial='hide'
           animate={textInView ? 'show' : 'hide'}

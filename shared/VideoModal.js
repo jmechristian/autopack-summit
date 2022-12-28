@@ -16,7 +16,6 @@ const VideoModal = () => {
             controls
             controlsList='nodownload'
             autoPlay
-            muted
             playsInline
           >
             <source src={videoUrl} type='video/mp4'></source>
