@@ -17,7 +17,7 @@ const HeroMain = ({ headline, subheadline, text, location, date, logos }) => {
           <HeroHeadline headline={headline} subheadline={subheadline} />
           <HeroText text={text} />
         </div>
-        <div className='absolute bottom-5 xl:bottom-10 z-10 flex flex-col w-full lg:justify-center lg:px-5 xl:px-0 xl:max-w-7xl'>
+        <div className='absolute bottom-5 md:bottom-8 xl:bottom-10 z-10 flex flex-col w-full lg:justify-center xl:px-0'>
           {/* <HeroInfo location={location} date={date} /> */}
           <HeroLogos logos={logos} />
         </div>

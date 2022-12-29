@@ -18,7 +18,7 @@ const HeroLogos = ({ logos }) => {
 
   return (
     <motion.div
-      className='flex flex-col relative gap-7 w-full px-6'
+      className='flex flex-col relative gap-7 w-full'
       variants={textVariants}
       initial='hide'
       animate='show'
@@ -27,7 +27,7 @@ const HeroLogos = ({ logos }) => {
         Subject Matter Experts From:
       </div>
       <div className='w-full overflow-scroll' id='scrollers'>
-        <div className='flex flex-row gap-10 justify-left lg:justify-center w-full'>
+        <div className='flex flex-row gap-10 justify-left lg:justify-center w-full ml-6'>
           {logos &&
             logos.map((logo, i) => (
               <div key={logo._key}>
