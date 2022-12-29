@@ -1,6 +1,5 @@
 import React from 'react';
 import HeroHeadline from './HeroHeadline';
-import HeroInfo from './HeroInfo';
 import HeroLogos from './HeroLogos';
 import HeroText from './HeroText';
 

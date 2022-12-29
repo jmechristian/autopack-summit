@@ -13,6 +13,7 @@ const OverlayWithText = ({
 }) => {
   const overlayRef = useRef();
   const overlayInView = useInView(overlayRef);
+  const allTheWayInView = useInView(overlayRef, { amount: 1 });
   const dispatch = useDispatch();
   const { videoOpen } = useSelector((state) => state.layout);
 
@@ -71,7 +72,11 @@ const OverlayWithText = ({
         >
           {' '}
           {video && (
-            <PlayCircleIcon className='w-32 h-32 lg:w-40 lg:h-40 fill-white/50 shadow-2xl rounded-full backdrop-blur-md' />
+            <PlayCircleIcon
+              className={`w-32 h-32 lg:w-40 lg:h-40 ${
+                allTheWayInView ? 'fill-white/90' : 'fill-white/60'
+              } shadow-2xl rounded-full backdrop-blur-md`}
+            />
           )}
         </div>
       </div>

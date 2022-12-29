@@ -8,7 +8,7 @@ import FooterCopyright from './FooterCopyright';
 const Footer = ({ footerImages }) => {
   return (
     <div className='bg-ap-darkblue'>
-      <div className='pb-8 pt-6 lg:pt-10 xl:pt-10'>
+      <div className='pb-8 pt-6 lg:pt-10 xl:pt-16'>
         <div className='flex flex-col gap-16'>
           <FooterHeadline />
           <FooterImageGallery images={footerImages} />
