@@ -18,16 +18,16 @@ const HeroLogos = ({ logos }) => {
 
   return (
     <motion.div
-      className='flex flex-col relative w-full px-6'
+      className='flex flex-col relative gap-7 w-full px-6'
       variants={textVariants}
       initial='hide'
       animate='show'
     >
-      <div className='uppercase  font-semibold text-xs md:text-sm text-white tracking-wider w-full text-center'>
+      <div className='uppercase font-semibold text-xs md:text-sm text-white tracking-wider w-full text-center'>
         Subject Matter Experts From:
       </div>
-      <div className='w-full overflow-scroll pt-10' id='scrollers'>
-        <div className='flex flex-row gap-10 justify-center w-full'>
+      <div className='w-full overflow-scroll' id='scrollers'>
+        <div className='flex flex-row gap-10 justify-left lg:justify-center w-full'>
           {logos &&
             logos.map((logo, i) => (
               <div key={logo._key}>
