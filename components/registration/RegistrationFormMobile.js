@@ -76,8 +76,8 @@ const RegistrationFormMobile = () => {
         />
       </div>
       <div className='flex flex-col md:flex-row items-center gap-4 mt-3'>
-        <button className='bg-ap-darkblue rounded-md w-full'>
-          <div className='text-white uppercase text-sm lg:text-lg font-bold py-3 px-6 tracking-widest'>
+        <button className='bg-ap-yellow rounded-md w-full'>
+          <div className='text-slate-800 font-oswald uppercase text-lg font-bold py-3 px-6 tracking-widest'>
             Register
           </div>
         </button>
