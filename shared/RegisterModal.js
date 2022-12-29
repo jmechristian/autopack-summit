@@ -34,7 +34,10 @@ const RegisterModal = () => {
                 <ArrowLongRightIcon className='w-7 h-7 fill-white' />
               </div>
             </button>
-            <button className='flex w-full bg-ap-darkblue hover:bg-ap-blue rounded-md items-center justify-between px-6'>
+            <button
+              className='flex w-full bg-ap-darkblue hover:bg-ap-blue rounded-md items-center justify-between px-6'
+              onClick={() => regHandler('registerprovider')}
+            >
               <div className='blue_headline text-xl lg:text-2xl text-white py-5 w-full text-left'>
                 Solution Provider
               </div>

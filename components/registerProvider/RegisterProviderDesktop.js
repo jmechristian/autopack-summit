@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import { ArrowLongRightIcon } from '@heroicons/react/24/solid';
 
-const RegistrationFormDesktop = () => {
+const RegisterProviderDesktop = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
@@ -11,14 +12,20 @@ const RegistrationFormDesktop = () => {
   return (
     <div className='p-3'>
       <div className='grid grid-cols-6 gap-20'>
-        <div className='col-span-3 bg-bgImage_reg bg-cover bg-center rounded-md w-full h-full'>
-          <div className='flex flex-col p-6 justify-end items-end h-full w-4/5'>
-            <div className='font-semibold text-white/80 text-4xl leading-none'>
-              "AutoPack Summit gives us networking with the automotive world
-              exclusively"
+        <div className='col-span-3 bg-bgImage_reg_provider bg-cover bg-center rounded-md w-full h-full'>
+          <div className='flex flex-col p-6 justify-end items-end h-full w-4/5 gap-4'>
+            <div className='font-semibold text-white/80 lg:text-4xl 2xl:text-5xl leading-none'>
+              Leverage the benefits of Sponsorship.
             </div>
-            <div className='text-white/80 font-bold text-left w-full pt-4'>
-              - 2019 Sponsor
+            <div className='text-white/80 font-semibold text-lg leading-snug text-left w-full pt-4'>
+              The path to registration as a solution providers takes advantage
+              of sponsorship as its' entry point. Get into the action and
+              strengthen your brand visibility and network.{' '}
+              <span className='text-ap-yellow'>
+                Fill out the form to find out how you can be a part of the next
+                Summit.
+              </span>
+              <ArrowLongRightIcon className='w-7 h-7 fill-white inline ml-1' />
             </div>
           </div>
         </div>
@@ -89,11 +96,11 @@ const RegistrationFormDesktop = () => {
             <div className='flex flex-col md:flex-row items-center gap-4 mt-3'>
               <button className='bg-ap-yellow rounded-md w-full'>
                 <div className='text-slate-800 font-oswald uppercase text-sm lg:text-lg font-bold py-3 px-6 tracking-widest'>
-                  Register
+                  Get Involved
                 </div>
               </button>
               <div className='text-slate-500 text-sm'>
-                By clicking REGISTER you agree to accept our Event Terms and
+                By clicking GET INVOLVED you agree to accept our Event Terms and
                 Conditions.
               </div>
             </div>
@@ -104,4 +111,4 @@ const RegistrationFormDesktop = () => {
   );
 };
 
-export default RegistrationFormDesktop;
+export default RegisterProviderDesktop;
