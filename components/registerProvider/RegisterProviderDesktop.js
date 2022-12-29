@@ -18,9 +18,9 @@ const RegisterProviderDesktop = () => {
               Leverage the benefits of Sponsorship.
             </div>
             <div className='text-white/80 font-semibold text-lg leading-snug text-left w-full pt-4'>
-              The path to registration as a solution providers takes advantage
-              of sponsorship as its' entry point. Get into the action and
-              strengthen your brand visibility and network.{' '}
+              The path to registration as a Solution Provider runs through
+              sponsorship. Get into the action and strengthen your brand
+              visibility and network.{' '}
               <span className='text-ap-yellow'>
                 Fill out the form to find out how you can be a part of the next
                 Summit.
