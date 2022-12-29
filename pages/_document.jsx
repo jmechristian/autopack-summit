@@ -4,7 +4,6 @@ export default function Document() {
   return (
     <Html style={{ scrollBehavior: 'smooth' }}>
       <Head>
-        <title>Automotive Packaging Summit</title>
         <link rel='preconnect' href='https://fonts.googleapis.com' />
         <link
           rel='preconnect'

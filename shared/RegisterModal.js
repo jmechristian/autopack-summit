@@ -1,10 +1,17 @@
 import React from 'react';
+import { useRouter } from 'next/router';
 import { ArrowLongRightIcon, XMarkIcon } from '@heroicons/react/24/solid';
 import { useDispatch } from 'react-redux';
 import { toggleRegistrationModal } from '../features/layout/layoutSlice';
 
 const RegisterModal = () => {
   const dispatch = useDispatch();
+  const router = useRouter();
+
+  const regHandler = (route) => {
+    router.push(`/${route}`);
+    dispatch(toggleRegistrationModal());
+  };
 
   return (
     <div className='bg-black/40 backdrop-blur-md fixed left-0 right-0 top-0 bottom-0 z-50'>
@@ -16,7 +23,10 @@ const RegisterModal = () => {
                 I Am A...
               </div>
             </div>
-            <button className='flex mt-6 bg-ap-darkblue hover:bg-ap-blue rounded-md items-center justify-between px-6'>
+            <button
+              className='flex mt-6 bg-ap-darkblue hover:bg-ap-blue rounded-md items-center justify-between px-6'
+              onClick={() => regHandler('register')}
+            >
               <div className='blue_headline text-xl lg:text-2xl text-white py-5'>
                 OEM/ Teir 1
               </div>

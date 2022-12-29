@@ -1,4 +1,4 @@
-import React, { useRef, Suspense, useEffect, use } from 'react';
+import React, { useRef, useEffect, use } from 'react';
 import { motion, useInView } from 'framer-motion';
 
 const SecondMain = ({ headline, subheadline, text }) => {
@@ -12,9 +12,9 @@ const SecondMain = ({ headline, subheadline, text }) => {
   useEffect(() => {
     if (videoInView) {
       actualVideoRef.current.play();
+    } else {
+      actualVideoRef.current.pause();
     }
-
-    return () => actualVideoRef.current.pause();
   }, [videoInView]);
 
   const textVariants = {
