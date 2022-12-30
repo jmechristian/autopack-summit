@@ -15,6 +15,11 @@ const registerprovider = () => {
             Registration
           </motion.div>
         </div>
+        <div className='w-10/12 mx-auto text-center text-slate-700 lg:hidden md:text-lg'>
+          The path to registration as a Solution Provider runs through
+          sponsorship. Get into the action and strengthen your brand visibility
+          and network.
+        </div>
         <div className='w-10/12 lg:max-w-6xl mx-auto border bg-slate-200 border-slate-400 lg:px-8 xl:px-12 py-8 md:py-12 lg:py-16 rounded-md shadow-xl'>
           <RegisterProvider />
         </div>
