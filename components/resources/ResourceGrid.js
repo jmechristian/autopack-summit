@@ -5,7 +5,7 @@ const ResourceGrid = () => {
     <div className='w-full h-full'>
       <div className='grid grid-cols-1'>
         <div className='flex flex-col'>
-          <div className='aspect-square w-full bg-ap-blue'></div>
+          <div className='aspect-square w-10/12 bg-ap-blue mx-auto rounded-md drop-shadow-lg'></div>
         </div>
       </div>
     </div>
