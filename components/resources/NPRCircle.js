@@ -29,7 +29,12 @@ const NPRCircle = () => {
       animate={wheelInView ? 'start' : 'stop'}
       ref={wheelRef}
     >
-      <circle className='fill-ap-blue' cx='400' cy='400' r='397.5' />
+      <circle
+        className='fill-ap-blue lg:drop-shadow-lg'
+        cx='400'
+        cy='400'
+        r='397.5'
+      />
       <g>
         <path
           className='fill-white'
