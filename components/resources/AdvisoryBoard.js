@@ -21,7 +21,7 @@ const AdvisoryBoard = ({ headline, subheadline, text, advisors }) => {
   };
   return (
     <div
-      className='w-full relative h-full pb-16 md:py-20 lg:py-28 flex flex-col gap-8 lg:gap-12 xl:overflow-visible'
+      className='w-full relative h-full pb-16 md:py-20 lg:pb-28 flex flex-col gap-8 lg:gap-12 xl:overflow-visible'
       id='speakers'
     >
       <div className='flex flex-col gap-6 max-w-7xl mx-auto'>

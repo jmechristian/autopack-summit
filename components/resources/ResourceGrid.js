@@ -16,15 +16,19 @@ const ResourceGrid = ({ advisors }) => {
         <div className='grid grid-cols-1 gap-4 md:px-16 lg:px-0 md:gap-12 lg:col-start-2 lg:col-end-9'>
           <div className='grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12 lg:gap-0'>
             <div className='aspect-square bg-ap-blue mx-auto md:rounded drop-shadow-lg'>
-              <div className='flex flex-col p-6 justify-end items-end h-full w-4/5 gap-4'>
-                <div className='font-semibold capitalize text-white/80 text-3xl lg:text-4xl leading-none'>
-                  For automotive packaging suppliers
+              <div className='flex flex-col p-8 justify-between h-full w-11/12 gap-4'>
+                <div className='font-semibold capitalize text-white/80 text-3xl lg:text-4xl leading-tight'>
+                  Automotive Packaging Certificate
                 </div>
+                <button className='w-fit bg-white px-4 py-2 rounded-md'>
+                  Learn More
+                </button>
               </div>
             </div>
             <FullNPRCallout />
           </div>
         </div>
+
         <div className='lg:hidden'>
           <AdvisoryBoard
             headline={'Board Members'}
