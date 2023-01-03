@@ -18,7 +18,7 @@ const SponsorshipBody = () => {
             headlineText="It's Perks"
             text='Experience the premier open forum for OEMs to discuss their packaging innovations and challenges. '
             textColor='gray'
-            buttonText='Learn more about sponsorship opportunities'
+            buttonText='Learn More'
             buttonColor='blue'
             hasButton
             fn={() => dispatch(openSponsorForm())}

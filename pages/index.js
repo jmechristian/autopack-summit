@@ -36,12 +36,12 @@ export default function Home({ homepageData }) {
         cta={homepageData[0].testimonialCta}
         testimonials={homepageData[0].testimonials}
       />
-      {/* <SpeakersMain
+      <SpeakersMain
         headline={homepageData[0].speakersHeadline}
         subheadline={homepageData[0].speakersSubheadline}
         text={homepageData[0].speakersBodyContent}
         speakers={homepageData[0].speakers}
-      /> */}
+      />
       <SponsorsMain sponsors={homepageData[0].sponsorList} />
     </div>
   );
