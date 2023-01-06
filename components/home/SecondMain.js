@@ -49,7 +49,7 @@ const SecondMain = ({ headline, subheadline, text }) => {
 
   return (
     <div className='w-full bg-ap-darkblue lg:px-0 py-12 md:py-24'>
-      <div className='flex flex-col lg:flex-row-reverse relative items-center gap-6 max-w-7xl mx-auto'>
+      <div className='flex flex-col lg:flex-row-reverse relative items-center gap-6 xl:gap-12 max-w-7xl mx-auto'>
         <motion.div
           className='flex flex-col items-center gap-1 xl:gap-2 mx-auto'
           ref={textRef}
@@ -63,7 +63,7 @@ const SecondMain = ({ headline, subheadline, text }) => {
           <motion.div className='white_subheadline text-lg md:text-xl xl:text-2xl'>
             {subheadline}
           </motion.div>
-          <motion.div className='text-white text-center max-w-prose px-8 mt-4'>
+          <motion.div className='text-white text-center max-w-prose xl:text-lg px-8 mt-4'>
             {text}
           </motion.div>
         </motion.div>
