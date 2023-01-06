@@ -20,7 +20,7 @@ const Callout = () => {
           >
             <a
               href='#'
-              className='inline-flex items-center justify-center rounded-md border border-transparent bg-ap-blue px-5 py-3 font-medium text-white hover:bg-indigo-700 font-oswald uppercase tracking-widest text-lg lg:text-xl'
+              className='inline-flex items-center justify-center rounded-md border border-transparent bg-ap-blue px-5 py-3 font-medium text-white hover:bg-indigo-700 font-oswald uppercase tracking-widest text-lg lg:text-2xl'
             >
               Connect Now!
             </a>
