@@ -3,6 +3,7 @@ import { openSponsorForm } from '../../features/layout/layoutSlice';
 import { useDispatch } from 'react-redux';
 import LeftTextCTA from '../../shared/LeftTextCTA';
 import OverlayWithText from '../../shared/OverlayWithText';
+import Callout from '../../shared/Callout';
 
 const SponsorshipBody = () => {
   const dispatch = useDispatch();
@@ -16,11 +17,10 @@ const SponsorshipBody = () => {
             subText='Sponsorship Has'
             headlineColor='yellow'
             headlineText="It's Perks"
-            text='Experience the premier open forum for OEMs to discuss their packaging innovations and challenges. '
+            text='Boost Your Brand Visibility with Industry-Leading Sponsorship Solutions and Grow Your Prospects with Unmatched Trust.'
             textColor='gray'
-            buttonText='Learn More'
+            buttonText='Invest In Your Brand'
             buttonColor='blue'
-            hasButton
             fn={() => dispatch(openSponsorForm())}
           />
           <OverlayWithText
