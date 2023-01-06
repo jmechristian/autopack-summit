@@ -74,8 +74,8 @@ const TravelHead = () => {
           initial='hidden'
           animate='show'
         >
-          Experience the premier open forum for OEMs to discuss their packaging
-          innovations and challenges.
+          Explore the best of this electric town – Find all the info you'll need
+          to make the most of your stay in Greenville.
         </motion.div>
       </motion.div>
       <motion.div

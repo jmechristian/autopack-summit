@@ -13,7 +13,7 @@ const TravelBody = () => {
             subText='Small Town'
             headlineColor='yellow'
             headlineText='Big Energy'
-            text='Experience the premier open forum for OEMs to discuss their packaging innovations and challenges. '
+            text='Experience what turned America’s 4th fastest-growing city into one of America’s hottest destinations.'
             textColor='gray'
             buttonText='Join the Sponsorship Roster'
             buttonColor='blue'

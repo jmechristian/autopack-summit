@@ -15,10 +15,6 @@ const TravelAside = () => {
               Greenville
             </div>
           </div>
-          <div className='text-white max-w-prose md:px-20'>
-            Experience the premier open forum for OEMs to discuss their
-            packaging innovations and challenges.
-          </div>
         </div>
         <div
           className='grid grid-flow-col overflow-scroll gap-x-4 md:gap-x-6 px-8 md:px-16 lg:gap-x-12 lg:mx-auto'

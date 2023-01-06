@@ -82,7 +82,7 @@ const OverlayWithText = ({
       </div>
       <div className='flex flex-col items-center gap-3 -mt-4 relative text-center px-4 xl:px-0'>
         <div
-          className={`font-oswald font-medium text-4xl xl:text-5xl uppercase tracking-[.18em] ${headlineColor}`}
+          className={`font-oswald font-medium text-4xl xl:text-5xl uppercase tracking-widest ${headlineColor}`}
         >
           {headline}
         </div>
