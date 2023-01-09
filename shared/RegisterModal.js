@@ -28,7 +28,7 @@ const RegisterModal = () => {
               onClick={() => regHandler('register')}
             >
               <div className='blue_headline text-xl lg:text-2xl text-white py-5'>
-                OEM/ Teir 1
+                OEM/ Tier 1
               </div>
               <div>
                 <ArrowLongRightIcon className='w-7 h-7 fill-white' />
