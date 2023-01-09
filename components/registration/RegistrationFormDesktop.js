@@ -13,8 +13,8 @@ const RegistrationFormDesktop = () => {
   const [startCounter, setStartCounter] = useState(false);
 
   return (
-    <div className='p-3'>
-      <div className='grid grid-cols-6 gap-16'>
+    <div className='p-0'>
+      <div className='grid grid-cols-6 gap-12'>
         <div className='col-span-3 bg-bgImage_reg bg-cover bg-center rounded-md w-full h-full'>
           <div className='flex flex-col p-6 justify-end items-end h-full w-4/5'>
             <div className='font-semibold text-white/80 text-4xl leading-none'>
