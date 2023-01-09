@@ -10,6 +10,7 @@ const RegistrationFormDesktop = () => {
   const [title, setTitle] = useState('');
   const [company, setCompany] = useState('');
   const [regCode, setRegCode] = useState('');
+  const [startCounter, setStartCounter] = useState(false);
 
   return (
     <div className='p-3'>
@@ -107,6 +108,7 @@ const RegistrationFormDesktop = () => {
                     className={`font-bold uppercase ${
                       regCode ? 'text-ap-darkblue' : 'text-white'
                     } text-sm`}
+                    onClick={() => setStartCounter(true)}
                   >
                     Apply
                   </span>
@@ -115,7 +117,7 @@ const RegistrationFormDesktop = () => {
             </div>
             <div className='grid grid-cols-2 items-center mt-6'>
               <GetCodeBlock regCode={regCode} />
-              <RegBlockPricing regCode={regCode} />
+              <RegBlockPricing regCode={regCode} startCounter={startCounter} />
             </div>
             <div className='text-slate-600 text-xs text-center mt-4'>
               By clicking GET CODE or REGISTER you agree to accept our

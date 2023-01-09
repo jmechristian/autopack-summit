@@ -1,7 +1,7 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { useCountUp } from 'react-countup';
 
-const RegBlockPricing = ({ regCode }) => {
+const RegBlockPricing = ({ regCode, startCounter }) => {
   const countUpRef = useRef(null);
   const { start, pauseResume, reset, update } = useCountUp({
     ref: countUpRef,
@@ -10,6 +10,13 @@ const RegBlockPricing = ({ regCode }) => {
     duration: 1,
     startOnMount: false,
   });
+
+  useEffect(() => {
+    if (startCounter) {
+      start();
+    }
+  }, [startCounter]);
+
   return (
     <div
       className={`flex flex-col gap-3 items-center p-6 w-full bg-slate-100 ${
