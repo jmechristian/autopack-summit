@@ -6,6 +6,7 @@ const RegistrationFormMobile = () => {
   const [phone, setPhone] = useState('');
   const [title, setTitle] = useState('');
   const [company, setCompany] = useState('');
+  const [regCode, setRegCode] = useState('');
 
   return (
     <form className='grid lg:grid-cols-1 gap-y-4 md:gap-y-6 px-8 xl:px-12'>
@@ -75,7 +76,24 @@ const RegistrationFormMobile = () => {
           className='w-full'
         />
       </div>
+      <div className='flex flex-col gap-1'>
+        <div className='text-xs font-medium text-slate-500 uppercase'>
+          Registration Code*
+        </div>
+        <input
+          name='regCode'
+          value={regCode}
+          onChange={(e) => setRegCode(e.target.value)}
+          type='text'
+          className='w-full'
+        />
+      </div>
       <div className='flex flex-col md:flex-row items-center gap-4 mt-3'>
+        <button className='bg-ap-yellow rounded-md w-full'>
+          <div className='text-slate-800 font-oswald uppercase text-lg font-bold py-3 px-6 tracking-widest'>
+            Register
+          </div>
+        </button>
         <button className='bg-ap-yellow rounded-md w-full'>
           <div className='text-slate-800 font-oswald uppercase text-lg font-bold py-3 px-6 tracking-widest'>
             Register

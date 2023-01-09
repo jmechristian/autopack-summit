@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React, { useState } from 'react';
 
 const RegistrationFormDesktop = () => {
@@ -90,14 +91,25 @@ const RegistrationFormDesktop = () => {
               <div className='text-xs font-medium text-slate-500 uppercase'>
                 Registration Code*
               </div>
-              <input
-                name='regCode'
-                value={regCode}
-                onChange={(e) => setRegCode(e.target.value)}
-                type='text'
-                className='w-full placeholder:text-sm'
-                placeholder='No registration code? Continue below to get yours.'
-              />
+              <div className='relative'>
+                <input
+                  name='regCode'
+                  value={regCode}
+                  onChange={(e) => setRegCode(e.target.value)}
+                  type='text'
+                  className='w-full placeholder:text-sm'
+                  placeholder='No registration code? Continue below.'
+                />
+                <div className='absolute right-4 top-2 cursor-pointer'>
+                  <span
+                    className={`font-medium uppercase ${
+                      regCode ? 'text-ap-darkblue' : 'text-white'
+                    } text-sm`}
+                  >
+                    Apply
+                  </span>
+                </div>
+              </div>
             </div>
             <div className='grid grid-cols-2 items-center mt-6'>
               <div className='flex flex-col gap-3 items-center p-6 text-center'>
@@ -141,6 +153,11 @@ const RegistrationFormDesktop = () => {
                   </div>
                 </button>
               </div>
+            </div>
+            <div className='text-slate-600 text-xs text-center mt-4'>
+              By clicking GET CODE or REGISTER you agree to accept our
+              <br />
+              <u>Event Terms and Conditions.</u>
             </div>
           </div>
         </div>
