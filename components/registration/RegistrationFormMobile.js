@@ -9,6 +9,7 @@ const RegistrationFormMobile = () => {
   const [title, setTitle] = useState('');
   const [company, setCompany] = useState('');
   const [regCode, setRegCode] = useState('');
+  const [startCounter, setStartCounter] = useState(false);
 
   return (
     <form className='grid lg:grid-cols-1 gap-y-4 md:gap-y-6 px-8 xl:px-12'>
@@ -96,6 +97,7 @@ const RegistrationFormMobile = () => {
               className={`font-bold uppercase ${
                 regCode ? 'text-ap-darkblue' : 'text-white'
               } text-sm`}
+              onClick={() => setStartCounter(true)}
             >
               Apply
             </span>
@@ -103,7 +105,11 @@ const RegistrationFormMobile = () => {
         </div>
       </div>
       <div className='flex flex-col md:flex-row items-center gap-4 mt-3 w-full'>
-        {regCode ? <RegBlockPricing regCode={regCode} /> : <GetCodeBlock />}
+        {regCode ? (
+          <RegBlockPricing regCode={regCode} startCounter={startCounter} />
+        ) : (
+          <GetCodeBlock />
+        )}
         <div className='text-slate-600 text-xs text-center mt-5'>
           By clicking GET CODE or REGISTER you agree to accept our{' '}
           <u>Event Terms and Conditions</u>.
