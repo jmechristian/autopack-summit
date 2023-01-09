@@ -114,7 +114,7 @@ const RegistrationFormDesktop = () => {
               </div>
             </div>
             <div className='grid grid-cols-2 items-center mt-6'>
-              <GetCodeBlock />
+              <GetCodeBlock regCode={regCode} />
               <RegBlockPricing regCode={regCode} />
             </div>
             <div className='text-slate-600 text-xs text-center mt-4'>

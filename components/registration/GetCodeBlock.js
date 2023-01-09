@@ -1,6 +1,6 @@
 import React from 'react';
 
-const GetCodeBlock = () => {
+const GetCodeBlock = ({ regCode }) => {
   return (
     <div className='flex flex-col gap-3 items-center p-6 text-center'>
       <p className='text-lg font-medium leading-6 text-gray-900 text-center'>
@@ -9,7 +9,12 @@ const GetCodeBlock = () => {
       <p className='text-slate-600'>
         Please fill out all fields and submit below.
       </p>
-      <button className='bg-ap-blue rounded-md w-full mt-2'>
+      <button
+        className={`${
+          regCode ? 'bg-slate-500' : 'bg-ap-blue'
+        } rounded-md w-full mt-2`}
+        disabled={regCode ? true : false}
+      >
         <div className='text-white uppercase text-sm lg:text-base font-bold py-3 px-6 tracking-widest'>
           Get Code
         </div>
