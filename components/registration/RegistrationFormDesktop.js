@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import React, { useState } from 'react';
+import GetCodeBlock from './GetCodeBlock';
+import RegBlockPricing from './RegBlockPricing';
 
 const RegistrationFormDesktop = () => {
   const [name, setName] = useState('');
@@ -98,11 +100,11 @@ const RegistrationFormDesktop = () => {
                   onChange={(e) => setRegCode(e.target.value)}
                   type='text'
                   className='w-full placeholder:text-sm'
-                  placeholder='No registration code? Continue below.'
+                  placeholder='No code? See below.'
                 />
                 <div className='absolute right-4 top-2 cursor-pointer'>
                   <span
-                    className={`font-medium uppercase ${
+                    className={`font-bold uppercase ${
                       regCode ? 'text-ap-darkblue' : 'text-white'
                     } text-sm`}
                   >
@@ -112,47 +114,8 @@ const RegistrationFormDesktop = () => {
               </div>
             </div>
             <div className='grid grid-cols-2 items-center mt-6'>
-              <div className='flex flex-col gap-3 items-center p-6 text-center'>
-                <p className='text-lg font-medium leading-6 text-gray-900 text-center'>
-                  Get My Code
-                </p>
-                <p className='text-slate-600'>
-                  Please fill out all fields and submit below.
-                </p>
-                <button className='bg-ap-blue rounded-md w-full mt-2'>
-                  <div className='text-white uppercase text-sm lg:text-base font-bold py-3 px-6 tracking-widest'>
-                    Get Code
-                  </div>
-                </button>
-              </div>
-              <div
-                className={`flex flex-col gap-3 items-center p-6 bg-slate-100 ${
-                  regCode ? 'shadow-2xl' : 'shadow-none'
-                }`}
-              >
-                <p className='text-lg font-medium leading-6 text-gray-900'>
-                  Let's Innovate.
-                </p>
-                <div className='flex items-center justify-center text-5xl font-bold tracking-tight text-gray-900'>
-                  <span>$799</span>
-                  <span className='ml-2 text-xl font-medium tracking-normal text-slate-500'>
-                    USD
-                  </span>
-                </div>
-                <button
-                  className={`${
-                    regCode ? 'bg-ap-yellow' : 'bg-slate-400'
-                  } rounded-md w-full mt-2`}
-                >
-                  <div
-                    className={`${
-                      regCode ? 'text-slate-900' : 'text-slate-500'
-                    } uppercase text-sm lg:text-base font-bold py-3 px-6 tracking-widest`}
-                  >
-                    Register
-                  </div>
-                </button>
-              </div>
+              <GetCodeBlock />
+              <RegBlockPricing regCode={regCode} />
             </div>
             <div className='text-slate-600 text-xs text-center mt-4'>
               By clicking GET CODE or REGISTER you agree to accept our

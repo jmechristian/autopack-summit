@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import GetCodeBlock from './GetCodeBlock';
+import RegBlockPricing from './RegBlockPricing';
 
 const RegistrationFormMobile = () => {
   const [name, setName] = useState('');
@@ -80,28 +82,31 @@ const RegistrationFormMobile = () => {
         <div className='text-xs font-medium text-slate-500 uppercase'>
           Registration Code*
         </div>
-        <input
-          name='regCode'
-          value={regCode}
-          onChange={(e) => setRegCode(e.target.value)}
-          type='text'
-          className='w-full'
-        />
+        <div className='relative'>
+          <input
+            name='regCode'
+            value={regCode}
+            onChange={(e) => setRegCode(e.target.value)}
+            type='text'
+            className='w-full placeholder:text-sm'
+            placeholder='No code? See below.'
+          />
+          <div className='absolute right-4 top-2 cursor-pointer'>
+            <span
+              className={`font-bold uppercase ${
+                regCode ? 'text-ap-darkblue' : 'text-white'
+              } text-sm`}
+            >
+              Apply
+            </span>
+          </div>
+        </div>
       </div>
-      <div className='flex flex-col md:flex-row items-center gap-4 mt-3'>
-        <button className='bg-ap-yellow rounded-md w-full'>
-          <div className='text-slate-800 font-oswald uppercase text-lg font-bold py-3 px-6 tracking-widest'>
-            Register
-          </div>
-        </button>
-        <button className='bg-ap-yellow rounded-md w-full'>
-          <div className='text-slate-800 font-oswald uppercase text-lg font-bold py-3 px-6 tracking-widest'>
-            Register
-          </div>
-        </button>
-        <div className='text-slate-500 text-sm'>
-          By clicking REGISTER you agree to accept our Event Terms and
-          Conditions.
+      <div className='flex flex-col md:flex-row items-center gap-4 mt-3 w-full'>
+        {regCode ? <RegBlockPricing regCode={regCode} /> : <GetCodeBlock />}
+        <div className='text-slate-600 text-xs text-center mt-5'>
+          By clicking GET CODE or REGISTER you agree to accept our{' '}
+          <u>Event Terms and Conditions</u>.
         </div>
       </div>
     </form>
