@@ -1,11 +1,9 @@
 import Link from 'next/link';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import GetCodeBlock from './GetCodeBlock';
 import RegBlockPricing from './RegBlockPricing';
-import { API, graphqlOperation } from 'aws-amplify';
-import { getAPS } from '../../src/graphql/queries';
 
-const RegistrationFormDesktop = () => {
+const RegistrationFormDesktop = ({ codes }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
@@ -13,23 +11,31 @@ const RegistrationFormDesktop = () => {
   const [company, setCompany] = useState('');
   const [regCode, setRegCode] = useState('');
   const [startCounter, setStartCounter] = useState(false);
-  const [isValid, setIsValid] = useState(false);
-  const [codes, setCodes] = useState([]);
+  const [isValid, setIsValid] = useState(undefined);
 
-  useEffect(() => {
-    const getAllCodes = async () => {
-      const allCodes = await API.graphql(
-        graphqlOperation(getAPS, { id: '76fe4980-a8d8-485c-9747-93b20cb08bfd' })
-      );
-      console.log(allCodes);
-      const { codes } = allCodes.data.getAPS;
-      for (let c in codes) {
-        setCodes((prev) => [...prev, codes[c].code.toUpperCase()]);
-      }
-    };
+  const checkRegCode = async () => {
+    const check = await codes.includes(regCode);
+    if (check) {
+      setIsValid(true);
+      setStartCounter(true);
+    } else {
+      setIsValid(false);
+    }
+  };
 
-    getAllCodes();
-  }, []);
+  const validateText = () => {
+    if (isValid === undefined) {
+      return 'Apply';
+    }
+
+    if (isValid === true) {
+      return 'PASS';
+    }
+
+    if (isValid === false) {
+      return 'FAIL';
+    }
+  };
 
   return (
     <div className='p-0'>
@@ -117,7 +123,10 @@ const RegistrationFormDesktop = () => {
                 <input
                   name='regCode'
                   value={regCode}
-                  onChange={(e) => setRegCode(e.target.value)}
+                  onChange={(e) => {
+                    setRegCode(e.target.value.toUpperCase());
+                    setIsValid(undefined);
+                  }}
                   type='text'
                   className='w-full placeholder:text-sm'
                   placeholder='No code? See below.'
@@ -127,16 +136,20 @@ const RegistrationFormDesktop = () => {
                     className={`font-bold uppercase ${
                       regCode ? 'text-ap-darkblue' : 'text-white'
                     } text-sm`}
-                    onClick={() => console.log(codes)}
+                    onClick={() => checkRegCode()}
                   >
-                    Apply
+                    {validateText()}
                   </span>
                 </div>
               </div>
             </div>
             <div className='grid grid-cols-2 items-center mt-6'>
               <GetCodeBlock regCode={regCode} />
-              <RegBlockPricing regCode={regCode} startCounter={startCounter} />
+              <RegBlockPricing
+                regCode={regCode}
+                startCounter={startCounter}
+                resetCounter={isValid}
+              />
             </div>
             <div className='text-slate-600 text-xs text-center mt-4'>
               By clicking GET CODE or REGISTER you agree to accept our

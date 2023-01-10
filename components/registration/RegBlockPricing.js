@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { useCountUp } from 'react-countup';
 
-const RegBlockPricing = ({ regCode, startCounter }) => {
+const RegBlockPricing = ({ regCode, startCounter, resetCounter }) => {
   const countUpRef = useRef(null);
   const { start, pauseResume, reset, update } = useCountUp({
     ref: countUpRef,
@@ -16,6 +16,16 @@ const RegBlockPricing = ({ regCode, startCounter }) => {
       start();
     }
   }, [startCounter]);
+
+  useEffect(() => {
+    if (resetCounter === undefined) {
+      update(799);
+    }
+
+    if (resetCounter) {
+      start();
+    }
+  }, [resetCounter]);
 
   return (
     <div

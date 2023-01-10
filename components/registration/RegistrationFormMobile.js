@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import GetCodeBlock from './GetCodeBlock';
 import RegBlockPricing from './RegBlockPricing';
 
-const RegistrationFormMobile = () => {
+const RegistrationFormMobile = ({ codes }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
@@ -10,6 +10,31 @@ const RegistrationFormMobile = () => {
   const [company, setCompany] = useState('');
   const [regCode, setRegCode] = useState('');
   const [startCounter, setStartCounter] = useState(false);
+  const [isValid, setIsValid] = useState(undefined);
+
+  const checkRegCode = async () => {
+    const check = await codes.includes(regCode);
+    if (check) {
+      setIsValid(true);
+      setStartCounter(true);
+    } else {
+      setIsValid(false);
+    }
+  };
+
+  const validateText = () => {
+    if (isValid === undefined) {
+      return 'Apply';
+    }
+
+    if (isValid === true) {
+      return 'PASS';
+    }
+
+    if (isValid === false) {
+      return 'FAIL';
+    }
+  };
 
   return (
     <form className='grid lg:grid-cols-1 gap-y-4 md:gap-y-6 px-8 xl:px-12'>
@@ -87,7 +112,10 @@ const RegistrationFormMobile = () => {
           <input
             name='regCode'
             value={regCode}
-            onChange={(e) => setRegCode(e.target.value)}
+            onChange={(e) => {
+              setRegCode(e.target.value.toUpperCase());
+              setIsValid(undefined);
+            }}
             type='text'
             className='w-full placeholder:text-sm'
             placeholder='No code? See below.'
@@ -97,16 +125,20 @@ const RegistrationFormMobile = () => {
               className={`font-bold uppercase ${
                 regCode ? 'text-ap-darkblue' : 'text-white'
               } text-sm`}
-              onClick={() => setStartCounter(true)}
+              onClick={() => checkRegCode()}
             >
-              Apply
+              {validateText()}
             </span>
           </div>
         </div>
       </div>
       <div className='flex flex-col md:flex-row items-center gap-4 mt-3 w-full'>
         {regCode ? (
-          <RegBlockPricing regCode={regCode} startCounter={startCounter} />
+          <RegBlockPricing
+            regCode={regCode}
+            startCounter={startCounter}
+            resetCounter={isValid}
+          />
         ) : (
           <GetCodeBlock />
         )}
