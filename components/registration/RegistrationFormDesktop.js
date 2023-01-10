@@ -1,7 +1,9 @@
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import GetCodeBlock from './GetCodeBlock';
 import RegBlockPricing from './RegBlockPricing';
+import { API, graphqlOperation } from 'aws-amplify';
+import { getAPS } from '../../src/graphql/queries';
 
 const RegistrationFormDesktop = () => {
   const [name, setName] = useState('');
@@ -11,6 +13,23 @@ const RegistrationFormDesktop = () => {
   const [company, setCompany] = useState('');
   const [regCode, setRegCode] = useState('');
   const [startCounter, setStartCounter] = useState(false);
+  const [isValid, setIsValid] = useState(false);
+  const [codes, setCodes] = useState([]);
+
+  useEffect(() => {
+    const getAllCodes = async () => {
+      const allCodes = await API.graphql(
+        graphqlOperation(getAPS, { id: '76fe4980-a8d8-485c-9747-93b20cb08bfd' })
+      );
+      console.log(allCodes);
+      const { codes } = allCodes.data.getAPS;
+      for (let c in codes) {
+        setCodes((prev) => [...prev, codes[c].code.toUpperCase()]);
+      }
+    };
+
+    getAllCodes();
+  }, []);
 
   return (
     <div className='p-0'>
@@ -108,7 +127,7 @@ const RegistrationFormDesktop = () => {
                     className={`font-bold uppercase ${
                       regCode ? 'text-ap-darkblue' : 'text-white'
                     } text-sm`}
-                    onClick={() => setStartCounter(true)}
+                    onClick={() => console.log(codes)}
                   >
                     Apply
                   </span>

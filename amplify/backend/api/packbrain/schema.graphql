@@ -1,0 +1,59 @@
+type RegistrationCode {
+  code: String
+}
+
+type LessonSource {
+  name: String
+  link: String
+}
+
+enum ModuleType {
+  LESSON
+  LOTM
+  MICROLESSON
+}
+
+type Lesson @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  title: String!
+  type: ModuleType
+  media: String!
+  content: String
+  sources: [LessonSource]
+}
+
+type APS @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  Registrants: [User] @hasMany(indexName: "byAPS", fields: ["id"])
+  Sponsors: [Company] @hasMany(indexName: "byAPS", fields: ["id"])
+  year: Int!
+  codes: [RegistrationCode]
+}
+
+type Company @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String!
+  Employees: [User] @hasMany(indexName: "byCompany", fields: ["id"])
+  website: String
+  email: String
+  phone: String
+  street_1: String
+  street_2: String
+  city: String
+  state: String
+  zip: String
+  apsID: ID @index(name: "byAPS")
+}
+
+type User @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String!
+  title: String!
+  company: String
+  email: String
+  office: String
+  cell: String
+  companyID: ID @index(name: "byCompany")
+  apsID: ID @index(name: "byAPS")
+}
+ 
