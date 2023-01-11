@@ -14,6 +14,7 @@
     "@reduxjs/toolkit": "^1.9.0",
     "@sanity/client": "^3.4.1",
     "aws-amplify": "^5.0.9",
+    "aws-sdk": "^2.1292.0",
     "axios": "^1.2.0",
     "framer-motion": "^7.6.15",
     "next": "13.0.4",

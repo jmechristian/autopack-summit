@@ -18,5 +18,12 @@ export type AmplifyDependentResourcesAttributes = {
             "AppClientIDWeb": "string",
             "AppClientID": "string"
         }
+    },
+    "analytics": {
+        "autopacksummit": {
+            "Region": "string",
+            "Id": "string",
+            "appName": "string"
+        }
     }
 }

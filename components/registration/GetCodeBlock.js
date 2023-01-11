@@ -1,4 +1,5 @@
 import React from 'react';
+import { Analytics } from 'aws-amplify';
 
 const GetCodeBlock = ({ regCode }) => {
   return (
@@ -14,6 +15,12 @@ const GetCodeBlock = ({ regCode }) => {
           regCode ? 'bg-slate-500' : 'bg-ap-blue'
         } rounded-md w-full mt-2`}
         disabled={regCode ? true : false}
+        onClick={() =>
+          Analytics.record({
+            name: 'code-request',
+            properties: { user: 'Jamie' },
+          })
+        }
       >
         <div className='text-white uppercase text-sm lg:text-base font-bold py-3 px-6 tracking-widest'>
           Get Code
