@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/sendEmail": {
+      "name": "/sendEmail",
+      "lambdaFunction": "sendRegCodeAPS",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

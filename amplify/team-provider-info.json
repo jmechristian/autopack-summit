@@ -28,6 +28,13 @@
           "Id": "196d27043c7a4001aa96a55edb90d78e",
           "Region": "us-east-1"
         }
+      },
+      "function": {
+        "sendRegCodeAPS": {
+          "deploymentBucketName": "amplify-packbrain-staging-54032-deployment",
+          "s3Key": "amplify-builds/sendRegCodeAPS-5758434b4d3252564879-build.zip",
+          "sesEmail": "jamie@packagingschool.com"
+        }
       }
     }
   }

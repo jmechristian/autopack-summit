@@ -13,6 +13,22 @@ const RegistrationFormDesktop = ({ codes }) => {
   const [startCounter, setStartCounter] = useState(false);
   const [isValid, setIsValid] = useState(undefined);
 
+  let formData = {
+    name: name,
+    email: email,
+    phone: phone,
+    title: title,
+    company: company,
+  };
+
+  const clearForm = () => {
+    setName('');
+    setEmail('');
+    setPhone('');
+    setTitle('');
+    setCompany('');
+  };
+
   const checkRegCode = async () => {
     const check = await codes.includes(regCode);
     if (check) {
@@ -144,7 +160,13 @@ const RegistrationFormDesktop = ({ codes }) => {
               </div>
             </div>
             <div className='grid grid-cols-2 items-center mt-6'>
-              <GetCodeBlock regCode={regCode} />
+              <GetCodeBlock
+                regCode={regCode}
+                clear={clearForm}
+                name={name}
+                title={title}
+                company={company}
+              />
               <RegBlockPricing
                 regCode={regCode}
                 startCounter={startCounter}
