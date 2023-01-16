@@ -1,7 +1,15 @@
 import React from 'react';
 import { sendEmail } from '../../util/sendEmail';
 
-const GetCodeBlock = ({ regCode, clear, name, title, company }) => {
+const GetCodeBlock = ({
+  regCode,
+  clear,
+  name,
+  title,
+  company,
+  email,
+  phone,
+}) => {
   return (
     <div className='flex flex-col gap-3 items-center p-6 text-center'>
       <p className='text-lg font-medium leading-6 text-gray-900 text-center'>
@@ -16,8 +24,16 @@ const GetCodeBlock = ({ regCode, clear, name, title, company }) => {
         } rounded-md w-full mt-2`}
         disabled={regCode ? true : false}
         onClick={(event) => {
-          sendEmail(event, '/sendEmail', name, title, company);
-          clear();
+          sendEmail(
+            event,
+            '/sendEmailFn-staging',
+            name,
+            title,
+            company,
+            email,
+            phone
+          );
+          // clear();
         }}
         // onClick={() => {
         //   console.log(data);

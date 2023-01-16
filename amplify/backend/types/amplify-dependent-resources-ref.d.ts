@@ -5,7 +5,7 @@ export type AmplifyDependentResourcesAttributes = {
             "GraphQLAPIIdOutput": "string",
             "GraphQLAPIEndpointOutput": "string"
         },
-        "packbrainapi": {
+        "regForm": {
             "RootUrl": "string",
             "ApiName": "string",
             "ApiId": "string"
@@ -32,7 +32,13 @@ export type AmplifyDependentResourcesAttributes = {
         }
     },
     "function": {
-        "sendRegCodeAPS": {
+        "sendEmailFn": {
+            "Name": "string",
+            "Arn": "string",
+            "Region": "string",
+            "LambdaExecutionRole": "string"
+        },
+        "approveRegFn": {
             "Name": "string",
             "Arn": "string",
             "Region": "string",

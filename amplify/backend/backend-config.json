@@ -1,4 +1,10 @@
 {
+  "analytics": {
+    "autopacksummit": {
+      "providerPlugin": "awscloudformation",
+      "service": "Pinpoint"
+    }
+  },
   "api": {
     "packbrain": {
       "dependsOn": [],
@@ -21,13 +27,13 @@
       "providerPlugin": "awscloudformation",
       "service": "AppSync"
     },
-    "packbrainapi": {
+    "regForm": {
       "service": "API Gateway",
       "providerPlugin": "awscloudformation",
       "dependsOn": [
         {
           "category": "function",
-          "resourceName": "sendRegCodeAPS",
+          "resourceName": "sendEmailFn",
           "attributes": [
             "Name",
             "Arn"
@@ -71,13 +77,73 @@
       "service": "Cognito"
     }
   },
+  "function": {
+    "sendEmailFn": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "approveRegFn": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
   "hosting": {
     "amplifyhosting": {
       "service": "amplifyhosting",
       "type": "cicd"
     }
   },
+  "notifications": {
+    "autopacksummit": {
+      "service": "Pinpoint",
+      "channels": [
+        "Email"
+      ]
+    }
+  },
   "parameters": {
+    "AMPLIFY_analytics_Pinpoint_Id": {
+      "usedBy": [
+        {
+          "category": "analytics",
+          "resourceName": "Pinpoint"
+        }
+      ]
+    },
+    "AMPLIFY_analytics_Pinpoint_Name": {
+      "usedBy": [
+        {
+          "category": "analytics",
+          "resourceName": "Pinpoint"
+        }
+      ]
+    },
+    "AMPLIFY_analytics_Pinpoint_Region": {
+      "usedBy": [
+        {
+          "category": "analytics",
+          "resourceName": "Pinpoint"
+        }
+      ]
+    },
+    "AMPLIFY_function_sendRegCodeAPS_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "sendRegCodeAPS"
+        }
+      ]
+    },
+    "AMPLIFY_function_sendRegCodeAPS_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "sendRegCodeAPS"
+        }
+      ]
+    },
     "AMPLIFY_hosting_amplifyhosting_appId": {
       "usedBy": [
         {
@@ -93,26 +159,29 @@
           "resourceName": "amplifyhosting"
         }
       ]
-    }
-  },
-  "analytics": {
-    "autopacksummit": {
-      "service": "Pinpoint",
-      "providerPlugin": "awscloudformation"
-    }
-  },
-  "function": {
-    "sendRegCodeAPS": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
-    }
-  },
-  "notifications": {
-    "autopacksummit": {
-      "service": "Pinpoint",
-      "channels": [
-        "Email"
+    },
+    "AMPLIFY_notifications_Pinpoint_Id": {
+      "usedBy": [
+        {
+          "category": "notifications",
+          "resourceName": "Pinpoint"
+        }
+      ]
+    },
+    "AMPLIFY_notifications_Pinpoint_Name": {
+      "usedBy": [
+        {
+          "category": "notifications",
+          "resourceName": "Pinpoint"
+        }
+      ]
+    },
+    "AMPLIFY_notifications_Pinpoint_Region": {
+      "usedBy": [
+        {
+          "category": "notifications",
+          "resourceName": "Pinpoint"
+        }
       ]
     }
   }

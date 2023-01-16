@@ -9,8 +9,8 @@ const awsmobile = {
     "aws_appsync_apiKey": "da2-e5j64foa3jay5kmhsj763maqla",
     "aws_cloud_logic_custom": [
         {
-            "name": "packbrainapi",
-            "endpoint": "https://hcvy99mrxa.execute-api.us-east-1.amazonaws.com/staging",
+            "name": "regForm",
+            "endpoint": "https://lp2armzy69.execute-api.us-east-1.amazonaws.com/staging",
             "region": "us-east-1"
         }
     ],

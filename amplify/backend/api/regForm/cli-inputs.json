@@ -1,9 +1,9 @@
 {
   "version": 1,
   "paths": {
-    "/sendEmail": {
-      "name": "/sendEmail",
-      "lambdaFunction": "sendRegCodeAPS",
+    "/sendRegForm": {
+      "name": "/sendRegForm",
+      "lambdaFunction": "sendEmailFn",
       "permissions": {
         "setting": "open"
       }

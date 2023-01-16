@@ -8,13 +8,14 @@ const ModuleType = {
   "MICROLESSON": "MICROLESSON"
 };
 
-const { Lesson, APS, User, Company, RegistrationCode, LessonSource } = initSchema(schema);
+const { Lesson, APS, User, Company, APSUser, RegistrationCode, LessonSource } = initSchema(schema);
 
 export {
   Lesson,
   APS,
   User,
   Company,
+  APSUser,
   ModuleType,
   RegistrationCode,
   LessonSource

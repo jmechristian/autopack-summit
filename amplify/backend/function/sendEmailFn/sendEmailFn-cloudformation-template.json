@@ -15,9 +15,6 @@
     },
     "s3Key": {
       "Type": "String"
-    },
-    "sesEmail": {
-      "Type": "String"
     }
   },
   "Conditions": {
@@ -50,12 +47,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "sendRegCodeAPS",
+            "sendEmailFn",
             {
               "Fn::Join": [
                 "",
                 [
-                  "sendRegCodeAPS",
+                  "sendEmailFn",
                   "-",
                   {
                     "Ref": "env"
@@ -72,9 +69,6 @@
             },
             "REGION": {
               "Ref": "AWS::Region"
-            },
-            "SES_EMAIL": {
-              "Ref": "sesEmail"
             }
           }
         },
@@ -95,12 +89,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "packbrainLambdaRole4224c21d",
+            "packbrainLambdaRole7cb1b88f",
             {
               "Fn::Join": [
                 "",
                 [
-                  "packbrainLambdaRole4224c21d",
+                  "packbrainLambdaRole7cb1b88f",
                   "-",
                   {
                     "Ref": "env"
@@ -163,13 +157,6 @@
                     "lambda": {
                       "Ref": "LambdaFunction"
                     }
-                  },
-                  {
-                    "Action": [
-                      "ses:SendEmail"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "arn:aws:ses:us-east-1:552673436980:identity/*"
                   }
                 ]
               }

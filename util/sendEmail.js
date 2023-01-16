@@ -1,8 +1,8 @@
-export const sendEmail = (e, endPoint, name, title, company) => {
+export const sendEmail = (e, endPoint, name, title, company, email, phone) => {
   e.preventDefault();
 
   fetch(
-    `https://hcvy99mrxa.execute-api.us-east-1.amazonaws.com/staging${endPoint}`,
+    'https://g1v98zrm4f.execute-api.us-east-1.amazonaws.com/sendEmailtoLambda',
     {
       method: 'POST',
       headers: {
@@ -12,8 +12,10 @@ export const sendEmail = (e, endPoint, name, title, company) => {
       body: JSON.stringify({
         sender: 'jamie@packagingschool.com',
         name: name,
-        company: company,
         title: title,
+        company: company,
+        email: email,
+        phone: phone,
       }),
     }
   );

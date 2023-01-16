@@ -30,10 +30,17 @@
         }
       },
       "function": {
-        "sendRegCodeAPS": {
+        "APSRegistrationHandler": {
           "deploymentBucketName": "amplify-packbrain-staging-54032-deployment",
-          "s3Key": "amplify-builds/sendRegCodeAPS-5758434b4d3252564879-build.zip",
-          "sesEmail": "jamie@packagingschool.com"
+          "s3Key": "amplify-builds/APSRegistrationHandler-616979564b4364425a43-build.zip"
+        },
+        "sendEmailFn": {
+          "deploymentBucketName": "amplify-packbrain-staging-54032-deployment",
+          "s3Key": "amplify-builds/sendEmailFn-33347867302b41577a68-build.zip"
+        },
+        "approveRegFn": {
+          "deploymentBucketName": "amplify-packbrain-staging-54032-deployment",
+          "s3Key": "amplify-builds/approveRegFn-6579744b79577662504a-build.zip"
         }
       }
     }

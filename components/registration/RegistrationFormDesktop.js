@@ -166,6 +166,8 @@ const RegistrationFormDesktop = ({ codes }) => {
                 name={name}
                 title={title}
                 company={company}
+                email={email}
+                phone={phone}
               />
               <RegBlockPricing
                 regCode={regCode}
