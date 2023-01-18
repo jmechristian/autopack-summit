@@ -15,7 +15,6 @@
     "@sanity/client": "^3.4.1",
     "aws-amplify": "^5.0.9",
     "aws-sdk": "^2.1292.0",
-    "axios": "^1.2.2",
     "framer-motion": "^7.6.15",
     "next": "13.0.4",
     "next-sanity": "^3.0.2",
