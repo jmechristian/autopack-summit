@@ -33,7 +33,7 @@ export type AmplifyDependentResourcesAttributes = {
             "Region": "string",
             "LambdaExecutionRole": "string"
         },
-        "approveRegFn": {
+        "addNewUser": {
             "Name": "string",
             "Arn": "string",
             "Region": "string",

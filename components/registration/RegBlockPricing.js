@@ -1,7 +1,19 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { useCountUp } from 'react-countup';
+import { sendEmail } from '../../util/sendEmail';
 
-const RegBlockPricing = ({ regCode, startCounter, resetCounter }) => {
+const RegBlockPricing = ({
+  regCode,
+  startCounter,
+  resetCounter,
+  company,
+  name,
+  title,
+  email,
+  phone,
+  isValid,
+  clear,
+}) => {
   const countUpRef = useRef(null);
   const { start, pauseResume, reset, update } = useCountUp({
     ref: countUpRef,
@@ -10,6 +22,9 @@ const RegBlockPricing = ({ regCode, startCounter, resetCounter }) => {
     duration: 1,
     startOnMount: false,
   });
+
+  const [errors, setErrors] = useState({ message: '', isError: false });
+  const [formIsValid, setFormIsValid] = useState(false);
 
   useEffect(() => {
     if (startCounter) {
@@ -26,6 +41,14 @@ const RegBlockPricing = ({ regCode, startCounter, resetCounter }) => {
       start();
     }
   }, [resetCounter]);
+
+  useEffect(() => {
+    if (name && company && title && phone && email && isValid) {
+      setFormIsValid(true);
+    } else {
+      setFormIsValid(false);
+    }
+  }, [name, company, title, phone, email, isValid]);
 
   return (
     <div
@@ -47,9 +70,13 @@ const RegBlockPricing = ({ regCode, startCounter, resetCounter }) => {
       </div>
       <button
         className={`${
-          regCode ? 'bg-ap-yellow' : 'bg-slate-400'
+          regCode && formIsValid ? 'bg-ap-yellow' : 'bg-slate-400'
         } rounded-md w-full mt-2`}
-        disabled={regCode ? false : true}
+        disabled={!regCode || !formIsValid}
+        onClick={(event) => {
+          sendEmail(event, name, title, company, email, phone);
+          clear();
+        }}
       >
         <div
           className={`${

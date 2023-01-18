@@ -1,8 +1,9 @@
-const aws = require('aws-sdk');
-const nodemailer = require('nodemailer');
+var aws = require('aws-sdk');
+var ses = new aws.SES({ region: 'us-east-1' });
+exports.handler = async function (event) {
+  const body = JSON.parse(event.body);
 
-exports.handler = async (event) => {
-  var myvar =
+  const myVar =
     '<!DOCTYPE html>' +
     '<html' +
     '  lang="en"' +
@@ -181,7 +182,7 @@ exports.handler = async (event) => {
     '                        font-weight: bold;' +
     '                      "' +
     '                    >' +
-    `                      ${event.body.name}` +
+    `                      ${body.name}` +
     '                    </p>' +
     '                  </div>' +
     '                </div>' +
@@ -243,7 +244,7 @@ exports.handler = async (event) => {
     '                        font-weight: bold;' +
     '                      "' +
     '                    >' +
-    `                      ${event.body.email}` +
+    `                      ${body.email}` +
     '                    </p>' +
     '                  </div>' +
     '                </div>' +
@@ -305,7 +306,7 @@ exports.handler = async (event) => {
     '                        font-weight: bold;' +
     '                      "' +
     '                    >' +
-    `                      ${event.body.phone}` +
+    `                      ${body.phone}` +
     '                    </p>' +
     '                  </div>' +
     '                </div>' +
@@ -367,7 +368,7 @@ exports.handler = async (event) => {
     '                        font-weight: bold;' +
     '                      "' +
     '                    >' +
-    `                      ${event.body.company}` +
+    `                      ${body.company}` +
     '                    </p>' +
     '                  </div>' +
     '                </div>' +
@@ -429,7 +430,7 @@ exports.handler = async (event) => {
     '                        font-weight: bold;' +
     '                      "' +
     '                    >' +
-    `                      ${event.body.title}` +
+    `                      ${body.title}` +
     '                    </p>' +
     '                  </div>' +
     '                </div>' +
@@ -484,7 +485,7 @@ exports.handler = async (event) => {
     '                      "' +
     '                    >' +
     '                      <a' +
-    '                        href="https://lp2armzy69.execute-api.us-east-1.amazonaws.com/staging/approveRegFn-staging"' +
+    `                        href="https://j0t90n9gog.execute-api.us-east-1.amazonaws.com/default/handleRegistrationFunction?email=${body.email}&name=${body.name}&company=${body.company}&title=${body.title}&phone=${body.phone}"` +
     '                        style="' +
     '                          color: white;' +
     '                          font-weight: bold;' +
@@ -571,17 +572,22 @@ exports.handler = async (event) => {
     '  </body>' +
     '</html>';
 
-  let transporter = nodemailer.createTransport({
-    SES: new aws.SES({ region: 'us-east-1', apiVersion: '2010-12-01' }),
-  });
+  var params = {
+    Destination: {
+      ToAddresses: ['jamie@packagingschool.com'],
+    },
+    Message: {
+      Body: {
+        Text: { Data: 'Test' },
+        Html: { Data: myVar },
+      },
 
-  let emailProps = await transporter.sendMail({
-    from: 'jamie@packagingschool.com',
-    to: 'jamie@packagingschool.com',
-    subject: 'New AutoPackSummit OEM Registration',
-    text: 'New OEM Registration Submitted.',
-    html: myvar,
-  });
+      Subject: { Data: `APS Registration From ${body.name}` },
+    },
+    Source: 'jamie@packagingschool.com',
+  };
 
-  return emailProps;
+  const email = await ses.sendEmail(params).promise();
+
+  return email, { status: 200 };
 };

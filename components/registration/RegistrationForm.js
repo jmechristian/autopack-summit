@@ -7,27 +7,39 @@ import RegistrationFormMobile from './RegistrationFormMobile';
 const RegistrationForm = () => {
   const [codes, setCodes] = useState([]);
 
+  const getCodesQuery = /* GraphQL */ `
+    query MyQuery {
+      getAPS(id: "76fe4980-a8d8-485c-9747-93b20cb08bfd") {
+        codes {
+          code
+        }
+      }
+    }
+  `;
+
   useEffect(() => {
-    const getAllCodes = async () => {
-      const allCodes = await API.graphql(
-        graphqlOperation(getAPS, { id: '76fe4980-a8d8-485c-9747-93b20cb08bfd' })
-      );
+    getAllCodes();
+  }, []);
+
+  const getAllCodes = async () => {
+    try {
+      const allCodes = await API.graphql(graphqlOperation(getCodesQuery));
       const { codes } = allCodes.data.getAPS;
       for (let c in codes) {
         setCodes((prev) => [...prev, codes[c].code.toUpperCase()]);
       }
-    };
-
-    getAllCodes();
-  }, []);
+    } catch (error) {
+      console.log('error', error);
+    }
+  };
 
   return (
     <>
       <div className='lg:hidden'>
-        <RegistrationFormMobile codes={codes} />
+        <RegistrationFormMobile codes={codes && codes} />
       </div>
       <div className='hidden lg:block'>
-        <RegistrationFormDesktop codes={codes} />
+        <RegistrationFormDesktop codes={codes && codes} />
       </div>
     </>
   );

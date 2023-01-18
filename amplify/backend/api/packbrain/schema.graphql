@@ -13,7 +13,7 @@ enum ModuleType {
   MICROLESSON
 }
 
-type Lesson @model @auth(rules: [{allow: public}]) {
+type Lesson @model @auth(rules: [{ allow: public }]) {
   id: ID!
   title: String!
   type: ModuleType
@@ -22,7 +22,7 @@ type Lesson @model @auth(rules: [{allow: public}]) {
   sources: [LessonSource]
 }
 
-type APS @model @auth(rules: [{allow: public}]) {
+type APS @model @auth(rules: [{ allow: public }]) {
   id: ID!
   Registrants: [User] @manyToMany(relationName: "APSUser")
   Sponsors: [Company] @hasMany(indexName: "byAPS", fields: ["id"])
@@ -30,7 +30,7 @@ type APS @model @auth(rules: [{allow: public}]) {
   codes: [RegistrationCode]
 }
 
-type Company @model @auth(rules: [{allow: public}]) {
+type Company @model @auth(rules: [{ allow: public }]) {
   id: ID!
   name: String!
   Employees: [User] @hasMany(indexName: "byCompany", fields: ["id"])
@@ -45,15 +45,14 @@ type Company @model @auth(rules: [{allow: public}]) {
   apsID: ID @index(name: "byAPS")
 }
 
-type User @model @auth(rules: [{allow: public}]) {
+type User @model @auth(rules: [{ allow: public }]) {
   id: ID!
-  name: String!
+  name: String! @index(name: "userByName")
   title: String!
   company: String
-  email: String
+  email: String @index(name: "userByEmail")
   office: String
   cell: String
   companyID: ID @index(name: "byCompany")
   apss: [APS] @manyToMany(relationName: "APSUser")
 }
- 

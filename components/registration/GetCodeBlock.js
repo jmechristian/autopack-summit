@@ -33,12 +33,8 @@ const GetCodeBlock = ({
             email,
             phone
           );
-          // clear();
+          clear();
         }}
-        // onClick={() => {
-        //   console.log(data);
-        //   clear();
-        // }}
       >
         <div className='text-white uppercase text-sm lg:text-base font-bold py-3 px-6 tracking-widest'>
           Get Code

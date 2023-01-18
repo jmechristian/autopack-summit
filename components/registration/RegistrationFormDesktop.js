@@ -13,14 +13,6 @@ const RegistrationFormDesktop = ({ codes }) => {
   const [startCounter, setStartCounter] = useState(false);
   const [isValid, setIsValid] = useState(undefined);
 
-  let formData = {
-    name: name,
-    email: email,
-    phone: phone,
-    title: title,
-    company: company,
-  };
-
   const clearForm = () => {
     setName('');
     setEmail('');
@@ -173,6 +165,13 @@ const RegistrationFormDesktop = ({ codes }) => {
                 regCode={regCode}
                 startCounter={startCounter}
                 resetCounter={isValid}
+                clear={clearForm}
+                name={name}
+                title={title}
+                company={company}
+                email={email}
+                phone={phone}
+                isValid={isValid}
               />
             </div>
             <div className='text-slate-600 text-xs text-center mt-4'>

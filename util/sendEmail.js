@@ -1,4 +1,4 @@
-export const sendEmail = (e, endPoint, name, title, company, email, phone) => {
+export const sendEmail = (e, name, title, company, email, phone) => {
   e.preventDefault();
 
   fetch(
@@ -10,7 +10,6 @@ export const sendEmail = (e, endPoint, name, title, company, email, phone) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        sender: 'jamie@packagingschool.com',
         name,
         title,
         company,

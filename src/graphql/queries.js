@@ -90,14 +90,32 @@ export const getAPS = /* GraphQL */ `
       Registrants {
         items {
           id
-          name
-          title
-          company
-          email
-          office
-          cell
-          companyID
-          apsID
+          aPSId
+          userId
+          aPS {
+            id
+            year
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          user {
+            id
+            name
+            title
+            company
+            email
+            office
+            cell
+            companyID
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
           createdAt
           updatedAt
           _version
@@ -153,14 +171,8 @@ export const listAPS = /* GraphQL */ `
         Registrants {
           items {
             id
-            name
-            title
-            company
-            email
-            office
-            cell
-            companyID
-            apsID
+            aPSId
+            userId
             createdAt
             updatedAt
             _version
@@ -225,14 +237,8 @@ export const syncAPS = /* GraphQL */ `
         Registrants {
           items {
             id
-            name
-            title
-            company
-            email
-            office
-            cell
-            companyID
-            apsID
+            aPSId
+            userId
             createdAt
             updatedAt
             _version
@@ -294,7 +300,10 @@ export const getCompany = /* GraphQL */ `
           office
           cell
           companyID
-          apsID
+          apss {
+            nextToken
+            startedAt
+          }
           createdAt
           updatedAt
           _version
@@ -341,7 +350,6 @@ export const listCompanies = /* GraphQL */ `
             office
             cell
             companyID
-            apsID
             createdAt
             updatedAt
             _version
@@ -397,7 +405,6 @@ export const syncCompanies = /* GraphQL */ `
             office
             cell
             companyID
-            apsID
             createdAt
             updatedAt
             _version
@@ -455,7 +462,6 @@ export const companiesByApsID = /* GraphQL */ `
             office
             cell
             companyID
-            apsID
             createdAt
             updatedAt
             _version
@@ -496,7 +502,44 @@ export const getUser = /* GraphQL */ `
       office
       cell
       companyID
-      apsID
+      apss {
+        items {
+          id
+          aPSId
+          userId
+          aPS {
+            id
+            year
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          user {
+            id
+            name
+            title
+            company
+            email
+            office
+            cell
+            companyID
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        nextToken
+        startedAt
+      }
       createdAt
       updatedAt
       _version
@@ -521,7 +564,20 @@ export const listUsers = /* GraphQL */ `
         office
         cell
         companyID
-        apsID
+        apss {
+          items {
+            id
+            aPSId
+            userId
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
         createdAt
         updatedAt
         _version
@@ -555,7 +611,118 @@ export const syncUsers = /* GraphQL */ `
         office
         cell
         companyID
-        apsID
+        apss {
+          items {
+            id
+            aPSId
+            userId
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const usersByName = /* GraphQL */ `
+  query UsersByName(
+    $name: String!
+    $sortDirection: ModelSortDirection
+    $filter: ModelUserFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    usersByName(
+      name: $name
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        name
+        title
+        company
+        email
+        office
+        cell
+        companyID
+        apss {
+          items {
+            id
+            aPSId
+            userId
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const usersByEmail = /* GraphQL */ `
+  query UsersByEmail(
+    $email: String!
+    $sortDirection: ModelSortDirection
+    $filter: ModelUserFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    usersByEmail(
+      email: $email
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        name
+        title
+        company
+        email
+        office
+        cell
+        companyID
+        apss {
+          items {
+            id
+            aPSId
+            userId
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
         createdAt
         updatedAt
         _version
@@ -591,7 +758,20 @@ export const usersByCompanyID = /* GraphQL */ `
         office
         cell
         companyID
-        apsID
+        apss {
+          items {
+            id
+            aPSId
+            userId
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
         createdAt
         updatedAt
         _version
@@ -603,22 +783,61 @@ export const usersByCompanyID = /* GraphQL */ `
     }
   }
 `;
-export const usersByApsID = /* GraphQL */ `
-  query UsersByApsID(
-    $apsID: ID!
-    $sortDirection: ModelSortDirection
-    $filter: ModelUserFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    usersByApsID(
-      apsID: $apsID
-      sortDirection: $sortDirection
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-    ) {
-      items {
+export const getAPSUser = /* GraphQL */ `
+  query GetAPSUser($id: ID!) {
+    getAPSUser(id: $id) {
+      id
+      aPSId
+      userId
+      aPS {
+        id
+        Registrants {
+          items {
+            id
+            aPSId
+            userId
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+        Sponsors {
+          items {
+            id
+            name
+            website
+            email
+            phone
+            street_1
+            street_2
+            city
+            state
+            zip
+            apsID
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+        year
+        codes {
+          code
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      user {
         id
         name
         title
@@ -627,7 +846,289 @@ export const usersByApsID = /* GraphQL */ `
         office
         cell
         companyID
-        apsID
+        apss {
+          items {
+            id
+            aPSId
+            userId
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const listAPSUsers = /* GraphQL */ `
+  query ListAPSUsers(
+    $filter: ModelAPSUserFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listAPSUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        aPSId
+        userId
+        aPS {
+          id
+          Registrants {
+            nextToken
+            startedAt
+          }
+          Sponsors {
+            nextToken
+            startedAt
+          }
+          year
+          codes {
+            code
+          }
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        user {
+          id
+          name
+          title
+          company
+          email
+          office
+          cell
+          companyID
+          apss {
+            nextToken
+            startedAt
+          }
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const syncAPSUsers = /* GraphQL */ `
+  query SyncAPSUsers(
+    $filter: ModelAPSUserFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncAPSUsers(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        aPSId
+        userId
+        aPS {
+          id
+          Registrants {
+            nextToken
+            startedAt
+          }
+          Sponsors {
+            nextToken
+            startedAt
+          }
+          year
+          codes {
+            code
+          }
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        user {
+          id
+          name
+          title
+          company
+          email
+          office
+          cell
+          companyID
+          apss {
+            nextToken
+            startedAt
+          }
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const aPSUsersByAPSId = /* GraphQL */ `
+  query APSUsersByAPSId(
+    $aPSId: ID!
+    $sortDirection: ModelSortDirection
+    $filter: ModelAPSUserFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    aPSUsersByAPSId(
+      aPSId: $aPSId
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        aPSId
+        userId
+        aPS {
+          id
+          Registrants {
+            nextToken
+            startedAt
+          }
+          Sponsors {
+            nextToken
+            startedAt
+          }
+          year
+          codes {
+            code
+          }
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        user {
+          id
+          name
+          title
+          company
+          email
+          office
+          cell
+          companyID
+          apss {
+            nextToken
+            startedAt
+          }
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const aPSUsersByUserId = /* GraphQL */ `
+  query APSUsersByUserId(
+    $userId: ID!
+    $sortDirection: ModelSortDirection
+    $filter: ModelAPSUserFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    aPSUsersByUserId(
+      userId: $userId
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        aPSId
+        userId
+        aPS {
+          id
+          Registrants {
+            nextToken
+            startedAt
+          }
+          Sponsors {
+            nextToken
+            startedAt
+          }
+          year
+          codes {
+            code
+          }
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        user {
+          id
+          name
+          title
+          company
+          email
+          office
+          cell
+          companyID
+          apss {
+            nextToken
+            startedAt
+          }
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
         createdAt
         updatedAt
         _version

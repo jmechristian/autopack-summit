@@ -295,6 +295,24 @@ export const schema = {
                 {
                     "type": "key",
                     "properties": {
+                        "name": "userByName",
+                        "fields": [
+                            "name"
+                        ]
+                    }
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "name": "userByEmail",
+                        "fields": [
+                            "email"
+                        ]
+                    }
+                },
+                {
+                    "type": "key",
+                    "properties": {
                         "name": "byCompany",
                         "fields": [
                             "companyID"
