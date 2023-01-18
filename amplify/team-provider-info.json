@@ -40,7 +40,11 @@
         },
         "addNewUser": {
           "deploymentBucketName": "amplify-packbrain-staging-54032-deployment",
-          "s3Key": "amplify-builds/addNewUser-5357502f675479316352-build.zip"
+          "s3Key": "amplify-builds/addNewUser-764b54334c69696d3575-build.zip"
+        },
+        "addAPSToUser": {
+          "deploymentBucketName": "amplify-packbrain-staging-54032-deployment",
+          "s3Key": "amplify-builds/addAPSToUser-4c365635554c53573037-build.zip"
         }
       }
     }

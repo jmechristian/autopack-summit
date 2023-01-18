@@ -5,13 +5,11 @@ const GRAPHQL_ENDPOINT =
 const GRAPHQL_API_KEY = 'da2-e5j64foa3jay5kmhsj763maqla';
 
 const query = /* GraphQL */ `
-  mutation CREATE_USER($input: CreateUserInput!) {
-    createUser(input: $input) {
+  mutation CreateAPSUser($input: CreateAPSUserInput!) {
+    createAPSUser(input: $input) {
       id
-      name
-      createdAt
-      company
-      email
+      aPSId
+      userId
     }
   }
 `;
@@ -24,11 +22,8 @@ exports.handler = async (event) => {
 
   const variables = {
     input: {
-      name: 'Hello, Todo!',
-      email: 'email',
-      company: 'company',
-      cell: 'phone',
-      title: 'title',
+      aPSId: '76fe4980-a8d8-485c-9747-93b20cb08bfd',
+      userId: '7c5a69a0-c5e1-4475-9141-56e8200dd7e0',
     },
   };
 
