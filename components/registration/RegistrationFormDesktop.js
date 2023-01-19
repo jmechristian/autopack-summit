@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import GetCodeBlock from './GetCodeBlock';
 import RegBlockPricing from './RegBlockPricing';
 
-const RegistrationFormDesktop = ({ codes }) => {
+const RegistrationFormDesktop = ({ codes, submitted }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
@@ -47,8 +47,8 @@ const RegistrationFormDesktop = ({ codes }) => {
 
   return (
     <div className='p-0'>
-      <div className='grid grid-cols-6 gap-12'>
-        <div className='col-span-3 bg-bgImage_reg bg-cover bg-center rounded-md w-full h-full'>
+      <div className='grid grid-cols-1 lg:grid-cols-6 gap-12'>
+        <div className='lg:col-span-3 bg-bgImage_reg bg-cover bg-center rounded-md w-full h-full hidden lg:block'>
           <div className='flex flex-col p-6 justify-end items-end h-full w-4/5'>
             <div className='font-semibold text-white/80 text-4xl leading-none'>
               "AutoPack Summit gives us networking with the automotive world
@@ -59,7 +59,7 @@ const RegistrationFormDesktop = ({ codes }) => {
             </div>
           </div>
         </div>
-        <div className='col-span-3'>
+        <div className='lg:col-span-3 px-5 lg:px-0'>
           <div className='grid grid-cols-1 gap-y-4'>
             <div className='flex flex-col gap-1'>
               <div className='text-xs font-medium text-slate-500 uppercase'>
@@ -151,7 +151,7 @@ const RegistrationFormDesktop = ({ codes }) => {
                 </div>
               </div>
             </div>
-            <div className='grid grid-cols-2 items-center mt-6'>
+            <div className='grid grid-cols-1 lg:grid-cols-2 items-center mt-0 lg:mt-6'>
               <GetCodeBlock
                 regCode={regCode}
                 clear={clearForm}
@@ -160,6 +160,7 @@ const RegistrationFormDesktop = ({ codes }) => {
                 company={company}
                 email={email}
                 phone={phone}
+                setSubmit={() => submitted()}
               />
               <RegBlockPricing
                 regCode={regCode}
@@ -172,6 +173,7 @@ const RegistrationFormDesktop = ({ codes }) => {
                 email={email}
                 phone={phone}
                 isValid={isValid}
+                setSubmit={() => submitted()}
               />
             </div>
             <div className='text-slate-600 text-xs text-center mt-4'>

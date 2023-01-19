@@ -9,14 +9,16 @@ const GetCodeBlock = ({
   company,
   email,
   phone,
+  setSubmit,
 }) => {
   return (
     <div className='flex flex-col gap-3 items-center p-6 text-center'>
       <p className='text-lg font-medium leading-6 text-gray-900 text-center'>
-        Get My Code
+        Registration Code
       </p>
-      <p className='text-slate-600'>
-        Please fill out all fields and submit below.
+      <p className='text-slate-600 text-sm'>
+        Please fill out all fields and submit below if you have not received a
+        registration code.
       </p>
       <button
         className={`${
@@ -34,6 +36,7 @@ const GetCodeBlock = ({
             phone
           );
           clear();
+          setSubmit();
         }}
       >
         <div className='text-white uppercase text-sm lg:text-base font-bold py-3 px-6 tracking-widest'>

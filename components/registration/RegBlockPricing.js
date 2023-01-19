@@ -13,6 +13,7 @@ const RegBlockPricing = ({
   phone,
   isValid,
   clear,
+  setSubmit,
 }) => {
   const countUpRef = useRef(null);
   const { start, pauseResume, reset, update } = useCountUp({
@@ -76,6 +77,7 @@ const RegBlockPricing = ({
         onClick={(event) => {
           sendEmail(event, name, title, company, email, phone);
           clear();
+          setSubmit();
         }}
       >
         <div

@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { API, graphqlOperation } from 'aws-amplify';
-import { getAPS } from '../../src/graphql/queries';
 import RegistrationFormDesktop from './RegistrationFormDesktop';
-import RegistrationFormMobile from './RegistrationFormMobile';
 
 const RegistrationForm = () => {
   const [codes, setCodes] = useState([]);
+  const [submitted, setSubmitted] = useState(false);
 
   const getCodesQuery = /* GraphQL */ `
     query MyQuery {
@@ -35,12 +34,33 @@ const RegistrationForm = () => {
 
   return (
     <>
-      <div className='lg:hidden'>
+      {/* <div className='lg:hidden'>
         <RegistrationFormMobile codes={codes && codes} />
-      </div>
-      <div className='hidden lg:block'>
-        <RegistrationFormDesktop codes={codes && codes} />
-      </div>
+      </div> */}
+      {submitted ? (
+        <div className='max-w-xl text-center px-6 md:px-10 my-24 mx-auto'>
+          <h2 className='text-3xl font-bold tracking-tight text-ap-darkblue sm:text-5xl lg:text-5xl'>
+            Thank You!
+          </h2>
+          <p className='mt-5 md:text-lg text-gray-500'>
+            Your submission has been sent. We look forward to collaborating with
+            you in Greenville. For any questions, please email{' '}
+            <a href='mailto:diana@packagingschool.com' className='font-bold'>
+              Diana Whitaker
+            </a>{' '}
+            or{' '}
+            <a href='mailto:bianca@packagingschool.com' className='font-bold'>
+              Bianca Hurley.
+            </a>
+          </p>
+        </div>
+      ) : (
+        <RegistrationFormDesktop
+          codes={codes && codes}
+          submitted={() => setSubmitted(true)}
+        />
+      )}
+      <div></div>
     </>
   );
 };
