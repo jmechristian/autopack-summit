@@ -1,5 +1,5 @@
 import React from 'react';
-import { sendEmail } from '../../util/sendEmail';
+import { sendRegCode } from '../../util/sendRegCode';
 
 const GetCodeBlock = ({
   regCode,
@@ -26,15 +26,7 @@ const GetCodeBlock = ({
         } rounded-md w-full mt-2`}
         disabled={regCode ? true : false}
         onClick={(event) => {
-          sendEmail(
-            event,
-            '/sendEmailFn-staging',
-            name,
-            title,
-            company,
-            email,
-            phone
-          );
+          sendRegCode(event, name, title, company, email, phone);
           clear();
           setSubmit();
         }}

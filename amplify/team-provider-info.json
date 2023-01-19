@@ -45,6 +45,10 @@
         "addAPSToUser": {
           "deploymentBucketName": "amplify-packbrain-staging-54032-deployment",
           "s3Key": "amplify-builds/addAPSToUser-4c365635554c53573037-build.zip"
+        },
+        "sendRegCode": {
+          "deploymentBucketName": "amplify-packbrain-staging-54032-deployment",
+          "s3Key": "amplify-builds/sendRegCode-5a6f6161707039646856-build.zip"
         }
       }
     }
