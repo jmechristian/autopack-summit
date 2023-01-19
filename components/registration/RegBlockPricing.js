@@ -75,7 +75,7 @@ const RegBlockPricing = ({
         } rounded-md w-full mt-2`}
         disabled={!regCode || !formIsValid}
         onClick={(event) => {
-          sendEmail(event, name, title, company, email, phone);
+          sendEmail(event, name, title, company, email, phone, regCode);
           clear();
           setSubmit();
         }}

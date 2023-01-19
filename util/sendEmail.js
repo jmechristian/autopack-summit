@@ -1,4 +1,4 @@
-export const sendEmail = (e, name, title, company, email, phone) => {
+export const sendEmail = (e, name, title, company, email, phone, regCode) => {
   e.preventDefault();
 
   fetch(
@@ -15,6 +15,7 @@ export const sendEmail = (e, name, title, company, email, phone) => {
         company,
         email,
         phone,
+        regCode,
       }),
     }
   );

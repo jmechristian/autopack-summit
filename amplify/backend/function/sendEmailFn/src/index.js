@@ -3,7 +3,7 @@ var ses = new aws.SES({ region: 'us-east-1' });
 exports.handler = async function (event) {
   const body = JSON.parse(event.body);
 
-  const myVar =
+  var myVar =
     '<!DOCTYPE html>' +
     '<html' +
     '  lang="en"' +
@@ -440,6 +440,68 @@ exports.handler = async function (event) {
     '            </table> ' +
     '            <![endif]-->' +
     '              </div>' +
+    '              <div class="two-col" style="text-align: left; font-size: 0">' +
+    '                <!--[if mso]> ' +
+    '            <table role="presentation" width="100%"> ' +
+    '            <tr> ' +
+    '            <td style="width:50%;padding:10px;" valign="middle"> ' +
+    '            <![endif]-->' +
+    '                <div' +
+    '                  class="column"' +
+    '                  style="width: 100%; max-width: 330px; display: inline-block"' +
+    '                >' +
+    '                  <div style="padding: 10px">' +
+    '                    <p' +
+    '                      style="' +
+    '                        margin: 0;' +
+    '                        font-family: Arial, sans-serif;' +
+    '                        font-size: 20px;' +
+    '                        line-height: 18px;' +
+    '                      "' +
+    '                    >' +
+    '                      Registration Code' +
+    '                    </p>' +
+    '                  </div>' +
+    '                </div>' +
+    '                <!--[if mso]> ' +
+    '            </td> ' +
+    '            <td style="width:50%;padding:10px;" valign="middle"> ' +
+    '            <![endif]-->' +
+    '                <div' +
+    '                  class="column"' +
+    '                  style="' +
+    '                    width: 100%;' +
+    '                    max-width: 330px;' +
+    '                    display: inline-block;' +
+    '                    vertical-align: middle;' +
+    '                  "' +
+    '                >' +
+    '                  <div' +
+    '                    style="' +
+    '                      padding: 10px;' +
+    '                      font-size: 20px;' +
+    '                      line-height: 18px;' +
+    '                      text-align: left;' +
+    '                    "' +
+    '                  >' +
+    '                    <p' +
+    '                      style="' +
+    '                        margin-top: 0;' +
+    '                        margin-bottom: 12px;' +
+    '                        font-family: Arial, sans-serif;' +
+    '                        font-weight: bold;' +
+    '                      "' +
+    '                    >' +
+    `                      ${body.regCode}` +
+    '                    </p>' +
+    '                  </div>' +
+    '                </div>' +
+    '                <!--[if mso]> ' +
+    '            </td> ' +
+    '            </tr> ' +
+    '            </table> ' +
+    '            <![endif]-->' +
+    '              </div>' +
     '              <div' +
     '                class="spacer"' +
     '                style="' +
@@ -485,7 +547,7 @@ exports.handler = async function (event) {
     '                      "' +
     '                    >' +
     '                      <a' +
-    `                        href="https://j0t90n9gog.execute-api.us-east-1.amazonaws.com/default/handleRegistrationFunction?email=${body.email}&name=${body.name}&company=${body.company}&title=${body.title}&phone=${body.phone}"` +
+    '                        href="https://lp2armzy69.execute-api.us-east-1.amazonaws.com/staging/approveRegFn-staging"' +
     '                        style="' +
     '                          color: white;' +
     '                          font-weight: bold;' +
@@ -531,7 +593,7 @@ exports.handler = async function (event) {
     '                      "' +
     '                    >' +
     '                      <a' +
-    '                        href="https://autopack-summit.vercel.app/denyregistration"' +
+    '                        href="/denyregistration"' +
     '                        style="' +
     '                          color: white;' +
     '                          font-weight: bold;' +
@@ -574,7 +636,11 @@ exports.handler = async function (event) {
 
   var params = {
     Destination: {
-      ToAddresses: ['jamie@packagingschool.com'],
+      ToAddresses: [
+        'jamie@packagingschool.com',
+        'bianca@packagingschool.com',
+        'diana@packagingschool.com',
+      ],
     },
     Message: {
       Body: {

@@ -36,7 +36,7 @@
         },
         "sendEmailFn": {
           "deploymentBucketName": "amplify-packbrain-staging-54032-deployment",
-          "s3Key": "amplify-builds/sendEmailFn-4e77545544694e58776f-build.zip"
+          "s3Key": "amplify-builds/sendEmailFn-6a686a43356247537948-build.zip"
         },
         "addNewUser": {
           "deploymentBucketName": "amplify-packbrain-staging-54032-deployment",
@@ -48,7 +48,7 @@
         },
         "sendRegCode": {
           "deploymentBucketName": "amplify-packbrain-staging-54032-deployment",
-          "s3Key": "amplify-builds/sendRegCode-5a6f6161707039646856-build.zip"
+          "s3Key": "amplify-builds/sendRegCode-50707748344b4f4c4d6b-build.zip"
         }
       }
     }
