@@ -1,18 +1,26 @@
 import React, { useState } from 'react';
 import { ArrowLongRightIcon } from '@heroicons/react/24/solid';
+import { sendSponsorForm } from '../../util/sendSponsorForm';
 
-const RegisterProviderDesktop = () => {
+const RegisterProviderDesktop = ({ submitted }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [title, setTitle] = useState('');
   const [company, setCompany] = useState('');
-  const [message, setMessage] = useState('');
+
+  const clear = () => {
+    setName('');
+    setEmail('');
+    setPhone('');
+    setTitle('');
+    setCompany('');
+  };
 
   return (
-    <div className='p-3'>
-      <div className='grid grid-cols-6 gap-20'>
-        <div className='col-span-3 bg-bgImage_reg_provider bg-cover bg-center rounded-md w-full h-full'>
+    <div className='p-5 lg:p-3'>
+      <div className='grid grid-cols-1 lg:grid-cols-6 gap-12'>
+        <div className='col-span-3 hidden lg:block bg-bgImage_reg_provider bg-cover bg-center rounded-md w-full h-full'>
           <div className='flex flex-col p-6 justify-end items-end h-full w-4/5 gap-4'>
             <div className='font-semibold text-white/80 lg:text-4xl 2xl:text-5xl leading-none'>
               Leverage the benefits of Sponsorship.
@@ -94,14 +102,23 @@ const RegisterProviderDesktop = () => {
               />
             </div>
             <div className='flex flex-col md:flex-row items-center gap-4 mt-3'>
-              <button className='bg-ap-yellow rounded-md w-full'>
+              <button
+                className='bg-ap-yellow rounded-md w-full'
+                onClick={(event) => {
+                  sendSponsorForm(event, name, title, company, email, phone);
+                  clear();
+                  submitted();
+                }}
+              >
                 <div className='text-slate-800 font-oswald uppercase text-sm lg:text-lg font-bold py-3 px-6 tracking-widest'>
                   Get Involved
                 </div>
               </button>
               <div className='text-slate-500 text-sm'>
-                By clicking GET INVOLVED you agree to accept our Event Terms and
-                Conditions.
+                By clicking GET INVOLVED you agree to accept our{' '}
+                <a href='/policies'>
+                  <u>Event Terms and Conditions.</u>
+                </a>
               </div>
             </div>
           </div>

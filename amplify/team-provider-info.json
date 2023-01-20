@@ -49,6 +49,10 @@
         "sendRegCode": {
           "deploymentBucketName": "amplify-packbrain-staging-54032-deployment",
           "s3Key": "amplify-builds/sendRegCode-50707748344b4f4c4d6b-build.zip"
+        },
+        "sendSponsorForm": {
+          "deploymentBucketName": "amplify-packbrain-staging-54032-deployment",
+          "s3Key": "amplify-builds/sendSponsorForm-6b56554837347847672f-build.zip"
         }
       }
     }

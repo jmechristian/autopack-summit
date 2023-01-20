@@ -179,7 +179,9 @@ const RegistrationFormDesktop = ({ codes, submitted }) => {
             <div className='text-slate-600 text-xs text-center mt-4'>
               By clicking GET CODE or REGISTER you agree to accept our
               <br />
-              <u>Event Terms and Conditions.</u>
+              <a href='/policies'>
+                <u>Event Terms and Conditions.</u>
+              </a>
             </div>
           </div>
         </div>
