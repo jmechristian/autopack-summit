@@ -35,7 +35,7 @@ const AgendaHead = () => {
         <div className='grid grid-cols-3 md:mt-6'>
           <div
             className={` ${
-              daySelected === 1
+              daySelected === '2023-10-11'
                 ? 'border-b-ap-yellow border-b-4'
                 : 'border-b-2 border-b-slate-400'
             }  pb-2`}
@@ -43,7 +43,7 @@ const AgendaHead = () => {
           >
             <div
               className={`font-medium text-xl xl:text-2xl uppercase font-oswald ${
-                daySelected === 1 ? 'text-white' : 'text-slate-400'
+                daySelected === '2023-10-11' ? 'text-white' : 'text-slate-400'
               } tracking-widest px-4 cursor-pointer`}
             >
               Day 1
@@ -51,7 +51,7 @@ const AgendaHead = () => {
           </div>
           <div
             className={` ${
-              daySelected === 2
+              daySelected === '2023-10-12'
                 ? 'border-b-ap-yellow border-b-4'
                 : 'border-b-2 border-b-slate-400'
             }  pb-2`}
@@ -59,7 +59,7 @@ const AgendaHead = () => {
           >
             <div
               className={`font-medium text-xl xl:text-2xl uppercase font-oswald ${
-                daySelected === 2 ? 'text-white' : 'text-slate-400'
+                daySelected === '2023-10-12' ? 'text-white' : 'text-slate-400'
               } tracking-widest px-4 cursor-pointer`}
             >
               Day 2
@@ -67,14 +67,14 @@ const AgendaHead = () => {
           </div>
           <div
             className={` ${
-              daySelected === 3
+              daySelected === '2023-10-13'
                 ? 'border-b-ap-yellow border-b-4'
                 : 'border-b-2 border-b-slate-400'
             }  pb-2`}
           >
             <div
               className={`font-medium text-xl xl:text-2xl uppercase font-oswald ${
-                daySelected === 3 ? 'text-white' : 'text-slate-400'
+                daySelected === '2023-10-13' ? 'text-white' : 'text-slate-400'
               } tracking-widest px-4 cursor-pointer`}
               onClick={() => dispatch(setDaySelected('2023-10-13'))}
             >
