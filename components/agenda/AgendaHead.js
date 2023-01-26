@@ -7,22 +7,22 @@ const AgendaHead = () => {
   const { daySelected } = useSelector((state) => state.agenda);
 
   const setDay = () => {
-    if (daySelected === 1) {
+    if (daySelected === '2023-10-11') {
       return 'Wednesday';
-    } else if (daySelected === 2) {
+    } else if (daySelected === '2023-10-12') {
       return 'Thursday';
-    } else if (daySelected === 3) {
+    } else if (daySelected === '2023-10-13') {
       return 'Friday';
     }
   };
 
   const setDate = () => {
-    if (daySelected === 1) {
+    if (daySelected === '2023-10-11') {
+      return 'OCt 11, 2023';
+    } else if (daySelected === '2023-10-12') {
       return 'OCt 12, 2023';
-    } else if (daySelected === 2) {
+    } else if (daySelected === '2023-10-13') {
       return 'OCt 13, 2023';
-    } else if (daySelected === 3) {
-      return 'OCt 14, 2023';
     }
   };
 
@@ -39,7 +39,7 @@ const AgendaHead = () => {
                 ? 'border-b-ap-yellow border-b-4'
                 : 'border-b-2 border-b-slate-400'
             }  pb-2`}
-            onClick={() => dispatch(setDaySelected(1))}
+            onClick={() => dispatch(setDaySelected('2023-10-11'))}
           >
             <div
               className={`font-medium text-xl xl:text-2xl uppercase font-oswald ${
@@ -55,7 +55,7 @@ const AgendaHead = () => {
                 ? 'border-b-ap-yellow border-b-4'
                 : 'border-b-2 border-b-slate-400'
             }  pb-2`}
-            onClick={() => dispatch(setDaySelected(2))}
+            onClick={() => dispatch(setDaySelected('2023-10-12'))}
           >
             <div
               className={`font-medium text-xl xl:text-2xl uppercase font-oswald ${
@@ -76,7 +76,7 @@ const AgendaHead = () => {
               className={`font-medium text-xl xl:text-2xl uppercase font-oswald ${
                 daySelected === 3 ? 'text-white' : 'text-slate-400'
               } tracking-widest px-4 cursor-pointer`}
-              onClick={() => dispatch(setDaySelected(3))}
+              onClick={() => dispatch(setDaySelected('2023-10-13'))}
             >
               Day 3
             </div>

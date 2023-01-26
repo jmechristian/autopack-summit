@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  daySelected: 1,
+  daySelected: '2023-10-11',
 };
 
 export const agendaSlice = createSlice({
