@@ -28,8 +28,8 @@ export async function getStaticProps() {
       name,
       session_end,
       session_start,
-      speakers,
-      sponsors
+      speakers[]->{title, name, company},
+      sponsors[]->{logo, name, website}
     }`
   );
 

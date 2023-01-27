@@ -5,12 +5,22 @@ const AgendaItem = ({
   title,
   startTime,
   endTime,
-  speaker,
+  speakers,
   location,
-  sponsor,
+  sponsors,
 }) => {
-  const start = startTime && new Date(startTime).toLocaleTimeString();
-  const end = endTime && new Date(endTime).toLocaleTimeString();
+  const start =
+    startTime &&
+    new Date(startTime).toLocaleTimeString([], {
+      hour: '2-digit',
+      minute: '2-digit',
+    });
+  const end =
+    endTime &&
+    new Date(endTime).toLocaleTimeString([], {
+      hour: '2-digit',
+      minute: '2-digit',
+    });
 
   return (
     <div className='grid grid-cols-1 md:grid-cols-5 gap-8 xl:gap-16 d border-t border-t-slate-800 py-9 lg:py-12 md:px-4'>
@@ -20,7 +30,7 @@ const AgendaItem = ({
             time
           </div>
           <div className='text-slate-500 lg:col-span-1'>
-            {start} - {end}
+            {startTime ? `${start} - ${end}` : 'TBD'}
           </div>
         </div>
         <div className='flex flex-col gap-6  lg:col-span-2'>
@@ -36,10 +46,18 @@ const AgendaItem = ({
           <div className='text-slate-400 uppercase tracking-widest font-semibold text-sm hidden lg:inline-block'>
             speaker
           </div>
-          <div className='flex flex-col mt-3 lg:mt-0 lg:col-span-2'>
-            <div className='font-semibold'>{speaker && speaker.name}</div>
-            <div className='text-slate-500'>{speaker && speaker.name}</div>
-          </div>
+          {speakers && (
+            <div className='flex flex-col gap-4 mt-3 lg:mt-0 lg:col-span-2'>
+              {speakers.map((sp, i) => (
+                <div className='flex flex-col ' key={sp.name}>
+                  <div className='font-semibold'>{sp && sp.name}</div>
+                  <div className='text-slate-500'>
+                    {sp && sp.title}, {sp && sp.company}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
       <div className=' md:col-span-2 lg:col-span-1 flex justify-end items-center lg:items-start'>
@@ -47,16 +65,17 @@ const AgendaItem = ({
           <div className='text-slate-400 uppercase tracking-widest font-semibold text-sm hidden lg:inline-block'>
             sponsor
           </div>
-          {sponsor && (
-            <div className='p-2 w-1/2 md:w-2/3 lg:w-full'>
-              <Image
-                src={sponsor && sponsor.src}
-                width='500'
-                height='164'
-                alt={sponsor && sponsor.name}
-              />
-            </div>
-          )}
+          {sponsors &&
+            sponsors.map((sp, i) => (
+              <div className='p-2 w-1/2 md:w-2/3 lg:w-full' key={sp.name}>
+                <Image
+                  src={sponsors && sponsors[0].logo}
+                  width='500'
+                  height='164'
+                  alt={sponsors && sponsors[0].name}
+                />
+              </div>
+            ))}
         </div>
       </div>
     </div>

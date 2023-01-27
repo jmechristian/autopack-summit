@@ -18,7 +18,7 @@ const AgendaBody = ({ sessions }) => {
                   startTime={s.session_start}
                   endTime={s.session_end}
                   location={s.location}
-                  speaker={s.speakers}
+                  speakers={s.speakers}
                   sponsors={s.sponsors}
                 />
               </div>
