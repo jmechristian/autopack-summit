@@ -6,7 +6,7 @@ const FooterImageGallery = ({ images }) => {
       {images &&
         images.map((img, i) => (
           <div
-            className='w-40 md:w-52 h-56 md:h-60'
+            className='w-40 md:w-52 h-56 md:h-60 grayscale opacity-50'
             style={{
               backgroundImage: `url(${img.url})`,
               backgroundSize: 'cover',
