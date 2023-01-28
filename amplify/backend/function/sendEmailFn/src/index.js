@@ -761,6 +761,7 @@ var params = {
 
 try {
   const email = await ses.sendEmail(params).promise();
+  console.log(email);
 } catch (err) {
   console.log(err);
 }
