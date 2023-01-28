@@ -3,7 +3,7 @@ var ses = new aws.SES({ region: 'us-east-1' });
 exports.handler = async function (event) {
   const body = JSON.parse(event.body);
 
-  var myVar =
+  const myVar =
     '<!DOCTYPE html>' +
     '<html' +
     '  lang="en"' +
@@ -636,7 +636,11 @@ exports.handler = async function (event) {
 
   var params = {
     Destination: {
-      ToAddresses: ['jamie@packagingschool.com'],
+      ToAddresses: [
+        'jamie@packagingschool.com',
+        'bianca@packagingschool.com',
+        'diana@packagingschool.com',
+      ],
     },
     Message: {
       Body: {
@@ -649,129 +653,20 @@ exports.handler = async function (event) {
     Source: 'jamie@packagingschool.com',
   };
 
-  const email = await ses.sendEmail(params).promise();
+  try {
+    const email = await ses.sendEmail(params).promise();
+    console.log(email);
+  } catch (err) {
+    console.log(err);
+  }
 
-  return email, { status: 200 };
-};
-
-'                        style="' +
-  '                          color: white;' +
-  '                          font-weight: bold;' +
-  '                          text-decoration: none;' +
-  '                        "' +
-  '                      >' +
-  '                        APPROVE' +
-  '                      </a>' +
-  '                    </p>' +
-  '                  </div>' +
-  '                </div>' +
-  '                <!--[if mso]> ' +
-  '            </td> ' +
-  '            <td style="width:50%;padding:10px;" valign="middle"> ' +
-  '            <![endif]-->' +
-  '                <div' +
-  '                  class="column"' +
-  '                  style="' +
-  '                    width: 100%;' +
-  '                    max-width: 330px;' +
-  '                    display: inline-block;' +
-  '                    vertical-align: middle;' +
-  '                  "' +
-  '                >' +
-  '                  <div' +
-  '                    style="' +
-  '                      padding: 10px;' +
-  '                      font-size: 20px;' +
-  '                      line-height: 18px;' +
-  '                      text-align: left;' +
-  '                    "' +
-  '                  >' +
-  '                    <p' +
-  '                      style="' +
-  '                        margin-top: 0;' +
-  '                        margin-bottom: 12px;' +
-  '                        font-family: Arial, sans-serif;' +
-  '                        font-weight: bold;' +
-  '                        background-color: red;' +
-  '                        color: white;' +
-  '                        padding: 16px;' +
-  '                        text-align: center;' +
-  '                      "' +
-  '                    >' +
-  '                      <a' +
-  '                        href="/denyregistration"' +
-  '                        style="' +
-  '                          color: white;' +
-  '                          font-weight: bold;' +
-  '                          text-decoration: none;' +
-  '                        "' +
-  '                      >' +
-  '                        DECLINE' +
-  '                      </a>' +
-  '                    </p>' +
-  '                  </div>' +
-  '                </div>' +
-  '                <!--[if mso]> ' +
-  '            </td> ' +
-  '            </tr> ' +
-  '            </table> ' +
-  '            <![endif]-->' +
-  '              </div>' +
-  '              <div' +
-  '                class="spacer"' +
-  '                style="' +
-  '                  line-height: 24px;' +
-  '                  height: 24px;' +
-  '                  mso-line-height-rule: exactly;' +
-  '                "' +
-  '              >' +
-  '                ' +
-  '              </div>' +
-  '            </div>' +
-  '            <!--[if mso]> ' +
-  '</td> ' +
-  '</tr> ' +
-  '</table> ' +
-  '<![endif]-->' +
-  '          </td>' +
-  '        </tr>' +
-  '      </table>' +
-  '    </div>' +
-  '  </body>' +
-  '</html>';
-
-var params = {
-  Destination: {
-    ToAddresses: [
-      'jamie@packagingschool.com',
-      'bianca@packagingschool.com',
-      'diana@packagingschool.com',
-    ],
-  },
-  Message: {
-    Body: {
-      Text: { Data: 'Test' },
-      Html: { Data: myVar },
+  return {
+    statusCode: 200,
+    //  Uncomment below to enable CORS requests
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers': '*',
     },
-
-    Subject: { Data: `APS Registration From ${body.name}` },
-  },
-  Source: 'jamie@packagingschool.com',
-};
-
-try {
-  const email = await ses.sendEmail(params).promise();
-  console.log(email);
-} catch (err) {
-  console.log(err);
-}
-
-return {
-  statusCode: 200,
-  //  Uncomment below to enable CORS requests
-  headers: {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Headers': '*',
-  },
-  body: JSON.stringify(event),
+    body: JSON.stringify(event),
+  };
 };
