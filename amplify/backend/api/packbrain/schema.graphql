@@ -25,7 +25,7 @@ type Lesson @model @auth(rules: [{ allow: public }]) {
 type APS @model @auth(rules: [{ allow: public }]) {
   id: ID!
   Registrants: [User] @manyToMany(relationName: "APSUser")
-  Sponsors: [Company] @hasMany(indexName: "byAPS", fields: ["id"])
+  Sponsors: [Company] @manyToMany(relationName: "APSSponsor")
   year: Int!
   codes: [RegistrationCode]
 }
@@ -42,7 +42,7 @@ type Company @model @auth(rules: [{ allow: public }]) {
   city: String
   state: String
   zip: String
-  apsID: ID @index(name: "byAPS")
+  apsID: [APS] @manyToMany(relationName: "APSSponsor")
 }
 
 type User @model @auth(rules: [{ allow: public }]) {

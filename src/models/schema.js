@@ -122,7 +122,7 @@ export const schema = {
                     "name": "Sponsors",
                     "isArray": true,
                     "type": {
-                        "model": "Company"
+                        "model": "APSSponsor"
                     },
                     "isRequired": false,
                     "attributes": [],
@@ -130,7 +130,7 @@ export const schema = {
                     "association": {
                         "connectionType": "HAS_MANY",
                         "associatedWith": [
-                            "apsID"
+                            "aps"
                         ]
                     }
                 },
@@ -428,10 +428,19 @@ export const schema = {
                 },
                 "apsID": {
                     "name": "apsID",
-                    "isArray": false,
-                    "type": "ID",
+                    "isArray": true,
+                    "type": {
+                        "model": "APSSponsor"
+                    },
                     "isRequired": false,
-                    "attributes": []
+                    "attributes": [],
+                    "isArrayNullable": true,
+                    "association": {
+                        "connectionType": "HAS_MANY",
+                        "associatedWith": [
+                            "company"
+                        ]
+                    }
                 },
                 "createdAt": {
                     "name": "createdAt",
@@ -456,15 +465,6 @@ export const schema = {
                 {
                     "type": "model",
                     "properties": {}
-                },
-                {
-                    "type": "key",
-                    "properties": {
-                        "name": "byAPS",
-                        "fields": [
-                            "apsID"
-                        ]
-                    }
                 },
                 {
                     "type": "auth",
@@ -581,6 +581,104 @@ export const schema = {
                     }
                 }
             ]
+        },
+        "APSSponsor": {
+            "name": "APSSponsor",
+            "fields": {
+                "id": {
+                    "name": "id",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "aPSId": {
+                    "name": "aPSId",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "companyId": {
+                    "name": "companyId",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "aps": {
+                    "name": "aps",
+                    "isArray": false,
+                    "type": {
+                        "model": "APS"
+                    },
+                    "isRequired": true,
+                    "attributes": [],
+                    "association": {
+                        "connectionType": "BELONGS_TO",
+                        "targetNames": [
+                            "aPSId"
+                        ]
+                    }
+                },
+                "company": {
+                    "name": "company",
+                    "isArray": false,
+                    "type": {
+                        "model": "Company"
+                    },
+                    "isRequired": true,
+                    "attributes": [],
+                    "association": {
+                        "connectionType": "BELONGS_TO",
+                        "targetNames": [
+                            "companyId"
+                        ]
+                    }
+                },
+                "createdAt": {
+                    "name": "createdAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                },
+                "updatedAt": {
+                    "name": "updatedAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                }
+            },
+            "syncable": true,
+            "pluralName": "APSSponsors",
+            "attributes": [
+                {
+                    "type": "model",
+                    "properties": {}
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "name": "byAPS",
+                        "fields": [
+                            "aPSId"
+                        ]
+                    }
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "name": "byCompany",
+                        "fields": [
+                            "companyId"
+                        ]
+                    }
+                }
+            ]
         }
     },
     "enums": {
@@ -626,5 +724,5 @@ export const schema = {
             }
         }
     },
-    "version": "8bd46d85e0d0ab81a4a5245d0684305f"
+    "version": "9da6fa1dbc11267f3906e576a2b30fb7"
 };
