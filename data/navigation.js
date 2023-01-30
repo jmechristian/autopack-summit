@@ -19,8 +19,4 @@ export const navMenu = [
     name: 'Resources',
     link: '/resources',
   },
-  {
-    name: 'Register',
-    link: '/register',
-  },
 ];

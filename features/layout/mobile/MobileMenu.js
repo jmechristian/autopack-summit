@@ -1,11 +1,14 @@
 import React from 'react';
 import Logo from '../../../shared/Logo';
 import Link from 'next/link';
+import { useDispatch } from 'react-redux';
 import { navMenu } from '../../../data/navigation';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import { AnimatePresence, motion } from 'framer-motion';
+import { toggleRegistrationModal } from '../layoutSlice';
 
 const MobileMenu = ({ close, isOpen }) => {
+  const dispatch = useDispatch();
   const menuVariants = {
     hidden: {
       x: -1000,
@@ -54,7 +57,7 @@ const MobileMenu = ({ close, isOpen }) => {
               <motion.div key={item.name} onClick={() => close()}>
                 <Link href={item.link}>
                   <motion.div
-                    className='font-bold text-5xl md:text-7xl text-white'
+                    className='font-bold text-4xl md:text-7xl text-white'
                     key={isOpen}
                     variants={items}
                     initial='hidden'
@@ -66,6 +69,19 @@ const MobileMenu = ({ close, isOpen }) => {
                 </Link>
               </motion.div>
             ))}
+            <div className='flex gap-2 mt-12'>
+              <button
+                className='bg-ap-yellow rounded drop-shadow-md'
+                onClick={() => {
+                  dispatch(toggleRegistrationModal());
+                  close();
+                }}
+              >
+                <div className='py-4 px-5 font-bold text-4xl text-slate-800 text-left'>
+                  Register Now!
+                </div>
+              </button>
+            </div>
           </motion.div>
         </motion.div>
       </motion.div>
