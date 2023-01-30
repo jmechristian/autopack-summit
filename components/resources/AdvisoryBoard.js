@@ -1,9 +1,12 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
+import AdvisorModal from '../../shared/AdvisorModal';
 
 const AdvisoryBoard = ({ headline, subheadline, text, advisors }) => {
+  const [isOpen, setIsOpen] = useState(false);
   const textRef = useRef();
   const textInView = useInView(textRef);
+  const [isAdvisor, setIsAdvisor] = useState(null);
 
   const textVariants = {
     show: {
@@ -47,12 +50,18 @@ const AdvisoryBoard = ({ headline, subheadline, text, advisors }) => {
           role='list'
           className='grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'
         >
-          {advisors.map((person) => (
+          {advisors.map((person, index) => (
             <li
-              key={person.email}
+              key={index}
               className='col-span-1 flex flex-col divide-y divide-gray-200 rounded-lg bg-white text-center shadow'
             >
-              <div className='flex flex-1 flex-col p-8'>
+              <div
+                className='flex flex-1 flex-col p-8'
+                onClick={() => {
+                  setIsAdvisor(person);
+                  setIsOpen(true);
+                }}
+              >
                 <img
                   className='mx-auto h-32 w-auto flex-shrink-0 rounded-full'
                   src={person.profilePic}
@@ -76,6 +85,13 @@ const AdvisoryBoard = ({ headline, subheadline, text, advisors }) => {
           ))}
         </ul>
       </div>
+      {isAdvisor && (
+        <AdvisorModal
+          open={isOpen}
+          close={() => setIsOpen(false)}
+          person={isAdvisor}
+        />
+      )}
     </div>
   );
 };
