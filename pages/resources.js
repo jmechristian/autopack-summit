@@ -5,11 +5,6 @@ import AdvisoryBoard from '../components/resources/AdvisoryBoard';
 import HeaderPadding from '../shared/HeaderPadding';
 import {
   AcademicCapIcon,
-  BanknotesIcon,
-  CheckBadgeIcon,
-  ClockIcon,
-  ReceiptRefundIcon,
-  UsersIcon,
   MapIcon,
   MicrophoneIcon,
   QueueListIcon,
@@ -92,7 +87,7 @@ const resources = ({ resourceData }) => {
   return (
     <>
       <HeaderPadding />
-      <div className='flex flex-col items-center py-8'>
+      <div className='flex flex-col items-center my-8'>
         <motion.div className='blue_subheadline text-xl md:text-xl xl:text-2xl'>
           Industry
         </motion.div>
@@ -153,6 +148,11 @@ const resources = ({ resourceData }) => {
           </div>
         ))}
       </div>
+      <AdvisoryBoard
+        advisors={resourceData}
+        headline={'Board Members'}
+        subheadline={'AutoPack Summit 2023'}
+      />
     </>
   );
 };

@@ -1,6 +1,5 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import SpeakerBlock from '../../shared/SpeakerBlock';
 
 const AdvisoryBoard = ({ headline, subheadline, text, advisors }) => {
   const textRef = useRef();
@@ -43,25 +42,39 @@ const AdvisoryBoard = ({ headline, subheadline, text, advisors }) => {
           </motion.div>
         </motion.div>
       </div>
-      <div
-        className='grid grid-flow-col lg:grid-cols-3 xl:grid-cols-4 lg:grid-flow-dense overflow-scroll lg:overflow-visible pb-4 px-8 md:px-16 lg:px-20 gap-x-5 lg:gap-y-12 lg:gap-x-12 max-w-7xl lg:mx-auto'
-        id='scrollers'
-      >
-        {advisors &&
-          advisors.map((speaker, i) => (
-            <div key={speaker.name}>
-              <SpeakerBlock
-                name={speaker.name}
-                url={speaker.profilePic}
-                title={speaker.title}
-                company={speaker.company}
-                linkedIn={speaker.linkedIn}
-                bio={speaker.bio}
-                session={speaker.session}
-                id={speaker._id}
-              />
-            </div>
+      <div className='max-w-6xl mx-auto'>
+        <ul
+          role='list'
+          className='grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'
+        >
+          {advisors.map((person) => (
+            <li
+              key={person.email}
+              className='col-span-1 flex flex-col divide-y divide-gray-200 rounded-lg bg-white text-center shadow'
+            >
+              <div className='flex flex-1 flex-col p-8'>
+                <img
+                  className='mx-auto h-32 w-auto flex-shrink-0 rounded-full'
+                  src={person.profilePic}
+                  alt=''
+                />
+                <h3 className='mt-6 text-sm font-medium text-gray-900'>
+                  {person.name}
+                </h3>
+                <dl className='mt-1 flex flex-grow flex-col justify-between'>
+                  <dt className='sr-only'>Title</dt>
+                  <dd className='text-sm text-gray-500'>{person.title}</dd>
+                  <dt className='sr-only'>Role</dt>
+                  <dd className='mt-3'>
+                    <span className='rounded-full bg-green-100 px-2 py-1 text-xs font-medium text-green-800'>
+                      {person.company}
+                    </span>
+                  </dd>
+                </dl>
+              </div>
+            </li>
           ))}
+        </ul>
       </div>
     </div>
   );
