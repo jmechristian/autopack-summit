@@ -14,6 +14,7 @@ import {
   MicrophoneIcon,
   QueueListIcon,
   Cog6ToothIcon,
+  ComputerDesktopIcon,
 } from '@heroicons/react/24/outline';
 
 const actions = [
@@ -46,8 +47,8 @@ const actions = [
     href: '#',
     icon: MicrophoneIcon,
     desc: 'Our very own Dr. Hurley gave a shoutout on the South Carolina Business Review. Track aired on August 3rd, 2022.',
-    iconForeground: 'text-blue-700',
-    iconBackground: 'bg-blue-50',
+    iconForeground: 'text-red-700',
+    iconBackground: 'bg-red-50',
   },
   {
     title: 'Suppliers Info Form',
@@ -70,8 +71,16 @@ const actions = [
     href: 'https://apsmedia.s3.amazonaws.com/documents/APS-Press-Release.pdf',
     desc: 'The 2022 AutoPack Summit Sold Out for the 7th Year in a Row, The event received high marks from OEMs, Tier 1 Suppliers, and Packaging Solution Providers',
     icon: AcademicCapIcon,
-    iconForeground: 'text-blue-700',
-    iconBackground: 'bg-blue-50',
+    iconForeground: 'text-orange-700',
+    iconBackground: 'bg-orange-50',
+  },
+  {
+    title: 'Past Presentations',
+    href: 'https://apsmedia.s3.amazonaws.com/documents/APS-Press-Release.pdf',
+    desc: 'Explore expert-driven content from previous Automotive Packaging Summits.',
+    icon: ComputerDesktopIcon,
+    iconForeground: 'text-green-700',
+    iconBackground: 'bg-green-50',
   },
 ];
 
@@ -91,7 +100,7 @@ const resources = ({ resourceData }) => {
           Resources
         </motion.div>
       </div>
-      <div className='w-full h-full xl:max-w-5xl xl:mx-auto divide-y divide-gray-200 overflow-hidden rounded-lg shadow sm:grid sm:grid-cols-2 sm:gap-8 sm:divide-y-0 mb-12'>
+      <div className='w-full h-full xl:max-w-6xl xl:mx-auto divide-y bg-gray-200 divide-gray-200 overflow-hidden rounded-lg shadow sm:grid sm:grid-cols-2 sm:gap-px sm:divide-y-0 mb-12'>
         {actions.map((action, actionIdx) => (
           <div
             key={action.title}
