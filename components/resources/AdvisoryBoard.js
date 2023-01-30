@@ -67,15 +67,15 @@ const AdvisoryBoard = ({ headline, subheadline, text, advisors }) => {
                   src={person.profilePic}
                   alt=''
                 />
-                <h3 className='mt-6 text-sm font-medium text-gray-900'>
+                <h3 className='mt-6 text-base font-medium text-gray-900'>
                   {person.name}
                 </h3>
                 <dl className='mt-1 flex flex-grow flex-col justify-between'>
                   <dt className='sr-only'>Title</dt>
-                  <dd className='text-sm text-gray-500'>{person.title}</dd>
+                  <dd className='text-base text-gray-500'>{person.title}</dd>
                   <dt className='sr-only'>Role</dt>
                   <dd className='mt-3'>
-                    <span className='rounded-full bg-green-100 px-2 py-1 text-xs font-medium text-green-800'>
+                    <span className='rounded-full bg-green-100 px-2 py-1 text-base font-medium text-green-800'>
                       {person.company}
                     </span>
                   </dd>
