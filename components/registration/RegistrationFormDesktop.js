@@ -1,9 +1,9 @@
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import GetCodeBlock from './GetCodeBlock';
 import RegBlockPricing from './RegBlockPricing';
 
-const RegistrationFormDesktop = ({ codes, submitted }) => {
+const RegistrationFormDesktop = ({ codes, submitted, params }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
@@ -12,6 +12,32 @@ const RegistrationFormDesktop = ({ codes, submitted }) => {
   const [regCode, setRegCode] = useState('');
   const [startCounter, setStartCounter] = useState(false);
   const [isValid, setIsValid] = useState(undefined);
+
+  useEffect(() => {
+    if (params.name) {
+      setName(params.name);
+    }
+
+    if (params.email) {
+      setEmail(params.email);
+    }
+
+    if (params.company) {
+      setCompany(params.company);
+    }
+
+    if (params.phone) {
+      setPhone(params.phone);
+    }
+
+    if (params.title) {
+      setTitle(params.title);
+    }
+
+    if (params.code) {
+      setRegCode(params.code);
+    }
+  }, [params]);
 
   const clearForm = () => {
     setName('');

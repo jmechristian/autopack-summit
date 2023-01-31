@@ -1,8 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useRouter } from 'next/router';
 import RegistrationForm from '../components/registration/RegistrationForm';
 
 const register = () => {
+  const router = useRouter();
+  const params = router.query;
+
   return (
     <div className='flex flex-col'>
       <div className='h-16 md:h-20 lg:h-24 bg-ap-darkblue'></div>
@@ -16,7 +20,7 @@ const register = () => {
           </motion.div>
         </div>
         <div className='w-10/12 lg:max-w-6xl mx-auto border bg-slate-200 border-slate-400 lg:px-8 xl:px-12 py-8 md:py-12 lg:py-16 rounded-md shadow-xl'>
-          <RegistrationForm />
+          <RegistrationForm params={params} />
         </div>
       </div>
     </div>

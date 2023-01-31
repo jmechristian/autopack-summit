@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { API, graphqlOperation } from 'aws-amplify';
 import RegistrationFormDesktop from './RegistrationFormDesktop';
 
-const RegistrationForm = () => {
+const RegistrationForm = ({ params }) => {
   const [codes, setCodes] = useState([]);
   const [submitted, setSubmitted] = useState(false);
 
@@ -50,14 +50,16 @@ const RegistrationForm = () => {
             </a>{' '}
             or{' '}
             <a href='mailto:bianca@packagingschool.com' className='font-bold'>
-              Bianca Hurley.
+              Bianca Hurley.{' '}
             </a>
+            Please check your inbox for updates along the registration process.
           </p>
         </div>
       ) : (
         <RegistrationFormDesktop
           codes={codes && codes}
           submitted={() => setSubmitted(true)}
+          params={params}
         />
       )}
       <div></div>
