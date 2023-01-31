@@ -7,7 +7,7 @@ const suppliers = () => {
     <>
       <HeaderPadding />
       <div className='bg-white'>
-        <div className='py-16 px-6 sm:px-6 sm:py-24 lg:px-8'>
+        <div className='py-16 px-6 sm:px-6 sm:py-16 lg:px-8'>
           <div className='mx-auto max-w-2xl text-center'>
             <h2 className='text-3xl sm:text-4xl font-bold tracking-tight text-slate-900'>
               Are You an Automotive

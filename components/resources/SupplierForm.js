@@ -2,7 +2,11 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 
 const SupplierForm = () => {
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
 
   return (
     <div className='px-6 mx-auto max-w-6xl mb-12'>
@@ -25,37 +29,48 @@ const SupplierForm = () => {
             <div className='mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6'>
               <div className='sm:col-span-3'>
                 <label
-                  htmlFor='first-name'
+                  htmlFor='companyName'
                   className='block text-sm font-medium text-gray-700'
                 >
-                  Company Name
+                  Company Name*
                 </label>
                 <div className='mt-1'>
                   <input
-                    {...register('companyName')}
+                    {...register('companyName', { required: true })}
+                    aria-invalid={errors.companyName ? 'true' : 'false'}
                     type='text'
                     name='companyName'
                     id='companyName'
                     className='block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm'
                   />
+                  {errors.firstName?.type === 'required' && (
+                    <p role='alert' className=' text-sm text-red-600 mt-1'>
+                      Company Name is required
+                    </p>
+                  )}
                 </div>
               </div>
 
               <div className='sm:col-span-3'>
                 <label
-                  htmlFor='last-name'
+                  htmlFor='website'
                   className='block text-sm font-medium text-gray-700'
                 >
-                  Company Website
+                  Company Website*
                 </label>
                 <div className='mt-1'>
                   <input
-                    {...register('website')}
+                    {...register('website', { required: true })}
                     type='text'
                     name='website'
                     id='website'
                     className='block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm'
                   />
+                  {errors.website?.type === 'required' && (
+                    <p role='alert' className=' text-sm text-red-600 mt-1'>
+                      Company Website is required
+                    </p>
+                  )}
                 </div>
               </div>
 
@@ -304,16 +319,21 @@ const SupplierForm = () => {
                   htmlFor='firstName'
                   className='block text-sm font-medium text-gray-700'
                 >
-                  First Name
+                  First Name*
                 </label>
                 <div className='mt-1'>
                   <input
-                    {...register('firstName')}
+                    {...register('firstName', { required: true })}
                     id='firstName'
                     name='firstName'
                     type='text'
                     className='block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm'
                   />
+                  {errors.firstName?.type === 'required' && (
+                    <p role='alert' className=' text-sm text-red-600 mt-1'>
+                      First Name is required
+                    </p>
+                  )}
                 </div>
               </div>
               <div className='sm:col-span-3'>
@@ -321,16 +341,21 @@ const SupplierForm = () => {
                   htmlFor='lastName'
                   className='block text-sm font-medium text-gray-700'
                 >
-                  Last Name
+                  Last Name*
                 </label>
                 <div className='mt-1'>
                   <input
-                    {...register('lastName')}
+                    {...register('lastName', { required: true })}
                     id='lastName'
                     name='lastName'
                     type='text'
                     className='block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm'
                   />
+                  {errors.lastName?.type === 'required' && (
+                    <p role='alert' className=' text-sm text-red-600 mt-1'>
+                      Last Name is required
+                    </p>
+                  )}
                 </div>
               </div>
 
@@ -339,17 +364,22 @@ const SupplierForm = () => {
                   htmlFor='email'
                   className='block text-sm font-medium text-gray-700'
                 >
-                  Email
+                  Email*
                 </label>
                 <div className='mt-1'>
                   <input
-                    {...register('email')}
+                    {...register('email', { required: true })}
                     type='email'
                     name='email'
                     id='email'
                     autoComplete='email'
                     className='block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm'
                   />
+                  {errors.email?.type === 'required' && (
+                    <p role='alert' className=' text-sm text-red-600 mt-1'>
+                      Email is required
+                    </p>
+                  )}
                 </div>
               </div>
 
@@ -358,17 +388,22 @@ const SupplierForm = () => {
                   htmlFor='phone'
                   className='block text-sm font-medium text-gray-700'
                 >
-                  Phone
+                  Phone*
                 </label>
                 <div className='mt-1'>
                   <input
-                    {...register('phone')}
+                    {...register('phone', { required: true })}
                     type='tel'
                     name='phone'
                     id='phone'
                     autoComplete='phone'
                     className='block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm'
                   />
+                  {errors.phone?.type === 'required' && (
+                    <p role='alert' className=' text-sm text-red-600 mt-1'>
+                      Phone is required
+                    </p>
+                  )}
                 </div>
               </div>
             </div>
@@ -385,10 +420,10 @@ const SupplierForm = () => {
                   htmlFor='Industry'
                   className='block text-sm font-medium text-gray-700'
                 >
-                  Industry
+                  Industry*
                 </label>
                 <select
-                  {...register('industry')}
+                  {...register('industry', { required: true })}
                   id='industry'
                   name='industry'
                   className='mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm'
@@ -406,6 +441,11 @@ const SupplierForm = () => {
                   <option>Casters</option>
                   <option>Other</option>
                 </select>
+                {errors.industry?.type === 'required' && (
+                  <p role='alert' className=' text-sm text-red-600 mt-1'>
+                    Industry is required
+                  </p>
+                )}
               </div>
               <div className='col-span-6'>
                 <div className='mt-1'>
