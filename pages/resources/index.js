@@ -1,8 +1,8 @@
 import React from 'react';
 import { createClient } from 'next-sanity';
 import { motion } from 'framer-motion';
-import AdvisoryBoard from '../components/resources/AdvisoryBoard';
-import HeaderPadding from '../shared/HeaderPadding';
+import AdvisoryBoard from '../../components/resources/AdvisoryBoard';
+import HeaderPadding from '../../shared/HeaderPadding';
 import {
   AcademicCapIcon,
   MapIcon,
@@ -39,7 +39,7 @@ const actions = [
   },
   {
     title: 'NPR Interview',
-    href: '#',
+    href: 'https://apsmedia.s3.amazonaws.com/audio/AndrewNPRautopack.mp3',
     icon: MicrophoneIcon,
     desc: 'Our very own Dr. Hurley gave a shoutout on the South Carolina Business Review. Track aired on August 3rd, 2022.',
     iconForeground: 'text-red-700',
