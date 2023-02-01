@@ -10,6 +10,7 @@ const GetCodeBlock = ({
   email,
   phone,
   setSubmit,
+  checkCode,
 }) => {
   const [formIsValid, setFormIsValid] = useState(false);
   const [error, setError] = useState(undefined);
@@ -25,9 +26,32 @@ const GetCodeBlock = ({
   const codeSubmitHandler = (event) => {
     event.preventDefault();
 
+    if (regCode && formIsValid) {
+      console.log(
+        'Code in there and everything is filled out, just need to check code'
+      );
+      checkCode();
+      return;
+    }
+
+    if (!regCode && formIsValid) {
+      console.log('no code, but everything else. send for reg code');
+      sendRegCode(event, name, title, company, email, phone);
+      clear();
+      setSubmit({
+        message:
+          'Code request submitted! Please check you email for your registration code.',
+      });
+      return;
+    }
+
     if (!formIsValid) {
+      console.log('nothing is filled out.');
       setError('Please fill out all required* fields');
       return;
+    }
+
+    if (!formIsValid) {
     } else {
       sendRegCode(event, name, title, company, email, phone);
       clear();
@@ -39,22 +63,13 @@ const GetCodeBlock = ({
   };
 
   return (
-    <div className='flex flex-col gap-3 items-center p-6 text-center'>
-      <p className='text-lg font-medium leading-6 text-gray-900 text-center'>
-        Registration Code
-      </p>
-      <p className='text-slate-600 text-sm'>
-        Please fill out all fields and submit below if you have not received a
-        registration code.
-      </p>
+    <div className='flex flex-col gap-3 items-center text-center'>
       <button
-        className={`${
-          regCode ? 'bg-slate-500' : 'bg-ap-blue'
-        } rounded-md w-full mt-2`}
+        className='bg-ap-blue rounded-md w-full mt-6'
         onClick={(event) => codeSubmitHandler(event)}
       >
         <div className='text-white uppercase text-sm lg:text-base font-bold py-3 px-6 tracking-widest'>
-          Get Code
+          {regCode ? 'Validate Code' : 'Get Code'}
         </div>
       </button>
       {error && <p className='text-sm text-red-600'>{error}</p>}

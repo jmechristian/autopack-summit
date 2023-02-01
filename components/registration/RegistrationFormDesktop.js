@@ -59,7 +59,7 @@ const RegistrationFormDesktop = ({ codes, submitted, params }) => {
 
   const validateText = () => {
     if (isValid === undefined) {
-      return 'Apply';
+      return '';
     }
 
     if (isValid === true) {
@@ -73,8 +73,8 @@ const RegistrationFormDesktop = ({ codes, submitted, params }) => {
 
   return (
     <div className='p-0'>
-      <div className='grid grid-cols-1 lg:grid-cols-6 gap-12'>
-        <div className='lg:col-span-3 bg-bgImage_reg bg-cover bg-center rounded-md w-full h-full hidden lg:block'>
+      <div className='grid grid-cols-1 lg:grid-cols-7 gap-12'>
+        <div className='lg:col-span-4 bg-bgImage_reg bg-cover bg-center rounded-md w-full h-full hidden lg:block'>
           <div className='flex flex-col p-6 justify-end items-end h-full w-4/5'>
             <div className='font-semibold text-white/80 text-4xl leading-none'>
               "AutoPack Summit gives us networking with the automotive world
@@ -87,9 +87,18 @@ const RegistrationFormDesktop = ({ codes, submitted, params }) => {
         </div>
         <div className='lg:col-span-3 px-5 lg:px-0'>
           <div className='grid grid-cols-1 gap-y-4'>
+            <div className='flex flex-col gap-2 text-left py-3'>
+              <p className='text-lg font-medium leading-6 text-gray-900'>
+                1. Personal Information
+              </p>
+              <p className='text-slate-600 text-sm'>
+                Please fill out all fields to continue.
+              </p>
+            </div>
             <div className='flex flex-col gap-1'>
-              <div className='text-xs font-medium text-slate-500 uppercase'>
-                Name*
+              <div className='text-xs font-medium text-slate-500 uppercase flex justify-between'>
+                <div>Name</div>
+                <div>*Required</div>
               </div>
               <input
                 name='name'
@@ -100,8 +109,9 @@ const RegistrationFormDesktop = ({ codes, submitted, params }) => {
               />
             </div>
             <div className='flex flex-col gap-1'>
-              <div className='text-xs font-medium text-slate-500 uppercase'>
-                Email*
+              <div className='text-xs font-medium text-slate-500 uppercase flex justify-between'>
+                <div>Email</div>
+                <div>*Required</div>
               </div>
               <input
                 name='email'
@@ -112,10 +122,9 @@ const RegistrationFormDesktop = ({ codes, submitted, params }) => {
               />
             </div>
             <div className='flex flex-col gap-1'>
-              <div className='flex justify-between'>
-                <div className='text-xs font-medium text-slate-500 uppercase'>
-                  Phone*
-                </div>
+              <div className='text-xs font-medium text-slate-500 uppercase flex justify-between'>
+                <div>Phone</div>
+                <div>*Required</div>
               </div>
               <input
                 name='phone'
@@ -126,8 +135,9 @@ const RegistrationFormDesktop = ({ codes, submitted, params }) => {
               />
             </div>
             <div className='flex flex-col gap-1'>
-              <div className='text-xs font-medium text-slate-500 uppercase'>
-                Company*
+              <div className='text-xs font-medium text-slate-500 uppercase flex justify-between'>
+                <div>Company</div>
+                <div>*Required</div>
               </div>
               <input
                 name='company'
@@ -138,8 +148,9 @@ const RegistrationFormDesktop = ({ codes, submitted, params }) => {
               />
             </div>
             <div className='flex flex-col gap-1'>
-              <div className='text-xs font-medium text-slate-500 uppercase'>
-                Title*
+              <div className='text-xs font-medium text-slate-500 uppercase flex justify-between'>
+                <div>Title</div>
+                <div>*Required</div>
               </div>
               <input
                 name='title'
@@ -149,9 +160,16 @@ const RegistrationFormDesktop = ({ codes, submitted, params }) => {
                 className='w-full'
               />
             </div>
+            <div className='border-b border-b-slate-400 w-full my-5'></div>
             <div className='flex flex-col gap-1'>
-              <div className='text-xs font-medium text-slate-500 uppercase'>
-                Registration Code
+              <div className='flex flex-col gap-2 text-left mb-5'>
+                <p className='text-lg font-medium leading-6 text-gray-900'>
+                  2. Registration Code
+                </p>
+                <p className='text-slate-600 text-sm'>
+                  Please fill out all fields and submit below if you have not
+                  received a registration code.
+                </p>
               </div>
               <div className='relative'>
                 <input
@@ -163,31 +181,27 @@ const RegistrationFormDesktop = ({ codes, submitted, params }) => {
                   }}
                   type='text'
                   className='w-full placeholder:text-sm'
-                  placeholder='No code? See below.'
+                  placeholder='No code? Click below.'
                 />
                 <div className='absolute right-4 top-2 cursor-pointer'>
-                  <span
-                    className={`font-bold uppercase ${
-                      regCode ? 'text-ap-darkblue' : 'text-white'
-                    } text-sm`}
-                    onClick={() => checkRegCode()}
-                  >
-                    {validateText()}
-                  </span>
+                  <span>{validateText()}</span>
                 </div>
+                <GetCodeBlock
+                  regCode={regCode}
+                  isValid={isValid}
+                  clear={clearForm}
+                  checkCode={checkRegCode}
+                  name={name}
+                  title={title}
+                  company={company}
+                  email={email}
+                  phone={phone}
+                  setSubmit={() => submitted()}
+                />
               </div>
             </div>
-            <div className='grid grid-cols-1 lg:grid-cols-2 items-center mt-0 lg:mt-6'>
-              <GetCodeBlock
-                regCode={regCode}
-                clear={clearForm}
-                name={name}
-                title={title}
-                company={company}
-                email={email}
-                phone={phone}
-                setSubmit={() => submitted()}
-              />
+            <div className='border-b border-b-slate-400 w-full my-5'></div>
+            <div className='grid grid-cols-1 items-center mt-0'>
               <RegBlockPricing
                 regCode={regCode}
                 startCounter={startCounter}

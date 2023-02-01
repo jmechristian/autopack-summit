@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { API, graphqlOperation } from 'aws-amplify';
 import RegistrationFormDesktop from './RegistrationFormDesktop';
+import StepRegForm from '../registration/StepRegForm';
 
 const RegistrationForm = ({ params }) => {
   const [codes, setCodes] = useState([]);
@@ -62,7 +63,6 @@ const RegistrationForm = ({ params }) => {
           params={params}
         />
       )}
-      <div></div>
     </>
   );
 };
