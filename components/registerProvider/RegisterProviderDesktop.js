@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { ArrowLongRightIcon } from '@heroicons/react/24/solid';
 import { sendSponsorForm } from '../../util/sendSponsorForm';
+import { setThankYouMessage } from '../../features/layout/layoutSlice';
+import { useDispatch } from 'react-redux';
 
 const RegisterProviderDesktop = ({ submitted }) => {
   const [name, setName] = useState('');
@@ -8,6 +10,8 @@ const RegisterProviderDesktop = ({ submitted }) => {
   const [phone, setPhone] = useState('');
   const [title, setTitle] = useState('');
   const [company, setCompany] = useState('');
+
+  const dispatch = useDispatch();
 
   const clear = () => {
     setName('');
@@ -106,6 +110,11 @@ const RegisterProviderDesktop = ({ submitted }) => {
                 className='bg-ap-yellow rounded-md w-full'
                 onClick={(event) => {
                   sendSponsorForm(event, name, title, company, email, phone);
+                  dispatch(
+                    setThankYouMessage(
+                      `Thank you for your Sponsorship submission. Our team will follow up by email at ${email}.`
+                    )
+                  );
                   clear();
                   submitted();
                 }}
