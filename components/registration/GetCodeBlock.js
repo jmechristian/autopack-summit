@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { sendRegCode } from '../../util/sendRegCode';
+import { useDispatch } from 'react-redux';
+import { setThankYouMessage } from '../../features/layout/layoutSlice';
 
 const GetCodeBlock = ({
   regCode,
@@ -14,6 +16,7 @@ const GetCodeBlock = ({
 }) => {
   const [formIsValid, setFormIsValid] = useState(false);
   const [error, setError] = useState(undefined);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (name && company && title && phone && email) {
@@ -25,6 +28,12 @@ const GetCodeBlock = ({
 
   const codeSubmitHandler = (event) => {
     event.preventDefault();
+
+    if (!formIsValid) {
+      // console.log('nothing is filled out.');
+      setError('Please fill out all required* fields');
+      return;
+    }
 
     if (regCode && formIsValid) {
       // console.log(
@@ -38,27 +47,13 @@ const GetCodeBlock = ({
       // console.log('no code, but everything else. send for reg code');
       sendRegCode(event, name, title, company, email, phone);
       clear();
-      setSubmit({
-        message:
-          'Code request submitted! Please check you email for your registration code.',
-      });
+      dispatch(
+        setThankYouMessage(
+          `Your request for a registration code has been sent. Please check your inbox ${email}.`
+        )
+      );
+      setSubmit();
       return;
-    }
-
-    if (!formIsValid) {
-      // console.log('nothing is filled out.');
-      setError('Please fill out all required* fields');
-      return;
-    }
-
-    if (!formIsValid) {
-    } else {
-      sendRegCode(event, name, title, company, email, phone);
-      clear();
-      setSubmit({
-        message:
-          'Code request submitted! Please check you email for your registration code.',
-      });
     }
   };
 

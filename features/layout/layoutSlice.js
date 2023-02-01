@@ -8,6 +8,7 @@ const initialState = {
   sponsorFormOpen: false,
   registrationOpen: false,
   selectedSpeaker: null,
+  formSubmissionText: 'Your submission has been sent.',
 };
 
 export const layoutSlice = createSlice({
@@ -44,10 +45,14 @@ export const layoutSlice = createSlice({
       state.selectedSpeaker = action.payload;
       state.speakerOpen = !state.speakerOpen;
     },
+    setThankYouMessage: (state, action) => {
+      state.formSubmissionText = action.payload;
+    },
   },
 });
 
 export const {
+  setThankYouMessage,
   openNavMenu,
   closeNavMenu,
   openVideoEmbed,

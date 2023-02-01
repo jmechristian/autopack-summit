@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
 import GetCodeBlock from './GetCodeBlock';
 import RegBlockPricing from './RegBlockPricing';

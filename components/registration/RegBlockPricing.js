@@ -1,6 +1,8 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { useCountUp } from 'react-countup';
 import { sendEmail } from '../../util/sendEmail';
+import { useDispatch } from 'react-redux';
+import { setThankYouMessage } from '../../features/layout/layoutSlice';
 
 const RegBlockPricing = ({
   regCode,
@@ -16,6 +18,7 @@ const RegBlockPricing = ({
   setSubmit,
 }) => {
   const countUpRef = useRef(null);
+  const dispatch = useDispatch();
   const { start, pauseResume, reset, update } = useCountUp({
     ref: countUpRef,
     start: 799,
@@ -73,6 +76,11 @@ const RegBlockPricing = ({
         onClick={(event) => {
           sendEmail(event, name, title, company, email, phone, regCode);
           clear();
+          dispatch(
+            setThankYouMessage(
+              `You registration has been submitted. Please check your inbox, ${email}, in the coming days for your Welcome Email.`
+            )
+          );
           setSubmit();
         }}
       >
