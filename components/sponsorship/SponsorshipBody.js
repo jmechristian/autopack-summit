@@ -9,14 +9,14 @@ const SponsorshipBody = () => {
   const dispatch = useDispatch();
 
   return (
-    <div className='w-full mt-28 md:mt-48 lg:mt-12 xl:mt-24'>
-      <div className='default_wrapper flex flex-col md:flex-row gap-12 md:gap-16 lg:gap-32 xl:gap-48'>
+    <div className='w-full'>
+      <div className='smaller_wrapper flex flex-col md:flex-row gap-12 md:gap-16 lg:gap-32 xl:gap-48'>
         <div className='flex flex-col gap-16 md:gap-28 lg:gap-60 xl:gap-80 lg:w-1/2'>
           <LeftTextCTA
             subColor='blue'
             subText='Sponsorship Has'
             headlineColor='yellow'
-            headlineText="It's Perks"
+            headlineText='Its Perks'
             text='Boost Your Brand Visibility with Industry-Leading Sponsorship Solutions and Grow Your Prospects with Unmatched Trust.'
             textColor='gray'
             buttonText='Invest In Your Brand'

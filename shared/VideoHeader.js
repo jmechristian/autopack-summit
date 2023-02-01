@@ -33,7 +33,7 @@ const VideoHeader = ({ video, poster, overlay }) => {
   return (
     <div className='aspect-video flex justify-center items-center relative cursor-pointer'>
       <motion.div
-        className='absolute z-10 bg-ap-blue/40 backdrop-blur top-0 left-0 right-0 bottom-0 flex  justify-center items-center'
+        className='absolute z-30 bg-ap-blue/40 backdrop-blur top-0 left-0 right-0 bottom-0 flex  justify-center items-center'
         onClick={startVideo}
         variants={videoVariants}
         animate={isPlaying ? 'play' : 'pause'}
@@ -41,7 +41,7 @@ const VideoHeader = ({ video, poster, overlay }) => {
         <PlayCircleIcon className='w-20 h-20 md:h-28 md:w-28 lg:w-40 lg:h-40 fill-white drop-shadow-xl rounded-full bg-ap-blue' />
       </motion.div>
       {overlay && !isPlaying && (
-        <div className='absolute z-20 bottom-4 left-4  flex gap-1 lg:gap-2 items-end lg:items-center'>
+        <div className='absolute z-40 bottom-4 left-4  flex gap-1 lg:gap-2 items-end lg:items-center'>
           <div className='w-6 h-6 lg:w-8 lg:h-8'>
             <SocialIcon
               url='https://youtube.com/watch?v=xZA252lotHM'
@@ -55,7 +55,7 @@ const VideoHeader = ({ video, poster, overlay }) => {
         </div>
       )}
       <video
-        className='w-full h-full'
+        className='w-full h-full relative z-20'
         controls
         controlsList='nodownload'
         playsInline

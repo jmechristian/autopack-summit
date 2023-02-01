@@ -34,6 +34,10 @@
   @apply mx-auto max-w-7xl py-16 md:py-20 lg:py-24 px-8 lg:px-16;
 }
 
+.smaller_wrapper {
+  @apply mx-auto max-w-7xl pt-16 pb-16 md:pb-20 lg:pb-24 px-8 lg:px-16;
+}
+
 @tailwind components;
 @tailwind utilities;
 

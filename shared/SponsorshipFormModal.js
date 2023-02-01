@@ -2,15 +2,24 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { openSponsorForm } from '../features/layout/layoutSlice';
 import { XMarkIcon } from '@heroicons/react/24/solid';
-import SponsorMobileForm from './SponsorMobileForm';
+import { sendSponsorForm } from '../util/sendSponsorForm';
+import { setThankYouMessage } from '../features/layout/layoutSlice';
 
 const SponsorshipFormModal = () => {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [company, setCompany] = useState('');
-  const [message, setMessage] = useState('');
+  const [title, setTitle] = useState('');
+  const [submitted, setSubmitted] = useState(false);
+
+  const clear = () => {
+    setName('');
+    setEmail('');
+    setPhone('');
+    setCompany('');
+    setTitle('');
+  };
 
   const dispatch = useDispatch();
 
@@ -24,7 +33,8 @@ const SponsorshipFormModal = () => {
                 Join The Sponsor Lineup
               </div>
               <div className='text-slate-500 font-semibold text-center text-sm xl:text-base lg:text-left'>
-                Have a question about Sponsorship? Email{' '}
+                Fill out the form and our team will follow up with you via
+                email. Have a question about Sponsorship? Email{' '}
                 <a
                   href='mailto:bianca@packagingschool.com'
                   className='underline'
@@ -40,10 +50,7 @@ const SponsorshipFormModal = () => {
                 </a>
               </div>
             </div>
-            <div className='lg:hidden'>
-              <SponsorMobileForm />
-            </div>
-            <form className='lg:grid lg:grid-cols-1 gap-y-4 md:gap-y-6 hidden'>
+            {/* <form className='lg:grid lg:grid-cols-1 gap-y-4 md:gap-y-6 hidden'>
               <div className='flex flex-col md:flex-row gap-4 md:gap-6'>
                 <div className='flex flex-col gap-1 md:w-1/2'>
                   <div className='text-xs font-medium text-slate-500 uppercase'>
@@ -110,18 +117,6 @@ const SponsorshipFormModal = () => {
                   className='w-full'
                 />
               </div>
-              <div className='flex flex-col gap-1'>
-                <div className='text-xs font-medium text-slate-500 uppercase'>
-                  Message
-                </div>
-                <textarea
-                  name='message'
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                  className='w-full'
-                  rows={4}
-                />
-              </div>
               <div className='flex flex-col md:flex-row items-center gap-4'>
                 <button className='bg-ap-darkblue rounded-md w-full'>
                   <div className='text-white uppercase text-sm lg:text-lg font-bold py-3 px-6 tracking-widest'>
@@ -133,7 +128,97 @@ const SponsorshipFormModal = () => {
                   and Conditions.
                 </div>
               </div>
-            </form>
+            </form> */}
+            <div className='grid grid-cols-1 gap-y-4'>
+              <div className='flex flex-col gap-1'>
+                <div className='text-xs font-medium text-slate-500 uppercase'>
+                  Name*
+                </div>
+                <input
+                  name='name'
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  type='text'
+                  className='w-full'
+                />
+              </div>
+              <div className='flex flex-col gap-1'>
+                <div className='text-xs font-medium text-slate-500 uppercase'>
+                  Email*
+                </div>
+                <input
+                  name='email'
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  type='text'
+                  className='w-full'
+                />
+              </div>
+              <div className='flex flex-col gap-1'>
+                <div className='flex justify-between'>
+                  <div className='text-xs font-medium text-slate-500 uppercase'>
+                    Phone*
+                  </div>
+                </div>
+                <input
+                  name='phone'
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  type='tel'
+                  className='w-full'
+                />
+              </div>
+              <div className='flex flex-col gap-1'>
+                <div className='text-xs font-medium text-slate-500 uppercase'>
+                  Company*
+                </div>
+                <input
+                  name='company'
+                  value={company}
+                  onChange={(e) => setCompany(e.target.value)}
+                  type='text'
+                  className='w-full'
+                />
+              </div>
+              <div className='flex flex-col gap-1'>
+                <div className='text-xs font-medium text-slate-500 uppercase'>
+                  Title*
+                </div>
+                <input
+                  name='title'
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                  type='text'
+                  className='w-full'
+                />
+              </div>
+              <div className='flex flex-col md:flex-row items-center gap-4 mt-3'>
+                <button
+                  className='bg-ap-yellow rounded-md w-full'
+                  disabled={submitted}
+                  onClick={(event) => {
+                    sendSponsorForm(event, name, title, company, email, phone);
+                    setSubmitted(true);
+                    clear();
+                    dispatch(
+                      setThankYouMessage(
+                        `Thank you for your Sponsorship submission. Our team will follow up by email at ${email}.`
+                      )
+                    );
+                  }}
+                >
+                  <div className='text-slate-800 font-oswald uppercase text-sm lg:text-lg font-bold py-3 px-6 tracking-widest'>
+                    {submitted ? 'Submitted!' : 'Get Involved'}
+                  </div>
+                </button>
+                <div className='text-slate-500 text-sm'>
+                  By clicking GET INVOLVED you agree to accept our{' '}
+                  <a href='/policies'>
+                    <u>Event Terms and Conditions.</u>
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
           <div
             className='absolute top-2 right-2'
