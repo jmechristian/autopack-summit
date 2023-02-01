@@ -88,6 +88,11 @@ const RegBlockPricing = ({
           Register
         </div>
       </button>
+      {!formIsValid && (
+        <p className='text-sm text-red-500 text-center'>
+          Please fill out all required* fields and enter code.
+        </p>
+      )}
     </div>
   );
 };

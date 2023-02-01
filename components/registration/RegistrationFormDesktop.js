@@ -151,7 +151,7 @@ const RegistrationFormDesktop = ({ codes, submitted, params }) => {
             </div>
             <div className='flex flex-col gap-1'>
               <div className='text-xs font-medium text-slate-500 uppercase'>
-                Registration Code*
+                Registration Code
               </div>
               <div className='relative'>
                 <input
