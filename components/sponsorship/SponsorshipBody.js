@@ -19,8 +19,9 @@ const SponsorshipBody = () => {
             headlineText='Its Perks'
             text='Boost Your Brand Visibility with Industry-Leading Sponsorship Solutions and Grow Your Prospects with Unmatched Trust.'
             textColor='gray'
-            buttonText='Invest In Your Brand'
+            buttonText='Become a Sponsor'
             buttonColor='blue'
+            hasButton={true}
             fn={() => dispatch(openSponsorForm())}
           />
           <OverlayWithText
