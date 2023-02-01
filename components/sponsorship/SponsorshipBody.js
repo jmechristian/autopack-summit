@@ -37,7 +37,7 @@ const SponsorshipBody = () => {
           <OverlayWithText
             background='https://res.cloudinary.com/dno7xxmmy/image/upload/v1670532997/AutoPack%20Summit/header_3_yellow_xezbtb.png'
             headline='Strengthen Your Brand Name'
-            description='This industry relies heavily on trust and reputation, show your prospects you are reliable, trustworthy and serious about their growth.'
+            description='This industry relies heavily on trust and reputation. Show your prospects you are reliable, trustworthy, and serious about their growth.'
             video='assets/video/sponsor3.mp4'
             headlineColor='text-ap-darkblue'
           />

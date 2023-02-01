@@ -48,7 +48,7 @@ const actions = [
   {
     title: 'Suppliers Info Form',
     href: 'resources/suppliers',
-    desc: 'We’re building a database of all packaging suppliers. Fill out the form below to have your company details presented to OEMs & Tier One buyers.',
+    desc: 'We’re building a database of all packaging suppliers. Fill out the form below to have your company details presented to OEMs & Tier 1 buyers.',
     icon: QueueListIcon,
     iconForeground: 'text-yellow-700',
     iconBackground: 'bg-yellow-50',
