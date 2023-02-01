@@ -490,14 +490,14 @@ exports.handler = async (event) => {
     '                      "' +
     '                    >' +
     '                      <a' +
-    `                        href="https://j0t90n9gog.execute-api.us-east-1.amazonaws.com/default/handleRegistrationFunction?email=${body.email}&name=${body.name}&company=${body.company}&title=${body.title}&phone=${body.phone}"` +
+    `                        href="https://4mwprd7rph.execute-api.us-east-1.amazonaws.com/default/sendCodeToUser?email=${body.email}&name=${body.name}&company=${body.company}&title=${body.title}&phone=${body.phone}"` +
     '                        style="' +
     '                          color: white;' +
     '                          font-weight: bold;' +
     '                          text-decoration: none;' +
     '                        "' +
     '                      >' +
-    '                        APPROVE' +
+    '                        SEND REG CODE' +
     '                      </a>' +
     '                    </p>' +
     '                  </div>' +

@@ -3,7 +3,7 @@ var ses = new aws.SES({ region: 'us-east-1' });
 exports.handler = async function (event) {
   const body = JSON.parse(event.body);
 
-  var myVar =
+  const myVar =
     '<!DOCTYPE html>' +
     '<html' +
     '  lang="en"' +
@@ -547,7 +547,7 @@ exports.handler = async function (event) {
     '                      "' +
     '                    >' +
     '                      <a' +
-    '                        href="https://lp2armzy69.execute-api.us-east-1.amazonaws.com/staging/approveRegFn-staging"' +
+    `                        href="https://4mwprd7rph.execute-api.us-east-1.amazonaws.com/default/handleRegistrationv2?email=${body.email}&name=${body.name}&company=${body.company}&title=${body.title}&phone=${body.phone}"` +
     '                        style="' +
     '                          color: white;' +
     '                          font-weight: bold;' +
@@ -593,7 +593,7 @@ exports.handler = async function (event) {
     '                      "' +
     '                    >' +
     '                      <a' +
-    '                        href="/denyregistration"' +
+    '                        href="https://autopack-summit.vercel.app/denyregistration"' +
     '                        style="' +
     '                          color: white;' +
     '                          font-weight: bold;' +
@@ -636,11 +636,7 @@ exports.handler = async function (event) {
 
   var params = {
     Destination: {
-      ToAddresses: [
-        'jamie@packagingschool.com',
-        'bianca@packagingschool.com',
-        'diana@packagingschool.com',
-      ],
+      ToAddresses: ['jamie@packagingschool.com'],
     },
     Message: {
       Body: {
@@ -653,7 +649,20 @@ exports.handler = async function (event) {
     Source: 'jamie@packagingschool.com',
   };
 
-  const email = await ses.sendEmail(params).promise();
+  try {
+    const email = await ses.sendEmail(params).promise();
+    console.log(email);
+  } catch (err) {
+    console.log(err);
+  }
 
-  return email, { status: 200 };
+  return {
+    statusCode: 200,
+    //  Uncomment below to enable CORS requests
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers': '*',
+    },
+    body: JSON.stringify(event),
+  };
 };

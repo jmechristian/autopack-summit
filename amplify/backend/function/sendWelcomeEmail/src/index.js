@@ -6,6 +6,8 @@ var aws = require('aws-sdk');
 var ses = new aws.SES({ region: 'us-east-1' });
 
 exports.handler = async (event) => {
+  const { email, name } = event.queryStringParameters;
+
   var myVar =
     '<!-- THIS EMAIL WAS BUILT AND TESTED WITH LITMUS http://litmus.com -->' +
     '<!-- IT WAS RELEASED UNDER THE MIT LICENSE https://opensource.org/licenses/MIT -->' +
@@ -58,7 +60,7 @@ exports.handler = async (event) => {
     '' +
     '<!-- HIDDEN PREHEADER TEXT -->' +
     '<div style="display: none; font-size: 1px; color: #fefefe; line-height: 1px; font-family: Open Sans, Helvetica, Arial, sans-serif; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden;">' +
-    'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus dolor aliquid omnis consequatur est deserunt, odio neque blanditiis aspernatur, mollitia ipsa distinctio, culpa fuga obcaecati!' +
+    'You are successfully registered for the 2023 Automotive Pakcaging Summit.' +
     '</div>' +
     '' +
     '<table border="0" cellpadding="0" cellspacing="0" width="100%">' +
@@ -302,13 +304,8 @@ exports.handler = async (event) => {
     '</html>';
 
   var params = {
-    ConfigurationSetName: 'aps_welcome_email',
     Destination: {
-      ToAddresses: [
-        'jamie@packagingschool.com',
-        'diana@packagingschool.com',
-        'bianca@packagingschool.com',
-      ],
+      ToAddresses: [email],
     },
     Message: {
       Body: {
