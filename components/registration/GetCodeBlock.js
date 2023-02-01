@@ -27,15 +27,15 @@ const GetCodeBlock = ({
     event.preventDefault();
 
     if (regCode && formIsValid) {
-      console.log(
-        'Code in there and everything is filled out, just need to check code'
-      );
+      // console.log(
+      //   'Code in there and everything is filled out, just need to check code'
+      // );
       checkCode();
       return;
     }
 
     if (!regCode && formIsValid) {
-      console.log('no code, but everything else. send for reg code');
+      // console.log('no code, but everything else. send for reg code');
       sendRegCode(event, name, title, company, email, phone);
       clear();
       setSubmit({
@@ -46,7 +46,7 @@ const GetCodeBlock = ({
     }
 
     if (!formIsValid) {
-      console.log('nothing is filled out.');
+      // console.log('nothing is filled out.');
       setError('Please fill out all required* fields');
       return;
     }
