@@ -49,7 +49,7 @@ const GetCodeBlock = ({
       clear();
       dispatch(
         setThankYouMessage(
-          `Your request for a registration code has been sent. Please check your inbox ${email}.`
+          `Your request for a registration code has been sent. Please check your inbox, ${email}, shortly to complete registration.`
         )
       );
       setSubmit();

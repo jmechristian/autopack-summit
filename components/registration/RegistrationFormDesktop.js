@@ -166,8 +166,8 @@ const RegistrationFormDesktop = ({ codes, submitted, params }) => {
                   2. Registration Code
                 </p>
                 <p className='text-slate-600 text-sm'>
-                  Please fill out all fields and submit below if you have not
-                  received a registration code.
+                  Please fill out all fields above and click GET CODE to
+                  proceed.
                 </p>
               </div>
               <div className='relative'>
