@@ -224,7 +224,7 @@ const SponsorshipFormModal = () => {
             className='absolute top-2 right-2'
             onClick={() => dispatch(openSponsorForm())}
           >
-            <XMarkIcon className='w-6 h-6 fill-slate-700' />
+            <XMarkIcon className='w-8 h-8 fill-slate-900' />
           </div>
         </div>
       </div>
