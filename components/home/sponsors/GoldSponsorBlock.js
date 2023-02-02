@@ -11,7 +11,7 @@ const GoldSponsorBlock = ({ gold }) => {
         {gold &&
           gold.map((item, i) => (
             <div key={i}>
-              <Sponsor logo={item.logo} url={item.url} />
+              <Sponsor logo={item.logo} url={item.website} />
             </div>
           ))}
       </div>
