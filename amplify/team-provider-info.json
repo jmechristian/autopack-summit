@@ -36,7 +36,7 @@
         },
         "sendEmailFn": {
           "deploymentBucketName": "amplify-packbrain-staging-54032-deployment",
-          "s3Key": "amplify-builds/sendEmailFn-6a686a43356247537948-build.zip"
+          "s3Key": "amplify-builds/sendEmailFn-6d6c506d48504435775a-build.zip"
         },
         "addNewUser": {
           "deploymentBucketName": "amplify-packbrain-staging-54032-deployment",
@@ -48,7 +48,7 @@
         },
         "sendRegCode": {
           "deploymentBucketName": "amplify-packbrain-staging-54032-deployment",
-          "s3Key": "amplify-builds/sendRegCode-50707748344b4f4c4d6b-build.zip"
+          "s3Key": "amplify-builds/sendRegCode-754d417776374d464667-build.zip"
         },
         "sendSponsorForm": {
           "deploymentBucketName": "amplify-packbrain-staging-54032-deployment",
@@ -56,7 +56,7 @@
         },
         "sendWelcomeEmail": {
           "deploymentBucketName": "amplify-packbrain-staging-54032-deployment",
-          "s3Key": "amplify-builds/sendWelcomeEmail-6c4f6758466b49476b63-build.zip"
+          "s3Key": "amplify-builds/sendWelcomeEmail-526f7268306b6b68526c-build.zip"
         }
       }
     }

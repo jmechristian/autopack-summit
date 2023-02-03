@@ -636,7 +636,11 @@ exports.handler = async function (event) {
 
   var params = {
     Destination: {
-      ToAddresses: ['jamie@packagingschool.com'],
+      ToAddresses: [
+        'jamie@packagingschool.com',
+        'diana@packagingschool.com',
+        'bianca@packagingschool.com',
+      ],
     },
     Message: {
       Body: {

@@ -4,6 +4,7 @@ import { openSponsorForm } from '../features/layout/layoutSlice';
 import { XMarkIcon } from '@heroicons/react/24/solid';
 import { sendSponsorForm } from '../util/sendSponsorForm';
 import { setThankYouMessage } from '../features/layout/layoutSlice';
+import { formSubmitClickHandler } from '../util/tracking';
 
 const SponsorshipFormModal = () => {
   const [name, setName] = useState('');
@@ -198,6 +199,7 @@ const SponsorshipFormModal = () => {
                   disabled={submitted}
                   onClick={(event) => {
                     sendSponsorForm(event, name, title, company, email, phone);
+                    formSubmitClickHandler('sponsor_form', email);
                     setSubmitted(true);
                     clear();
                     dispatch(
