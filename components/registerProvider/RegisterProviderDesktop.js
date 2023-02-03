@@ -30,9 +30,9 @@ const RegisterProviderDesktop = ({ submitted }) => {
               Leverage the benefits of Sponsorship.
             </div>
             <div className='text-white/80 font-semibold text-lg leading-snug text-left w-full pt-4'>
-              The path to registration as a Solution Provider runs through
-              sponsorship. Get into the action and strengthen your brand
-              visibility and network.{' '}
+              Registration for Solution Providers is done through Sponsorship.
+              Don't miss out on the limited opportunities to represent your
+              brand at the Automotive Packaging Summit.{' '}
               <span className='text-ap-yellow'>
                 Fill out the form to find out how you can be a part of the next
                 Summit.
