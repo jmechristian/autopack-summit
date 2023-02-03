@@ -21,7 +21,6 @@ const AgendaItem = ({
       hour: '2-digit',
       minute: '2-digit',
     });
-  console.log(speakers);
 
   return (
     <div className='grid grid-cols-1 md:grid-cols-5 gap-8 xl:gap-16 d border-t border-t-slate-800 py-9 lg:py-12 md:px-4'>
