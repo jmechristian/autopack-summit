@@ -34,7 +34,7 @@ const RegistrationFormDesktop = ({ codes, submitted, params }) => {
     }
 
     if (params.code) {
-      setRegCode(params.code);
+      setRegCode(params.code.toUpperCase());
     }
   }, [params]);
 
