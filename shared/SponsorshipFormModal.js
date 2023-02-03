@@ -24,12 +24,12 @@ const SponsorshipFormModal = () => {
   const dispatch = useDispatch();
 
   return (
-    <div className='bg-black/60 backdrop-blur-md fixed left-0 right-0 top-0 bottom-0 z-50 flex justify-center items-center'>
-      <div className='flex justify-center px-4 overflow-hidden'>
+    <div className='bg-black/60 backdrop-blur-md fixed left-0 right-0 top-0 bottom-0 z-50 flex justify-center items-start sm:items-center'>
+      <div className='flex justify-center px-2 overflow-hidden'>
         <div className='bg-white w-full max-w-2xl rounded-md relative py-3 px-2'>
-          <div className='flex flex-col gap-9 p-7 md:p-8 xl:gap-12'>
+          <div className='flex flex-col gap-5 p-5 md:p-8 xl:gap-12 mt-2'>
             <div className='flex flex-col gap-3'>
-              <div className='text-3xl xl:text-5xl max-w-fit leading-none uppercase font-oswald font-bold text-ap-darkblue tracking-widest text-center lg:text-left'>
+              <div className=' text-2xl sm:text-3xl xl:text-5xl max-w-fit leading-none uppercase font-oswald font-bold text-ap-darkblue tracking-widest text-center lg:text-left'>
                 Join The Sponsor Lineup
               </div>
               <div className='text-slate-500 font-semibold text-center text-sm xl:text-base lg:text-left'>
@@ -221,10 +221,10 @@ const SponsorshipFormModal = () => {
             </div>
           </div>
           <div
-            className='absolute top-2 right-2'
+            className='absolute top-1 right-1'
             onClick={() => dispatch(openSponsorForm())}
           >
-            <XMarkIcon className='w-8 h-8 fill-slate-900' />
+            <XMarkIcon className='w-6 h-6 fill-slate-900' />
           </div>
         </div>
       </div>
