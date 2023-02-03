@@ -19,3 +19,5 @@ export const formSubmitClickHandler = async (param, email) => {
     emailid: email,
   });
 };
+
+//Sponsor Logo Clicks

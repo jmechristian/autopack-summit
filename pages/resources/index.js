@@ -70,14 +70,14 @@ const actions = [
     iconForeground: 'text-orange-700',
     iconBackground: 'bg-orange-50',
   },
-  {
-    title: 'Past Presentations',
-    href: 'https://apsmedia.s3.amazonaws.com/documents/APS-Press-Release.pdf',
-    desc: 'Explore expert-driven content from previous Automotive Packaging Summits.',
-    icon: ComputerDesktopIcon,
-    iconForeground: 'text-green-700',
-    iconBackground: 'bg-green-50',
-  },
+  // {
+  //   title: 'Past Presentations',
+  //   href: 'https://apsmedia.s3.amazonaws.com/documents/APS-Press-Release.pdf',
+  //   desc: 'Explore expert-driven content from previous Automotive Packaging Summits.',
+  //   icon: ComputerDesktopIcon,
+  //   iconForeground: 'text-green-700',
+  //   iconBackground: 'bg-green-50',
+  // },
 ];
 
 function classNames(...classes) {
