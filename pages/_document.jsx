@@ -5,6 +5,7 @@ export default function Document() {
   return (
     <Html style={{ scrollBehavior: 'smooth' }}>
       <Head>
+        <link rel='icon' type='image/svg' href='/favicon.svg' />
         <link rel='preconnect' href='https://fonts.googleapis.com' />
         <link
           rel='preconnect'
