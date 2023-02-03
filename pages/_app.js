@@ -4,6 +4,7 @@ import { Amplify, Analytics } from 'aws-amplify';
 import { createClient } from 'next-sanity';
 import { Provider } from 'react-redux';
 import { store } from '../features/store';
+import { DefaultSeo } from 'next-seo';
 
 import awsExports from '../src/aws-exports';
 Amplify.configure(awsExports);
@@ -27,11 +28,17 @@ function MyApp({ Component, pageProps }) {
   });
 
   return (
-    <Provider store={store}>
-      <Layout client={client}>
-        <Component {...pageProps} />
-      </Layout>
-    </Provider>
+    <>
+      <DefaultSeo
+        title='Automotive Packaging Summit'
+        description='The premier open forum for OEMs, Tier 1 Part Suppliers and Packaging Solution Providers to discuss packaging innovations and challenges.'
+      />
+      <Provider store={store}>
+        <Layout client={client}>
+          <Component {...pageProps} />
+        </Layout>
+      </Provider>
+    </>
   );
 }
 
