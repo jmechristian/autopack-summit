@@ -11,6 +11,7 @@ import {
   Cog6ToothIcon,
   ComputerDesktopIcon,
 } from '@heroicons/react/24/outline';
+import { resourceBlockClickHandler } from '../../util/tracking';
 
 const actions = [
   {
@@ -98,6 +99,7 @@ const resources = ({ resourceData }) => {
       <div className='w-full h-full xl:max-w-6xl xl:mx-auto divide-y bg-gray-200 divide-gray-200 overflow-hidden rounded-lg shadow sm:grid sm:grid-cols-2 sm:gap-px sm:divide-y-0 mb-12'>
         {actions.map((action, actionIdx) => (
           <div
+            onClick={() => resourceBlockClickHandler(action.title)}
             key={action.title}
             className={classNames(
               actionIdx === 0

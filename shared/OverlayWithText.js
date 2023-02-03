@@ -3,6 +3,7 @@ import { PlayCircleIcon } from '@heroicons/react/24/solid';
 import { useInView, motion } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
 import { openVideoEmbed } from '../features/layout/layoutSlice';
+import { colorBlockClickHandler } from '../util/tracking';
 
 const OverlayWithText = ({
   background,
@@ -50,6 +51,11 @@ const OverlayWithText = ({
     },
   };
 
+  const colorBlockHandler = () => {
+    dispatch(openVideoEmbed(video));
+    colorBlockClickHandler(headline);
+  };
+
   return (
     <motion.div
       className='relative'
@@ -68,7 +74,7 @@ const OverlayWithText = ({
       >
         <div
           className='flex justify-center items-center rounded-md h-full'
-          onClick={() => dispatch(openVideoEmbed(video))}
+          onClick={colorBlockHandler}
         >
           {' '}
           {video && (

@@ -1,5 +1,4 @@
 import React from 'react';
-import FooterHeadline from './FooterHeadline';
 import FooterImageGallery from './FooterImageGallery';
 import FooterNav from './FooterNav';
 import FooterSubscribe from './FooterSubscribe';
