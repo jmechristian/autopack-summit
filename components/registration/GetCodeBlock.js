@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { sendRegCode } from '../../util/sendRegCode';
 import { useDispatch } from 'react-redux';
 import { setThankYouMessage } from '../../features/layout/layoutSlice';
+import { formSubmitClickHandler } from '../../util/tracking';
 
 const GetCodeBlock = ({
   regCode,
@@ -46,6 +47,7 @@ const GetCodeBlock = ({
     if (!regCode && formIsValid) {
       // console.log('no code, but everything else. send for reg code');
       sendRegCode(event, name, title, company, email, phone);
+      formSubmitClickHandler('code_request', email);
       clear();
       dispatch(
         setThankYouMessage(

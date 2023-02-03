@@ -3,6 +3,7 @@ import { useCountUp } from 'react-countup';
 import { sendEmail } from '../../util/sendEmail';
 import { useDispatch } from 'react-redux';
 import { setThankYouMessage } from '../../features/layout/layoutSlice';
+import { formSubmitClickHandler } from '../../util/tracking';
 
 const RegBlockPricing = ({
   regCode,
@@ -75,6 +76,7 @@ const RegBlockPricing = ({
         disabled={!regCode || !formIsValid}
         onClick={(event) => {
           sendEmail(event, name, title, company, email, phone, regCode);
+          formSubmitClickHandler('registration', email);
           clear();
           dispatch(
             setThankYouMessage(
