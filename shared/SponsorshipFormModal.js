@@ -12,6 +12,7 @@ const SponsorshipFormModal = () => {
   const [phone, setPhone] = useState('');
   const [company, setCompany] = useState('');
   const [title, setTitle] = useState('');
+  const [error, setError] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
   const clear = () => {
@@ -20,6 +21,22 @@ const SponsorshipFormModal = () => {
     setPhone('');
     setCompany('');
     setTitle('');
+  };
+
+  const formSubmitHandler = (event) => {
+    if (name && email && phone && title && company) {
+      sendSponsorForm(event, name, title, company, email, phone);
+      formSubmitClickHandler('sponsor_form', email);
+      setSubmitted(true);
+      clear();
+      dispatch(
+        setThankYouMessage(
+          `Thank you for your Sponsorship submission. Our team will follow up by email at ${email}.`
+        )
+      );
+    } else {
+      setError(true);
+    }
   };
 
   const dispatch = useDispatch();
@@ -132,8 +149,13 @@ const SponsorshipFormModal = () => {
             </form> */}
             <div className='grid grid-cols-1 gap-y-4'>
               <div className='flex flex-col gap-1'>
-                <div className='text-xs font-medium text-slate-500 uppercase'>
-                  Name*
+                <div className='flex justify-between'>
+                  <div className='text-xs font-medium text-slate-500 uppercase'>
+                    Name
+                  </div>
+                  <div className='text-slate-500 text-xs uppercase'>
+                    *required
+                  </div>
                 </div>
                 <input
                   name='name'
@@ -144,8 +166,13 @@ const SponsorshipFormModal = () => {
                 />
               </div>
               <div className='flex flex-col gap-1'>
-                <div className='text-xs font-medium text-slate-500 uppercase'>
-                  Email*
+                <div className='flex justify-between'>
+                  <div className='text-xs font-medium text-slate-500 uppercase'>
+                    Email
+                  </div>
+                  <div className='text-slate-500 text-xs uppercase'>
+                    *required
+                  </div>
                 </div>
                 <input
                   name='email'
@@ -158,7 +185,10 @@ const SponsorshipFormModal = () => {
               <div className='flex flex-col gap-1'>
                 <div className='flex justify-between'>
                   <div className='text-xs font-medium text-slate-500 uppercase'>
-                    Phone*
+                    Phone
+                  </div>
+                  <div className='text-slate-500 text-xs uppercase'>
+                    *required
                   </div>
                 </div>
                 <input
@@ -170,8 +200,13 @@ const SponsorshipFormModal = () => {
                 />
               </div>
               <div className='flex flex-col gap-1'>
-                <div className='text-xs font-medium text-slate-500 uppercase'>
-                  Company*
+                <div className='flex justify-between'>
+                  <div className='text-xs font-medium text-slate-500 uppercase'>
+                    Phone
+                  </div>
+                  <div className='text-slate-500 text-xs uppercase'>
+                    *required
+                  </div>
                 </div>
                 <input
                   name='company'
@@ -182,8 +217,13 @@ const SponsorshipFormModal = () => {
                 />
               </div>
               <div className='flex flex-col gap-1'>
-                <div className='text-xs font-medium text-slate-500 uppercase'>
-                  Title*
+                <div className='flex justify-between'>
+                  <div className='text-xs font-medium text-slate-500 uppercase'>
+                    Title
+                  </div>
+                  <div className='text-slate-500 text-xs uppercase'>
+                    *required
+                  </div>
                 </div>
                 <input
                   name='title'
@@ -197,17 +237,7 @@ const SponsorshipFormModal = () => {
                 <button
                   className='bg-ap-yellow rounded-md w-full'
                   disabled={submitted}
-                  onClick={(event) => {
-                    sendSponsorForm(event, name, title, company, email, phone);
-                    formSubmitClickHandler('sponsor_form', email);
-                    setSubmitted(true);
-                    clear();
-                    dispatch(
-                      setThankYouMessage(
-                        `Thank you for your Sponsorship submission. Our team will follow up by email at ${email}.`
-                      )
-                    );
-                  }}
+                  onClick={(event) => formSubmitHandler(event)}
                 >
                   <div className='text-slate-800 font-oswald uppercase text-sm lg:text-lg font-bold py-3 px-6 tracking-widest'>
                     {submitted ? 'Submitted!' : 'Get Involved'}
@@ -220,6 +250,13 @@ const SponsorshipFormModal = () => {
                   </a>
                 </div>
               </div>
+              {error && (
+                <div className='bg-red-200 py-2 px-3 text-center'>
+                  <div className='text-red-800'>
+                    Please fill out all required* fields.
+                  </div>
+                </div>
+              )}
             </div>
           </div>
           <div
