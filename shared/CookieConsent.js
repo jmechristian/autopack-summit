@@ -49,7 +49,7 @@ const CookieConsent = () => {
                   <span className='inline text-sm md:text-base'>
                     Hello! This website uses cookies to make sure the website
                     can function, measure traffic and to support the
-                    registration process. By clicking "Allow all cookies" or
+                    registration process. By clicking "Accept all cookies" or
                     using this website, you agree to our use of cookies. Please
                     read our
                     <a href='/policies'> privacy policy </a>for more

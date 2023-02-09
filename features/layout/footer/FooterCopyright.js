@@ -14,13 +14,21 @@ const FooterCopyright = () => {
           Copyright © 2015-2022 The Packaging School, LLC. All Rights Reserved.
         </div>
         <div className='hidden md:flex gap-4 md:col-span-5 lg:col-span-7 justify-end'>
-          <div className='text-xs text-white/70'>Privacy Policy</div>
-          <div className='text-xs text-white/70'>Terms of Use</div>
+          <div className='text-xs text-white/70'>
+            <a href='/policies'>Privacy Policy</a>
+          </div>
+          <div className='text-xs text-white/70'>
+            <a href='/policies'>Terms of Use</a>
+          </div>
         </div>
       </div>
       <div className='flex gap-4 md:hidden'>
-        <div className='text-xs lg:text-sm text-white/70'>Privacy Policy</div>
-        <div className='text-xs lg:text-sm text-white/70'>Terms of Use</div>
+        <div className='text-xs lg:text-sm text-white/70'>
+          <a href='/policies'>Privacy Policy</a>
+        </div>
+        <div className='text-xs lg:text-sm text-white/70'>
+          <a href='/policies'>Terms of Use</a>
+        </div>
       </div>
     </div>
   );
