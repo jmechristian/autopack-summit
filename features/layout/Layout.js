@@ -7,6 +7,7 @@ import VideoModal from '../../shared/VideoModal';
 import Footer from './footer/Footer';
 import Header from './header/Header';
 import MobileMenu from './mobile/MobileMenu';
+import CookieConsent from '../../shared/CookieConsent';
 
 const Layout = ({ client, children }) => {
   const [footerImages, setFooterImages] = useState(null);
@@ -30,6 +31,7 @@ const Layout = ({ client, children }) => {
 
   return (
     <div>
+      <CookieConsent />
       <Header openMenu={() => dispatch(openNavMenu())} />
       <MobileMenu close={() => dispatch(closeNavMenu())} isOpen={navOpen} />
       {videoOpen && <VideoModal />}
