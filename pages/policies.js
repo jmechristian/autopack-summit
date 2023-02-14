@@ -1,9 +1,21 @@
 import React from 'react';
 import HeaderPadding from '../shared/HeaderPadding';
+import Head from 'next/head';
 
 const Terms = () => {
   return (
     <>
+      <Head>
+        <title>Automotive Packaging Summit | Privacy & Policy</title>
+        <meta
+          property='og:image'
+          content='https://apsmedia.s3.amazonaws.com/images/aps_placeholder.png'
+        />
+        <meta
+          property='og:title'
+          content='Automotive Packaging Summit | Privacy & Policy'
+        />
+      </Head>
       <HeaderPadding />
       <div className='relative overflow-hidden bg-white py-16'>
         <div className='hidden lg:absolute lg:inset-y-0 lg:block lg:h-full lg:w-full lg:[overflow-anchor:none]'>

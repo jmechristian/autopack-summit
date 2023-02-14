@@ -2,14 +2,28 @@ import React from 'react';
 import TravelAside from '../components/travel/TravelAside';
 import TravelBody from '../components/travel/TravelBody';
 import TravelHead from '../components/travel/TravelHead';
+import Head from 'next/head';
 
 const travel = () => {
   return (
-    <div className='w-full relative overflow-hidden'>
-      <TravelHead />
-      <TravelBody />
-      <TravelAside />
-    </div>
+    <>
+      <Head>
+        <title>Automotive Packaging Summit | Travel</title>
+        <meta
+          property='og:image'
+          content='https://apsmedia.s3.amazonaws.com/images/aps_placeholder.png'
+        />
+        <meta
+          property='og:title'
+          content='Automotive Packaging Summit | Travel'
+        />
+      </Head>
+      <div className='w-full relative overflow-hidden'>
+        <TravelHead />
+        <TravelBody />
+        <TravelAside />
+      </div>
+    </>
   );
 };
 

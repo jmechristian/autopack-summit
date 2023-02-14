@@ -11,20 +11,9 @@ export default function Home({ homepageData }) {
   return (
     <>
       <Head>
-        <title>Packaging School - Carbon Neutral Part 1</title>
-        <meta
-          name='description'
-          content='Experience the premier open forum for OEMs, Tier 1 Part Suppliers and Packaging Solution Providers to discuss packaging innovations and challenges.'
-          key='desc'
-        />
         <meta
           property='og:image'
           content='https://apsmedia.s3.amazonaws.com/images/aps_placeholder.png'
-        />
-        <meta property='og:title' content='Automotive Packaging Summit' />
-        <meta
-          property='og:description'
-          content='Experience the premier open forum for OEMs, Tier 1 Part Suppliers and Packaging Solution Providers to discuss packaging innovations and challenges.'
         />
       </Head>
       <div className='flex flex-col'>

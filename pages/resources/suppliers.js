@@ -1,10 +1,22 @@
 import React from 'react';
 import SupplierForm from '../../components/resources/SupplierForm';
 import HeaderPadding from '../../shared/HeaderPadding';
+import Head from 'next/head';
 
 const suppliers = () => {
   return (
     <>
+      <Head>
+        <title>Automotive Packaging Summit | Suppliers</title>
+        <meta
+          property='og:image'
+          content='https://apsmedia.s3.amazonaws.com/images/aps_placeholder.png'
+        />
+        <meta
+          property='og:title'
+          content='Automotive Packaging Summit | Suppliers'
+        />
+      </Head>
       <HeaderPadding />
       <div className='bg-white'>
         <div className='py-16 px-6 sm:px-6 sm:py-16 lg:px-8'>

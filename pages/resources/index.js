@@ -12,6 +12,7 @@ import {
   ComputerDesktopIcon,
 } from '@heroicons/react/24/outline';
 import { resourceBlockClickHandler } from '../../util/tracking';
+import Head from 'next/head';
 
 const actions = [
   {
@@ -87,6 +88,17 @@ function classNames(...classes) {
 const resources = ({ resourceData }) => {
   return (
     <>
+      <Head>
+        <title>Automotive Packaging Summit | Suppliers</title>
+        <meta
+          property='og:image'
+          content='https://apsmedia.s3.amazonaws.com/images/aps_placeholder.png'
+        />
+        <meta
+          property='og:title'
+          content='Automotive Packaging Summit | Suppliers'
+        />
+      </Head>
       <HeaderPadding />
       <div className='flex flex-col items-center my-8'>
         <motion.div className='blue_subheadline text-xl md:text-xl xl:text-2xl'>

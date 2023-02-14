@@ -2,13 +2,27 @@ import React from 'react';
 import AgendaBody from '../components/agenda/AgendaBody';
 import AgendaHead from '../components/agenda/AgendaHead';
 import { createClient } from 'next-sanity';
+import Head from 'next/head';
 
 const agenda = ({ sessionData }) => {
   return (
-    <div className='w-full'>
-      <AgendaHead />
-      <AgendaBody sessions={sessionData} />
-    </div>
+    <>
+      <Head>
+        <title>Automotive Packaging Summit | Agenda</title>
+        <meta
+          property='og:image'
+          content='https://apsmedia.s3.amazonaws.com/images/aps_placeholder.png'
+        />
+        <meta
+          property='og:title'
+          content='Automotive Packaging Summit | Agenda'
+        />
+      </Head>
+      <div className='w-full'>
+        <AgendaHead />
+        <AgendaBody sessions={sessionData} />
+      </div>
+    </>
   );
 };
 
