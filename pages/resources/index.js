@@ -92,7 +92,7 @@ const resources = ({ resourceData }) => {
         <title>Automotive Packaging Summit | Suppliers</title>
         <meta
           property='og:image'
-          content='https://apsmedia.s3.amazonaws.com/images/aps_placeholder.png'
+          content='https://apsmedia.s3.amazonaws.com/images/og_image.png'
         />
         <meta
           property='og:title'

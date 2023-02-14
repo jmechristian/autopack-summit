@@ -13,7 +13,7 @@ export default function Home({ homepageData }) {
       <Head>
         <meta
           property='og:image'
-          content='https://apsmedia.s3.amazonaws.com/images/aps_placeholder.png'
+          content='https://apsmedia.s3.amazonaws.com/images/og_image.png'
         />
       </Head>
       <div className='flex flex-col'>
