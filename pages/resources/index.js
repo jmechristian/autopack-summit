@@ -98,6 +98,12 @@ const resources = ({ resourceData }) => {
           property='og:title'
           content='Automotive Packaging Summit | Suppliers'
         />
+        <meta
+          property='og:description'
+          content='The premier open forum for OEMs, Tier 1 Part Suppliers and Packaging Solution Providers to discuss packaging innovations and challenges.'
+        />
+        <meta property='og:type' content='website' />
+        <meta property='og:url' content='https://autopacksummit.com/' />
       </Head>
       <HeaderPadding />
       <div className='flex flex-col items-center my-8'>
