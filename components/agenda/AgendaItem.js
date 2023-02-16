@@ -63,7 +63,7 @@ const AgendaItem = ({
       <div className=' md:col-span-2 lg:col-span-1 flex justify-end items-center lg:items-start'>
         <div className='flex flex-col gap-6 lg:col-span-2'>
           <div className='text-slate-400 uppercase tracking-widest font-semibold text-sm hidden lg:inline-block'>
-            sponsor
+            {' '}
           </div>
           {sponsors &&
             sponsors.map((sp, i) => (
