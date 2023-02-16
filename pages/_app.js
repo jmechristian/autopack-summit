@@ -33,6 +33,21 @@ function MyApp({ Component, pageProps }) {
       <DefaultSeo
         title='Automotive Packaging Summit'
         description='The premier open forum for OEMs, Tier 1 Part Suppliers and Packaging Solution Providers to discuss packaging innovations and challenges.'
+        openGraph={{
+          type: 'website',
+          url: 'https://autopacksummit.com',
+          description:
+            'The premier open forum for OEMs, Tier 1 Part Suppliers and Packaging Solution Providers to discuss packaging innovations and challenges.',
+          images: [
+            {
+              url: 'https://www.example.ie/og-image-01.jpg',
+              width: 800,
+              height: 600,
+              alt: 'Og Image Alt',
+              type: 'image/jpeg',
+            },
+          ],
+        }}
       />
       <CookiesProvider>
         <Provider store={store}>
