@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import UploadImage from '../../util/UploadImage';
 
@@ -6,11 +6,14 @@ const SpeakerProfileForm = () => {
   const {
     register,
     handleSubmit,
+    setValue,
     control,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const [profileUrl, setProfileUrl] = useState('');
+
+  const onSubmit = (data) => console.log(data, profileUrl);
 
   return (
     <div className='max-w-4xl mx-auto pt-20'>
@@ -105,11 +108,11 @@ const SpeakerProfileForm = () => {
                 </label>
                 <div className='mt-1'>
                   <input
-                    {...register('Company', { required: true })}
+                    {...register('company', { required: true })}
                     type='text'
                     placeholder='Enter name as it should appear in printed material'
-                    name='Company'
-                    id='Company'
+                    name='company'
+                    id='company'
                     autoComplete='company'
                     className='block w-full rounded-md border-gray-300 shadow-sm focus:border-ap-blue focus:ring-indigo-500 sm:text-sm'
                   />
@@ -238,7 +241,7 @@ const SpeakerProfileForm = () => {
               </div>
               <div className='sm:col-span-6'>
                 <label
-                  htmlFor='profile'
+                  htmlFor='headshot'
                   className='block text-sm font-medium text-gray-700'
                 >
                   Profile photo*
@@ -261,15 +264,24 @@ const SpeakerProfileForm = () => {
                     </svg>
                     <div className='inline-flex items-center justify-center text-sm text-gray-600 mx-auto'>
                       <label htmlFor='profile' className=''>
-                        {/* <input
-                          {...register('profile')}
-                          id='profile'
-                          name='profile'
-                          type='file'
-                          className='sr-only'
-                        /> */}
-                        <UploadImage />
+                        <UploadImage
+                          setUrl={(url) => {
+                            setValue('headshot', url);
+                          }}
+                        />
+                        {profileUrl && profileUrl}
                       </label>
+                      <input
+                        {...register('headshot')}
+                        id='headshot'
+                        name='headshot'
+                        type='text'
+                        value={profileUrl}
+                        className='sr-only'
+                      />
+                    </div>
+                    <div className='text-sm text-red-700'>
+                      {errors.profilePic && <span>This field is required</span>}
                     </div>
                     <p className='text-xs text-gray-500 pt-2'>
                       PNG, JPG, WEBP up to 2MB
@@ -315,15 +327,15 @@ const SpeakerProfileForm = () => {
             <div className='relative flex items-start mb-3 sm:mb-5'>
               <div className='flex h-6 items-center'>
                 <Controller
-                  name='consent'
+                  name='privacyConsent'
                   control={control}
                   rules={{ required: true }}
                   render={({ field }) => (
                     <input
                       {...field}
                       type='checkbox'
-                      id='consent'
-                      name='consent'
+                      id='privacyConsent'
+                      name='privacyConsent'
                       className='h-6 w-6 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500'
                     />
                   )}

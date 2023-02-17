@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
-const UploadImage = () => {
+const UploadImage = ({ setUrl }) => {
   const [file, setFile] = useState(null);
   const [uploadingStatus, setUploadingStatus] = useState(false);
   const [buttonText, setButtonText] = useState('Upload Your Profile Pic');
@@ -26,6 +26,12 @@ const UploadImage = () => {
       })
       .then((response) => {
         if (response.status === 200) {
+          setFile(
+            `https://apsmedia.s3.amazonaws.com/images/${response.config.data.name}`
+          );
+          setUrl(
+            `https://apsmedia.s3.amazonaws.com/images/${response.config.data.name}`
+          );
           setButtonText('Uploaded!');
         }
       });
