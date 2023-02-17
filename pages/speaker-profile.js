@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import HeaderPadding from '../shared/HeaderPadding';
 import { ExclamationTriangleIcon } from '@heroicons/react/24/outline';
-import SpeakerProfileForm from '../components/speakerProfile/speakerProfileForm';
+import SpeakerProfileForm from '../components/speakerProfile/SpeakerProfileForm';
 
 const speakerProfile = () => {
   return (

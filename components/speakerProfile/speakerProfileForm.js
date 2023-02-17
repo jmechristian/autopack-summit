@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
+import UploadImage from '../../util/UploadImage';
 
 const SpeakerProfileForm = () => {
   const {
@@ -237,7 +238,7 @@ const SpeakerProfileForm = () => {
               </div>
               <div className='sm:col-span-6'>
                 <label
-                  htmlFor='cover-photo'
+                  htmlFor='profile'
                   className='block text-sm font-medium text-gray-700'
                 >
                   Profile photo*
@@ -258,24 +259,20 @@ const SpeakerProfileForm = () => {
                         strokeLinejoin='round'
                       />
                     </svg>
-                    <div className='flex text-sm text-gray-600'>
-                      <label
-                        htmlFor='profile'
-                        className='relative cursor-pointer rounded-md bg-white font-medium text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-ap-darkblue focus-within:ring-offset-2 hover:text-indigo-500'
-                      >
-                        <span>Upload Your Pic</span>
-                        <input
+                    <div className='inline-flex items-center justify-center text-sm text-gray-600 mx-auto'>
+                      <label htmlFor='profile' className=''>
+                        {/* <input
                           {...register('profile')}
                           id='profile'
                           name='profile'
                           type='file'
                           className='sr-only'
-                        />
+                        /> */}
+                        <UploadImage />
                       </label>
-                      <p className='pl-1'>or drag and drop</p>
                     </div>
-                    <p className='text-xs text-gray-500'>
-                      PNG, JPG, GIF up to 2MB
+                    <p className='text-xs text-gray-500 pt-2'>
+                      PNG, JPG, WEBP up to 2MB
                     </p>
                   </div>
                 </div>
@@ -344,7 +341,7 @@ const SpeakerProfileForm = () => {
               type='submit'
               className='flex justify-center w-full rounded-md border border-transparent bg-ap-blue py-2 px-4 font-medium text-white shadow-sm hover:bg-ap-darkblue focus:outline-none focus:ring-2 focus:ring-ap-darkblue focus:ring-offset-2'
             >
-              <div className='block w-max'>Update Profile</div>
+              <div className='block w-max'>Create Profile</div>
             </button>
           </div>
           <div className='text-sm text-red-700 mt-2'>
