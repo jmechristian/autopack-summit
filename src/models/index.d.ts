@@ -6,15 +6,15 @@ export enum ModuleType {
   MICROLESSON = "MICROLESSON"
 }
 
-export declare class RegistrationCode {
-  readonly code?: string | null;
-  constructor(init: ModelInit<RegistrationCode>);
-}
-
 export declare class LessonSource {
   readonly name?: string | null;
   readonly link?: string | null;
   constructor(init: ModelInit<LessonSource>);
+}
+
+export declare class RegistrationCode {
+  readonly code?: string | null;
+  constructor(init: ModelInit<RegistrationCode>);
 }
 
 export declare class Lesson {
@@ -42,6 +42,7 @@ export declare class APS {
   readonly id: string;
   readonly Registrants?: (APSUser | null)[] | null;
   readonly Sponsors?: (APSSponsor | null)[] | null;
+  readonly Speakers?: (APSSpeaker | null)[] | null;
   readonly year: number;
   readonly codes?: (RegistrationCode | null)[] | null;
   readonly createdAt?: string | null;
@@ -91,6 +92,33 @@ export declare class Company {
   readonly updatedAt?: string | null;
   constructor(init: ModelInit<Company>);
   static copyOf(source: Company, mutator: (draft: MutableModel<Company>) => MutableModel<Company> | void): Company;
+}
+
+export declare class APSSpeaker {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<APSSpeaker, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly firstName: string;
+  readonly lastName: string;
+  readonly email: string;
+  readonly company: string;
+  readonly title: string;
+  readonly phone?: string | null;
+  readonly linkedin?: string | null;
+  readonly bio: string;
+  readonly presentationTitle?: string | null;
+  readonly presentationSummary?: string | null;
+  readonly headshot: string;
+  readonly mediaConsent?: boolean | null;
+  readonly privacyConsent?: boolean | null;
+  readonly apsHistory?: APS | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+  readonly aPSSpeakersId?: string | null;
+  constructor(init: ModelInit<APSSpeaker>);
+  static copyOf(source: APSSpeaker, mutator: (draft: MutableModel<APSSpeaker>) => MutableModel<APSSpeaker> | void): APSSpeaker;
 }
 
 export declare class APSUser {

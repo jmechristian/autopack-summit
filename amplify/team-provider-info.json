@@ -52,7 +52,7 @@
         },
         "sendSponsorForm": {
           "deploymentBucketName": "amplify-packbrain-staging-54032-deployment",
-          "s3Key": "amplify-builds/sendSponsorForm-6b56554837347847672f-build.zip"
+          "s3Key": "amplify-builds/sendSponsorForm-344c585530757062546e-build.zip"
         },
         "sendWelcomeEmail": {
           "deploymentBucketName": "amplify-packbrain-staging-54032-deployment",

@@ -6,7 +6,7 @@ var aws = require('aws-sdk');
 var ses = new aws.SES({ region: 'us-east-1' });
 
 exports.handler = async (event) => {
-  const { email } = event.queryStringParameters;
+  const { email, name } = event.queryStringParameters;
 
   var myVar =
     '<!-- THIS EMAIL WAS BUILT AND TESTED WITH LITMUS http://litmus.com -->' +

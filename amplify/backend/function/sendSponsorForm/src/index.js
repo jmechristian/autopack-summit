@@ -502,7 +502,7 @@ exports.handler = async (event) => {
         Html: { Data: myVar },
       },
 
-      Subject: { Data: `APS Reg Code Submission from ${body.name}` },
+      Subject: { Data: `Sponsor Submission from ${body.name}` },
     },
     Source: 'jamie@packagingschool.com',
   };

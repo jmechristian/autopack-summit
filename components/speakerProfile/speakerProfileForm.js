@@ -16,10 +16,10 @@ const SpeakerProfileForm = () => {
 
   const onSubmit = async (fields) => {
     let { data } = await axios.post('/api/dynamo/create-speaker', {
-      fields: fields,
+      fields,
     });
 
-    console.log('data:', data);
+    console.log('create data:', data);
   };
 
   return (

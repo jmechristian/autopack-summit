@@ -118,20 +118,34 @@ export const createAPS = /* GraphQL */ `
       Sponsors {
         items {
           id
-          name
-          Employees {
-            nextToken
-            startedAt
+          aPSId
+          companyId
+          aPS {
+            id
+            year
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
-          website
-          email
-          phone
-          street_1
-          street_2
-          city
-          state
-          zip
-          apsID
+          company {
+            id
+            name
+            website
+            email
+            phone
+            street_1
+            street_2
+            city
+            state
+            zip
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
           createdAt
           updatedAt
           _version
@@ -201,20 +215,34 @@ export const updateAPS = /* GraphQL */ `
       Sponsors {
         items {
           id
-          name
-          Employees {
-            nextToken
-            startedAt
+          aPSId
+          companyId
+          aPS {
+            id
+            year
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
-          website
-          email
-          phone
-          street_1
-          street_2
-          city
-          state
-          zip
-          apsID
+          company {
+            id
+            name
+            website
+            email
+            phone
+            street_1
+            street_2
+            city
+            state
+            zip
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
           createdAt
           updatedAt
           _version
@@ -284,20 +312,34 @@ export const deleteAPS = /* GraphQL */ `
       Sponsors {
         items {
           id
-          name
-          Employees {
-            nextToken
-            startedAt
+          aPSId
+          companyId
+          aPS {
+            id
+            year
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
           }
-          website
-          email
-          phone
-          street_1
-          street_2
-          city
-          state
-          zip
-          apsID
+          company {
+            id
+            name
+            website
+            email
+            phone
+            street_1
+            street_2
+            city
+            state
+            zip
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
           createdAt
           updatedAt
           _version
@@ -358,7 +400,46 @@ export const createCompany = /* GraphQL */ `
       city
       state
       zip
-      apsID
+      apsID {
+        items {
+          id
+          aPSId
+          companyId
+          aPS {
+            id
+            year
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          company {
+            id
+            name
+            website
+            email
+            phone
+            street_1
+            street_2
+            city
+            state
+            zip
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        nextToken
+        startedAt
+      }
       createdAt
       updatedAt
       _version
@@ -406,7 +487,46 @@ export const updateCompany = /* GraphQL */ `
       city
       state
       zip
-      apsID
+      apsID {
+        items {
+          id
+          aPSId
+          companyId
+          aPS {
+            id
+            year
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          company {
+            id
+            name
+            website
+            email
+            phone
+            street_1
+            street_2
+            city
+            state
+            zip
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        nextToken
+        startedAt
+      }
       createdAt
       updatedAt
       _version
@@ -454,7 +574,46 @@ export const deleteCompany = /* GraphQL */ `
       city
       state
       zip
-      apsID
+      apsID {
+        items {
+          id
+          aPSId
+          companyId
+          aPS {
+            id
+            year
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          company {
+            id
+            name
+            website
+            email
+            phone
+            street_1
+            street_2
+            city
+            state
+            zip
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        nextToken
+        startedAt
+      }
       createdAt
       updatedAt
       _version
@@ -671,16 +830,8 @@ export const createAPSUser = /* GraphQL */ `
         Sponsors {
           items {
             id
-            name
-            website
-            email
-            phone
-            street_1
-            street_2
-            city
-            state
-            zip
-            apsID
+            aPSId
+            companyId
             createdAt
             updatedAt
             _version
@@ -765,16 +916,8 @@ export const updateAPSUser = /* GraphQL */ `
         Sponsors {
           items {
             id
-            name
-            website
-            email
-            phone
-            street_1
-            street_2
-            city
-            state
-            zip
-            apsID
+            aPSId
+            companyId
             createdAt
             updatedAt
             _version
@@ -859,16 +1002,8 @@ export const deleteAPSUser = /* GraphQL */ `
         Sponsors {
           items {
             id
-            name
-            website
-            email
-            phone
-            street_1
-            street_2
-            city
-            state
-            zip
-            apsID
+            aPSId
+            companyId
             createdAt
             updatedAt
             _version
@@ -902,6 +1037,327 @@ export const deleteAPSUser = /* GraphQL */ `
             id
             aPSId
             userId
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const createAPSSponsor = /* GraphQL */ `
+  mutation CreateAPSSponsor(
+    $input: CreateAPSSponsorInput!
+    $condition: ModelAPSSponsorConditionInput
+  ) {
+    createAPSSponsor(input: $input, condition: $condition) {
+      id
+      aPSId
+      companyId
+      aPS {
+        id
+        Registrants {
+          items {
+            id
+            aPSId
+            userId
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+        Sponsors {
+          items {
+            id
+            aPSId
+            companyId
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+        year
+        codes {
+          code
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      company {
+        id
+        name
+        Employees {
+          items {
+            id
+            name
+            title
+            company
+            email
+            office
+            cell
+            companyID
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+        website
+        email
+        phone
+        street_1
+        street_2
+        city
+        state
+        zip
+        apsID {
+          items {
+            id
+            aPSId
+            companyId
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const updateAPSSponsor = /* GraphQL */ `
+  mutation UpdateAPSSponsor(
+    $input: UpdateAPSSponsorInput!
+    $condition: ModelAPSSponsorConditionInput
+  ) {
+    updateAPSSponsor(input: $input, condition: $condition) {
+      id
+      aPSId
+      companyId
+      aPS {
+        id
+        Registrants {
+          items {
+            id
+            aPSId
+            userId
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+        Sponsors {
+          items {
+            id
+            aPSId
+            companyId
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+        year
+        codes {
+          code
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      company {
+        id
+        name
+        Employees {
+          items {
+            id
+            name
+            title
+            company
+            email
+            office
+            cell
+            companyID
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+        website
+        email
+        phone
+        street_1
+        street_2
+        city
+        state
+        zip
+        apsID {
+          items {
+            id
+            aPSId
+            companyId
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const deleteAPSSponsor = /* GraphQL */ `
+  mutation DeleteAPSSponsor(
+    $input: DeleteAPSSponsorInput!
+    $condition: ModelAPSSponsorConditionInput
+  ) {
+    deleteAPSSponsor(input: $input, condition: $condition) {
+      id
+      aPSId
+      companyId
+      aPS {
+        id
+        Registrants {
+          items {
+            id
+            aPSId
+            userId
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+        Sponsors {
+          items {
+            id
+            aPSId
+            companyId
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+        year
+        codes {
+          code
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      company {
+        id
+        name
+        Employees {
+          items {
+            id
+            name
+            title
+            company
+            email
+            office
+            cell
+            companyID
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+        website
+        email
+        phone
+        street_1
+        street_2
+        city
+        state
+        zip
+        apsID {
+          items {
+            id
+            aPSId
+            companyId
             createdAt
             updatedAt
             _version

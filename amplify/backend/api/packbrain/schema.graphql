@@ -1,6 +1,4 @@
-type RegistrationCode {
-  code: String
-}
+# Library
 
 type LessonSource {
   name: String
@@ -22,10 +20,13 @@ type Lesson @model @auth(rules: [{ allow: public }]) {
   sources: [LessonSource]
 }
 
+# Autopack Summit
+
 type APS @model @auth(rules: [{ allow: public }]) {
   id: ID!
   Registrants: [User] @manyToMany(relationName: "APSUser")
   Sponsors: [Company] @manyToMany(relationName: "APSSponsor")
+  Speakers: [APSSpeaker] @hasMany
   year: Int!
   codes: [RegistrationCode]
 }
@@ -55,4 +56,25 @@ type User @model @auth(rules: [{ allow: public }]) {
   cell: String
   companyID: ID @index(name: "byCompany")
   apss: [APS] @manyToMany(relationName: "APSUser")
+}
+
+type APSSpeaker @model @auth(rules: [{ allow: public }]) {
+  firstName: String!
+  lastName: String!
+  email: String!
+  company: String!
+  title: String!
+  phone: String
+  linkedin: String
+  bio: String!
+  presentationTitle: String
+  presentationSummary: String
+  headshot: String!
+  mediaConsent: Boolean
+  privacyConsent: Boolean
+  apsHistory: APS @belongsTo
+}
+
+type RegistrationCode {
+  code: String
 }
