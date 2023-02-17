@@ -165,6 +165,41 @@ export const getAPS = /* GraphQL */ `
         nextToken
         startedAt
       }
+      Speakers {
+        items {
+          firstName
+          lastName
+          email
+          company
+          title
+          phone
+          linkedin
+          bio
+          presentationTitle
+          presentationSummary
+          headshot
+          mediaConsent
+          privacyConsent
+          apsHistory {
+            id
+            year
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          id
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          aPSSpeakersId
+        }
+        nextToken
+        startedAt
+      }
       year
       codes {
         code
@@ -206,6 +241,32 @@ export const listAPS = /* GraphQL */ `
             _version
             _deleted
             _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+        Speakers {
+          items {
+            firstName
+            lastName
+            email
+            company
+            title
+            phone
+            linkedin
+            bio
+            presentationTitle
+            presentationSummary
+            headshot
+            mediaConsent
+            privacyConsent
+            id
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+            aPSSpeakersId
           }
           nextToken
           startedAt
@@ -264,6 +325,32 @@ export const syncAPS = /* GraphQL */ `
             _version
             _deleted
             _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+        Speakers {
+          items {
+            firstName
+            lastName
+            email
+            company
+            title
+            phone
+            linkedin
+            bio
+            presentationTitle
+            presentationSummary
+            headshot
+            mediaConsent
+            privacyConsent
+            id
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+            aPSSpeakersId
           }
           nextToken
           startedAt
@@ -789,6 +876,220 @@ export const usersByCompanyID = /* GraphQL */ `
     }
   }
 `;
+export const getAPSSpeaker = /* GraphQL */ `
+  query GetAPSSpeaker($id: ID!) {
+    getAPSSpeaker(id: $id) {
+      firstName
+      lastName
+      email
+      company
+      title
+      phone
+      linkedin
+      bio
+      presentationTitle
+      presentationSummary
+      headshot
+      mediaConsent
+      privacyConsent
+      apsHistory {
+        id
+        Registrants {
+          items {
+            id
+            aPSId
+            userId
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+        Sponsors {
+          items {
+            id
+            aPSId
+            companyId
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+        Speakers {
+          items {
+            firstName
+            lastName
+            email
+            company
+            title
+            phone
+            linkedin
+            bio
+            presentationTitle
+            presentationSummary
+            headshot
+            mediaConsent
+            privacyConsent
+            id
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+            aPSSpeakersId
+          }
+          nextToken
+          startedAt
+        }
+        year
+        codes {
+          code
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      id
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      aPSSpeakersId
+    }
+  }
+`;
+export const listAPSSpeakers = /* GraphQL */ `
+  query ListAPSSpeakers(
+    $filter: ModelAPSSpeakerFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listAPSSpeakers(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        firstName
+        lastName
+        email
+        company
+        title
+        phone
+        linkedin
+        bio
+        presentationTitle
+        presentationSummary
+        headshot
+        mediaConsent
+        privacyConsent
+        apsHistory {
+          id
+          Registrants {
+            nextToken
+            startedAt
+          }
+          Sponsors {
+            nextToken
+            startedAt
+          }
+          Speakers {
+            nextToken
+            startedAt
+          }
+          year
+          codes {
+            code
+          }
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        id
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        aPSSpeakersId
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const syncAPSSpeakers = /* GraphQL */ `
+  query SyncAPSSpeakers(
+    $filter: ModelAPSSpeakerFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncAPSSpeakers(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        firstName
+        lastName
+        email
+        company
+        title
+        phone
+        linkedin
+        bio
+        presentationTitle
+        presentationSummary
+        headshot
+        mediaConsent
+        privacyConsent
+        apsHistory {
+          id
+          Registrants {
+            nextToken
+            startedAt
+          }
+          Sponsors {
+            nextToken
+            startedAt
+          }
+          Speakers {
+            nextToken
+            startedAt
+          }
+          year
+          codes {
+            code
+          }
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        id
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        aPSSpeakersId
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
 export const getAPSUser = /* GraphQL */ `
   query GetAPSUser($id: ID!) {
     getAPSUser(id: $id) {
@@ -821,6 +1122,32 @@ export const getAPSUser = /* GraphQL */ `
             _version
             _deleted
             _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+        Speakers {
+          items {
+            firstName
+            lastName
+            email
+            company
+            title
+            phone
+            linkedin
+            bio
+            presentationTitle
+            presentationSummary
+            headshot
+            mediaConsent
+            privacyConsent
+            id
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+            aPSSpeakersId
           }
           nextToken
           startedAt
@@ -893,6 +1220,10 @@ export const listAPSUsers = /* GraphQL */ `
             nextToken
             startedAt
           }
+          Speakers {
+            nextToken
+            startedAt
+          }
           year
           codes {
             code
@@ -957,6 +1288,10 @@ export const syncAPSUsers = /* GraphQL */ `
             startedAt
           }
           Sponsors {
+            nextToken
+            startedAt
+          }
+          Speakers {
             nextToken
             startedAt
           }
@@ -1029,6 +1364,10 @@ export const aPSUsersByAPSId = /* GraphQL */ `
             nextToken
             startedAt
           }
+          Speakers {
+            nextToken
+            startedAt
+          }
           year
           codes {
             code
@@ -1095,6 +1434,10 @@ export const aPSUsersByUserId = /* GraphQL */ `
             startedAt
           }
           Sponsors {
+            nextToken
+            startedAt
+          }
+          Speakers {
             nextToken
             startedAt
           }
@@ -1170,6 +1513,32 @@ export const getAPSSponsor = /* GraphQL */ `
             _version
             _deleted
             _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+        Speakers {
+          items {
+            firstName
+            lastName
+            email
+            company
+            title
+            phone
+            linkedin
+            bio
+            presentationTitle
+            presentationSummary
+            headshot
+            mediaConsent
+            privacyConsent
+            id
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+            aPSSpeakersId
           }
           nextToken
           startedAt
@@ -1263,6 +1632,10 @@ export const listAPSSponsors = /* GraphQL */ `
             nextToken
             startedAt
           }
+          Speakers {
+            nextToken
+            startedAt
+          }
           year
           codes {
             code
@@ -1333,6 +1706,10 @@ export const syncAPSSponsors = /* GraphQL */ `
             startedAt
           }
           Sponsors {
+            nextToken
+            startedAt
+          }
+          Speakers {
             nextToken
             startedAt
           }
@@ -1411,6 +1788,10 @@ export const aPSSponsorsByAPSId = /* GraphQL */ `
             nextToken
             startedAt
           }
+          Speakers {
+            nextToken
+            startedAt
+          }
           year
           codes {
             code
@@ -1483,6 +1864,10 @@ export const aPSSponsorsByCompanyId = /* GraphQL */ `
             startedAt
           }
           Sponsors {
+            nextToken
+            startedAt
+          }
+          Speakers {
             nextToken
             startedAt
           }

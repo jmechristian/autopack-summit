@@ -36,7 +36,7 @@
         },
         "sendEmailFn": {
           "deploymentBucketName": "amplify-packbrain-staging-54032-deployment",
-          "s3Key": "amplify-builds/sendEmailFn-6d6c506d48504435775a-build.zip"
+          "s3Key": "amplify-builds/sendEmailFn-6849775634395a6a3756-build.zip"
         },
         "addNewUser": {
           "deploymentBucketName": "amplify-packbrain-staging-54032-deployment",
@@ -52,11 +52,11 @@
         },
         "sendSponsorForm": {
           "deploymentBucketName": "amplify-packbrain-staging-54032-deployment",
-          "s3Key": "amplify-builds/sendSponsorForm-344c585530757062546e-build.zip"
+          "s3Key": "amplify-builds/sendSponsorForm-56515139577977636935-build.zip"
         },
         "sendWelcomeEmail": {
           "deploymentBucketName": "amplify-packbrain-staging-54032-deployment",
-          "s3Key": "amplify-builds/sendWelcomeEmail-526f7268306b6b68526c-build.zip"
+          "s3Key": "amplify-builds/sendWelcomeEmail-496e456b2f396f646f51-build.zip"
         }
       }
     }

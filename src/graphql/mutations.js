@@ -155,6 +155,41 @@ export const createAPS = /* GraphQL */ `
         nextToken
         startedAt
       }
+      Speakers {
+        items {
+          firstName
+          lastName
+          email
+          company
+          title
+          phone
+          linkedin
+          bio
+          presentationTitle
+          presentationSummary
+          headshot
+          mediaConsent
+          privacyConsent
+          apsHistory {
+            id
+            year
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          id
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          aPSSpeakersId
+        }
+        nextToken
+        startedAt
+      }
       year
       codes {
         code
@@ -252,6 +287,41 @@ export const updateAPS = /* GraphQL */ `
         nextToken
         startedAt
       }
+      Speakers {
+        items {
+          firstName
+          lastName
+          email
+          company
+          title
+          phone
+          linkedin
+          bio
+          presentationTitle
+          presentationSummary
+          headshot
+          mediaConsent
+          privacyConsent
+          apsHistory {
+            id
+            year
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          id
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          aPSSpeakersId
+        }
+        nextToken
+        startedAt
+      }
       year
       codes {
         code
@@ -345,6 +415,41 @@ export const deleteAPS = /* GraphQL */ `
           _version
           _deleted
           _lastChangedAt
+        }
+        nextToken
+        startedAt
+      }
+      Speakers {
+        items {
+          firstName
+          lastName
+          email
+          company
+          title
+          phone
+          linkedin
+          bio
+          presentationTitle
+          presentationSummary
+          headshot
+          mediaConsent
+          privacyConsent
+          apsHistory {
+            id
+            year
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          id
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+          aPSSpeakersId
         }
         nextToken
         startedAt
@@ -802,6 +907,291 @@ export const deleteUser = /* GraphQL */ `
     }
   }
 `;
+export const createAPSSpeaker = /* GraphQL */ `
+  mutation CreateAPSSpeaker(
+    $input: CreateAPSSpeakerInput!
+    $condition: ModelAPSSpeakerConditionInput
+  ) {
+    createAPSSpeaker(input: $input, condition: $condition) {
+      firstName
+      lastName
+      email
+      company
+      title
+      phone
+      linkedin
+      bio
+      presentationTitle
+      presentationSummary
+      headshot
+      mediaConsent
+      privacyConsent
+      apsHistory {
+        id
+        Registrants {
+          items {
+            id
+            aPSId
+            userId
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+        Sponsors {
+          items {
+            id
+            aPSId
+            companyId
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+        Speakers {
+          items {
+            firstName
+            lastName
+            email
+            company
+            title
+            phone
+            linkedin
+            bio
+            presentationTitle
+            presentationSummary
+            headshot
+            mediaConsent
+            privacyConsent
+            id
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+            aPSSpeakersId
+          }
+          nextToken
+          startedAt
+        }
+        year
+        codes {
+          code
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      id
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      aPSSpeakersId
+    }
+  }
+`;
+export const updateAPSSpeaker = /* GraphQL */ `
+  mutation UpdateAPSSpeaker(
+    $input: UpdateAPSSpeakerInput!
+    $condition: ModelAPSSpeakerConditionInput
+  ) {
+    updateAPSSpeaker(input: $input, condition: $condition) {
+      firstName
+      lastName
+      email
+      company
+      title
+      phone
+      linkedin
+      bio
+      presentationTitle
+      presentationSummary
+      headshot
+      mediaConsent
+      privacyConsent
+      apsHistory {
+        id
+        Registrants {
+          items {
+            id
+            aPSId
+            userId
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+        Sponsors {
+          items {
+            id
+            aPSId
+            companyId
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+        Speakers {
+          items {
+            firstName
+            lastName
+            email
+            company
+            title
+            phone
+            linkedin
+            bio
+            presentationTitle
+            presentationSummary
+            headshot
+            mediaConsent
+            privacyConsent
+            id
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+            aPSSpeakersId
+          }
+          nextToken
+          startedAt
+        }
+        year
+        codes {
+          code
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      id
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      aPSSpeakersId
+    }
+  }
+`;
+export const deleteAPSSpeaker = /* GraphQL */ `
+  mutation DeleteAPSSpeaker(
+    $input: DeleteAPSSpeakerInput!
+    $condition: ModelAPSSpeakerConditionInput
+  ) {
+    deleteAPSSpeaker(input: $input, condition: $condition) {
+      firstName
+      lastName
+      email
+      company
+      title
+      phone
+      linkedin
+      bio
+      presentationTitle
+      presentationSummary
+      headshot
+      mediaConsent
+      privacyConsent
+      apsHistory {
+        id
+        Registrants {
+          items {
+            id
+            aPSId
+            userId
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+        Sponsors {
+          items {
+            id
+            aPSId
+            companyId
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+        Speakers {
+          items {
+            firstName
+            lastName
+            email
+            company
+            title
+            phone
+            linkedin
+            bio
+            presentationTitle
+            presentationSummary
+            headshot
+            mediaConsent
+            privacyConsent
+            id
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+            aPSSpeakersId
+          }
+          nextToken
+          startedAt
+        }
+        year
+        codes {
+          code
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      id
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      aPSSpeakersId
+    }
+  }
+`;
 export const createAPSUser = /* GraphQL */ `
   mutation CreateAPSUser(
     $input: CreateAPSUserInput!
@@ -837,6 +1227,32 @@ export const createAPSUser = /* GraphQL */ `
             _version
             _deleted
             _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+        Speakers {
+          items {
+            firstName
+            lastName
+            email
+            company
+            title
+            phone
+            linkedin
+            bio
+            presentationTitle
+            presentationSummary
+            headshot
+            mediaConsent
+            privacyConsent
+            id
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+            aPSSpeakersId
           }
           nextToken
           startedAt
@@ -927,6 +1343,32 @@ export const updateAPSUser = /* GraphQL */ `
           nextToken
           startedAt
         }
+        Speakers {
+          items {
+            firstName
+            lastName
+            email
+            company
+            title
+            phone
+            linkedin
+            bio
+            presentationTitle
+            presentationSummary
+            headshot
+            mediaConsent
+            privacyConsent
+            id
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+            aPSSpeakersId
+          }
+          nextToken
+          startedAt
+        }
         year
         codes {
           code
@@ -1013,6 +1455,32 @@ export const deleteAPSUser = /* GraphQL */ `
           nextToken
           startedAt
         }
+        Speakers {
+          items {
+            firstName
+            lastName
+            email
+            company
+            title
+            phone
+            linkedin
+            bio
+            presentationTitle
+            presentationSummary
+            headshot
+            mediaConsent
+            privacyConsent
+            id
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+            aPSSpeakersId
+          }
+          nextToken
+          startedAt
+        }
         year
         codes {
           code
@@ -1095,6 +1563,32 @@ export const createAPSSponsor = /* GraphQL */ `
             _version
             _deleted
             _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+        Speakers {
+          items {
+            firstName
+            lastName
+            email
+            company
+            title
+            phone
+            linkedin
+            bio
+            presentationTitle
+            presentationSummary
+            headshot
+            mediaConsent
+            privacyConsent
+            id
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+            aPSSpeakersId
           }
           nextToken
           startedAt
@@ -1206,6 +1700,32 @@ export const updateAPSSponsor = /* GraphQL */ `
           nextToken
           startedAt
         }
+        Speakers {
+          items {
+            firstName
+            lastName
+            email
+            company
+            title
+            phone
+            linkedin
+            bio
+            presentationTitle
+            presentationSummary
+            headshot
+            mediaConsent
+            privacyConsent
+            id
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+            aPSSpeakersId
+          }
+          nextToken
+          startedAt
+        }
         year
         codes {
           code
@@ -1309,6 +1829,32 @@ export const deleteAPSSponsor = /* GraphQL */ `
             _version
             _deleted
             _lastChangedAt
+          }
+          nextToken
+          startedAt
+        }
+        Speakers {
+          items {
+            firstName
+            lastName
+            email
+            company
+            title
+            phone
+            linkedin
+            bio
+            presentationTitle
+            presentationSummary
+            headshot
+            mediaConsent
+            privacyConsent
+            id
+            createdAt
+            updatedAt
+            _version
+            _deleted
+            _lastChangedAt
+            aPSSpeakersId
           }
           nextToken
           startedAt
