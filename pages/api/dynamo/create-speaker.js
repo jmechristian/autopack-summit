@@ -1,5 +1,7 @@
-import { API, graphqlOperation } from 'aws-amplify';
+import { Amplify, API, graphqlOperation } from 'aws-amplify';
 import { createAPSSpeaker } from '../../../src/graphql/mutations';
+import awsExports from '../../../src/aws-exports';
+Amplify.configure(awsExports);
 
 const GRAPHQL_ENDPOINT =
   'https://c6pkoby5rbgtxcum5slz7hgem4.appsync-api.us-east-1.amazonaws.com/graphql';
@@ -13,7 +15,7 @@ export default async function handler(req, res) {
       graphqlOperation(createAPSSpeaker, { input: fields })
     );
     res.status(200).json({ user });
-  } catch (err) {
-    res.status(410).json({ message: err });
+  } catch (error) {
+    res.status(410).json({ message: error });
   }
 }
