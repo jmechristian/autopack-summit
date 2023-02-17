@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import UploadImage from '../../util/UploadImage';
+import axios from 'axios';
 
 const SpeakerProfileForm = () => {
   const {
@@ -13,7 +14,13 @@ const SpeakerProfileForm = () => {
 
   const [profileUrl, setProfileUrl] = useState('');
 
-  const onSubmit = (data) => console.log(data, profileUrl);
+  const onSubmit = async (fields) => {
+    let { data } = await axios.post('/api/dynamo/create-speaker', {
+      fields: fields,
+    });
+
+    console.log('data:', data);
+  };
 
   return (
     <div className='max-w-4xl mx-auto pt-20'>
