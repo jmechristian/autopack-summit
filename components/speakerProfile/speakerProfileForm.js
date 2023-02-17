@@ -23,7 +23,7 @@ const SpeakerProfileForm = () => {
   };
 
   return (
-    <div className='max-w-4xl mx-auto pt-20'>
+    <div className='max-w-4xl mx-auto pt-16'>
       <form
         className='space-y-8 divide-y divide-gray-200'
         onSubmit={handleSubmit(onSubmit)}
