@@ -260,13 +260,14 @@ const SpeakerProfileForm = () => {
                     </svg>
                     <div className='flex text-sm text-gray-600'>
                       <label
-                        htmlFor='file-upload'
+                        htmlFor='profile'
                         className='relative cursor-pointer rounded-md bg-white font-medium text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-ap-darkblue focus-within:ring-offset-2 hover:text-indigo-500'
                       >
-                        <span>Upload a file</span>
+                        <span>Upload Your Pic</span>
                         <input
-                          id='file-upload'
-                          name='file-upload'
+                          {...register('profile')}
+                          id='profile'
+                          name='profile'
                           type='file'
                           className='sr-only'
                         />
@@ -274,7 +275,7 @@ const SpeakerProfileForm = () => {
                       <p className='pl-1'>or drag and drop</p>
                     </div>
                     <p className='text-xs text-gray-500'>
-                      PNG, JPG, GIF up to 10MB
+                      PNG, JPG, GIF up to 2MB
                     </p>
                   </div>
                 </div>
