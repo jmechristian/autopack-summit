@@ -17,6 +17,7 @@ const query = /* GraphQL */ `
 export default async (req, res) => {
   const { data } = req.body;
 
+  const axios = require('axios');
   const options = {
     method: 'POST',
     headers: {
@@ -28,7 +29,7 @@ export default async (req, res) => {
   const request = new Request(GRAPHQL_ENDPOINT, options);
 
   try {
-    const response = await fetch(request);
+    const response = await axios.get(request, options);
     // body = await response.json();
     // if (body.errors) statusCode = 400;
     res.status(200).json({ response });
