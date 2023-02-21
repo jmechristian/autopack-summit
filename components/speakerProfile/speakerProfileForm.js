@@ -12,7 +12,7 @@ const SpeakerProfileForm = () => {
     formState: { errors },
   } = useForm();
 
-  const [profileUrl, setProfileUrl] = useState('');
+  const [profileUrl, setProfileUrl] = useState(null);
 
   const onSubmit = async (fields) => {
     let { data } = await axios.post('/api/dynamo/create-speaker', {
@@ -279,7 +279,7 @@ const SpeakerProfileForm = () => {
                         {profileUrl && profileUrl}
                       </label>
                       <input
-                        {...register('headshot')}
+                        {...register('headshot', { required: true })}
                         id='headshot'
                         name='headshot'
                         type='text'
@@ -288,7 +288,7 @@ const SpeakerProfileForm = () => {
                       />
                     </div>
                     <div className='text-sm text-red-700'>
-                      {errors.profilePic && <span>This field is required</span>}
+                      {errors.headshot && <span>This field is required</span>}
                     </div>
                     <p className='text-xs text-gray-500 pt-2'>
                       PNG, JPG, WEBP up to 2MB
