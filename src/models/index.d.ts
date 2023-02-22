@@ -6,15 +6,54 @@ export enum ModuleType {
   MICROLESSON = "MICROLESSON"
 }
 
-export declare class LessonSource {
-  readonly name?: string | null;
-  readonly link?: string | null;
-  constructor(init: ModelInit<LessonSource>);
-}
-
 export declare class RegistrationCode {
   readonly code?: string | null;
   constructor(init: ModelInit<RegistrationCode>);
+}
+
+export declare class LessonSource {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<LessonSource, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly name?: string | null;
+  readonly link?: string | null;
+  readonly position: number;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+  readonly lessonSourcesId?: string | null;
+  constructor(init: ModelInit<LessonSource>);
+  static copyOf(source: LessonSource, mutator: (draft: MutableModel<LessonSource>) => MutableModel<LessonSource> | void): LessonSource;
+}
+
+export declare class LessonLink {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<LessonLink, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly name?: string | null;
+  readonly link?: string | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+  readonly lessonLinksId?: string | null;
+  constructor(init: ModelInit<LessonLink>);
+  static copyOf(source: LessonLink, mutator: (draft: MutableModel<LessonLink>) => MutableModel<LessonLink> | void): LessonLink;
+}
+
+export declare class Tags {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<Tags, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly tag: string;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+  readonly lessonTagsId?: string | null;
+  constructor(init: ModelInit<Tags>);
+  static copyOf(source: Tags, mutator: (draft: MutableModel<Tags>) => MutableModel<Tags> | void): Tags;
 }
 
 export declare class Lesson {
@@ -23,11 +62,22 @@ export declare class Lesson {
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
+  readonly slug: string;
   readonly title: string;
+  readonly subhead?: string | null;
   readonly type?: ModuleType | keyof typeof ModuleType | null;
-  readonly media: string;
+  readonly media?: string | null;
+  readonly seoImage?: string | null;
   readonly content?: string | null;
   readonly sources?: (LessonSource | null)[] | null;
+  readonly links?: (LessonLink | null)[] | null;
+  readonly tags?: (Tags | null)[] | null;
+  readonly objectives?: (string | null)[] | null;
+  readonly actionCTA?: string | null;
+  readonly actionSubhead?: string | null;
+  readonly actionLink?: string | null;
+  readonly actionLinkTitle?: string | null;
+  readonly actionExample?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   constructor(init: ModelInit<Lesson>);

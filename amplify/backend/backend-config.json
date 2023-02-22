@@ -117,12 +117,7 @@
             "service": "Lambda"
         }
     },
-    "hosting": {
-        "amplifyhosting": {
-            "service": "amplifyhosting",
-            "type": "cicd"
-        }
-    },
+    "hosting": {},
     "notifications": {
         "autopacksummit": {
             "service": "Pinpoint",
@@ -156,19 +151,99 @@
                 }
             ]
         },
-        "AMPLIFY_function_sendRegCodeAPS_deploymentBucketName": {
+        "AMPLIFY_function_addAPSToUser_deploymentBucketName": {
             "usedBy": [
                 {
                     "category": "function",
-                    "resourceName": "sendRegCodeAPS"
+                    "resourceName": "addAPSToUser"
                 }
             ]
         },
-        "AMPLIFY_function_sendRegCodeAPS_s3Key": {
+        "AMPLIFY_function_addAPSToUser_s3Key": {
             "usedBy": [
                 {
                     "category": "function",
-                    "resourceName": "sendRegCodeAPS"
+                    "resourceName": "addAPSToUser"
+                }
+            ]
+        },
+        "AMPLIFY_function_addNewUser_deploymentBucketName": {
+            "usedBy": [
+                {
+                    "category": "function",
+                    "resourceName": "addNewUser"
+                }
+            ]
+        },
+        "AMPLIFY_function_addNewUser_s3Key": {
+            "usedBy": [
+                {
+                    "category": "function",
+                    "resourceName": "addNewUser"
+                }
+            ]
+        },
+        "AMPLIFY_function_sendEmailFn_deploymentBucketName": {
+            "usedBy": [
+                {
+                    "category": "function",
+                    "resourceName": "sendEmailFn"
+                }
+            ]
+        },
+        "AMPLIFY_function_sendEmailFn_s3Key": {
+            "usedBy": [
+                {
+                    "category": "function",
+                    "resourceName": "sendEmailFn"
+                }
+            ]
+        },
+        "AMPLIFY_function_sendRegCode_deploymentBucketName": {
+            "usedBy": [
+                {
+                    "category": "function",
+                    "resourceName": "sendRegCode"
+                }
+            ]
+        },
+        "AMPLIFY_function_sendRegCode_s3Key": {
+            "usedBy": [
+                {
+                    "category": "function",
+                    "resourceName": "sendRegCode"
+                }
+            ]
+        },
+        "AMPLIFY_function_sendSponsorForm_deploymentBucketName": {
+            "usedBy": [
+                {
+                    "category": "function",
+                    "resourceName": "sendSponsorForm"
+                }
+            ]
+        },
+        "AMPLIFY_function_sendSponsorForm_s3Key": {
+            "usedBy": [
+                {
+                    "category": "function",
+                    "resourceName": "sendSponsorForm"
+                }
+            ]
+        },
+        "AMPLIFY_function_sendWelcomeEmail_deploymentBucketName": {
+            "usedBy": [
+                {
+                    "category": "function",
+                    "resourceName": "sendWelcomeEmail"
+                }
+            ]
+        },
+        "AMPLIFY_function_sendWelcomeEmail_s3Key": {
+            "usedBy": [
+                {
+                    "category": "function",
+                    "resourceName": "sendWelcomeEmail"
                 }
             ]
         },

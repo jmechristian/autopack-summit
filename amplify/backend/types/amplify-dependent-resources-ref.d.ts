@@ -1,4 +1,11 @@
 export type AmplifyDependentResourcesAttributes = {
+    "analytics": {
+        "autopacksummit": {
+            "Region": "string",
+            "Id": "string",
+            "appName": "string"
+        }
+    },
     "api": {
         "packbrain": {
             "GraphQLAPIKeyOutput": "string",
@@ -19,49 +26,48 @@ export type AmplifyDependentResourcesAttributes = {
             "AppClientID": "string"
         }
     },
-    "analytics": {
-        "autopacksummit": {
-            "Region": "string",
-            "Id": "string",
-            "appName": "string"
-        }
-    },
     "function": {
-        "sendEmailFn": {
+        "addAPSToUser": {
             "Name": "string",
             "Arn": "string",
             "Region": "string",
-            "LambdaExecutionRole": "string"
+            "LambdaExecutionRole": "string",
+            "LambdaExecutionRoleArn": "string"
         },
         "addNewUser": {
             "Name": "string",
             "Arn": "string",
             "Region": "string",
-            "LambdaExecutionRole": "string"
+            "LambdaExecutionRole": "string",
+            "LambdaExecutionRoleArn": "string"
         },
-        "addAPSToUser": {
+        "sendEmailFn": {
             "Name": "string",
             "Arn": "string",
             "Region": "string",
-            "LambdaExecutionRole": "string"
+            "LambdaExecutionRole": "string",
+            "LambdaExecutionRoleArn": "string"
         },
         "sendRegCode": {
             "Name": "string",
             "Arn": "string",
             "Region": "string",
-            "LambdaExecutionRole": "string"
+            "LambdaExecutionRole": "string",
+            "LambdaExecutionRoleArn": "string"
         },
         "sendSponsorForm": {
             "Name": "string",
             "Arn": "string",
             "Region": "string",
-            "LambdaExecutionRole": "string"
+            "LambdaExecutionRole": "string",
+            "LambdaExecutionRoleArn": "string"
         },
         "sendWelcomeEmail": {
             "Name": "string",
             "Arn": "string",
             "Region": "string",
-            "LambdaExecutionRole": "string"
+            "LambdaExecutionRole": "string",
+            "LambdaExecutionRoleArn": "string"
         }
     }
 }
