@@ -10,16 +10,6 @@ import { CookiesProvider } from 'react-cookie';
 import awsExports from '../src/aws-exports';
 Amplify.configure(awsExports);
 
-Analytics.autoTrack(['pageView', 'events'], {
-  enable: true,
-  eventName: 'pageView',
-  type: 'SPA',
-  getUrl: () => {
-    // the default function
-    return window.location.origin + window.location.pathname;
-  },
-});
-
 function MyApp({ Component, pageProps }) {
   const client = createClient({
     projectId: 'h72r2zbr',
