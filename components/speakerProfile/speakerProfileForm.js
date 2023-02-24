@@ -12,12 +12,18 @@ const SpeakerProfileForm = () => {
     formState: { errors },
   } = useForm();
 
-  const [profileUrl, setProfileUrl] = useState(null);
+  const [profileUrl, setProfileUrl] = useState(undefined);
+  const [loading, setLoading] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   const onSubmit = async (fields) => {
+    await setLoading(true);
     let { data } = await axios.post('/api/dynamo/create-speaker', {
       fields,
     });
+
+    setLoading(false);
+    setSubmitted(true);
 
     console.log('create data:', data);
   };
@@ -356,12 +362,24 @@ const SpeakerProfileForm = () => {
                 </p>
               </div>
             </div>
-            <button
-              type='submit'
-              className='flex justify-center w-full rounded-md border border-transparent bg-ap-blue py-2 px-4 font-medium text-white shadow-sm hover:bg-ap-darkblue focus:outline-none focus:ring-2 focus:ring-ap-darkblue focus:ring-offset-2'
-            >
-              <div className='block w-max'>Create Profile</div>
-            </button>
+            {!submitted ? (
+              <button
+                type='submit'
+                className='flex justify-center w-full rounded-md border border-transparent bg-ap-blue py-2 px-4 font-medium text-white shadow-sm hover:bg-ap-darkblue focus:outline-none focus:ring-2 focus:ring-ap-darkblue focus:ring-offset-2'
+              >
+                <div className='block w-max'>
+                  {loading ? 'Submitting...' : 'Create Profile'}
+                </div>
+              </button>
+            ) : (
+              <button
+                disabled
+                type='submit'
+                className='flex justify-center w-full rounded-md border border-transparent bg-ap-blue py-2 px-4 font-medium text-white shadow-sm hover:bg-ap-darkblue focus:outline-none focus:ring-2 focus:ring-ap-darkblue focus:ring-offset-2'
+              >
+                <div className='block w-max'>Submitted!</div>
+              </button>
+            )}
           </div>
           <div className='text-sm text-red-700 mt-2'>
             {errors.consent && (
