@@ -18,6 +18,18 @@ function MyApp({ Component, pageProps }) {
     useCdn: false,
   });
 
+  const analyticsConfig = {
+    AWSPinpoint: {
+      // Amazon Pinpoint App Client ID
+      appId: '196d27043c7a4001aa96a55edb90d78e',
+      // Amazon service region
+      region: 'us-east-1',
+      mandatorySignIn: false,
+    },
+  };
+
+  Analytics.configure(analyticsConfig);
+
   return (
     <>
       <DefaultSeo
