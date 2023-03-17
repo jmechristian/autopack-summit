@@ -42,7 +42,7 @@ function MyApp({ Component, pageProps }) {
             'The premier open forum for OEMs, Tier 1 Part Suppliers and Packaging Solution Providers to discuss packaging innovations and challenges.',
           images: [
             {
-              url: 'https://apsmedia.s3.amazonaws.com/images/aps_placeholder.png',
+              url: 'https://apsmedia.s3.amazonaws.com/images/og_image.png',
               width: 800,
               height: 600,
               alt: 'Automotive Packaging Summit',
