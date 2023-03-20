@@ -39,7 +39,7 @@ export async function getStaticProps() {
       type,
       session_end,
       session_start,
-      speakers[]->{title, name, company},
+      speakers[]->{_id, name, company, title, profilePic { asset -> { url}}, companyLogo { asset-> { url }}},
       sponsors[]->{logo, name, website}
     }`
   );

@@ -62,20 +62,28 @@ const AgendaItem = ({
           </div>
           {speakers && (
             <div className={`flex flex-col gap-6 lg:col-span-2`}>
-              <div className='flex flex-col gap-4 mt-3 lg:mt-0 lg:col-span-2'>
+              <div className='flex flex-col gap-4 mt-3 lg:mt-0 lg:col-span-4'>
                 {speakers.map((sp, i) => (
                   <div className='flex flex-col ' key={sp.name}>
                     <div className='font-semibold'>{sp && sp.name}</div>
                     <div className='text-slate-500'>
                       {sp && sp.title}, {sp && sp.company}
                     </div>
+                    {sp.companyLogo && (
+                      <div
+                        className='w-[150px] h-[50px] bg-contain bg-no-repeat mt-3'
+                        style={{
+                          backgroundImage: `url(${sp.companyLogo.asset.url})`,
+                        }}
+                      ></div>
+                    )}
                   </div>
                 ))}
               </div>
             </div>
           )}
         </div>
-        {sponsors && (
+        {/* {sponsors && (
           <div className=' md:col-span-2 lg:col-span-1 flex justify-end items-center lg:items-start'>
             <div className='flex flex-col gap-6 lg:col-span-2'>
               {sponsors.map((sp, i) => (
@@ -90,7 +98,7 @@ const AgendaItem = ({
               ))}
             </div>
           </div>
-        )}
+        )} */}
       </div>
     </div>
   );

@@ -26,12 +26,12 @@ const AgendaBody = ({ sessions }) => {
   };
 
   return (
-    <div className='mx-auto max-w-7xl py-12 md:py-20 lg:py-24 px-8 lg:px-16'>
-      <div className='flex gap-2 py-3 bg-ap-darkblue w-max px-6 mb-6'>
+    <div className='mx-auto max-w-7xl py-12 md:py-20 lg:py-24 px-4 lg:px-16'>
+      <div className='flex flex-col md:flex-row gap-2 py-3 bg-ap-darkblue md:w-max px-6 mb-6'>
         <div className='uppercase font-medium font-oswald text-4xl text-white'>
           {setDay()}
         </div>
-        <div className='uppercase text-ap-yellow font-oswald text-4xl'>
+        <div className='uppercase text-2xl text-ap-yellow font-oswald md:text-4xl'>
           /{setDate()}
         </div>
       </div>

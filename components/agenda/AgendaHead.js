@@ -33,7 +33,7 @@ const AgendaHead = () => {
         <div className='white_headline text-[2.7rem] md:text-7xl lg:text-7xl xl:text-8xl leading-none text-center'>
           Agenda
         </div>
-        <div className='flex gap-4 md:mt-6'>
+        <div className='flex md:gap-4 md:mt-6'>
           <div onClick={() => dispatch(setDaySelected('2023-10-11'))}>
             <div
               className={`font-medium text-xl xl:text-3xl uppercase font-oswald ${
