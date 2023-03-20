@@ -35,7 +35,7 @@ const AgendaItem = ({
             type === 'session' ? 'py-4' : ''
           }`}
         >
-          <div className='flex flex-col gap-6 md:border-r pr-8 md:border-r-slate-200 h-full'>
+          <div className='flex flex-col gap-6 lg:border-r pr-8 md:border-r-slate-200 h-full'>
             <div
               className={`lg:col-span-1 font-oswald text-3xl tracking-tight ${
                 type === 'session' ? 'text-white' : 'text-slate-400'
