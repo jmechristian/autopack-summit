@@ -27,17 +27,17 @@ const AgendaItem = ({
     <div className='py-3 border-t border-t-slate-200'>
       <div
         className={`grid grid-cols-1 md:grid-cols-5 gap-8 xl:gap-16  py-4 md:px-4 h-full ${
-          type === 'session' ? 'bg-ap-darkblue/40' : ''
+          type === 'session' ? 'bg-ap-darkblue/30' : ''
         }`}
       >
         <div
-          className={`px-5 flex flex-col justify-center lg:grid lg:grid-cols-5 gap-1 lg:gap-8 xl:gap-12 md:col-span-3 lg:col-span-4 ${
+          className={`px-5 flex flex-col justify-center lg:grid lg:grid-cols-5 gap-1 lg:gap-8 xl:gap-12 md:col-span-3 lg:col-span-8 ${
             type === 'session' ? 'py-4' : ''
           }`}
         >
-          <div className='flex flex-col gap-6 md:border-r md:border-r-slate-200 h-full'>
+          <div className='flex flex-col gap-6 md:border-r pr-8 md:border-r-slate-200 h-full'>
             <div
-              className={`lg:col-span-1 font-oswald text-2xl tracking-tight ${
+              className={`lg:col-span-1 font-oswald text-3xl tracking-tight ${
                 type === 'session' ? 'text-white' : 'text-slate-400'
               }`}
             >
@@ -62,7 +62,7 @@ const AgendaItem = ({
           </div>
           {speakers && (
             <div className={`flex flex-col gap-6 lg:col-span-2`}>
-              <div className='flex flex-col gap-4 mt-3 lg:mt-0 lg:col-span-4'>
+              <div className='grid md:grid-cols-2 gap-4 mt-3 lg:mt-0 lg:col-span-4'>
                 {speakers.map((sp, i) => (
                   <div className='flex flex-col ' key={sp.name}>
                     <div className='font-semibold'>{sp && sp.name}</div>
