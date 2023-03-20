@@ -36,6 +36,7 @@ export async function getStaticProps() {
       date,
       location,
       name,
+      type,
       session_end,
       session_start,
       speakers[]->{title, name, company},
