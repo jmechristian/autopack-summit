@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setDaySelected } from './agendaSlice';
+import { StarIcon } from '@heroicons/react/24/solid';
 
 const AgendaHead = () => {
   const dispatch = useDispatch();
@@ -27,67 +28,46 @@ const AgendaHead = () => {
   };
 
   return (
-    <div className='bg-bgImage_agenda pt-16 lg:pt-20 xl:pt-28 bg-cover bg-center'>
-      <div className='flex flex-col gap-8 justify-center items-center mx-auto max-w-7xl py-12 lg:py-16 px-8 lg:px-16'>
+    <div className='bg-bgImage_agenda pt-16 lg:pt-20 xl:pt-28 pb-6 bg-cover bg-center'>
+      <div className='flex flex-col gap-12 justify-center items-center mx-auto max-w-7xl py-12 lg:py-16 px-8 lg:px-16'>
         <div className='white_headline text-[2.7rem] md:text-7xl lg:text-7xl xl:text-8xl leading-none text-center'>
           Agenda
         </div>
-        <div className='grid grid-cols-3 md:mt-6'>
-          <div
-            className={` ${
-              daySelected === '2023-10-11'
-                ? 'border-b-ap-yellow border-b-4'
-                : 'border-b-2 border-b-slate-400'
-            }  pb-2`}
-            onClick={() => dispatch(setDaySelected('2023-10-11'))}
-          >
+        <div className='flex gap-4 md:mt-6'>
+          <div onClick={() => dispatch(setDaySelected('2023-10-11'))}>
             <div
-              className={`font-medium text-xl xl:text-2xl uppercase font-oswald ${
-                daySelected === '2023-10-11' ? 'text-white' : 'text-slate-400'
-              } tracking-widest px-4 cursor-pointer`}
+              className={`font-medium text-xl xl:text-3xl uppercase font-oswald ${
+                daySelected === '2023-10-11'
+                  ? 'text-ap-yellow'
+                  : 'text-slate-400'
+              } tracking-wide px-4 cursor-pointer py-1`}
             >
               Day 1
             </div>
           </div>
-          <div
-            className={` ${
-              daySelected === '2023-10-12'
-                ? 'border-b-ap-yellow border-b-4'
-                : 'border-b-2 border-b-slate-400'
-            }  pb-2`}
-            onClick={() => dispatch(setDaySelected('2023-10-12'))}
-          >
+          <div onClick={() => dispatch(setDaySelected('2023-10-12'))}>
             <div
-              className={`font-medium text-xl xl:text-2xl uppercase font-oswald ${
-                daySelected === '2023-10-12' ? 'text-white' : 'text-slate-400'
-              } tracking-widest px-4 cursor-pointer`}
+              className={`font-medium text-xl xl:text-3xl uppercase font-oswald ${
+                daySelected === '2023-10-12'
+                  ? 'text-white bg-ap-yellow'
+                  : 'text-white/50 bg-white/30 backdrop-blur-sm'
+              } tracking-wide  shadow-xl px-4 cursor-pointer flex justify-center items-center gap-1  py-1.5`}
             >
+              <div>
+                <StarIcon className='text-white/50 h-6 w-6' />
+              </div>
               Day 2
             </div>
           </div>
-          <div
-            className={` ${
-              daySelected === '2023-10-13'
-                ? 'border-b-ap-yellow border-b-4'
-                : 'border-b-2 border-b-slate-400'
-            }  pb-2`}
-          >
+          <div>
             <div
-              className={`font-medium text-xl xl:text-2xl uppercase font-oswald ${
+              className={`font-medium text-xl xl:text-3xl uppercase font-oswald ${
                 daySelected === '2023-10-13' ? 'text-white' : 'text-slate-400'
-              } tracking-widest px-4 cursor-pointer`}
+              } tracking-wide px-4 cursor-pointer py-1`}
               onClick={() => dispatch(setDaySelected('2023-10-13'))}
             >
               Day 3
             </div>
-          </div>
-        </div>
-        <div className='flex flex-col text-center'>
-          <div className='uppercase tracking-widest text-sm lg:text-base text-white font-bold'>
-            {setDate()}
-          </div>
-          <div className='uppercase font-medium font-oswald tracking-[.2em] text-2xl lg:text-3xl xl:text-4xl text-ap-yellow'>
-            {setDay()}
           </div>
         </div>
       </div>

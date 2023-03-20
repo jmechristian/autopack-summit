@@ -27,7 +27,7 @@ const AgendaItem = ({
     <div className='py-3 border-t border-t-slate-200'>
       <div
         className={`grid grid-cols-1 md:grid-cols-5 gap-8 xl:gap-16  py-4 md:px-4 h-full ${
-          type === 'session' ? 'bg-ap-blue/40' : ''
+          type === 'session' ? 'bg-ap-darkblue/40' : ''
         }`}
       >
         <div
