@@ -29,7 +29,7 @@ const client = createClient({
   useCdn: true,
 });
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const sessionData = await client.fetch(
     `*[_type == "session"] | order(session_start asc) {
       _id,
