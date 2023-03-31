@@ -18,7 +18,7 @@ export default function Document() {
         />
         <Script
           strategy='afterInteractive'
-          src='https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX'
+          src='https://www.googletagmanager.com/gtag/js?id=G-7TRT33B5PN'
         />
         <Script
           id='google-analytics'
