@@ -69,6 +69,6 @@
     },
     "breakCircularDependency": true,
     "dependsOn": [],
-    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"http://localhost:3000/\"],\"LogoutURLs\":[\"http://localhost:3000/\"]}"
+    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"https://tf0k39z292lz-staging.auth.us-east-1.amazoncognito.com/oauth2/idpresponse\"],\"LogoutURLs\":[\"https://www.google.com\"]}"
   }
-} 
+}

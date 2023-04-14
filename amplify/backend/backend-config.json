@@ -1,10 +1,5 @@
 {
-    "analytics": {
-        "autopacksummit": {
-            "providerPlugin": "awscloudformation",
-            "service": "Pinpoint"
-        }
-    },
+    "analytics": {},
     "api": {
         "packbrain": {
             "dependsOn": [],
@@ -118,14 +113,7 @@
         }
     },
     "hosting": {},
-    "notifications": {
-        "autopacksummit": {
-            "service": "Pinpoint",
-            "channels": [
-                "Email"
-            ]
-        }
-    },
+    "notifications": {},
     "parameters": {
         "AMPLIFY_analytics_Pinpoint_Id": {
             "usedBy": [
@@ -244,22 +232,6 @@
                 {
                     "category": "function",
                     "resourceName": "sendWelcomeEmail"
-                }
-            ]
-        },
-        "AMPLIFY_hosting_amplifyhosting_appId": {
-            "usedBy": [
-                {
-                    "category": "hosting",
-                    "resourceName": "amplifyhosting"
-                }
-            ]
-        },
-        "AMPLIFY_hosting_amplifyhosting_type": {
-            "usedBy": [
-                {
-                    "category": "hosting",
-                    "resourceName": "amplifyhosting"
                 }
             ]
         },

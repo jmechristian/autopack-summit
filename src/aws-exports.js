@@ -3,8 +3,6 @@
 
 const awsmobile = {
     "aws_project_region": "us-east-1",
-    "aws_mobile_analytics_app_id": "196d27043c7a4001aa96a55edb90d78e",
-    "aws_mobile_analytics_app_region": "us-east-1",
     "aws_appsync_graphqlEndpoint": "https://c6pkoby5rbgtxcum5slz7hgem4.appsync-api.us-east-1.amazonaws.com/graphql",
     "aws_appsync_region": "us-east-1",
     "aws_appsync_authenticationType": "API_KEY",
@@ -22,8 +20,8 @@ const awsmobile = {
             "profile",
             "aws.cognito.signin.user.admin"
         ],
-        "redirectSignIn": "http://localhost:3000/",
-        "redirectSignOut": "http://localhost:3000/",
+        "redirectSignIn": "https://tf0k39z292lz-staging.auth.us-east-1.amazoncognito.com/oauth2/idpresponse",
+        "redirectSignOut": "https://www.google.com",
         "responseType": "code"
     },
     "federationTarget": "COGNITO_USER_POOLS",

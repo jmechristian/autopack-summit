@@ -22,6 +22,57 @@ enum ModuleType {
   MICROLESSON
 }
 
+enum CategoryType {
+  MATERIALS
+  INDUSTRY
+  FOODANDBEVERAGE
+  BUSINESS
+  SUPPLYCHAIN
+  DESIGN
+}
+
+type Certificate @model @searchable @auth(rules: [{ allow: public }]) {
+  id: ID!
+  slug: String! @index(name: "certificateByTitle")
+  title: String!
+  title_callout_1: String
+  title_callout_2: String
+  title_text: String
+  title_button_1_text: String
+  title_button_1_link: String
+  title_button_2_text: String
+  title_button_2_link: String
+  title_image: String
+  courses: [Course] @manyToMany(relationName: "CertificateCourses")
+  whoText: String
+  courses_total: Int
+  hours_total: Int
+  ceus_total: Int
+  brochure_link: String
+  video: String
+  price_full: Int
+  price_monthly: Int
+  price_features: [String]
+  lmsLink: String
+  demoLink: String
+}
+
+type Course @model @searchable @auth(rules: [{ allow: public }]) {
+  id: ID!
+  slug: String! @index(name: "courseBySlug")
+  category: CategoryType!
+  title: String!
+  subhead: String
+  media: String
+  video: String
+  hour: Int
+  lessons: Int
+  videos: Int
+  price: Int
+  articles: [Article] @manyToMany(relationName: "ArticleRelatedCourses")
+  certificate: [Certificate] @manyToMany(relationName: "CertificateCourses")
+}
+
 type Lesson @model @auth(rules: [{ allow: public }]) {
   id: ID!
   slug: String! @index(name: "lessonsByTitle")
@@ -40,6 +91,53 @@ type Lesson @model @auth(rules: [{ allow: public }]) {
   actionLink: String
   actionLinkTitle: String
   actionExample: String
+}
+
+type Blog @model @searchable @auth(rules: [{ allow: public }]) {
+  id: ID!
+  slug: String! @index(name: "blogBySlug")
+  title: String!
+  media: String
+  content: String!
+  author: String
+  tags: [Tags] @hasMany
+  date: String
+}
+
+type Article @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  slug: String! @index(name: "aticlesByTitle")
+  title: String!
+  subhead: String
+  media: String
+  seoImage: String
+  content: String
+  tags: [Tags] @hasMany
+  relatedCourses: [Course] @manyToMany(relationName: "ArticleRelatedCourses")
+}
+
+type DayInLifeItem @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  name: String!
+  desc: String!
+  icon: String
+}
+
+type Career @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  slug: String! @index(name: "careerByTitle")
+  title: String!
+  altName: String
+  subhead: String
+  media: String
+  dayInLife: [DayInLifeItem] @hasMany
+  cmpmCopy: String
+  cpsCopy: String
+  apcCopy: String
+  coreCopy: String
+  electiveCopy: String
+  freeCopy: String
+  beverageCopy: String
 }
 
 # Autopack Summit

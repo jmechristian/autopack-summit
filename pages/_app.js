@@ -1,6 +1,6 @@
 import '../styles/globals.css';
 import Layout from '../features/layout/Layout';
-import { Amplify, Analytics } from 'aws-amplify';
+import { Amplify } from 'aws-amplify';
 import { createClient } from 'next-sanity';
 import { Provider } from 'react-redux';
 import { store } from '../features/store';

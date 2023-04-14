@@ -1,11 +1,4 @@
 export type AmplifyDependentResourcesAttributes = {
-    "analytics": {
-        "autopacksummit": {
-            "Region": "string",
-            "Id": "string",
-            "appName": "string"
-        }
-    },
     "api": {
         "packbrain": {
             "GraphQLAPIKeyOutput": "string",
