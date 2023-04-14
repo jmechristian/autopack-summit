@@ -14,8 +14,6 @@ const UploadImage = ({ setUrl }) => {
       type: file.type,
     });
 
-    console.log('data:', data);
-
     const url = data.url;
     await axios
       .put(url, file, {

@@ -24,8 +24,6 @@ const SpeakerProfileForm = () => {
 
     setLoading(false);
     setSubmitted(true);
-
-    console.log('create data:', data);
   };
 
   return (
