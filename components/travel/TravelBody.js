@@ -2,10 +2,12 @@ import React from 'react';
 import LeftTextCTA from '../../shared/LeftTextCTA';
 import OverlayWithText from '../../shared/OverlayWithText';
 import TravelBlock from './TravelBlock';
+import TravelVenue from './TravelVenue';
 
 const TravelBody = () => {
   return (
     <div className='w-full'>
+      <TravelVenue />
       <div className='smaller_wrapper flex flex-col md:flex-row gap-16 md:gap-16 lg:gap-32 xl:gap-48'>
         <div className='flex flex-col gap-16 md:gap-28 lg:gap-52 lg:w-1/2'>
           <LeftTextCTA
