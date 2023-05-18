@@ -58,7 +58,7 @@ export default function TravelVenue() {
               />
               <div className='mx-auto max-w-2xl sm:mx-0 sm:max-w-none'>
                 <img
-                  src='https://apsmedia.s3.amazonaws.com/images/003e075a1e13048226d6e453516cf6c89a4d14b451e1d4b277b46dac26c5c783.jpeg'
+                  src='https://apsmedia.s3.amazonaws.com/images/Huguenot+Mill.jpeg'
                   alt='The Huguenot Loft'
                   width={2432}
                   height={1442}
