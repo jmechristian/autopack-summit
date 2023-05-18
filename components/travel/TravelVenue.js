@@ -61,8 +61,7 @@ export default function TravelVenue() {
                   src='https://apsmedia.s3.amazonaws.com/images/Huguenot+Mill.jpeg'
                   alt='The Huguenot Loft'
                   width={2432}
-                  height={1442}
-                  className='-mb-12 w-[57rem] max-w-none rounded-tl-xl bg-gray-800 ring-1 ring-white/10'
+                  className='-mb-12 w-[33rem] max-w-none rounded-tl-xl bg-gray-800 ring-1 ring-white/10'
                 />
               </div>
               <div
