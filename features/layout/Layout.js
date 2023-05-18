@@ -32,6 +32,18 @@ const Layout = ({ client, children }) => {
   return (
     <div>
       <CookieConsent />
+      <div className='relative w-full h-20 lg:h-16'>
+        <div className='fixed z-50 w-full h-20'>
+          <div className='flex flex-col lg:flex-row gap-1 h-20 lg:h-16 bg-black leading-none justify-center items-center w-full py-4'>
+            <div className='font-bold text-ap-yellow text-lg xl:text-xl leading-none'>
+              October 11-13th
+            </div>
+            <div className='text-white/80 xl:text-lg'>
+              Huguenot Loft, Greenville SC
+            </div>
+          </div>
+        </div>
+      </div>
       <Header openMenu={() => dispatch(openNavMenu())} />
       <MobileMenu close={() => dispatch(closeNavMenu())} isOpen={navOpen} />
       {videoOpen && <VideoModal />}
