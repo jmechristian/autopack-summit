@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import UploadImage from '../../util/UploadImage';
 import axios from 'axios';
+import { API } from 'aws-amplify';
+import { createAPSSpeaker } from '../../src/graphql/mutations';
 
 const SpeakerProfileForm = () => {
   const {
@@ -17,13 +19,18 @@ const SpeakerProfileForm = () => {
   const [submitted, setSubmitted] = useState(false);
 
   const onSubmit = async (fields) => {
-    await setLoading(true);
-    let { data } = await axios.post('/api/dynamo/create-speaker', {
-      fields,
+    setLoading(true);
+    const res = await API.graphql({
+      query: createAPSSpeaker,
+      variables: { input: { ...fields } },
     });
 
     setLoading(false);
-    setSubmitted(true);
+    if (res.data) {
+      setSubmitted(true);
+    } else if (res.errors) {
+      console.log(errors);
+    }
   };
 
   return (

@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "api": {
+      "packbrain": [
+        "Query",
+        "Mutation"
+      ]
+    }
+  },
+  "lambdaLayers": []
+}
