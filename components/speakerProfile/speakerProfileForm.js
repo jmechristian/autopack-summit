@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import UploadImage from '../../util/UploadImage';
-import axios from 'axios';
+import { sendSpeakerUpdate } from '../../util/sendSpeakerUpdate';
 import { API } from 'aws-amplify';
 import { createAPSSpeaker } from '../../src/graphql/mutations';
 
@@ -28,6 +28,7 @@ const SpeakerProfileForm = () => {
     setLoading(false);
     if (res.data) {
       setSubmitted(true);
+      sendSpeakerUpdate({ ...fields });
     } else if (res.errors) {
       console.log(errors);
     }
