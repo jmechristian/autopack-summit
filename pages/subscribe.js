@@ -39,7 +39,7 @@ const Page = () => {
 
   return (
     <>
-      <div className='w-full h-24 bg-ap-darkblue'></div>
+      <div className='w-full h-16 md:h-20 lg:h-24 bg-ap-darkblue'></div>
       <div className='overflow-hidden bg-white py-44'>
         <div className='mx-auto max-w-7xl px-6 lg:flex lg:px-8'>
           <div className='mx-auto grid max-w-2xl grid-cols-1 gap-x-12 gap-y-16 lg:mx-0 lg:min-w-full lg:max-w-none lg:flex-none lg:gap-y-8'>
