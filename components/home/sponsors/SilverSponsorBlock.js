@@ -11,7 +11,7 @@ const SilverSponsorBlock = ({ silver }) => {
         {silver &&
           silver.map((item, i) => (
             <div key={i}>
-              <Sponsor logo={item.logo} url={item.website} />
+              <Sponsor logo={item.logo?.asset.url} url={item.website} />
             </div>
           ))}
       </div>

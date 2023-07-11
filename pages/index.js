@@ -58,7 +58,7 @@ const client = createClient({
 export async function getStaticProps() {
   const homepageData = await client.fetch(`*[_type == "homepage"]{
     ..., speakers[]->, "sponsorList": *[_type == "sponsor"]{
-      logo, name, teir, website
+      logo { asset-> { url }}, name, teir, website
     }
   }`);
 

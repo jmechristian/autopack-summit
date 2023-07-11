@@ -2,6 +2,7 @@ import React from 'react';
 import Sponsor from './Sponsor';
 
 const HighTopSponsorBlock = ({ highTop }) => {
+  console.log(highTop);
   return (
     <div className='flex flex-col gap-5 md:gap-6'>
       <div className='border-b border-b-slate-500 pb-2 font-bold tracking-widest uppercase text-sm lg:text-lg'>
@@ -11,7 +12,7 @@ const HighTopSponsorBlock = ({ highTop }) => {
         {highTop &&
           highTop.map((item, i) => (
             <div key={i}>
-              <Sponsor logo={item.logo} url={item.website} />
+              <Sponsor logo={item.logo?.asset.url} url={item.website} />
             </div>
           ))}
       </div>
