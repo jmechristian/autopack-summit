@@ -21,7 +21,7 @@ const registerprovider = () => {
               Solution Provider
             </motion.div>
             <motion.div className='yellow_headline text-4xl md:text-5xl xl:text-6xl xl:text-center'>
-              Registration
+              Sponsorship
             </motion.div>
           </div>
           <div className='w-10/12 mx-auto text-center text-slate-700 lg:hidden md:text-lg'>
