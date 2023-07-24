@@ -191,9 +191,14 @@ type User @model @auth(rules: [{ allow: public }]) {
   apss: [APS] @manyToMany(relationName: "APSUser")
   cmpmFormID: ID
   cmpmForm: CMPMForm @hasOne(fields: ["cmpmFormID"])
+  cpsFormID: ID
+  cpsForm: CPSForm @hasOne(fields: ["cpsFormID"])
   instructorId: Instructor @hasOne
   studentId: Student @hasOne
   savedCourses: [String]
+  savedLessons: [String]
+  savedArticles: [String]
+  source: String
 }
 
 type CMPMForm
@@ -223,6 +228,38 @@ type CMPMForm
   cmpmGoals: String
   moreAboutYou: String
   birthYear: String
+  optOut: Boolean
+}
+
+type CPSForm
+  @model(timestamps: { createdAt: "createdOn", updatedAt: "updatedOn" })
+  @auth(rules: [{ allow: public }]) {
+  id: ID!
+  user: User @belongsTo
+  firstName: String
+  lastName: String
+  email: String
+  phone: String
+  streetAddress: String
+  addressExtra: String
+  city: String
+  state: String
+  country: String
+  birthYear: String
+  companyName: String
+  companyTitle: String
+  linkedin: String
+  background: String
+  whyPackaging: String
+  areaOfInterest: String
+  sessionApplying: String
+  referral: String
+  payment: String
+  yearGoals: String
+  cpsGoals: String
+  moreAboutYou: String
+  elective: String
+  optOut: Boolean
 }
 
 type APSSpeaker @model @auth(rules: [{ allow: public }]) {
@@ -246,6 +283,14 @@ type RegistrationCode {
   code: String
 }
 
+type Tourist @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  fullName: String!
+  email: String! @index(name: "touristByEmail")
+  phone: String!
+  tour: String!
+}
+
 ######### LMS #########
 
 type LMSCirriculum @model @auth(rules: [{ allow: public }]) {
@@ -258,6 +303,7 @@ type LMSCourse @model @auth(rules: [{ allow: public }]) {
   id: ID!
   courseId: String
   category: CategoryType @default(value: "MATERIALS")
+  type: String
   Cirriculum: [LMSCirriculum] @manyToMany(relationName: "CirriculumCourses")
   Lessons: [LMSLesson] @manyToMany(relationName: "CourseLessons")
   Instructors: [Instructor] @manyToMany(relationName: "CourseInstructors")
@@ -276,6 +322,25 @@ type LMSCourse @model @auth(rules: [{ allow: public }]) {
   trial_link: String
   percentComplete: Int
   slug: String! @index(name: "LMScourseBySlug")
+  collection: [String]
+}
+
+type LMSCollection @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  description: String
+  title: String!
+  subtitle: String
+  instructor: String
+  instructorImage: String
+  instructorDescription: String
+  instructorLink: String
+  courses: [String]
+  hours: String
+  price: Int
+  slug: String! @index(name: "LMScollectionBySlug")
+  category: CategoryType @default(value: "INDUSTRY")
+  collectionId: String
+  lmsLink: String
 }
 
 type LMSLesson @model @auth(rules: [{ allow: public }]) {

@@ -1,9 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AgendaItem from './AgendaItem';
 import { useSelector } from 'react-redux';
+import {
+  InformationCircleIcon,
+  ComputerDesktopIcon,
+} from '@heroicons/react/24/outline';
+import { useForm } from 'react-hook-form';
+import TourOneForm from './TourOneForm';
+import TourTwoForm from './TourTwoForm';
 
 const AgendaBody = ({ sessions }) => {
   const { daySelected } = useSelector((state) => state.agenda);
+
+  const [isForm1Open, setIsForm1Open] = useState(false);
+  const [isForm2Open, setIsForm2Open] = useState(false);
+
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
 
   const setDay = () => {
     if (daySelected === '2023-10-11') {
@@ -52,6 +69,133 @@ const AgendaBody = ({ sessions }) => {
                 />
               </div>
             ))}
+          {daySelected === '2023-10-13' && (
+            <div className='flex flex-col gap-6 mt-12'>
+              <div className='font-oswald text-3xl tracking-tight px-5 md:px-10 text-slate-400'>
+                10:00 AM Tours
+              </div>
+              {/* TOUR 1 */}
+              <div className='w-full bg-indigo-100 rounded-lg flex flex-col md:grid md:grid-cols-8 gap-3 h-full'>
+                <div className='md:col-span-6'>
+                  <div className='flex gap-4 items-center flex-col md:flex-row'>
+                    <div className='p-6'>
+                      <div
+                        className='aspect-[4/3] w-80 bg-cover bg-center rounded-lg'
+                        style={{
+                          backgroundImage: `url("https://apsmedia.s3.amazonaws.com/images/tour1.webp")`,
+                        }}
+                      ></div>
+                    </div>
+                    <div className='flex flex-col gap-3 p-6'>
+                      <div className='flex flex-col gap-2'>
+                        <div className='bg-indigo-500 text-white w-fit px-2 py-1 text-sm rounded-lg relative'>
+                          Optional
+                        </div>
+                        <div className='text-3xl font-oswald'>
+                          Tour #1{' '}
+                          <span className='font-bold'>
+                            Magna Drive Automotive
+                          </span>
+                        </div>
+                        <div>120 Moon Acres Rd, Piedmont, SC 29673</div>
+                        <div className='flex gap-1 mt-2'>
+                          <div>
+                            <InformationCircleIcon className='w-6 h-6 stroke-slate-900' />
+                          </div>
+                          <div className='font-bold'>
+                            Steel Toed Shoes required
+                          </div>
+                        </div>
+                        <div>Plan on 2 hours (10am-12pm)</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className='col-span-2 bg-ap-blue rounded-lg flex items-center justify-center p-6 relative'>
+                  {isForm1Open && (
+                    <TourOneForm close={() => setIsForm1Open(false)} />
+                  )}
+                  <div className='flex flex-col gap-6 items-center'>
+                    <div className='flex flex-col gap-2 items-center'>
+                      <div className='text-5xl font-oswald font-bold text-white'>
+                        30
+                      </div>
+                      <div className='text-white uppercase text-sm font-bold'>
+                        Spots Remain
+                      </div>
+                    </div>
+                    <div
+                      className='px-6 py-2.5 cursor-pointer text-lg rounded-lg uppercase font-oswald bg-white/60 text-slate-900 font-medium'
+                      onClick={() => setIsForm1Open(true)}
+                    >
+                      Save Your Spot
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {/* TOUR 2 */}
+              <div className='w-full bg-indigo-100 rounded-lg flex flex-col md:grid md:grid-cols-8 gap-3 h-full'>
+                <div className='md:col-span-6'>
+                  <div className='flex gap-4 items-center flex-col md:flex-row'>
+                    <div className='p-6'>
+                      <div
+                        className='aspect-[4/3] w-80 bg-cover bg-center rounded-lg'
+                        style={{
+                          backgroundImage: `url("https://apsmedia.s3.amazonaws.com/images/tour2.webp")`,
+                        }}
+                      ></div>
+                    </div>
+                    <div className='flex flex-col gap-2 w-full p-6'>
+                      <div className='bg-indigo-500 text-white w-fit px-2 py-1 text-sm rounded-lg'>
+                        Optional
+                      </div>
+                      <div className='text-3xl font-oswald'>
+                        Tour #2 <span className='font-bold'>CU-ICAR</span>
+                      </div>
+                      <div>5 Research Dr, Greenville, SC 29607</div>
+                      <div className='flex gap-1 mt-2'>
+                        <div>
+                          <ComputerDesktopIcon className='w-6 h-6 stroke-slate-900' />
+                        </div>
+                        <div className='font-bold'>
+                          <a
+                            className='font-bold'
+                            href='https://cuicar.com/'
+                            target='_blank'
+                            rel='noreferrer'
+                          >
+                            cuicar.com
+                          </a>
+                        </div>
+                      </div>
+                      <div>Plan on 1 1/2 hours (10am-11:30am)</div>
+                    </div>
+                  </div>
+                </div>
+                <div className='col-span-2 bg-ap-blue rounded-lg flex justify-center items-center p-6 relative'>
+                  {isForm2Open && (
+                    <TourTwoForm close={() => setIsForm2Open(false)} />
+                  )}
+                  <div className='flex flex-col gap-6 items-center justify-center'>
+                    <div className='flex flex-col gap-2 items-center'>
+                      <div className='text-5xl font-oswald font-bold text-white'>
+                        20
+                      </div>
+                      <div className='text-white uppercase text-sm font-bold'>
+                        Spots Remain
+                      </div>
+                    </div>
+                    <div
+                      className='px-6 py-2.5 cursor-pointer text-lg rounded-lg uppercase font-oswald bg-white/60 text-slate-900 font-medium'
+                      onClick={() => setIsForm2Open(true)}
+                    >
+                      Save Your Spot
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>
