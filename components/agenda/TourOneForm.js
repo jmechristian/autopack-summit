@@ -18,7 +18,7 @@ const TourOneForm = ({ close }) => {
 
   const onSubmitOne = async (data) => {
     setIsLoading(true);
-    await fetch('https://autopacksummit.com/api/send-tour-email', {
+    await fetch('https://www.autopacksummit.com/api/send-tour-email', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
