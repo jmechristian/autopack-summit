@@ -524,10 +524,7 @@ export default async function handler(req, res) {
     });
 
     await sesClient.send(
-      createSendEmailCommand(
-        'jamie@packagingschool.com',
-        'jamie@packagingschool.com'
-      )
+      createSendEmailCommand(email, 'jamie@packagingschool.com')
     );
 
     res.status(200).json({

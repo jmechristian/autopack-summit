@@ -583,8 +583,8 @@ export default async function handler(req, res) {
         ],
         ToAddresses: [
           toAddress,
-          // 'diana@packagingschool.com',
-          // 'bianca@packagingschool.com',
+          'diana@packagingschool.com',
+          'bianca@packagingschool.com',
         ],
       },
       Message: {
