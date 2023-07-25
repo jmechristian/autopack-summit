@@ -19,7 +19,7 @@ const TourTwoForm = ({ close }) => {
 
   const onSubmitTwo = async (data) => {
     setIsLoading(true);
-    await fetch('http://localhost:3000/api/send-tour-email', {
+    await fetch('https://autopacksummit.com/api/send-tour-email', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
