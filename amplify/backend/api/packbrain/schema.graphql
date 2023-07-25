@@ -289,6 +289,7 @@ type Tourist @model @auth(rules: [{ allow: public }]) {
   email: String! @index(name: "touristByEmail")
   phone: String!
   tour: String!
+  company: String!
 }
 
 ######### LMS #########

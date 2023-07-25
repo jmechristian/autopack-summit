@@ -3,8 +3,10 @@ import AgendaBody from '../components/agenda/AgendaBody';
 import AgendaHead from '../components/agenda/AgendaHead';
 import { createClient } from 'next-sanity';
 import Head from 'next/head';
+import { API } from 'aws-amplify';
+import { listTourists } from '../src/graphql/queries';
 
-const agenda = ({ sessionData }) => {
+const agenda = ({ sessionData, tourists }) => {
   return (
     <>
       <Head>
@@ -16,7 +18,7 @@ const agenda = ({ sessionData }) => {
       </Head>
       <div className='w-full'>
         <AgendaHead />
-        <AgendaBody sessions={sessionData} />
+        <AgendaBody sessions={sessionData} tourists={tourists} />
       </div>
     </>
   );
@@ -30,6 +32,12 @@ const client = createClient({
 });
 
 export async function getServerSideProps() {
+  const GRAPHQL_ENDPOINT = process.env.GRAPHQL_ENDPOINT;
+  const GRAPHQL_API_KEY = process.env.GRAPHQL_API_KEY;
+
+  const getTourists = await API.graphql({ query: listTourists });
+  const tourists = getTourists.data.listTourists.items;
+
   const sessionData = await client.fetch(
     `*[_type == "session"] | order(session_start asc) {
       _id,
@@ -47,6 +55,7 @@ export async function getServerSideProps() {
   return {
     props: {
       sessionData,
+      tourists,
     },
   };
 }

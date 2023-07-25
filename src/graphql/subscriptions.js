@@ -5366,6 +5366,8 @@ export const onCreateTourist = /* GraphQL */ `
       fullName
       email
       phone
+      tour
+      company
       createdAt
       updatedAt
     }
@@ -5378,6 +5380,8 @@ export const onUpdateTourist = /* GraphQL */ `
       fullName
       email
       phone
+      tour
+      company
       createdAt
       updatedAt
     }
@@ -5390,6 +5394,8 @@ export const onDeleteTourist = /* GraphQL */ `
       fullName
       email
       phone
+      tour
+      company
       createdAt
       updatedAt
     }

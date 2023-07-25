@@ -5,7 +5,7 @@ const TourOneForm = ({ close }) => {
   const [isFullName, setIsFullName] = useState('');
   const [isEmail, setIsEmail] = useState('');
   const [isPhone, setIsPhone] = useState('');
-  const [isMessage, setIsMessage] = useState(true);
+  const [isCompany, setIsCompany] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -34,13 +34,14 @@ const TourOneForm = ({ close }) => {
     setIsFullName('');
     setIsEmail('');
     setIsPhone('');
+    setIsCompany('');
   };
 
   return (
     <div className='fixed inset-0 z-50 shadow-sm backdrop-blur-md flex justify-center items-center bg-gray-900/60 p-6'>
       <div className='bg-white flex flex-col px-4 lg:px-6 lg:py-9 py-6 rounded-lg w-full md:max-w-xl'>
         <div className='flex flex-col justify-center items-center gap-3'>
-          <div className=' text-2xl sm:text-3xl max-w-fit md:w-full leading-none uppercase font-oswald font-bold text-ap-darkblue tracking-widest text-center lg:text-left'>
+          <div className=' text-2xl sm:text-3xl max-w-fit md:w-full leading-none uppercase font-oswald font-bold text-ap-darkblue tracking-widest text-center'>
             Tour #1 Magna Drive Automotive
           </div>
           <div className='text-slate-500 font-semibold text-center text-sm xl:text-base'>
@@ -71,6 +72,15 @@ const TourOneForm = ({ close }) => {
               defaultValue={isEmail}
               onChange={(e) => setIsEmail(e.target.value)}
               placeholder='Email*'
+            />
+            <input
+              id='company'
+              name='company'
+              {...register('company', { required: true })}
+              className='block w-full rounded-md border-0 py-2 px-3 text-slate-900 ring-1 ring-inset ring-slate-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 text-sm md:text-base sm:leading-6'
+              defaultValue={isCompany}
+              onChange={(e) => setIsCompany(e.target.value)}
+              placeholder='Company*'
             />
             <input
               id='phone'

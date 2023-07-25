@@ -5513,6 +5513,8 @@ export const createTourist = /* GraphQL */ `
       fullName
       email
       phone
+      tour
+      company
       createdAt
       updatedAt
     }
@@ -5528,6 +5530,8 @@ export const updateTourist = /* GraphQL */ `
       fullName
       email
       phone
+      tour
+      company
       createdAt
       updatedAt
     }
@@ -5543,6 +5547,8 @@ export const deleteTourist = /* GraphQL */ `
       fullName
       email
       phone
+      tour
+      company
       createdAt
       updatedAt
     }

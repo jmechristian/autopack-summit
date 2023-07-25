@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AgendaItem from './AgendaItem';
 import { useSelector } from 'react-redux';
+
 import {
   InformationCircleIcon,
   ComputerDesktopIcon,
@@ -9,11 +10,12 @@ import { useForm } from 'react-hook-form';
 import TourOneForm from './TourOneForm';
 import TourTwoForm from './TourTwoForm';
 
-const AgendaBody = ({ sessions }) => {
+const AgendaBody = ({ sessions, tourists }) => {
   const { daySelected } = useSelector((state) => state.agenda);
-
   const [isForm1Open, setIsForm1Open] = useState(false);
   const [isForm2Open, setIsForm2Open] = useState(false);
+  const [isTour1Count, setIsTour1Count] = useState(undefined);
+  const [isTour2Count, setIsTour2Count] = useState(undefined);
 
   const {
     register,
@@ -21,6 +23,11 @@ const AgendaBody = ({ sessions }) => {
     watch,
     formState: { errors },
   } = useForm();
+
+  useEffect(() => {
+    tourists && setIsTour1Count(tourists.filter((t) => t.tour === 'Tour 1'));
+    tourists && setIsTour2Count(tourists.filter((t) => t.tour === 'Tour 2'));
+  }, [tourists]);
 
   const setDay = () => {
     if (daySelected === '2023-10-11') {
@@ -70,7 +77,7 @@ const AgendaBody = ({ sessions }) => {
               </div>
             ))}
           {daySelected === '2023-10-13' && (
-            <div className='flex flex-col gap-6 mt-12'>
+            <div className='flex flex-col gap-6 mt-16 mb-6'>
               <div className='font-oswald text-3xl tracking-tight px-5 md:px-10 text-slate-400'>
                 10:00 AM Tours
               </div>
@@ -116,14 +123,16 @@ const AgendaBody = ({ sessions }) => {
                     <TourOneForm close={() => setIsForm1Open(false)} />
                   )}
                   <div className='flex flex-col gap-6 items-center'>
-                    <div className='flex flex-col gap-2 items-center'>
-                      <div className='text-5xl font-oswald font-bold text-white'>
-                        30
+                    {isTour1Count && (
+                      <div className='flex flex-col gap-2 items-center'>
+                        <div className='text-5xl font-oswald font-bold text-white'>
+                          {30 - isTour1Count.length}
+                        </div>
+                        <div className='text-white uppercase text-sm font-bold'>
+                          Spots Remain
+                        </div>
                       </div>
-                      <div className='text-white uppercase text-sm font-bold'>
-                        Spots Remain
-                      </div>
-                    </div>
+                    )}
                     <div
                       className='px-6 py-2.5 cursor-pointer text-lg rounded-lg uppercase font-oswald bg-white/60 text-slate-900 font-medium'
                       onClick={() => setIsForm1Open(true)}
@@ -177,14 +186,16 @@ const AgendaBody = ({ sessions }) => {
                     <TourTwoForm close={() => setIsForm2Open(false)} />
                   )}
                   <div className='flex flex-col gap-6 items-center justify-center'>
-                    <div className='flex flex-col gap-2 items-center'>
-                      <div className='text-5xl font-oswald font-bold text-white'>
-                        20
+                    {isTour2Count && (
+                      <div className='flex flex-col gap-2 items-center'>
+                        <div className='text-5xl font-oswald font-bold text-white'>
+                          {20 - isTour2Count.length}
+                        </div>
+                        <div className='text-white uppercase text-sm font-bold'>
+                          Spots Remain
+                        </div>
                       </div>
-                      <div className='text-white uppercase text-sm font-bold'>
-                        Spots Remain
-                      </div>
-                    </div>
+                    )}
                     <div
                       className='px-6 py-2.5 cursor-pointer text-lg rounded-lg uppercase font-oswald bg-white/60 text-slate-900 font-medium'
                       onClick={() => setIsForm2Open(true)}

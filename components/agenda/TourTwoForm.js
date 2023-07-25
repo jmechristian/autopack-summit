@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 const TourTwoForm = ({ close }) => {
   const [isFullName, setIsFullName] = useState('');
   const [isEmail, setIsEmail] = useState('');
+  const [isCompany, setIsCompany] = useState('');
   const [isPhone, setIsPhone] = useState('');
   const [isMessage, setIsMessage] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
@@ -34,6 +35,7 @@ const TourTwoForm = ({ close }) => {
     setIsFullName('');
     setIsEmail('');
     setIsPhone('');
+    setIsCompany('');
   };
 
   return (
@@ -71,6 +73,15 @@ const TourTwoForm = ({ close }) => {
               defaultValue={isEmail}
               onChange={(e) => setIsEmail(e.target.value)}
               placeholder='Email*'
+            />
+            <input
+              id='company'
+              name='company'
+              {...register('company', { required: true })}
+              className='block w-full rounded-md border-0 py-2 px-3 text-slate-900 ring-1 ring-inset ring-slate-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 text-sm md:text-base sm:leading-6'
+              defaultValue={isCompany}
+              onChange={(e) => setIsCompany(e.target.value)}
+              placeholder='Company*'
             />
             <input
               id='phone'
