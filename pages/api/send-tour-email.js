@@ -487,7 +487,7 @@ export default async function handler(req, res) {
     '                      "' +
     '                    >' +
     '                      <a' +
-    `                        href="http://localhost:3000/api/dynamo/create-tourist?email=${body.email}&fullName=${body.fullName}&phone=${body.phone}&tour=${body.tour}&company=${body.company}"` +
+    `                        href="https://autopacksummit.com/api/dynamo/create-tourist?email=${body.email}&fullName=${body.fullName}&phone=${body.phone}&tour=${body.tour}&company=${body.company}"` +
     '                        style="' +
     '                          color: white;' +
     '                          font-weight: bold;' +
