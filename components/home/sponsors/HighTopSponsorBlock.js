@@ -2,7 +2,6 @@ import React from 'react';
 import Sponsor from './Sponsor';
 
 const HighTopSponsorBlock = ({ highTop }) => {
-  console.log(highTop);
   return (
     <div className='flex flex-col gap-5 md:gap-6'>
       <div className='border-b border-b-slate-500 pb-2 font-bold tracking-widest uppercase text-sm lg:text-lg'>

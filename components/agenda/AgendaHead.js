@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setDaySelected } from './agendaSlice';
 import { StarIcon } from '@heroicons/react/24/solid';
+import { useRouter } from 'next/router';
 
 const AgendaHead = () => {
   const dispatch = useDispatch();
+  const router = useRouter();
   const { daySelected } = useSelector((state) => state.agenda);
 
   const setDay = () => {
@@ -16,6 +18,12 @@ const AgendaHead = () => {
       return 'Friday';
     }
   };
+
+  console.log(router.query);
+  useEffect(() => {
+    if (router.query && router.query.day && router.query.day === '2023-10-13')
+      dispatch(setDaySelected('2023-10-13'));
+  }, []);
 
   const setDate = () => {
     if (daySelected === '2023-10-11') {
