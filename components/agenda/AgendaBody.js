@@ -76,11 +76,9 @@ const AgendaBody = ({ sessions, tourists }) => {
                 />
               </div>
             ))}
+          <div className='scroll-mt-16' id='tours' />
           {daySelected === '2023-10-13' && (
-            <div
-              className='flex flex-col gap-6 mt-16 mb-6 scroll-mt-16'
-              id='tours'
-            >
+            <div className='flex flex-col gap-6 mt-16 mb-6 scroll-mt-12'>
               <div className='font-oswald text-3xl tracking-tight px-5 md:px-10 text-slate-400'>
                 10:00 AM Tours
               </div>
