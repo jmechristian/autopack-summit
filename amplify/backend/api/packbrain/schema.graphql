@@ -229,6 +229,7 @@ type CMPMForm
   moreAboutYou: String
   birthYear: String
   optOut: Boolean
+  paymentConfirmation: String
 }
 
 type CPSForm
@@ -260,6 +261,7 @@ type CPSForm
   moreAboutYou: String
   elective: String
   optOut: Boolean
+  paymentConfirmation: String
 }
 
 type APSSpeaker @model @auth(rules: [{ allow: public }]) {

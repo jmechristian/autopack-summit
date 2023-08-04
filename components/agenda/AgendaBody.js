@@ -79,8 +79,13 @@ const AgendaBody = ({ sessions, tourists }) => {
           <div className='scroll-mt-16' id='tours' />
           {daySelected === '2023-10-13' && (
             <div className='flex flex-col gap-6 mt-16 mb-6 scroll-mt-12'>
-              <div className='font-oswald text-3xl tracking-tight px-5 md:px-10 text-slate-400'>
-                10:00 AM Tours
+              <div className='flex justify-between items-center'>
+                <div className='font-oswald text-3xl tracking-tight px-5 md:px-10 text-slate-400'>
+                  10:00 AM Tours
+                </div>
+                <div className='text-sm text-gray-500'>
+                  *Tour registrations are limited to one tour per attendee.
+                </div>
               </div>
               {/* TOUR 1 */}
               <div className='w-full bg-indigo-100 rounded-lg flex flex-col md:grid md:grid-cols-8 gap-3 h-full'>

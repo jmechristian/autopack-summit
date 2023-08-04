@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { touristsByEmail } from '../../src/graphql/queries';
+import { API } from 'aws-amplify';
 
 const TourTwoForm = ({ close }) => {
   const [isFullName, setIsFullName] = useState('');
@@ -9,6 +11,7 @@ const TourTwoForm = ({ close }) => {
   const [isMessage, setIsMessage] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   const {
     register,
@@ -19,23 +22,31 @@ const TourTwoForm = ({ close }) => {
 
   const onSubmitTwo = async (data) => {
     setIsLoading(true);
-    await fetch('https://www.autopacksummit.com/api/send-tour-email', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        ...data,
-        tour: 'Tour 2',
-      }),
+
+    const emailCheck = await API.graphql({
+      query: touristsByEmail,
+      variables: { email: data.email },
     });
-    setIsLoading(false);
-    setIsSubmitted(true);
-    setIsFullName('');
-    setIsEmail('');
-    setIsPhone('');
-    setIsCompany('');
+
+    if (emailCheck.data.touristsByEmail.items.length === 0) {
+      await fetch('https://www.autopacksummit.com/api/send-tour-email', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...data,
+          tour: 'Tour 2',
+        }),
+      });
+      setIsLoading(false);
+      setIsSubmitted(true);
+    } else {
+      setIsError(true);
+      setIsLoading(false);
+      setIsSubmitted(false);
+    }
   };
 
   return (
@@ -102,18 +113,26 @@ const TourTwoForm = ({ close }) => {
               </div>
               <button
                 type='submit'
+                disabled={isError || isSubmitted}
                 className='w-full py-2 text-center font-semibold bg-ap-blue hover:bg-ap-darkblue text-white rounded-lg cursor-pointer'
               >
-                {!isLoading && !isSubmitted && 'Submit'}
+                {!isLoading && !isSubmitted && !isError && 'Submit'}
                 {isLoading && !isSubmitted && 'Sending...'}
                 {!isLoading && isSubmitted && 'Sent!'}
+                {!isLoading && isError && 'Error!'}
               </button>
             </div>
           </form>
           {isSubmitted && (
             <span className='mt-6 text-center text-gray-700'>
-              Thanks for your submission. We will send an email confirmation of
+              Thanks for your submissions. We will send an email confirmation of
               your signup shortly.
+            </span>
+          )}
+          {isError && (
+            <span className='mt-6 text-center text-gray-700'>
+              You have already been registered for a tour. For questions, please
+              contact Diana@packagingschool.com
             </span>
           )}
         </div>

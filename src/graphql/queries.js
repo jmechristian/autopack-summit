@@ -1317,6 +1317,7 @@ export const getCompany = /* GraphQL */ `
             moreAboutYou
             birthYear
             optOut
+            paymentConfirmation
             createdOn
             updatedOn
             cMPMFormUserId
@@ -1348,6 +1349,7 @@ export const getCompany = /* GraphQL */ `
             moreAboutYou
             elective
             optOut
+            paymentConfirmation
             createdOn
             updatedOn
             cPSFormUserId
@@ -1576,6 +1578,7 @@ export const getUser = /* GraphQL */ `
             moreAboutYou
             birthYear
             optOut
+            paymentConfirmation
             createdOn
             updatedOn
             cMPMFormUserId
@@ -1607,6 +1610,7 @@ export const getUser = /* GraphQL */ `
             moreAboutYou
             elective
             optOut
+            paymentConfirmation
             createdOn
             updatedOn
             cPSFormUserId
@@ -1655,6 +1659,7 @@ export const getUser = /* GraphQL */ `
         moreAboutYou
         birthYear
         optOut
+        paymentConfirmation
         createdOn
         updatedOn
         cMPMFormUserId
@@ -1703,6 +1708,7 @@ export const getUser = /* GraphQL */ `
             moreAboutYou
             birthYear
             optOut
+            paymentConfirmation
             createdOn
             updatedOn
             cMPMFormUserId
@@ -1734,6 +1740,7 @@ export const getUser = /* GraphQL */ `
             moreAboutYou
             elective
             optOut
+            paymentConfirmation
             createdOn
             updatedOn
             cPSFormUserId
@@ -1783,6 +1790,7 @@ export const getUser = /* GraphQL */ `
         moreAboutYou
         elective
         optOut
+        paymentConfirmation
         createdOn
         updatedOn
         cPSFormUserId
@@ -1831,6 +1839,7 @@ export const getUser = /* GraphQL */ `
             moreAboutYou
             birthYear
             optOut
+            paymentConfirmation
             createdOn
             updatedOn
             cMPMFormUserId
@@ -1862,6 +1871,7 @@ export const getUser = /* GraphQL */ `
             moreAboutYou
             elective
             optOut
+            paymentConfirmation
             createdOn
             updatedOn
             cPSFormUserId
@@ -1944,6 +1954,7 @@ export const getUser = /* GraphQL */ `
             moreAboutYou
             birthYear
             optOut
+            paymentConfirmation
             createdOn
             updatedOn
             cMPMFormUserId
@@ -1975,6 +1986,7 @@ export const getUser = /* GraphQL */ `
             moreAboutYou
             elective
             optOut
+            paymentConfirmation
             createdOn
             updatedOn
             cPSFormUserId
@@ -2120,6 +2132,7 @@ export const listUsers = /* GraphQL */ `
           moreAboutYou
           birthYear
           optOut
+          paymentConfirmation
           createdOn
           updatedOn
           cMPMFormUserId
@@ -2174,6 +2187,7 @@ export const listUsers = /* GraphQL */ `
           moreAboutYou
           elective
           optOut
+          paymentConfirmation
           createdOn
           updatedOn
           cPSFormUserId
@@ -2341,6 +2355,7 @@ export const usersByName = /* GraphQL */ `
           moreAboutYou
           birthYear
           optOut
+          paymentConfirmation
           createdOn
           updatedOn
           cMPMFormUserId
@@ -2395,6 +2410,7 @@ export const usersByName = /* GraphQL */ `
           moreAboutYou
           elective
           optOut
+          paymentConfirmation
           createdOn
           updatedOn
           cPSFormUserId
@@ -2562,6 +2578,7 @@ export const usersByEmail = /* GraphQL */ `
           moreAboutYou
           birthYear
           optOut
+          paymentConfirmation
           createdOn
           updatedOn
           cMPMFormUserId
@@ -2616,6 +2633,7 @@ export const usersByEmail = /* GraphQL */ `
           moreAboutYou
           elective
           optOut
+          paymentConfirmation
           createdOn
           updatedOn
           cPSFormUserId
@@ -2783,6 +2801,7 @@ export const usersByCompanyID = /* GraphQL */ `
           moreAboutYou
           birthYear
           optOut
+          paymentConfirmation
           createdOn
           updatedOn
           cMPMFormUserId
@@ -2837,6 +2856,7 @@ export const usersByCompanyID = /* GraphQL */ `
           moreAboutYou
           elective
           optOut
+          paymentConfirmation
           createdOn
           updatedOn
           cPSFormUserId
@@ -2993,6 +3013,7 @@ export const getCMPMForm = /* GraphQL */ `
           moreAboutYou
           birthYear
           optOut
+          paymentConfirmation
           createdOn
           updatedOn
           cMPMFormUserId
@@ -3047,6 +3068,7 @@ export const getCMPMForm = /* GraphQL */ `
           moreAboutYou
           elective
           optOut
+          paymentConfirmation
           createdOn
           updatedOn
           cPSFormUserId
@@ -3147,6 +3169,7 @@ export const getCMPMForm = /* GraphQL */ `
       moreAboutYou
       birthYear
       optOut
+      paymentConfirmation
       createdOn
       updatedOn
       cMPMFormUserId
@@ -3203,6 +3226,7 @@ export const listCMPMForms = /* GraphQL */ `
             moreAboutYou
             birthYear
             optOut
+            paymentConfirmation
             createdOn
             updatedOn
             cMPMFormUserId
@@ -3234,6 +3258,7 @@ export const listCMPMForms = /* GraphQL */ `
             moreAboutYou
             elective
             optOut
+            paymentConfirmation
             createdOn
             updatedOn
             cPSFormUserId
@@ -3282,6 +3307,7 @@ export const listCMPMForms = /* GraphQL */ `
         moreAboutYou
         birthYear
         optOut
+        paymentConfirmation
         createdOn
         updatedOn
         cMPMFormUserId
@@ -3365,6 +3391,7 @@ export const getCPSForm = /* GraphQL */ `
           moreAboutYou
           birthYear
           optOut
+          paymentConfirmation
           createdOn
           updatedOn
           cMPMFormUserId
@@ -3419,6 +3446,7 @@ export const getCPSForm = /* GraphQL */ `
           moreAboutYou
           elective
           optOut
+          paymentConfirmation
           createdOn
           updatedOn
           cPSFormUserId
@@ -3520,6 +3548,7 @@ export const getCPSForm = /* GraphQL */ `
       moreAboutYou
       elective
       optOut
+      paymentConfirmation
       createdOn
       updatedOn
       cPSFormUserId
@@ -3576,6 +3605,7 @@ export const listCPSForms = /* GraphQL */ `
             moreAboutYou
             birthYear
             optOut
+            paymentConfirmation
             createdOn
             updatedOn
             cMPMFormUserId
@@ -3607,6 +3637,7 @@ export const listCPSForms = /* GraphQL */ `
             moreAboutYou
             elective
             optOut
+            paymentConfirmation
             createdOn
             updatedOn
             cPSFormUserId
@@ -3656,6 +3687,7 @@ export const listCPSForms = /* GraphQL */ `
         moreAboutYou
         elective
         optOut
+        paymentConfirmation
         createdOn
         updatedOn
         cPSFormUserId
@@ -4586,6 +4618,7 @@ export const getStudent = /* GraphQL */ `
           moreAboutYou
           birthYear
           optOut
+          paymentConfirmation
           createdOn
           updatedOn
           cMPMFormUserId
@@ -4640,6 +4673,7 @@ export const getStudent = /* GraphQL */ `
           moreAboutYou
           elective
           optOut
+          paymentConfirmation
           createdOn
           updatedOn
           cPSFormUserId
@@ -4810,6 +4844,7 @@ export const listStudents = /* GraphQL */ `
             moreAboutYou
             birthYear
             optOut
+            paymentConfirmation
             createdOn
             updatedOn
             cMPMFormUserId
@@ -4841,6 +4876,7 @@ export const listStudents = /* GraphQL */ `
             moreAboutYou
             elective
             optOut
+            paymentConfirmation
             createdOn
             updatedOn
             cPSFormUserId
@@ -4977,6 +5013,7 @@ export const getInstructor = /* GraphQL */ `
           moreAboutYou
           birthYear
           optOut
+          paymentConfirmation
           createdOn
           updatedOn
           cMPMFormUserId
@@ -5031,6 +5068,7 @@ export const getInstructor = /* GraphQL */ `
           moreAboutYou
           elective
           optOut
+          paymentConfirmation
           createdOn
           updatedOn
           cPSFormUserId
@@ -5205,6 +5243,7 @@ export const listInstructors = /* GraphQL */ `
             moreAboutYou
             birthYear
             optOut
+            paymentConfirmation
             createdOn
             updatedOn
             cMPMFormUserId
@@ -5236,6 +5275,7 @@ export const listInstructors = /* GraphQL */ `
             moreAboutYou
             elective
             optOut
+            paymentConfirmation
             createdOn
             updatedOn
             cPSFormUserId
@@ -6240,6 +6280,7 @@ export const getAPSUser = /* GraphQL */ `
           moreAboutYou
           birthYear
           optOut
+          paymentConfirmation
           createdOn
           updatedOn
           cMPMFormUserId
@@ -6294,6 +6335,7 @@ export const getAPSUser = /* GraphQL */ `
           moreAboutYou
           elective
           optOut
+          paymentConfirmation
           createdOn
           updatedOn
           cPSFormUserId
@@ -6446,6 +6488,7 @@ export const listAPSUsers = /* GraphQL */ `
             moreAboutYou
             birthYear
             optOut
+            paymentConfirmation
             createdOn
             updatedOn
             cMPMFormUserId
@@ -6477,6 +6520,7 @@ export const listAPSUsers = /* GraphQL */ `
             moreAboutYou
             elective
             optOut
+            paymentConfirmation
             createdOn
             updatedOn
             cPSFormUserId
@@ -6587,6 +6631,7 @@ export const aPSUsersByAPSId = /* GraphQL */ `
             moreAboutYou
             birthYear
             optOut
+            paymentConfirmation
             createdOn
             updatedOn
             cMPMFormUserId
@@ -6618,6 +6663,7 @@ export const aPSUsersByAPSId = /* GraphQL */ `
             moreAboutYou
             elective
             optOut
+            paymentConfirmation
             createdOn
             updatedOn
             cPSFormUserId
@@ -6728,6 +6774,7 @@ export const aPSUsersByUserId = /* GraphQL */ `
             moreAboutYou
             birthYear
             optOut
+            paymentConfirmation
             createdOn
             updatedOn
             cMPMFormUserId
@@ -6759,6 +6806,7 @@ export const aPSUsersByUserId = /* GraphQL */ `
             moreAboutYou
             elective
             optOut
+            paymentConfirmation
             createdOn
             updatedOn
             cPSFormUserId
@@ -7851,6 +7899,7 @@ export const getCourseInstructors = /* GraphQL */ `
             moreAboutYou
             birthYear
             optOut
+            paymentConfirmation
             createdOn
             updatedOn
             cMPMFormUserId
@@ -7882,6 +7931,7 @@ export const getCourseInstructors = /* GraphQL */ `
             moreAboutYou
             elective
             optOut
+            paymentConfirmation
             createdOn
             updatedOn
             cPSFormUserId
