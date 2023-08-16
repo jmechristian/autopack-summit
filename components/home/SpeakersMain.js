@@ -45,20 +45,20 @@ const SpeakersMain = ({ headline, subheadline, text, speakers }) => {
         </motion.div>
       </div>
       <div
-        className='grid grid-flow-col lg:grid-cols-3 xl:grid-cols-4 lg:grid-flow-dense overflow-scroll px-8 md:px-16 lg:px-20 gap-x-5 lg:gap-y-12 lg:gap-x-12 max-w-7xl lg:mx-auto'
+        className='grid grid-flow-col lg:grid-cols-3 xl:grid-cols-4 lg:grid-flow-dense overflow-scroll px-8 md:px-16 lg:px-20 gap-x-5 lg:gap-y-12 lg:gap-x-16 max-w-7xl lg:mx-auto'
         id='scrollers'
       >
         {speakers &&
           speakers.map((speaker, i) => (
-            <div key={speaker.name}>
+            <div key={speaker.name} className='mt-2'>
               <SpeakerBlock
                 name={speaker.name}
-                url={speaker.profilePic}
+                url={speaker.profilePic ? speaker.profilePic.asset.url : ''}
                 title={speaker.title}
                 company={speaker.company}
-                linkedIn={speaker.linkedIn}
+                linkedin={speaker.linkedin}
                 bio={speaker.bio}
-                session={speaker.session}
+                session={speaker.speakerSessions}
                 id={speaker._id}
               />
             </div>

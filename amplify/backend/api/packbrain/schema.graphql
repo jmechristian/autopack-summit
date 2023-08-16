@@ -264,6 +264,16 @@ type CPSForm
   paymentConfirmation: String
 }
 
+type AppStart
+  @model(timestamps: { createdAt: "createdOn", updatedAt: "updatedOn" })
+  @auth(rules: [{ allow: public }]) {
+  firstName: String!
+  lastName: String!
+  email: String! @index(name: "appStartByEmail")
+  phone: String
+  source: String
+}
+
 type APSSpeaker @model @auth(rules: [{ allow: public }]) {
   firstName: String!
   lastName: String!

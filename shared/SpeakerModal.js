@@ -1,112 +1,104 @@
-import React, { useState, useEffect, use } from 'react';
-import { createClient } from 'next-sanity';
-import { XCircleIcon } from '@heroicons/react/24/outline';
-import { useDispatch, useSelector } from 'react-redux';
-import { closeSpeakerModal, setSpeaker } from '../features/layout/layoutSlice';
+import { Dialog } from '@headlessui/react';
+import { XCircleIcon } from '@heroicons/react/24/solid';
+import BioSession from './BioSession';
 import { SocialIcon } from 'react-social-icons';
-import SessionBlock from './SessionBlock';
+import { useRouter } from 'next/router';
 
-const SpeakerModal = () => {
-  const [currentSpeaker, setCurrentSpeaker] = useState(selectedSpeaker);
-  const { selectedSpeaker } = useSelector((state) => state.layout);
-  const client = createClient({
-    projectId: 'h72r2zbr',
-    dataset: 'aps',
-    apiVersion: '2022-11-20',
-    useCdn: false,
-  });
-
-  useEffect(() => {
-    const getSpeakerInfo = async () => {
-      const speaker = await client
-        .fetch(
-          `*[_id == '${selectedSpeaker}']{
-          ..., "sessions": *[ _type == "session" && references(^._id)]
-        }`
-        )
-        .then((res) => setCurrentSpeaker(res));
-    };
-
-    getSpeakerInfo();
-  }, [selectedSpeaker]);
-
-  const speakerCloseHandler = () => {
-    dispatch(setSpeaker(null));
-  };
-
-  const dispatch = useDispatch();
+const SpeakerModal = ({
+  open,
+  close,
+  name,
+  title,
+  company,
+  url,
+  bio,
+  linkedin,
+  session,
+}) => {
+  const router = useRouter();
 
   return (
-    <div className='fixed top-0 left-0 right-0 bottom-0 bg-black/40 backdrop-blur z-[60]'>
-      <div className='flex w-full h-full justify-center items-center'>
-        <div className='w-11/12 h-4/5 md:h-auto overflow-scroll xl:overflow-hidden relative md:w-8/12 lg:w-10/12 xl:w-8/12 mx-auto bg-white rounded-md'>
-          <div className='flex flex-col lg:flex-row lg:gap-16 gap-4 pt-4 xl:pt-8 pb-9 px-6 xl:px-8'>
-            <div className='flex justify-between lg:flex-col'>
+    <Dialog open={open} onClose={() => close()} className='relative z-50'>
+      {/* The backdrop, rendered as a fixed sibling to the panel container */}
+      <div className='fixed inset-0 bg-black/70' aria-hidden='true' />
+
+      {/* Full-screen container to center the panel */}
+      <div className='fixed inset-0 flex lg:items-center p-4 overflow-y-auto py-3'>
+        {/* The actual dialog panel  */}
+        <Dialog.Panel className='mx-auto w-full max-w-4xl rounded-lg relative '>
+          <div
+            className='hidden lg:block absolute top-2 right-2 z-[60] cursor-pointer'
+            onClick={() => close()}
+          >
+            <XCircleIcon className='w-8 h-8 fill-black/50' />
+          </div>
+          <div className='flex flex-col lg:flex-row justify-center w-full'>
+            <div className='w-full p-6 bg-ap-darkblue rounded-t-lg lg:rounded-t-none lg:rounded-l-lg '>
               <div
-                className='w-full md:w-96 xl:w-[400px] h-72 md:h-96 lg:h-full rounded-t-lg relative'
-                style={{
-                  backgroundImage: `url(${
-                    currentSpeaker && currentSpeaker[0].profilePic
-                  })`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                }}
+                className='flex flex-1 justify-end lg:hidden'
+                onClick={() => close()}
               >
-                <div className='absolute top-3 right-3 z-50'>
-                  <SocialIcon
-                    url={currentSpeaker && currentSpeaker[0].linkedin}
-                    className='w-16 h-16 bg-white rounded-full'
-                  />
+                <XCircleIcon className='w-6 h-6 fill-white/70' />
+              </div>
+              <div className='flex flex-col lg:gap-5 justify-center items-center'>
+                <div
+                  className={`w-56 bg-ap-yellow h-56 rounded-full ring-4  ring-ap-yellow bg-cover bg-center`}
+                  style={{ backgroundImage: `url(${url})` }}
+                  onClick={() => setIsOpen(true)}
+                ></div>
+                <div className='flex flex-col mt-3 w-full'>
+                  <div className=' flex gap-3 items-center'>
+                    <div className='font-bold font-oswald uppercase text-ap-darkblue text-xl bg-white px-2 py-1 w-fit'>
+                      {name}
+                    </div>
+                    {linkedin && (
+                      <div onClick={() => window.open(linkedin, '_blank')}>
+                        <SocialIcon
+                          url={linkedin}
+                          style={{ width: '32px', height: '32px' }}
+                        />
+                      </div>
+                    )}
+                  </div>
+                  <div className='flex flex-col mt-1 w-full px-3 py-1 text-white'>
+                    <div className='text-sm'>{title}</div>
+                    <div className='text-sm font-bold'>{company}</div>
+                  </div>
                 </div>
               </div>
             </div>
-            <div className='flex flex-col gap-6'>
-              <div className='flex flex-col ml-2 lg:ml-0'>
-                <div className='font-oswald font-semibold text-[1.75rem] md:text-4xl leading-none uppercase text-ap-darkblue'>
-                  {currentSpeaker && currentSpeaker[0].name}
-                </div>
-                <div className='text-sm md:text-lg font-semibold'>
-                  {currentSpeaker && currentSpeaker[0].company}
-                </div>
-                <div className='text-sm md:text-lg'>
-                  {currentSpeaker && currentSpeaker[0].title}
-                </div>
+            <div className='bg-white p-5 lg:p-9 text-sm flex flex-col gap-3 pb-9 lg:rounded-r-lg'>
+              <div className='uppercase font-oswald text-xl text-ap-darkblue font-bold'>
+                Bio
               </div>
-              <div className='text-sm md:text-base xl:text-lg max-h-44 md:max-h-72 xl:max-h-full overflow-y-scroll xl:overflow-y-hidden relative text-slate-500 max-w-prose'>
-                {currentSpeaker && currentSpeaker[0].bio}
-              </div>
-              <div className='flex flex-col gap-4 xl:mt-8'>
-                {currentSpeaker && currentSpeaker[0].sessions.length > 0 && (
-                  <>
-                    <div className='font-oswald text-2xl font-medium'>
-                      Featured In:
+              <div className='text-gray-700'>{bio}</div>
+              {session && (
+                <div>
+                  <hr className='my-4' />
+                  <div className='uppercase font-oswald text-lg text-ap-darkblue font-bold'>
+                    Sessions
+                  </div>
+                  {session.map((s) => (
+                    <div
+                      key={s.name}
+                      className='border-b border-b-gray-600 pb-2 cursor-pointer'
+                      onClick={() => router.push('/agenda')}
+                    >
+                      <BioSession
+                        startTime={s.session_start}
+                        endTime={s.session_end}
+                        title={s.name}
+                        location={s.location}
+                      />
                     </div>
-                    <div className='grid grid-cols-1 xl:grid-cols-2 gap-6'>
-                      {currentSpeaker[0].sessions.map((sess, i) => (
-                        <div key={sess._id}>
-                          <SessionBlock
-                            day='Thursday'
-                            time={sess.time}
-                            location={sess.location}
-                            name={sess.name}
-                          />
-                        </div>
-                      ))}
-                    </div>
-                  </>
-                )}
-              </div>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
-        </div>
+        </Dialog.Panel>
       </div>
-      <div className='absolute right-5 top-4 cursor-pointer'>
-        <div className='flex items-center gap-1' onClick={speakerCloseHandler}>
-          <XCircleIcon className='stroke-white h-5 w-5' />
-          <div className='font-semibold text-white'>Close</div>
-        </div>
-      </div>
-    </div>
+    </Dialog>
   );
 };
 

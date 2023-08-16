@@ -6,7 +6,7 @@ import TestimonialMain from '../components/home/TestimonialMain';
 import SpeakersMain from '../components/home/SpeakersMain';
 import SponsorsMain from '../components/home/sponsors/SponsorsMain';
 
-export default function Home({ homepageData }) {
+export default function Home({ homepageData, speakers }) {
   return (
     <>
       <div className='flex flex-col'>
@@ -36,12 +36,12 @@ export default function Home({ homepageData }) {
           cta={homepageData[0].testimonialCta}
           testimonials={homepageData[0].testimonials}
         />
-        {/* <SpeakersMain
-        headline={homepageData[0].speakersHeadline}
-        subheadline={homepageData[0].speakersSubheadline}
-        text={homepageData[0].speakersBodyContent}
-        speakers={homepageData[0].speakers}
-      /> */}
+        <SpeakersMain
+          headline={homepageData[0].speakersHeadline}
+          subheadline={homepageData[0].speakersSubheadline}
+          text={homepageData[0].speakersBodyContent}
+          speakers={speakers}
+        />
         <SponsorsMain sponsors={homepageData[0].sponsorList} />
       </div>
     </>
@@ -62,9 +62,14 @@ export async function getStaticProps() {
     }
   }`);
 
+  const speakers = await client.fetch(`*[_type == "speaker"] {
+    ..., companyLogo { asset-> {url}}, profilePic { asset-> {url}}, speakerSessions[]->{ name, location, session_start, session_end, date, linkedin}
+  }`);
+
   return {
     props: {
       homepageData,
+      speakers,
     },
   };
 }
