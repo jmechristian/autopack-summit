@@ -5191,6 +5191,51 @@ export const onDeleteCPSForm = /* GraphQL */ `
     }
   }
 `;
+export const onCreateAppStart = /* GraphQL */ `
+  subscription OnCreateAppStart {
+    onCreateAppStart {
+      firstName
+      lastName
+      email
+      phone
+      source
+      sourceUrl
+      id
+      createdOn
+      updatedOn
+    }
+  }
+`;
+export const onUpdateAppStart = /* GraphQL */ `
+  subscription OnUpdateAppStart {
+    onUpdateAppStart {
+      firstName
+      lastName
+      email
+      phone
+      source
+      sourceUrl
+      id
+      createdOn
+      updatedOn
+    }
+  }
+`;
+export const onDeleteAppStart = /* GraphQL */ `
+  subscription OnDeleteAppStart {
+    onDeleteAppStart {
+      firstName
+      lastName
+      email
+      phone
+      source
+      sourceUrl
+      id
+      createdOn
+      updatedOn
+    }
+  }
+`;
 export const onCreateAPSSpeaker = /* GraphQL */ `
   subscription OnCreateAPSSpeaker {
     onCreateAPSSpeaker {
@@ -5413,6 +5458,51 @@ export const onDeleteAPSSpeaker = /* GraphQL */ `
     }
   }
 `;
+export const onCreateAPSTicket = /* GraphQL */ `
+  subscription OnCreateAPSTicket {
+    onCreateAPSTicket {
+      name
+      email
+      company
+      title
+      phone
+      paymentConfirmation
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateAPSTicket = /* GraphQL */ `
+  subscription OnUpdateAPSTicket {
+    onUpdateAPSTicket {
+      name
+      email
+      company
+      title
+      phone
+      paymentConfirmation
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteAPSTicket = /* GraphQL */ `
+  subscription OnDeleteAPSTicket {
+    onDeleteAPSTicket {
+      name
+      email
+      company
+      title
+      phone
+      paymentConfirmation
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
 export const onCreateTourist = /* GraphQL */ `
   subscription OnCreateTourist {
     onCreateTourist {
@@ -5459,7 +5549,9 @@ export const onCreateLMSCirriculum = /* GraphQL */ `
   subscription OnCreateLMSCirriculum {
     onCreateLMSCirriculum {
       id
+      shorthand
       title
+      slug
       Courses {
         items {
           id
@@ -5467,7 +5559,9 @@ export const onCreateLMSCirriculum = /* GraphQL */ `
           lMSCourseId
           lMSCirriculum {
             id
+            shorthand
             title
+            slug
             createdAt
             updatedAt
           }
@@ -5510,7 +5604,9 @@ export const onUpdateLMSCirriculum = /* GraphQL */ `
   subscription OnUpdateLMSCirriculum {
     onUpdateLMSCirriculum {
       id
+      shorthand
       title
+      slug
       Courses {
         items {
           id
@@ -5518,7 +5614,9 @@ export const onUpdateLMSCirriculum = /* GraphQL */ `
           lMSCourseId
           lMSCirriculum {
             id
+            shorthand
             title
+            slug
             createdAt
             updatedAt
           }
@@ -5561,7 +5659,9 @@ export const onDeleteLMSCirriculum = /* GraphQL */ `
   subscription OnDeleteLMSCirriculum {
     onDeleteLMSCirriculum {
       id
+      shorthand
       title
+      slug
       Courses {
         items {
           id
@@ -5569,7 +5669,9 @@ export const onDeleteLMSCirriculum = /* GraphQL */ `
           lMSCourseId
           lMSCirriculum {
             id
+            shorthand
             title
+            slug
             createdAt
             updatedAt
           }
@@ -5622,7 +5724,9 @@ export const onCreateLMSCourse = /* GraphQL */ `
           lMSCourseId
           lMSCirriculum {
             id
+            shorthand
             title
+            slug
             createdAt
             updatedAt
           }
@@ -5778,7 +5882,9 @@ export const onUpdateLMSCourse = /* GraphQL */ `
           lMSCourseId
           lMSCirriculum {
             id
+            shorthand
             title
+            slug
             createdAt
             updatedAt
           }
@@ -5934,7 +6040,9 @@ export const onDeleteLMSCourse = /* GraphQL */ `
           lMSCourseId
           lMSCirriculum {
             id
+            shorthand
             title
+            slug
             createdAt
             updatedAt
           }
@@ -10050,7 +10158,9 @@ export const onCreateCirriculumCourses = /* GraphQL */ `
       lMSCourseId
       lMSCirriculum {
         id
+        shorthand
         title
+        slug
         Courses {
           items {
             id
@@ -10132,7 +10242,9 @@ export const onUpdateCirriculumCourses = /* GraphQL */ `
       lMSCourseId
       lMSCirriculum {
         id
+        shorthand
         title
+        slug
         Courses {
           items {
             id
@@ -10214,7 +10326,9 @@ export const onDeleteCirriculumCourses = /* GraphQL */ `
       lMSCourseId
       lMSCirriculum {
         id
+        shorthand
         title
+        slug
         Courses {
           items {
             id

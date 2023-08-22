@@ -293,8 +293,7 @@ type APSSpeaker @model @auth(rules: [{ allow: public }]) {
 }
 
 type APSTicket @model @auth(rules: [{ allow: public }]) {
-  firstName: String!
-  lastName: String!
+  name: String!
   email: String!
   company: String!
   title: String!

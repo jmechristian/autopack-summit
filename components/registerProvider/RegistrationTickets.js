@@ -1,26 +1,44 @@
 import React, { useState } from 'react';
-import { ArrowLongRightIcon } from '@heroicons/react/24/solid';
-import { sendSponsorForm } from '../../util/sendSponsorForm';
-import { setThankYouMessage } from '../../features/layout/layoutSlice';
 import { useDispatch } from 'react-redux';
-import CheckoutForm from './CheckoutForm';
+import { API } from 'aws-amplify';
+import { createAPSTicket } from '../../src/graphql/mutations';
 
-const RegistrationTickets = ({ submitted }) => {
+const RegistrationTickets = ({ ticketCount }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [title, setTitle] = useState('');
   const [company, setCompany] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const dispatch = useDispatch();
 
-  const clear = () => {
-    setName('');
-    setEmail('');
-    setPhone('');
-    setTitle('');
-    setCompany('');
-  };
+  //   const startProcess = async (e) => {
+  //     e.preventDefault();
+  //     setIsLoading(true);
+  //     const res = await API.graphql({
+  //       query: createAPSTicket,
+  //       variables: {
+  //         input: {
+  //           name: name,
+  //           email: email,
+  //           phone: phone,
+  //           company: company,
+  //           title: title,
+  //         },
+  //       },
+  //     });
+
+  //     console.log(res);
+  //     if (res.data) {
+  //       try {
+  //         await fetch('/api/create-checkout-session', { method: 'POST' });
+  //       } catch (err) {
+  //         console.log(err);
+  //       }
+  //     }
+  //   };
+
   return (
     <div className='p-5 lg:p-3'>
       <div className='grid grid-cols-1 lg:grid-cols-6 gap-12'>
@@ -61,14 +79,18 @@ const RegistrationTickets = ({ submitted }) => {
             </div>
             <div className='flex flex-col justify-center items-center bg-ap-blue px-6 py-1.5 rounded-lg'>
               <div className='font-oswald font-bold text-4xl text-white'>
-                20
+                {20 - ticketCount}
               </div>
               <div className='uppercase font-oswald text-sm text-white/70'>
                 Available
               </div>
             </div>
           </div>
-          <div className='grid grid-cols-1 gap-y-4'>
+          <form
+            className='grid grid-cols-1 gap-y-4'
+            action={`/api/create-checkout-session?name=${name}&email=${email}&phone=${phone}&company=${company}&title=${title}`}
+            method='POST'
+          >
             <div className='flex flex-col gap-1'>
               <div className='text-xs font-medium text-slate-500 uppercase'>
                 Name*
@@ -134,19 +156,11 @@ const RegistrationTickets = ({ submitted }) => {
             <div className='flex flex-col md:flex-row items-center gap-4 mt-3'>
               <button
                 className='bg-ap-yellow rounded-md w-full'
-                onClick={(event) => {
-                  sendSponsorForm(event, name, title, company, email, phone);
-                  dispatch(
-                    setThankYouMessage(
-                      `Thank you for your Sponsorship submission. Our team will follow up by email at ${email}.`
-                    )
-                  );
-                  clear();
-                  submitted();
-                }}
+                type='submit'
+                role='link'
               >
                 <div className='text-slate-800 font-oswald uppercase text-sm lg:text-lg font-bold py-3 px-6 tracking-widest lg:leading-tight'>
-                  Proceed to Payment
+                  {isLoading ? 'Sending Data' : 'Proceed to Payment'}
                 </div>
               </button>
               <div className='text-slate-500 text-sm'>
@@ -156,7 +170,7 @@ const RegistrationTickets = ({ submitted }) => {
                 </a>
               </div>
             </div>
-          </div>
+          </form>
         </div>
       </div>
     </div>

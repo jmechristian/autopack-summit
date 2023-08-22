@@ -5326,6 +5326,60 @@ export const deleteCPSForm = /* GraphQL */ `
     }
   }
 `;
+export const createAppStart = /* GraphQL */ `
+  mutation CreateAppStart(
+    $input: CreateAppStartInput!
+    $condition: ModelAppStartConditionInput
+  ) {
+    createAppStart(input: $input, condition: $condition) {
+      firstName
+      lastName
+      email
+      phone
+      source
+      sourceUrl
+      id
+      createdOn
+      updatedOn
+    }
+  }
+`;
+export const updateAppStart = /* GraphQL */ `
+  mutation UpdateAppStart(
+    $input: UpdateAppStartInput!
+    $condition: ModelAppStartConditionInput
+  ) {
+    updateAppStart(input: $input, condition: $condition) {
+      firstName
+      lastName
+      email
+      phone
+      source
+      sourceUrl
+      id
+      createdOn
+      updatedOn
+    }
+  }
+`;
+export const deleteAppStart = /* GraphQL */ `
+  mutation DeleteAppStart(
+    $input: DeleteAppStartInput!
+    $condition: ModelAppStartConditionInput
+  ) {
+    deleteAppStart(input: $input, condition: $condition) {
+      firstName
+      lastName
+      email
+      phone
+      source
+      sourceUrl
+      id
+      createdOn
+      updatedOn
+    }
+  }
+`;
 export const createAPSSpeaker = /* GraphQL */ `
   mutation CreateAPSSpeaker(
     $input: CreateAPSSpeakerInput!
@@ -5557,6 +5611,60 @@ export const deleteAPSSpeaker = /* GraphQL */ `
     }
   }
 `;
+export const createAPSTicket = /* GraphQL */ `
+  mutation CreateAPSTicket(
+    $input: CreateAPSTicketInput!
+    $condition: ModelAPSTicketConditionInput
+  ) {
+    createAPSTicket(input: $input, condition: $condition) {
+      name
+      email
+      company
+      title
+      phone
+      paymentConfirmation
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateAPSTicket = /* GraphQL */ `
+  mutation UpdateAPSTicket(
+    $input: UpdateAPSTicketInput!
+    $condition: ModelAPSTicketConditionInput
+  ) {
+    updateAPSTicket(input: $input, condition: $condition) {
+      name
+      email
+      company
+      title
+      phone
+      paymentConfirmation
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteAPSTicket = /* GraphQL */ `
+  mutation DeleteAPSTicket(
+    $input: DeleteAPSTicketInput!
+    $condition: ModelAPSTicketConditionInput
+  ) {
+    deleteAPSTicket(input: $input, condition: $condition) {
+      name
+      email
+      company
+      title
+      phone
+      paymentConfirmation
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
 export const createTourist = /* GraphQL */ `
   mutation CreateTourist(
     $input: CreateTouristInput!
@@ -5615,7 +5723,9 @@ export const createLMSCirriculum = /* GraphQL */ `
   ) {
     createLMSCirriculum(input: $input, condition: $condition) {
       id
+      shorthand
       title
+      slug
       Courses {
         items {
           id
@@ -5623,7 +5733,9 @@ export const createLMSCirriculum = /* GraphQL */ `
           lMSCourseId
           lMSCirriculum {
             id
+            shorthand
             title
+            slug
             createdAt
             updatedAt
           }
@@ -5669,7 +5781,9 @@ export const updateLMSCirriculum = /* GraphQL */ `
   ) {
     updateLMSCirriculum(input: $input, condition: $condition) {
       id
+      shorthand
       title
+      slug
       Courses {
         items {
           id
@@ -5677,7 +5791,9 @@ export const updateLMSCirriculum = /* GraphQL */ `
           lMSCourseId
           lMSCirriculum {
             id
+            shorthand
             title
+            slug
             createdAt
             updatedAt
           }
@@ -5723,7 +5839,9 @@ export const deleteLMSCirriculum = /* GraphQL */ `
   ) {
     deleteLMSCirriculum(input: $input, condition: $condition) {
       id
+      shorthand
       title
+      slug
       Courses {
         items {
           id
@@ -5731,7 +5849,9 @@ export const deleteLMSCirriculum = /* GraphQL */ `
           lMSCourseId
           lMSCirriculum {
             id
+            shorthand
             title
+            slug
             createdAt
             updatedAt
           }
@@ -5787,7 +5907,9 @@ export const createLMSCourse = /* GraphQL */ `
           lMSCourseId
           lMSCirriculum {
             id
+            shorthand
             title
+            slug
             createdAt
             updatedAt
           }
@@ -5946,7 +6068,9 @@ export const updateLMSCourse = /* GraphQL */ `
           lMSCourseId
           lMSCirriculum {
             id
+            shorthand
             title
+            slug
             createdAt
             updatedAt
           }
@@ -6105,7 +6229,9 @@ export const deleteLMSCourse = /* GraphQL */ `
           lMSCourseId
           lMSCirriculum {
             id
+            shorthand
             title
+            slug
             createdAt
             updatedAt
           }
@@ -10341,7 +10467,9 @@ export const createCirriculumCourses = /* GraphQL */ `
       lMSCourseId
       lMSCirriculum {
         id
+        shorthand
         title
+        slug
         Courses {
           items {
             id
@@ -10426,7 +10554,9 @@ export const updateCirriculumCourses = /* GraphQL */ `
       lMSCourseId
       lMSCirriculum {
         id
+        shorthand
         title
+        slug
         Courses {
           items {
             id
@@ -10511,7 +10641,9 @@ export const deleteCirriculumCourses = /* GraphQL */ `
       lMSCourseId
       lMSCirriculum {
         id
+        shorthand
         title
+        slug
         Courses {
           items {
             id

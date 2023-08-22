@@ -13,9 +13,10 @@ export default async function handler(req, res) {
           },
         ],
         mode: 'payment',
-        success_url: `${req.headers.origin}/sandbox?success=true`,
-        cancel_url: `${req.headers.origin}/sandbox?canceled=true`,
+        success_url: `${req.headers.origin}/registration-confirmation?success=true`,
+        cancel_url: `${req.headers.origin}/registration-confirmation?canceled=true`,
       });
+      console.log(session);
       res.redirect(303, session.url);
     } catch (err) {
       res.status(err.statusCode || 500).json(err.message);

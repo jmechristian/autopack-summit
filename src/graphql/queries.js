@@ -3696,6 +3696,73 @@ export const listCPSForms = /* GraphQL */ `
     }
   }
 `;
+export const getAppStart = /* GraphQL */ `
+  query GetAppStart($id: ID!) {
+    getAppStart(id: $id) {
+      firstName
+      lastName
+      email
+      phone
+      source
+      sourceUrl
+      id
+      createdOn
+      updatedOn
+    }
+  }
+`;
+export const listAppStarts = /* GraphQL */ `
+  query ListAppStarts(
+    $filter: ModelAppStartFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listAppStarts(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        firstName
+        lastName
+        email
+        phone
+        source
+        sourceUrl
+        id
+        createdOn
+        updatedOn
+      }
+      nextToken
+    }
+  }
+`;
+export const appStartsByEmail = /* GraphQL */ `
+  query AppStartsByEmail(
+    $email: String!
+    $sortDirection: ModelSortDirection
+    $filter: ModelAppStartFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    appStartsByEmail(
+      email: $email
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        firstName
+        lastName
+        email
+        phone
+        source
+        sourceUrl
+        id
+        createdOn
+        updatedOn
+      }
+      nextToken
+    }
+  }
+`;
 export const getAPSSpeaker = /* GraphQL */ `
   query GetAPSSpeaker($id: ID!) {
     getAPSSpeaker(id: $id) {
@@ -3818,6 +3885,43 @@ export const listAPSSpeakers = /* GraphQL */ `
     }
   }
 `;
+export const getAPSTicket = /* GraphQL */ `
+  query GetAPSTicket($id: ID!) {
+    getAPSTicket(id: $id) {
+      name
+      email
+      company
+      title
+      phone
+      paymentConfirmation
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listAPSTickets = /* GraphQL */ `
+  query ListAPSTickets(
+    $filter: ModelAPSTicketFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listAPSTickets(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        name
+        email
+        company
+        title
+        phone
+        paymentConfirmation
+        id
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
 export const getTourist = /* GraphQL */ `
   query GetTourist($id: ID!) {
     getTourist(id: $id) {
@@ -3886,7 +3990,9 @@ export const getLMSCirriculum = /* GraphQL */ `
   query GetLMSCirriculum($id: ID!) {
     getLMSCirriculum(id: $id) {
       id
+      shorthand
       title
+      slug
       Courses {
         items {
           id
@@ -3894,7 +4000,9 @@ export const getLMSCirriculum = /* GraphQL */ `
           lMSCourseId
           lMSCirriculum {
             id
+            shorthand
             title
+            slug
             createdAt
             updatedAt
           }
@@ -3942,7 +4050,9 @@ export const listLMSCirriculums = /* GraphQL */ `
     listLMSCirriculums(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
+        shorthand
         title
+        slug
         Courses {
           items {
             id
@@ -3974,7 +4084,9 @@ export const getLMSCourse = /* GraphQL */ `
           lMSCourseId
           lMSCirriculum {
             id
+            shorthand
             title
+            slug
             createdAt
             updatedAt
           }
@@ -7143,7 +7255,9 @@ export const getCirriculumCourses = /* GraphQL */ `
       lMSCourseId
       lMSCirriculum {
         id
+        shorthand
         title
+        slug
         Courses {
           items {
             id
@@ -7234,7 +7348,9 @@ export const listCirriculumCourses = /* GraphQL */ `
         lMSCourseId
         lMSCirriculum {
           id
+          shorthand
           title
+          slug
           Courses {
             nextToken
           }
@@ -7303,7 +7419,9 @@ export const cirriculumCoursesByLMSCirriculumId = /* GraphQL */ `
         lMSCourseId
         lMSCirriculum {
           id
+          shorthand
           title
+          slug
           Courses {
             nextToken
           }
@@ -7372,7 +7490,9 @@ export const cirriculumCoursesByLMSCourseId = /* GraphQL */ `
         lMSCourseId
         lMSCirriculum {
           id
+          shorthand
           title
+          slug
           Courses {
             nextToken
           }
