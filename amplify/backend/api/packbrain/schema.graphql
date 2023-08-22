@@ -272,6 +272,7 @@ type AppStart
   email: String! @index(name: "appStartByEmail")
   phone: String
   source: String
+  sourceUrl: String
 }
 
 type APSSpeaker @model @auth(rules: [{ allow: public }]) {
@@ -291,6 +292,16 @@ type APSSpeaker @model @auth(rules: [{ allow: public }]) {
   apsHistory: APS @belongsTo
 }
 
+type APSTicket @model @auth(rules: [{ allow: public }]) {
+  firstName: String!
+  lastName: String!
+  email: String!
+  company: String!
+  title: String!
+  phone: String!
+  paymentConfirmation: String
+}
+
 type RegistrationCode {
   code: String
 }
@@ -308,7 +319,9 @@ type Tourist @model @auth(rules: [{ allow: public }]) {
 
 type LMSCirriculum @model @auth(rules: [{ allow: public }]) {
   id: ID!
+  shorthand: String
   title: String
+  slug: String
   Courses: [LMSCourse] @manyToMany(relationName: "CirriculumCourses")
 }
 
