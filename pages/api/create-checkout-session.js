@@ -1,7 +1,10 @@
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
-import { API } from 'aws-amplify';
+import { API, Amplify } from 'aws-amplify';
+import awsmobile from '../../src/aws-exports';
 import { createAPSTicket } from '../../src/graphql/mutations';
 import { sendSponsorForm } from '../../util/sendSponsorForm';
+
+Amplify.configure(awsmobile);
 
 export default async function handler(req, res) {
   await API.graphql({
