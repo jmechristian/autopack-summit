@@ -730,8 +730,19 @@ export const onCreateLesson = /* GraphQL */ `
       actionLink
       actionLinkTitle
       actionExample
+      author {
+        id
+        name
+        headshot
+        linkedIn
+        title
+        company
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
+      lessonAuthorId
     }
   }
 `;
@@ -789,8 +800,19 @@ export const onUpdateLesson = /* GraphQL */ `
       actionLink
       actionLinkTitle
       actionExample
+      author {
+        id
+        name
+        headshot
+        linkedIn
+        title
+        company
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
+      lessonAuthorId
     }
   }
 `;
@@ -848,6 +870,59 @@ export const onDeleteLesson = /* GraphQL */ `
       actionLink
       actionLinkTitle
       actionExample
+      author {
+        id
+        name
+        headshot
+        linkedIn
+        title
+        company
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+      lessonAuthorId
+    }
+  }
+`;
+export const onCreateAuthor = /* GraphQL */ `
+  subscription OnCreateAuthor {
+    onCreateAuthor {
+      id
+      name
+      headshot
+      linkedIn
+      title
+      company
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateAuthor = /* GraphQL */ `
+  subscription OnUpdateAuthor {
+    onUpdateAuthor {
+      id
+      name
+      headshot
+      linkedIn
+      title
+      company
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteAuthor = /* GraphQL */ `
+  subscription OnDeleteAuthor {
+    onDeleteAuthor {
+      id
+      name
+      headshot
+      linkedIn
+      title
+      company
       createdAt
       updatedAt
     }
@@ -2594,6 +2669,7 @@ export const onCreateUser = /* GraphQL */ `
             percentComplete
             slug
             collection
+            demo
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -3167,6 +3243,7 @@ export const onUpdateUser = /* GraphQL */ `
             percentComplete
             slug
             collection
+            demo
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -3740,6 +3817,7 @@ export const onDeleteUser = /* GraphQL */ `
             percentComplete
             slug
             collection
+            demo
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -5552,6 +5630,7 @@ export const onCreateLMSCirriculum = /* GraphQL */ `
       shorthand
       title
       slug
+      description
       Courses {
         items {
           id
@@ -5562,6 +5641,7 @@ export const onCreateLMSCirriculum = /* GraphQL */ `
             shorthand
             title
             slug
+            description
             createdAt
             updatedAt
           }
@@ -5586,6 +5666,7 @@ export const onCreateLMSCirriculum = /* GraphQL */ `
             percentComplete
             slug
             collection
+            demo
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -5607,6 +5688,7 @@ export const onUpdateLMSCirriculum = /* GraphQL */ `
       shorthand
       title
       slug
+      description
       Courses {
         items {
           id
@@ -5617,6 +5699,7 @@ export const onUpdateLMSCirriculum = /* GraphQL */ `
             shorthand
             title
             slug
+            description
             createdAt
             updatedAt
           }
@@ -5641,6 +5724,7 @@ export const onUpdateLMSCirriculum = /* GraphQL */ `
             percentComplete
             slug
             collection
+            demo
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -5662,6 +5746,7 @@ export const onDeleteLMSCirriculum = /* GraphQL */ `
       shorthand
       title
       slug
+      description
       Courses {
         items {
           id
@@ -5672,6 +5757,7 @@ export const onDeleteLMSCirriculum = /* GraphQL */ `
             shorthand
             title
             slug
+            description
             createdAt
             updatedAt
           }
@@ -5696,6 +5782,7 @@ export const onDeleteLMSCirriculum = /* GraphQL */ `
             percentComplete
             slug
             collection
+            demo
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -5727,6 +5814,7 @@ export const onCreateLMSCourse = /* GraphQL */ `
             shorthand
             title
             slug
+            description
             createdAt
             updatedAt
           }
@@ -5751,6 +5839,7 @@ export const onCreateLMSCourse = /* GraphQL */ `
             percentComplete
             slug
             collection
+            demo
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -5786,6 +5875,7 @@ export const onCreateLMSCourse = /* GraphQL */ `
             percentComplete
             slug
             collection
+            demo
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -5831,6 +5921,7 @@ export const onCreateLMSCourse = /* GraphQL */ `
             percentComplete
             slug
             collection
+            demo
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -5862,6 +5953,7 @@ export const onCreateLMSCourse = /* GraphQL */ `
       percentComplete
       slug
       collection
+      demo
       createdAt
       updatedAt
       studentCourseEnrolledId
@@ -5885,6 +5977,7 @@ export const onUpdateLMSCourse = /* GraphQL */ `
             shorthand
             title
             slug
+            description
             createdAt
             updatedAt
           }
@@ -5909,6 +6002,7 @@ export const onUpdateLMSCourse = /* GraphQL */ `
             percentComplete
             slug
             collection
+            demo
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -5944,6 +6038,7 @@ export const onUpdateLMSCourse = /* GraphQL */ `
             percentComplete
             slug
             collection
+            demo
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -5989,6 +6084,7 @@ export const onUpdateLMSCourse = /* GraphQL */ `
             percentComplete
             slug
             collection
+            demo
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -6020,6 +6116,7 @@ export const onUpdateLMSCourse = /* GraphQL */ `
       percentComplete
       slug
       collection
+      demo
       createdAt
       updatedAt
       studentCourseEnrolledId
@@ -6043,6 +6140,7 @@ export const onDeleteLMSCourse = /* GraphQL */ `
             shorthand
             title
             slug
+            description
             createdAt
             updatedAt
           }
@@ -6067,6 +6165,7 @@ export const onDeleteLMSCourse = /* GraphQL */ `
             percentComplete
             slug
             collection
+            demo
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -6102,6 +6201,7 @@ export const onDeleteLMSCourse = /* GraphQL */ `
             percentComplete
             slug
             collection
+            demo
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -6147,6 +6247,7 @@ export const onDeleteLMSCourse = /* GraphQL */ `
             percentComplete
             slug
             collection
+            demo
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -6178,6 +6279,7 @@ export const onDeleteLMSCourse = /* GraphQL */ `
       percentComplete
       slug
       collection
+      demo
       createdAt
       updatedAt
       studentCourseEnrolledId
@@ -6284,6 +6386,7 @@ export const onCreateLMSLesson = /* GraphQL */ `
             percentComplete
             slug
             collection
+            demo
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -6407,6 +6510,7 @@ export const onUpdateLMSLesson = /* GraphQL */ `
             percentComplete
             slug
             collection
+            demo
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -6530,6 +6634,7 @@ export const onDeleteLMSLesson = /* GraphQL */ `
             percentComplete
             slug
             collection
+            demo
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -6862,6 +6967,7 @@ export const onCreateStudent = /* GraphQL */ `
           percentComplete
           slug
           collection
+          demo
           createdAt
           updatedAt
           studentCourseEnrolledId
@@ -7113,6 +7219,7 @@ export const onUpdateStudent = /* GraphQL */ `
           percentComplete
           slug
           collection
+          demo
           createdAt
           updatedAt
           studentCourseEnrolledId
@@ -7364,6 +7471,7 @@ export const onDeleteStudent = /* GraphQL */ `
           percentComplete
           slug
           collection
+          demo
           createdAt
           updatedAt
           studentCourseEnrolledId
@@ -7610,6 +7718,7 @@ export const onCreateInstructor = /* GraphQL */ `
             percentComplete
             slug
             collection
+            demo
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -7865,6 +7974,7 @@ export const onUpdateInstructor = /* GraphQL */ `
             percentComplete
             slug
             collection
+            demo
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -8120,6 +8230,7 @@ export const onDeleteInstructor = /* GraphQL */ `
             percentComplete
             slug
             collection
+            demo
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -10161,6 +10272,7 @@ export const onCreateCirriculumCourses = /* GraphQL */ `
         shorthand
         title
         slug
+        description
         Courses {
           items {
             id
@@ -10225,6 +10337,7 @@ export const onCreateCirriculumCourses = /* GraphQL */ `
         percentComplete
         slug
         collection
+        demo
         createdAt
         updatedAt
         studentCourseEnrolledId
@@ -10245,6 +10358,7 @@ export const onUpdateCirriculumCourses = /* GraphQL */ `
         shorthand
         title
         slug
+        description
         Courses {
           items {
             id
@@ -10309,6 +10423,7 @@ export const onUpdateCirriculumCourses = /* GraphQL */ `
         percentComplete
         slug
         collection
+        demo
         createdAt
         updatedAt
         studentCourseEnrolledId
@@ -10329,6 +10444,7 @@ export const onDeleteCirriculumCourses = /* GraphQL */ `
         shorthand
         title
         slug
+        description
         Courses {
           items {
             id
@@ -10393,6 +10509,7 @@ export const onDeleteCirriculumCourses = /* GraphQL */ `
         percentComplete
         slug
         collection
+        demo
         createdAt
         updatedAt
         studentCourseEnrolledId
@@ -10459,6 +10576,7 @@ export const onCreateCourseLessons = /* GraphQL */ `
         percentComplete
         slug
         collection
+        demo
         createdAt
         updatedAt
         studentCourseEnrolledId
@@ -10586,6 +10704,7 @@ export const onUpdateCourseLessons = /* GraphQL */ `
         percentComplete
         slug
         collection
+        demo
         createdAt
         updatedAt
         studentCourseEnrolledId
@@ -10713,6 +10832,7 @@ export const onDeleteCourseLessons = /* GraphQL */ `
         percentComplete
         slug
         collection
+        demo
         createdAt
         updatedAt
         studentCourseEnrolledId
@@ -10840,6 +10960,7 @@ export const onCreateCourseInstructors = /* GraphQL */ `
         percentComplete
         slug
         collection
+        demo
         createdAt
         updatedAt
         studentCourseEnrolledId
@@ -11021,6 +11142,7 @@ export const onUpdateCourseInstructors = /* GraphQL */ `
         percentComplete
         slug
         collection
+        demo
         createdAt
         updatedAt
         studentCourseEnrolledId
@@ -11202,6 +11324,7 @@ export const onDeleteCourseInstructors = /* GraphQL */ `
         percentComplete
         slug
         collection
+        demo
         createdAt
         updatedAt
         studentCourseEnrolledId

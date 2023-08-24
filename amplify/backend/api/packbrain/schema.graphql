@@ -20,6 +20,7 @@ enum ModuleType {
   LESSON
   LOTM
   MICROLESSON
+  REGULATORY
 }
 
 enum CategoryType {
@@ -99,6 +100,16 @@ type Lesson @model @auth(rules: [{ allow: public }]) {
   actionLink: String
   actionLinkTitle: String
   actionExample: String
+  author: Author @hasOne
+}
+
+type Author @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  name: String!
+  headshot: String
+  linkedIn: String
+  title: String
+  company: String
 }
 
 type Blog @model @auth(rules: [{ allow: public }]) {
@@ -321,6 +332,7 @@ type LMSCirriculum @model @auth(rules: [{ allow: public }]) {
   shorthand: String
   title: String
   slug: String
+  description: String
   Courses: [LMSCourse] @manyToMany(relationName: "CirriculumCourses")
 }
 
@@ -348,6 +360,7 @@ type LMSCourse @model @auth(rules: [{ allow: public }]) {
   percentComplete: Int
   slug: String! @index(name: "LMScourseBySlug")
   collection: [String]
+  demo: Boolean @default(value: "false")
 }
 
 type LMSCollection @model @auth(rules: [{ allow: public }]) {

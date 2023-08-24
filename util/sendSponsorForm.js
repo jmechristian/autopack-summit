@@ -1,5 +1,5 @@
-export const sendSponsorForm = (e, name, title, company, email, phone) => {
-  e.preventDefault();
+export const sendSponsorForm = (name, title, company, email, phone) => {
+  // e.preventDefault();
 
   fetch(
     'https://4mwprd7rph.execute-api.us-east-1.amazonaws.com/default/sendSponsorForm-staging',

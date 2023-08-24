@@ -13,32 +13,6 @@ const RegistrationTickets = ({ ticketCount }) => {
 
   const dispatch = useDispatch();
 
-  //   const startProcess = async (e) => {
-  //     e.preventDefault();
-  //     setIsLoading(true);
-  //     const res = await API.graphql({
-  //       query: createAPSTicket,
-  //       variables: {
-  //         input: {
-  //           name: name,
-  //           email: email,
-  //           phone: phone,
-  //           company: company,
-  //           title: title,
-  //         },
-  //       },
-  //     });
-
-  //     console.log(res);
-  //     if (res.data) {
-  //       try {
-  //         await fetch('/api/create-checkout-session', { method: 'POST' });
-  //       } catch (err) {
-  //         console.log(err);
-  //       }
-  //     }
-  //   };
-
   return (
     <div className='p-5 lg:p-3'>
       <div className='grid grid-cols-1 lg:grid-cols-6 gap-12'>
@@ -54,7 +28,7 @@ const RegistrationTickets = ({ ticketCount }) => {
             </div>
             <div className='flex flex-col'>
               <div className='font-oswald tracking-loose text-3xl uppercase text-ap-yellow'>
-                Oct 2, 2023
+                Oct 12, 2023
               </div>
               <div className=' block font-oswald tracking-loose text-3xl uppercase text-white'>
                 Huguenot Loft
