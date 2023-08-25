@@ -31,7 +31,7 @@ export default async function handler(req, res) {
         console.log(err);
       }
       return res.status(200).json({
-        message: `${email} found`,
+        message: `Welcome Email sent to ${email}`,
       });
     } else {
       await API.graphql({
