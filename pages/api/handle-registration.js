@@ -26,7 +26,10 @@ export default async function handler(req, res) {
     if (isUser.data.usersByEmail.items.length != 0) {
       //
       try {
-        fetch(`/api/send-welcome-email?email=${email}&name=${name}`, options);
+        fetch(
+          `https://autopacksummit.com/api/send-welcome-email?email=${email}&name=${name}`,
+          options
+        );
       } catch (err) {
         console.log(err);
       }
