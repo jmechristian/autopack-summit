@@ -52,7 +52,7 @@ export default async function handler(req, res) {
       }).then((response) => {
         try {
           fetch(
-            `http://localhost:3000/api/send-welcome-email?email=${response.data.createUser.email}&name=${response.data.createUser.name}`,
+            `https://autopacksummit.com/api/send-welcome-email?email=${response.data.createUser.email}&name=${response.data.createUser.name}`,
             options
           );
         } catch (err) {
