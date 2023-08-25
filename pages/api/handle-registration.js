@@ -26,10 +26,7 @@ export default async function handler(req, res) {
     if (isUser.data.usersByEmail.items.length != 0) {
       //
       try {
-        fetch(
-          `http://localhost:3000/api/send-welcome-email?email=${email}&name=${name}`,
-          options
-        );
+        fetch(`/api/send-welcome-email?email=${email}&name=${name}`, options);
       } catch (err) {
         console.log(err);
       }
