@@ -466,7 +466,7 @@ export default async function handler(req, res) {
         },
         Subject: {
           Charset: 'UTF-8',
-          Data: 'APS Ticket Purchase',
+          Data: 'APS Ticket Purchases',
         },
       },
       Source: fromAddress,
