@@ -99,9 +99,7 @@ export default async function handler(req, res) {
     '       overflow: hidden;' +
     '     "' +
     '   >' +
-    '     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus dolor' +
-    '     aliquid omnis consequatur est deserunt, odio neque blanditiis aspernatur,' +
-    '     mollitia ipsa distinctio, culpa fuga obcaecati!' +
+    '     You are registered for the 2023 Automotive Packaging Summit!' +
     '   </div>' +
     '    <table border="0" cellpadding="0" cellspacing="0" width="100%">' +
     '     <tr>' +
