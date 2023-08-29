@@ -1,13 +1,40 @@
 import React, { useEffect, useState } from 'react';
 import RegistrationConfirm from '../components/registration/RegistrationConfirm';
+import { API } from 'aws-amplify';
+import { createAPSTicket } from '../src/graphql/mutations';
+import { useRouter } from 'next/router';
+import { sendTicket } from '../util/sendTicket';
+import { sendConfirmationEmail } from '../util/SendConfirmationEmail';
 
 const Page = () => {
   const [isBody, setIsBody] = useState(null);
+  const router = useRouter();
 
   useEffect(() => {
+    if (!router) return;
     // Check to see if this is a redirect back from Checkout
-    const query = new URLSearchParams(window.location.search);
-    if (query.get('success')) {
+    const hey = new URLSearchParams(window.location.search);
+    if (router.isReady && hey.get('success')) {
+      sendTicket(
+        router.query.name,
+        router.query.title,
+        router.query.company,
+        router.query.email,
+        router.query.phone
+      );
+      sendConfirmationEmail(router.query.name, router.query.email);
+      API.graphql({
+        query: createAPSTicket,
+        variables: {
+          input: {
+            name: router.query.name,
+            email: router.query.title,
+            company: router.query.company,
+            title: router.query.title,
+            phone: router.query.phone,
+          },
+        },
+      });
       setIsBody(
         <RegistrationConfirm
           status={'Registration Successful!'}
@@ -25,7 +52,7 @@ const Page = () => {
       );
     }
 
-    if (query.get('canceled')) {
+    if (router.isReady && hey.get('canceled')) {
       setIsBody(
         <RegistrationConfirm
           status={'Registration Unsuccessful!'}
@@ -41,7 +68,7 @@ const Page = () => {
         />
       );
     }
-  }, []);
+  }, [router]);
   return (
     <>
       <div className='h-24 bg-ap-darkblue w-full' />

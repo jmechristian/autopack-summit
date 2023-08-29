@@ -1,33 +1,6 @@
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
-import { API, Amplify } from 'aws-amplify';
-import awsExports from '../../src/aws-exports';
-import { createAPSTicket } from '../../src/graphql/mutations';
-import { sendSponsorForm } from '../../util/sendSponsorForm';
-
-Amplify.configure({ ...awsExports, ssr: true });
 
 export default async function handler(req, res) {
-  await API.graphql({
-    query: createAPSTicket,
-    variables: {
-      input: {
-        name: req.body.name,
-        email: req.body.email,
-        phone: req.body.phone,
-        company: req.body.company,
-        title: req.body.title,
-      },
-    },
-  });
-
-  sendSponsorForm(
-    req.body.name,
-    req.body.title,
-    req.body.company,
-    req.body.email,
-    req.body.phone
-  );
-
   if (req.method === 'POST') {
     try {
       // Create Checkout Sessions from body params.
@@ -40,7 +13,7 @@ export default async function handler(req, res) {
           },
         ],
         mode: 'payment',
-        success_url: `${req.headers.origin}/registration-confirmation?success=true`,
+        success_url: `${req.headers.origin}/registration-confirmation?success=true&name=${req.body.name}&title=${req.body.title}&company=${req.body.company}&email=${req.body.email}&phone=${req.body.phone}`,
         cancel_url: `${req.headers.origin}/registration-confirmation?canceled=true`,
       });
       res.redirect(302, session.url);
