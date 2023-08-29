@@ -1,5 +1,5 @@
 export const sendConfirmationEmail = async (name, email) => {
-  fetch('http://localhost:3001/api/send-ticket-confirmation-email', {
+  fetch('https://autopacksummit.com/api/send-ticket-confirmation-email', {
     method: 'POST',
     headers: {
       Accept: 'application/json',

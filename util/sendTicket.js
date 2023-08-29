@@ -1,6 +1,6 @@
 export const sendTicket = async (name, title, company, email, phone) => {
   console.log(name, title, company, email, phone);
-  fetch('http://localhost:3001/api/handle-ticket-purchase', {
+  fetch('https://autopacksummit.com/api/handle-ticket-purchase', {
     method: 'POST',
     headers: {
       Accept: 'application/json',
