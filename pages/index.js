@@ -7,7 +7,6 @@ import SpeakersMain from '../components/home/SpeakersMain';
 import SponsorsMain from '../components/home/sponsors/SponsorsMain';
 
 export default function Home({ homepageData, speakers }) {
-  console.log(speakers);
   return (
     <>
       <div className='flex flex-col'>
