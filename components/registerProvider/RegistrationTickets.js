@@ -56,7 +56,7 @@ const RegistrationTickets = ({ ticketCount }) => {
                 {20 - ticketCount}
               </div>
               <div className='uppercase font-oswald text-sm text-white/70'>
-                Available
+                {20 - ticketCount === 0 ? 'Sold Out!' : 'Available'}
               </div>
             </div>
           </div>
