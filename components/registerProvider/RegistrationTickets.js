@@ -64,7 +64,7 @@ const RegistrationTickets = ({ ticketCount }) => {
             </div>
           </div>
           <form
-            className='grid grid-cols-1 gap-y-4 opacity-50'
+            className='grid grid-cols-1 gap-y-4 opacity-40'
             action={`/api/create-checkout-session?name=${name}&email=${email}&phone=${phone}&company=${company}&title=${title}`}
             method='POST'
           >
