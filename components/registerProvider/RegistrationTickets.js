@@ -52,7 +52,7 @@ const RegistrationTickets = ({ ticketCount }) => {
               </div>
             </div>
             <div className='flex flex-col justify-center items-center bg-ap-blue px-6 w-36 py-1.5 rounded-lg relative'>
-              <div className='w-32 bg-red-600 text-lg text-center font-bold text-white uppercase absolute z-10 shadow-lg -rotate-45'>
+              <div className='w-28 bg-red-600 text-lg text-center font-bold text-white uppercase absolute z-10 shadow-lg -rotate-45'>
                 Sold Out!
               </div>
               <div className='font-oswald font-bold text-4xl text-white'>
@@ -64,7 +64,7 @@ const RegistrationTickets = ({ ticketCount }) => {
             </div>
           </div>
           <form
-            className='grid grid-cols-1 gap-y-4'
+            className='grid grid-cols-1 gap-y-4 opacity-50'
             action={`/api/create-checkout-session?name=${name}&email=${email}&phone=${phone}&company=${company}&title=${title}`}
             method='POST'
           >
