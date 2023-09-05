@@ -51,7 +51,10 @@ const RegistrationTickets = ({ ticketCount }) => {
                 *2 tickets permitted per company
               </div>
             </div>
-            <div className='flex flex-col justify-center items-center bg-ap-blue px-6 py-1.5 rounded-lg'>
+            <div className='flex flex-col justify-center items-center bg-ap-blue px-6 w-36 py-1.5 rounded-lg relative'>
+              <div className='w-32 bg-red-600 text-lg text-center font-bold text-white uppercase absolute z-10 shadow-lg -rotate-45'>
+                Sold Out!
+              </div>
               <div className='font-oswald font-bold text-4xl text-white'>
                 {20 - ticketCount}
               </div>
