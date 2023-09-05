@@ -129,7 +129,7 @@ const RegistrationTickets = ({ ticketCount }) => {
             </div>
             <div className='flex flex-col md:flex-row items-center gap-4 mt-3'>
               <button
-                className='bg-ap-yellow rounded-md w-full'
+                className='bg-gray-300 rounded-md w-full'
                 type='submit'
                 role='link'
                 disabled={
@@ -142,7 +142,7 @@ const RegistrationTickets = ({ ticketCount }) => {
                   20 - ticketCount === 0
                 }
               >
-                <div className='text-slate-800 font-oswald uppercase text-sm lg:text-lg font-bold py-3 px-6 tracking-widest lg:leading-tight'>
+                <div className='text-slate-500 font-oswald uppercase text-sm lg:text-lg font-bold py-3 px-6 tracking-widest lg:leading-tight'>
                   {isLoading ? 'Sending Data' : 'Proceed to Payment'}
                 </div>
               </button>
