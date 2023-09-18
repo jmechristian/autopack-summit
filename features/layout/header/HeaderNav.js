@@ -16,7 +16,7 @@ const HeaderNav = () => {
           </div>
         ))}
       </div>
-      <div className='flex gap-2'>
+      {/* <div className='flex gap-2'>
         <button
           className='bg-ap-yellow rounded drop-shadow-md'
           onClick={() => dispatch(toggleRegistrationModal())}
@@ -25,7 +25,7 @@ const HeaderNav = () => {
             Register Now!
           </div>
         </button>
-      </div>
+      </div> */}
     </div>
   );
 };
