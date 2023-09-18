@@ -110,17 +110,6 @@ const TestimonialMain = ({
           >
             {text}
           </motion.div>
-          <motion.button
-            className='bg-ap-darkblue rounded-lg w-1/2 mx-auto lg:mx-12'
-            variants={itemVariants}
-            initial='hide'
-            animate={textInView ? 'show' : 'hide'}
-            onClick={() => dispatch(toggleRegistrationModal())}
-          >
-            <motion.div className='font-semibold uppercase tracking-widest text-white text-sm py-4'>
-              {cta}
-            </motion.div>
-          </motion.button>
         </motion.div>
         <motion.div
           className='lg:col-span-3 xl:overflow-hidden'
