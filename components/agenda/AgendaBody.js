@@ -111,14 +111,7 @@ const AgendaBody = ({ sessions, tourists }) => {
                           </span>
                         </div>
                         <div>120 Moon Acres Rd, Piedmont, SC 29673</div>
-                        <div className='flex gap-1 mt-2'>
-                          <div>
-                            <InformationCircleIcon className='w-6 h-6 stroke-slate-900' />
-                          </div>
-                          <div className='font-bold'>
-                            Steel Toed Shoes required
-                          </div>
-                        </div>
+                        <div className='flex gap-1 mt-2'></div>
                         <div>Plan on 2 hours (10am-12pm)</div>
                       </div>
                     </div>
