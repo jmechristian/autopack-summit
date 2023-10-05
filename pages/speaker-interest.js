@@ -152,7 +152,8 @@ const Page = () => {
                 htmlFor='field[85]'
                 className='block text-sm font-medium leading-6 text-gray-900'
               >
-                Topic Description*
+                Give a brief description of your proposed topic and how it is
+                relevant to the automotive packaging audience.*
               </label>
               <div className='mt-2'>
                 <textarea
@@ -171,7 +172,8 @@ const Page = () => {
                 htmlFor='field[86]'
                 className='block text-sm font-medium leading-6 text-gray-900'
               >
-                Learning Objectives*
+                Please input three learning objectives from your proposed
+                presentation.*
               </label>
               <div className='mt-2'>
                 <textarea
