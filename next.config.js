@@ -3,7 +3,11 @@ const nextConfig = {
   reactStrictMode: false,
   swcMinify: true,
   images: {
-    domains: ['res.cloudinary.com', 'apsmedia.s3.amazonaws.com'],
+    domains: [
+      'res.cloudinary.com',
+      'apsmedia.s3.amazonaws.com',
+      'packschool.s3.amazonaws.com',
+    ],
   },
   async redirects() {
     return [
