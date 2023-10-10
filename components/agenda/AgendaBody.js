@@ -125,19 +125,19 @@ const AgendaBody = ({ sessions, tourists }) => {
                     {isTour1Count && (
                       <div className='flex flex-col gap-2 items-center'>
                         <div className='text-5xl font-oswald font-bold text-white'>
-                          {30 - isTour1Count.length}
+                          0
                         </div>
                         <div className='text-white uppercase text-sm font-bold'>
                           Spots Remain
                         </div>
                       </div>
                     )}
-                    <div
+                    {/* <div
                       className='px-6 py-2.5 cursor-pointer text-lg rounded-lg uppercase font-oswald bg-white/60 text-slate-900 font-medium'
                       onClick={() => setIsForm1Open(true)}
                     >
                       Save Your Spot
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>
@@ -188,19 +188,19 @@ const AgendaBody = ({ sessions, tourists }) => {
                     {isTour2Count && (
                       <div className='flex flex-col gap-2 items-center'>
                         <div className='text-5xl font-oswald font-bold text-white'>
-                          {20 - isTour2Count.length}
+                          0
                         </div>
                         <div className='text-white uppercase text-sm font-bold'>
                           Spots Remain
                         </div>
                       </div>
                     )}
-                    <div
+                    {/* <div
                       className='px-6 py-2.5 cursor-pointer text-lg rounded-lg uppercase font-oswald bg-white/60 text-slate-900 font-medium'
                       onClick={() => setIsForm2Open(true)}
                     >
                       Save Your Spot
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>

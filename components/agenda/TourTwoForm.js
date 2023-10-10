@@ -111,16 +111,16 @@ const TourTwoForm = ({ close }) => {
               >
                 {isSubmitted ? 'Close' : 'Cancel'}
               </div>
-              <button
+              {/* <button
                 type='submit'
-                disabled={isError || isSubmitted}
+                disabled
                 className='w-full py-2 text-center font-semibold bg-ap-blue hover:bg-ap-darkblue text-white rounded-lg cursor-pointer'
               >
                 {!isLoading && !isSubmitted && !isError && 'Submit'}
                 {isLoading && !isSubmitted && 'Sending...'}
                 {!isLoading && isSubmitted && 'Sent!'}
                 {!isLoading && isError && 'Error!'}
-              </button>
+              </button> */}
             </div>
           </form>
           {isSubmitted && (
