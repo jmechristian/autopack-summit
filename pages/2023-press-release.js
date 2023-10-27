@@ -4,7 +4,7 @@ import { CloudArrowDownIcon } from '@heroicons/react/24/outline';
 import Head from 'next/head';
 
 const stats = [
-  { id: 1, name: 'Professionals Registrered', value: '280 ' },
+  { id: 1, name: 'Professionals Registered', value: '280 ' },
   { id: 2, name: 'Event Sponsors', value: '32' },
   { id: 3, name: 'Expert Speakers', value: '14' },
 ];
