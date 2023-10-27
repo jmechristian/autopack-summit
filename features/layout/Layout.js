@@ -35,14 +35,11 @@ const Layout = ({ client, children }) => {
       <div className='relative w-full h-28 lg:h-16'>
         <div className='fixed z-50 w-full h-28 lg:h-16'>
           <div className='flex flex-col lg:flex-row gap-1 h-full bg-black leading-none justify-center items-center w-full py-4'>
-            <div className='bg-red-600 font-oswald font-bold md:text-lg uppercase tracking-wide rounded-md text-white py-1.5 px-3 lg:mr-2'>
-              We are sold out!
-            </div>
             <div className='font-bold text-ap-yellow text-lg xl:text-xl leading-none'>
-              October 11-13th
+              October 15-16th, 2024
             </div>
             <div className='text-white/80 xl:text-lg'>
-              Huguenot Loft, Greenville SC
+              Hyatt Regency, Greenville SC
             </div>
           </div>
         </div>

@@ -9,7 +9,7 @@ const TravelBody = () => {
     <div className='w-full'>
       <TravelVenue />
       <div className='smaller_wrapper flex flex-col md:flex-row gap-16 md:gap-16 lg:gap-32 xl:gap-48'>
-        <div className='flex flex-col gap-16 md:gap-28 lg:gap-52 lg:w-1/2'>
+        {/* <div className='flex flex-col gap-16 md:gap-28 lg:gap-52 lg:w-1/2'>
           <LeftTextCTA
             subColor='blue'
             subText='Small Town'
@@ -43,7 +43,7 @@ const TravelBody = () => {
             line1='5 North Laurens Street'
             line2='Greenville, South Carolina 29601'
           />
-        </div>
+        </div> */}
       </div>
     </div>
   );
