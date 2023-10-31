@@ -303,7 +303,7 @@ const Page = () => {
                       className='flex justify-center items-center flex-col gap-1.5 cursor-pointer py-1.5'
                       onClick={() =>
                         window.open(
-                          'https://packschool.s3.amazonaws.com/2023+APS+Press+Release.docx.pdf',
+                          'https://apsmedia.s3.amazonaws.com/2023_APS_PressRelease.pdf',
                           '_blank'
                         )
                       }
