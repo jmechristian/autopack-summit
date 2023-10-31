@@ -90,19 +90,7 @@ const Page = () => {
                 SC and Clemson University’s International Center for Automotive
                 Research (CU-ICAR) Facilities.
               </p>
-              <p>
-                AutoPack Summit 2023 was incredibly fortunate to have an
-                impressive group of individuals serve on our advisory board
-                including Tina Bolden with IPS Packaging & Automation, Mike
-                Costello with ORBIS Corporation, J.K. McKenzie with Volvo Car
-                Corporation, Darrin Lucas with Nissan Group of America, Werner
-                Els and Drew Cockman with BMW Manufacturing Company LLC, Terry
-                Barnes with Artiflex, Gauri Awalgaonkar with Bosch, Kasie Harmon
-                with TriEnda and Jason Skrobot with Toyota Manufacturing
-                Kentucky. These distinguished individuals dedicated their time
-                to the strategic planning of the event, and some also served as
-                speakers.
-              </p>
+
               <figure className='my-6 border-l-8 border-ap-yellow pl-9'>
                 <blockquote className='font-semibold text-neutral-500 text-xl xl:text-2xl xl:leading-normal'>
                   <p>
@@ -136,7 +124,23 @@ const Page = () => {
               <p>
                 Sustainability was another main topic covered and was the
                 centerpiece of the Keynote presented by Jeremy Galanty,
-                Sustainability Analyst at General Motors.
+                Sustainability Analyst at General Motors. We are also excited to
+                announce our newly relaunched{' '}
+                <a
+                  href='https://packagingschool.com/certifications/get-to-know-apc'
+                  className='font-bold underline text-indigo-600'
+                >
+                  Automotive Packaging Certificate
+                </a>{' '}
+                Program with an entire module on Sustainable approaches for
+                Automotive Packaging - learn more{' '}
+                <a
+                  href='https://packagingschool.com/certifications/get-to-know-apc'
+                  className='font-bold underline text-indigo-600'
+                >
+                  here
+                </a>
+                .
               </p>
               <div
                 className='w-full h-full bg-cover bg-center aspect-square md:aspect-video rounded'
