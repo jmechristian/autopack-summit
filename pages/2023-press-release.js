@@ -2,11 +2,36 @@ import React from 'react';
 import HeaderPadding from '../shared/HeaderPadding';
 import { CloudArrowDownIcon } from '@heroicons/react/24/outline';
 import Head from 'next/head';
+import { Slideshow } from '../shared/Slideshow';
 
 const stats = [
   { id: 1, name: 'Professionals Registered', value: '280 ' },
-  { id: 2, name: 'Event Sponsors', value: '32' },
+  { id: 2, name: 'Solution Providers', value: '32' },
   { id: 3, name: 'Expert Speakers', value: '14' },
+];
+
+const firstImage = [
+  'https://apsmedia.s3.amazonaws.com/speakers_7.png',
+  'https://apsmedia.s3.amazonaws.com/full_room.png',
+  'https://apsmedia.s3.amazonaws.com/speakers_2.png',
+  'https://apsmedia.s3.amazonaws.com/social.png',
+  'https://apsmedia.s3.amazonaws.com/social7.png',
+  'https://apsmedia.s3.amazonaws.com/social4.png',
+  'https://apsmedia.s3.amazonaws.com/social6.png',
+  'https://apsmedia.s3.amazonaws.com/speakers_4.png',
+  'https://apsmedia.s3.amazonaws.com/full_room_1.png',
+];
+
+const secondImage = [
+  'https://apsmedia.s3.amazonaws.com/magnatour.png',
+  'https://apsmedia.s3.amazonaws.com/social2.png',
+  'https://apsmedia.s3.amazonaws.com/speakers_3.png',
+  'https://apsmedia.s3.amazonaws.com/social3.png',
+  'https://apsmedia.s3.amazonaws.com/speakers_5.png',
+  'https://apsmedia.s3.amazonaws.com/gallant_1.png',
+  'https://apsmedia.s3.amazonaws.com/social8.png',
+  'https://apsmedia.s3.amazonaws.com/speakers_9.png',
+  'https://apsmedia.s3.amazonaws.com/swagbag.png',
 ];
 
 const Page = () => {
@@ -76,11 +101,13 @@ const Page = () => {
                 treat.”
               </p>
               <div
-                className='w-full h-full bg-cover bg-center aspect-square md:aspect-video rounded'
-                style={{
-                  backgroundImage: `url('https://packschool.s3.amazonaws.com/press-1.png')`,
-                }}
-              />
+                className='w-full h-full bg-cover bg-center aspect-square md:aspect-video rounded flex justify-center items-center relative'
+                // style={{
+                //   backgroundImage: `url('https://packschool.s3.amazonaws.com/press-1.png')`,
+                // }}
+              >
+                <Slideshow images={firstImage} />
+              </div>
               <p>
                 As Greenville continues to emerge as a hub for the automotive
                 industry, the 2023 AutoPack Summit brought together decision
@@ -143,11 +170,13 @@ const Page = () => {
                 .
               </p>
               <div
-                className='w-full h-full bg-cover bg-center aspect-square md:aspect-video rounded'
-                style={{
-                  backgroundImage: `url('https://packschool.s3.amazonaws.com/press-2.png')`,
-                }}
-              />
+                className='w-full h-full bg-cover bg-center aspect-square md:aspect-video rounded flex justify-center items-center relative'
+                // style={{
+                //   backgroundImage: `url('https://packschool.s3.amazonaws.com/press-1.png')`,
+                // }}
+              >
+                <Slideshow images={secondImage} />
+              </div>
               <p>
                 We are also excited to announce our newly relaunched Automotive
                 Packaging Certificate Program with an entire module on
@@ -217,7 +246,7 @@ const Page = () => {
                   from the US, UK, Canada, Mexico, Japan, Italy, Belgium, India,
                   Germany, Poland, Hong Kong, Brazil, Netherlands, Sweden, South
                   Africa, Nigeria, France, Switzerland, Finland, and Bulgaria.
-                  For information on the 2024 event please visit
+                  For information on the 2024 event please visit{' '}
                   <a
                     href='https://www.autopacksummit.com'
                     className='text-indigo-600 font-medium underline'
