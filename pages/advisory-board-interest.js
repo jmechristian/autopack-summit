@@ -1,10 +1,12 @@
 import React, { useState, useRef } from 'react';
 import { useForm } from 'react-hook-form';
+import { useRouter } from 'next/router';
 
 import HeaderPadding from '../shared/HeaderPadding';
 
 const Page = () => {
   const { register, handleSubmit } = useForm();
+  const router = useRouter();
   const [isSending, setIsSending] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isError, setError] = useState(false);
@@ -12,9 +14,9 @@ const Page = () => {
   const formRef = useRef(null);
 
   const notificationMethods = [
-    { id: 'field_87Yes', title: 'Yes' },
-    { id: 'field_87No', title: 'No' },
-    { id: 'field_87Maybe', title: 'Maybe' },
+    { id: 'field_87Yes', title: 'Yes', value: 'yes' },
+    { id: 'field_87No', title: 'No', value: 'no' },
+    { id: 'field_87Maybe', title: 'Maybe', value: 'maybe' },
   ];
 
   const onSubmit = async (data) => {
@@ -56,6 +58,7 @@ const Page = () => {
       console.log(sendEmail);
       setIsSending(false);
       setIsSubmitted(true);
+      router.push('/advisory-board-thank-you');
     } catch (err) {
       console.log('Request failed', err);
       setIsSending(false);
@@ -182,6 +185,7 @@ const Page = () => {
                         {...register('field[87]', { required: true })}
                         type='radio'
                         className='h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600'
+                        value={notificationMethod.value}
                       />
                       <label
                         htmlFor={notificationMethod.id}
@@ -252,8 +256,11 @@ const Page = () => {
             </div>
 
             <button
-              className='bg-ap-blue text-white font-bold text-lg py-2 rounded-lg'
+              className={`${
+                isSubmitted ? 'bg-neutral-400' : 'bg-ap-blue'
+              } text-white font-bold text-lg py-2 rounded-lg`}
               type='submit'
+              disabled={isSubmitted}
             >
               {!isSending ? 'Submit' : 'Sending...'}
             </button>
