@@ -202,7 +202,7 @@ const SponsorshipFormModal = () => {
               <div className='flex flex-col gap-1'>
                 <div className='flex justify-between'>
                   <div className='text-xs font-medium text-slate-500 uppercase'>
-                    Phone
+                    Company
                   </div>
                   <div className='text-slate-500 text-xs uppercase'>
                     *required
