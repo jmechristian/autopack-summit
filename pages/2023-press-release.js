@@ -6,7 +6,7 @@ import { Slideshow } from '../shared/Slideshow';
 
 const stats = [
   { id: 1, name: 'Professionals Registered', value: '280 ' },
-  { id: 2, name: 'Solution Providers', value: '32' },
+  { id: 2, name: 'Exhibitors', value: '32' },
   { id: 3, name: 'Expert Speakers', value: '14' },
 ];
 
@@ -177,19 +177,6 @@ const Page = () => {
               >
                 <Slideshow images={secondImage} />
               </div>
-              <p>
-                We are also excited to announce our newly relaunched Automotive
-                Packaging Certificate Program with an entire module on
-                Sustainable approaches for Automotive Packaging&mdash;learn more{' '}
-                <a
-                  href='https://packagingschool.com/certifications/get-to-know-apc'
-                  target='_blank'
-                  rel='noreferrer'
-                  className='text-indigo-600 font-medium underline'
-                >
-                  here.
-                </a>
-              </p>
               <p>
                 The 2023 AutoPack Summit was proud to present Kellen Mahoney,
                 Director of Suppliers Partnership for the Environment, with the
