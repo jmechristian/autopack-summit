@@ -10,11 +10,11 @@ export const sendSponsorForm = (name, title, company, email, phone) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        name,
-        title,
-        company,
-        email,
-        phone,
+        name: name,
+        title: title,
+        company: company,
+        email: email,
+        phone: phone,
       }),
     }
   );

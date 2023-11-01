@@ -25,8 +25,8 @@ const SponsorshipFormModal = () => {
 
   const formSubmitHandler = (event) => {
     if (name && email && phone && title && company) {
-      sendSponsorForm(event, name, title, company, email, phone);
-      formSubmitClickHandler('sponsor_form', email);
+      sendSponsorForm(name, title, company, email, phone);
+      // formSubmitClickHandler('sponsor_form', email);
       setSubmitted(true);
       clear();
       dispatch(
