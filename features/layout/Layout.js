@@ -36,7 +36,7 @@ const Layout = ({ client, children }) => {
         <div className='fixed z-50 w-full h-28 lg:h-16'>
           <div className='flex flex-col lg:flex-row gap-1 h-full bg-black leading-none justify-center items-center w-full py-4'>
             <div className='font-bold text-ap-yellow text-lg xl:text-xl leading-none'>
-              October 15-16th, 2024
+              October 21-23rd, 2024
             </div>
             <div className='text-white/80 xl:text-lg'>
               Hyatt Regency, Greenville SC
