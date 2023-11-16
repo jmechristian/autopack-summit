@@ -158,11 +158,11 @@ const resources = ({ resourceData }) => {
           </div>
         ))}
       </div>
-      <AdvisoryBoard
+      {/* <AdvisoryBoard
         advisors={resourceData}
         headline={'Board Members'}
         subheadline={'AutoPack Summit 2023'}
-      />
+      /> */}
     </>
   );
 };
