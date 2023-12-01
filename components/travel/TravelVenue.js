@@ -18,12 +18,12 @@ export default function TravelVenue() {
               headlineText='Hyatt Regency'
               text='220 North Main Street, Greenville, South Carolina, 29601'
               textColor='gray'
-              buttonText='View Venue'
+              buttonText='Book Now'
               buttonColor='blue'
               hasButton={true}
               fn={() =>
                 window.open(
-                  'https://www.hyatt.com/en-US/hotel/south-carolina/hyatt-regency-greenville/gsprg',
+                  'https://www.hyatt.com/en-US/group-booking/GSPRG/G-PAC4',
                   '_blank'
                 )
               }
