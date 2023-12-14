@@ -63,6 +63,7 @@ const GetCodeBlock = ({
     <div className='flex flex-col gap-3 items-center text-center'>
       <button
         className='bg-ap-blue rounded-md w-full mt-6'
+        disabled
         onClick={(event) => codeSubmitHandler(event)}
       >
         <div className='text-white uppercase text-sm lg:text-base font-bold py-3 px-6 tracking-widest'>

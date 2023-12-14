@@ -73,7 +73,8 @@ const RegBlockPricing = ({
         className={`${
           formIsValid ? 'bg-ap-yellow' : 'bg-slate-400'
         } rounded-md w-full mt-2`}
-        disabled={!regCode || !formIsValid}
+        // disabled={!regCode || !formIsValid}
+        disabled
         onClick={(event) => {
           sendEmail(event, name, title, company, email, phone, regCode);
           formSubmitClickHandler('registration', email);
