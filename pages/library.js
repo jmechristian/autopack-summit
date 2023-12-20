@@ -239,13 +239,7 @@ const Page = () => {
           {/* START CONTENT */}
 
           <div
-            className='w-full aspect-square md:aspect-auto md:h-[500px] bg-neutral-100 rounded-b-xl bg-cover bg-right relative'
-            style={{
-              backgroundImage:
-                'url("https://packschool.s3.amazonaws.com/demo-header.png")',
-            }}
-            onMouseEnter={() => setToHover(true)}
-            onMouseLeave={() => setToHover(false)}
+            className='w-full rounded-b-xl relative bg-neutral-900 flex items-center'
             onClick={() => clickHandler()}
           >
             <div
@@ -263,7 +257,7 @@ const Page = () => {
                 )}
               </div>
             </div>
-            <div className='max-w-5xl mx-auto flex flex-1 flex-col gap-4 w-full h-full justify-end lg:justify-center p-6 lg:p-0 relative'>
+            <div className='max-w-5xl flex flex-col mx-auto gap-4 w-fit h-full justify-end lg:justify-center p-6 lg:p-0 relative'>
               <div className='flex items-center gap-1  py-2 px-3 bg-ap-yellow w-fit rounded'>
                 <div>
                   <BoltIcon className='w-5 h-5 stroke-white' />
@@ -276,7 +270,7 @@ const Page = () => {
                 GM’s 2030 Packaging Sustainability Roadmap
               </div>
               <div className='flex flex-col'>
-                <div className='font-bold text-lg text-black'>
+                <div className='font-bold text-lg text-ap-blue'>
                   Jeremy Galanty
                 </div>
                 <div className=' text-white italic'>
@@ -284,6 +278,12 @@ const Page = () => {
                 </div>
               </div>
             </div>
+            <div
+              className='aspect-square lg:min-h-[500px] rounded-xl bg-white bg-contain bg-center'
+              style={{
+                backgroundImage: `url('https://packschool.s3.amazonaws.com/gallant-2.png')`,
+              }}
+            ></div>
           </div>
           <div className='w-full h-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 rounded-xl gap-1'>
             {presentations.map((pres, i) => (
