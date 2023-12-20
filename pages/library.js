@@ -157,7 +157,7 @@ const presentations = [
 
 const Page = () => {
   const [toHover, setToHover] = useState(false);
-  const [isLocked, setIsLocked] = useState(false);
+  const [isLocked, setIsLocked] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
   const [isPassword, setIsPassword] = useState('');
   const [isUnlocking, setIsUnlocking] = useState(false);
