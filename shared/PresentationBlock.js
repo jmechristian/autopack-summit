@@ -21,9 +21,9 @@ const PresentationBlock = ({
         })`,
       }}
     >
-      <div className='flex flex-1 flex-col gap-3 w-full h-full pl-6 pt-36 pr-9 pb-6 absolute z-10 inset-0'>
+      <div className='flex flex-1 flex-col gap-3 w-full h-full pl-6 pt-16 md:pt-24 lg:pt-16 xl:pt-36 pr-9 pb-6 absolute z-10 inset-0'>
         <div className='flex flex-col gap-3'>
-          <div className='text-white max-w-xs text-3xl font-oswald font-medium leading-none'>
+          <div className='text-white max-w-xs text-2xl xl:text-3xl font-oswald font-medium leading-none'>
             {title}
           </div>
           {/* <div className='max-w-xs text-white text-sm leading-snug'>
@@ -31,7 +31,7 @@ const PresentationBlock = ({
           </div> */}
           <div className='flex flex-col'>
             {speakers && (
-              <div className='grid grid-cols-2 gap-3 mt-2 overflow-hidden'>
+              <div className='grid xl:grid-cols-2 gap-3 mt-2 overflow-hidden'>
                 {speakers.map((speaker, i) => (
                   <div key={speaker.name} className='flex flex-col'>
                     <div className='font-bold leading-tight'>

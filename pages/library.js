@@ -190,22 +190,22 @@ const Page = () => {
       <HeaderPadding />
       {isOpen && (
         <div className='fixed inset-0 bg-black/60 backdrop-blur-md z-[50] flex items-center justify-center'>
-          <div className='w-full max-w-7xl bg-ap-blue rounded-2xl pt-6 px-6 pb-9 flex flex-col'>
-            <div className='flex justify-between w-full h-full items-center pb-6 pt-3 px-3'>
-              <div className='w-48'>
+          <div className='w-full max-w-7xl bg-ap-blue rounded-2xl pt-4 lg:pt-6 lg:px-6 pb-9 flex flex-col'>
+            <div className='flex  justify-between w-full h-full items-center pb-3 lg:pb-6 lg:pt-3 px-3'>
+              <div className='lg:w-48 w-36'>
                 <Logo />
               </div>
               <div
-                className='bg-ap-yellow rounded-xl text-lg px-3 py-2 cursor-pointer text-white font-bold flex items-center gap-1'
+                className='bg-ap-yellow rounded-xl lg:text-lg md:px-3 md:py-2 cursor-pointer text-white font-bold flex items-center gap-1'
                 onClick={() => setIsOpen(false)}
               >
                 <div>
-                  <ArrowLeftCircleIcon className='w-5 h-5 fill-white' />
+                  <ArrowLeftCircleIcon className='md:w-5 md:h-5 w-7 h-7 fill-white' />
                 </div>
-                Back to Library
+                <div className='hidden md:block'>Back to Library</div>
               </div>
             </div>
-            <div className='w-full px-3'>
+            <div className='w-full lg:px-3'>
               <div className='w-full aspect-video bg-neutral-200'>
                 <VideoPlayer videoEmbedLink={isSelectedVid} />
               </div>
@@ -213,19 +213,19 @@ const Page = () => {
           </div>
         </div>
       )}
-      <div className='w-full max-w-7xl mx-auto px-6 lg:px-0 pb-12 pt-12'>
+      <div className='w-full max-w-7xl mx-auto px-3 lg:px-0 pb-12 pt-12'>
         <div className='w-full h-full border-2 border-neutral-900 bg-neutral-900 flex flex-col p-0.5 gap-1 '>
           <div className='w-full  bg-neutral-800 rounded-t-lg'>
-            <div className='w-full flex justify-between items-center px-12 py-4'>
-              <div className='font-oswald uppercase text-white text-2xl tracking-wide'>
+            <div className='w-full flex justify-between items-center px-6 md:px-12 py-4'>
+              <div className='font-oswald uppercase text-white text-xl md:text-2xl tracking-wide'>
                 <span className='text-ap-yellow'>
                   Autopack Summit Presentations
                 </span>{' '}
                 / 2023
               </div>
-              <div className='flex gap-3 items-center h-full'>
+              <div className='flex gap-3 items-center h-full -mr-3 md:mr-0'>
                 <div
-                  className={`cursor-pointer bg-gradient-to-r gap-2 from-ap-darkblue to-ap-yellow w-fit py-2 px-6 rounded-lg flex items-center`}
+                  className={`cursor-pointer bg-gradient-to-r gap-2 from-ap-darkblue to-ap-yellow w-fit p-4 rounded-full md:py-2 md:px-6 md:rounded-lg flex items-center`}
                   onClick={unlockHandler}
                 >
                   <div className='w-5 h-5'>
@@ -235,7 +235,7 @@ const Page = () => {
                       <LockOpenIcon className='w-5 h-5 stroke-white' />
                     )}
                   </div>
-                  <div className='text-white font-semibold'>
+                  <div className='text-white font-semibold hidden md:block'>
                     {isLocked ? 'Unlock' : 'Unlocked!'}
                   </div>
                 </div>
@@ -267,7 +267,7 @@ const Page = () => {
           {/* START CONTENT */}
 
           <div
-            className='w-full rounded-b-xl relative bg-neutral-900 flex items-center cursor-pointer'
+            className='w-full rounded-b-xl relative bg-neutral-900 flex flex-col lg:flex-row items-center cursor-pointer'
             onClick={() =>
               clickHandler(
                 'https://player.vimeo.com/video/891978699?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479'
@@ -289,7 +289,7 @@ const Page = () => {
                 )}
               </div>
             </div>
-            <div className='max-w-5xl flex flex-col mx-auto gap-4 w-fit h-full justify-end lg:justify-center p-6 lg:p-0 relative'>
+            <div className='max-w-5xl flex flex-col mx-auto gap-4 w-fit h-full justify-end lg:justify-center p-6 md:py-12 lg:p-0 relative'>
               <div className='flex items-center gap-1  py-2 px-3 bg-ap-yellow w-fit rounded'>
                 <div>
                   <BoltIcon className='w-5 h-5 stroke-white' />
@@ -311,7 +311,7 @@ const Page = () => {
               </div>
             </div>
             <div
-              className='aspect-square lg:min-h-[500px] rounded-xl bg-white bg-contain bg-center'
+              className='aspect-square w-full lg:aspect-auto lg:h-[400px] lg:w-[400px] rounded-xl bg-white bg-contain bg-center'
               style={{
                 backgroundImage: `url('https://packschool.s3.amazonaws.com/gallant-2.png')`,
               }}
