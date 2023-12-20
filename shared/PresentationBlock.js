@@ -23,7 +23,7 @@ const PresentationBlock = ({
     >
       <div className='flex flex-1 flex-col gap-3 w-full h-full pl-6 pt-16 lg:pt-16 xl:pt-24 pr-9 pb-6 absolute z-10 inset-0'>
         <div className='flex flex-col gap-3'>
-          <div className='text-white max-w-xs text-3xl lg:text-2xl lg:leading-none xl:leading-tighter xl:text-3xl font-oswald font-medium leading-none'>
+          <div className='text-white max-w-xs text-3xl lg:text-2xl lg:leading-none xl:leading-none xl:text-3xl font-oswald font-medium leading-none'>
             {title}
           </div>
           {/* <div className='max-w-xs text-white text-sm leading-snug'>
