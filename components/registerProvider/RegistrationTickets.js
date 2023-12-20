@@ -135,15 +135,16 @@ const RegistrationTickets = ({ ticketCount }) => {
                 className='bg-gray-300 rounded-md w-full'
                 type='submit'
                 role='link'
-                disabled={
-                  !name ||
-                  !title ||
-                  !email ||
-                  !phone ||
-                  !title ||
-                  !company ||
-                  20 - ticketCount === 0
-                }
+                disabled
+                // disabled={
+                //   !name ||
+                //   !title ||
+                //   !email ||
+                //   !phone ||
+                //   !title ||
+                //   !company ||
+                //   20 - ticketCount === 0
+                // }
               >
                 <div className='text-slate-500 font-oswald uppercase text-sm lg:text-lg font-bold py-3 px-6 tracking-widest lg:leading-tight'>
                   {isLoading ? 'Sending Data' : 'Proceed to Payment'}

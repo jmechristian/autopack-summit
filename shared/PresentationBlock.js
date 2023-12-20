@@ -10,7 +10,7 @@ const PresentationBlock = ({
   const [toHover, setToHover] = useState(false);
   return (
     <div
-      className='aspect-square w-full bg-indigo-200 rounded-xl bg-cover bg-center relative'
+      className='aspect-square w-full bg-indigo-200 rounded-xl bg-cover bg-center relative cursor-pointer'
       style={{
         backgroundImage:
           'url("https://packschool.s3.amazonaws.com/demo-square-white.png")',
@@ -18,17 +18,17 @@ const PresentationBlock = ({
       onMouseEnter={() => setToHover(true)}
       onMouseLeave={() => setToHover(false)}
     >
-      <div className='flex flex-1 flex-col justify-between gap-3 w-full h-full pl-6 pt-24 pr-9 pb-6 absolute z-10 inset-0'>
+      <div className='flex flex-1 flex-col gap-3 w-full h-full pl-6 pt-36 pr-9 pb-6 absolute z-10 inset-0'>
         <div className='flex flex-col gap-3'>
           <div className='text-white max-w-xs text-3xl font-oswald font-medium leading-none'>
             {title}
           </div>
-          <div className='max-w-xs text-white text-sm leading-snug'>
+          {/* <div className='max-w-xs text-white text-sm leading-snug'>
             {description}
-          </div>
+          </div> */}
           <div className='flex flex-col'>
             {speakers && (
-              <div className='grid grid-cols-2 gap-3 mt-2'>
+              <div className='grid grid-cols-2 gap-3 mt-2 overflow-hidden'>
                 {speakers.map((speaker, i) => (
                   <div key={speaker.name} className='flex flex-col'>
                     <div className='font-bold leading-tight'>

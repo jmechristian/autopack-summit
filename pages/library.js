@@ -1,7 +1,15 @@
 import React, { useState } from 'react';
 import HeaderPadding from '../shared/HeaderPadding';
-import { BoltIcon, LockClosedIcon } from '@heroicons/react/24/outline/';
+import {
+  ArrowRightIcon,
+  BoltIcon,
+  LockClosedIcon,
+  LockOpenIcon,
+} from '@heroicons/react/24/outline/';
 import PresentationBlock from '../shared/PresentationBlock';
+import Logo from '../shared/Logo';
+import { ArrowLeftCircleIcon } from '@heroicons/react/24/solid';
+import VideoPlayer from '../shared/VideoPlayer';
 
 const presentations = [
   {
@@ -47,19 +55,6 @@ const presentations = [
   },
   {
     backgroundColor: 'bg-ap-red/70',
-    title: 'Introduction to High Complexity Parts',
-    speakers: [
-      {
-        name: 'Dr. Andrew Hurley',
-        company: 'Packaging School',
-        title: 'Founder',
-      },
-    ],
-    description:
-      "Underestimate Tauriel servant pierce tower pulled shells rotten breach weren't. ",
-  },
-  {
-    backgroundColor: 'bg-ap-blue/60',
     title: 'Bumper to Bumper Complexities from Production through Assembly',
     speakers: [
       {
@@ -77,7 +72,7 @@ const presentations = [
       "Underestimate Tauriel servant pierce tower pulled shells rotten breach weren't. ",
   },
   {
-    backgroundColor: 'bg-ap-yellow/80',
+    backgroundColor: 'bg-ap-blue/60',
     title:
       'Aftermarket Design: Eliminate waste, Reduce Cost, and Improve Process Efficiency',
     speakers: [
@@ -85,25 +80,6 @@ const presentations = [
         name: 'Patrick Graham',
         company: 'Magna',
         title: 'Account Manager',
-      },
-      {
-        name: 'Ashley Barnes',
-        company: 'Plastic Omnium',
-        title: 'Program Packaging Engineer',
-      },
-    ],
-    description:
-      "Underestimate Tauriel servant pierce tower pulled shells rotten breach weren't. ",
-  },
-  {
-    backgroundColor: 'bg-ap-darkblue/80',
-    title:
-      'Leveraging Localization: Techniques for Tracking Assets Indoors and Out',
-    speakers: [
-      {
-        name: 'Thomas Strain',
-        company: 'Surgere',
-        title: 'Vice President, Technology and Product Management',
       },
     ],
     description:
@@ -129,7 +105,7 @@ const presentations = [
       "Underestimate Tauriel servant pierce tower pulled shells rotten breach weren't. ",
   },
   {
-    backgroundColor: 'bg-ap-blue/60',
+    backgroundColor: 'bg-ap-yellow/80',
     title:
       'EV Battery Packaging - Achieving Resilience for the Battery Supply Chain',
     speakers: [
@@ -143,7 +119,7 @@ const presentations = [
       "Underestimate Tauriel servant pierce tower pulled shells rotten breach weren't. ",
   },
   {
-    backgroundColor: 'bg-ap-yellow/80',
+    backgroundColor: 'bg-ap-darkblue/70',
     title:
       'Technology Solutions: How to choose the correct Sensor Technology for Automotive Asset Tracking',
     speakers: [
@@ -160,10 +136,60 @@ const presentations = [
 
 const Page = () => {
   const [toHover, setToHover] = useState(false);
-  return (
-    <div className='w-full h-full flex flex-col pb-16'>
-      <HeaderPadding />
+  const [isLocked, setIsLocked] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
+  const [isPassword, setIsPassword] = useState('');
+  const [isUnlocking, setIsUnlocking] = useState(false);
+  const [isError, setIsError] = useState(false);
 
+  const clickHandler = () => {
+    if (!isLocked) {
+      setIsOpen(true);
+    }
+  };
+
+  const validatePasswordHandler = () => {
+    if (isPassword.toLowerCase() === 'packpresentations23') {
+      setIsPassword('');
+      setIsUnlocking(false);
+      setIsLocked(false);
+    } else {
+      setIsPassword('');
+    }
+  };
+
+  return (
+    <div className='w-full h-full flex flex-col pb-16 relative'>
+      <HeaderPadding />
+      {isOpen && (
+        <div className='fixed inset-0 bg-black/60 backdrop-blur-md z-[50] flex items-center justify-center'>
+          <div className='w-full max-w-7xl bg-ap-blue rounded-2xl pt-6 px-6 pb-9 flex flex-col'>
+            <div className='flex justify-between w-full h-full items-center pb-6 pt-3 px-3'>
+              <div className='w-48'>
+                <Logo />
+              </div>
+              <div
+                className='bg-ap-yellow rounded-xl text-lg px-3 py-2 cursor-pointer text-white font-bold flex items-center gap-1'
+                onClick={() => setIsOpen(false)}
+              >
+                <div>
+                  <ArrowLeftCircleIcon className='w-5 h-5 fill-white' />
+                </div>
+                Back to Library
+              </div>
+            </div>
+            <div className='w-full px-3'>
+              <div className='w-full aspect-video bg-neutral-200'>
+                <VideoPlayer
+                  videoEmbedLink={
+                    'https://player.vimeo.com/video/891978699?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479'
+                  }
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
       <div className='w-full max-w-7xl mx-auto px-6 lg:px-0 pb-12 pt-12'>
         <div className='w-full h-full border-2 border-neutral-900 bg-neutral-900 flex flex-col p-0.5 gap-1 '>
           <div className='w-full  bg-neutral-800 rounded-t-lg'>
@@ -174,24 +200,53 @@ const Page = () => {
                 </span>{' '}
                 / 2023
               </div>
-              <div
-                className={`cursor-pointer bg-gradient-to-r gap-2 from-ap-darkblue to-ap-yellow w-fit py-2 px-6 rounded-lg flex items-center`}
-              >
-                <div>
-                  <LockClosedIcon className='w-5 h-5 stroke-white' />
+              <div className='flex gap-3 items-center h-full'>
+                <div
+                  className={`cursor-pointer bg-gradient-to-r gap-2 from-ap-darkblue to-ap-yellow w-fit py-2 px-6 rounded-lg flex items-center`}
+                >
+                  <div className='w-5 h-5'>
+                    {isLocked ? (
+                      <LockClosedIcon className='w-5 h-5 stroke-white' />
+                    ) : (
+                      <LockOpenIcon className='w-5 h-5 stroke-white' />
+                    )}
+                  </div>
+                  <div className='text-white font-semibold'>Unlock All</div>
                 </div>
-                <div className='text-white font-semibold'>Unlock All</div>
+                <div className='flex items-center h-full bg-ap-blue rounded-lg'>
+                  <div>
+                    <input
+                      type='password'
+                      placeholder='Enter Password'
+                      className='text-neutral-600 placeholder:text-neutral-400 bg-neutral-300 rounded-l-lg'
+                      value={isPassword}
+                      onChange={(e) => setIsPassword(e.target.value)}
+                    />
+                  </div>
+                  <div
+                    className='bg-ap-blue text-white px-3 py-2 h-full cursor-pointer rounded-lg'
+                    onClick={validatePasswordHandler}
+                  >
+                    <div className='w-5 h-5 rounded-r-xl'>
+                      <ArrowRightIcon className='w-5 h-5 stroke-white' />
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
+
+          {/* START CONTENT */}
+
           <div
-            className='w-full aspect-square md:h-[500px] bg-neutral-100 rounded-b-xl bg-cover bg-right relative'
+            className='w-full aspect-square md:aspect-auto md:h-[500px] bg-neutral-100 rounded-b-xl bg-cover bg-right relative'
             style={{
               backgroundImage:
                 'url("https://packschool.s3.amazonaws.com/demo-header.png")',
             }}
             onMouseEnter={() => setToHover(true)}
             onMouseLeave={() => setToHover(false)}
+            onClick={() => clickHandler()}
           >
             <div
               className={`${
@@ -201,7 +256,11 @@ const Page = () => {
               } cursor-pointer bg-gradient-to-r mt-4 gap-2 from-ap-darkblue to-ap-blue py-3 px-6 rounded-full h-12 w-12 flex justify-center items-center absolute -top-1 right-3 z-20`}
             >
               <div className={`${toHover ? 'scale-115' : ''}`}>
-                <LockClosedIcon className='w-6 h-6 stroke-white' />
+                {isLocked ? (
+                  <LockClosedIcon className='w-5 h-5 stroke-white' />
+                ) : (
+                  <LockOpenIcon className='w-5 h-5 stroke-white' />
+                )}
               </div>
             </div>
             <div className='max-w-5xl mx-auto flex flex-1 flex-col gap-4 w-full h-full justify-end lg:justify-center p-6 lg:p-0 relative'>
@@ -215,11 +274,6 @@ const Page = () => {
               </div>
               <div className='text-white max-w-xl text-4xl lg:text-5xl font-oswald font-bold leading-none'>
                 GM’s 2030 Packaging Sustainability Roadmap
-              </div>
-              <div className='max-w-xl text-white'>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
-                quis nisl vehicula, laoreet nisi et, condimentum quam. Donec
-                suscipit arcu iaculis, tristique lacus lacinia, facilisis purus.
               </div>
               <div className='flex flex-col'>
                 <div className='font-bold text-lg text-black'>
