@@ -296,7 +296,7 @@ const Page = () => {
                   KEYNOTE
                 </div>
               </div>
-              <div className='text-white max-w-xl text-4xl lg:text-5xl font-oswald font-bold leading-none'>
+              <div className='text-white max-w-xl text-4xl lg:text-5xl font-oswald font-bold lg:first-letter:leading-tight'>
                 GM’s 2030 Packaging Sustainability Roadmap
               </div>
               <div className='flex flex-col'>
