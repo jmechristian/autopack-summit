@@ -5,6 +5,7 @@ const PresentationBlock = ({
   backgroundColor,
   title,
   description,
+  backgroundImage,
   speakers,
 }) => {
   const [toHover, setToHover] = useState(false);
@@ -12,8 +13,11 @@ const PresentationBlock = ({
     <div
       className='aspect-square w-full bg-indigo-200 rounded-xl bg-cover bg-center relative cursor-pointer'
       style={{
-        backgroundImage:
-          'url("https://packschool.s3.amazonaws.com/demo-square-white.png")',
+        backgroundImage: `url(${
+          backgroundImage
+            ? backgroundImage
+            : 'https://packschool.s3.amazonaws.com/trienda-aps.png'
+        })`,
       }}
       onMouseEnter={() => setToHover(true)}
       onMouseLeave={() => setToHover(false)}

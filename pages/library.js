@@ -13,7 +13,8 @@ import VideoPlayer from '../shared/VideoPlayer';
 
 const presentations = [
   {
-    backgroundColor: 'bg-ap-yellow/80',
+    backgroundColor: 'bg-ap-yellow/70',
+    backgroundImage: 'https://packschool.s3.amazonaws.com/trienda-aps-2.png',
     title: 'Tactical approaches for Optimizing Returnability',
     speakers: [
       {
@@ -31,8 +32,9 @@ const presentations = [
       "Underestimate Tauriel servant pierce tower pulled shells rotten breach weren't. ",
   },
   {
-    backgroundColor: 'bg-ap-darkblue/70',
+    backgroundColor: 'bg-ap-darkblue/60',
     title: 'Powering the future: Driving Towards a Circular Economy',
+    backgroundImage: 'https://packschool.s3.amazonaws.com/campfire-2.png',
     speakers: [
       {
         name: 'Bridget Grewal',
@@ -54,8 +56,9 @@ const presentations = [
       "Underestimate Tauriel servant pierce tower pulled shells rotten breach weren't. ",
   },
   {
-    backgroundColor: 'bg-ap-red/70',
+    backgroundColor: 'bg-ap-red/60',
     title: 'Bumper to Bumper Complexities from Production through Assembly',
+    backgroundImage: 'https://packschool.s3.amazonaws.com/barnes.png',
     speakers: [
       {
         name: 'Brad Meredith',
@@ -105,9 +108,10 @@ const presentations = [
       "Underestimate Tauriel servant pierce tower pulled shells rotten breach weren't. ",
   },
   {
-    backgroundColor: 'bg-ap-yellow/80',
+    backgroundColor: 'bg-ap-yellow/70',
     title:
       'EV Battery Packaging - Achieving Resilience for the Battery Supply Chain',
+    backgroundImage: 'https://packschool.s3.amazonaws.com/mike-aps-2.png',
     speakers: [
       {
         name: 'Mike Pagel',
@@ -122,6 +126,7 @@ const presentations = [
     backgroundColor: 'bg-ap-darkblue/70',
     title:
       'Technology Solutions: How to choose the correct Sensor Technology for Automotive Asset Tracking',
+    backgroundImage: 'https://packschool.s3.amazonaws.com/bridge-aps.png',
     speakers: [
       {
         name: 'Bridget Grewal',
@@ -154,8 +159,12 @@ const Page = () => {
       setIsUnlocking(false);
       setIsLocked(false);
     } else {
-      setIsPassword('');
+      setIsPassword('Invalid Password!');
     }
+  };
+
+  const unlockHandler = () => {
+    setIsUnlocking(!isUnlocking);
   };
 
   return (
@@ -203,6 +212,7 @@ const Page = () => {
               <div className='flex gap-3 items-center h-full'>
                 <div
                   className={`cursor-pointer bg-gradient-to-r gap-2 from-ap-darkblue to-ap-yellow w-fit py-2 px-6 rounded-lg flex items-center`}
+                  onClick={unlockHandler}
                 >
                   <div className='w-5 h-5'>
                     {isLocked ? (
@@ -211,27 +221,29 @@ const Page = () => {
                       <LockOpenIcon className='w-5 h-5 stroke-white' />
                     )}
                   </div>
-                  <div className='text-white font-semibold'>Unlock All</div>
+                  <div className='text-white font-semibold'>Unlock</div>
                 </div>
-                <div className='flex items-center h-full bg-ap-blue rounded-lg'>
-                  <div>
-                    <input
-                      type='password'
-                      placeholder='Enter Password'
-                      className='text-neutral-600 placeholder:text-neutral-400 bg-neutral-300 rounded-l-lg'
-                      value={isPassword}
-                      onChange={(e) => setIsPassword(e.target.value)}
-                    />
-                  </div>
-                  <div
-                    className='bg-ap-blue text-white px-3 py-2 h-full cursor-pointer rounded-lg'
-                    onClick={validatePasswordHandler}
-                  >
-                    <div className='w-5 h-5 rounded-r-xl'>
-                      <ArrowRightIcon className='w-5 h-5 stroke-white' />
+                {isUnlocking && (
+                  <div className='flex items-center h-full bg-ap-blue rounded-lg'>
+                    <div>
+                      <input
+                        type='text'
+                        placeholder='Enter Password'
+                        className='text-neutral-600 placeholder:text-neutral-400 bg-neutral-300 rounded-l-lg border-0'
+                        value={isPassword}
+                        onChange={(e) => setIsPassword(e.target.value)}
+                      />
+                    </div>
+                    <div
+                      className='bg-ap-blue text-white px-3 py-2 h-full cursor-pointer rounded-lg'
+                      onClick={validatePasswordHandler}
+                    >
+                      <div className='w-5 h-5 rounded-r-xl'>
+                        <ArrowRightIcon className='w-5 h-5 stroke-white' />
+                      </div>
                     </div>
                   </div>
-                </div>
+                )}
               </div>
             </div>
           </div>
@@ -293,6 +305,7 @@ const Page = () => {
                 title={pres.title}
                 speakers={pres.speakers}
                 description={pres.description}
+                backgroundImage={pres.backgroundImage}
               />
             ))}
           </div>
