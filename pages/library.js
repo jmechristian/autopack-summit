@@ -190,8 +190,8 @@ const Page = () => {
       <HeaderPadding />
       {isOpen && (
         <div className='fixed inset-0 bg-black/60 backdrop-blur-md z-[50] flex items-center justify-center'>
-          <div className='w-full max-w-7xl bg-ap-blue rounded-2xl pt-4 lg:pt-6 lg:px-6 pb-9 flex flex-col'>
-            <div className='flex  justify-between w-full h-full items-center pb-3 lg:pb-6 lg:pt-3 px-3'>
+          <div className='w-full max-h-[100vh] max-w-2xl lg:max-w-7xl bg-ap-blue rounded-2xl pt-3  lg:px-6 pb-6 flex flex-col'>
+            <div className='flex justify-between w-full h-full items-center pb-3 lg:pb-6 lg:pt-3 px-3'>
               <div className='lg:w-48 w-36'>
                 <Logo />
               </div>
@@ -205,10 +205,8 @@ const Page = () => {
                 <div className='hidden md:block'>Back to Library</div>
               </div>
             </div>
-            <div className='w-full lg:px-3'>
-              <div className='w-full aspect-video bg-neutral-200'>
-                <VideoPlayer videoEmbedLink={isSelectedVid} />
-              </div>
+            <div className='w-full h-auto aspect-video bg-ap-blue'>
+              <VideoPlayer videoEmbedLink={isSelectedVid} />
             </div>
           </div>
         </div>
