@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { LockClosedIcon } from '@heroicons/react/24/outline';
+import { LockClosedIcon, LockOpenIcon } from '@heroicons/react/24/outline';
 
 const PresentationBlock = ({
   backgroundColor,
   title,
   description,
+  locked,
   backgroundImage,
   speakers,
 }) => {
@@ -19,8 +20,6 @@ const PresentationBlock = ({
             : 'https://packschool.s3.amazonaws.com/trienda-aps.png'
         })`,
       }}
-      onMouseEnter={() => setToHover(true)}
-      onMouseLeave={() => setToHover(false)}
     >
       <div className='flex flex-1 flex-col gap-3 w-full h-full pl-6 pt-36 pr-9 pb-6 absolute z-10 inset-0'>
         <div className='flex flex-col gap-3'>
@@ -52,9 +51,15 @@ const PresentationBlock = ({
             toHover ? 'scale-115 transition ease-in shadow-xl' : ' shadow-lg '
           } cursor-pointer bg-gradient-to-r mt-4 gap-2 from-ap-darkblue to-ap-blue py-3 px-6 rounded-full h-12 w-12 flex justify-center items-center absolute -top-1 right-3 z-20`}
         >
-          <div>
-            <LockClosedIcon className='w-6 h-6 stroke-white' />
-          </div>
+          {locked ? (
+            <div>
+              <LockClosedIcon className='w-6 h-6 stroke-white' />
+            </div>
+          ) : (
+            <div>
+              <LockOpenIcon className='w-6 h-6 stroke-white' />
+            </div>
+          )}
         </div>
       </div>
       <div

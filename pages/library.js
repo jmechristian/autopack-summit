@@ -16,6 +16,8 @@ const presentations = [
     backgroundColor: 'bg-ap-yellow/70',
     backgroundImage: 'https://packschool.s3.amazonaws.com/trienda-aps-2.png',
     title: 'Tactical approaches for Optimizing Returnability',
+    video:
+      'https://player.vimeo.com/video/893772942?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479',
     speakers: [
       {
         name: 'Nate Franck',
@@ -35,6 +37,8 @@ const presentations = [
     backgroundColor: 'bg-ap-darkblue/60',
     title: 'Powering the future: Driving Towards a Circular Economy',
     backgroundImage: 'https://packschool.s3.amazonaws.com/campfire-2.png',
+    video:
+      'https://player.vimeo.com/video/893845442?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479',
     speakers: [
       {
         name: 'Bridget Grewal',
@@ -59,6 +63,8 @@ const presentations = [
     backgroundColor: 'bg-ap-red/60',
     title: 'Bumper to Bumper Complexities from Production through Assembly',
     backgroundImage: 'https://packschool.s3.amazonaws.com/barnes.png',
+    video:
+      'https://player.vimeo.com/video/892652116?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479',
     speakers: [
       {
         name: 'Brad Meredith',
@@ -78,6 +84,9 @@ const presentations = [
     backgroundColor: 'bg-ap-blue/60',
     title:
       'Aftermarket Design: Eliminate waste, Reduce Cost, and Improve Process Efficiency',
+    backgroundImage: 'https://packschool.s3.amazonaws.com/patrick-aps.png',
+    video:
+      'https://player.vimeo.com/video/893484299?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479',
     speakers: [
       {
         name: 'Patrick Graham',
@@ -92,6 +101,9 @@ const presentations = [
     backgroundColor: 'bg-ap-red/70',
     title:
       'Cross functional Seating Case Study: How a Volvo whiteboard sketch drove a successful design competition',
+    backgroundImage: 'https://packschool.s3.amazonaws.com/jody-aps.png',
+    video:
+      'https://player.vimeo.com/video/894197500?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479',
     speakers: [
       {
         name: 'Jody Owens',
@@ -112,6 +124,8 @@ const presentations = [
     title:
       'EV Battery Packaging - Achieving Resilience for the Battery Supply Chain',
     backgroundImage: 'https://packschool.s3.amazonaws.com/mike-aps-2.png',
+    video:
+      'https://player.vimeo.com/video/895829382?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479',
     speakers: [
       {
         name: 'Mike Pagel',
@@ -127,6 +141,8 @@ const presentations = [
     title:
       'Technology Solutions: How to choose the correct Sensor Technology for Automotive Asset Tracking',
     backgroundImage: 'https://packschool.s3.amazonaws.com/bridge-aps.png',
+    video:
+      'https://player.vimeo.com/video/894117116?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479',
     speakers: [
       {
         name: 'Bridget Grewal',
@@ -141,14 +157,16 @@ const presentations = [
 
 const Page = () => {
   const [toHover, setToHover] = useState(false);
-  const [isLocked, setIsLocked] = useState(true);
+  const [isLocked, setIsLocked] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [isPassword, setIsPassword] = useState('');
   const [isUnlocking, setIsUnlocking] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [isSelectedVid, setIsSelectedVid] = useState('');
 
-  const clickHandler = () => {
+  const clickHandler = (vid) => {
     if (!isLocked) {
+      setIsSelectedVid(vid);
       setIsOpen(true);
     }
   };
@@ -189,11 +207,7 @@ const Page = () => {
             </div>
             <div className='w-full px-3'>
               <div className='w-full aspect-video bg-neutral-200'>
-                <VideoPlayer
-                  videoEmbedLink={
-                    'https://player.vimeo.com/video/891978699?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479'
-                  }
-                />
+                <VideoPlayer videoEmbedLink={isSelectedVid} />
               </div>
             </div>
           </div>
@@ -221,9 +235,11 @@ const Page = () => {
                       <LockOpenIcon className='w-5 h-5 stroke-white' />
                     )}
                   </div>
-                  <div className='text-white font-semibold'>Unlock</div>
+                  <div className='text-white font-semibold'>
+                    {isLocked ? 'Unlock' : 'Unlocked!'}
+                  </div>
                 </div>
-                {isUnlocking && (
+                {isLocked && isUnlocking && (
                   <div className='flex items-center h-full bg-ap-blue rounded-lg'>
                     <div>
                       <input
@@ -251,8 +267,12 @@ const Page = () => {
           {/* START CONTENT */}
 
           <div
-            className='w-full rounded-b-xl relative bg-neutral-900 flex items-center'
-            onClick={() => clickHandler()}
+            className='w-full rounded-b-xl relative bg-neutral-900 flex items-center cursor-pointer'
+            onClick={() =>
+              clickHandler(
+                'https://player.vimeo.com/video/891978699?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479'
+              )
+            }
           >
             <div
               className={`${
@@ -297,16 +317,19 @@ const Page = () => {
               }}
             ></div>
           </div>
+
           <div className='w-full h-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 rounded-xl gap-1'>
             {presentations.map((pres, i) => (
-              <PresentationBlock
-                key={pres.title}
-                backgroundColor={pres.backgroundColor}
-                title={pres.title}
-                speakers={pres.speakers}
-                description={pres.description}
-                backgroundImage={pres.backgroundImage}
-              />
+              <div key={pres.title} onClick={() => clickHandler(pres.video)}>
+                <PresentationBlock
+                  backgroundColor={pres.backgroundColor}
+                  title={pres.title}
+                  speakers={pres.speakers}
+                  description={pres.description}
+                  backgroundImage={pres.backgroundImage}
+                  locked={isLocked}
+                />
+              </div>
             ))}
           </div>
         </div>
