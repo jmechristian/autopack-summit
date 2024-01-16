@@ -230,9 +230,14 @@ const presentations = [
       'https://player.vimeo.com/video/899962216?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479',
     speakers: [
       {
-        name: 'Hamilton Marques',
-        company: 'Zatkoff Seals & Packings',
-        title: 'VP of Sales and Marketing',
+        name: 'Greg Murphy',
+        company: 'Applications Engineer',
+        title: 'Vantage Plastics',
+      },
+      {
+        name: 'Paul Altman',
+        company: 'President',
+        title: 'Vantage Plastics',
       },
     ],
     description:
