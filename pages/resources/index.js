@@ -158,11 +158,11 @@ const resources = ({ resourceData }) => {
           </div>
         ))}
       </div>
-      {/* <AdvisoryBoard
+      <AdvisoryBoard
         advisors={resourceData}
         headline={'Board Members'}
-        subheadline={'AutoPack Summit 2023'}
-      /> */}
+        subheadline={'AutoPack Summit 2024'}
+      />
     </>
   );
 };
@@ -183,6 +183,7 @@ export async function getStaticProps() {
     props: {
       resourceData,
     },
+    revalidate: 10,
   };
 }
 

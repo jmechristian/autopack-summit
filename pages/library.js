@@ -153,6 +153,107 @@ const presentations = [
     description:
       "Underestimate Tauriel servant pierce tower pulled shells rotten breach weren't. ",
   },
+  {
+    backgroundColor: 'bg-ap-yellow/70',
+    title: 'PackPitch: Sustainability strides for Aftermarket Cummins-Bosch',
+    backgroundImage: 'https://packschool.s3.amazonaws.com/pakpitch.png',
+    video:
+      'https://player.vimeo.com/video/900864713?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479',
+    speakers: [
+      {
+        name: 'Gauri Awalgaonkar',
+        company: 'Bosch',
+        title: 'Sr. Packaging Engineer',
+      },
+      {
+        name: 'Saket Athavale',
+        company: 'Cummins Inc.',
+        title: 'Sr. Packaging Engineer',
+      },
+    ],
+    description:
+      "Underestimate Tauriel servant pierce tower pulled shells rotten breach weren't. ",
+  },
+  {
+    backgroundColor: 'bg-ap-darkblue/60',
+    title: 'PackPitch: ZERUST® Natur-VCI® Certified Compostable VCI Film',
+    backgroundImage: 'https://packschool.s3.amazonaws.com/zatkoff-pitch.png',
+    video:
+      'https://player.vimeo.com/video/899640154?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479',
+    speakers: [
+      {
+        name: 'Kevin Landmark, PhD',
+        company: 'Zerust Excor',
+        title: 'Technical Sales Manager',
+      },
+    ],
+    description:
+      "Underestimate Tauriel servant pierce tower pulled shells rotten breach weren't. ",
+  },
+  {
+    backgroundColor: 'bg-ap-red/60',
+    title: 'PackPitch: Automated Block Pallet Production',
+    backgroundImage: 'https://packschool.s3.amazonaws.com/pakpitch.png',
+    video:
+      'https://player.vimeo.com/video/900252395?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479',
+    speakers: [
+      {
+        name: 'Michael Miller',
+        company: 'Tree Brand Packaging',
+        title: 'Regional VP',
+      },
+    ],
+    description:
+      "Underestimate Tauriel servant pierce tower pulled shells rotten breach weren't. ",
+  },
+  {
+    backgroundColor: 'bg-ap-blue/60',
+    title: 'PackPitch: Automotive Supply Chain Efficiency',
+    backgroundImage: 'https://packschool.s3.amazonaws.com/pakpitch.png',
+    video:
+      'https://player.vimeo.com/video/900223393?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479',
+    speakers: [
+      {
+        name: 'Gabriel Weeks',
+        company: 'GPX Intelligence',
+        title: 'CEO',
+      },
+    ],
+    description:
+      "Underestimate Tauriel servant pierce tower pulled shells rotten breach weren't. ",
+  },
+  {
+    backgroundColor: 'bg-ap-yellow/70',
+    title: 'PackPitch: An Innovative Approach to Business',
+    backgroundImage: 'https://packschool.s3.amazonaws.com/vantage.png',
+    video:
+      'https://player.vimeo.com/video/899962216?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479',
+    speakers: [
+      {
+        name: 'Hamilton Marques',
+        company: 'Zatkoff Seals & Packings',
+        title: 'VP of Sales and Marketing',
+      },
+    ],
+    description:
+      "Underestimate Tauriel servant pierce tower pulled shells rotten breach weren't. ",
+  },
+  {
+    backgroundColor: 'bg-ap-darkblue/60',
+    title: 'PackPitch: FlexZShock',
+    backgroundImage: 'https://packschool.s3.amazonaws.com/zatkoff.png',
+    video:
+      'https://player.vimeo.com/video/899876194?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479',
+    speakers: [
+      {
+        name: 'Hamilton Marques',
+        company: 'Zatkoff Seals & Packings',
+        title: 'VP of Sales and Marketing',
+      },
+    ],
+    description:
+      "Underestimate Tauriel servant pierce tower pulled shells rotten breach weren't. ",
+  },
 ];
 
 const Page = () => {
