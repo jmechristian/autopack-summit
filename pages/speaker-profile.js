@@ -35,7 +35,7 @@ const speakerProfile = () => {
               <ExclamationTriangleIcon className='w-6 h-6 stroke-slate-700' />
             </div>
             <div className='text-slate-700 font-medium text-sm'>
-              Changes to your profile can be made up to AUGUST 15th, 2023.
+              Changes to your profile can be made up to September 30, 2024.
             </div>
           </div>
         </div>
