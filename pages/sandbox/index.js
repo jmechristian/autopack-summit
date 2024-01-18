@@ -175,7 +175,7 @@ const Page = ({ homepageData, speakers }) => {
         </motion.div>
       </div>
       <RibbonLogos />
-      <div className='w-full grid lg:grid-cols-2 gap-6 max-w-7xl mx-auto py-16 h-full overflow-hidden'>
+      <div className='w-full grid lg:grid-cols-2 gap-6 max-w-7xl mx-auto pt-16 pb-20 h-full overflow-hidden'>
         <div className='w-full h-full rounded-2xl bg-amber-400 aspect-square'>
           <div className='p-9 flex-1 h-full flex flex-col justify-between'>
             <div className='font-bold text-4xl max-w-lg tracking-tight leading-none'>
