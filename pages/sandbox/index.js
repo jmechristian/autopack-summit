@@ -35,9 +35,9 @@ const Page = ({ homepageData, speakers }) => {
   const [isPlaying, setIsPlaying] = useState(false);
 
   return (
-    <div className='w-full h-full flex flex-col'>
+    <div className='w-full h-full'>
       <HeaderPadding />
-      <div className='w-full grid lg:grid-cols-2 gap-20 py-24 max-w-7xl mx-auto relative overflow-hidden'>
+      <div className='w-full grid lg:grid-cols-2 pt-20 pb-6 max-w-7xl mx-auto relative overflow-hidden'>
         <div className='flex flex-col justify-between'>
           <div className='flex flex-col gap-6 max-w-xl'>
             <div>
@@ -175,7 +175,7 @@ const Page = ({ homepageData, speakers }) => {
         </motion.div>
       </div>
       <RibbonLogos />
-      <div className='w-full grid lg:grid-cols-2 gap-6 max-w-7xl mx-auto py-24 mb-12 overflow-hidden'>
+      <div className='w-full grid lg:grid-cols-2 gap-6 max-w-7xl mx-auto py-16 h-full overflow-hidden'>
         <div className='w-full h-full rounded-2xl bg-amber-400 aspect-square'>
           <div className='p-9 flex-1 h-full flex flex-col justify-between'>
             <div className='font-bold text-4xl max-w-lg tracking-tight leading-none'>
@@ -238,7 +238,7 @@ const Page = ({ homepageData, speakers }) => {
               </div>
             )}
           </div>
-          <div className='grid grid-cols-2 gap-6 w-full'>
+          <div className='grid grid-cols-2 gap-6 w-full h-full overflow-hidden'>
             <div
               className='w-full h-full bg-white border-4 border-black rounded-2xl relative flex items-center bg-cover bg-center'
               style={{
