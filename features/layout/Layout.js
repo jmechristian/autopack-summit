@@ -41,10 +41,10 @@ const Layout = ({ client, children }) => {
             animate={{ y: 0 }}
             transition={{ delay: 1.5, ease: 'easeInOut', duration: 1 }}
           >
-            <motion.div className='font-medium text-ap-yellow text-xl leading-none uppercase font-oswald'>
+            <motion.div className='font-medium text-ap-yellow text-lg leading-none uppercase font-oswald'>
               Oct 21-23, 2024
             </motion.div>
-            <motion.div className='text-white/80 xl:text-xl font-oswald'>
+            <motion.div className='text-white/80 text-lg font-oswald'>
               Hyatt Regency, Greenville SC
             </motion.div>
           </motion.div>

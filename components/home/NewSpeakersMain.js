@@ -35,7 +35,7 @@ const NewSpeakersMain = ({ headline, subheadline, text, speakers }) => {
         </p>
       </div>
       <div
-        className='grid grid-flow-col lg:grid-cols-3 xl:grid-cols-4 lg:grid-flow-dense overflow-scroll px-8 md:px-16 lg:px-20 gap-x-5 lg:gap-y-12 lg:gap-x-16 max-w-7xl lg:mx-auto'
+        className='grid grid-flow-col lg:grid-cols-3 xl:grid-cols-4 lg:grid-flow-dense overflow-scroll lg:overflow-hidden px-8 md:px-16 lg:px-20 gap-x-5 lg:gap-y-12 lg:gap-x-16 max-w-7xl lg:mx-auto'
         id='scrollers'
       >
         {speakers &&
