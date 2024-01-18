@@ -36,7 +36,9 @@ const Header = ({ openMenu }) => {
 
   const menuVariants = {
     show: {
-      backgroundColor: showMenu ? 'rgba(0, 88, 146, 1)' : 'rgba(0, 88, 146, 0)',
+      backgroundColor: showMenu
+        ? 'rgba(0, 88, 146, 1)'
+        : 'rgba(255, 255, 255, 1)',
       boxShadow:
         '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
       transition: {
@@ -45,7 +47,9 @@ const Header = ({ openMenu }) => {
       },
     },
     hidden: {
-      backgroundColor: showMenu ? 'rgba(0, 88, 146, 1)' : 'rgba(0, 88, 146, 0)',
+      backgroundColor: showMenu
+        ? 'rgba(0, 88, 146, 1)'
+        : 'rgba(255, 255, 255, 1)',
       transition: {
         duration: 0.2,
         ease: 'easeInOut',

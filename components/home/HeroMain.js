@@ -6,7 +6,6 @@ import HeroText from './HeroText';
 const HeroMain = ({ headline, subheadline, text, location, date, logos }) => {
   return (
     <>
-      <div className='h-24 bg-white w-full'></div>
       <div
         className='w-full flex flex-col justify-center items-center h-[90vh] md:h-[85vh] lg:h-[96vh] xl:h-[96vh] bg-slate-800 relative overflow-hidden bg-[70%]'
         style={{
