@@ -101,6 +101,12 @@ const PowerConsole = () => {
                   color={'bg-ap-blue'}
                   hoverColor={'hover:bg-amber-400'}
                   icon={<MdAirplanemodeActive color='black' size={'20px'} />}
+                  fn={() =>
+                    window.open(
+                      'https://www.hyatt.com/en-US/group-booking/GSPRG/G-PAC4',
+                      '_blank'
+                    )
+                  }
                 />
               </motion.div>
             </motion.div>

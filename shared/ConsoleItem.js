@@ -1,9 +1,10 @@
 import React from 'react';
 
-const ConsoleItem = ({ icon, title, color, hoverColor, iconBack }) => {
+const ConsoleItem = ({ icon, title, color, hoverColor, iconBack, fn }) => {
   return (
     <div
       className={`w-full h-full ${color} ${hoverColor} group transition-colors ease-in px-3 py-3 flex items-center rounded-xl`}
+      onClick={() => fn()}
     >
       <div className='flex gap-3 items-center cursor-pointer'>
         <div
