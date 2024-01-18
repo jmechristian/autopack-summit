@@ -33,8 +33,8 @@ const Layout = ({ client, children }) => {
   return (
     <div>
       <CookieConsent />
-      <motion.div className='relative w-full h-28 lg:h-16'>
-        <motion.div className='fixed z-50 w-full h-28 lg:h-16'>
+      <motion.div className='relative w-full h-28 lg:h-12'>
+        <motion.div className='fixed z-50 w-full h-28 lg:h-12'>
           <motion.div
             className='flex flex-col lg:flex-row gap-1 h-full bg-black leading-none justify-center items-center w-full py-4'
             initial={{ y: '-100px' }}
