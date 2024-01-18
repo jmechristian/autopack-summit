@@ -9,6 +9,7 @@ const initialState = {
   registrationOpen: false,
   selectedSpeaker: null,
   formSubmissionText: 'Your submission has been sent.',
+  powerOpen: false,
 };
 
 export const layoutSlice = createSlice({
@@ -48,6 +49,12 @@ export const layoutSlice = createSlice({
     setThankYouMessage: (state, action) => {
       state.formSubmissionText = action.payload;
     },
+    openPowerConsole: (state) => {
+      state.powerOpen = true;
+    },
+    closePowerConsole: (state) => {
+      state.powerOpen = false;
+    },
   },
 });
 
@@ -62,6 +69,8 @@ export const {
   openSponsorForm,
   toggleRegistrationModal,
   setSpeaker,
+  openPowerConsole,
+  closePowerConsole,
 } = layoutSlice.actions;
 
 export default layoutSlice.reducer;

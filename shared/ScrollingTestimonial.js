@@ -4,7 +4,7 @@ const ScrollingTestimonials = () => {
   return (
     <div className='bg-white py-12'>
       <div className='mb-8 px-4'>
-        <h2 className='mx-4 mb-2 text-center text-lg font-oswald uppercase font-medium text-neutral-900 md:text-3xl'>
+        <h2 className='mx-4 mb-2 text-center text-lg font-oswald uppercase font-medium text-neutral-900 md:text-4xl'>
           This needs to be a better headline
         </h2>
         <p className='text-center mt-2 max-w-lg mx-auto'>

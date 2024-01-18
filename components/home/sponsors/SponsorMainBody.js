@@ -28,13 +28,13 @@ const SponsorMainBody = ({ sponsors }) => {
   };
 
   return (
-    <div className='default_wrapper'>
+    <div className='max-w-7xl mx-auto py-20'>
       <motion.div
         className='flex flex-col gap-12 md:gap-16 lg:gap-24'
-        variants={sponsorVariants}
-        initial='hide'
-        animate={sponsorInView ? 'show' : 'hide'}
-        ref={sponsorBodyRef}
+        // variants={sponsorVariants}
+        // initial='hide'
+        // animate={sponsorInView ? 'show' : 'hide'}
+        // ref={sponsorBodyRef}
       >
         <PlatinumSponsorBlock platinum={filterSponsors('platinum')} />
         <GoldSponsorBlock gold={filterSponsors('gold')} />

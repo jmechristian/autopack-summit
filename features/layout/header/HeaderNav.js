@@ -3,7 +3,7 @@ import { navMenu } from '../../../data/navigation';
 import { useDispatch } from 'react-redux';
 import { toggleRegistrationModal } from '../layoutSlice';
 
-const HeaderNav = () => {
+const HeaderNav = ({ show }) => {
   const menuLinks = navMenu.slice(0, 4);
   const dispatch = useDispatch();
 
@@ -11,7 +11,10 @@ const HeaderNav = () => {
     <div className='flex gap-8 justify-between items-center'>
       <div className='flex gap-6'>
         {menuLinks.map((item, i) => (
-          <div className='text-white font-medium' key={item.name}>
+          <div
+            className={`${show ? 'text-white' : 'text-black'} font-bold`}
+            key={item.name}
+          >
             <a href={item.link}>{item.name}</a>
           </div>
         ))}

@@ -1,34 +1,12 @@
 import { motion } from 'framer-motion';
-import {
-  SiNike,
-  Si3M,
-  SiAbstract,
-  SiAdobe,
-  SiAirtable,
-  SiAmazon,
-  SiBox,
-  SiBytedance,
-  SiChase,
-  SiCloudbees,
-  SiBurton,
-  SiBmw,
-  SiHeroku,
-  SiBuildkite,
-  SiCouchbase,
-  SiDailymotion,
-  SiDeliveroo,
-  SiEpicgames,
-  SiGenius,
-  SiGodaddy,
-} from 'react-icons/si';
 
 const RibbonLogos = () => {
   return (
     <section className='py-36 overflow-hidden'>
       <h2 className='mx-4 mb-12 text-center text-lg font-oswald uppercase font-medium text-neutral-900 md:text-3xl'>
-        Subject Matter Experts From:
+        Featuring Subject-Matter Experts From:
       </h2>
-      <div className='flex translate-y-[50%] rotate-[7deg] scale-110 overflow-hidden border-y-4 border-neutral-900 bg-neutral-50'>
+      <div className='flex overflow-hidden border-y-4 border-neutral-900 bg-white'>
         <TranslateWrapper>
           <LogoItemsTop />
         </TranslateWrapper>
@@ -39,7 +17,8 @@ const RibbonLogos = () => {
           <LogoItemsTop />
         </TranslateWrapper>
       </div>
-      <div className='flex -translate-y-[50%] -rotate-[7deg] scale-110 overflow-hidden border-y-4 border-neutral-900 bg-neutral-50'>
+      <div className='h-6'></div>
+      <div className='flex overflow-hidden border-y-4 border-neutral-900 bg-white'>
         <TranslateWrapper reverse>
           <LogoItemsBottom />
         </TranslateWrapper>
@@ -67,15 +46,18 @@ const TranslateWrapper = ({ children, reverse }) => {
   );
 };
 
-const LogoItem = ({ Icon, name }) => {
+const LogoItem = ({ image, name, link }) => {
   return (
     <a
-      href='/'
+      href={link}
       rel='nofollow'
       target='_blank'
-      className='flex items-center justify-center gap-4 px-4 py-4 text-black transition-colors hover:bg-neutral-200 md:py-6'
+      className='flex items-center justify-center gap-3 px-4 py-4 text-black transition-colors hover:bg-neutral-200 md:py-6'
     >
-      <Icon className='text-3xl md:text-4xl' />
+      <div
+        className='w-16 h-full bg-contain bg-center bg-no-repeat'
+        style={{ backgroundImage: `url(${image})` }}
+      ></div>
       <span className='whitespace-nowrap text-2xl font-semibold uppercase md:text-3xl'>
         {name}
       </span>
@@ -85,31 +67,63 @@ const LogoItem = ({ Icon, name }) => {
 
 const LogoItemsTop = () => (
   <>
-    <LogoItem Icon={SiNike} name='Nike' />
-    <LogoItem Icon={Si3M} name='3M' />
-    <LogoItem Icon={SiAbstract} name='Abstract' />
-    <LogoItem Icon={SiAdobe} name='Adobe' />
-    <LogoItem Icon={SiAirtable} name='Airtable' />
-    <LogoItem Icon={SiAmazon} name='Amazon' />
-    <LogoItem Icon={SiBox} name='Box' />
-    <LogoItem Icon={SiBytedance} name='Bytedance' />
-    <LogoItem Icon={SiChase} name='Chase' />
-    <LogoItem Icon={SiCloudbees} name='Cloudebees' />
+    <LogoItem
+      image={'https://packschool.s3.amazonaws.com/magna.png'}
+      name='Magna Mirrors'
+      link={'https://www.magna.com/'}
+    />
+    <LogoItem
+      image={'https://packschool.s3.amazonaws.com/plastic-0.png'}
+      name='Plastic Omnium'
+      link={'https://www.plasticomnium.com/en/'}
+    />
+    <LogoItem
+      image={'https://packschool.s3.amazonaws.com/trienda.png'}
+      name='TriEnda'
+      link={'https://www.trienda.com/'}
+    />
+    <LogoItem
+      image={'https://packschool.s3.amazonaws.com/gm.png'}
+      name='GM'
+      link={'https://www.gm.com/'}
+    />
+    <LogoItem
+      image={'https://packschool.s3.amazonaws.com/SURGERE_Logo.png'}
+      name='Surgere'
+      link={'https://surgere.com/'}
+    />
   </>
 );
 
 const LogoItemsBottom = () => (
   <>
-    <LogoItem Icon={SiBmw} name='BMW' />
-    <LogoItem Icon={SiBurton} name='Burton' />
-    <LogoItem Icon={SiBuildkite} name='Buildkite' />
-    <LogoItem Icon={SiCouchbase} name='Couchbase' />
-    <LogoItem Icon={SiDailymotion} name='Dailymotion' />
-    <LogoItem Icon={SiDeliveroo} name='deliveroo' />
-    <LogoItem Icon={SiEpicgames} name='Epic Games' />
-    <LogoItem Icon={SiGenius} name='Genius' />
-    <LogoItem Icon={SiGodaddy} name='GoDaddy' />
-    <LogoItem Icon={SiHeroku} name='Heroku' />
+    <LogoItem
+      image={
+        'https://packschool.s3.amazonaws.com/bmw-logo-logo-png-transparent.png'
+      }
+      name='BMW'
+      link={'https://www.bmwgroup.com/en.html'}
+    />
+    <LogoItem
+      image={'https://packschool.s3.amazonaws.com/nissan-new.jpeg'}
+      name='Nissan'
+      link='https://www.nissanusa.com/'
+    />
+    <LogoItem
+      image={'https://packschool.s3.amazonaws.com/bosch+icon.png'}
+      name='Bosch'
+      link={'https://www.boschautoparts.com/'}
+    />
+    <LogoItem
+      image={'https://packschool.s3.amazonaws.com/Volvo-Iron-Mark-Black.png'}
+      name='Volvo'
+      link={'https://www.volvocars.com/us/'}
+    />
+    <LogoItem
+      image={'https://packschool.s3.amazonaws.com/Lear_Corporation_logo.png'}
+      name='Lear Corp.'
+      link={'https://www.lear.com/'}
+    />
   </>
 );
 

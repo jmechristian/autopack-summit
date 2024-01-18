@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { createClient } from 'next-sanity';
+import { useRouter } from 'next/router';
+import { AnimatePresence, motion } from 'framer-motion';
 import HeaderPadding from '../../shared/HeaderPadding';
-import LogoHero from '../../shared/LogoHero';
+import SpeakersMain from '../../components/home/SpeakersMain';
+import SponsorsMain from '../../components/home/sponsors/SponsorsMain';
 import RibbonLogos from '../../shared/RibbonLogos';
 import PingIcon from '../../shared/PingIcon';
 import {
@@ -11,8 +15,25 @@ import {
   MdMapsUgc,
 } from 'react-icons/md';
 import ScrollingTestimonials from '../../shared/ScrollingTestimonial';
+import { Reveal } from '../../shared/Reveal';
+import { useDispatch } from 'react-redux';
+import {
+  openPowerConsole,
+  closePowerConsole,
+  openSponsorForm,
+} from '../../features/layout/layoutSlice';
+import { useSelector } from 'react-redux';
+import { PowerIcon } from '@heroicons/react/24/solid';
+import NewSpeakersMain from '../../components/home/NewSpeakersMain';
+import NewSponsorsMain from '../../components/home/NewSponsorsMain';
+import VideoPlayer from '../../shared/VideoPlayer';
 
-const Page = () => {
+const Page = ({ homepageData, speakers }) => {
+  const dispatch = useDispatch();
+  const { powerOpen } = useSelector((state) => state.layout);
+  const router = useRouter();
+  const [isPlaying, setIsPlaying] = useState(false);
+
   return (
     <div className='w-full h-full flex flex-col'>
       <HeaderPadding />
@@ -20,91 +41,138 @@ const Page = () => {
         <div className='flex flex-col justify-between'>
           <div className='flex flex-col gap-6 max-w-xl'>
             <div>
-              <h1 className='font-medium text-6xl tracking-tight font-oswald uppercase'>
-                The premier open forum for{' '}
-                <span className='text-ap-darkblue'>
-                  Automotive Packaging Professionals
-                </span>
-              </h1>
+              <Reveal delay={0} bgColor={'white'}>
+                <h1 className='font-medium text-6xl tracking-tight font-oswald uppercase'>
+                  The premier open forum for{' '}
+                  <span className='text-ap-darkblue'>
+                    Automotive Packaging Professionals
+                  </span>
+                </h1>
+              </Reveal>
             </div>
-            <div className='text-xl'>
-              Discover cutting-edge solutions at the Automotive Packaging
-              Summit, where industry veterans and packaging experts unite to
-              tackle the unique challenges in OEM and Tier1 part supplier
-              logistics.
-            </div>
-            <button className='bg-ap-yellow w-fit text-white text-base md:text-lg font-medium px-8 py-2 shadow-[3px_3px_0_black] hover:shadow-[1px_1px_0_black] hover:translate-x-[3px] hover:translate-y-[3px] transition-all'>
-              Registration Opens Soon!
-            </button>
+            <Reveal delay={0.25} bgColor={'white'}>
+              <div className='text-xl'>
+                Discover cutting-edge solutions at the Automotive Packaging
+                Summit, where industry veterans and packaging experts unite to
+                tackle the unique challenges in OEM and Tier1 part supplier
+                logistics.
+              </div>
+            </Reveal>
+            <Reveal delay={0.45} bgColor={'white'}>
+              <motion.button className='bg-ap-yellow w-fit text-white text-base md:text-lg font-medium px-8 py-2 shadow-[3px_3px_0_black] hover:shadow-[1px_1px_0_black] hover:translate-x-[3px] hover:translate-y-[3px] transition-all'>
+                Registration Opens Soon!
+              </motion.button>
+            </Reveal>
           </div>
-          <div className='flex gap-3'>
-            <div className='text-5xl font-medium text-ap-blue font-oswald tracking-tight'>
-              OCT 21-23, 2024
+          <Reveal delay={0.55} bgColor={'white'}>
+            <div className='flex gap-3'>
+              <div className='text-5xl font-medium text-ap-blue font-oswald tracking-tight'>
+                OCT 21-23, 2024
+              </div>
+              <div className='flex flex-col font-medium'>
+                <div>Hyatt Regency</div>
+                <div>Greenville, SC</div>
+              </div>
             </div>
-            <div className='flex flex-col font-medium'>
-              <div>Hyatt Regency</div>
-              <div>Greenville, SC</div>
-            </div>
-          </div>
+          </Reveal>
         </div>
-        <div className='w-full flex justify-center items-center'>
-          <div className='grid grid-cols-3 overflow-hidden gap-3 w-full h-full'>
-            <div className='aspect-square rounded-full'>
+        <motion.div className='w-full flex justify-center items-center'>
+          <motion.div className='grid grid-cols-3 overflow-hidden gap-3 w-full h-full'>
+            <motion.div
+              className='aspect-square rounded-full'
+              animate={{ opacity: 1 }}
+              initial={{ opacity: 0 }}
+              transition={{ delay: 1.6, ease: 'easeInOut', duration: 0.75 }}
+              onClick={() =>
+                dispatch(powerOpen ? closePowerConsole() : openPowerConsole())
+              }
+            >
               <PingIcon />
-            </div>
-            <div
+            </motion.div>
+            <motion.div
               className='bg-neutral-600 aspect-square rounded-full bg-cover bg-center'
+              animate={{ opacity: 1 }}
+              initial={{ opacity: 0 }}
+              transition={{ delay: 1.4, ease: 'easeInOut', duration: 0.75 }}
               style={{
                 backgroundImage: `url('https://packschool.s3.amazonaws.com/circle.png')`,
               }}
-            ></div>
-            <div
+            ></motion.div>
+            <motion.div
               className='bg-neutral-600 aspect-square rounded-bl-[50%] bg-cover bg-center'
+              animate={{ opacity: 1 }}
+              initial={{ opacity: 0 }}
+              transition={{ delay: 1.2, ease: 'easeInOut', duration: 0.75 }}
               style={{
                 backgroundImage: `url('https://packschool.s3.amazonaws.com/tour.png')`,
               }}
-            ></div>
-            <div className='border-black border-dashed border-4 aspect-square rounded-bl-[50%] flex flex-col gap-0.5 justify-center items-center'>
-              <div className='text-4xl text-ap-blue font-oswald font-medium tracking-tighter -mt-5'>
+            ></motion.div>
+            <motion.div
+              className='border-black border-dashed border-4 aspect-square rounded-bl-[50%] flex flex-col gap-0.5 justify-center items-center'
+              animate={{ opacity: 1 }}
+              initial={{ opacity: 0 }}
+              transition={{ delay: 1, ease: 'easeInOut', duration: 0.75 }}
+            >
+              <motion.div className='text-4xl text-ap-blue font-oswald font-medium tracking-tighter -mt-5'>
                 500+
-              </div>
-              <div className='font-bold text-center leading-tight'>
+              </motion.div>
+              <motion.div className='font-bold text-center leading-tight'>
                 Industry
                 <br /> Professionals
-              </div>
-            </div>
-            <div
+              </motion.div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.8, ease: 'easeInOut', duration: 0.75 }}
               className='bg-neutral-600 aspect-square rounded-tr-[50%] bg-cover bg-center'
               style={{
                 backgroundImage: `url('https://packschool.s3.amazonaws.com/group-2.png')`,
               }}
-            ></div>
-            <div
+            ></motion.div>
+            <motion.div
+              animate={{ opacity: 1 }}
+              initial={{ opacity: 0 }}
+              transition={{ delay: 0.6, ease: 'easeInOut', duration: 0.75 }}
               className='bg-neutral-600 aspect-square rounded-full bg-cover bg-center'
               style={{
                 backgroundImage: `url('https://packschool.s3.amazonaws.com/crowd.png')`,
               }}
-            ></div>
-            <div
+            ></motion.div>
+            <motion.div
+              animate={{ opacity: 1 }}
+              initial={{ opacity: 0 }}
+              transition={{ delay: 0.4, ease: 'easeInOut', duration: 0.75 }}
               className='bg-neutral-600 aspect-square rounded-tl-[50%] bg-center bg-cover'
               style={{
                 backgroundImage: `url('https://packschool.s3.amazonaws.com/group.png')`,
               }}
-            ></div>
-            <div
+            ></motion.div>
+            <motion.div
+              animate={{ opacity: 1 }}
+              initial={{ opacity: 0 }}
+              transition={{ delay: 0.2, ease: 'easeInOut', duration: 0.75 }}
               className='bg-neutral-600 aspect-square rounded-bl-[50%] bg-cover bg-center'
               style={{
                 backgroundImage: `url('https://packschool.s3.amazonaws.com/social.png')`,
               }}
-            ></div>
-            <div
+            ></motion.div>
+            <motion.div
+              animate={{ opacity: 1 }}
+              initial={{ opacity: 0 }}
+              transition={{
+                delay: 0,
+                ease: 'easeInOut',
+                ease: 'easeInOut',
+                duration: 0.75,
+              }}
               className='bg-neutral-600 aspect-square rounded-2xl bg-center bg-cover'
               style={{
                 backgroundImage: `url('https://packschool.s3.amazonaws.com/bl.png')`,
               }}
-            ></div>
-          </div>
-        </div>
+            ></motion.div>
+          </motion.div>
+        </motion.div>
       </div>
       <RibbonLogos />
       <div className='w-full grid lg:grid-cols-2 gap-6 max-w-7xl mx-auto py-24 mb-12 overflow-hidden'>
@@ -142,17 +210,33 @@ const Page = () => {
         </div>
         <div className='grid grid-rows-2 w-full h-full gap-6 overflow-hidden'>
           <div
-            className='w-full rounded-2xl bg-neutral-200 bg-cover bg-center flex items-center justify-center relative'
+            className='w-full rounded-2xl bg-neutral-200 bg-cover bg-center flex items-center justify-center relative overflow-hidden'
             style={{
               backgroundImage: `url('https://packschool.s3.amazonaws.com/recap.png')`,
             }}
           >
-            <button className='bg-white/50 backdrop-blur w-28 h-28 rounded-full text-white text-base md:text-lg font-medium shadow-[3px_3px_0_black] hover:shadow-[1px_1px_0_black] hover:translate-x-[3px] hover:translate-y-[3px] transition-all flex justify-center items-center'>
-              <MdPlayArrow color='white' size={'75px'} />
-            </button>
-            <div className='absolute bottom-4 left-4 w-fit px-4 py-2 rounded-2xl shadow-xl bg-black/40 backdrop-blur text-white font-oswald font-medium uppercase'>
-              2023 Highlights
-            </div>
+            {isPlaying ? (
+              <div className='w-full h-full bg-black'>
+                <VideoPlayer
+                  videoEmbedLink={
+                    'https://www.youtube.com/embed/I-puWhkokn0?si=nEB0ZJr4Vz5l-3OA'
+                  }
+                  playing={true}
+                />
+              </div>
+            ) : (
+              <button
+                className='bg-white/50 backdrop-blur w-28 h-28 rounded-full text-white text-base md:text-lg font-medium shadow-[3px_3px_0_black] hover:shadow-[1px_1px_0_black] hover:translate-x-[3px] hover:translate-y-[3px] transition-all flex justify-center items-center'
+                onClick={() => setIsPlaying(true)}
+              >
+                <MdPlayArrow color='white' size={'75px'} />
+              </button>
+            )}
+            {!isPlaying && (
+              <div className='absolute bottom-4 left-4 w-fit px-4 py-2 rounded-2xl shadow-xl bg-black/40 backdrop-blur text-white font-oswald font-medium uppercase'>
+                2023 Highlights
+              </div>
+            )}
           </div>
           <div className='grid grid-cols-2 gap-6 w-full'>
             <div
@@ -162,16 +246,24 @@ const Page = () => {
               }}
             >
               <div className='absolute bottom-4 left-4 w-fit px-4 py-2 rounded-2xl shadow-xl bg-black/40 backdrop-blur text-white font-oswald font-medium uppercase'>
-                From Your Peers
+                What Makes APS Unique?
               </div>
             </div>
             <div className='w-full h-full bg-neutral-300 rounded-2xl'>
               <div className='flex flex-col justify-between p-6 h-full'>
-                <div className='font-medium font-oswald uppercase text-4xl tracking-tight text-neutral-900'>
-                  Get Involved
+                <div className='flex gap-2 items-center'>
+                  <div>
+                    <PowerIcon className='w-10 h-10 stroke-neutral-900' />
+                  </div>
+                  <div className='font-medium font-oswald uppercase text-4xl tracking-tight text-neutral-900'>
+                    Get Involved
+                  </div>
                 </div>
                 <div className='flex flex-col gap-3 text-white'>
-                  <div className='flex gap-2 items-center'>
+                  <div
+                    className='flex gap-2 items-center cursor-pointer'
+                    onClick={() => router.push('/speaker-interest')}
+                  >
                     <div className='w-9 h-9 rounded-full bg-ap-yellow flex items-center justify-center'>
                       <MdMapsUgc color='white' size={'20px'} />
                     </div>
@@ -179,7 +271,10 @@ const Page = () => {
                       I'd like to Speak
                     </div>
                   </div>
-                  <div className='flex gap-2 items-center'>
+                  <div
+                    className='flex gap-2 items-center cursor-pointer'
+                    onClick={() => dispatch(openSponsorForm())}
+                  >
                     <div className='w-9 h-9 rounded-full bg-ap-yellow flex items-center justify-center'>
                       <MdCelebration color='white' size={'20px'} />
                     </div>
@@ -195,17 +290,44 @@ const Page = () => {
       </div>
       <ScrollingTestimonials />
       <div className='py-24 mt-12 max-w-7xl mx-auto w-full'>
-        <div className='bg-neutral-200 w-full h-[800px] rounded-2xl flex justify-center items-center'>
-          Speakers
-        </div>
+        <NewSpeakersMain
+          headline={homepageData[0].speakersHeadline}
+          subheadline={homepageData[0].speakersSubheadline}
+          text={homepageData[0].speakersBodyContent}
+          speakers={speakers}
+        />
       </div>
-      <div className='py-24 mt-12 max-w-7xl mx-auto w-full'>
-        <div className='bg-neutral-200 w-full h-[800px] rounded-2xl flex justify-center items-center'>
-          Sponsors
-        </div>
+      <div className='py-24 max-w-7xl mx-auto w-full'>
+        <NewSponsorsMain sponsors={homepageData[0].sponsorList} />
       </div>
     </div>
   );
 };
 
 export default Page;
+
+const client = createClient({
+  projectId: 'h72r2zbr',
+  dataset: 'aps',
+  apiVersion: '2022-11-20',
+  useCdn: true,
+});
+
+export async function getStaticProps() {
+  const homepageData = await client.fetch(`*[_type == "homepage"]{
+    ..., speakers[]->, "sponsorList": *[_type == "sponsor"]{
+      logo { asset-> { url }}, name, teir, website
+    }
+  }`);
+
+  const speakers = await client.fetch(`*[_type == "speaker"] {
+    ..., companyLogo { asset-> {url}}, profilePic { asset-> {url}}, speakerSessions[]->{ name, location, session_start, session_end, date, linkedin}
+  }`);
+
+  return {
+    props: {
+      homepageData,
+      speakers,
+    },
+  };
+}

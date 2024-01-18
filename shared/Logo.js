@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 
-const Logo = () => {
+const Logo = ({ show }) => {
   const router = useRouter();
 
   return (
@@ -9,7 +9,7 @@ const Logo = () => {
       version='1.1'
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 0 105.6 27.7'
-      className='w-full h-auto fill-white'
+      className={show ? 'fill-white' : 'fill-ap-darkblue'}
       onClick={() => router.push('/')}
     >
       <g>

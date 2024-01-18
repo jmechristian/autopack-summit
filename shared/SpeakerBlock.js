@@ -16,7 +16,7 @@ const SpeakerBlock = ({
 
   return (
     <div
-      className='w-full h-full shadow-md rounded-full bg-ap-blue cursor-pointer relative'
+      className='w-full h-full shadow-md rounded-full bg-ap-yellow cursor-pointer relative'
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
     >
@@ -41,12 +41,12 @@ const SpeakerBlock = ({
         ></div>
         <div className='flex flex-col mt-3 w-full'>
           <motion.div
-            className='font-bold font-oswald uppercase text-ap-darkblue text-xl bg-white px-2 py-1 w-fit'
+            className='font-bold font-oswald uppercase text-white text-xl bg-black px-2 py-1 w-fit'
             animate={isHover ? { scale: 1.1 } : { scale: 1 }}
           >
             {name}
           </motion.div>
-          <div className='flex flex-col mt-1 ml-3 w-full px-3 py-1 text-white'>
+          <div className='flex flex-col mt-1 ml-3 w-full py-1 text-neutral-900'>
             <div className='text-sm'>{title}</div>
             <div className='text-sm font-bold'>{company}</div>
           </div>
