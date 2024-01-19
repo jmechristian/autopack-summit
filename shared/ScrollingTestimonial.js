@@ -1,8 +1,14 @@
-import { useState }
-import { PlayIcon } from '@heroicons/react/24/solid';
+import { useState } from 'react';
+import { PlayIcon, ArrowLeftCircleIcon } from '@heroicons/react/24/solid';
 import { motion } from 'framer-motion';
 
+import Logo from './Logo';
+import VideoPlayer from './VideoPlayer';
+
 const ScrollingTestimonials = ({ testimonials }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isSelectedVid, setIsSelectedVid] = useState('');
+
   return (
     <div className='bg-white pt-24 pb-6 relative'>
       {isOpen && (
@@ -10,7 +16,7 @@ const ScrollingTestimonials = ({ testimonials }) => {
           <div className='w-full max-h-[100vh] max-w-2xl lg:max-w-7xl bg-ap-blue rounded-2xl pt-3  lg:px-6 pb-6 flex flex-col'>
             <div className='flex justify-between w-full h-full items-center pb-3 lg:pb-6 lg:pt-3 px-3'>
               <div className='lg:w-48 w-36'>
-                <Logo />
+                <Logo show={true} />
               </div>
               <div
                 className='bg-ap-yellow rounded-xl lg:text-lg md:px-3 md:py-2 cursor-pointer text-white font-bold flex items-center gap-1'
@@ -19,7 +25,7 @@ const ScrollingTestimonials = ({ testimonials }) => {
                 <div>
                   <ArrowLeftCircleIcon className='md:w-5 md:h-5 w-7 h-7 fill-white' />
                 </div>
-                <div className='hidden md:block'>Back to Library</div>
+                <div className='hidden md:block'>Back</div>
               </div>
             </div>
             <div className='w-full h-auto aspect-video bg-ap-blue'>
@@ -28,29 +34,62 @@ const ScrollingTestimonials = ({ testimonials }) => {
           </div>
         </div>
       )}
-      <div className='mb-8 px-4'>
-        <h2 className='mx-4 mb-2 text-center text-lg font-oswald uppercase font-medium text-neutral-900 md:text-4xl'>
-          This needs to be a better headline
+      <div className='mb-12 px-4'>
+        <h2 className='mx-4 mb-4 text-center text-lg font-oswald uppercase font-medium text-neutral-900 md:text-4xl'>
+          Streamling Solutions
         </h2>
-        <p className='text-center mt-2 max-w-lg mx-auto'>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus
-          consequatur reprehenderit.
+        <p className='text-center mt-2 text-lg max-w-2xl mx-auto'>
+          Listen to what your peers have to say on the value of Automotive
+          Packaging Summit for your organization, now, and in the years to come.
         </p>
       </div>
       <div className='p-4 overflow-x-hidden relative'>
         <div className='absolute top-0 bottom-0 left-0 w-24 z-10 bg-gradient-to-r from-white to-transparent' />
 
         <div className='flex items-center mb-4'>
-          <TestimonialList list={testimonials} duration={125} />
-          <TestimonialList list={testimonials} duration={125} />
-          <TestimonialList list={testimonials} duration={125} />
+          <TestimonialList
+            list={testimonials}
+            duration={125}
+            fn={() => setIsOpen(true)}
+            setSelected={(val) => setIsSelectedVid(val)}
+          />
+          <TestimonialList
+            list={testimonials}
+            duration={125}
+            fn={() => setIsOpen(true)}
+            setSelected={(val) => setIsSelectedVid(val)}
+          />
+          <TestimonialList
+            list={testimonials}
+            duration={125}
+            fn={() => setIsOpen(true)}
+            setSelected={(val) => setIsSelectedVid(val)}
+          />
         </div>
-        {/* <div className='flex items-center mb-4'>
-          <TestimonialList list={testimonials.middle} duration={75} reverse />
-          <TestimonialList list={testimonials.middle} duration={75} reverse />
-          <TestimonialList list={testimonials.middle} duration={75} reverse />
+        <div className='flex items-center mb-4'>
+          <TestimonialList
+            list={testimonials}
+            duration={75}
+            reverse
+            fn={() => setIsOpen(true)}
+            setSelected={(val) => setIsSelectedVid(val)}
+          />
+          <TestimonialList
+            list={testimonials}
+            duration={75}
+            reverse
+            fn={() => setIsOpen(true)}
+            setSelected={(val) => setIsSelectedVid(val)}
+          />
+          <TestimonialList
+            list={testimonials}
+            duration={75}
+            reverse
+            fn={() => setIsOpen(true)}
+            setSelected={(val) => setIsSelectedVid(val)}
+          />
         </div>
-        <div className='flex items-center'>
+        {/* <div className='flex items-center'>
           <TestimonialList list={testimonials.bottom} duration={275} />
           <TestimonialList list={testimonials.bottom} duration={275} />
           <TestimonialList list={testimonials.bottom} duration={275} />
@@ -62,7 +101,13 @@ const ScrollingTestimonials = ({ testimonials }) => {
   );
 };
 
-const TestimonialList = ({ list, reverse = false, duration = 50 }) => {
+const TestimonialList = ({
+  list,
+  reverse = false,
+  duration = 50,
+  fn,
+  setSelected,
+}) => {
   return (
     <motion.div
       initial={{ translateX: reverse ? '-100%' : '0%' }}
@@ -90,7 +135,13 @@ const TestimonialList = ({ list, reverse = false, duration = 50 }) => {
                     {t.title}, {t.company}
                   </span>
                 </div>
-                <div className='w-10 h-10 transition-all ease-in rounded-full bg-amber-300 group-hover:bg-neutral-900 flex items-center justify-center cursor-pointer'>
+                <div
+                  className='w-10 h-10 transition-all ease-in rounded-full bg-amber-300 group-hover:bg-neutral-900 flex items-center justify-center cursor-pointer'
+                  onClick={() => {
+                    setSelected(t.video);
+                    fn();
+                  }}
+                >
                   <div>
                     <PlayIcon className='w-6 h-6 fill-white group-hover:fill-ap-yellow' />
                   </div>
