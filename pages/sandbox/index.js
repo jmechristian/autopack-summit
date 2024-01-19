@@ -223,7 +223,7 @@ const Page = ({ homepageData, speakers, testimonials }) => {
               <div className='w-full h-full bg-black'>
                 <VideoPlayer
                   videoEmbedLink={
-                    'https://www.youtube.com/embed/I-puWhkokn0?si=nEB0ZJr4Vz5l-3OA'
+                    'https://www.youtube.com/embed/6xNwXZt3Wa8?si=ibW3QcLncKjXbp9x'
                   }
                   playing={true}
                 />
@@ -292,7 +292,9 @@ const Page = ({ homepageData, speakers, testimonials }) => {
           </div>
         </div>
       </div>
-      <ScrollingTestimonials />
+      <ScrollingTestimonials
+        testimonials={testimonials.listTestimonials.items}
+      />
       <div className='py-24 mt-12 max-w-7xl mx-auto w-full'>
         <NewSpeakersMain
           headline={homepageData[0].speakersHeadline}
