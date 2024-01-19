@@ -16,9 +16,10 @@ const SpeakerBlock = ({
 
   return (
     <div
-      className='w-full h-full shadow-md rounded-full bg-ap-yellow cursor-pointer relative'
+      className='w-full h-full cursor-pointer relative flex flex-col'
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
+      onClick={() => setIsOpen(true)}
     >
       <SpeakerModal
         open={isOpen}
@@ -31,25 +32,18 @@ const SpeakerBlock = ({
         linkedin={linkedin}
         session={session}
       />
-      <div className='flex flex-col justify-center items-center'>
-        <div
-          className={`w-56 bg-ap-yellow h-56 rounded-full ${
-            isHover ? 'ring-8' : 'ring-4'
-          } ring-ap-yellow bg-cover bg-center`}
-          style={{ backgroundImage: `url(${url})` }}
-          onClick={() => setIsOpen(true)}
-        ></div>
-        <div className='flex flex-col mt-3 w-full'>
-          <motion.div
-            className='font-bold font-oswald uppercase text-white text-xl bg-black px-2 py-1 w-fit'
-            animate={isHover ? { scale: 1.1 } : { scale: 1 }}
-          >
-            {name}
-          </motion.div>
-          <div className='flex flex-col mt-1 ml-3 w-full py-1 text-neutral-900'>
-            <div className='text-sm'>{title}</div>
-            <div className='text-sm font-bold'>{company}</div>
-          </div>
+      <div
+        className='aspect-square w-full h-full bg-neutral-200 bg-cover bg-center grayscale group-hover:grayscale-0 transition-all ease-in'
+        style={{
+          backgroundImage: `url(${url ? url : ''})`,
+        }}
+      ></div>
+      <div className='bg-neutral-900 w-full p-3 flex flex-col'>
+        <div className='text-2xl font-oswald text-white group-hover:text-ap-yellow transition-colors ease-in'>
+          {name}
+        </div>
+        <div className=' text-white group-hover:text-neutral-400 transition-colors ease-in'>
+          {company}
         </div>
       </div>
     </div>
