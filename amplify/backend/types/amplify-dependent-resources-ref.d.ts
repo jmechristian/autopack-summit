@@ -60,5 +60,11 @@ export type AmplifyDependentResourcesAttributes = {
             "LambdaExecutionRole": "string",
             "LambdaExecutionRoleArn": "string"
         }
+    },
+    "storage": {
+        "packmedia": {
+            "BucketName": "string",
+            "Region": "string"
+        }
     }
 }

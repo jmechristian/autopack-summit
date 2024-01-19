@@ -21,6 +21,7 @@ enum ModuleType {
   LOTM
   MICROLESSON
   REGULATORY
+  ARTICLE
 }
 
 enum CategoryType {
@@ -30,6 +31,7 @@ enum CategoryType {
   BUSINESS
   SUPPLYCHAIN
   DESIGN
+  AUTO
 }
 
 enum MediaType {
@@ -100,7 +102,11 @@ type Lesson @model @auth(rules: [{ allow: public }]) {
   actionLink: String
   actionLinkTitle: String
   actionExample: String
-  author: Author @hasOne
+  author: [String]
+  status: String @default(value: "DRAFT")
+  related: [String]
+  featured: String
+  backdate: String
 }
 
 type Author @model @auth(rules: [{ allow: public }]) {
@@ -110,6 +116,7 @@ type Author @model @auth(rules: [{ allow: public }]) {
   linkedIn: String
   title: String
   company: String
+  # lessons: [Lesson] @manyToMany(relationName: "AuthorLessons")
 }
 
 type Blog @model @auth(rules: [{ allow: public }]) {
@@ -212,6 +219,13 @@ type User @model @auth(rules: [{ allow: public }]) {
   source: String
 }
 
+type CMPMSession @model @auth(rules: [{ allow: public }]) {
+  startDate: String!
+  endDate: String! @index(name: "cmpmSessionByEndDate")
+  deadline: String! @index(name: "cmpmSessionByDeadline")
+  title: String!
+}
+
 type CMPMForm
   @model(timestamps: { createdAt: "createdOn", updatedAt: "updatedOn" })
   @auth(rules: [{ allow: public }]) {
@@ -241,6 +255,7 @@ type CMPMForm
   birthYear: String
   optOut: Boolean
   paymentConfirmation: String
+  status: String @default(value: "DRAFT")
 }
 
 type CPSForm
@@ -273,6 +288,7 @@ type CPSForm
   elective: String
   optOut: Boolean
   paymentConfirmation: String
+  status: String @default(value: "DRAFT")
 }
 
 type AppStart
@@ -327,42 +343,6 @@ type Tourist @model @auth(rules: [{ allow: public }]) {
 
 ######### LMS #########
 
-type LMSCirriculum @model @auth(rules: [{ allow: public }]) {
-  id: ID!
-  shorthand: String
-  title: String
-  slug: String
-  description: String
-  Courses: [LMSCourse] @manyToMany(relationName: "CirriculumCourses")
-}
-
-type LMSCourse @model @auth(rules: [{ allow: public }]) {
-  id: ID!
-  courseId: String
-  category: CategoryType @default(value: "MATERIALS")
-  type: String
-  Cirriculum: [LMSCirriculum] @manyToMany(relationName: "CirriculumCourses")
-  Lessons: [LMSLesson] @manyToMany(relationName: "CourseLessons")
-  Instructors: [Instructor] @manyToMany(relationName: "CourseInstructors")
-  price: String
-  hours: String
-  lessons: String
-  videos: String
-  preview: String
-  seoImage: String
-  infoSheet: String
-  title: String
-  subheadline: String
-  what_learned: String
-  objectives: [String]
-  link: String
-  trial_link: String
-  percentComplete: Int
-  slug: String! @index(name: "LMScourseBySlug")
-  collection: [String]
-  demo: Boolean @default(value: "false")
-}
-
 type LMSCollection @model @auth(rules: [{ allow: public }]) {
   id: ID!
   description: String
@@ -381,16 +361,80 @@ type LMSCollection @model @auth(rules: [{ allow: public }]) {
   lmsLink: String
 }
 
+type LMSCirriculum @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  shorthand: String
+  title: String
+  slug: String
+  description: String
+  Courses: [LMSCourse] @manyToMany(relationName: "CirriculumCourses")
+}
+
+type LMSCourse @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  courseId: String
+  category: CategoryType @default(value: "MATERIALS")
+  categoryArray: [String]
+  type: String
+  cirriculum: [LMSCirriculum] @manyToMany(relationName: "CirriculumCourses")
+  lmsLessons: [LMSLesson] @manyToMany(relationName: "CourseLessons")
+  instructors: [Instructor] @manyToMany(relationName: "CourseInstructors")
+  price: String
+  hours: String
+  lessons: String
+  videos: String
+  preview: String
+  seoImage: String
+  infoSheet: String
+  title: String
+  subheadline: String
+  what_learned: String
+  objectives: [String]
+  link: String
+  trial_link: String
+  percentComplete: Int
+  slug: String! @index(name: "LMScourseBySlug")
+  collection: [String]
+  demo: Boolean @default(value: "false")
+  partOf: [String]
+}
+
 type LMSLesson @model @auth(rules: [{ allow: public }]) {
   id: ID!
   title: String
-  Course: [LMSCourse] @manyToMany(relationName: "CourseLessons")
+  course: [LMSCourse] @manyToMany(relationName: "CourseLessons")
+  modules: [LMSModule] @hasMany
   subheadline: String
-  objectives: [Objective] @hasMany
+  objectives: [String]
+  media: String
+  percentComplete: Int
+  content: String
+  slug: String! @index(name: "LMSLessonBySlug")
+}
+
+type LMSModule @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  title: String
+  lesson: LMSLesson @belongsTo
+  subheadline: String
+  objectives: [String]
   mediaType: MediaType
   slides: [Slide] @hasMany
-  video: LessonVideo @hasOne
-  percentComplete: Int
+  media: String
+  quiz: LMSQuiz @hasOne
+  content: String
+  slug: String! @index(name: "LMSModuleBySlug")
+}
+
+type LMSQuiz @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  module: LMSModule @belongsTo
+  prompt: String
+  answer1: String
+  answer2: String
+  answer3: String
+  answer4: String
+  correctAnswer: String
 }
 
 type Student @model @auth(rules: [{ allow: public }]) {
@@ -419,12 +463,12 @@ type Slide @model @auth(rules: [{ allow: public }]) {
   description: String
 }
 
-type LessonVideo @model @auth(rules: [{ allow: public }]) {
-  id: ID!
-  timestamps: [Timestamp] @hasMany
-  lessonId: ID
-  lesson: LMSLesson @belongsTo(fields: ["lessonId"])
-}
+# type LessonVideo @model @auth(rules: [{ allow: public }]) {
+#   id: ID!
+#   timestamps: [Timestamp] @hasMany
+#   lessonId: ID
+#   lesson: LMSLesson @belongsTo(fields: ["lessonId"])
+# }
 
 type Timestamp @model @auth(rules: [{ allow: public }]) {
   id: ID!
@@ -440,4 +484,51 @@ type Staff @model @auth(rules: [{ allow: public }]) {
   title: String!
   image: String!
   linkedIn: String
+}
+
+######### Customer #########
+
+type TrackedCourse @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  courseId: String!
+  clicks: Int!
+  customer: Customer @belongsTo(fields: ["customerId"])
+  customerId: ID! @index(name: "trackedByCustomer", sortKeyFields: ["clicks"])
+}
+
+type Customer @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  displayName: String!
+  link: String
+  logo: String
+  primaryColor: String
+  highlightColor: String
+  courses: [TrackedCourse]
+    @hasMany(indexName: "trackedByCustomer", fields: ["id"])
+}
+
+######### Salesbar #########
+
+type SalesBar @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  text: String!
+  link: String!
+  icon: String @default(value: "BoltIcon")
+}
+
+######### Testimonials #########
+
+type Testimonial @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  content: String!
+  author: String
+  company: String
+  affiliation: String
+  title: String
+  tags: [String]
+  linkedin: String
+  headshot: String
+  featured: Boolean @default(value: "false")
+  date: String
+  video: String
 }

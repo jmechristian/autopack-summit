@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
+import { API } from 'aws-amplify';
+import { listTestimonials } from '../../src/graphql/queries';
 import { createClient } from 'next-sanity';
 import { useRouter } from 'next/router';
 import { AnimatePresence, motion } from 'framer-motion';
-import HeaderPadding from '../../shared/HeaderPadding';
-import SpeakersMain from '../../components/home/SpeakersMain';
-import SponsorsMain from '../../components/home/sponsors/SponsorsMain';
-import RibbonLogos from '../../shared/RibbonLogos';
-import PingIcon from '../../shared/PingIcon';
+
 import {
   MdDiversity3,
   MdPlayArrow,
@@ -14,7 +12,6 @@ import {
   MdCelebration,
   MdMapsUgc,
 } from 'react-icons/md';
-import ScrollingTestimonials from '../../shared/ScrollingTestimonial';
 import { Reveal } from '../../shared/Reveal';
 import { useDispatch } from 'react-redux';
 import {
@@ -24,11 +21,18 @@ import {
 } from '../../features/layout/layoutSlice';
 import { useSelector } from 'react-redux';
 import { PowerIcon } from '@heroicons/react/24/solid';
+
+import ScrollingTestimonials from '../../shared/ScrollingTestimonial';
+import HeaderPadding from '../../shared/HeaderPadding';
+import SpeakersMain from '../../components/home/SpeakersMain';
+import SponsorsMain from '../../components/home/sponsors/SponsorsMain';
+import RibbonLogos from '../../shared/RibbonLogos';
+import PingIcon from '../../shared/PingIcon';
 import NewSpeakersMain from '../../components/home/NewSpeakersMain';
 import NewSponsorsMain from '../../components/home/NewSponsorsMain';
 import VideoPlayer from '../../shared/VideoPlayer';
 
-const Page = ({ homepageData, speakers }) => {
+const Page = ({ homepageData, speakers, testimonials }) => {
   const dispatch = useDispatch();
   const { powerOpen } = useSelector((state) => state.layout);
   const router = useRouter();
@@ -324,10 +328,17 @@ export async function getStaticProps() {
     ..., companyLogo { asset-> {url}}, profilePic { asset-> {url}}, speakerSessions[]->{ name, location, session_start, session_end, date, linkedin}
   }`);
 
+  const testimonialsData = await API.graphql({
+    query: listTestimonials,
+    variables: { filter: { tags: { contains: 'APS' } } },
+  });
+  const testimonials = testimonialsData.data;
+
   return {
     props: {
       homepageData,
       speakers,
+      testimonials,
     },
   };
 }

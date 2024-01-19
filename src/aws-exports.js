@@ -34,7 +34,11 @@ const awsmobile = {
     },
     "aws_cognito_verification_mechanisms": [
         "EMAIL"
-    ]
+    ],
+    "aws_mobile_analytics_app_id": "1459fffb37a9496a83cda7db5b2e2370",
+    "aws_mobile_analytics_app_region": "us-east-1",
+    "aws_user_files_s3_bucket": "packmedia54032-staging",
+    "aws_user_files_s3_bucket_region": "us-east-1"
 };
 
 

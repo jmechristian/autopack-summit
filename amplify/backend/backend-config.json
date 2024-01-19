@@ -28,9 +28,7 @@
       "dependsOn": [],
       "frontendAuthConfig": {
         "mfaConfiguration": "OFF",
-        "mfaTypes": [
-          "SMS"
-        ],
+        "mfaTypes": ["SMS"],
         "passwordProtectionSettings": {
           "passwordPolicyCharacters": [
             "REQUIRES_LOWERCASE",
@@ -40,16 +38,10 @@
           ],
           "passwordPolicyMinLength": 8
         },
-        "signupAttributes": [
-          "EMAIL"
-        ],
+        "signupAttributes": ["EMAIL"],
         "socialProviders": [],
-        "usernameAttributes": [
-          "EMAIL"
-        ],
-        "verificationMechanisms": [
-          "EMAIL"
-        ]
+        "usernameAttributes": ["EMAIL"],
+        "verificationMechanisms": ["EMAIL"]
       },
       "providerPlugin": "awscloudformation",
       "service": "Cognito"
@@ -109,8 +101,7 @@
       "service": "Lambda"
     }
   },
-  "hosting": {},
-  "notifications": {},
+
   "parameters": {
     "AMPLIFY_analytics_Pinpoint_Id": {
       "usedBy": [
@@ -255,6 +246,13 @@
           "resourceName": "Pinpoint"
         }
       ]
+    }
+  },
+  "storage": {
+    "packmedia": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": []
     }
   }
 }

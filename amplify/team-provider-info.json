@@ -17,7 +17,6 @@
         "true": {}
       },
       "hosting": {},
-      "notifications": {},
       "function": {
         "APSRegistrationHandler": {
           "deploymentBucketName": "amplify-packbrain-staging-54032-deployment",
