@@ -36,7 +36,7 @@ const ScrollingTestimonials = ({ testimonials }) => {
       )}
       <div className='mb-12 px-4'>
         <h2 className='mx-4 mb-4 text-center text-lg font-oswald uppercase font-medium text-neutral-900 md:text-4xl'>
-          Streamling Solutions
+          Streamlining Solutions
         </h2>
         <p className='text-center mt-2 text-lg max-w-2xl mx-auto'>
           Listen to what your peers have to say on the value of Automotive

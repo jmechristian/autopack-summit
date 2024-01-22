@@ -62,11 +62,14 @@ const Page = ({ homepageData, speakers, testimonials }) => {
                 logistics.
               </div>
             </Reveal>
-            <Reveal delay={0.45} bgColor={'white'}>
-              <motion.button className='bg-ap-yellow w-fit text-white text-base md:text-lg font-medium px-8 py-2 shadow-[3px_3px_0_black] hover:shadow-[1px_1px_0_black] hover:translate-x-[3px] hover:translate-y-[3px] transition-all'>
-                Registration Opens Soon!
-              </motion.button>
-            </Reveal>
+            <motion.button
+              className='bg-ap-yellow w-fit text-white text-base md:text-lg font-medium px-8 py-2 shadow-[3px_3px_0_black] hover:shadow-[1px_1px_0_black] hover:translate-x-[3px] hover:translate-y-[3px] transition-all'
+              animate={{ opacity: 1 }}
+              initial={{ opacity: 0 }}
+              transition={{ delay: 0.45, ease: 'easeIn', duration: 0.5 }}
+            >
+              Registration Opens Soon!
+            </motion.button>
           </div>
           <Reveal delay={0.55} bgColor={'white'}>
             <div className='flex gap-3'>
