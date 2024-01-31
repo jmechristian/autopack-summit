@@ -71,9 +71,9 @@ const Sponsorship = () => {
               and logistics solutions to OEMs and Tier 1 Suppliers.
             </div>
           </div>
-          <div className='w-full grid lg:grid-cols-2 gap-5 max-w-7xl mx-auto pb-20 h-full overflow-hidden'>
-            <div className='w-full h-full rounded-2xl bg-amber-400 border-2 border-black shadow-[4px_6px_0_black]'>
-              <div className='px-6 py-9 lg:px-9 flex-1 h-full flex flex-col gap-12 lg:gap-16 justify-between'>
+          <div className='w-full grid lg:grid-cols-2 gap-6 max-w-7xl mx-auto pb-20 overflow-hidden'>
+            <div className='w-full rounded-2xl bg-amber-400 border-2 border-black shadow-[4px_6px_0_black]'>
+              <div className='px-6 py-9 lg:px-9 flex-1 flex flex-col gap-12 lg:gap-16 justify-between'>
                 <div className='flex flex-col gap-6'>
                   <div className=' flex flex-col gap-1'>
                     <div className='w-full flex gap-5 items-center'>
@@ -131,7 +131,7 @@ const Sponsorship = () => {
                 </div>
               </div>
             </div>
-            <div className='grid grid-rows-2 w-full h-full gap-4 lg:gap-6 overflow-hidden'>
+            <div className='grid grid-rows-2 w-full gap-4 lg:gap-6 overflow-hidden'>
               <div
                 className='w-full rounded-2xl border-2 h-[200px] lg:h-auto border-black bg-neutral-200 bg-cover bg-center flex items-center justify-center relative overflow-hidden'
                 style={{

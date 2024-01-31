@@ -76,8 +76,8 @@ const Travel = () => {
               need to make the most of your stay in Greenville.
             </div>
           </div>
-          <div className='w-full grid lg:grid-cols-2 gap-6 max-w-7xl mx-auto pb-20 h-full'>
-            <div className='w-full h-full rounded-2xl bg-amber-400 border-2 border-black shadow-[4px_6px_0_black]'>
+          <div className='w-full grid lg:grid-cols-2 gap-6 max-w-7xl mx-auto pb-20 overflow-hidden'>
+            <div className='w-full rounded-2xl bg-amber-400 border-2 border-black shadow-[4px_6px_0_black]'>
               <div className='px-6 py-9 lg:px-9 flex-1 h-full flex flex-col gap-12 justify-between'>
                 <div className='flex flex-col gap-6 h-full'>
                   <div className='font-bold text-4xl max-w-lg tracking-tight leading-none'>
@@ -141,7 +141,7 @@ const Travel = () => {
                 </div>
               </div>
             </div>
-            <div className='grid grid-rows-2 w-full h-full gap-5 overflow-hidden'>
+            <div className='grid grid-rows-2 w-full gap-5 overflow-hidden'>
               <div
                 className='w-full rounded-2xl bg-neutral-200 border-2 border-black h-[200px] bg-cover bg-center flex items-center justify-center relative overflow-hidden'
                 style={{
