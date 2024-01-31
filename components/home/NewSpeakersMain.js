@@ -30,7 +30,7 @@ const NewSpeakersMain = ({ headline, subheadline, text, speakers }) => {
           2023 Subject-Matter Experts
         </h2>
         <p className='text-center text-lg mt-2 max-w-2xl mx-auto'>
-          Thank You to our industry vetrans for their contributions to the 2023
+          Thank You to our industry veterans for their contributions to the 2023
           Autmotive Packaging Summit.
         </p>
       </div>
