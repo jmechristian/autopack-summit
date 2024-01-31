@@ -211,9 +211,9 @@ const Page = ({ homepageData, speakers, testimonials }) => {
         </motion.div>
       </div>
       <RibbonLogos />
-      <div className='w-full grid px-5 xl:px-0 lg:grid-cols-2 gap-6 md:max-w-xl lg:max-w-7xl mx-auto h-full '>
-        <div className='w-full h-full rounded-2xl bg-amber-400 xl:aspect-square border-2 border-black shadow-[4px_6px_0_black]'>
-          <div className='p-9 flex-1 h-full flex flex-col justify-between gap-12 xl:gap-0'>
+      <div className='w-full grid px-5 xl:px-0 lg:grid-cols-2 gap-6 md:max-w-xl lg:max-w-7xl mx-auto'>
+        <div className='w-full rounded-2xl bg-amber-400 xl:aspect-square border-2 border-black shadow-[4px_6px_0_black]'>
+          <div className='p-9 flex flex-col justify-between gap-12 lg:gap-40'>
             <div className='font-bold text-4xl max-w-lg tracking-tight leading-none'>
               An average production automobile has{' '}
               <span className='text-white inline-flex'> 30,000 parts</span> and
@@ -244,7 +244,7 @@ const Page = ({ homepageData, speakers, testimonials }) => {
             </div>
           </div>
         </div>
-        <div className='grid grid-rows-2 w-full h-full gap-6 overflow-hidden'>
+        <div className='grid grid-rows-2 w-full gap-6 overflow-hidden'>
           <div
             className='w-full rounded-2xl border-2 border-black md:aspect-video lg:aspect-auto bg-neutral-200 bg-cover bg-center flex items-center justify-center relative overflow-hidden'
             style={{
@@ -286,7 +286,7 @@ const Page = ({ homepageData, speakers, testimonials }) => {
                 What Makes APS Unique?
               </div>
             </div>
-            <div className='w-full h-full bg-neutral-300 rounded-2xl border-2 border-black'>
+            <div className='w-full  bg-neutral-300 rounded-2xl border-2 border-black'>
               <div className='flex flex-col justify-between p-4 lg:p-6 h-full gap-3 lg:gap-0'>
                 <div className='flex gap-2 items-center'>
                   <div>
