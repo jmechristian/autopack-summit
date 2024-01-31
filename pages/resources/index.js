@@ -101,7 +101,7 @@ const Page = ({ resourceData }) => {
             packaging knowledge to the next level.
           </div>
         </div>
-        <div className='w-full grid lg:grid-cols-12 gap-6 overflow-hidden'>
+        <div className='w-full grid lg:grid-cols-12 gap-6'>
           <div className='lg:col-span-4 w-full rounded-2xl border-2 bg-ap-darkblue border-neutral-900 shadow-[4px_6px_0_black]'>
             <div className='w-full p-7 lg:p-10'>
               <div className='flex flex-col justify-center gap-6'>
