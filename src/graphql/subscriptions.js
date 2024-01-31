@@ -6472,6 +6472,102 @@ export const onDeleteLMSCourse = /* GraphQL */ `
     }
   }
 `;
+export const onCreateCourseClick = /* GraphQL */ `
+  subscription OnCreateCourseClick {
+    onCreateCourseClick {
+      id
+      courseID
+      page
+      ipAddress
+      country
+      lat
+      long
+      referrer
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateCourseClick = /* GraphQL */ `
+  subscription OnUpdateCourseClick {
+    onUpdateCourseClick {
+      id
+      courseID
+      page
+      ipAddress
+      country
+      lat
+      long
+      referrer
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteCourseClick = /* GraphQL */ `
+  subscription OnDeleteCourseClick {
+    onDeleteCourseClick {
+      id
+      courseID
+      page
+      ipAddress
+      country
+      lat
+      long
+      referrer
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateLessonClick = /* GraphQL */ `
+  subscription OnCreateLessonClick {
+    onCreateLessonClick {
+      id
+      LessonID
+      page
+      ipAddress
+      country
+      lat
+      long
+      referrer
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateLessonClick = /* GraphQL */ `
+  subscription OnUpdateLessonClick {
+    onUpdateLessonClick {
+      id
+      LessonID
+      page
+      ipAddress
+      country
+      lat
+      long
+      referrer
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteLessonClick = /* GraphQL */ `
+  subscription OnDeleteLessonClick {
+    onDeleteLessonClick {
+      id
+      LessonID
+      page
+      ipAddress
+      country
+      lat
+      long
+      referrer
+      createdAt
+      updatedAt
+    }
+  }
+`;
 export const onCreateLMSLesson = /* GraphQL */ `
   subscription OnCreateLMSLesson {
     onCreateLMSLesson {

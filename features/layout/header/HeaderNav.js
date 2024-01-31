@@ -11,10 +11,7 @@ const HeaderNav = ({ show }) => {
     <div className='flex gap-8 justify-between items-center'>
       <div className='flex gap-6'>
         {menuLinks.map((item, i) => (
-          <div
-            className={`${show ? 'text-white' : 'text-black'} font-bold`}
-            key={item.name}
-          >
+          <div className='text-black font-bold' key={item.name}>
             <a href={item.link}>{item.name}</a>
           </div>
         ))}

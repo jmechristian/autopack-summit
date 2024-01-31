@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 const RibbonLogos = () => {
   return (
-    <section className='py-36 overflow-hidden'>
+    <section className=' overflow-hidden'>
       <h2 className='mx-4 mb-12 text-center text-lg font-oswald uppercase font-medium text-neutral-900 md:text-4xl'>
         Featuring Subject-Matter Experts From:
       </h2>

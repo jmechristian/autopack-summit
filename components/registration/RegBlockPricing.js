@@ -17,6 +17,10 @@ const RegBlockPricing = ({
   isValid,
   clear,
   setSubmit,
+  worksWith,
+  speedNetworking,
+  innovationWorkshop,
+  plantTour,
 }) => {
   const countUpRef = useRef(null);
   const dispatch = useDispatch();
@@ -39,7 +43,7 @@ const RegBlockPricing = ({
 
   useEffect(() => {
     if (resetCounter === undefined) {
-      update(799);
+      update(1200);
     }
 
     if (resetCounter) {
@@ -56,7 +60,7 @@ const RegBlockPricing = ({
   }, [name, company, title, phone, email, isValid]);
 
   return (
-    <div className='flex flex-col gap-3 items-center p-8 w-full  shadow-xl bg-slate-100'>
+    <div className='flex flex-col gap-3 items-center justify-between w-full h-full px-6'>
       <p className='text-lg font-medium leading-6 text-gray-900'>
         Let's Innovate.
       </p>
@@ -72,11 +76,22 @@ const RegBlockPricing = ({
       <button
         className={`${
           formIsValid ? 'bg-ap-yellow' : 'bg-slate-400'
-        } rounded-md w-full mt-2`}
+        } w-full mt-2 shadow-[4px_4px_0_black] hover:shadow-[1px_1px_0_black] hover:translate-x-[3px] hover:translate-y-[3px] transition-all`}
         // disabled={!regCode || !formIsValid}
-        disabled
         onClick={(event) => {
-          sendEmail(event, name, title, company, email, phone, regCode);
+          sendEmail(
+            event,
+            name,
+            title,
+            company,
+            email,
+            phone,
+            regCode,
+            worksWith,
+            speedNetworking,
+            innovationWorkshop,
+            plantTour
+          );
           formSubmitClickHandler('registration', email);
           clear();
           dispatch(
@@ -92,11 +107,11 @@ const RegBlockPricing = ({
             formIsValid ? 'text-slate-900' : 'text-slate-500'
           } uppercase text-sm lg:text-base font-bold py-3 px-6 tracking-widest`}
         >
-          {formIsValid ? 'Register' : 'Enter Registration Code'}
+          {formIsValid ? 'Register' : 'Enter Code'}
         </div>
       </button>
       {!formIsValid && (
-        <p className='text-sm text-red-500 text-center'>
+        <p className='text-sm text-red-500 text-center mt-2'>
           Please fill out all required* fields.
         </p>
       )}

@@ -3,6 +3,7 @@ import { sendRegCode } from '../../util/sendRegCode';
 import { useDispatch } from 'react-redux';
 import { setThankYouMessage } from '../../features/layout/layoutSlice';
 import { formSubmitClickHandler } from '../../util/tracking';
+import BrutalistButton from '../../shared/BrutalistButton';
 
 const GetCodeBlock = ({
   regCode,
@@ -45,7 +46,7 @@ const GetCodeBlock = ({
     }
 
     if (!regCode && formIsValid) {
-      // console.log('no code, but everything else. send for reg code');
+      console.log('no code, but everything else. send for reg code');
       sendRegCode(event, name, title, company, email, phone);
       formSubmitClickHandler('code_request', email);
       clear();
@@ -60,16 +61,21 @@ const GetCodeBlock = ({
   };
 
   return (
-    <div className='flex flex-col gap-3 items-center text-center'>
-      <button
+    <div className='flex flex-col gap-3 items-center text-center mt-6'>
+      <BrutalistButton
+        text={'Validate Code'}
+        bgColor={'bg-ap-blue'}
+        textColor={'text-white'}
+        fn={(event) => codeSubmitHandler(event)}
+      />
+      {/* <button
         className='bg-ap-blue rounded-md w-full mt-6'
-        disabled
         onClick={(event) => codeSubmitHandler(event)}
       >
         <div className='text-white uppercase text-sm lg:text-base font-bold py-3 px-6 tracking-widest'>
-          {regCode ? 'Validate Code' : 'Get Code'}
+          Validate Code
         </div>
-      </button>
+      </button> */}
       {error && <p className='text-sm text-red-600'>{error}</p>}
     </div>
   );

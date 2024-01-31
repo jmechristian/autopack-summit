@@ -10,19 +10,15 @@ import {
   QueueListIcon,
   Cog6ToothIcon,
   ComputerDesktopIcon,
+  ArrowUpRightIcon,
 } from '@heroicons/react/24/outline';
 import { resourceBlockClickHandler } from '../../util/tracking';
 import Head from 'next/head';
+import BrutalistButton from '../../shared/BrutalistButton';
+import CourseCarousel from '../../shared/CourseCarousel';
+import { SwipableCourseCarousel } from '../../shared/SwipableCourseCarousel';
 
 const actions = [
-  {
-    title: 'Automotive Packaging Certificate',
-    href: 'https://packagingschool.com/get-to-know-apc/?utm_source=autoPack&utm_medium=website&utm_campaign=autoPack_summit',
-    desc: 'The first and only 100% online academic program that will enable you to develop the professional skill set you need to be successful in the automotive packaging field.',
-    icon: AcademicCapIcon,
-    iconForeground: 'text-blue-700',
-    iconBackground: 'bg-blue-50',
-  },
   {
     title: 'North American OEM Map',
     href: 'https://apsmedia.s3.amazonaws.com/documents/APC_Map2_changeTitleaddfourDots-1024x919.jpeg',
@@ -43,14 +39,14 @@ const actions = [
     title: 'NPR Interview',
     href: 'https://apsmedia.s3.amazonaws.com/audio/AndrewNPRautopack.mp3',
     icon: MicrophoneIcon,
-    desc: 'Our very own Dr. Hurley gave a shoutout on the South Carolina Business Review. Track aired on August 3rd, 2022.',
+    desc: 'Dr. Hurley on South Carolina Business Review. Track aired on August 3rd, 2022.',
     iconForeground: 'text-red-700',
     iconBackground: 'bg-red-50',
   },
   {
     title: 'Suppliers Info Form',
     href: 'resources/suppliers',
-    desc: 'We’re building a database of all packaging suppliers. Fill out the form below to have your company details presented to OEMs & Tier 1 buyers.',
+    desc: 'Fill out the form below to have your company details presented to OEMs & Tier 1 buyers.',
     icon: QueueListIcon,
     iconForeground: 'text-yellow-700',
     iconBackground: 'bg-yellow-50',
@@ -58,7 +54,7 @@ const actions = [
   {
     title: 'Free Automotive Resources',
     href: 'https://packagingschool.com/automotive-resources/',
-    desc: '100+ Free Resources from the Packaging School to level up your autmotive packaging IQ.',
+    desc: '100+ Free Resources from the Packaging School.',
     icon: Cog6ToothIcon,
     iconForeground: 'text-blue-700',
     iconBackground: 'bg-blue-50',
@@ -66,7 +62,7 @@ const actions = [
   {
     title: '2022 Press Release',
     href: 'https://apsmedia.s3.amazonaws.com/documents/APS-Press-Release.pdf',
-    desc: 'The 2022 AutoPack Summit Sold Out for the 7th Year in a Row, The event received high marks from OEMs, Tier 1 Suppliers, and Packaging Solution Providers',
+    desc: 'The 2022 AutoPack Summit Sold Out for the 7th Year in a row.',
     icon: AcademicCapIcon,
     iconForeground: 'text-orange-700',
     iconBackground: 'bg-orange-50',
@@ -85,7 +81,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 
-const resources = ({ resourceData }) => {
+const Page = ({ resourceData }) => {
   return (
     <>
       <Head>
@@ -95,74 +91,94 @@ const resources = ({ resourceData }) => {
           content='Automotive Packaging Summit | Suppliers'
         />
       </Head>
-      <HeaderPadding />
-      <div className='flex flex-col items-center my-8'>
-        <motion.div className='blue_subheadline text-xl md:text-xl xl:text-2xl'>
-          Industry
-        </motion.div>
-        <motion.div className='yellow_headline text-4xl md:text-5xl xl:text-6xl xl:text-center'>
-          Resources
-        </motion.div>
-      </div>
-      <div className='w-full h-full xl:max-w-6xl xl:mx-auto divide-y bg-gray-200 divide-gray-200 overflow-hidden rounded-lg shadow sm:grid sm:grid-cols-2 sm:gap-px sm:divide-y-0 mb-12'>
-        {actions.map((action, actionIdx) => (
-          <div
-            onClick={() => resourceBlockClickHandler(action.title)}
-            key={action.title}
-            className={classNames(
-              actionIdx === 0
-                ? 'rounded-tl-lg rounded-tr-lg sm:rounded-tr-none'
-                : '',
-              actionIdx === 1 ? 'sm:rounded-tr-lg' : '',
-              actionIdx === actions.length - 2 ? 'sm:rounded-bl-lg' : '',
-              actionIdx === actions.length - 1
-                ? 'rounded-bl-lg rounded-br-lg sm:rounded-bl-none'
-                : '',
-              'relative group bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500'
-            )}
-          >
-            <div>
-              <span
-                className={classNames(
-                  action.iconBackground,
-                  action.iconForeground,
-                  'rounded-lg inline-flex p-3 ring-4 ring-white'
-                )}
-              >
-                <action.icon className='h-6 w-6' aria-hidden='true' />
-              </span>
-            </div>
-            <div className='mt-8'>
-              <h3 className='text-lg font-medium'>
-                <a href={action.href} className='focus:outline-none'>
-                  {/* Extend touch target to entire panel */}
-                  <span className='absolute inset-0' aria-hidden='true' />
-                  {action.title}
-                </a>
-              </h3>
-              <p className='mt-2 text-sm text-gray-500'>{action.desc}</p>
-            </div>
-            <span
-              className='pointer-events-none absolute top-6 right-6 text-gray-300 group-hover:text-gray-400'
-              aria-hidden='true'
-            >
-              <svg
-                className='h-6 w-6'
-                xmlns='http://www.w3.org/2000/svg'
-                fill='currentColor'
-                viewBox='0 0 24 24'
-              >
-                <path d='M20 4h1a1 1 0 00-1-1v1zm-1 12a1 1 0 102 0h-2zM8 3a1 1 0 000 2V3zM3.293 19.293a1 1 0 101.414 1.414l-1.414-1.414zM19 4v12h2V4h-2zm1-1H8v2h12V3zm-.707.293l-16 16 1.414 1.414 16-16-1.414-1.414z' />
-              </svg>
-            </span>
+      <div className='flex flex-col max-w-7xl md:max-w-2xl lg:max-w-6xl xl:max-w-7xl mx-auto pt-6 pb-10 gap-5 md:gap-6 px-5 xl:px-0'>
+        <div className='w-full mb-4 rounded-2xl border-neutral-900 border-4 p-9 flex flex-col lg:flex-row gap-4 md:justify-between bg-white shadow-[12px_16px_0_black] lg:pt-24 lg:pb-12'>
+          <div className='font-medium font-oswald text-5xl lg:text-6xl xl:text-7xl uppercase'>
+            Resources
           </div>
-        ))}
+          <div className='w-full max-w-sm leading-snug'>
+            Take advatage of industry-leading resources to take your automotive
+            packaging knowledge to the next level.
+          </div>
+        </div>
+        <div className='w-full h-full grid lg:grid-cols-12 gap-6'>
+          <div className='lg:col-span-4 w-full rounded-2xl border-2 bg-ap-darkblue border-neutral-900 h-full shadow-[4px_6px_0_black]'>
+            <div className='w-full h-full p-7 lg:p-10'>
+              <div className='flex flex-col justify-center gap-6 h-full'>
+                <div className='flex flex-col gap-3 text-center'>
+                  <div className='font-medium uppercase text-amber-400 text-3xl font-oswald leading-none'>
+                    Automotive Packaging Certificate
+                  </div>
+                  <div className='text-white leading-tight'>
+                    The first and only 100% online academic program that will
+                    enable you to develop the professional skill set you need to
+                    be successful in the automotive packaging field.
+                  </div>
+                </div>
+                <div
+                  className='w-[225px] h-[275px] mx-auto bg-white bg-center bg-cover rounded border-2 border-black'
+                  style={{
+                    backgroundImage: `url(
+                      'https://packschool.s3.amazonaws.com/aps-superheros-sm.png'
+                    )`,
+                  }}
+                >
+                  Image
+                </div>
+                <div>
+                  <BrutalistButton
+                    bgColor={'bg-white'}
+                    text={'Enroll Now!'}
+                    textColor={'text-black'}
+                    onClick={() => window.open('', '_blank')}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className='lg:col-span-8 h-full w-full flex flex-col gap-6 overflow-hidden'>
+            <div className='w-full rounded-2xl bg-amber-100 h-full border-2 border-black'>
+              <CourseCarousel />
+            </div>
+            <div className='w-full rounded-2xl bg-amber-300 border-2 border-black'>
+              <div className='w-full px-5 lg:px-10 py-5 lg:py-7 flex flex-col gap-4'>
+                <div className='text-black font-bold uppercase font-oswald text-xl md:text-2xl'>
+                  Industry Resources
+                </div>
+                <div className='grid xl:grid-cols-2 gap-2 rounded overflow-hidden'>
+                  {actions.map((act) => (
+                    <div
+                      className='bg-white hover:bg-amber-100 transition-colors ease-in cursor-pointer w-full lg:h-16 xl:h-20 border-2 border-black rounded-xl py-2 lg:py-0'
+                      key={act.href}
+                      onClick={() => window.open(act.href, '_blank')}
+                    >
+                      <div className='flex flex-col lg:flex-row justify-between items-center w-full h-full'>
+                        <div className='flex w-full h-full'>
+                          <div className='w-20 flex justify-center items-center'>
+                            <act.icon className='w-8 h-8' />
+                          </div>
+                          <div className='flex flex-col justify-center w-full border-r border-r-neutral-600'>
+                            <div className='font-bold text-sm'>{act.title}</div>
+                            <div className='text-xs'>{act.desc}</div>
+                          </div>
+                          <div className='hidden lg:flex lg:w-20 justify-center items-center'>
+                            <ArrowUpRightIcon className='w-8 h-8' />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <AdvisoryBoard
+          advisors={resourceData}
+          headline={'Board Members'}
+          subheadline={'AutoPack Summit 2024'}
+        />
       </div>
-      <AdvisoryBoard
-        advisors={resourceData}
-        headline={'Board Members'}
-        subheadline={'AutoPack Summit 2024'}
-      />
     </>
   );
 };
@@ -187,4 +203,4 @@ export async function getStaticProps() {
   };
 }
 
-export default resources;
+export default Page;

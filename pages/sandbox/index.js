@@ -40,13 +40,12 @@ const Page = ({ homepageData, speakers, testimonials }) => {
 
   return (
     <div className='w-full h-full'>
-      <HeaderPadding />
-      <div className='w-full grid lg:grid-cols-2 pt-20 pb-6 max-w-7xl mx-auto relative overflow-hidden'>
+      <div className='w-full px-5 xl:px-0 grid gap-16 lg:gap-12 lg:grid-cols-2 pt-10 md:pt-20 lg:pt-10 pb-6 max-w-7xl mx-auto relative overflow-hidden'>
         <div className='flex flex-col justify-between'>
-          <div className='flex flex-col gap-6 max-w-xl'>
+          <div className='flex flex-col gap-6 max-w-xl md:mx-auto'>
             <div>
               <Reveal delay={0} bgColor={'white'}>
-                <h1 className='font-medium text-6xl tracking-tight font-oswald uppercase'>
+                <h1 className='font-medium text-5xl xl:text-6xl tracking-tight font-oswald uppercase'>
                   The premier open forum for{' '}
                   <span className='text-ap-darkblue'>
                     Automotive Packaging Professionals
@@ -55,7 +54,7 @@ const Page = ({ homepageData, speakers, testimonials }) => {
               </Reveal>
             </div>
             <Reveal delay={0.25} bgColor={'white'}>
-              <div className='text-xl'>
+              <div className='text-lg xl:text-xl'>
                 Discover cutting-edge solutions at the Automotive Packaging
                 Summit, where industry veterans and packaging experts unite to
                 tackle the unique challenges in OEM and Tier1 part supplier
@@ -72,19 +71,20 @@ const Page = ({ homepageData, speakers, testimonials }) => {
             </motion.button>
           </div>
           <Reveal delay={0.55} bgColor={'white'}>
-            <div className='flex gap-3'>
+            <div className='flex flex-col lg:flex-row gap-3 pt-12 lg:pt-0 max-w-xl md:mx-auto w-full'>
               <div className='text-5xl font-medium text-ap-blue font-oswald tracking-tight'>
                 OCT 21-23, 2024
               </div>
-              <div className='flex flex-col font-medium'>
+              <div className='flex gap-2 lg:flex-col lg:gap-0 font-medium'>
                 <div>Hyatt Regency</div>
                 <div>Greenville, SC</div>
               </div>
             </div>
           </Reveal>
         </div>
-        <motion.div className='w-full flex justify-center items-center'>
-          <motion.div className='grid grid-cols-3 overflow-hidden gap-3 w-full h-full'>
+
+        <motion.div className='w-full flex justify-center items-center md:mt-10 lg:mt-0'>
+          <motion.div className='grid grid-cols-2 md:grid-cols-3 overflow-hidden gap-3 w-full h-full'>
             <motion.div
               className='aspect-square rounded-full'
               animate={{ opacity: 1 }}
@@ -182,9 +182,9 @@ const Page = ({ homepageData, speakers, testimonials }) => {
         </motion.div>
       </div>
       <RibbonLogos />
-      <div className='w-full grid lg:grid-cols-2 gap-6 max-w-7xl mx-auto pt-16 pb-20 h-full overflow-hidden'>
-        <div className='w-full h-full rounded-2xl bg-amber-400 aspect-square'>
-          <div className='p-9 flex-1 h-full flex flex-col justify-between'>
+      <div className='w-full grid px-5 xl:px-0 lg:grid-cols-2 gap-6 md:max-w-xl lg:max-w-7xl mx-auto pt-16 pb-20 h-full overflow-hidden '>
+        <div className='w-full h-full rounded-2xl bg-amber-400 xl:aspect-square'>
+          <div className='p-9 flex-1 h-full flex flex-col justify-between gap-12 xl:gap-0'>
             <div className='font-bold text-4xl max-w-lg tracking-tight leading-none'>
               An average production automobile has{' '}
               <span className='text-white inline-flex'> 30,000 parts</span> and
@@ -217,7 +217,7 @@ const Page = ({ homepageData, speakers, testimonials }) => {
         </div>
         <div className='grid grid-rows-2 w-full h-full gap-6 overflow-hidden'>
           <div
-            className='w-full rounded-2xl bg-neutral-200 bg-cover bg-center flex items-center justify-center relative overflow-hidden'
+            className='w-full rounded-2xl md:aspect-video lg:aspect-auto bg-neutral-200 bg-cover bg-center flex items-center justify-center relative overflow-hidden'
             style={{
               backgroundImage: `url('https://packschool.s3.amazonaws.com/recap.png')`,
             }}
@@ -257,12 +257,12 @@ const Page = ({ homepageData, speakers, testimonials }) => {
               </div>
             </div>
             <div className='w-full h-full bg-neutral-300 rounded-2xl'>
-              <div className='flex flex-col justify-between p-6 h-full'>
+              <div className='flex flex-col justify-between p-4 lg:p-6 h-full gap-3 lg:gap-0'>
                 <div className='flex gap-2 items-center'>
                   <div>
-                    <PowerIcon className='w-10 h-10 stroke-neutral-900' />
+                    <PowerIcon className='w-6 h-6 lg:w-10 lg:h-10 stroke-neutral-900' />
                   </div>
-                  <div className='font-medium font-oswald uppercase text-4xl tracking-tight text-neutral-900'>
+                  <div className='font-medium font-oswald uppercase text-2xl lg:text-4xl tracking-tight text-neutral-900'>
                     Get Involved
                   </div>
                 </div>
@@ -274,7 +274,7 @@ const Page = ({ homepageData, speakers, testimonials }) => {
                     <div className='w-9 h-9 rounded-full bg-ap-yellow flex items-center justify-center'>
                       <MdMapsUgc color='white' size={'20px'} />
                     </div>
-                    <div className='font-bold text-neutral-900 text-lg'>
+                    <div className='font-bold text-neutral-900 lg:text-lg'>
                       I'd like to Speak
                     </div>
                   </div>
@@ -285,7 +285,7 @@ const Page = ({ homepageData, speakers, testimonials }) => {
                     <div className='w-9 h-9 rounded-full bg-ap-yellow flex items-center justify-center'>
                       <MdCelebration color='white' size={'20px'} />
                     </div>
-                    <div className='font-bold text-neutral-900 text-lg'>
+                    <div className='font-bold text-neutral-900 lg:text-lg'>
                       I'd like to Sponsor
                     </div>
                   </div>
@@ -298,7 +298,7 @@ const Page = ({ homepageData, speakers, testimonials }) => {
       <ScrollingTestimonials
         testimonials={testimonials.listTestimonials.items}
       />
-      <div className='py-24 mt-12 max-w-7xl mx-auto w-full'>
+      <div className='py-24 mt-12 md:mt-0 max-w-7xl mx-auto w-full'>
         <NewSpeakersMain
           headline={homepageData[0].speakersHeadline}
           subheadline={homepageData[0].speakersSubheadline}
@@ -306,7 +306,7 @@ const Page = ({ homepageData, speakers, testimonials }) => {
           speakers={speakers}
         />
       </div>
-      <div className='py-24 max-w-7xl mx-auto w-full'>
+      <div className='lg:py-24 md:max-w-lg lg:max-w-7xl mx-auto w-full'>
         <NewSponsorsMain sponsors={homepageData[0].sponsorList} />
       </div>
     </div>

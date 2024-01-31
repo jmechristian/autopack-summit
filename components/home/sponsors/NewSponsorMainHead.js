@@ -42,16 +42,16 @@ const NewSponsorsMainHead = ({ titleSponsor }) => {
   };
 
   return (
-    <div className='max-w-7xl grid grid-cols-1 lg:grid-cols-5 gap-y-10 lg:gap-8 items-center mx-auto'>
+    <div className='max-w-7xl grid grid-cols-1 lg:grid-cols-5 gap-y-10 lg:gap-8 items-center mx-auto px-5 xl:px-0'>
       <motion.div
-        className='bg-amber-300 rounded-2xl w-full h-full lg:col-span-2'
+        className='border-2 border-black shadow-[4px_6px_0_black] bg-amber-400 rounded-2xl w-full h-full lg:col-span-2'
         // ref={blockRef}
         // initial={{ opacity: 0 }}
         // animate={blockInView ? { opacity: 1 } : { opacity: 0 }}
         // transition={{ delay: 0.25, duration: 0.5 }}
       >
         <div className='p-9 flex-1 h-full flex flex-col justify-between'>
-          <div className='font-bold text-4xl max-w-lg tracking-tight leading-none'>
+          <div className='font-bold text-4xl max-w-xl tracking-tight leading-none'>
             Thank You To Our 2023 Sponsors
           </div>
 
@@ -78,13 +78,13 @@ const NewSponsorsMainHead = ({ titleSponsor }) => {
         </div>
       </motion.div>
       <motion.div
-        className='w-full h-full bg-bgImage_blue p-6 rounded-lg bg-cover bg-center lg:col-span-3'
+        className='w-full h-full bg-bgImage_blue p-6 rounded-2xl border-2 border-black bg-cover bg-center lg:col-span-3'
         // variants={titleVariants}
         // initial='hide'
         // animate={titleInView ? 'show' : 'hide'}
         // ref={titleRef}
       >
-        <div className='bg-white/80 backdrop-blur rounded-lg px-6 py-8 flex flex-col gap-5 drop-shadow-lg'>
+        <div className='bg-white/80 backdrop-blur rounded-2xl border-2 border-black px-6 py-8 flex flex-col gap-5 drop-shadow-lg'>
           <TitleSponsorHead />
           <TitleSponsorBody />
         </div>

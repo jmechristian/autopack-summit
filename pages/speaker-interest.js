@@ -56,7 +56,6 @@ const Page = () => {
 
   return (
     <>
-      <HeaderPadding />
       <div className='w-full max-w-5xl mx-auto py-24'>
         <div className='w-full px-6 lg:px-0 flex flex-col gap-16'>
           <div className='mx-auto max-w-2xl text-center'>

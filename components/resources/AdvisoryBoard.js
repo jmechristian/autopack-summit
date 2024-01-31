@@ -23,21 +23,18 @@ const AdvisoryBoard = ({ headline, subheadline, text, advisors }) => {
   };
   return (
     <div
-      className='w-full relative h-full pb-16 md:py-20 lg:pb-28 flex flex-col gap-8 lg:gap-12 xl:overflow-visible'
+      className='w-full max-w-7xl mt-3 mx-auto relative h-full p-10 flex flex-col gap-8 lg:gap-12 xl:overflow-visible bg-white rounded-2xl border-2 border-black'
       id='speakers'
     >
       <div className='flex flex-col gap-6 max-w-7xl mx-auto'>
         <motion.div
           className='flex flex-col items-center xl:gap-2 mx-auto'
           ref={textRef}
-          variants={textVariants}
-          initial='hide'
-          animate={textInView ? 'show' : 'hide'}
         >
-          <motion.div className='blue_subheadline text-lg md:text-xl xl:text-2xl'>
+          <motion.div className='font-oswald uppercase text-lg md:text-xl xl:text-2xl'>
             {subheadline}
           </motion.div>
-          <motion.div className='yellow_headline text-4xl md:text-5xl xl:text-6xl xl:text-center'>
+          <motion.div className='font-oswald font-medium uppercase text-4xl md:text-5xl xl:text-6xl xl:text-center'>
             {headline}
           </motion.div>
           <motion.div className='text-white text-center max-w-prose px-8 mt-4 lg:text-lg'>
@@ -48,12 +45,12 @@ const AdvisoryBoard = ({ headline, subheadline, text, advisors }) => {
       <div className='max-w-6xl mx-auto'>
         <ul
           role='list'
-          className='grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'
+          className='grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:lg:grid-cols-4'
         >
           {advisors.map((person, index) => (
             <li
               key={index}
-              className='col-span-1 flex flex-col divide-y divide-gray-200 rounded-lg bg-white text-center shadow'
+              className='col-span-1 flex flex-col divide-y divide-gray-200 bg-white rounded-2xl border-2 border-black text-center shadow-[4px_6px_0_black]'
             >
               <div
                 className='flex flex-1 flex-col p-8'
@@ -74,8 +71,8 @@ const AdvisoryBoard = ({ headline, subheadline, text, advisors }) => {
                   <dt className='sr-only'>Title</dt>
                   <dd className='text-base text-gray-500'>{person.title}</dd>
                   <dt className='sr-only'>Role</dt>
-                  <dd className='mt-3'>
-                    <span className='rounded-full bg-green-100 px-2 py-1 text-base font-medium text-green-800'>
+                  <dd className='mt-3 bg-ap-darkblue border-2 border-black leading-tight rounded  px-2 py-2  '>
+                    <span className=' text-white font-medium text-sm leading-tight '>
                       {person.company}
                     </span>
                   </dd>

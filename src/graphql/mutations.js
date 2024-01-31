@@ -6688,6 +6688,120 @@ export const deleteLMSCourse = /* GraphQL */ `
     }
   }
 `;
+export const createCourseClick = /* GraphQL */ `
+  mutation CreateCourseClick(
+    $input: CreateCourseClickInput!
+    $condition: ModelCourseClickConditionInput
+  ) {
+    createCourseClick(input: $input, condition: $condition) {
+      id
+      courseID
+      page
+      ipAddress
+      country
+      lat
+      long
+      referrer
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateCourseClick = /* GraphQL */ `
+  mutation UpdateCourseClick(
+    $input: UpdateCourseClickInput!
+    $condition: ModelCourseClickConditionInput
+  ) {
+    updateCourseClick(input: $input, condition: $condition) {
+      id
+      courseID
+      page
+      ipAddress
+      country
+      lat
+      long
+      referrer
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteCourseClick = /* GraphQL */ `
+  mutation DeleteCourseClick(
+    $input: DeleteCourseClickInput!
+    $condition: ModelCourseClickConditionInput
+  ) {
+    deleteCourseClick(input: $input, condition: $condition) {
+      id
+      courseID
+      page
+      ipAddress
+      country
+      lat
+      long
+      referrer
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createLessonClick = /* GraphQL */ `
+  mutation CreateLessonClick(
+    $input: CreateLessonClickInput!
+    $condition: ModelLessonClickConditionInput
+  ) {
+    createLessonClick(input: $input, condition: $condition) {
+      id
+      LessonID
+      page
+      ipAddress
+      country
+      lat
+      long
+      referrer
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateLessonClick = /* GraphQL */ `
+  mutation UpdateLessonClick(
+    $input: UpdateLessonClickInput!
+    $condition: ModelLessonClickConditionInput
+  ) {
+    updateLessonClick(input: $input, condition: $condition) {
+      id
+      LessonID
+      page
+      ipAddress
+      country
+      lat
+      long
+      referrer
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteLessonClick = /* GraphQL */ `
+  mutation DeleteLessonClick(
+    $input: DeleteLessonClickInput!
+    $condition: ModelLessonClickConditionInput
+  ) {
+    deleteLessonClick(input: $input, condition: $condition) {
+      id
+      LessonID
+      page
+      ipAddress
+      country
+      lat
+      long
+      referrer
+      createdAt
+      updatedAt
+    }
+  }
+`;
 export const createLMSLesson = /* GraphQL */ `
   mutation CreateLMSLesson(
     $input: CreateLMSLessonInput!

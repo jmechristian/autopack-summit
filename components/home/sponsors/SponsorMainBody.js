@@ -28,7 +28,7 @@ const SponsorMainBody = ({ sponsors }) => {
   };
 
   return (
-    <div className='max-w-7xl mx-auto py-20'>
+    <div className='max-w-7xl mx-auto py-20 px-5 xl:px-0'>
       <motion.div
         className='flex flex-col gap-12 md:gap-16 lg:gap-24'
         // variants={sponsorVariants}

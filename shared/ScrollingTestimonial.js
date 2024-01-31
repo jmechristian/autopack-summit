@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { PlayIcon, ArrowLeftCircleIcon } from '@heroicons/react/24/solid';
 import { motion } from 'framer-motion';
 
@@ -10,7 +10,7 @@ const ScrollingTestimonials = ({ testimonials }) => {
   const [isSelectedVid, setIsSelectedVid] = useState('');
 
   return (
-    <div className='bg-white pt-24 pb-6 relative'>
+    <div className='bg-white relative'>
       {isOpen && (
         <div className='fixed inset-0 bg-black/60 backdrop-blur-md z-[50] flex items-center justify-center'>
           <div className='w-full max-h-[100vh] max-w-2xl lg:max-w-7xl bg-ap-blue rounded-2xl pt-3  lg:px-6 pb-6 flex flex-col'>
@@ -35,7 +35,7 @@ const ScrollingTestimonials = ({ testimonials }) => {
         </div>
       )}
       <div className='mb-12 px-4'>
-        <h2 className='mx-4 mb-4 text-center text-lg font-oswald uppercase font-medium text-neutral-900 md:text-4xl'>
+        <h2 className='mx-4 mb-4 text-center font-oswald uppercase font-medium text-neutral-900 text-2xl md:text-4xl'>
           Streamlining Solutions
         </h2>
         <p className='text-center mt-2 text-lg max-w-2xl mx-auto'>
@@ -43,46 +43,46 @@ const ScrollingTestimonials = ({ testimonials }) => {
           Packaging Summit for your organization, now, and in the years to come.
         </p>
       </div>
-      <div className='p-4 overflow-x-hidden relative'>
+      <div className='px-4 pt-4 overflow-x-hidden relative'>
         <div className='absolute top-0 bottom-0 left-0 w-24 z-10 bg-gradient-to-r from-white to-transparent' />
 
         <div className='flex items-center mb-4'>
           <TestimonialList
-            list={testimonials}
+            list={testimonials.slice(0, 4)}
             duration={125}
             fn={() => setIsOpen(true)}
             setSelected={(val) => setIsSelectedVid(val)}
           />
           <TestimonialList
-            list={testimonials}
+            list={testimonials.slice(0, 4)}
             duration={125}
             fn={() => setIsOpen(true)}
             setSelected={(val) => setIsSelectedVid(val)}
           />
           <TestimonialList
-            list={testimonials}
+            list={testimonials.slice(0, 4)}
             duration={125}
             fn={() => setIsOpen(true)}
             setSelected={(val) => setIsSelectedVid(val)}
           />
         </div>
-        <div className='flex items-center mb-4'>
+        <div className='flex items-center mb-2'>
           <TestimonialList
-            list={testimonials}
+            list={testimonials.slice(5, 9)}
             duration={75}
             reverse
             fn={() => setIsOpen(true)}
             setSelected={(val) => setIsSelectedVid(val)}
           />
           <TestimonialList
-            list={testimonials}
+            list={testimonials.slice(5, 9)}
             duration={75}
             reverse
             fn={() => setIsOpen(true)}
             setSelected={(val) => setIsSelectedVid(val)}
           />
           <TestimonialList
-            list={testimonials}
+            list={testimonials.slice(5, 9)}
             duration={75}
             reverse
             fn={() => setIsOpen(true)}

@@ -4660,6 +4660,146 @@ export const lMSCoursesBySlug = /* GraphQL */ `
     }
   }
 `;
+export const getCourseClick = /* GraphQL */ `
+  query GetCourseClick($id: ID!) {
+    getCourseClick(id: $id) {
+      id
+      courseID
+      page
+      ipAddress
+      country
+      lat
+      long
+      referrer
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listCourseClicks = /* GraphQL */ `
+  query ListCourseClicks(
+    $filter: ModelCourseClickFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listCourseClicks(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        courseID
+        page
+        ipAddress
+        country
+        lat
+        long
+        referrer
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const courseClicksByCourseID = /* GraphQL */ `
+  query CourseClicksByCourseID(
+    $courseID: String!
+    $sortDirection: ModelSortDirection
+    $filter: ModelCourseClickFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    courseClicksByCourseID(
+      courseID: $courseID
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        courseID
+        page
+        ipAddress
+        country
+        lat
+        long
+        referrer
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getLessonClick = /* GraphQL */ `
+  query GetLessonClick($id: ID!) {
+    getLessonClick(id: $id) {
+      id
+      LessonID
+      page
+      ipAddress
+      country
+      lat
+      long
+      referrer
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listLessonClicks = /* GraphQL */ `
+  query ListLessonClicks(
+    $filter: ModelLessonClickFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listLessonClicks(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        LessonID
+        page
+        ipAddress
+        country
+        lat
+        long
+        referrer
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const lessonClicksByLessonID = /* GraphQL */ `
+  query LessonClicksByLessonID(
+    $LessonID: String!
+    $sortDirection: ModelSortDirection
+    $filter: ModelLessonClickFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    lessonClicksByLessonID(
+      LessonID: $LessonID
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        LessonID
+        page
+        ipAddress
+        country
+        lat
+        long
+        referrer
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
 export const getLMSLesson = /* GraphQL */ `
   query GetLMSLesson($id: ID!) {
     getLMSLesson(id: $id) {

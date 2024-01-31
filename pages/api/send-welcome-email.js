@@ -1,15 +1,12 @@
-import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses';
-const REGION = 'us-east-1';
-const creds = {
-  accessKeyId: process.env.AWSACCESSKEYID,
-  secretAccessKey: process.env.AWSSECRETACCESSKEY,
-};
-// Create SES service object.
-const sesClient = new SESClient({ region: REGION, credentials: creds });
-export { sesClient };
+/**
+ * @type {import('@types/aws-lambda').APIGatewayProxyHandler}
+ */
 
-export default async function handler(req, res) {
-  const { email, name } = req.query;
+var aws = require('aws-sdk');
+var ses = new aws.SES({ region: 'us-east-1' });
+
+exports.handler = async (event) => {
+  const { email } = event.queryStringParameters;
 
   var myVar =
     '<!-- THIS EMAIL WAS BUILT AND TESTED WITH LITMUS http://litmus.com -->' +
@@ -131,10 +128,10 @@ export default async function handler(req, res) {
     '                            <img src="https://apsmedia.s3.amazonaws.com/images/checkmark.png" width="170" height="170" style="display: block; border: 0px;"/>' +
     '                            <br>' +
     '                            <h2 style="font-size: 30px; font-weight: 800; line-height: 36px; color: #333333; margin: 0;">' +
-    `                                We'll See You in Greenville, ${name}!` +
+    "                                We'll See You in Greenville!" +
     '                            </h2>' +
     '                            <p style="font-size: 18px; font-weight: 400; line-height: 28px; color: #777777;">' +
-    '                                You\'ve successfully registered for the <a href="https://autopacksummit.com">2023 Automotive Packaging Summit</a>, October 11-12th in Greenville, South Carolina.' +
+    '                                You\'ve successfully registered for the <a href="https://autopacksummit.com">2023 Automotive Packaging Summit</a>, October 21-23, 2024 in Greenville, South Carolina.' +
     '                            </p>' +
     '                            ' +
     '                        </td>' +
@@ -281,7 +278,7 @@ export default async function handler(req, res) {
     '                    <tr>' +
     '                        <td align="center" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 24px; padding: 5px 0 10px 0;">' +
     '                            <p style="font-size: 14px; font-weight: 800; line-height: 18px; color: #333333;">' +
-    '                                October 11-12, 2023<br>' +
+    '                                October 21-23, 2024<br>' +
     '                                Greenville, South Carolina' +
     '                            </p>' +
     '                        </td>' +
@@ -306,49 +303,36 @@ export default async function handler(req, res) {
     '</body>' +
     '</html>';
 
-  const createSendEmailCommand = (toAddress, fromAddress) => {
-    return new SendEmailCommand({
-      Destination: {
-        /* required */
-        CcAddresses: [
-          /* more items */
-        ],
-        ToAddresses: [toAddress, email],
-      },
-      Message: {
-        Body: {
-          Html: {
-            Data: myVar,
-          },
-          Text: {
-            Charset: 'UTF-8',
-            Data: 'You are registered for the Automotive Packaging Summit. October 11-12, 2023, Greenville, South Carolina',
-          },
+  var params = {
+    Destination: {
+      ToAddresses: [email],
+    },
+    Message: {
+      Body: {
+        Text: {
+          Data: 'You are registered for the Automotive Packaging Summit. October 21-23, 2024, Greenville, South Carolina',
         },
-        Subject: {
-          Charset: 'UTF-8',
-          Data: '2023 Automotive Packaging Registration',
-        },
+        Html: { Data: myVar },
       },
-      Source: fromAddress,
-      ReplyToAddresses: [
-        /* more items */
-      ],
-    });
+
+      Subject: { Data: `2024 Automotive Packaging Registration` },
+    },
+    Source: 'jamie@packagingschool.com',
   };
 
   try {
-    await sesClient.send(
-      createSendEmailCommand(
-        'jamie@packagingschool.com',
-        'jamie@packagingschool.com'
-      )
-    );
-    return res.status(200).json({
-      message: `${email} sent`,
-    });
-  } catch (error) {
-    console.log(error);
-    return res.status(200).json({ message: error + 'error' });
+    const send = await ses.sendEmail(params).promise();
+    console.log(send);
+  } catch (err) {
+    console.log(err);
   }
-}
+
+  return {
+    statusCode: 200,
+    //  Uncomment below to enable CORS requests
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers': '*',
+    },
+  };
+};

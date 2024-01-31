@@ -1,4 +1,16 @@
-export const sendEmail = (e, name, title, company, email, phone, regCode) => {
+export const sendEmail = (
+  e,
+  name,
+  title,
+  company,
+  email,
+  phone,
+  regCode,
+  worksWith,
+  speedNetworking,
+  innovationWorkshop,
+  plantTour
+) => {
   e.preventDefault();
 
   fetch(
@@ -16,6 +28,10 @@ export const sendEmail = (e, name, title, company, email, phone, regCode) => {
         email,
         phone,
         regCode,
+        worksWith,
+        speedNetworking,
+        innovationWorkshop,
+        plantTour,
       }),
     }
   );

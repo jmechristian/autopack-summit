@@ -1,6 +1,7 @@
 import React from 'react';
 import { PowerIcon } from '@heroicons/react/24/solid';
 import { useDispatch } from 'react-redux';
+import { useRouter } from 'next/router';
 import {
   MdCelebration,
   MdMapsUgc,
@@ -15,18 +16,20 @@ import { AnimatePresence, motion } from 'framer-motion';
 import {
   closePowerConsole,
   openPowerConsole,
+  openSponsorForm,
 } from '../features/layout/layoutSlice';
 import { useSelector } from 'react-redux';
 
 const PowerConsole = () => {
   const dispatch = useDispatch();
   const { powerOpen } = useSelector((state) => state.layout);
+  const router = useRouter();
 
   return (
     <AnimatePresence>
       {powerOpen && (
         <motion.div
-          className='fixed right-0 top-0 bottom-0 w-[450px] z-50 flex flex-col justify-center items-center'
+          className='fixed right-0 top-0 bottom-0 w-full max-w-md md:w-[450px] z-50 flex flex-col justify-center items-center'
           initial={{ x: 460 }}
           animate={{ x: 0 }}
           exit={{ x: 460 }}
@@ -65,6 +68,7 @@ const PowerConsole = () => {
                   hoverColor={'hover:bg-amber-400'}
                   iconBack={'bg-black'}
                   icon={<MdConfirmationNumber color='white' size={'20px'} />}
+                  fn={() => {}}
                 />
                 <ConsoleItem
                   title={"I'd like to Speak"}
@@ -72,6 +76,7 @@ const PowerConsole = () => {
                   color={'bg-amber-300'}
                   hoverColor={'hover:bg-amber-500'}
                   icon={<MdMapsUgc color='white' size={'20px'} />}
+                  fn={() => router.push('/speaker-interest')}
                 />
                 <ConsoleItem
                   title={"I'd like to Sponsor"}
@@ -79,6 +84,7 @@ const PowerConsole = () => {
                   color={'bg-amber-300'}
                   hoverColor={'hover:bg-amber-500'}
                   icon={<MdCelebration color='white' size={'20px'} />}
+                  fn={() => dispatch(openSponsorForm())}
                 />
                 {/* <ConsoleItem
                   title={'Advisory Board Interest'}
@@ -87,13 +93,13 @@ const PowerConsole = () => {
                   hoverColor={'hover:bg-amber-500'}
                   icon={<MdDiversity1 color='white' size={'20px'} />}
                 /> */}
-                <ConsoleItem
+                {/* <ConsoleItem
                   title={'Why Autopack Summit?'}
                   iconBack={'bg-black/30'}
                   color={'bg-amber-500'}
                   hoverColor={'hover:bg-white'}
                   icon={<MdVideoCameraFront color='white' size={'20px'} />}
-                />
+                /> */}
 
                 <ConsoleItem
                   title={'Book My Travel'}
