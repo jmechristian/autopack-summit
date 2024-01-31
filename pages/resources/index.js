@@ -101,10 +101,10 @@ const Page = ({ resourceData }) => {
             packaging knowledge to the next level.
           </div>
         </div>
-        <div className='w-full h-full grid lg:grid-cols-12 gap-6'>
-          <div className='lg:col-span-4 w-full rounded-2xl border-2 bg-ap-darkblue border-neutral-900 h-full shadow-[4px_6px_0_black]'>
-            <div className='w-full h-full p-7 lg:p-10'>
-              <div className='flex flex-col justify-center gap-6 h-full'>
+        <div className='w-full grid lg:grid-cols-12 gap-6 overflow-hidden'>
+          <div className='lg:col-span-4 w-full rounded-2xl border-2 bg-ap-darkblue border-neutral-900 shadow-[4px_6px_0_black]'>
+            <div className='w-full p-7 lg:p-10'>
+              <div className='flex flex-col justify-center gap-6'>
                 <div className='flex flex-col gap-3 text-center'>
                   <div className='font-medium uppercase text-amber-400 text-3xl font-oswald leading-none'>
                     Automotive Packaging Certificate
@@ -136,8 +136,8 @@ const Page = ({ resourceData }) => {
               </div>
             </div>
           </div>
-          <div className='lg:col-span-8 h-full w-full flex flex-col gap-6 overflow-hidden'>
-            <div className='w-full rounded-2xl bg-amber-100 h-full border-2 border-black'>
+          <div className='lg:col-span-8 w-full flex flex-col gap-6 overflow-hidden'>
+            <div className='w-full rounded-2xl bg-amber-100 border-2 border-black'>
               <CourseCarousel />
             </div>
             <div className='w-full rounded-2xl bg-amber-300 border-2 border-black'>
