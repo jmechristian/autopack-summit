@@ -1,12 +1,47 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { useRouter } from 'next/router';
-import RegistrationForm from '../components/registration/RegistrationForm';
+import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 
-const Register = () => {
+import { useRouter } from 'next/router';
+import { API, graphqlOperation } from 'aws-amplify';
+import { useSelector } from 'react-redux';
+import { AnimatePresence } from 'framer-motion';
+
+import RegistrationForm2024 from '../components/registration/RegistrationForm2024';
+
+const Page = () => {
   const router = useRouter();
   const params = router.query;
+
+  const message = useSelector((state) => state.layout.formSubmissionText);
+
+  const [codes, setCodes] = useState([]);
+  const [submitted, setSubmitted] = useState(false);
+
+  const getCodesQuery = /* GraphQL */ `
+    query MyQuery {
+      getAPS(id: "76fe4980-a8d8-485c-9747-93b20cb08bfd") {
+        codes {
+          code
+        }
+      }
+    }
+  `;
+
+  useEffect(() => {
+    getAllCodes();
+  }, []);
+
+  const getAllCodes = async () => {
+    try {
+      const allCodes = await API.graphql(graphqlOperation(getCodesQuery));
+      const { codes } = allCodes.data.getAPS;
+      for (let c in codes) {
+        setCodes((prev) => [...prev, codes[c].code.toUpperCase()]);
+      }
+    } catch (error) {
+      console.log('error', error);
+    }
+  };
 
   return (
     <>
@@ -17,21 +52,41 @@ const Register = () => {
           content='Automotive Packaging Summit | Register'
         />
       </Head>
-      <div className='flex flex-col max-w-7xl md:max-w-2xl lg:max-w-4xl xl:max-w-7xl mx-auto pt-6 pb-16 gap-10'>
-        <div className='w-full rounded-2xl border-neutral-900 border-4 p-9 flex flex-col-reverse gap-2 lg:flex-row lg:items-center lg:justify-between bg-white shadow-[12px_16px_0_black] lg:pt-24 lg:pb-12'>
-          <div className='font-medium font-oswald text-5xl md:text-6xl lg:text-7xl uppercase'>
-            Registration
+      {/* <div className='lg:hidden'>
+        <RegistrationFormMobile codes={codes && codes} />
+      </div> */}
+      {submitted ? (
+        <AnimatePresence>
+          <div className='max-w-xl lg:max-w-3xl text-center px-10 my-24 mx-auto'>
+            <h2 className='text-3xl font-bold tracking-tight text-ap-darkblue sm:text-5xl lg:text-5xl'>
+              Thank You!
+            </h2>
+            <p className='mt-5 md:text-lg leading-relaxed lg:leading-relaxed lg:text-xl text-gray-500'>
+              {message} We look forward to collaborating with you in Greenville.
+              For any questions, please email{' '}
+              <a href='mailto:diana@packagingschool.com' className='font-bold'>
+                Diana Whitaker
+              </a>{' '}
+              or{' '}
+              <a href='mailto:bianca@packagingschool.com' className='font-bold'>
+                Bianca Hurley.{' '}
+              </a>
+            </p>
           </div>
-          <div className='w-full max-w-sm leading-snug flex lg:justify-end items-center'>
-            <div className='bg-amber-400 rounded-3xl font-bold text-sm md:text-xl text-neutral-900 border border-neutral-900 px-3 py-1.5'>
-              OEM/ TIER 1
-            </div>
+        </AnimatePresence>
+      ) : (
+        <AnimatePresence>
+          <div className='max-w-7xl mx-auto px-5 xl:px-0 pt-5 lg:pb-16 pb-10'>
+            <RegistrationForm2024
+              codes={codes && codes}
+              submitted={() => setSubmitted(true)}
+              params={params}
+            />
           </div>
-        </div>
-        <RegistrationForm params={params} />
-      </div>
+        </AnimatePresence>
+      )}
     </>
   );
 };
 
-export default Register;
+export default Page;

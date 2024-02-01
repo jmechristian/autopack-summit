@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { API, graphqlOperation } from 'aws-amplify';
 import RegistrationFormDesktop from '../../../components/registration/RegistrationFormDesktop';
@@ -43,6 +44,13 @@ const Page = () => {
 
   return (
     <>
+      <Head>
+        <title>Automotive Packaging Summit | Register</title>
+        <meta
+          property='og:title'
+          content='Automotive Packaging Summit | Register'
+        />
+      </Head>
       {/* <div className='lg:hidden'>
         <RegistrationFormMobile codes={codes && codes} />
       </div> */}

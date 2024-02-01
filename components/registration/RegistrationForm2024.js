@@ -93,7 +93,17 @@ const RegistrationForm2024 = ({ codes, submitted, params }) => {
   };
 
   return (
-    <div className='p-0'>
+    <div className='flex flex-col gap-10'>
+      <div className='w-full rounded-2xl border-neutral-900 border-4 p-9 flex flex-col-reverse gap-2 lg:flex-row lg:items-center lg:justify-between bg-white shadow-[12px_16px_0_black] lg:pt-24 lg:pb-12'>
+        <div className='font-medium font-oswald text-5xl md:text-6xl lg:text-7xl uppercase'>
+          Registration
+        </div>
+        <div className='w-full max-w-sm leading-snug flex lg:justify-end items-center'>
+          <div className='bg-amber-400 rounded-3xl font-bold text-sm md:text-xl text-neutral-900 border border-neutral-900 px-3 py-1.5'>
+            OEM/ TIER 1
+          </div>
+        </div>
+      </div>
       <div className='grid grid-cols-1 lg:grid-cols-12 md:gap-9'>
         <div className='lg:col-span-12 xl:col-span-8 rounded-2xl md:border md:border-neutral-900 w-full h-full bg-white md:shadow-[4px_6px_0_black]'>
           <div className='grid md:grid-cols-2 gap-x-5 md:gap-x-10 gap-y-8 px-5 xl:px-10 py-5 overflow-hidden'>
@@ -249,7 +259,7 @@ const RegistrationForm2024 = ({ codes, submitted, params }) => {
                         fn={() => sendRegCodeHandler()}
                       />
                       {isCodeRequestError && (
-                        <p className='text-xs text-red-600'>
+                        <p className='text-xs text-red-700'>
                           {isCodeRequestError}
                         </p>
                       )}
