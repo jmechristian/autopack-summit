@@ -61,8 +61,9 @@ const GetCodeBlock = ({
   };
 
   return (
-    <div className='flex flex-col gap-3 items-center text-center mt-6'>
+    <div className='flex flex-col gap-3 items-center text-center '>
       <BrutalistButton
+        disabled={regCode ? false : true}
         text={'Validate Code'}
         bgColor={'bg-ap-blue'}
         textColor={'text-white'}

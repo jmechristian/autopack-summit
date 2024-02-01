@@ -1756,6 +1756,78 @@ export const deleteAPS = /* GraphQL */ `
     }
   }
 `;
+export const createAPSRegistrant = /* GraphQL */ `
+  mutation CreateAPSRegistrant(
+    $input: CreateAPSRegistrantInput!
+    $condition: ModelAPSRegistrantConditionInput
+  ) {
+    createAPSRegistrant(input: $input, condition: $condition) {
+      year
+      id
+      name
+      email
+      company
+      title
+      phone
+      code
+      worksWith
+      speedNetworking
+      innovationWorkshop
+      plantTour
+      confirmationSent
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateAPSRegistrant = /* GraphQL */ `
+  mutation UpdateAPSRegistrant(
+    $input: UpdateAPSRegistrantInput!
+    $condition: ModelAPSRegistrantConditionInput
+  ) {
+    updateAPSRegistrant(input: $input, condition: $condition) {
+      year
+      id
+      name
+      email
+      company
+      title
+      phone
+      code
+      worksWith
+      speedNetworking
+      innovationWorkshop
+      plantTour
+      confirmationSent
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteAPSRegistrant = /* GraphQL */ `
+  mutation DeleteAPSRegistrant(
+    $input: DeleteAPSRegistrantInput!
+    $condition: ModelAPSRegistrantConditionInput
+  ) {
+    deleteAPSRegistrant(input: $input, condition: $condition) {
+      year
+      id
+      name
+      email
+      company
+      title
+      phone
+      code
+      worksWith
+      speedNetworking
+      innovationWorkshop
+      plantTour
+      confirmationSent
+      createdAt
+      updatedAt
+    }
+  }
+`;
 export const createCompany = /* GraphQL */ `
   mutation CreateCompany(
     $input: CreateCompanyInput!
@@ -9534,8 +9606,13 @@ export const createTrackedCourse = /* GraphQL */ `
         displayName
         link
         logo
+        email
         primaryColor
         highlightColor
+        pdf
+        slide
+        video
+        offered
         courses {
           items {
             id
@@ -9547,6 +9624,8 @@ export const createTrackedCourse = /* GraphQL */ `
           }
           nextToken
         }
+        offerings
+        status
         createdAt
         updatedAt
       }
@@ -9570,8 +9649,13 @@ export const updateTrackedCourse = /* GraphQL */ `
         displayName
         link
         logo
+        email
         primaryColor
         highlightColor
+        pdf
+        slide
+        video
+        offered
         courses {
           items {
             id
@@ -9583,6 +9667,8 @@ export const updateTrackedCourse = /* GraphQL */ `
           }
           nextToken
         }
+        offerings
+        status
         createdAt
         updatedAt
       }
@@ -9606,8 +9692,13 @@ export const deleteTrackedCourse = /* GraphQL */ `
         displayName
         link
         logo
+        email
         primaryColor
         highlightColor
+        pdf
+        slide
+        video
+        offered
         courses {
           items {
             id
@@ -9619,6 +9710,8 @@ export const deleteTrackedCourse = /* GraphQL */ `
           }
           nextToken
         }
+        offerings
+        status
         createdAt
         updatedAt
       }
@@ -9638,8 +9731,13 @@ export const createCustomer = /* GraphQL */ `
       displayName
       link
       logo
+      email
       primaryColor
       highlightColor
+      pdf
+      slide
+      video
+      offered
       courses {
         items {
           id
@@ -9650,8 +9748,15 @@ export const createCustomer = /* GraphQL */ `
             displayName
             link
             logo
+            email
             primaryColor
             highlightColor
+            pdf
+            slide
+            video
+            offered
+            offerings
+            status
             createdAt
             updatedAt
           }
@@ -9661,6 +9766,8 @@ export const createCustomer = /* GraphQL */ `
         }
         nextToken
       }
+      offerings
+      status
       createdAt
       updatedAt
     }
@@ -9676,8 +9783,13 @@ export const updateCustomer = /* GraphQL */ `
       displayName
       link
       logo
+      email
       primaryColor
       highlightColor
+      pdf
+      slide
+      video
+      offered
       courses {
         items {
           id
@@ -9688,8 +9800,15 @@ export const updateCustomer = /* GraphQL */ `
             displayName
             link
             logo
+            email
             primaryColor
             highlightColor
+            pdf
+            slide
+            video
+            offered
+            offerings
+            status
             createdAt
             updatedAt
           }
@@ -9699,6 +9818,8 @@ export const updateCustomer = /* GraphQL */ `
         }
         nextToken
       }
+      offerings
+      status
       createdAt
       updatedAt
     }
@@ -9714,8 +9835,13 @@ export const deleteCustomer = /* GraphQL */ `
       displayName
       link
       logo
+      email
       primaryColor
       highlightColor
+      pdf
+      slide
+      video
+      offered
       courses {
         items {
           id
@@ -9726,8 +9852,15 @@ export const deleteCustomer = /* GraphQL */ `
             displayName
             link
             logo
+            email
             primaryColor
             highlightColor
+            pdf
+            slide
+            video
+            offered
+            offerings
+            status
             createdAt
             updatedAt
           }
@@ -9737,6 +9870,83 @@ export const deleteCustomer = /* GraphQL */ `
         }
         nextToken
       }
+      offerings
+      status
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createCustomerLibary = /* GraphQL */ `
+  mutation CreateCustomerLibary(
+    $input: CreateCustomerLibaryInput!
+    $condition: ModelCustomerLibaryConditionInput
+  ) {
+    createCustomerLibary(input: $input, condition: $condition) {
+      id
+      displayName
+      description
+      link
+      logo
+      email
+      primaryColor
+      highlightColor
+      pdf
+      slide
+      video
+      offered
+      offerings
+      status
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateCustomerLibary = /* GraphQL */ `
+  mutation UpdateCustomerLibary(
+    $input: UpdateCustomerLibaryInput!
+    $condition: ModelCustomerLibaryConditionInput
+  ) {
+    updateCustomerLibary(input: $input, condition: $condition) {
+      id
+      displayName
+      description
+      link
+      logo
+      email
+      primaryColor
+      highlightColor
+      pdf
+      slide
+      video
+      offered
+      offerings
+      status
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteCustomerLibary = /* GraphQL */ `
+  mutation DeleteCustomerLibary(
+    $input: DeleteCustomerLibaryInput!
+    $condition: ModelCustomerLibaryConditionInput
+  ) {
+    deleteCustomerLibary(input: $input, condition: $condition) {
+      id
+      displayName
+      description
+      link
+      logo
+      email
+      primaryColor
+      highlightColor
+      pdf
+      slide
+      video
+      offered
+      offerings
+      status
       createdAt
       updatedAt
     }

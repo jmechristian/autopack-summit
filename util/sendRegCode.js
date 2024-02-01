@@ -1,7 +1,5 @@
-export const sendRegCode = (e, name, title, company, email, phone) => {
-  e.preventDefault();
-
-  fetch(
+export const sendRegCode = async (name, title, company, email, phone) => {
+  const resp = await fetch(
     'https://4mwprd7rph.execute-api.us-east-1.amazonaws.com/default/sendRegCode-staging',
     {
       method: 'POST',

@@ -52,12 +52,34 @@ const RegBlockPricing = ({
   }, [resetCounter]);
 
   useEffect(() => {
-    if (name && company && title && phone && email && isValid) {
+    if (
+      name &&
+      company &&
+      title &&
+      phone &&
+      email &&
+      isValid &&
+      worksWith != 'none' &&
+      speedNetworking != 'none' &&
+      innovationWorkshop != 'none' &&
+      plantTour != 'none'
+    ) {
       setFormIsValid(true);
     } else {
       setFormIsValid(false);
     }
-  }, [name, company, title, phone, email, isValid]);
+  }, [
+    name,
+    company,
+    title,
+    phone,
+    email,
+    isValid,
+    worksWith,
+    plantTour,
+    innovationWorkshop,
+    speedNetworking,
+  ]);
 
   return (
     <div className='flex flex-col gap-3 items-center justify-between w-full h-full px-6'>

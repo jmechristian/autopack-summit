@@ -1320,6 +1320,55 @@ export const listAPS = /* GraphQL */ `
     }
   }
 `;
+export const getAPSRegistrant = /* GraphQL */ `
+  query GetAPSRegistrant($id: ID!) {
+    getAPSRegistrant(id: $id) {
+      year
+      id
+      name
+      email
+      company
+      title
+      phone
+      code
+      worksWith
+      speedNetworking
+      innovationWorkshop
+      plantTour
+      confirmationSent
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listAPSRegistrants = /* GraphQL */ `
+  query ListAPSRegistrants(
+    $filter: ModelAPSRegistrantFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listAPSRegistrants(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        year
+        id
+        name
+        email
+        company
+        title
+        phone
+        code
+        worksWith
+        speedNetworking
+        innovationWorkshop
+        plantTour
+        confirmationSent
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
 export const getCompany = /* GraphQL */ `
   query GetCompany($id: ID!) {
     getCompany(id: $id) {
@@ -6382,8 +6431,13 @@ export const getTrackedCourse = /* GraphQL */ `
         displayName
         link
         logo
+        email
         primaryColor
         highlightColor
+        pdf
+        slide
+        video
+        offered
         courses {
           items {
             id
@@ -6395,6 +6449,8 @@ export const getTrackedCourse = /* GraphQL */ `
           }
           nextToken
         }
+        offerings
+        status
         createdAt
         updatedAt
       }
@@ -6420,11 +6476,18 @@ export const listTrackedCourses = /* GraphQL */ `
           displayName
           link
           logo
+          email
           primaryColor
           highlightColor
+          pdf
+          slide
+          video
+          offered
           courses {
             nextToken
           }
+          offerings
+          status
           createdAt
           updatedAt
         }
@@ -6462,11 +6525,18 @@ export const trackedCoursesByCustomerIdAndClicks = /* GraphQL */ `
           displayName
           link
           logo
+          email
           primaryColor
           highlightColor
+          pdf
+          slide
+          video
+          offered
           courses {
             nextToken
           }
+          offerings
+          status
           createdAt
           updatedAt
         }
@@ -6485,8 +6555,13 @@ export const getCustomer = /* GraphQL */ `
       displayName
       link
       logo
+      email
       primaryColor
       highlightColor
+      pdf
+      slide
+      video
+      offered
       courses {
         items {
           id
@@ -6497,8 +6572,15 @@ export const getCustomer = /* GraphQL */ `
             displayName
             link
             logo
+            email
             primaryColor
             highlightColor
+            pdf
+            slide
+            video
+            offered
+            offerings
+            status
             createdAt
             updatedAt
           }
@@ -6508,6 +6590,8 @@ export const getCustomer = /* GraphQL */ `
         }
         nextToken
       }
+      offerings
+      status
       createdAt
       updatedAt
     }
@@ -6525,8 +6609,13 @@ export const listCustomers = /* GraphQL */ `
         displayName
         link
         logo
+        email
         primaryColor
         highlightColor
+        pdf
+        slide
+        video
+        offered
         courses {
           items {
             id
@@ -6538,6 +6627,63 @@ export const listCustomers = /* GraphQL */ `
           }
           nextToken
         }
+        offerings
+        status
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getCustomerLibary = /* GraphQL */ `
+  query GetCustomerLibary($id: ID!) {
+    getCustomerLibary(id: $id) {
+      id
+      displayName
+      description
+      link
+      logo
+      email
+      primaryColor
+      highlightColor
+      pdf
+      slide
+      video
+      offered
+      offerings
+      status
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listCustomerLibaries = /* GraphQL */ `
+  query ListCustomerLibaries(
+    $filter: ModelCustomerLibaryFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listCustomerLibaries(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        displayName
+        description
+        link
+        logo
+        email
+        primaryColor
+        highlightColor
+        pdf
+        slide
+        video
+        offered
+        offerings
+        status
         createdAt
         updatedAt
       }
