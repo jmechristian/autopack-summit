@@ -1335,7 +1335,6 @@ export const getAPSRegistrant = /* GraphQL */ `
       speedNetworking
       innovationWorkshop
       plantTour
-      confirmationSent
       codeRequested
       codeSent
       registrationReceived
@@ -1365,7 +1364,6 @@ export const listAPSRegistrants = /* GraphQL */ `
         speedNetworking
         innovationWorkshop
         plantTour
-        confirmationSent
         codeRequested
         codeSent
         registrationReceived
@@ -1405,7 +1403,6 @@ export const aPSRegistrantsByEmail = /* GraphQL */ `
         speedNetworking
         innovationWorkshop
         plantTour
-        confirmationSent
         codeRequested
         codeSent
         registrationReceived

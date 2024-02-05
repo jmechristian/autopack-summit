@@ -1,5 +1,4 @@
 export const sendEmail = (
-  e,
   name,
   title,
   company,
@@ -11,8 +10,6 @@ export const sendEmail = (
   innovationWorkshop,
   plantTour
 ) => {
-  e.preventDefault();
-
   fetch(
     'https://9i9gb4ccxe.execute-api.us-east-1.amazonaws.com/default/sendEmailFn-staging',
     {

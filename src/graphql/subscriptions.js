@@ -1663,7 +1663,6 @@ export const onCreateAPSRegistrant = /* GraphQL */ `
       speedNetworking
       innovationWorkshop
       plantTour
-      confirmationSent
       codeRequested
       codeSent
       registrationReceived
@@ -1688,7 +1687,6 @@ export const onUpdateAPSRegistrant = /* GraphQL */ `
       speedNetworking
       innovationWorkshop
       plantTour
-      confirmationSent
       codeRequested
       codeSent
       registrationReceived
@@ -1713,7 +1711,6 @@ export const onDeleteAPSRegistrant = /* GraphQL */ `
       speedNetworking
       innovationWorkshop
       plantTour
-      confirmationSent
       codeRequested
       codeSent
       registrationReceived

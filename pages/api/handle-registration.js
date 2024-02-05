@@ -1,74 +1,72 @@
-import { Amplify, API, graphqlOperation } from 'aws-amplify';
-import { usersByEmail } from '../../src/graphql/queries';
-import { createUser } from '../../src/graphql/mutations';
-import awsExports from '../../src/aws-exports';
-Amplify.configure(awsExports);
+import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses';
+import { API } from 'aws-amplify';
+import { render } from '@react-email/render';
+import { PlaidVerifyIdentityEmail } from '../../react-email-starter/emails/plaid-verify-identity';
+import { TestEmail } from '../../components/emails/TestEmail';
 
-const GRAPHQL_ENDPOINT = process.env.GRAPHQL_ENDPOINT;
-const GRAPHQL_API_KEY = process.env.GRAPHQL_API_KEY;
-
-const options = {
-  method: 'GET',
-  headers: {
-    accept: 'application/json',
-  },
+const REGION = 'us-east-1';
+const creds = {
+  accessKeyId: process.env.AWSACCESSKEYID,
+  secretAccessKey: process.env.AWSSECRETACCESSKEY,
 };
+// Create SES service object.
+const sesClient = new SESClient({ region: REGION, credentials: creds });
+export { sesClient };
 
 export default async function handler(req, res) {
-  const { email, name, company, title, phone } = req.query;
+  const body = req.body;
 
-  try {
-    const isUser = await API.graphql({
-      query: usersByEmail,
-      variables: { email: email },
-    });
+  const emailHtml = render(
+    <PlaidVerifyIdentityEmail validationCode='AUTOPACK3862' />
+  );
 
-    if (isUser.data.usersByEmail.items.length != 0) {
-      //
-      try {
-        fetch(
-          `https://autopacksummit.com/api/send-welcome-email?email=${email}&name=${name}`,
-          options
-        );
-      } catch (err) {
-        console.log(err);
-      }
-      return res.status(200).json({
-        message: `Welcome Email sent to ${email}`,
-      });
-    } else {
-      await API.graphql({
-        query: createUser,
-        variables: {
-          input: {
-            email: email,
-            name: name,
-            company: company,
-            title: title,
-            cell: phone,
-            source: 'APS',
+  const createSendEmailCommand = (toAddress, fromAddress) => {
+    return new SendEmailCommand({
+      Destination: {
+        /* required */
+        CcAddresses: [
+          /* more items */
+        ],
+        ToAddresses: [
+          toAddress,
+          body.email,
+          //   'diana@packagingschool.com',
+          //   'bianca@packagingschool.com',
+        ],
+      },
+      Message: {
+        /* required */
+        Body: {
+          /* required */
+          Html: {
+            Data: emailHtml,
+          },
+          Text: {
+            Charset: 'UTF-8',
+            Data: 'TEXT_FORMAT_BODY',
           },
         },
-      }).then((response) => {
-        try {
-          fetch(
-            `https://autopacksummit.com/api/send-welcome-email?email=${response.data.createUser.email}&name=${response.data.createUser.name}`,
-            options
-          );
-        } catch (err) {
-          console.log(err);
-        }
-        return res.status(200).json({
-          message: `${email} sent`,
-        });
-      });
-      return res.status(200).json({
-        message: `User ${email} created`,
-      });
-    }
-  } catch (err) {
-    return res.status(200).json({
-      message: 'Something Broke' + JSON.stringify(err),
+        Subject: {
+          Charset: 'UTF-8',
+          Data: 'Automotive Packaging Summit Registration Confirmation',
+        },
+      },
+      Source: fromAddress,
+      ReplyToAddresses: [
+        /* more items */
+      ],
     });
+  };
+
+  try {
+    await sesClient.send(
+      createSendEmailCommand(
+        'jamie@packagingschool.com',
+        'jamie@packagingschool.com'
+      )
+    );
+    res.status(200).json({ message: 'success' });
+  } catch (error) {
+    res.status(410).json({ message: 'error' });
   }
 }

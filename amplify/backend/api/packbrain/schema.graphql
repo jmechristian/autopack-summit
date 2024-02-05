@@ -190,7 +190,6 @@ type APSRegistrant @model @auth(rules: [{ allow: public }]) {
   speedNetworking: String
   innovationWorkshop: String
   plantTour: String
-  confirmationSent: String @default(value: "False")
   codeRequested: Boolean
   codeSent: Boolean
   registrationReceived: Boolean

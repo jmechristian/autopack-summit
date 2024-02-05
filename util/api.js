@@ -72,3 +72,81 @@ export const sendRegCode = async (name, email) => {
 
   return (await res).status;
 };
+
+export const handleRegInit = async (
+  name,
+  title,
+  company,
+  email,
+  phone,
+  regCode,
+  worksWith,
+  speedNetworking,
+  innovationWorkshop,
+  plantTour
+) => {
+  // Check for existing registrant
+  const isRegistrant = await API.graphql({
+    query: aPSRegistrantsByEmail,
+    variables: { email: email },
+  });
+
+  if (isRegistrant.data.aPSRegistrantsByEmail.items.length === 0) {
+    //Create New Registrant
+    const newReg = await API.graphql({
+      query: createAPSRegistrant,
+      variables: {
+        input: {
+          name,
+          title,
+          company,
+          email,
+          phone,
+          worksWith,
+          speedNetworking,
+          innovationWorkshop,
+          plantTour,
+          codeRequested: false,
+          codeSent: false,
+          registrationReceived: true,
+          welcomeEmailSent: false,
+        },
+      },
+    });
+
+    return newReg.data;
+  }
+
+  // If there is a reg, update data, otherwise...
+  if (isRegistrant.data.aPSRegistrantsByEmail.items.length > 0) {
+    const updated = await API.graphql({
+      query: updateAPSRegistrant,
+      variables: {
+        input: {
+          id: isRegistrant.data.aPSRegistrantsByEmail.items[0].id,
+          name,
+          title,
+          company,
+          email,
+          phone,
+          worksWith,
+          speedNetworking,
+          innovationWorkshop,
+          plantTour,
+          registrationReceived: true,
+        },
+      },
+    });
+
+    return updated.data;
+  }
+};
+
+export const ApproveRegistrant = async (id) => {
+  const updated = await API.graphql({
+    query: updateAPSRegistrant,
+    variables: { input: { id: id, welcomeEmailSent: true } },
+  });
+
+  return updated.data;
+};

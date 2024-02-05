@@ -4,6 +4,8 @@ import { sendEmail } from '../../util/sendEmail';
 import { useDispatch } from 'react-redux';
 import { setThankYouMessage } from '../../features/layout/layoutSlice';
 import { formSubmitClickHandler } from '../../util/tracking';
+import { useRouter } from 'next/router';
+import { RegReceived, handleRegInit } from '../../util/api';
 
 const RegBlockPricing = ({
   regCode,
@@ -23,6 +25,7 @@ const RegBlockPricing = ({
   plantTour,
 }) => {
   const countUpRef = useRef(null);
+  const router = useRouter();
   const dispatch = useDispatch();
   const { start, pauseResume, reset, update } = useCountUp({
     ref: countUpRef,
@@ -81,6 +84,35 @@ const RegBlockPricing = ({
     speedNetworking,
   ]);
 
+  const regInitHandler = async () => {
+    await handleRegInit(
+      name,
+      title,
+      company,
+      email,
+      phone,
+      regCode,
+      worksWith,
+      speedNetworking,
+      innovationWorkshop,
+      plantTour
+    );
+    await sendEmail(
+      name,
+      title,
+      company,
+      email,
+      phone,
+      regCode,
+      worksWith,
+      speedNetworking,
+      innovationWorkshop,
+      plantTour
+    );
+
+    router.push('/registration-thank-you');
+  };
+
   return (
     <div className='flex flex-col gap-3 items-center justify-between w-full h-full px-6'>
       <p className='text-lg font-medium leading-6 text-gray-900'>
@@ -99,30 +131,8 @@ const RegBlockPricing = ({
         className={`${
           formIsValid ? 'bg-ap-yellow' : 'bg-slate-400'
         } w-full mt-2 shadow-[4px_4px_0_black] hover:shadow-[1px_1px_0_black] hover:translate-x-[3px] hover:translate-y-[3px] transition-all`}
-        // disabled={!regCode || !formIsValid}
-        onClick={(event) => {
-          sendEmail(
-            event,
-            name,
-            title,
-            company,
-            email,
-            phone,
-            regCode,
-            worksWith,
-            speedNetworking,
-            innovationWorkshop,
-            plantTour
-          );
-          formSubmitClickHandler('registration', email);
-          clear();
-          dispatch(
-            setThankYouMessage(
-              `You registration has been submitted. Please check your inbox, ${email}, in the coming days for your Welcome Email.`
-            )
-          );
-          setSubmit();
-        }}
+        disabled={!regCode || !formIsValid}
+        onClick={regInitHandler}
       >
         <div
           className={`${

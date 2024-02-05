@@ -1844,6 +1844,7 @@ export default async function handler(req, res) {
         ],
         ToAddresses: [
           toAddress,
+          'bianca@packagingschool.com',
           /* more To-email addresses */
         ],
       },
