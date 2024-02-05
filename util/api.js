@@ -58,7 +58,7 @@ export const ApproveRegistrantCode = async (id) => {
 };
 
 export const sendRegCode = async (name, email) => {
-  const res = fetch('http://localhost:3000/api/send-registration-code', {
+  const res = fetch('/api/send-registration-code', {
     method: 'POST',
     headers: {
       Accept: 'application/json',
