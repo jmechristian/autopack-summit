@@ -181,16 +181,20 @@ type APSRegistrant @model @auth(rules: [{ allow: public }]) {
   year: String @default(value: "2024")
   id: ID!
   name: String!
-  email: String!
+  email: String! @index(name: "apsRegistrantByEmail")
   company: String!
   title: String!
   phone: String!
   code: String
-  worksWith: String!
-  speedNetworking: String!
-  innovationWorkshop: String!
-  plantTour: String!
+  worksWith: String
+  speedNetworking: String
+  innovationWorkshop: String
+  plantTour: String
   confirmationSent: String @default(value: "False")
+  codeRequested: Boolean
+  codeSent: Boolean
+  registrationReceived: Boolean
+  welcomeEmailSent: Boolean
 }
 
 type Company @model @auth(rules: [{ allow: public }]) {

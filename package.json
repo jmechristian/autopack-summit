@@ -10,9 +10,12 @@
   },
   "dependencies": {
     "@aws-amplify/ui-react": "^4.3.2",
-    "@aws-sdk/client-ses": "^3.354.0",
+    "@aws-sdk/client-ses": "^3.504.0",
     "@headlessui/react": "^1.7.8",
     "@heroicons/react": "^2.0.13",
+    "@react-email/button": "^0.0.13",
+    "@react-email/components": "^0.0.14",
+    "@react-email/html": "^0.0.7",
     "@react-pdf/renderer": "^3.3.4",
     "@reduxjs/toolkit": "^1.9.0",
     "@sanity/client": "^3.4.1",

@@ -1664,6 +1664,10 @@ export const onCreateAPSRegistrant = /* GraphQL */ `
       innovationWorkshop
       plantTour
       confirmationSent
+      codeRequested
+      codeSent
+      registrationReceived
+      welcomeEmailSent
       createdAt
       updatedAt
     }
@@ -1685,6 +1689,10 @@ export const onUpdateAPSRegistrant = /* GraphQL */ `
       innovationWorkshop
       plantTour
       confirmationSent
+      codeRequested
+      codeSent
+      registrationReceived
+      welcomeEmailSent
       createdAt
       updatedAt
     }
@@ -1706,6 +1714,10 @@ export const onDeleteAPSRegistrant = /* GraphQL */ `
       innovationWorkshop
       plantTour
       confirmationSent
+      codeRequested
+      codeSent
+      registrationReceived
+      welcomeEmailSent
       createdAt
       updatedAt
     }

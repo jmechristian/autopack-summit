@@ -881,9 +881,8 @@ export default async function handler(req, res) {
         'jamie@packagingschool.com'
       )
     );
-    res.status(200).json({ message: 'Success' + res });
+    res.status(200).json({ message: 'success' });
   } catch (error) {
-    console.log(error);
-    res.status(410).json({ message: error + 'error' });
+    res.status(410).json({ message: 'error' });
   }
 }

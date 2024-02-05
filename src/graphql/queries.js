@@ -1336,6 +1336,10 @@ export const getAPSRegistrant = /* GraphQL */ `
       innovationWorkshop
       plantTour
       confirmationSent
+      codeRequested
+      codeSent
+      registrationReceived
+      welcomeEmailSent
       createdAt
       updatedAt
     }
@@ -1362,6 +1366,50 @@ export const listAPSRegistrants = /* GraphQL */ `
         innovationWorkshop
         plantTour
         confirmationSent
+        codeRequested
+        codeSent
+        registrationReceived
+        welcomeEmailSent
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const aPSRegistrantsByEmail = /* GraphQL */ `
+  query APSRegistrantsByEmail(
+    $email: String!
+    $sortDirection: ModelSortDirection
+    $filter: ModelAPSRegistrantFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    aPSRegistrantsByEmail(
+      email: $email
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        year
+        id
+        name
+        email
+        company
+        title
+        phone
+        code
+        worksWith
+        speedNetworking
+        innovationWorkshop
+        plantTour
+        confirmationSent
+        codeRequested
+        codeSent
+        registrationReceived
+        welcomeEmailSent
         createdAt
         updatedAt
       }

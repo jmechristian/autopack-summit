@@ -5,10 +5,10 @@ import { useRouter } from 'next/router';
 import GetCodeBlock from './GetCodeBlock';
 import RegBlockPricing from './RegBlockPricing';
 import BrutalistButton from '../../shared/BrutalistButton';
+import { createAPSUserFromCodeRequest } from '../../util/api';
 
 const RegistrationForm2024 = ({ codes, submitted, params }) => {
   const router = useRouter();
-
   const [name, setName] = useState('');
   const [isSending, setIsSending] = useState(false);
   const [isCodeRequestError, setIsCodeRequestError] = useState('');
@@ -87,7 +87,15 @@ const RegistrationForm2024 = ({ codes, submitted, params }) => {
       setIsCodeRequestError('Please enter the required personal info above.');
     } else {
       setIsSending(true);
-      await sendRegCode(name, title, company, email, phone);
+      const send = await sendRegCode(name, title, company, email, phone);
+      const create = await createAPSUserFromCodeRequest(
+        name,
+        title,
+        company,
+        email,
+        phone
+      );
+      console.log('create', create);
       router.push('/code-requested');
     }
   };
