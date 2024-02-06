@@ -12,6 +12,7 @@ import {
   getRegistrantByEmail,
   sendRegCode,
 } from '../util/api';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const Page = () => {
   const router = useRouter();
@@ -34,6 +35,7 @@ const Page = () => {
         setHelperText(`Sending Code to ${params.email}`);
         if (reg.registrant[0].codeSent === true) {
           setHelperText(`Code Already Sent to ${params.email}`);
+          setIsSent(true);
         }
         if (reg.registrant[0].codeSent === false) {
           const send = await sendRegCode(
@@ -89,12 +91,27 @@ const Page = () => {
                   </div>
                 </div>
               </div>
-              <div className=' relative aspect-square bg-amber-400 border-2 border-black rounded-full w-24 h-24 flex justify-center items-center'>
-                <PaperAirplaneIcon
-                  className={`text-white h-12 w-12 ${
-                    isLoading ? 'animate-bounce' : ''
-                  }`}
-                />
+              <div
+                className={`relative aspect-square ${
+                  isSent ? 'bg-green-600' : 'bg-amber-300'
+                } border-2 border-black rounded-full w-24 h-24 flex justify-center items-center`}
+              >
+                <AnimatePresence>
+                  {isSent ? (
+                    <motion.div>
+                      <CheckIcon className='fill-white w-16 h-16' />
+                    </motion.div>
+                  ) : (
+                    <motion.div>
+                      <PaperAirplaneIcon
+                        className={`text-white h-12 w-12 ${
+                          isLoading ? 'animate-bounce' : ''
+                        }`}
+                      />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
                 <div className='absolute inset-x-0 top-full bg-white border-2 border-black px-2 py-1 flex justify-center items-center text-center'>
                   <div className='text-sm leading-tight font-medium'>
                     Reg Code Sent
@@ -119,7 +136,7 @@ const Page = () => {
               </div>
             </div>
           </div>
-          <div className='w-full leading-snug text-center mt-16 text-lg flex items-center gap-3 max-w-lg py-2 px-2 mx-auto bg-amber-100 border-2 border-black shadow-[3px_5px_0_black]'>
+          <div className='w-full leading-snug text-center mt-16 text-lg flex items-center gap-3 max-w-2xl py-2 px-2 mx-auto bg-amber-100 border-2 border-black shadow-[3px_5px_0_black]'>
             <div className='w-10 h-10 bg-white border border-black flex items-center justify-center'>
               <MegaphoneIcon className='w-7 h-7 fill-black' />
             </div>

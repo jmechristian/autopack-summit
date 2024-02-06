@@ -12,12 +12,13 @@ import {
   getRegistrantByEmail,
   sendWelcomeEmail,
 } from '../util/api';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const Page = () => {
   const router = useRouter();
   const params = router.query;
 
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [helperText, setHelperText] = useState(
     params.email ? 'Finding Registrant' : 'No Registrant Data'
   );
@@ -27,6 +28,7 @@ const Page = () => {
 
   useEffect(() => {
     const setRegistrant = async (email) => {
+      setIsLoading(true);
       const reg = await getRegistrantByEmail(email);
       if (reg.error) {
         setIsError(reg.error);
@@ -35,6 +37,7 @@ const Page = () => {
         setIsRegistrant(reg.registrant);
         if (reg.registrant[0].welcomeEmailSent === true) {
           setHelperText(`Welcome Email Already Sent to ${params.email}`);
+          setIsSent(true);
         }
         if (reg.registrant[0].welcomeEmailSent === false) {
           const send = await sendWelcomeEmail(params.name, params.email);
@@ -47,11 +50,10 @@ const Page = () => {
           }
         }
       }
+      setIsLoading(false);
     };
 
-    setIsLoading(true);
     params && params.email && setRegistrant(params.email);
-    setIsLoading(false);
   }, [params]);
 
   return (
@@ -77,7 +79,7 @@ const Page = () => {
               </div>
             </div>
             <div className='flex items-center justify-between gap-12 absolute z-10 inset-0'>
-              <div className=' relative aspect-square bg-green-600 border-2 border-black rounded-full w-24 h-24 flex justify-center items-center'>
+              <div className=' relative aspect-square transition-colors ease-in bg-green-600 border-2 border-black rounded-full w-24 h-24 flex justify-center items-center'>
                 <CheckIcon className='fill-white w-16 h-16' />
                 <div className='absolute inset-x-0 top-full bg-white border-2 border-black px-2 py-1 flex justify-center items-center text-center'>
                   <div className='text-sm leading-tight font-medium'>
@@ -85,41 +87,59 @@ const Page = () => {
                   </div>
                 </div>
               </div>
-              <div className=' relative aspect-square bg-amber-400 border-2 border-black rounded-full w-24 h-24 flex justify-center items-center'>
-                <PaperAirplaneIcon
-                  className={`text-white h-12 w-12 ${
-                    isLoading ? 'animate-bounce' : ''
-                  }`}
-                />
-                <div className='absolute inset-x-0 top-full bg-white border-2 border-black px-2 py-1 flex justify-center items-center text-center'>
-                  <div className='text-sm leading-tight font-medium'>
-                    Reg Code Sent
-                  </div>
-                </div>
-              </div>
-              <div className=' relative aspect-square bg-neutral-400 border-2 border-black rounded-full w-24 h-24 flex justify-center items-center'>
-                <XMarkIcon className='text-neutral-600 w-16 h-16' />
+
+              <div className=' relative aspect-square bg-green-600 border-2 border-black rounded-full w-24 h-24 flex justify-center items-center'>
+                <CheckIcon className='fill-white w-16 h-16' />
                 <div className='absolute inset-x-0 top-full bg-white border-2 border-black px-2 py-1 flex justify-center items-center text-center'>
                   <div className='text-sm leading-tight font-medium'>
                     Registration Received
                   </div>
                 </div>
               </div>
-              <div className=' relative aspect-square bg-neutral-400 border-2 border-black rounded-full w-24 h-24 flex justify-center items-center'>
-                <XMarkIcon className='text-neutral-600 w-16 h-16' />
+              <div className=' relative aspect-square bg-green-600 border-2 border-black rounded-full w-24 h-24 flex justify-center items-center'>
+                <CheckIcon className='fill-white w-16 h-16' />
                 <div className='absolute inset-x-0 top-full bg-white border-2 border-black px-2 py-1 flex justify-center items-center text-center'>
                   <div className='text-sm leading-tight font-medium'>
                     Welcome Email Sent
                   </div>
                 </div>
               </div>
+              <div
+                className={`relative aspect-square ${
+                  isSent ? 'bg-green-600' : 'bg-amber-300'
+                } border-2 border-black rounded-full w-24 h-24 flex justify-center items-center`}
+              >
+                <AnimatePresence>
+                  {isSent ? (
+                    <motion.div>
+                      <CheckIcon className='fill-white w-16 h-16' />
+                    </motion.div>
+                  ) : (
+                    <motion.div>
+                      <PaperAirplaneIcon
+                        className={`text-white h-12 w-12 ${
+                          isLoading ? 'animate-bounce' : ''
+                        }`}
+                      />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
+                <div className='absolute inset-x-0 top-full bg-white border-2 border-black px-2 py-1 flex justify-center items-center text-center'>
+                  <div className='text-sm leading-tight font-medium'>
+                    Reg Code Sent
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <div className='w-full leading-tight mt-16 text-lg flex items-center gap-4 max-w-lg py-2 px-2 mx-auto bg-amber-100 border-2 border-black shadow-[3px_5px_0_black]'>
+          <div className='w-full leading-tight mt-16 text-lg flex items-center gap-4 max-w-2xl py-2 px-2 mx-auto bg-amber-100 border-2 border-black shadow-[3px_5px_0_black]'>
             <div className='w-10 h-10 bg-white border border-black flex items-center justify-center'>
               <MegaphoneIcon className='w-7 h-7 fill-black' />
             </div>
-            <div className='w-full'>{isError ? isError : helperText}</div>
+            <div className={`w-full ${isLoading ? 'animate-pulse' : ''}`}>
+              {isError ? isError : helperText}
+            </div>
           </div>
         </div>
       </div>
