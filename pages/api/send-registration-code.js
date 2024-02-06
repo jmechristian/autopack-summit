@@ -24,8 +24,8 @@ export default async function handler(req, res) {
         ToAddresses: [
           toAddress,
           body.email,
-          //   'diana@packagingschool.com',
-          //   'bianca@packagingschool.com',
+          'diana@packagingschool.com',
+          'bianca@packagingschool.com',
         ],
       },
       Message: {
@@ -42,7 +42,7 @@ export default async function handler(req, res) {
         },
         Subject: {
           Charset: 'UTF-8',
-          Data: 'Automotive Packaging Summit Registration Confirmation',
+          Data: 'Automotive Packaging Summit Registration Code',
         },
       },
       Source: fromAddress,

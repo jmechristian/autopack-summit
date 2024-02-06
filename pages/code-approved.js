@@ -17,14 +17,15 @@ const Page = () => {
   const router = useRouter();
   const params = router.query;
 
-  const [isLoading, setIsLoading] = useState(true);
-  const [helperText, setHelperText] = useState('Finding Registrant');
+  const [isLoading, setIsLoading] = useState(false);
+  const [helperText, setHelperText] = useState('Initializing...');
   const [isRegistrant, setIsRegistrant] = useState({});
   const [isError, setIsError] = useState('');
   const [isSent, setIsSent] = useState(false);
 
   useEffect(() => {
     const setRegistrant = async (email) => {
+      setIsLoading(true);
       const reg = await getRegistrantByEmail(email);
       if (reg.error) {
         setIsError(reg.error);
@@ -35,7 +36,13 @@ const Page = () => {
           setHelperText(`Code Already Sent to ${params.email}`);
         }
         if (reg.registrant[0].codeSent === false) {
-          const send = await sendRegCode(params.name, params.email);
+          const send = await sendRegCode(
+            params.name,
+            params.email,
+            params.company,
+            params.title,
+            params.phone
+          );
           if (send === 200) {
             setHelperText(`Code Sent to ${params.email}`);
             ApproveRegistrantCode(reg.registrant[0] && reg.registrant[0].id);
@@ -45,11 +52,10 @@ const Page = () => {
           }
         }
       }
+      setIsLoading(false);
     };
 
-    setIsLoading(true);
     params && params.email && setRegistrant(params.email);
-    setIsLoading(false);
   }, [params]);
 
   return (

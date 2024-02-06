@@ -57,7 +57,7 @@ export const ApproveRegistrantCode = async (id) => {
   return updated.data;
 };
 
-export const sendRegCode = async (name, email) => {
+export const sendRegCode = async (name, email, company, title, phone) => {
   const res = fetch('/api/send-registration-code', {
     method: 'POST',
     headers: {
