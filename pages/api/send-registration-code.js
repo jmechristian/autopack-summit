@@ -12,7 +12,7 @@ export { sesClient };
 
 export default async function handler(req, res) {
   const body = req.body;
-  const emailHtml = render(<CodeRequestEmail />);
+  const emailHtml = render(<CodeRequestEmail registrant={body} />);
 
   const createSendEmailCommand = (toAddress, fromAddress) => {
     return new SendEmailCommand({

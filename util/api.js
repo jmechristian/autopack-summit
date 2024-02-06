@@ -67,6 +67,9 @@ export const sendRegCode = async (name, email) => {
     body: JSON.stringify({
       name,
       email,
+      company,
+      title,
+      phone,
     }),
   });
 

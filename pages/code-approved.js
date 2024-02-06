@@ -117,7 +117,9 @@ const Page = () => {
             <div className='w-10 h-10 bg-white border border-black flex items-center justify-center'>
               <MegaphoneIcon className='w-7 h-7 fill-black' />
             </div>
-            <div className='w-fit'>{isError ? isError : helperText}</div>
+            <div className={`w-fit ${isLoading ? 'animate-pulse' : ''}`}>
+              {isError ? isError : helperText}
+            </div>
           </div>
         </div>
       </div>
