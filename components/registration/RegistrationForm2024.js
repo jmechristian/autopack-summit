@@ -189,6 +189,11 @@ const RegistrationForm2024 = ({ codes, submitted, params }) => {
               />
             </div>
             <div className='flex flex-col gap-3'>
+              <div className='w-full flex justify-end'>
+                <div className='text-xs font-medium text-slate-500 uppercase'>
+                  *Required
+                </div>
+              </div>
               <div className='leading-snug text-sm text-neutral-700'>
                 Are you mostly working with production and returnable packaging
                 or Aftersales and expendable packaging? Please select:
