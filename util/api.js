@@ -142,11 +142,27 @@ export const handleRegInit = async (
   }
 };
 
-export const ApproveRegistrant = async (id) => {
+export const approveRegistrant = async (id) => {
   const updated = await API.graphql({
     query: updateAPSRegistrant,
     variables: { input: { id: id, welcomeEmailSent: true } },
   });
 
   return updated.data;
+};
+
+export const sendWelcomeEmail = async (name, email) => {
+  const res = fetch('/api/send-welcome-email', {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      name,
+      email,
+    }),
+  });
+
+  return (await res).status;
 };

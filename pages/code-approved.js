@@ -12,7 +12,6 @@ import {
   getRegistrantByEmail,
   sendRegCode,
 } from '../util/api';
-import { sendConfirmationEmail } from '../util/SendConfirmationEmail';
 
 const Page = () => {
   const router = useRouter();

@@ -1,7 +1,6 @@
 import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses';
 import { render } from '@react-email/render';
-import { PlaidVerifyIdentityEmail } from '../../react-email-starter/emails/plaid-verify-identity';
-import { TestEmail } from '../../components/emails/TestEmail';
+import { CodeRequestEmail } from '../../react-email-starter/emails/code-request-email';
 const REGION = 'us-east-1';
 const creds = {
   accessKeyId: process.env.AWSACCESSKEYID,
@@ -13,9 +12,7 @@ export { sesClient };
 
 export default async function handler(req, res) {
   const body = req.body;
-  const emailHtml = render(
-    <PlaidVerifyIdentityEmail validationCode='AUTOPACK3862' />
-  );
+  const emailHtml = render(<CodeRequestEmail />);
 
   const createSendEmailCommand = (toAddress, fromAddress) => {
     return new SendEmailCommand({
