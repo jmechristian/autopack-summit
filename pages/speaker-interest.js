@@ -14,7 +14,9 @@ const Page = () => {
   const formRef = useRef(null);
 
   const onSubmit = async (data) => {
+    setIsSending(true);
     const sent = await sendSpeakerInterest(data);
+    setIsSending(false);
     router.push('/speaker-thank-you');
     //create new speaker, update if already one
     //send notification to Bianca
