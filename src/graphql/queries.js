@@ -4153,6 +4153,57 @@ export const listAPSSpeakers = /* GraphQL */ `
     }
   }
 `;
+export const getAPSSpeaker2024 = /* GraphQL */ `
+  query GetAPSSpeaker2024($id: ID!) {
+    getAPSSpeaker2024(id: $id) {
+      fullName
+      email
+      company
+      title
+      phone
+      linkedin
+      bio
+      presentationTitle
+      presentationSummary
+      presentationObjectives
+      headshot
+      mediaConsent
+      privacyConsent
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listAPSSpeaker2024s = /* GraphQL */ `
+  query ListAPSSpeaker2024s(
+    $filter: ModelAPSSpeaker2024FilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listAPSSpeaker2024s(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        fullName
+        email
+        company
+        title
+        phone
+        linkedin
+        bio
+        presentationTitle
+        presentationSummary
+        presentationObjectives
+        headshot
+        mediaConsent
+        privacyConsent
+        id
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
 export const getAPSTicket = /* GraphQL */ `
   query GetAPSTicket($id: ID!) {
     getAPSTicket(id: $id) {

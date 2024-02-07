@@ -169,3 +169,18 @@ export const sendWelcomeEmail = async (name, email) => {
 
   return (await res).status;
 };
+
+export const sendSpeakerInterest = async (data) => {
+  const res = fetch('/api/send-speaker-interest', {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      data,
+    }),
+  });
+
+  return (await res).status;
+};

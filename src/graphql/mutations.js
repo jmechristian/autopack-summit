@@ -5869,6 +5869,81 @@ export const deleteAPSSpeaker = /* GraphQL */ `
     }
   }
 `;
+export const createAPSSpeaker2024 = /* GraphQL */ `
+  mutation CreateAPSSpeaker2024(
+    $input: CreateAPSSpeaker2024Input!
+    $condition: ModelAPSSpeaker2024ConditionInput
+  ) {
+    createAPSSpeaker2024(input: $input, condition: $condition) {
+      fullName
+      email
+      company
+      title
+      phone
+      linkedin
+      bio
+      presentationTitle
+      presentationSummary
+      presentationObjectives
+      headshot
+      mediaConsent
+      privacyConsent
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateAPSSpeaker2024 = /* GraphQL */ `
+  mutation UpdateAPSSpeaker2024(
+    $input: UpdateAPSSpeaker2024Input!
+    $condition: ModelAPSSpeaker2024ConditionInput
+  ) {
+    updateAPSSpeaker2024(input: $input, condition: $condition) {
+      fullName
+      email
+      company
+      title
+      phone
+      linkedin
+      bio
+      presentationTitle
+      presentationSummary
+      presentationObjectives
+      headshot
+      mediaConsent
+      privacyConsent
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteAPSSpeaker2024 = /* GraphQL */ `
+  mutation DeleteAPSSpeaker2024(
+    $input: DeleteAPSSpeaker2024Input!
+    $condition: ModelAPSSpeaker2024ConditionInput
+  ) {
+    deleteAPSSpeaker2024(input: $input, condition: $condition) {
+      fullName
+      email
+      company
+      title
+      phone
+      linkedin
+      bio
+      presentationTitle
+      presentationSummary
+      presentationObjectives
+      headshot
+      mediaConsent
+      privacyConsent
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
 export const createAPSTicket = /* GraphQL */ `
   mutation CreateAPSTicket(
     $input: CreateAPSTicketInput!

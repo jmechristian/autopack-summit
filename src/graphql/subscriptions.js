@@ -5689,6 +5689,72 @@ export const onDeleteAPSSpeaker = /* GraphQL */ `
     }
   }
 `;
+export const onCreateAPSSpeaker2024 = /* GraphQL */ `
+  subscription OnCreateAPSSpeaker2024 {
+    onCreateAPSSpeaker2024 {
+      fullName
+      email
+      company
+      title
+      phone
+      linkedin
+      bio
+      presentationTitle
+      presentationSummary
+      presentationObjectives
+      headshot
+      mediaConsent
+      privacyConsent
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateAPSSpeaker2024 = /* GraphQL */ `
+  subscription OnUpdateAPSSpeaker2024 {
+    onUpdateAPSSpeaker2024 {
+      fullName
+      email
+      company
+      title
+      phone
+      linkedin
+      bio
+      presentationTitle
+      presentationSummary
+      presentationObjectives
+      headshot
+      mediaConsent
+      privacyConsent
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteAPSSpeaker2024 = /* GraphQL */ `
+  subscription OnDeleteAPSSpeaker2024 {
+    onDeleteAPSSpeaker2024 {
+      fullName
+      email
+      company
+      title
+      phone
+      linkedin
+      bio
+      presentationTitle
+      presentationSummary
+      presentationObjectives
+      headshot
+      mediaConsent
+      privacyConsent
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
 export const onCreateAPSTicket = /* GraphQL */ `
   subscription OnCreateAPSTicket {
     onCreateAPSTicket {
