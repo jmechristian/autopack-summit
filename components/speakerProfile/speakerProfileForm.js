@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
+import { useRouter } from 'next/router';
 import UploadImage from '../../util/UploadImage';
 import { sendSpeakerUpdate } from '../../util/sendSpeakerUpdate';
 import { API } from 'aws-amplify';
-import { createAPSSpeaker } from '../../src/graphql/mutations';
+import {
+  createAPSSpeaker,
+  createAPSSpeaker2024,
+} from '../../src/graphql/mutations';
 
 const SpeakerProfileForm = () => {
   const {
@@ -17,11 +21,12 @@ const SpeakerProfileForm = () => {
   const [profileUrl, setProfileUrl] = useState(undefined);
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const router = useRouter();
 
   const onSubmit = async (fields) => {
     setLoading(true);
     const res = await API.graphql({
-      query: createAPSSpeaker,
+      query: createAPSSpeaker2024,
       variables: { input: { ...fields } },
     });
 
@@ -29,13 +34,14 @@ const SpeakerProfileForm = () => {
     if (res.data) {
       setSubmitted(true);
       sendSpeakerUpdate({ ...fields });
+      router.push('/speaker-profile-thank-you');
     } else if (res.errors) {
       console.log(errors);
     }
   };
 
   return (
-    <div className='max-w-4xl mx-auto pt-16'>
+    <div className='w-full'>
       <form
         className='space-y-8 divide-y divide-gray-200'
         onSubmit={handleSubmit(onSubmit)}

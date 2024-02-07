@@ -3,6 +3,7 @@ import Head from 'next/head';
 import HeaderPadding from '../shared/HeaderPadding';
 import { ExclamationTriangleIcon } from '@heroicons/react/24/outline';
 import SpeakerProfileForm from '../components/speakerProfile/speakerProfileForm';
+import HeroHeading from '../shared/HeroHeading';
 
 const speakerProfile = () => {
   return (
@@ -14,32 +15,24 @@ const speakerProfile = () => {
           content='Automotive Packaging Summit | Speaker Profile'
         />
       </Head>
-      <HeaderPadding />
-      <div className='bg-white py-24 px-6 sm:py-32 lg:px-8'>
-        <div className='mx-auto max-w-3xl text-center'>
-          <p className='text-lg font-semibold leading-8 tracking-tight text-ap-darkblue'>
-            Welcome, Speakers!
-          </p>
-          <h2 className='mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl'>
-            Create Your Profile
-          </h2>
-          <p className='mt-6 text-lg leading-8 text-gray-600'>
-            Thank you for your participation in sharing your expertise with our
-            audience. Please submit the requested speaker information below.
-            This information will be used to promote you and your presentation
-            on our event website as well as all other promotional activities.
-            Your information will also be printed in our custom summit booklets.
-          </p>
-          <div className='bg-ap-blue/40 py-3 px-6 rounded-lg mt-8 inline-flex justify-center items-center gap-1'>
-            <div>
-              <ExclamationTriangleIcon className='w-6 h-6 stroke-slate-700' />
+      <div className='w-full max-w-6xl mx-auto pt-6 pb-20 flex flex-col gap-4'>
+        <HeroHeading
+          headline={'Speaker Profile'}
+          subheadline={
+            'Thank you for your participation in sharing your expertise with our audience. Please submit the requested speaker information below.'
+          }
+        />
+        <div className='w-full rounded-2xl border-2 border-black p-10'>
+          <div className='flex flex-col gap-6'>
+            <div className='w-full bg-amber-300 rounded-2xl py-4 px-6'>
+              This information will be used to promote you and your presentation
+              on our event website as well as all other promotional activities.
+              Your information will also be printed in our custom summit
+              booklets.
             </div>
-            <div className='text-slate-700 font-medium text-sm'>
-              Changes to your profile can be made up to September 30, 2024.
-            </div>
+            <SpeakerProfileForm />
           </div>
         </div>
-        <SpeakerProfileForm />
       </div>
     </>
   );

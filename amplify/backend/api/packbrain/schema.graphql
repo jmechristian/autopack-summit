@@ -339,17 +339,17 @@ type APSSpeaker @model @auth(rules: [{ allow: public }]) {
 }
 
 type APSSpeaker2024 @model @auth(rules: [{ allow: public }]) {
-  fullName: String!
+  firstName: String!
+  lastName: String!
   email: String!
   company: String!
   title: String!
   phone: String
   linkedin: String
-  bio: String
+  bio: String!
   presentationTitle: String
   presentationSummary: String
-  presentationObjectives: String
-  headshot: String
+  headshot: String!
   mediaConsent: Boolean
   privacyConsent: Boolean
 }

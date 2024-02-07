@@ -5692,7 +5692,8 @@ export const onDeleteAPSSpeaker = /* GraphQL */ `
 export const onCreateAPSSpeaker2024 = /* GraphQL */ `
   subscription OnCreateAPSSpeaker2024 {
     onCreateAPSSpeaker2024 {
-      fullName
+      firstName
+      lastName
       email
       company
       title
@@ -5701,7 +5702,6 @@ export const onCreateAPSSpeaker2024 = /* GraphQL */ `
       bio
       presentationTitle
       presentationSummary
-      presentationObjectives
       headshot
       mediaConsent
       privacyConsent
@@ -5714,7 +5714,8 @@ export const onCreateAPSSpeaker2024 = /* GraphQL */ `
 export const onUpdateAPSSpeaker2024 = /* GraphQL */ `
   subscription OnUpdateAPSSpeaker2024 {
     onUpdateAPSSpeaker2024 {
-      fullName
+      firstName
+      lastName
       email
       company
       title
@@ -5723,7 +5724,6 @@ export const onUpdateAPSSpeaker2024 = /* GraphQL */ `
       bio
       presentationTitle
       presentationSummary
-      presentationObjectives
       headshot
       mediaConsent
       privacyConsent
@@ -5736,7 +5736,8 @@ export const onUpdateAPSSpeaker2024 = /* GraphQL */ `
 export const onDeleteAPSSpeaker2024 = /* GraphQL */ `
   subscription OnDeleteAPSSpeaker2024 {
     onDeleteAPSSpeaker2024 {
-      fullName
+      firstName
+      lastName
       email
       company
       title
@@ -5745,7 +5746,6 @@ export const onDeleteAPSSpeaker2024 = /* GraphQL */ `
       bio
       presentationTitle
       presentationSummary
-      presentationObjectives
       headshot
       mediaConsent
       privacyConsent

@@ -5875,7 +5875,8 @@ export const createAPSSpeaker2024 = /* GraphQL */ `
     $condition: ModelAPSSpeaker2024ConditionInput
   ) {
     createAPSSpeaker2024(input: $input, condition: $condition) {
-      fullName
+      firstName
+      lastName
       email
       company
       title
@@ -5884,7 +5885,6 @@ export const createAPSSpeaker2024 = /* GraphQL */ `
       bio
       presentationTitle
       presentationSummary
-      presentationObjectives
       headshot
       mediaConsent
       privacyConsent
@@ -5900,7 +5900,8 @@ export const updateAPSSpeaker2024 = /* GraphQL */ `
     $condition: ModelAPSSpeaker2024ConditionInput
   ) {
     updateAPSSpeaker2024(input: $input, condition: $condition) {
-      fullName
+      firstName
+      lastName
       email
       company
       title
@@ -5909,7 +5910,6 @@ export const updateAPSSpeaker2024 = /* GraphQL */ `
       bio
       presentationTitle
       presentationSummary
-      presentationObjectives
       headshot
       mediaConsent
       privacyConsent
@@ -5925,7 +5925,8 @@ export const deleteAPSSpeaker2024 = /* GraphQL */ `
     $condition: ModelAPSSpeaker2024ConditionInput
   ) {
     deleteAPSSpeaker2024(input: $input, condition: $condition) {
-      fullName
+      firstName
+      lastName
       email
       company
       title
@@ -5934,7 +5935,6 @@ export const deleteAPSSpeaker2024 = /* GraphQL */ `
       bio
       presentationTitle
       presentationSummary
-      presentationObjectives
       headshot
       mediaConsent
       privacyConsent

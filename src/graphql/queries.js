@@ -4156,7 +4156,8 @@ export const listAPSSpeakers = /* GraphQL */ `
 export const getAPSSpeaker2024 = /* GraphQL */ `
   query GetAPSSpeaker2024($id: ID!) {
     getAPSSpeaker2024(id: $id) {
-      fullName
+      firstName
+      lastName
       email
       company
       title
@@ -4165,7 +4166,6 @@ export const getAPSSpeaker2024 = /* GraphQL */ `
       bio
       presentationTitle
       presentationSummary
-      presentationObjectives
       headshot
       mediaConsent
       privacyConsent
@@ -4183,7 +4183,8 @@ export const listAPSSpeaker2024s = /* GraphQL */ `
   ) {
     listAPSSpeaker2024s(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
-        fullName
+        firstName
+        lastName
         email
         company
         title
@@ -4192,7 +4193,6 @@ export const listAPSSpeaker2024s = /* GraphQL */ `
         bio
         presentationTitle
         presentationSummary
-        presentationObjectives
         headshot
         mediaConsent
         privacyConsent
