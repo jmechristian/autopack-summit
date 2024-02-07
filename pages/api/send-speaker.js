@@ -913,7 +913,8 @@ export default async function handler(req, res) {
         ],
         ToAddresses: [
           toAddress,
-          // 'bianca@packagingschool.com',
+          'bianca@packagingschool.com',
+          'diana@packagingschool.com',
           /* more To-email addresses */
         ],
       },
