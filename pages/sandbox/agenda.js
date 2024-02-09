@@ -25,21 +25,21 @@ const Agenda = ({ sessionData, tourists }) => {
 
   const dayOne = useMemo(() => {
     const one =
-      sessionData && sessionData.filter((s) => s.date === '2023-10-11');
+      sessionData && sessionData.filter((s) => s.date === '2024-10-21');
 
     return one;
   }, [sessionData]);
 
   const dayTwo = useMemo(() => {
     const two =
-      sessionData && sessionData.filter((s) => s.date === '2023-10-12');
+      sessionData && sessionData.filter((s) => s.date === '2024-10-22');
 
     return two;
   }, [sessionData]);
 
   const dayThree = useMemo(() => {
     const three =
-      sessionData && sessionData.filter((s) => s.date === '2023-10-13');
+      sessionData && sessionData.filter((s) => s.date === '2024-10-23');
 
     return three;
   }, [sessionData]);
@@ -48,13 +48,13 @@ const Agenda = ({ sessionData, tourists }) => {
     const currentDay = () => {
       switch (isDay) {
         case 0:
-          return '2023-10-11';
+          return '2024-10-21';
         case 1:
-          return '2023-10-12';
+          return '2024-10-22';
         case 2:
-          return '2023-10-13';
+          return '2024-10-23';
         default:
-          return '2023-10-12';
+          return '2024-10-21';
       }
     };
 
@@ -81,7 +81,7 @@ const Agenda = ({ sessionData, tourists }) => {
           <div className='w-full flex flex-col gap-6 lg:flex-row justify-between py-9 items-center px-8 rounded-2xl border-4 border-neutral-900'>
             <div className='flex gap-3 items-center'>
               <div className='font-oswald uppercase font-medium text-3xl lg:text-5xl'>
-                2023 Agenda
+                2024 Agenda
               </div>
             </div>
             <div className='flex items-center gap-6'>
@@ -154,7 +154,7 @@ const Agenda = ({ sessionData, tourists }) => {
                     <Logo />
                   </div>
                   <div className='font-oswald uppercase font-medium text-3xl lg:text-5xl'>
-                    2023 Agenda
+                    2024 Agenda
                   </div>
                 </div>
                 <CompactAgenda
@@ -189,7 +189,7 @@ const Agenda = ({ sessionData, tourists }) => {
                       )}
                       onClick={() => setDay(0)}
                     >
-                      <div>WED OCT 11</div>
+                      <div>MON OCT 21</div>
                     </div>
                     <div
                       className={classNames(
@@ -200,7 +200,7 @@ const Agenda = ({ sessionData, tourists }) => {
                       )}
                       onClick={() => setDay(1)}
                     >
-                      <div>THU OCT 12</div>
+                      <div>TUE OCT 22</div>
                     </div>
                     <div
                       className={classNames(
@@ -211,7 +211,7 @@ const Agenda = ({ sessionData, tourists }) => {
                       )}
                       onClick={() => setDay(2)}
                     >
-                      <div>FRI OCT 13</div>
+                      <div>WED OCT 23</div>
                     </div>
                   </div>
                 </div>
