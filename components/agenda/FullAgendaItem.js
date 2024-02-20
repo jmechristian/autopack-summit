@@ -52,7 +52,7 @@ const FullAgendaItem = ({
               !speakers ? 'lg:col-span-3' : 'lg:col-span-2'
             }`}
           >
-            <div className='flex flex-col lg:mt-0 lg:py-6'>
+            <div className='flex flex-col lg:mt-0 py-6'>
               <div
                 className={`font-semibold text-lg lg:text-xl lg:leading-tight xl:text-2xl leading-tight ${
                   type === 'session' ? 'text-amber-400' : 'text-neutral-900'
