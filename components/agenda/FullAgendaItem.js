@@ -7,6 +7,7 @@ const FullAgendaItem = ({
   endTime,
   speakers,
   location,
+  description,
   sponsors,
   type,
 }) => {
@@ -62,11 +63,18 @@ const FullAgendaItem = ({
               <div
                 className={`${
                   type === 'session'
-                    ? 'text-neutral-400 pb-5 lg:pb-0'
+                    ? 'text-neutral-300 pb-5 lg:pb-0'
                     : 'text-neutral-600'
                 }`}
               >
                 {location}
+              </div>
+              <div
+                className={`mt-5 pb-3 text-sm ${
+                  type === 'session' ? 'text-white' : 'text-black'
+                }`}
+              >
+                {description}
               </div>
             </div>
           </div>

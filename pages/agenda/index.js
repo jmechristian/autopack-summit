@@ -40,7 +40,6 @@ const Agenda = ({ sessionData, tourists }) => {
   const dayThree = useMemo(() => {
     const three =
       sessionData && sessionData.filter((s) => s.date === '2024-10-23');
-
     return three;
   }, [sessionData]);
 
@@ -245,19 +244,24 @@ const Agenda = ({ sessionData, tourists }) => {
                 exit={{ opacity: 0 }}
               >
                 {sessionByDate &&
-                  sessionByDate.map((s) => (
-                    <motion.div key={s._id}>
-                      <FullAgendaItem
-                        type={s.type}
-                        title={s.name}
-                        startTime={s.session_start}
-                        endTime={s.session_end}
-                        location={s.location}
-                        speakers={s.speakers}
-                        sponsors={s.sponsors}
-                      />
-                    </motion.div>
-                  ))}
+                  sessionByDate
+                    .sort((a, b) =>
+                      a.session_start.localeCompare(b.session_start)
+                    )
+                    .map((s) => (
+                      <motion.div key={s._id}>
+                        <FullAgendaItem
+                          type={s.type}
+                          title={s.name}
+                          startTime={s.session_start}
+                          endTime={s.session_end}
+                          location={s.location}
+                          speakers={s.speakers}
+                          sponsors={s.sponsors}
+                          description={s.description}
+                        />
+                      </motion.div>
+                    ))}
               </motion.div>
             )}
           </AnimatePresence>
@@ -287,6 +291,7 @@ export async function getServerSideProps() {
       date,
       location,
       name,
+      description,
       type,
       session_end,
       session_start,
