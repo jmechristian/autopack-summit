@@ -783,6 +783,9 @@ export const createLesson = /* GraphQL */ `
       related
       featured
       backdate
+      createdBy
+      lastEditedBy
+      videoLink
       createdAt
       updatedAt
     }
@@ -850,6 +853,9 @@ export const updateLesson = /* GraphQL */ `
       related
       featured
       backdate
+      createdBy
+      lastEditedBy
+      videoLink
       createdAt
       updatedAt
     }
@@ -917,6 +923,9 @@ export const deleteLesson = /* GraphQL */ `
       related
       featured
       backdate
+      createdBy
+      lastEditedBy
+      videoLink
       createdAt
       updatedAt
     }
@@ -2871,6 +2880,7 @@ export const createUser = /* GraphQL */ `
             collection
             demo
             partOf
+            altLink
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -3460,6 +3470,7 @@ export const updateUser = /* GraphQL */ `
             collection
             demo
             partOf
+            altLink
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -4049,6 +4060,7 @@ export const deleteUser = /* GraphQL */ `
             collection
             demo
             partOf
+            altLink
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -6176,6 +6188,7 @@ export const createLMSCirriculum = /* GraphQL */ `
             collection
             demo
             partOf
+            altLink
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -6239,6 +6252,7 @@ export const updateLMSCirriculum = /* GraphQL */ `
             collection
             demo
             partOf
+            altLink
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -6302,6 +6316,7 @@ export const deleteLMSCirriculum = /* GraphQL */ `
             collection
             demo
             partOf
+            altLink
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -6365,6 +6380,7 @@ export const createLMSCourse = /* GraphQL */ `
             collection
             demo
             partOf
+            altLink
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -6403,6 +6419,7 @@ export const createLMSCourse = /* GraphQL */ `
             collection
             demo
             partOf
+            altLink
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -6453,6 +6470,7 @@ export const createLMSCourse = /* GraphQL */ `
             collection
             demo
             partOf
+            altLink
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -6486,6 +6504,7 @@ export const createLMSCourse = /* GraphQL */ `
       collection
       demo
       partOf
+      altLink
       createdAt
       updatedAt
       studentCourseEnrolledId
@@ -6541,6 +6560,7 @@ export const updateLMSCourse = /* GraphQL */ `
             collection
             demo
             partOf
+            altLink
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -6579,6 +6599,7 @@ export const updateLMSCourse = /* GraphQL */ `
             collection
             demo
             partOf
+            altLink
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -6629,6 +6650,7 @@ export const updateLMSCourse = /* GraphQL */ `
             collection
             demo
             partOf
+            altLink
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -6662,6 +6684,7 @@ export const updateLMSCourse = /* GraphQL */ `
       collection
       demo
       partOf
+      altLink
       createdAt
       updatedAt
       studentCourseEnrolledId
@@ -6717,6 +6740,7 @@ export const deleteLMSCourse = /* GraphQL */ `
             collection
             demo
             partOf
+            altLink
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -6755,6 +6779,7 @@ export const deleteLMSCourse = /* GraphQL */ `
             collection
             demo
             partOf
+            altLink
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -6805,6 +6830,7 @@ export const deleteLMSCourse = /* GraphQL */ `
             collection
             demo
             partOf
+            altLink
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -6838,6 +6864,7 @@ export const deleteLMSCourse = /* GraphQL */ `
       collection
       demo
       partOf
+      altLink
       createdAt
       updatedAt
       studentCourseEnrolledId
@@ -6995,6 +7022,7 @@ export const createLMSLesson = /* GraphQL */ `
             collection
             demo
             partOf
+            altLink
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -7108,6 +7136,7 @@ export const updateLMSLesson = /* GraphQL */ `
             collection
             demo
             partOf
+            altLink
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -7221,6 +7250,7 @@ export const deleteLMSLesson = /* GraphQL */ `
             collection
             demo
             partOf
+            altLink
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -8181,6 +8211,7 @@ export const createStudent = /* GraphQL */ `
           collection
           demo
           partOf
+          altLink
           createdAt
           updatedAt
           studentCourseEnrolledId
@@ -8440,6 +8471,7 @@ export const updateStudent = /* GraphQL */ `
           collection
           demo
           partOf
+          altLink
           createdAt
           updatedAt
           studentCourseEnrolledId
@@ -8699,6 +8731,7 @@ export const deleteStudent = /* GraphQL */ `
           collection
           demo
           partOf
+          altLink
           createdAt
           updatedAt
           studentCourseEnrolledId
@@ -8953,6 +8986,7 @@ export const createInstructor = /* GraphQL */ `
             collection
             demo
             partOf
+            altLink
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -9216,6 +9250,7 @@ export const updateInstructor = /* GraphQL */ `
             collection
             demo
             partOf
+            altLink
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -9479,6 +9514,7 @@ export const deleteInstructor = /* GraphQL */ `
             collection
             demo
             partOf
+            altLink
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -10147,6 +10183,69 @@ export const deleteTestimonial = /* GraphQL */ `
       video
       createdAt
       updatedAt
+    }
+  }
+`;
+export const createWorkshopForm = /* GraphQL */ `
+  mutation CreateWorkshopForm(
+    $input: CreateWorkshopFormInput!
+    $condition: ModelWorkshopFormConditionInput
+  ) {
+    createWorkshopForm(input: $input, condition: $condition) {
+      firstName
+      lastName
+      email
+      phone
+      companyName
+      eventDate
+      audienceSize
+      eventLocation
+      eventDescription
+      id
+      createdOn
+      updatedOn
+    }
+  }
+`;
+export const updateWorkshopForm = /* GraphQL */ `
+  mutation UpdateWorkshopForm(
+    $input: UpdateWorkshopFormInput!
+    $condition: ModelWorkshopFormConditionInput
+  ) {
+    updateWorkshopForm(input: $input, condition: $condition) {
+      firstName
+      lastName
+      email
+      phone
+      companyName
+      eventDate
+      audienceSize
+      eventLocation
+      eventDescription
+      id
+      createdOn
+      updatedOn
+    }
+  }
+`;
+export const deleteWorkshopForm = /* GraphQL */ `
+  mutation DeleteWorkshopForm(
+    $input: DeleteWorkshopFormInput!
+    $condition: ModelWorkshopFormConditionInput
+  ) {
+    deleteWorkshopForm(input: $input, condition: $condition) {
+      firstName
+      lastName
+      email
+      phone
+      companyName
+      eventDate
+      audienceSize
+      eventLocation
+      eventDescription
+      id
+      createdOn
+      updatedOn
     }
   }
 `;
@@ -11891,6 +11990,7 @@ export const createCirriculumCourses = /* GraphQL */ `
         collection
         demo
         partOf
+        altLink
         createdAt
         updatedAt
         studentCourseEnrolledId
@@ -11982,6 +12082,7 @@ export const updateCirriculumCourses = /* GraphQL */ `
         collection
         demo
         partOf
+        altLink
         createdAt
         updatedAt
         studentCourseEnrolledId
@@ -12073,6 +12174,7 @@ export const deleteCirriculumCourses = /* GraphQL */ `
         collection
         demo
         partOf
+        altLink
         createdAt
         updatedAt
         studentCourseEnrolledId
@@ -12145,6 +12247,7 @@ export const createCourseLessons = /* GraphQL */ `
         collection
         demo
         partOf
+        altLink
         createdAt
         updatedAt
         studentCourseEnrolledId
@@ -12256,6 +12359,7 @@ export const updateCourseLessons = /* GraphQL */ `
         collection
         demo
         partOf
+        altLink
         createdAt
         updatedAt
         studentCourseEnrolledId
@@ -12367,6 +12471,7 @@ export const deleteCourseLessons = /* GraphQL */ `
         collection
         demo
         partOf
+        altLink
         createdAt
         updatedAt
         studentCourseEnrolledId
@@ -12478,6 +12583,7 @@ export const createCourseInstructors = /* GraphQL */ `
         collection
         demo
         partOf
+        altLink
         createdAt
         updatedAt
         studentCourseEnrolledId
@@ -12667,6 +12773,7 @@ export const updateCourseInstructors = /* GraphQL */ `
         collection
         demo
         partOf
+        altLink
         createdAt
         updatedAt
         studentCourseEnrolledId
@@ -12856,6 +12963,7 @@ export const deleteCourseInstructors = /* GraphQL */ `
         collection
         demo
         partOf
+        altLink
         createdAt
         updatedAt
         studentCourseEnrolledId

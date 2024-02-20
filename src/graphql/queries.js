@@ -546,6 +546,9 @@ export const getLesson = /* GraphQL */ `
       related
       featured
       backdate
+      createdBy
+      lastEditedBy
+      videoLink
       createdAt
       updatedAt
     }
@@ -615,6 +618,9 @@ export const listLessons = /* GraphQL */ `
         related
         featured
         backdate
+        createdBy
+        lastEditedBy
+        videoLink
         createdAt
         updatedAt
       }
@@ -694,6 +700,9 @@ export const lessonsBySlug = /* GraphQL */ `
         related
         featured
         backdate
+        createdBy
+        lastEditedBy
+        videoLink
         createdAt
         updatedAt
       }
@@ -2193,6 +2202,7 @@ export const getUser = /* GraphQL */ `
             collection
             demo
             partOf
+            altLink
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -4442,6 +4452,7 @@ export const getLMSCirriculum = /* GraphQL */ `
             collection
             demo
             partOf
+            altLink
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -4532,6 +4543,7 @@ export const getLMSCourse = /* GraphQL */ `
             collection
             demo
             partOf
+            altLink
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -4570,6 +4582,7 @@ export const getLMSCourse = /* GraphQL */ `
             collection
             demo
             partOf
+            altLink
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -4620,6 +4633,7 @@ export const getLMSCourse = /* GraphQL */ `
             collection
             demo
             partOf
+            altLink
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -4653,6 +4667,7 @@ export const getLMSCourse = /* GraphQL */ `
       collection
       demo
       partOf
+      altLink
       createdAt
       updatedAt
       studentCourseEnrolledId
@@ -4720,6 +4735,7 @@ export const listLMSCourses = /* GraphQL */ `
         collection
         demo
         partOf
+        altLink
         createdAt
         updatedAt
         studentCourseEnrolledId
@@ -4797,6 +4813,7 @@ export const lMSCoursesBySlug = /* GraphQL */ `
         collection
         demo
         partOf
+        altLink
         createdAt
         updatedAt
         studentCourseEnrolledId
@@ -4979,6 +4996,7 @@ export const getLMSLesson = /* GraphQL */ `
             collection
             demo
             partOf
+            altLink
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -5846,6 +5864,7 @@ export const getStudent = /* GraphQL */ `
           collection
           demo
           partOf
+          altLink
           createdAt
           updatedAt
           studentCourseEnrolledId
@@ -5993,6 +6012,7 @@ export const listStudents = /* GraphQL */ `
             collection
             demo
             partOf
+            altLink
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -6246,6 +6266,7 @@ export const getInstructor = /* GraphQL */ `
             collection
             demo
             partOf
+            altLink
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -6860,6 +6881,82 @@ export const listTestimonials = /* GraphQL */ `
         video
         createdAt
         updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getWorkshopForm = /* GraphQL */ `
+  query GetWorkshopForm($id: ID!) {
+    getWorkshopForm(id: $id) {
+      firstName
+      lastName
+      email
+      phone
+      companyName
+      eventDate
+      audienceSize
+      eventLocation
+      eventDescription
+      id
+      createdOn
+      updatedOn
+    }
+  }
+`;
+export const listWorkshopForms = /* GraphQL */ `
+  query ListWorkshopForms(
+    $filter: ModelWorkshopFormFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listWorkshopForms(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        firstName
+        lastName
+        email
+        phone
+        companyName
+        eventDate
+        audienceSize
+        eventLocation
+        eventDescription
+        id
+        createdOn
+        updatedOn
+      }
+      nextToken
+    }
+  }
+`;
+export const workshopFormsByEmail = /* GraphQL */ `
+  query WorkshopFormsByEmail(
+    $email: String!
+    $sortDirection: ModelSortDirection
+    $filter: ModelWorkshopFormFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    workshopFormsByEmail(
+      email: $email
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        firstName
+        lastName
+        email
+        phone
+        companyName
+        eventDate
+        audienceSize
+        eventLocation
+        eventDescription
+        id
+        createdOn
+        updatedOn
       }
       nextToken
     }
@@ -8508,6 +8605,7 @@ export const getCirriculumCourses = /* GraphQL */ `
         collection
         demo
         partOf
+        altLink
         createdAt
         updatedAt
         studentCourseEnrolledId
@@ -8577,6 +8675,7 @@ export const listCirriculumCourses = /* GraphQL */ `
           collection
           demo
           partOf
+          altLink
           createdAt
           updatedAt
           studentCourseEnrolledId
@@ -8652,6 +8751,7 @@ export const cirriculumCoursesByLMSCirriculumId = /* GraphQL */ `
           collection
           demo
           partOf
+          altLink
           createdAt
           updatedAt
           studentCourseEnrolledId
@@ -8727,6 +8827,7 @@ export const cirriculumCoursesByLMSCourseId = /* GraphQL */ `
           collection
           demo
           partOf
+          altLink
           createdAt
           updatedAt
           studentCourseEnrolledId
@@ -8798,6 +8899,7 @@ export const getCourseLessons = /* GraphQL */ `
         collection
         demo
         partOf
+        altLink
         createdAt
         updatedAt
         studentCourseEnrolledId
@@ -8890,6 +8992,7 @@ export const listCourseLessons = /* GraphQL */ `
           collection
           demo
           partOf
+          altLink
           createdAt
           updatedAt
           studentCourseEnrolledId
@@ -8971,6 +9074,7 @@ export const courseLessonsByLMSCourseId = /* GraphQL */ `
           collection
           demo
           partOf
+          altLink
           createdAt
           updatedAt
           studentCourseEnrolledId
@@ -9052,6 +9156,7 @@ export const courseLessonsByLMSLessonId = /* GraphQL */ `
           collection
           demo
           partOf
+          altLink
           createdAt
           updatedAt
           studentCourseEnrolledId
@@ -9141,6 +9246,7 @@ export const getCourseInstructors = /* GraphQL */ `
         collection
         demo
         partOf
+        altLink
         createdAt
         updatedAt
         studentCourseEnrolledId
@@ -9315,6 +9421,7 @@ export const listCourseInstructors = /* GraphQL */ `
           collection
           demo
           partOf
+          altLink
           createdAt
           updatedAt
           studentCourseEnrolledId
@@ -9410,6 +9517,7 @@ export const courseInstructorsByLMSCourseId = /* GraphQL */ `
           collection
           demo
           partOf
+          altLink
           createdAt
           updatedAt
           studentCourseEnrolledId
@@ -9505,6 +9613,7 @@ export const courseInstructorsByInstructorId = /* GraphQL */ `
           collection
           demo
           partOf
+          altLink
           createdAt
           updatedAt
           studentCourseEnrolledId

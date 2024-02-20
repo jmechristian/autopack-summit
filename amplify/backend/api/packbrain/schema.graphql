@@ -107,6 +107,9 @@ type Lesson @model @auth(rules: [{ allow: public }]) {
   related: [String]
   featured: String
   backdate: String
+  createdBy: String
+  lastEditedBy: String
+  videoLink: String
 }
 
 type Author @model @auth(rules: [{ allow: public }]) {
@@ -432,6 +435,7 @@ type LMSCourse @model @auth(rules: [{ allow: public }]) {
   collection: [String]
   demo: Boolean @default(value: "false")
   partOf: [String]
+  altLink: String
 }
 
 type CourseClick @model @auth(rules: [{ allow: public }]) {
@@ -612,4 +616,20 @@ type Testimonial @model @auth(rules: [{ allow: public }]) {
   featured: Boolean @default(value: "false")
   date: String
   video: String
+}
+
+######### Forms #########
+
+type WorkshopForm
+  @model(timestamps: { createdAt: "createdOn", updatedAt: "updatedOn" })
+  @auth(rules: [{ allow: public }]) {
+  firstName: String!
+  lastName: String!
+  email: String! @index(name: "workshopFormByEmail")
+  phone: String
+  companyName: String
+  eventDate: String
+  audienceSize: String
+  eventLocation: String
+  eventDescription: String
 }
