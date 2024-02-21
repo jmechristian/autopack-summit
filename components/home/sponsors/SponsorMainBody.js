@@ -4,8 +4,10 @@ import GoldSponsorBlock from './GoldSponsorBlock';
 import SilverSponsorBlock from './SilverSponsorBlock';
 import HighTopSponsorBlock from './HighTopSponsorBlock';
 import { motion, useInView } from 'framer-motion';
+import ExhibitorSponsors from './ExhibitorsSponsors';
 
 const SponsorMainBody = ({ sponsors }) => {
+  console.log(sponsors);
   const sponsorBodyRef = useRef();
   const sponsorInView = useInView(sponsorBodyRef);
 
@@ -36,10 +38,8 @@ const SponsorMainBody = ({ sponsors }) => {
         // animate={sponsorInView ? 'show' : 'hide'}
         // ref={sponsorBodyRef}
       >
-        <PlatinumSponsorBlock platinum={filterSponsors('platinum')} />
-        <GoldSponsorBlock gold={filterSponsors('gold')} />
-        <SilverSponsorBlock silver={filterSponsors('silver')} />
-        <HighTopSponsorBlock highTop={filterSponsors('highTop')} />
+        <ExhibitorSponsors highTop={filterSponsors('exhibitor')} />
+        <GoldSponsorBlock gold={filterSponsors('sponsor')} />
       </motion.div>
     </div>
   );
