@@ -30,12 +30,12 @@ const NewSpeakersMain = ({ headline, subheadline, text, speakers }) => {
           Subject-Matter Experts
         </h2>
         <p className='text-center text-lg mt-2 max-w-2xl mx-auto'>
-          Thank You to our industry veterans for their contributions to the 2023
+          Thank You to our industry veterans for their contributions to the
           Autmotive Packaging Summit.
         </p>
       </div>
       <div
-        className='w-full h-full grid grid-flow-col lg:grid-cols-3 xl:grid-cols-4 lg:grid-flow-dense overflow-scroll lg:overflow-hidden gap-8 max-w-7xl lg:mx-auto'
+        className='w-full h-full grid grid-flow-col lg:grid-cols-3 xl:grid-cols-4 lg:grid-flow-dense overflow-scroll lg:overflow-hidden gap-8 max-w-7xl lg:mx-auto pr-3'
         id='scrollers'
       >
         {speakers &&
