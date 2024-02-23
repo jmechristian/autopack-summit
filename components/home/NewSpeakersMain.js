@@ -27,7 +27,7 @@ const NewSpeakersMain = ({ headline, subheadline, text, speakers }) => {
     >
       <div className='mb-8 px-4'>
         <h2 className='mx-4 mb-2 text-center text-2xl font-oswald uppercase font-medium text-neutral-900 md:text-4xl'>
-          2023 Subject-Matter Experts
+          Subject-Matter Experts
         </h2>
         <p className='text-center text-lg mt-2 max-w-2xl mx-auto'>
           Thank You to our industry veterans for their contributions to the 2023

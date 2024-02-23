@@ -7,6 +7,7 @@ const nextConfig = {
       'res.cloudinary.com',
       'apsmedia.s3.amazonaws.com',
       'packschool.s3.amazonaws.com',
+      'cdn.sanity.io',
     ],
   },
   async redirects() {
