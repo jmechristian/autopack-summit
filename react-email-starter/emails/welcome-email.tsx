@@ -116,7 +116,7 @@ export const WelcomeEmail = ({ registrant }: WelcomeEmailProps) => {
                     <Text className='uppercase text-[16px] leading-[20px] font-[HelveticaNeue-Bold]'>
                       Wednesday
                       <br />
-                      Oct 21
+                      Oct 23
                     </Text>
                     <Text className='font-[HelveticaNeue] leading-snug'>
                       Tours
