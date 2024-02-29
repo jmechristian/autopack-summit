@@ -7,7 +7,6 @@ import { motion, useInView } from 'framer-motion';
 import ExhibitorSponsors from './ExhibitorsSponsors';
 
 const SponsorMainBody = ({ sponsors }) => {
-  console.log(sponsors);
   const sponsorBodyRef = useRef();
   const sponsorInView = useInView(sponsorBodyRef);
 

@@ -6,15 +6,23 @@ const UploadImage = ({ setUrl }) => {
   const [uploadingStatus, setUploadingStatus] = useState(false);
   const [buttonText, setButtonText] = useState('Upload Your Profile Pic');
 
+  const slugify = (str) =>
+    str
+      .toLowerCase()
+      .trim()
+      .replace(/[\s_-]+/g, '-');
+
   const uploadFile = async () => {
+    const cleanUrl = slugify(file.name);
     setUploadingStatus(true);
 
     let { data } = await axios.post('/api/s3/upload', {
-      name: `images/${file.name}`,
+      name: `images/${cleanUrl}`,
       type: file.type,
     });
 
     const url = data.url;
+
     await axios
       .put(url, file, {
         headers: {
@@ -23,13 +31,10 @@ const UploadImage = ({ setUrl }) => {
         },
       })
       .then((response) => {
+        const cleanName = slugify(response.config.data.name);
         if (response.status === 200) {
-          setFile(
-            `https://apsmedia.s3.amazonaws.com/images/${response.config.data.name}`
-          );
-          setUrl(
-            `https://apsmedia.s3.amazonaws.com/images/${response.config.data.name}`
-          );
+          setFile(`https://apsmedia.s3.amazonaws.com/images/${cleanName}`);
+          setUrl(`https://apsmedia.s3.amazonaws.com/images/${cleanName}`);
           setButtonText('Uploaded!');
         }
       });
