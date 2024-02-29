@@ -915,6 +915,7 @@ export default async function handler(req, res) {
           toAddress,
           'bianca@packagingschool.com',
           'diana@packagingschool.com',
+          'lars@packagingschool.com',
           /* more To-email addresses */
         ],
       },
