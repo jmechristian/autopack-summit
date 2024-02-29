@@ -36,6 +36,11 @@ const UploadImage = ({ setUrl }) => {
           setFile(`https://apsmedia.s3.amazonaws.com/images/${cleanName}`);
           setUrl(`https://apsmedia.s3.amazonaws.com/images/${cleanName}`);
           setButtonText('Uploaded!');
+        } else {
+          setButtonText('Error!');
+          setError(
+            'Error uploading, please email bianca@packagingschool.com for support.'
+          );
         }
       });
 
