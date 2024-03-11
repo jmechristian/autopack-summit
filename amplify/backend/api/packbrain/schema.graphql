@@ -199,6 +199,23 @@ type APSRegistrant @model @auth(rules: [{ allow: public }]) {
   welcomeEmailSent: Boolean
 }
 
+type APSTicketRegistrant @model @auth(rules: [{ allow: public }]) {
+  year: String @default(value: "2024")
+  id: ID!
+  name: String!
+  email: String! @index(name: "apsTicketRegistrantByEmail")
+  company: String!
+  title: String!
+  phone: String!
+  worksWith: String
+  speedNetworking: String
+  innovationWorkshop: String
+  plantTour: String
+  registrationReceived: Boolean
+  welcomeEmailSent: Boolean
+  code: String @default(value: "TICKET")
+}
+
 type Company @model @auth(rules: [{ allow: public }]) {
   id: ID!
   name: String!

@@ -1729,6 +1729,72 @@ export const onDeleteAPSRegistrant = /* GraphQL */ `
     }
   }
 `;
+export const onCreateAPSTicketRegistrant = /* GraphQL */ `
+  subscription OnCreateAPSTicketRegistrant {
+    onCreateAPSTicketRegistrant {
+      year
+      id
+      name
+      email
+      company
+      title
+      phone
+      worksWith
+      speedNetworking
+      innovationWorkshop
+      plantTour
+      registrationReceived
+      welcomeEmailSent
+      code
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateAPSTicketRegistrant = /* GraphQL */ `
+  subscription OnUpdateAPSTicketRegistrant {
+    onUpdateAPSTicketRegistrant {
+      year
+      id
+      name
+      email
+      company
+      title
+      phone
+      worksWith
+      speedNetworking
+      innovationWorkshop
+      plantTour
+      registrationReceived
+      welcomeEmailSent
+      code
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteAPSTicketRegistrant = /* GraphQL */ `
+  subscription OnDeleteAPSTicketRegistrant {
+    onDeleteAPSTicketRegistrant {
+      year
+      id
+      name
+      email
+      company
+      title
+      phone
+      worksWith
+      speedNetworking
+      innovationWorkshop
+      plantTour
+      registrationReceived
+      welcomeEmailSent
+      code
+      createdAt
+      updatedAt
+    }
+  }
+`;
 export const onCreateCompany = /* GraphQL */ `
   subscription OnCreateCompany {
     onCreateCompany {

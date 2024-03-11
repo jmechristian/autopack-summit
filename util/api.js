@@ -2,9 +2,14 @@ import { API, Amplify } from 'aws-amplify';
 import awsExports from '../src/aws-exports';
 import {
   createAPSRegistrant,
+  createAPSTicketRegistrant,
   updateAPSRegistrant,
+  updateAPSTicketRegistrant,
 } from '../src/graphql/mutations';
-import { aPSRegistrantsByEmail } from '../src/graphql/queries';
+import {
+  aPSRegistrantsByEmail,
+  aPSTicketRegistrantsByEmail,
+} from '../src/graphql/queries';
 
 Amplify.configure({ ...awsExports, ssr: true });
 
@@ -127,6 +132,72 @@ export const handleRegInit = async (
       variables: {
         input: {
           id: isRegistrant.data.aPSRegistrantsByEmail.items[0].id,
+          name,
+          title,
+          company,
+          email,
+          phone,
+          worksWith,
+          speedNetworking,
+          innovationWorkshop,
+          plantTour,
+          registrationReceived: true,
+        },
+      },
+    });
+
+    return updated.data;
+  }
+};
+
+export const handleTicketRegInit = async (
+  name,
+  title,
+  company,
+  email,
+  phone,
+  worksWith,
+  speedNetworking,
+  innovationWorkshop,
+  plantTour
+) => {
+  // Check for existing registrant
+  const isRegistrant = await API.graphql({
+    query: aPSTicketRegistrantsByEmail,
+    variables: { email: email },
+  });
+
+  if (isRegistrant.data.aPSTicketRegistrantsByEmail.items.length === 0) {
+    //Create New Registrant
+    const newReg = await API.graphql({
+      query: createAPSTicketRegistrant,
+      variables: {
+        input: {
+          name,
+          title,
+          company,
+          email,
+          phone,
+          worksWith,
+          speedNetworking,
+          innovationWorkshop,
+          plantTour,
+          registrationReceived: true,
+          welcomeEmailSent: false,
+        },
+      },
+    });
+
+    return newReg.data;
+  }
+
+  // If there is a reg, update data, otherwise...
+  if (isRegistrant.data.aPSTicketRegistrantsByEmail.items.length > 0) {
+    const updated = await API.graphql({
+      query: updateAPSTicketRegistrant,
+      variables: {
+        input: {
+          id: isRegistrant.data.aPSTicketRegistrantsByEmail.items[0].id,
           name,
           title,
           company,
