@@ -78,12 +78,23 @@ const TicketPricingBlock = ({
       company,
       email,
       phone,
+      regCode,
       worksWith,
       speedNetworking,
       innovationWorkshop,
       plantTour
     );
 
+    // const response = await fetch('/api/create-early-bird-checkout', {
+    //   method: 'POST',
+    //   headers: {
+    //     Accept: 'application/json',
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify({
+    //     email: email,
+    //   }),
+    // });
     router.push('/registration-thank-you');
   };
 
