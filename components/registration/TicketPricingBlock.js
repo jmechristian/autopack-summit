@@ -95,7 +95,7 @@ const TicketPricingBlock = ({
     //     email: email,
     //   }),
     // });
-    router.push('/registration-thank-you');
+    router.push('https://buy.stripe.com/test_dR61483Oc3UG0cE000');
   };
 
   return (
