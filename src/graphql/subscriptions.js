@@ -1795,6 +1795,198 @@ export const onDeleteAPSTicketRegistrant = /* GraphQL */ `
     }
   }
 `;
+export const onCreateAPSSpeaker2024 = /* GraphQL */ `
+  subscription OnCreateAPSSpeaker2024 {
+    onCreateAPSSpeaker2024 {
+      firstName
+      lastName
+      email
+      company
+      title
+      phone
+      linkedin
+      bio
+      presentationTitle
+      presentationSummary
+      headshot
+      mediaConsent
+      privacyConsent
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateAPSSpeaker2024 = /* GraphQL */ `
+  subscription OnUpdateAPSSpeaker2024 {
+    onUpdateAPSSpeaker2024 {
+      firstName
+      lastName
+      email
+      company
+      title
+      phone
+      linkedin
+      bio
+      presentationTitle
+      presentationSummary
+      headshot
+      mediaConsent
+      privacyConsent
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteAPSSpeaker2024 = /* GraphQL */ `
+  subscription OnDeleteAPSSpeaker2024 {
+    onDeleteAPSSpeaker2024 {
+      firstName
+      lastName
+      email
+      company
+      title
+      phone
+      linkedin
+      bio
+      presentationTitle
+      presentationSummary
+      headshot
+      mediaConsent
+      privacyConsent
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateAPSTicket = /* GraphQL */ `
+  subscription OnCreateAPSTicket {
+    onCreateAPSTicket {
+      name
+      email
+      company
+      title
+      phone
+      paymentConfirmation
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateAPSTicket = /* GraphQL */ `
+  subscription OnUpdateAPSTicket {
+    onUpdateAPSTicket {
+      name
+      email
+      company
+      title
+      phone
+      paymentConfirmation
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteAPSTicket = /* GraphQL */ `
+  subscription OnDeleteAPSTicket {
+    onDeleteAPSTicket {
+      name
+      email
+      company
+      title
+      phone
+      paymentConfirmation
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateTourist = /* GraphQL */ `
+  subscription OnCreateTourist {
+    onCreateTourist {
+      id
+      fullName
+      email
+      phone
+      tour
+      company
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateTourist = /* GraphQL */ `
+  subscription OnUpdateTourist {
+    onUpdateTourist {
+      id
+      fullName
+      email
+      phone
+      tour
+      company
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteTourist = /* GraphQL */ `
+  subscription OnDeleteTourist {
+    onDeleteTourist {
+      id
+      fullName
+      email
+      phone
+      tour
+      company
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateAddOnRegistrant = /* GraphQL */ `
+  subscription OnCreateAddOnRegistrant {
+    onCreateAddOnRegistrant {
+      id
+      fullName
+      email
+      tour
+      company
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateAddOnRegistrant = /* GraphQL */ `
+  subscription OnUpdateAddOnRegistrant {
+    onUpdateAddOnRegistrant {
+      id
+      fullName
+      email
+      tour
+      company
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteAddOnRegistrant = /* GraphQL */ `
+  subscription OnDeleteAddOnRegistrant {
+    onDeleteAddOnRegistrant {
+      id
+      fullName
+      email
+      tour
+      company
+      createdAt
+      updatedAt
+    }
+  }
+`;
 export const onCreateCompany = /* GraphQL */ `
   subscription OnCreateCompany {
     onCreateCompany {
@@ -5764,159 +5956,6 @@ export const onDeleteAPSSpeaker = /* GraphQL */ `
       createdAt
       updatedAt
       aPSSpeakersId
-    }
-  }
-`;
-export const onCreateAPSSpeaker2024 = /* GraphQL */ `
-  subscription OnCreateAPSSpeaker2024 {
-    onCreateAPSSpeaker2024 {
-      firstName
-      lastName
-      email
-      company
-      title
-      phone
-      linkedin
-      bio
-      presentationTitle
-      presentationSummary
-      headshot
-      mediaConsent
-      privacyConsent
-      id
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onUpdateAPSSpeaker2024 = /* GraphQL */ `
-  subscription OnUpdateAPSSpeaker2024 {
-    onUpdateAPSSpeaker2024 {
-      firstName
-      lastName
-      email
-      company
-      title
-      phone
-      linkedin
-      bio
-      presentationTitle
-      presentationSummary
-      headshot
-      mediaConsent
-      privacyConsent
-      id
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onDeleteAPSSpeaker2024 = /* GraphQL */ `
-  subscription OnDeleteAPSSpeaker2024 {
-    onDeleteAPSSpeaker2024 {
-      firstName
-      lastName
-      email
-      company
-      title
-      phone
-      linkedin
-      bio
-      presentationTitle
-      presentationSummary
-      headshot
-      mediaConsent
-      privacyConsent
-      id
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onCreateAPSTicket = /* GraphQL */ `
-  subscription OnCreateAPSTicket {
-    onCreateAPSTicket {
-      name
-      email
-      company
-      title
-      phone
-      paymentConfirmation
-      id
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onUpdateAPSTicket = /* GraphQL */ `
-  subscription OnUpdateAPSTicket {
-    onUpdateAPSTicket {
-      name
-      email
-      company
-      title
-      phone
-      paymentConfirmation
-      id
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onDeleteAPSTicket = /* GraphQL */ `
-  subscription OnDeleteAPSTicket {
-    onDeleteAPSTicket {
-      name
-      email
-      company
-      title
-      phone
-      paymentConfirmation
-      id
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onCreateTourist = /* GraphQL */ `
-  subscription OnCreateTourist {
-    onCreateTourist {
-      id
-      fullName
-      email
-      phone
-      tour
-      company
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onUpdateTourist = /* GraphQL */ `
-  subscription OnUpdateTourist {
-    onUpdateTourist {
-      id
-      fullName
-      email
-      phone
-      tour
-      company
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onDeleteTourist = /* GraphQL */ `
-  subscription OnDeleteTourist {
-    onDeleteTourist {
-      id
-      fullName
-      email
-      phone
-      tour
-      company
-      createdAt
-      updatedAt
     }
   }
 `;

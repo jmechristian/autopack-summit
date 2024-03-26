@@ -1921,6 +1921,234 @@ export const deleteAPSTicketRegistrant = /* GraphQL */ `
     }
   }
 `;
+export const createAPSSpeaker2024 = /* GraphQL */ `
+  mutation CreateAPSSpeaker2024(
+    $input: CreateAPSSpeaker2024Input!
+    $condition: ModelAPSSpeaker2024ConditionInput
+  ) {
+    createAPSSpeaker2024(input: $input, condition: $condition) {
+      firstName
+      lastName
+      email
+      company
+      title
+      phone
+      linkedin
+      bio
+      presentationTitle
+      presentationSummary
+      headshot
+      mediaConsent
+      privacyConsent
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateAPSSpeaker2024 = /* GraphQL */ `
+  mutation UpdateAPSSpeaker2024(
+    $input: UpdateAPSSpeaker2024Input!
+    $condition: ModelAPSSpeaker2024ConditionInput
+  ) {
+    updateAPSSpeaker2024(input: $input, condition: $condition) {
+      firstName
+      lastName
+      email
+      company
+      title
+      phone
+      linkedin
+      bio
+      presentationTitle
+      presentationSummary
+      headshot
+      mediaConsent
+      privacyConsent
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteAPSSpeaker2024 = /* GraphQL */ `
+  mutation DeleteAPSSpeaker2024(
+    $input: DeleteAPSSpeaker2024Input!
+    $condition: ModelAPSSpeaker2024ConditionInput
+  ) {
+    deleteAPSSpeaker2024(input: $input, condition: $condition) {
+      firstName
+      lastName
+      email
+      company
+      title
+      phone
+      linkedin
+      bio
+      presentationTitle
+      presentationSummary
+      headshot
+      mediaConsent
+      privacyConsent
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createAPSTicket = /* GraphQL */ `
+  mutation CreateAPSTicket(
+    $input: CreateAPSTicketInput!
+    $condition: ModelAPSTicketConditionInput
+  ) {
+    createAPSTicket(input: $input, condition: $condition) {
+      name
+      email
+      company
+      title
+      phone
+      paymentConfirmation
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateAPSTicket = /* GraphQL */ `
+  mutation UpdateAPSTicket(
+    $input: UpdateAPSTicketInput!
+    $condition: ModelAPSTicketConditionInput
+  ) {
+    updateAPSTicket(input: $input, condition: $condition) {
+      name
+      email
+      company
+      title
+      phone
+      paymentConfirmation
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteAPSTicket = /* GraphQL */ `
+  mutation DeleteAPSTicket(
+    $input: DeleteAPSTicketInput!
+    $condition: ModelAPSTicketConditionInput
+  ) {
+    deleteAPSTicket(input: $input, condition: $condition) {
+      name
+      email
+      company
+      title
+      phone
+      paymentConfirmation
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createTourist = /* GraphQL */ `
+  mutation CreateTourist(
+    $input: CreateTouristInput!
+    $condition: ModelTouristConditionInput
+  ) {
+    createTourist(input: $input, condition: $condition) {
+      id
+      fullName
+      email
+      phone
+      tour
+      company
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateTourist = /* GraphQL */ `
+  mutation UpdateTourist(
+    $input: UpdateTouristInput!
+    $condition: ModelTouristConditionInput
+  ) {
+    updateTourist(input: $input, condition: $condition) {
+      id
+      fullName
+      email
+      phone
+      tour
+      company
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteTourist = /* GraphQL */ `
+  mutation DeleteTourist(
+    $input: DeleteTouristInput!
+    $condition: ModelTouristConditionInput
+  ) {
+    deleteTourist(input: $input, condition: $condition) {
+      id
+      fullName
+      email
+      phone
+      tour
+      company
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createAddOnRegistrant = /* GraphQL */ `
+  mutation CreateAddOnRegistrant(
+    $input: CreateAddOnRegistrantInput!
+    $condition: ModelAddOnRegistrantConditionInput
+  ) {
+    createAddOnRegistrant(input: $input, condition: $condition) {
+      id
+      fullName
+      email
+      tour
+      company
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateAddOnRegistrant = /* GraphQL */ `
+  mutation UpdateAddOnRegistrant(
+    $input: UpdateAddOnRegistrantInput!
+    $condition: ModelAddOnRegistrantConditionInput
+  ) {
+    updateAddOnRegistrant(input: $input, condition: $condition) {
+      id
+      fullName
+      email
+      tour
+      company
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteAddOnRegistrant = /* GraphQL */ `
+  mutation DeleteAddOnRegistrant(
+    $input: DeleteAddOnRegistrantInput!
+    $condition: ModelAddOnRegistrantConditionInput
+  ) {
+    deleteAddOnRegistrant(input: $input, condition: $condition) {
+      id
+      fullName
+      email
+      tour
+      company
+      createdAt
+      updatedAt
+    }
+  }
+`;
 export const createCompany = /* GraphQL */ `
   mutation CreateCompany(
     $input: CreateCompanyInput!
@@ -5953,186 +6181,6 @@ export const deleteAPSSpeaker = /* GraphQL */ `
       createdAt
       updatedAt
       aPSSpeakersId
-    }
-  }
-`;
-export const createAPSSpeaker2024 = /* GraphQL */ `
-  mutation CreateAPSSpeaker2024(
-    $input: CreateAPSSpeaker2024Input!
-    $condition: ModelAPSSpeaker2024ConditionInput
-  ) {
-    createAPSSpeaker2024(input: $input, condition: $condition) {
-      firstName
-      lastName
-      email
-      company
-      title
-      phone
-      linkedin
-      bio
-      presentationTitle
-      presentationSummary
-      headshot
-      mediaConsent
-      privacyConsent
-      id
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const updateAPSSpeaker2024 = /* GraphQL */ `
-  mutation UpdateAPSSpeaker2024(
-    $input: UpdateAPSSpeaker2024Input!
-    $condition: ModelAPSSpeaker2024ConditionInput
-  ) {
-    updateAPSSpeaker2024(input: $input, condition: $condition) {
-      firstName
-      lastName
-      email
-      company
-      title
-      phone
-      linkedin
-      bio
-      presentationTitle
-      presentationSummary
-      headshot
-      mediaConsent
-      privacyConsent
-      id
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const deleteAPSSpeaker2024 = /* GraphQL */ `
-  mutation DeleteAPSSpeaker2024(
-    $input: DeleteAPSSpeaker2024Input!
-    $condition: ModelAPSSpeaker2024ConditionInput
-  ) {
-    deleteAPSSpeaker2024(input: $input, condition: $condition) {
-      firstName
-      lastName
-      email
-      company
-      title
-      phone
-      linkedin
-      bio
-      presentationTitle
-      presentationSummary
-      headshot
-      mediaConsent
-      privacyConsent
-      id
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const createAPSTicket = /* GraphQL */ `
-  mutation CreateAPSTicket(
-    $input: CreateAPSTicketInput!
-    $condition: ModelAPSTicketConditionInput
-  ) {
-    createAPSTicket(input: $input, condition: $condition) {
-      name
-      email
-      company
-      title
-      phone
-      paymentConfirmation
-      id
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const updateAPSTicket = /* GraphQL */ `
-  mutation UpdateAPSTicket(
-    $input: UpdateAPSTicketInput!
-    $condition: ModelAPSTicketConditionInput
-  ) {
-    updateAPSTicket(input: $input, condition: $condition) {
-      name
-      email
-      company
-      title
-      phone
-      paymentConfirmation
-      id
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const deleteAPSTicket = /* GraphQL */ `
-  mutation DeleteAPSTicket(
-    $input: DeleteAPSTicketInput!
-    $condition: ModelAPSTicketConditionInput
-  ) {
-    deleteAPSTicket(input: $input, condition: $condition) {
-      name
-      email
-      company
-      title
-      phone
-      paymentConfirmation
-      id
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const createTourist = /* GraphQL */ `
-  mutation CreateTourist(
-    $input: CreateTouristInput!
-    $condition: ModelTouristConditionInput
-  ) {
-    createTourist(input: $input, condition: $condition) {
-      id
-      fullName
-      email
-      phone
-      tour
-      company
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const updateTourist = /* GraphQL */ `
-  mutation UpdateTourist(
-    $input: UpdateTouristInput!
-    $condition: ModelTouristConditionInput
-  ) {
-    updateTourist(input: $input, condition: $condition) {
-      id
-      fullName
-      email
-      phone
-      tour
-      company
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const deleteTourist = /* GraphQL */ `
-  mutation DeleteTourist(
-    $input: DeleteTouristInput!
-    $condition: ModelTouristConditionInput
-  ) {
-    deleteTourist(input: $input, condition: $condition) {
-      id
-      fullName
-      email
-      phone
-      tour
-      company
-      createdAt
-      updatedAt
     }
   }
 `;

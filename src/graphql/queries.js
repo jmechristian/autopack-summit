@@ -1515,6 +1515,223 @@ export const aPSTicketRegistrantsByEmail = /* GraphQL */ `
     }
   }
 `;
+export const getAPSSpeaker2024 = /* GraphQL */ `
+  query GetAPSSpeaker2024($id: ID!) {
+    getAPSSpeaker2024(id: $id) {
+      firstName
+      lastName
+      email
+      company
+      title
+      phone
+      linkedin
+      bio
+      presentationTitle
+      presentationSummary
+      headshot
+      mediaConsent
+      privacyConsent
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listAPSSpeaker2024s = /* GraphQL */ `
+  query ListAPSSpeaker2024s(
+    $filter: ModelAPSSpeaker2024FilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listAPSSpeaker2024s(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        firstName
+        lastName
+        email
+        company
+        title
+        phone
+        linkedin
+        bio
+        presentationTitle
+        presentationSummary
+        headshot
+        mediaConsent
+        privacyConsent
+        id
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getAPSTicket = /* GraphQL */ `
+  query GetAPSTicket($id: ID!) {
+    getAPSTicket(id: $id) {
+      name
+      email
+      company
+      title
+      phone
+      paymentConfirmation
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listAPSTickets = /* GraphQL */ `
+  query ListAPSTickets(
+    $filter: ModelAPSTicketFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listAPSTickets(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        name
+        email
+        company
+        title
+        phone
+        paymentConfirmation
+        id
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getTourist = /* GraphQL */ `
+  query GetTourist($id: ID!) {
+    getTourist(id: $id) {
+      id
+      fullName
+      email
+      phone
+      tour
+      company
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listTourists = /* GraphQL */ `
+  query ListTourists(
+    $filter: ModelTouristFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listTourists(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        fullName
+        email
+        phone
+        tour
+        company
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const touristsByEmail = /* GraphQL */ `
+  query TouristsByEmail(
+    $email: String!
+    $sortDirection: ModelSortDirection
+    $filter: ModelTouristFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    touristsByEmail(
+      email: $email
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        fullName
+        email
+        phone
+        tour
+        company
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getAddOnRegistrant = /* GraphQL */ `
+  query GetAddOnRegistrant($id: ID!) {
+    getAddOnRegistrant(id: $id) {
+      id
+      fullName
+      email
+      tour
+      company
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listAddOnRegistrants = /* GraphQL */ `
+  query ListAddOnRegistrants(
+    $filter: ModelAddOnRegistrantFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listAddOnRegistrants(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        fullName
+        email
+        tour
+        company
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const addOnRegistrantsByEmail = /* GraphQL */ `
+  query AddOnRegistrantsByEmail(
+    $email: String!
+    $sortDirection: ModelSortDirection
+    $filter: ModelAddOnRegistrantFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    addOnRegistrantsByEmail(
+      email: $email
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        fullName
+        email
+        tour
+        company
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
 export const getCompany = /* GraphQL */ `
   query GetCompany($id: ID!) {
     getCompany(id: $id) {
@@ -4250,158 +4467,6 @@ export const listAPSSpeakers = /* GraphQL */ `
         createdAt
         updatedAt
         aPSSpeakersId
-      }
-      nextToken
-    }
-  }
-`;
-export const getAPSSpeaker2024 = /* GraphQL */ `
-  query GetAPSSpeaker2024($id: ID!) {
-    getAPSSpeaker2024(id: $id) {
-      firstName
-      lastName
-      email
-      company
-      title
-      phone
-      linkedin
-      bio
-      presentationTitle
-      presentationSummary
-      headshot
-      mediaConsent
-      privacyConsent
-      id
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const listAPSSpeaker2024s = /* GraphQL */ `
-  query ListAPSSpeaker2024s(
-    $filter: ModelAPSSpeaker2024FilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listAPSSpeaker2024s(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        firstName
-        lastName
-        email
-        company
-        title
-        phone
-        linkedin
-        bio
-        presentationTitle
-        presentationSummary
-        headshot
-        mediaConsent
-        privacyConsent
-        id
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-  }
-`;
-export const getAPSTicket = /* GraphQL */ `
-  query GetAPSTicket($id: ID!) {
-    getAPSTicket(id: $id) {
-      name
-      email
-      company
-      title
-      phone
-      paymentConfirmation
-      id
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const listAPSTickets = /* GraphQL */ `
-  query ListAPSTickets(
-    $filter: ModelAPSTicketFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listAPSTickets(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        name
-        email
-        company
-        title
-        phone
-        paymentConfirmation
-        id
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-  }
-`;
-export const getTourist = /* GraphQL */ `
-  query GetTourist($id: ID!) {
-    getTourist(id: $id) {
-      id
-      fullName
-      email
-      phone
-      tour
-      company
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const listTourists = /* GraphQL */ `
-  query ListTourists(
-    $filter: ModelTouristFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listTourists(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        fullName
-        email
-        phone
-        tour
-        company
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-  }
-`;
-export const touristsByEmail = /* GraphQL */ `
-  query TouristsByEmail(
-    $email: String!
-    $sortDirection: ModelSortDirection
-    $filter: ModelTouristFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    touristsByEmail(
-      email: $email
-      sortDirection: $sortDirection
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-    ) {
-      items {
-        id
-        fullName
-        email
-        phone
-        tour
-        company
-        createdAt
-        updatedAt
       }
       nextToken
     }
