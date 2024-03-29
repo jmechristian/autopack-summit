@@ -13,8 +13,7 @@ const PrintableCompactAgenda = ({
     <div className='flex flex-col '>
       <div className='bg-black rounded-xl w-full px-6 py-4 flex'>
         <div className='text-ap-yellow font-medium text-lg lg:text-xl font-oswald uppercase'>
-          <span className='text-white'>Day One</span> Wednesday, October 11,
-          2023
+          <span className='text-white'>Day One</span> Monday, October 21, 2024
         </div>
       </div>
       {dayOne &&
@@ -33,7 +32,7 @@ const PrintableCompactAgenda = ({
         ))}
       <div className='bg-black rounded-xl w-full px-6 py-4 flex'>
         <div className='text-ap-yellow font-medium text-lg lg:text-xl font-oswald uppercase'>
-          <span className='text-white'>Day Two</span> Thursday, October 12, 2023
+          <span className='text-white'>Day Two</span> Tuesday, October 22, 2024
         </div>
       </div>
       {dayTwo &&
@@ -52,7 +51,8 @@ const PrintableCompactAgenda = ({
         ))}
       <div className='bg-black rounded-xl w-full px-6 py-4 flex'>
         <div className='text-ap-yellow font-medium text-lg lg:text-xl font-oswald uppercase'>
-          <span className='text-white'>Day Three</span> Friday, October 13, 2023
+          <span className='text-white'>Day Three</span> Wednesday, October 23,
+          2024
         </div>
       </div>
       {dayThree &&
