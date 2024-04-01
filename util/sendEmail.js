@@ -1,4 +1,4 @@
-export const sendEmail = (
+export const sendEmail = async (
   name,
   title,
   company,
@@ -10,7 +10,7 @@ export const sendEmail = (
   innovationWorkshop,
   plantTour
 ) => {
-  fetch(
+  const res = fetch(
     'https://9i9gb4ccxe.execute-api.us-east-1.amazonaws.com/default/sendEmailFn-staging',
     {
       method: 'POST',
@@ -32,4 +32,6 @@ export const sendEmail = (
       }),
     }
   );
+
+  return (await res).status;
 };
