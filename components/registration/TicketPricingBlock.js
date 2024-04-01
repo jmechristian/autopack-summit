@@ -71,19 +71,20 @@ const TicketPricingBlock = ({
       speedNetworking,
       innovationWorkshop,
       plantTour
-    );
-    await sendEmail(
-      name,
-      title,
-      company,
-      email,
-      phone,
-      regCode,
-      worksWith,
-      speedNetworking,
-      innovationWorkshop,
-      plantTour
-    );
+    ).then(async () => {
+      await sendEmail(
+        name,
+        title,
+        company,
+        email,
+        phone,
+        regCode,
+        worksWith,
+        speedNetworking,
+        innovationWorkshop,
+        plantTour
+      );
+    });
 
     // const response = await fetch('/api/create-early-bird-checkout', {
     //   method: 'POST',
@@ -95,7 +96,7 @@ const TicketPricingBlock = ({
     //     email: email,
     //   }),
     // });
-    router.push('https://buy.stripe.com/test_dR61483Oc3UG0cE000');
+    router.push('https://buy.stripe.com/28o00W2REdXWb049AB');
   };
 
   return (

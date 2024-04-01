@@ -64,7 +64,7 @@ const TicketForm = ({ codes, submitted, params }) => {
                 className='w-full'
               />
             </div>
-            <div className='flex flex-col gap-1'>
+            <div className='flex flex-col gap-1 lg:col-span-2'>
               <div className='text-xs font-medium text-slate-500 uppercase flex justify-between'>
                 <div>Email</div>
                 <div>*Required</div>
@@ -77,7 +77,7 @@ const TicketForm = ({ codes, submitted, params }) => {
                 className='w-full'
               />
             </div>
-            <div className='flex flex-col gap-1'>
+            <div className='flex flex-col gap-1 lg:col-span-2'>
               <div className='text-xs font-medium text-slate-500 uppercase flex justify-between'>
                 <div>Phone</div>
                 <div>*Required</div>
@@ -90,7 +90,7 @@ const TicketForm = ({ codes, submitted, params }) => {
                 className='w-full'
               />
             </div>
-            <div className='flex flex-col gap-1'>
+            <div className='flex flex-col gap-1 lg:col-span-2'>
               <div className='text-xs font-medium text-slate-500 uppercase flex justify-between'>
                 <div>Company</div>
                 <div>*Required</div>
@@ -103,7 +103,7 @@ const TicketForm = ({ codes, submitted, params }) => {
                 className='w-full'
               />
             </div>
-            <div className='flex flex-col gap-1'>
+            <div className='flex flex-col gap-1 lg:col-span-2'>
               <div className='text-xs font-medium text-slate-500 uppercase flex justify-between'>
                 <div>Title</div>
                 <div>*Required</div>
@@ -144,13 +144,13 @@ const TicketForm = ({ codes, submitted, params }) => {
                 </select>
               </div>
             </div>
-            <div className='flex gap-1 md:col-span-2 xl:col-span-2 bg-amber-300 -mx-6 p-7 rounded-2xl border-black border-2'>
+            {/* <div className='flex gap-1 md:col-span-2 xl:col-span-2 bg-amber-300 -mx-6 p-7 rounded-2xl border-black border-2'>
               <div className='flex flex-col gap-2 w-full'>
                 <div className='flex gap-9 items-center justify-center w-full h-[250px]'>
                   <div>Something fun is coming here.</div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
         {/* SIDEBAR */}
@@ -245,7 +245,7 @@ const TicketForm = ({ codes, submitted, params }) => {
               </div>
             </div>
             {/* REGISTRATION BUTTON */}
-            <div className='flex flex-col items-center justify-center lg:h-full'>
+            <div className='flex flex-col items-center justify-center lg:h-full mb-6'>
               <div className='flex items-center xl:mt-5'>
                 <TicketPricingBlock
                   regCode={regCode}

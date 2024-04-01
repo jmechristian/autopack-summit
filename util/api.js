@@ -110,6 +110,7 @@ export const handleRegInit = async (
           company,
           email,
           phone,
+          code: regCode ? regCode : 'TICKET',
           worksWith,
           speedNetworking,
           innovationWorkshop,
