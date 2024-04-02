@@ -52,8 +52,8 @@ const TicketForm = ({ codes, submitted, params }) => {
                 planning to attend the conference. Please fill out all fields to
                 continue.
               </p>
-              <div className='text-sm font-semibold mt-2'>
-                Please Note: Ticket sales are limited to 2 per company.
+              <div className='font-semibold mt-2'>
+                Ticket sales are limited to 2 per company.
               </div>
             </div>
             <div className='flex flex-col gap-1 lg:col-span-2'>
