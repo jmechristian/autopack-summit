@@ -63,12 +63,20 @@ const PowerConsole = () => {
               </motion.div>
               <motion.div className='w-full px-3 py-2 flex flex-col gap-2 item-center'>
                 <ConsoleItem
-                  title={'Register (opening soon)'}
+                  title={'General Admission Tickets'}
                   color={'bg-white'}
                   hoverColor={'hover:bg-amber-400'}
                   iconBack={'bg-black'}
                   icon={<MdConfirmationNumber color='white' size={'20px'} />}
-                  fn={() => {}}
+                  fn={() => router.push('/tickets')}
+                />
+                <ConsoleItem
+                  title={'OEM/ Tier 1 Registration'}
+                  color={'bg-white'}
+                  hoverColor={'hover:bg-amber-400'}
+                  iconBack={'bg-black'}
+                  icon={<MdConfirmationNumber color='white' size={'20px'} />}
+                  fn={() => router.push('/register')}
                 />
                 <ConsoleItem
                   title={"I'd like to Speak"}

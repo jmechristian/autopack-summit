@@ -86,7 +86,7 @@ const Page = ({ homepageData, speakers, testimonials }) => {
               <div className='text-lg xl:text-xl'>
                 Discover cutting-edge solutions at the Automotive Packaging
                 Summit, where industry veterans and packaging experts unite to
-                tackle the unique challenges in OEM and Tier1 part supplier
+                tackle the unique challenges in OEM and Tier 1 part supplier
                 logistics.
               </div>
             </Reveal>
@@ -95,8 +95,9 @@ const Page = ({ homepageData, speakers, testimonials }) => {
               animate={{ opacity: 1 }}
               initial={{ opacity: 0 }}
               transition={{ delay: 0.45, ease: 'easeIn', duration: 0.5 }}
+              onClick={() => dispatch(openPowerConsole())}
             >
-              Registration Opens Soon!
+              Early-Bird Registration is Live!
             </motion.button>
           </div>
           <Reveal delay={0.55} bgColor={'white'}>

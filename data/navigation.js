@@ -16,7 +16,11 @@ export const navMenu = [
     link: '/travel',
   },
   {
-    name: 'Resources',
-    link: '/resources',
+    name: 'OEM/ Tier 1',
+    link: '/register',
+  },
+  {
+    name: 'Tickets',
+    link: '/tickets',
   },
 ];
