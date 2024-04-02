@@ -44,14 +44,17 @@ const TicketForm = ({ codes, submitted, params }) => {
         <div className='lg:col-span-12 xl:col-span-8 rounded-2xl md:border md:border-neutral-900 w-full h-full bg-white md:shadow-[4px_6px_0_black]'>
           <div className='grid md:grid-cols-2 gap-x-5 md:gap-x-10 gap-y-8 px-5 xl:px-10 py-5 overflow-hidden'>
             <div className='flex flex-col gap-2 text-left py-3 lg:col-span-2'>
-              <p className='text-lg font-medium leading-6 text-gray-900'>
+              <p className='text-xl font-medium leading-6 text-gray-900'>
                 1. Personal Information
               </p>
-              <p className='text-slate-600 text-sm'>
+              <p className='text-slate-600'>
                 Please make sure to add the information of the attendee that is
                 planning to attend the conference. Please fill out all fields to
                 continue.
               </p>
+              <div className='text-sm font-semibold mt-2'>
+                Please Note: Ticket sales are limited to 2 per company.
+              </div>
             </div>
             <div className='flex flex-col gap-1 lg:col-span-2'>
               <div className='text-xs font-medium text-slate-500 uppercase flex justify-between'>
