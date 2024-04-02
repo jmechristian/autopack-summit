@@ -46,7 +46,7 @@ const RegBlockPricing = ({
 
   useEffect(() => {
     if (resetCounter === undefined) {
-      update(1200);
+      update(1015);
     }
 
     if (resetCounter) {
