@@ -97,7 +97,7 @@ const Page = ({ homepageData, speakers, testimonials }) => {
               transition={{ delay: 0.45, ease: 'easeIn', duration: 0.5 }}
               onClick={() => dispatch(openPowerConsole())}
             >
-              Early-Bird Registration is Live!
+              Save Now with Early-Bird Registration
             </motion.button>
           </div>
           <Reveal delay={0.55} bgColor={'white'}>
