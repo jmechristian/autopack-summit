@@ -48,7 +48,9 @@ const TicketForm = ({ codes, submitted, params }) => {
                 1. Personal Information
               </p>
               <p className='text-slate-600 text-sm'>
-                Please fill out all fields to continue.
+                Please make sure to add the information of the attendee that is
+                planning to attend the conference. Please fill out all fields to
+                continue.
               </p>
             </div>
             <div className='flex flex-col gap-1 lg:col-span-2'>
