@@ -376,5 +376,6 @@ export async function getStaticProps() {
       speakers,
       testimonials,
     },
+    revalidate: 10,
   };
 }

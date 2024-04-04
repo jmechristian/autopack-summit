@@ -259,6 +259,7 @@ const Agenda = ({ sessionData, tourists }) => {
                           speakers={s.speakers}
                           sponsors={s.sponsors}
                           description={s.description}
+                          details={s.details}
                         />
                       </motion.div>
                     ))}
@@ -292,6 +293,7 @@ export async function getServerSideProps() {
       location,
       name,
       description,
+      details,
       type,
       session_end,
       session_start,

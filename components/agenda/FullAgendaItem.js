@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
+import { MinusCircleIcon, PlusCircleIcon } from '@heroicons/react/24/solid';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const FullAgendaItem = ({
   title,
@@ -9,6 +11,7 @@ const FullAgendaItem = ({
   location,
   description,
   sponsors,
+  details,
   type,
 }) => {
   const start =
@@ -23,6 +26,8 @@ const FullAgendaItem = ({
       hour: '2-digit',
       minute: '2-digit',
     });
+
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div>
@@ -74,8 +79,47 @@ const FullAgendaItem = ({
                   type === 'session' ? 'text-white' : 'text-black'
                 }`}
               >
-                {description}
+                {!isOpen && description}
               </div>
+              {details ? (
+                <div className='flex flex-col gap-2'>
+                  <div
+                    className='flex items-center gap-1 pb-3 cursor-pointer'
+                    onClick={() => setIsOpen(!isOpen)}
+                  >
+                    <div>
+                      {isOpen ? (
+                        <MinusCircleIcon className='fill-ap-yellow w-5 h-5' />
+                      ) : (
+                        <PlusCircleIcon className='fill-ap-yellow w-5 h-5' />
+                      )}
+                    </div>
+                    <div className='text-sm font-semibold text-white'>
+                      View {isOpen ? 'Less' : 'More'}
+                    </div>
+                  </div>
+                  <AnimatePresence>
+                    {isOpen && (
+                      <motion.div className='flex flex-col gap-3 pb-3'>
+                        {details.map((detail, i) => (
+                          <motion.div
+                            className={`text-white text-sm ${
+                              detail.children[0].marks &&
+                              detail.children[0].marks.includes('strong')
+                                ? 'font-bold'
+                                : 'font-base'
+                            }`}
+                          >
+                            {detail.children[0].text}
+                          </motion.div>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              ) : (
+                <></>
+              )}
             </div>
           </div>
           {speakers && speakers.length > 0 && (
