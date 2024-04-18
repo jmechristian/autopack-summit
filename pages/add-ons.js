@@ -32,61 +32,7 @@ const Page = () => {
             </div>
           </div>
         </div>
-        {/* FORM */}
-        {/* <div className='w-full flex flex-col lg:grid lg:grid-cols-2 gap-5 px-4 md:px-9 lg:px-12 pt-6'>
-          <div className='flex flex-col gap-1'>
-            <div className='text-xs font-medium text-slate-500 uppercase flex justify-between'>
-              <div>Full Name</div>
-              <div>*Required</div>
-            </div>
-            <input
-              name='name'
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              type='text'
-              className='w-full'
-            />
-          </div>
-          <div className='flex flex-col gap-1'>
-            <div className='text-xs font-medium text-slate-500 uppercase flex justify-between'>
-              <div>Email</div>
-              <div>*Required</div>
-            </div>
-            <input
-              name='email'
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              type='email'
-              className='w-full'
-            />
-          </div>
-          <div className='flex flex-col gap-1'>
-            <div className='text-xs font-medium text-slate-500 uppercase flex justify-between'>
-              <div>Company</div>
-              <div>*Required</div>
-            </div>
-            <input
-              name='company'
-              value={company}
-              onChange={(e) => setCompany(e.target.value)}
-              type='text'
-              className='w-full'
-            />
-          </div>
-          <div className='flex flex-col gap-1'>
-            <div className='text-xs font-medium text-slate-500 uppercase flex justify-between'>
-              <div>Title</div>
-              <div>*Required</div>
-            </div>
-            <input
-              name='title'
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              type='text'
-              className='w-full'
-            />
-          </div>
-        </div> */}
+
         {/* OPTIONS WITH DESCRIPTIONS */}
         <div className='bg-amber-100 w-full p-4 md:p-9 lg:p-12'>
           <div className='flex flex-col gap-4'>
@@ -140,7 +86,7 @@ const Page = () => {
               }
             />
             <AddOnCard
-              title={"Aristo's Rack Manufacturing"}
+              title={'Aristos Rack Manufacturing presented by Freudenberg'}
               time={'TBD'}
               description={
                 'Will feature Rack Manufacturing, Tote, Inserts which all show cases various Evolon textile class a fabric products.'
