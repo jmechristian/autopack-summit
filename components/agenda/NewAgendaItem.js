@@ -11,18 +11,15 @@ const NewAgendaItem = ({
   sponsors,
   type,
 }) => {
-  const start =
-    startTime &&
-    new Date(startTime).toLocaleTimeString([], {
-      hour: '2-digit',
-      minute: '2-digit',
-    });
-  const end =
-    endTime &&
-    new Date(endTime).toLocaleTimeString([], {
-      hour: '2-digit',
-      minute: '2-digit',
-    });
+  const formatter = new Intl.DateTimeFormat('en-US', {
+    hour: '2-digit',
+    minute: '2-digit',
+    timeZone: 'America/New_York',
+    hour12: true,
+  });
+
+  const start = startTime && formatter.format(new Date(startTime));
+  const end = endTime && formatter.format(new Date(endTime));
 
   return (
     <div
