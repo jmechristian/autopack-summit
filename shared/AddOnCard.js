@@ -1,9 +1,19 @@
 import React, { useState } from 'react';
 import { MdArrowDropDown, MdArticle, MdAccountBox } from 'react-icons/md';
 import BrutalistButton from './BrutalistButton';
+import { useRouter } from 'next/router';
 
-const AddOnCard = ({ title, time, description, speakers, logo }) => {
+const AddOnCard = ({
+  title,
+  time,
+  description,
+  speakers,
+  logo,
+  url,
+  buttonText,
+}) => {
   const [open, setOpen] = useState(false);
+  const router = useRouter();
 
   return (
     <div className='border-2 border-black w-full flex flex-col'>
@@ -84,7 +94,8 @@ const AddOnCard = ({ title, time, description, speakers, logo }) => {
             <BrutalistButton
               bgColor={'bg-ap-blue'}
               textColor={'text-white'}
-              text={'Register'}
+              text={buttonText}
+              fn={() => router.push(`${url}`)}
             />
           </div>
         </div>

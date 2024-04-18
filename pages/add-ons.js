@@ -42,6 +42,8 @@ const Page = () => {
               </div>
             </div>
             <AddOnCard
+              buttonText={'Register'}
+              url={'/tours/morrisette'}
               title={'Morrisette Packaging Tour & Cookout'}
               time={'Monday, October 21th 10:30- 13:00'}
               description={
@@ -91,6 +93,7 @@ const Page = () => {
               description={
                 'Will feature Rack Manufacturing, Tote, Inserts which all show cases various Evolon textile class a fabric products.'
               }
+              buttonText={'Registration Opening Soon'}
             />
           </div>
           <div className='flex flex-col gap-4 mt-10'>
@@ -101,6 +104,7 @@ const Page = () => {
             </div>
             <AddOnCard
               title={'Guardian Container Consulting'}
+              buttonText={'Register'}
               time={'Tuesday, October 22nd 1:00 PM - 2:00 PM'}
               speakers={[
                 {
@@ -153,6 +157,7 @@ const Page = () => {
             <AddOnCard
               title={'From Pack to Track: Accelerate Decision Making with AI'}
               time={'Tuesday, October 22nd 1:00 PM - 2:00 PM'}
+              buttonText={'Register'}
               description={
                 'From Pack to Track: Accelerate Decision Making with AI'
               }
@@ -171,6 +176,7 @@ const Page = () => {
             <AddOnCard
               title={'Bosch Rexroth Packaging Innovation Workshop'}
               time={'Tuesday, October 22nd 2:30 PM - 3:30 PM'}
+              buttonText={'Register'}
               description={
                 <div className='text-sm'>
                   Bosch is inviting you to participate in this interactive
