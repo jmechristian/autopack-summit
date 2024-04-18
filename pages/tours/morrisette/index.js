@@ -1,12 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import BrutalistButton from '../../../shared/BrutalistButton';
+import { sendMorrisette } from '../../../util/api';
+import { useRouter } from 'next/router';
+import { API } from 'aws-amplify';
+import { createMorrisetteForm } from '../../../src/graphql/mutations';
 
 const Page = () => {
+  const router = useRouter();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [company, setCompany] = useState('');
   const [title, setTitle] = useState('');
-  const [isPreference, setIsPreference] = useState('self');
+  const [isPreference, setIsPreference] = useState(undefined);
   const [isSelectedImage, setIsSelectedImage] = useState(
     'https://packschool.s3.amazonaws.com/FredDelivers.jpg'
   );
@@ -19,6 +24,39 @@ const Page = () => {
       title: 'I would like to take the shuttle from the Hyatt.',
     },
   ];
+
+  const formValid = useMemo(() => {
+    if (name && email && title && company && isPreference) {
+      return true;
+    } else return false;
+  }, [name, email, company, title, isPreference]);
+
+  const clickHandler = async () => {
+    formValid && setIsSending(true);
+    const uid = await API.graphql({
+      query: createMorrisetteForm,
+      variables: {
+        input: {
+          company: company,
+          email: email,
+          name: name,
+          preference: isPreference,
+          title: title,
+          approved: false,
+        },
+      },
+    });
+    await sendMorrisette({
+      name,
+      email,
+      company,
+      title,
+      isPreference,
+      id: uid.data.createMorrisetteForm.id,
+    });
+    setIsSending(false);
+    router.push('/tours/thank-you');
+  };
 
   return (
     <div className='max-w-6xl mx-auto px-4 xl:px-0'>
@@ -113,11 +151,11 @@ const Page = () => {
           </div>
         </div>
         {/* FORM */}
-        <div className='flex flex-col lg:grid lg:grid-cols-2 gap-5 pt-10'>
+        <div className='flex flex-col lg:grid lg:grid-cols-2 gap-5 lg:gap-10 pt-10'>
           <div className='flex flex-col gap-1'>
             <div className='text-xs font-medium text-slate-500 uppercase flex justify-between'>
               <div>Name</div>
-              <div>*Required</div>
+              <div className='text-red-600'>*Required</div>
             </div>
             <input
               name='name'
@@ -130,7 +168,7 @@ const Page = () => {
           <div className='flex flex-col gap-1'>
             <div className='text-xs font-medium text-slate-500 uppercase flex justify-between'>
               <div>Email</div>
-              <div>*Required</div>
+              <div className='text-red-600'>*Required</div>
             </div>
             <input
               name='email'
@@ -143,7 +181,7 @@ const Page = () => {
           <div className='flex flex-col gap-1'>
             <div className='text-xs font-medium text-slate-500 uppercase flex justify-between'>
               <div>Company</div>
-              <div>*Required</div>
+              <div className='text-red-600'>*Required</div>
             </div>
             <input
               name='company'
@@ -156,7 +194,7 @@ const Page = () => {
           <div className='flex flex-col gap-1'>
             <div className='text-xs font-medium text-slate-500 uppercase flex justify-between'>
               <div>Title</div>
-              <div>*Required</div>
+              <div className='text-red-600'>*Required</div>
             </div>
             <input
               name='title'
@@ -170,7 +208,7 @@ const Page = () => {
           <div className='my-6 w-full col-span-2'>
             <div className='text-xs font-medium text-slate-500 uppercase w-full flex justify-between'>
               <div>Please choose your preference:</div>
-              <div>*Required</div>
+              <div className='text-red-600'>*Required</div>
             </div>
             <fieldset className='mt-4'>
               <legend className='sr-only'>Notification method</legend>
@@ -184,7 +222,6 @@ const Page = () => {
                       id={notificationMethod.id}
                       name='notification-method'
                       type='radio'
-                      defaultChecked={notificationMethod.id === 'self'}
                       className='h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600'
                       onChange={(e) => setIsPreference(e.target.id)}
                     />
@@ -205,10 +242,9 @@ const Page = () => {
               <BrutalistButton
                 bgColor={'bg-ap-darkblue'}
                 textColor={'text-white'}
-                text={'Register'}
-                fn={() =>
-                  console.log(name, email, company, title, isPreference)
-                }
+                text={isSending ? 'Sending...' : 'Submit'}
+                fn={clickHandler}
+                disabled={!formValid}
               />
             </div>
           </div>

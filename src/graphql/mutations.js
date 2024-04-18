@@ -2614,6 +2614,291 @@ export const deleteCompany = /* GraphQL */ `
     }
   }
 `;
+export const createAPSSpeaker = /* GraphQL */ `
+  mutation CreateAPSSpeaker(
+    $input: CreateAPSSpeakerInput!
+    $condition: ModelAPSSpeakerConditionInput
+  ) {
+    createAPSSpeaker(input: $input, condition: $condition) {
+      firstName
+      lastName
+      email
+      company
+      title
+      phone
+      linkedin
+      bio
+      presentationTitle
+      presentationSummary
+      headshot
+      mediaConsent
+      privacyConsent
+      apsHistory {
+        id
+        Registrants {
+          items {
+            id
+            aPSId
+            userId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        Sponsors {
+          items {
+            id
+            aPSId
+            companyId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        Speakers {
+          items {
+            firstName
+            lastName
+            email
+            company
+            title
+            phone
+            linkedin
+            bio
+            presentationTitle
+            presentationSummary
+            headshot
+            mediaConsent
+            privacyConsent
+            id
+            createdAt
+            updatedAt
+            aPSSpeakersId
+          }
+          nextToken
+        }
+        year
+        codes {
+          code
+        }
+        createdAt
+        updatedAt
+      }
+      id
+      createdAt
+      updatedAt
+      aPSSpeakersId
+    }
+  }
+`;
+export const updateAPSSpeaker = /* GraphQL */ `
+  mutation UpdateAPSSpeaker(
+    $input: UpdateAPSSpeakerInput!
+    $condition: ModelAPSSpeakerConditionInput
+  ) {
+    updateAPSSpeaker(input: $input, condition: $condition) {
+      firstName
+      lastName
+      email
+      company
+      title
+      phone
+      linkedin
+      bio
+      presentationTitle
+      presentationSummary
+      headshot
+      mediaConsent
+      privacyConsent
+      apsHistory {
+        id
+        Registrants {
+          items {
+            id
+            aPSId
+            userId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        Sponsors {
+          items {
+            id
+            aPSId
+            companyId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        Speakers {
+          items {
+            firstName
+            lastName
+            email
+            company
+            title
+            phone
+            linkedin
+            bio
+            presentationTitle
+            presentationSummary
+            headshot
+            mediaConsent
+            privacyConsent
+            id
+            createdAt
+            updatedAt
+            aPSSpeakersId
+          }
+          nextToken
+        }
+        year
+        codes {
+          code
+        }
+        createdAt
+        updatedAt
+      }
+      id
+      createdAt
+      updatedAt
+      aPSSpeakersId
+    }
+  }
+`;
+export const deleteAPSSpeaker = /* GraphQL */ `
+  mutation DeleteAPSSpeaker(
+    $input: DeleteAPSSpeakerInput!
+    $condition: ModelAPSSpeakerConditionInput
+  ) {
+    deleteAPSSpeaker(input: $input, condition: $condition) {
+      firstName
+      lastName
+      email
+      company
+      title
+      phone
+      linkedin
+      bio
+      presentationTitle
+      presentationSummary
+      headshot
+      mediaConsent
+      privacyConsent
+      apsHistory {
+        id
+        Registrants {
+          items {
+            id
+            aPSId
+            userId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        Sponsors {
+          items {
+            id
+            aPSId
+            companyId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        Speakers {
+          items {
+            firstName
+            lastName
+            email
+            company
+            title
+            phone
+            linkedin
+            bio
+            presentationTitle
+            presentationSummary
+            headshot
+            mediaConsent
+            privacyConsent
+            id
+            createdAt
+            updatedAt
+            aPSSpeakersId
+          }
+          nextToken
+        }
+        year
+        codes {
+          code
+        }
+        createdAt
+        updatedAt
+      }
+      id
+      createdAt
+      updatedAt
+      aPSSpeakersId
+    }
+  }
+`;
+export const createMorrisetteForm = /* GraphQL */ `
+  mutation CreateMorrisetteForm(
+    $input: CreateMorrisetteFormInput!
+    $condition: ModelMorrisetteFormConditionInput
+  ) {
+    createMorrisetteForm(input: $input, condition: $condition) {
+      name
+      email
+      company
+      title
+      preference
+      approved
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateMorrisetteForm = /* GraphQL */ `
+  mutation UpdateMorrisetteForm(
+    $input: UpdateMorrisetteFormInput!
+    $condition: ModelMorrisetteFormConditionInput
+  ) {
+    updateMorrisetteForm(input: $input, condition: $condition) {
+      name
+      email
+      company
+      title
+      preference
+      approved
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteMorrisetteForm = /* GraphQL */ `
+  mutation DeleteMorrisetteForm(
+    $input: DeleteMorrisetteFormInput!
+    $condition: ModelMorrisetteFormConditionInput
+  ) {
+    deleteMorrisetteForm(input: $input, condition: $condition) {
+      name
+      email
+      company
+      title
+      preference
+      approved
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
 export const createUser = /* GraphQL */ `
   mutation CreateUser(
     $input: CreateUserInput!
@@ -5950,237 +6235,6 @@ export const deleteAppStart = /* GraphQL */ `
       id
       createdOn
       updatedOn
-    }
-  }
-`;
-export const createAPSSpeaker = /* GraphQL */ `
-  mutation CreateAPSSpeaker(
-    $input: CreateAPSSpeakerInput!
-    $condition: ModelAPSSpeakerConditionInput
-  ) {
-    createAPSSpeaker(input: $input, condition: $condition) {
-      firstName
-      lastName
-      email
-      company
-      title
-      phone
-      linkedin
-      bio
-      presentationTitle
-      presentationSummary
-      headshot
-      mediaConsent
-      privacyConsent
-      apsHistory {
-        id
-        Registrants {
-          items {
-            id
-            aPSId
-            userId
-            createdAt
-            updatedAt
-          }
-          nextToken
-        }
-        Sponsors {
-          items {
-            id
-            aPSId
-            companyId
-            createdAt
-            updatedAt
-          }
-          nextToken
-        }
-        Speakers {
-          items {
-            firstName
-            lastName
-            email
-            company
-            title
-            phone
-            linkedin
-            bio
-            presentationTitle
-            presentationSummary
-            headshot
-            mediaConsent
-            privacyConsent
-            id
-            createdAt
-            updatedAt
-            aPSSpeakersId
-          }
-          nextToken
-        }
-        year
-        codes {
-          code
-        }
-        createdAt
-        updatedAt
-      }
-      id
-      createdAt
-      updatedAt
-      aPSSpeakersId
-    }
-  }
-`;
-export const updateAPSSpeaker = /* GraphQL */ `
-  mutation UpdateAPSSpeaker(
-    $input: UpdateAPSSpeakerInput!
-    $condition: ModelAPSSpeakerConditionInput
-  ) {
-    updateAPSSpeaker(input: $input, condition: $condition) {
-      firstName
-      lastName
-      email
-      company
-      title
-      phone
-      linkedin
-      bio
-      presentationTitle
-      presentationSummary
-      headshot
-      mediaConsent
-      privacyConsent
-      apsHistory {
-        id
-        Registrants {
-          items {
-            id
-            aPSId
-            userId
-            createdAt
-            updatedAt
-          }
-          nextToken
-        }
-        Sponsors {
-          items {
-            id
-            aPSId
-            companyId
-            createdAt
-            updatedAt
-          }
-          nextToken
-        }
-        Speakers {
-          items {
-            firstName
-            lastName
-            email
-            company
-            title
-            phone
-            linkedin
-            bio
-            presentationTitle
-            presentationSummary
-            headshot
-            mediaConsent
-            privacyConsent
-            id
-            createdAt
-            updatedAt
-            aPSSpeakersId
-          }
-          nextToken
-        }
-        year
-        codes {
-          code
-        }
-        createdAt
-        updatedAt
-      }
-      id
-      createdAt
-      updatedAt
-      aPSSpeakersId
-    }
-  }
-`;
-export const deleteAPSSpeaker = /* GraphQL */ `
-  mutation DeleteAPSSpeaker(
-    $input: DeleteAPSSpeakerInput!
-    $condition: ModelAPSSpeakerConditionInput
-  ) {
-    deleteAPSSpeaker(input: $input, condition: $condition) {
-      firstName
-      lastName
-      email
-      company
-      title
-      phone
-      linkedin
-      bio
-      presentationTitle
-      presentationSummary
-      headshot
-      mediaConsent
-      privacyConsent
-      apsHistory {
-        id
-        Registrants {
-          items {
-            id
-            aPSId
-            userId
-            createdAt
-            updatedAt
-          }
-          nextToken
-        }
-        Sponsors {
-          items {
-            id
-            aPSId
-            companyId
-            createdAt
-            updatedAt
-          }
-          nextToken
-        }
-        Speakers {
-          items {
-            firstName
-            lastName
-            email
-            company
-            title
-            phone
-            linkedin
-            bio
-            presentationTitle
-            presentationSummary
-            headshot
-            mediaConsent
-            privacyConsent
-            id
-            createdAt
-            updatedAt
-            aPSSpeakersId
-          }
-          nextToken
-        }
-        year
-        codes {
-          code
-        }
-        createdAt
-        updatedAt
-      }
-      id
-      createdAt
-      updatedAt
-      aPSSpeakersId
     }
   }
 `;
@@ -10369,6 +10423,63 @@ export const deleteWorkshopForm = /* GraphQL */ `
       id
       createdOn
       updatedOn
+    }
+  }
+`;
+export const createClick = /* GraphQL */ `
+  mutation CreateClick(
+    $input: CreateClickInput!
+    $condition: ModelClickConditionInput
+  ) {
+    createClick(input: $input, condition: $condition) {
+      id
+      ref
+      path
+      type
+      identifier
+      nextPath
+      ipAddress
+      location
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateClick = /* GraphQL */ `
+  mutation UpdateClick(
+    $input: UpdateClickInput!
+    $condition: ModelClickConditionInput
+  ) {
+    updateClick(input: $input, condition: $condition) {
+      id
+      ref
+      path
+      type
+      identifier
+      nextPath
+      ipAddress
+      location
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteClick = /* GraphQL */ `
+  mutation DeleteClick(
+    $input: DeleteClickInput!
+    $condition: ModelClickConditionInput
+  ) {
+    deleteClick(input: $input, condition: $condition) {
+      id
+      ref
+      path
+      type
+      identifier
+      nextPath
+      ipAddress
+      location
+      createdAt
+      updatedAt
     }
   }
 `;

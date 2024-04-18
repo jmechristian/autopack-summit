@@ -256,3 +256,33 @@ export const sendSpeakerInterest = async (data) => {
 
   return (await res).status;
 };
+
+export const sendMorrisette = async (data) => {
+  const res = fetch('/api/send-morrisette', {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      data,
+    }),
+  });
+
+  return (await res).status;
+};
+
+export const sendMorrisetteWelcome = async (email) => {
+  const res = fetch('/api/send-morrisette-approval', {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      email,
+    }),
+  });
+
+  return (await res).status;
+};

@@ -1945,6 +1945,165 @@ export const listCompanies = /* GraphQL */ `
     }
   }
 `;
+export const getAPSSpeaker = /* GraphQL */ `
+  query GetAPSSpeaker($id: ID!) {
+    getAPSSpeaker(id: $id) {
+      firstName
+      lastName
+      email
+      company
+      title
+      phone
+      linkedin
+      bio
+      presentationTitle
+      presentationSummary
+      headshot
+      mediaConsent
+      privacyConsent
+      apsHistory {
+        id
+        Registrants {
+          items {
+            id
+            aPSId
+            userId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        Sponsors {
+          items {
+            id
+            aPSId
+            companyId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        Speakers {
+          items {
+            firstName
+            lastName
+            email
+            company
+            title
+            phone
+            linkedin
+            bio
+            presentationTitle
+            presentationSummary
+            headshot
+            mediaConsent
+            privacyConsent
+            id
+            createdAt
+            updatedAt
+            aPSSpeakersId
+          }
+          nextToken
+        }
+        year
+        codes {
+          code
+        }
+        createdAt
+        updatedAt
+      }
+      id
+      createdAt
+      updatedAt
+      aPSSpeakersId
+    }
+  }
+`;
+export const listAPSSpeakers = /* GraphQL */ `
+  query ListAPSSpeakers(
+    $filter: ModelAPSSpeakerFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listAPSSpeakers(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        firstName
+        lastName
+        email
+        company
+        title
+        phone
+        linkedin
+        bio
+        presentationTitle
+        presentationSummary
+        headshot
+        mediaConsent
+        privacyConsent
+        apsHistory {
+          id
+          Registrants {
+            nextToken
+          }
+          Sponsors {
+            nextToken
+          }
+          Speakers {
+            nextToken
+          }
+          year
+          codes {
+            code
+          }
+          createdAt
+          updatedAt
+        }
+        id
+        createdAt
+        updatedAt
+        aPSSpeakersId
+      }
+      nextToken
+    }
+  }
+`;
+export const getMorrisetteForm = /* GraphQL */ `
+  query GetMorrisetteForm($id: ID!) {
+    getMorrisetteForm(id: $id) {
+      name
+      email
+      company
+      title
+      preference
+      approved
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listMorrisetteForms = /* GraphQL */ `
+  query ListMorrisetteForms(
+    $filter: ModelMorrisetteFormFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listMorrisetteForms(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        name
+        email
+        company
+        title
+        preference
+        approved
+        id
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
 export const getUser = /* GraphQL */ `
   query GetUser($id: ID!) {
     getUser(id: $id) {
@@ -4345,128 +4504,6 @@ export const appStartsByEmail = /* GraphQL */ `
         id
         createdOn
         updatedOn
-      }
-      nextToken
-    }
-  }
-`;
-export const getAPSSpeaker = /* GraphQL */ `
-  query GetAPSSpeaker($id: ID!) {
-    getAPSSpeaker(id: $id) {
-      firstName
-      lastName
-      email
-      company
-      title
-      phone
-      linkedin
-      bio
-      presentationTitle
-      presentationSummary
-      headshot
-      mediaConsent
-      privacyConsent
-      apsHistory {
-        id
-        Registrants {
-          items {
-            id
-            aPSId
-            userId
-            createdAt
-            updatedAt
-          }
-          nextToken
-        }
-        Sponsors {
-          items {
-            id
-            aPSId
-            companyId
-            createdAt
-            updatedAt
-          }
-          nextToken
-        }
-        Speakers {
-          items {
-            firstName
-            lastName
-            email
-            company
-            title
-            phone
-            linkedin
-            bio
-            presentationTitle
-            presentationSummary
-            headshot
-            mediaConsent
-            privacyConsent
-            id
-            createdAt
-            updatedAt
-            aPSSpeakersId
-          }
-          nextToken
-        }
-        year
-        codes {
-          code
-        }
-        createdAt
-        updatedAt
-      }
-      id
-      createdAt
-      updatedAt
-      aPSSpeakersId
-    }
-  }
-`;
-export const listAPSSpeakers = /* GraphQL */ `
-  query ListAPSSpeakers(
-    $filter: ModelAPSSpeakerFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listAPSSpeakers(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        firstName
-        lastName
-        email
-        company
-        title
-        phone
-        linkedin
-        bio
-        presentationTitle
-        presentationSummary
-        headshot
-        mediaConsent
-        privacyConsent
-        apsHistory {
-          id
-          Registrants {
-            nextToken
-          }
-          Sponsors {
-            nextToken
-          }
-          Speakers {
-            nextToken
-          }
-          year
-          codes {
-            code
-          }
-          createdAt
-          updatedAt
-        }
-        id
-        createdAt
-        updatedAt
-        aPSSpeakersId
       }
       nextToken
     }
@@ -7114,6 +7151,45 @@ export const workshopFormsByEmail = /* GraphQL */ `
         id
         createdOn
         updatedOn
+      }
+      nextToken
+    }
+  }
+`;
+export const getClick = /* GraphQL */ `
+  query GetClick($id: ID!) {
+    getClick(id: $id) {
+      id
+      ref
+      path
+      type
+      identifier
+      nextPath
+      ipAddress
+      location
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listClicks = /* GraphQL */ `
+  query ListClicks(
+    $filter: ModelClickFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listClicks(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        ref
+        path
+        type
+        identifier
+        nextPath
+        ipAddress
+        location
+        createdAt
+        updatedAt
       }
       nextToken
     }
