@@ -24,9 +24,9 @@ export default async function handler(req, res) {
         ],
         ToAddresses: [
           toAddress,
-          // 'diana@packagingschool.com',
-          // 'bianca@packagingschool.com',
-          // 'lars@packagingschool.com',
+          'diana@packagingschool.com',
+          'bianca@packagingschool.com',
+          'lars@packagingschool.com',
         ],
       },
       Message: {
@@ -43,7 +43,7 @@ export default async function handler(req, res) {
         },
         Subject: {
           Charset: 'UTF-8',
-          Data: 'Guardian Tour Submission Form',
+          Data: 'Guardian Workshop Submission Form',
         },
       },
       Source: fromAddress,

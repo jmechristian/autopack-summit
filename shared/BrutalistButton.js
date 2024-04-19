@@ -1,6 +1,13 @@
 import React from 'react';
 
-const BrutalistButton = ({ bgColor, text, textColor, fn, disabled }) => {
+const BrutalistButton = ({
+  bgColor,
+  text,
+  textColor,
+  fn,
+  disabled,
+  loading,
+}) => {
   return (
     <button
       className={`${disabled ? 'bg-neutral-400' : bgColor} w-full ${
@@ -9,7 +16,7 @@ const BrutalistButton = ({ bgColor, text, textColor, fn, disabled }) => {
       onClick={(event) => fn(event)}
       disabled={disabled ? disabled : false}
     >
-      {text}
+      <div className={`${loading ? 'animate-pulse' : ''}`}>{text}</div>
     </button>
   );
 };

@@ -12,7 +12,7 @@ const Page = () => {
   const [email, setEmail] = useState('');
   const [company, setCompany] = useState('');
   const [title, setTitle] = useState('');
-  const [isSending, setIsSending] = useState(false);
+  const [isSending, setIsSending] = useState(true);
 
   const formValid = useMemo(() => {
     if (name && email && title && company) {
@@ -239,6 +239,7 @@ const Page = () => {
                 text={isSending ? 'Sending...' : 'Submit'}
                 fn={clickHandler}
                 disabled={!formValid}
+                loading={isSending}
               />
             </div>
           </div>

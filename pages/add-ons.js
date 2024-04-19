@@ -88,6 +88,7 @@ const Page = () => {
               }
             />
             <AddOnCard
+              url={'#'}
               title={'Aristos Rack Manufacturing presented by Freudenberg'}
               time={'TBD'}
               description={
@@ -104,6 +105,7 @@ const Page = () => {
             </div>
             <AddOnCard
               title={'Guardian Container Consulting'}
+              url={'/workshops/guardian'}
               buttonText={'Register'}
               time={'Tuesday, October 22nd 1:00 PM - 2:00 PM'}
               speakers={[
@@ -155,6 +157,7 @@ const Page = () => {
               logo={'https://packschool.s3.amazonaws.com/guardian-logo.webp'}
             />
             <AddOnCard
+              url={'/workshops/surgere'}
               title={'From Pack to Track: Accelerate Decision Making with AI'}
               time={'Tuesday, October 22nd 1:00 PM - 2:00 PM'}
               buttonText={'Register'}
@@ -174,6 +177,7 @@ const Page = () => {
               logo={'https://packschool.s3.amazonaws.com/surgere-logo.png'}
             />
             <AddOnCard
+              url={'#'}
               title={'Bosch Rexroth Packaging Innovation Workshop'}
               time={'Tuesday, October 22nd 2:30 PM - 3:30 PM'}
               buttonText={'Registration Opening Soon'}

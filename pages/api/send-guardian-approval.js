@@ -23,9 +23,9 @@ export default async function handler(req, res) {
         ],
         BccAddresses: [
           'jamie@packagingschool.com',
-          //   'diana@packagingschool.com',
-          //   'bianca@packagingschool.com',
-          //   'lars@packagingschool.com',
+          'diana@packagingschool.com',
+          'bianca@packagingschool.com',
+          'lars@packagingschool.com',
         ],
         ToAddresses: [toAddress],
       },
@@ -43,7 +43,7 @@ export default async function handler(req, res) {
         },
         Subject: {
           Charset: 'UTF-8',
-          Data: 'Guardian Tour Confirmation',
+          Data: 'Guardian Workshop Confirmation',
         },
       },
       Source: fromAddress,
