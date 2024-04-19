@@ -303,7 +303,7 @@ export const sendGuardian = async (data) => {
 };
 
 export const sendGuardianWelcome = async (email) => {
-  const res = fetch('/api/send-morrisette-approval', {
+  const res = fetch('/api/send-guardian-approval', {
     method: 'POST',
     headers: {
       Accept: 'application/json',
