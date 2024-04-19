@@ -2710,6 +2710,177 @@ export const onDeleteMorrisetteForm = /* GraphQL */ `
     }
   }
 `;
+export const onCreateAristosForm = /* GraphQL */ `
+  subscription OnCreateAristosForm {
+    onCreateAristosForm {
+      name
+      email
+      company
+      title
+      approved
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateAristosForm = /* GraphQL */ `
+  subscription OnUpdateAristosForm {
+    onUpdateAristosForm {
+      name
+      email
+      company
+      title
+      approved
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteAristosForm = /* GraphQL */ `
+  subscription OnDeleteAristosForm {
+    onDeleteAristosForm {
+      name
+      email
+      company
+      title
+      approved
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateGuardianForm = /* GraphQL */ `
+  subscription OnCreateGuardianForm {
+    onCreateGuardianForm {
+      name
+      email
+      company
+      title
+      approved
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateGuardianForm = /* GraphQL */ `
+  subscription OnUpdateGuardianForm {
+    onUpdateGuardianForm {
+      name
+      email
+      company
+      title
+      approved
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteGuardianForm = /* GraphQL */ `
+  subscription OnDeleteGuardianForm {
+    onDeleteGuardianForm {
+      name
+      email
+      company
+      title
+      approved
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateSurgereForm = /* GraphQL */ `
+  subscription OnCreateSurgereForm {
+    onCreateSurgereForm {
+      name
+      email
+      company
+      title
+      approved
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateSurgereForm = /* GraphQL */ `
+  subscription OnUpdateSurgereForm {
+    onUpdateSurgereForm {
+      name
+      email
+      company
+      title
+      approved
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteSurgereForm = /* GraphQL */ `
+  subscription OnDeleteSurgereForm {
+    onDeleteSurgereForm {
+      name
+      email
+      company
+      title
+      approved
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateBoschForm = /* GraphQL */ `
+  subscription OnCreateBoschForm {
+    onCreateBoschForm {
+      name
+      email
+      company
+      title
+      topic
+      approved
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateBoschForm = /* GraphQL */ `
+  subscription OnUpdateBoschForm {
+    onUpdateBoschForm {
+      name
+      email
+      company
+      title
+      topic
+      approved
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteBoschForm = /* GraphQL */ `
+  subscription OnDeleteBoschForm {
+    onDeleteBoschForm {
+      name
+      email
+      company
+      title
+      topic
+      approved
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
 export const onCreateUser = /* GraphQL */ `
   subscription OnCreateUser {
     onCreateUser {

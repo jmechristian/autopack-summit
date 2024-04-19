@@ -272,15 +272,15 @@ export const sendMorrisette = async (data) => {
   return (await res).status;
 };
 
-export const sendMorrisetteWelcome = async (email) => {
-  const res = fetch('/api/send-morrisette-approval', {
+export const sendGuardian = async (data) => {
+  const res = fetch('/api/send-guardian', {
     method: 'POST',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      email,
+      data,
     }),
   });
 

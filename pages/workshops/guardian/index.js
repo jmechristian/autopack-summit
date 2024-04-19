@@ -1,9 +1,10 @@
 import React, { useState, useMemo } from 'react';
 import BrutalistButton from '../../../shared/BrutalistButton';
-import { sendMorrisette } from '../../../util/api';
+import { sendGuardian, sendMorrisette } from '../../../util/api';
 import { useRouter } from 'next/router';
 import { API } from 'aws-amplify';
-import { createMorrisetteForm } from '../../../src/graphql/mutations';
+import { createGuardianForm } from '../../../src/graphql/mutations';
+import Image from 'next/image';
 
 const Page = () => {
   const router = useRouter();
@@ -11,100 +12,122 @@ const Page = () => {
   const [email, setEmail] = useState('');
   const [company, setCompany] = useState('');
   const [title, setTitle] = useState('');
-  const [isPreference, setIsPreference] = useState(undefined);
-  const [isSelectedImage, setIsSelectedImage] = useState(
-    'https://packschool.s3.amazonaws.com/FredDelivers.jpg'
-  );
   const [isSending, setIsSending] = useState(false);
 
-  const notificationMethods = [
-    { id: 'self', title: 'I would like to drive myself.' },
-    {
-      id: 'shuttle',
-      title: 'I would like to take the shuttle from the Hyatt.',
-    },
-  ];
-
   const formValid = useMemo(() => {
-    if (name && email && title && company && isPreference) {
+    if (name && email && title && company) {
       return true;
     } else return false;
-  }, [name, email, company, title, isPreference]);
+  }, [name, email, company, title]);
 
   const clickHandler = async () => {
     formValid && setIsSending(true);
     const uid = await API.graphql({
-      query: createMorrisetteForm,
+      query: createGuardianForm,
       variables: {
         input: {
           company: company,
           email: email,
           name: name,
-          preference: isPreference,
           title: title,
           approved: false,
         },
       },
     });
-    await sendMorrisette({
+    await sendGuardian({
       name,
       email,
       company,
       title,
-      isPreference,
-      id: uid.data.createMorrisetteForm.id,
+      id: uid.data.createGuardianForm.id,
     });
     setIsSending(false);
     router.push('/tours/thank-you');
   };
 
+  const speakers = [
+    {
+      name: 'Ben Hesskamp',
+      title: 'Owner, Guardian Container Consulting',
+    },
+    {
+      name: 'Lucas Hesskamp',
+      title: 'Vice President, Guardian Container Consulting',
+    },
+  ];
+
   return (
     <div className='max-w-6xl mx-auto px-4 xl:px-0'>
       <div className='flex flex-col gap-10 py-10 relative w-full divide-y-2 divide-black'>
         {/* HEADER */}
-        <div className='flex flex-col gap-3'>
-          <div className='font-medium font-oswald text-3xl md:text-4xl lg:text-5xl uppercase max-w-3xl'>
-            Morrisette Packaging Tour and Cookout Registration
+        <div className='flex flex-col-reverse gap-6 lg:flex-row lg:items-center lg:justify-between'>
+          <div className='flex flex-col gap-3'>
+            <div className='font-medium font-oswald text-3xl md:text-4xl lg:text-5xl uppercase max-w-3xl'>
+              Guardian Container Consulting
+            </div>
+            <div className='text-lg font-bold text-ap-darkblue'>
+              Tuesday, October 22nd 1:00 PM - 2:00 PM
+            </div>
           </div>
-          <div className='text-lg font-bold text-ap-darkblue'>
-            Monday, October 21th 10:30 AM - 1:00 PM
+          <div className='max-w-[200px] lg:max-w-[250px] w-full'>
+            <Image
+              src={'https://packschool.s3.amazonaws.com/guardian-logo.webp'}
+              alt='Guardian Container Consulting logo'
+              width={324}
+              height={88}
+            />
           </div>
         </div>
         <div className='flex flex-col lg:flex-row gap-10 pt-10'>
-          <div className='flex flex-col gap-5'>
+          <div className='flex flex-col gap-5 max-w-5xl'>
             <div className='flex flex-col gap-5'>
+              <h3 className='font-bold text-lg'>
+                How are my racks and containers leaving the supply chain? How do
+                I get them back?
+              </h3>
               <p>
-                We invite you to join us on Monday, October 21st, for an
-                exclusive tour of the Morrisette Packaging Solutions Center at{' '}
-                <span
-                  className='text-ap-darkblue underline'
-                  onClick={() =>
-                    window.open(
-                      'https://www.google.com/maps/search/24+Tyger+River+Dr.,+Duncan,+SC+29334?entry=gmail&source=g',
-                      '_blank'
-                    )
-                  }
-                >
-                  24 Tyger River Dr., Duncan, SC 29334
-                </span>{' '}
-                (parking is plentiful. We will guide you as you pull into the
-                facility if you choose to drive separately from the group).{' '}
+                If you have ever asked these questions, we encourage you to sign
+                up for the Guardian Breakout Workshop. OEM and Tier 1 Suppliers
+                that pre-register and attend the Guardian Breakout will receive
+                a free pack of 10 GPS/WiFi/Cell trackers with service and
+                platform access included for one year.
               </p>
               <p>
-                Our state-of-the-art facility showcases cutting-edge
-                technologies designed to enhance efficiency, reduce waste, and
-                optimize supply chain operations through on-site prototyping and
-                real-time packaging problem-solving.
+                No dock door scanners, no handheld readers, and only a small
+                percentage of individual rack and container fleets need to be
+                tracked. GPS and WiFi location data is communicated over cell
+                networks to tell you where your rack and container problems are
+                happening anywhere in North America.
               </p>
               <p>
-                Following the tour, we're excited to host you for a Southern BBQ
-                Cookout, complete with lunch, casual games, and fantastic
-                prizes, making it a perfect opportunity to network and relax.
+                Engage Guardian’s on-site auditing and recovery services, or
+                operate the specialized Guardian tracking system internally. We
+                will demonstrate how probability based GPS/WiFi/Cell tracking
+                works, common pathways of rack and container loss you can expect
+                to see, and how you can start tackling your largest supply chain
+                issues across the map.
               </p>
+              <p>
+                We will also speak to the benefits and limitations of adding BLE
+                into the GPS/WiFi/Cell tracking, how logistics teams can monitor
+                carriers by tracking racks and containers, our supply chain
+                metrics dashboard, and more.
+              </p>
+              <div className='flex items-start gap-5 mt-2 p-5 bg-amber-400 w-full'>
+                <div className='font-medium uppercase text-sm lg:mr-5 text-white'>
+                  Featuring
+                </div>
+                {speakers.map((sp) => (
+                  <div className='leading-tight flex flex-col gap-1 w-40'>
+                    <div className='font-bold'>{sp.name}</div>
+                    <div className='text-xs leading-tight'>{sp.title}</div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
           {/* GALLERY */}
-          <div className='w-full h-full bg-ap-darkblue p-4'>
+          {/* <div className='w-full h-full bg-ap-darkblue p-4'>
             <div className='grid grid-cols-4 gap-3 overflow-hidden'>
               <div className='col-span-3'>
                 <div
@@ -148,7 +171,7 @@ const Page = () => {
                 ></div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
         {/* FORM */}
         <div className='flex flex-col lg:grid lg:grid-cols-2 gap-5 lg:gap-10 pt-10'>
@@ -204,8 +227,9 @@ const Page = () => {
               className='w-full'
             />
           </div>
+
           {/* OPTIONS */}
-          <div className='my-6 w-full col-span-2'>
+          {/* <div className='my-6 w-full col-span-2'>
             <div className='text-xs font-medium text-slate-500 uppercase w-full flex justify-between'>
               <div>Please choose your preference:</div>
               <div className='text-red-600'>*Required</div>
@@ -235,7 +259,8 @@ const Page = () => {
                 ))}
               </div>
             </fieldset>
-          </div>
+          </div> */}
+
           {/* BUTTON */}
           <div className='flex justify-end w-full pt-10 border-t-2 border-black col-span-2'>
             <div className='w-fit'>
