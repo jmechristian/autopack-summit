@@ -1,6 +1,5 @@
 import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses';
 import { render } from '@react-email/render';
-import GuardianWelcomeEmail from '../../react-email-starter/emails/guardian-confirmation';
 import SurgereWelcomeEmail from '../../react-email-starter/emails/surgere-confirmation';
 const REGION = 'us-east-1';
 const creds = {
@@ -44,7 +43,7 @@ export default async function handler(req, res) {
         },
         Subject: {
           Charset: 'UTF-8',
-          Data: 'Guardian Tour Confirmation',
+          Data: 'Surgere Tour Confirmation',
         },
       },
       Source: fromAddress,
