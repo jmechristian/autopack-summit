@@ -272,6 +272,21 @@ export const sendMorrisette = async (data) => {
   return (await res).status;
 };
 
+export const sendMorrisetteWelcome = async (email) => {
+  const res = fetch('/api/send-morrisette-approval', {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      email,
+    }),
+  });
+
+  return (await res).status;
+};
+
 export const sendGuardian = async (data) => {
   const res = fetch('/api/send-guardian', {
     method: 'POST',
@@ -281,6 +296,21 @@ export const sendGuardian = async (data) => {
     },
     body: JSON.stringify({
       data,
+    }),
+  });
+
+  return (await res).status;
+};
+
+export const sendGuardianWelcome = async (email) => {
+  const res = fetch('/api/send-guardian-approval', {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      email,
     }),
   });
 
