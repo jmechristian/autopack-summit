@@ -26,8 +26,6 @@ const FullAgendaItem = ({
 
   const [isOpen, setIsOpen] = useState(false);
 
-  console.log(startTime);
-
   return (
     <div>
       <div

@@ -72,7 +72,7 @@ export const GuardianWelcomeEmail = () => {
               </Row>
               <Row className='w-full max-w-[96%] mx-auto mb-6'>
                 <Column className='bg-white align-top py-3 w-full'>
-                  <Text className='text-left text-[14px] leading-[20px] font-[HelveticaNeue-Bold] mx-4 text-black'>
+                  <Text className='text-left text-[18px] leading-[20px] font-[HelveticaNeue-Bold] mx-4 text-black'>
                     How are my racks and containers leaving the supply chain?
                     How do I get them back?
                   </Text>
