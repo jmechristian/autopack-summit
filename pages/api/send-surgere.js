@@ -42,7 +42,7 @@ export default async function handler(req, res) {
         },
         Subject: {
           Charset: 'UTF-8',
-          Data: 'Surgere Tour Submission Form',
+          Data: 'Surgere Workshop Submission Form',
         },
       },
       Source: fromAddress,
