@@ -303,7 +303,37 @@ export const sendGuardian = async (data) => {
 };
 
 export const sendGuardianWelcome = async (email) => {
-  const res = fetch('/api/send-guardian-approval', {
+  const res = fetch('/api/send-morrisette-approval', {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      email,
+    }),
+  });
+
+  return (await res).status;
+};
+
+export const sendSurgere = async (data) => {
+  const res = fetch('/api/send-surgere', {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      data,
+    }),
+  });
+
+  return (await res).status;
+};
+
+export const sendSurgereWelcome = async (email) => {
+  const res = fetch('/api/send-surgere-approval', {
     method: 'POST',
     headers: {
       Accept: 'application/json',
