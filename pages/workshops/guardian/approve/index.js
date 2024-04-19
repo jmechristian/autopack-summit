@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { API } from 'aws-amplify';
-import { updateMorrisetteForm } from '../../../../src/graphql/mutations';
-import { sendMorrisetteWelcome } from '../../../../util/api';
+import { updateGuardianForm } from '../../../../src/graphql/mutations';
+import { sendGuardianWelcome } from '../../../../util/api';
 
 const Page = () => {
   const [isUpdating, setIsUpdating] = useState(false);
@@ -17,14 +17,14 @@ const Page = () => {
       setIsUpdating(true);
 
       try {
-        await sendMorrisetteWelcome(router.query.email);
+        await sendGuardianWelcome(router.query.email);
 
         const status = await API.graphql({
-          query: updateMorrisetteForm,
+          query: updateGuardianForm,
           variables: { input: { id: router.query.id, approved: true } },
         });
 
-        if (status.data.updateMorrisetteForm.id) {
+        if (status.data.updateGuardianForm.id) {
           setIsStatus({ error: false, message: 'Success!' });
         }
       } catch (error) {
