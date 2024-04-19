@@ -16,7 +16,7 @@ import {
 import { Tailwind } from '@react-email/tailwind';
 import * as React from 'react';
 
-export const GuardianWelcomeEmail = () => {
+export const SurgereWelcomeEmail = () => {
   return (
     <Html>
       <Tailwind>
@@ -184,4 +184,4 @@ export const GuardianWelcomeEmail = () => {
   );
 };
 
-export default GuardianWelcomeEmail;
+export default SurgereWelcomeEmail;

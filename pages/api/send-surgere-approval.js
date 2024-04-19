@@ -1,6 +1,7 @@
 import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses';
 import { render } from '@react-email/render';
 import GuardianWelcomeEmail from '../../react-email-starter/emails/guardian-confirmation';
+import SurgereWelcomeEmail from '../../react-email-starter/emails/surgere-confirmation';
 const REGION = 'us-east-1';
 const creds = {
   accessKeyId: process.env.AWSACCESSKEYID,
@@ -12,7 +13,7 @@ export { sesClient };
 
 export default async function handler(req, res) {
   const body = req.body;
-  const emailHtml = render(<GuardianWelcomeEmail />);
+  const emailHtml = render(<SurgereWelcomeEmail />);
 
   const createSendEmailCommand = (toAddress, fromAddress) => {
     return new SendEmailCommand({
