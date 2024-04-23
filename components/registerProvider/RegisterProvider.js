@@ -17,10 +17,10 @@ const RegisterProvider = () => {
             {message} We look forward to collaborating with you in Greenville.
             For any questions, please email{' '}
             <a
-              href='mailto:diana@packagingschool.com'
+              href='mailto:Lars@packagingschool.com'
               className='font-bold text-ap-darkblue'
             >
-              Diana Whitaker
+              Lars Nikolaus
             </a>{' '}
             or{' '}
             <a

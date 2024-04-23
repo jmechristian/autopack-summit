@@ -58,8 +58,8 @@ const TourOneForm = ({ close }) => {
           </div>
           <div className='text-slate-500 font-semibold text-center text-sm xl:text-base'>
             Fill out the form to reserve a spot. For questions, email{' '}
-            <a href='mailto:diana@packagingschool.com' className='underline'>
-              diana@packagingschool.com
+            <a href='mailto:lars@packagingschool.com' className='underline'>
+              lars@packagingschool.com
             </a>
           </div>
           <form
@@ -132,7 +132,7 @@ const TourOneForm = ({ close }) => {
           {isError && (
             <span className='mt-6 text-center text-gray-700'>
               You have already been registered for a tour. For questions, please
-              contact Diana@packagingschool.com
+              contact Lars@packagingschool.com
             </span>
           )}
         </div>

@@ -250,8 +250,8 @@ const Terms = () => {
               non-refundable. If you are unable to attend, your registration can
               be transferred to another employee of your company at no
               additional fee. Please email{' '}
-              <a href='mailto:Diana@packaginschool.com'>
-                <strong>Diana@packaginschool.com</strong>
+              <a href='mailto:Bianca@packaginschool.com'>
+                <strong>Bianca@packaginschool.com</strong>
               </a>{' '}
               for transfer requests, questions or concerns.
             </p>
@@ -459,7 +459,7 @@ const Terms = () => {
               including but not limited to sexual harassment by participants or
               our staff at our meetings. If you are the subject of, or witness
               to any violations, you can contact us by sending an email to
-              Diana@packagingschool.com.{' '}
+              Bianca@packagingschool.com.{' '}
             </p>
             <p>
               <strong>Entering Booth: </strong>By entering an exhibit booth and
@@ -476,11 +476,10 @@ const Terms = () => {
               with attendees is limited to the companies and company members
               registered as a part of a sponsorship and/or exhibiting agreement
               directly with APS. All partnering companies that are interested in
-              sponsoring or exhibiting with APS should please contact Diana
-              Whitaker at 703-402-4237 | Diana@packagingschool.com. I understand
-              that if I am a partnering company and I’m not participating
-              through a partnership agreement, my registration can be revoked
-              without refund.
+              sponsoring or exhibiting with APS should please contact
+              Bianca@packagingschool.com. I understand that if I am a partnering
+              company and I’m not participating through a partnership agreement,
+              my registration can be revoked without refund.
             </p>
             <p>
               <strong>Liability Waiver and Release:</strong> In consideration of

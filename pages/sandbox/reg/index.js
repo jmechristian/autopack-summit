@@ -63,8 +63,8 @@ const Page = () => {
             <p className='mt-5 md:text-lg leading-relaxed lg:leading-relaxed lg:text-xl text-gray-500'>
               {message} We look forward to collaborating with you in Greenville.
               For any questions, please email{' '}
-              <a href='mailto:diana@packagingschool.com' className='font-bold'>
-                Diana Whitaker
+              <a href='mailto:lars@packagingschool.com' className='font-bold'>
+                Lars Nikolaus
               </a>{' '}
               or{' '}
               <a href='mailto:bianca@packagingschool.com' className='font-bold'>

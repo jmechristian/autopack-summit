@@ -43,8 +43,8 @@ const Page = () => {
             <p>
               Be sure to check your inbox for registration confirmation shortly.
               For questions please email{' '}
-              <a href='mailto:diana@packagingschool.com'>
-                Diana@Packagingschool.com
+              <a href='mailto:lars@packagingschool.com'>
+                Lars@Packagingschool.com
               </a>
             </p>
           }
@@ -60,8 +60,8 @@ const Page = () => {
           message={
             <p>
               For questions please email{' '}
-              <a href='mailto:diana@packagingschool.com'>
-                Diana@Packagingschool.com
+              <a href='mailto:lars@packagingschool.com'>
+                Lars@Packagingschool.com
               </a>
             </p>
           }

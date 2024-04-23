@@ -60,11 +60,8 @@ const SponsorshipFormModal = () => {
                   Bianca Hurley{' '}
                 </a>
                 or{' '}
-                <a
-                  href='mailto:diana@packagingschool.com'
-                  className='underline'
-                >
-                  Diana Whitaker
+                <a href='mailto:lars@packagingschool.com' className='underline'>
+                  Lars Nikolaus
                 </a>
               </div>
             </div>
