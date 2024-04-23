@@ -17,14 +17,16 @@ const Page = () => {
       setIsUpdating(true);
 
       try {
-        await sendMorrisetteWelcome(router.query.email);
-
         const status = await API.graphql({
           query: updateMorrisetteForm,
           variables: { input: { id: router.query.id, approved: true } },
         });
 
         if (status.data.updateMorrisetteForm.id) {
+          await sendMorrisetteWelcome(
+            router.query.email,
+            status.data.updateMorrisetteForm.preference
+          );
           setIsStatus({ error: false, message: 'Success!' });
         }
       } catch (error) {

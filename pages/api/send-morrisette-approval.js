@@ -13,7 +13,7 @@ export { sesClient };
 
 export default async function handler(req, res) {
   const body = req.body;
-  const emailHtml = render(<MorrisetteWelcomeEmail />);
+  const emailHtml = render(<MorrisetteWelcomeEmail data={body} />);
 
   const createSendEmailCommand = (toAddress, fromAddress) => {
     return new SendEmailCommand({
@@ -24,9 +24,9 @@ export default async function handler(req, res) {
         ],
         BccAddresses: [
           'jamie@packagingschool.com',
-          'diana@packagingschool.com',
-          'bianca@packagingschool.com',
-          'lars@packagingschool.com',
+          // 'bianca@packagingschool.com',
+          // 'lars@packagingschool.com',
+          // 'diana@packagingschool.com',
         ],
         ToAddresses: [toAddress],
       },

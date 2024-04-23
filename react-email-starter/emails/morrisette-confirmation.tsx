@@ -16,7 +16,17 @@ import {
 import { Tailwind } from '@react-email/tailwind';
 import * as React from 'react';
 
-export const MorrisetteWelcomeEmail = () => {
+interface MorrisetteWelcomeEmailProps {
+  data: {
+    data: {
+      preference: String;
+    };
+  };
+}
+
+export const MorrisetteWelcomeEmail = ({
+  data,
+}: MorrisetteWelcomeEmailProps) => {
   return (
     <Html>
       <Tailwind>
@@ -58,6 +68,16 @@ export const MorrisetteWelcomeEmail = () => {
                 <Text className='font-[HelveticaNeue] leading-tight text-[18px] px-6 lg:px-16 mb-10 text-neutral-600'>
                   Monday, October 21th 10:30 AM - 1:00 PM
                 </Text>
+              </Row>
+              <Row>
+                <Column className='bg-indigo-200'>
+                  <Text className='font-[HelveticaNeue-Bold] leading-tight text-[16px] text-neutral-900'>
+                    Transportation Preference:{' '}
+                    {data.data.preference === 'self'
+                      ? 'I will drive myself.'
+                      : 'I will take the shuttle from the Hyatt.'}
+                  </Text>
+                </Column>
               </Row>
             </Section>
             <Section className='bg-[#e6e7e8]'>
@@ -202,5 +222,13 @@ export const MorrisetteWelcomeEmail = () => {
     </Html>
   );
 };
+
+MorrisetteWelcomeEmail.PreviewProps = {
+  data: {
+    data: {
+      preference: 'shuttle',
+    },
+  },
+} as MorrisetteWelcomeEmailProps;
 
 export default MorrisetteWelcomeEmail;
