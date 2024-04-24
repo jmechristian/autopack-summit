@@ -167,7 +167,7 @@ export const SendBoschEmail = ({ data }: SendBoschEmailProps) => {
               <Row>
                 <Column className='text-center'>
                   <Button
-                    href={`http://localhost:3000/workshops/bosch/approve?id=${data.data.id}&email=${data.data.email}`}
+                    href={`https://www.autopacksummit.com/workshops/bosch/approve?id=${data.data.id}&email=${data.data.email}`}
                     className='bg-green-600 mt-10 border-solid  border-green-700 px-10 py-2 font-bold text-lg leading-4 text-white font-[HelveticaNeue-Bold]'
                   >
                     APPROVE
