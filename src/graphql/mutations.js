@@ -3062,7 +3062,10 @@ export const createBoschForm = /* GraphQL */ `
       email
       company
       title
-      topic
+      topicOne
+      topicTwo
+      topicThree
+      topicFour
       approved
       id
       createdAt
@@ -3080,7 +3083,10 @@ export const updateBoschForm = /* GraphQL */ `
       email
       company
       title
-      topic
+      topicOne
+      topicTwo
+      topicThree
+      topicFour
       approved
       id
       createdAt
@@ -3098,7 +3104,10 @@ export const deleteBoschForm = /* GraphQL */ `
       email
       company
       title
-      topic
+      topicOne
+      topicTwo
+      topicThree
+      topicFour
       approved
       id
       createdAt
@@ -10389,6 +10398,7 @@ export const createCustomerLibary = /* GraphQL */ `
     createCustomerLibary(input: $input, condition: $condition) {
       id
       displayName
+      slug
       description
       link
       logo
@@ -10398,8 +10408,9 @@ export const createCustomerLibary = /* GraphQL */ `
       pdf
       slide
       video
-      offered
-      offerings
+      clientCourses
+      pschoolCourses
+      addOns
       status
       createdAt
       updatedAt
@@ -10414,6 +10425,7 @@ export const updateCustomerLibary = /* GraphQL */ `
     updateCustomerLibary(input: $input, condition: $condition) {
       id
       displayName
+      slug
       description
       link
       logo
@@ -10423,8 +10435,9 @@ export const updateCustomerLibary = /* GraphQL */ `
       pdf
       slide
       video
-      offered
-      offerings
+      clientCourses
+      pschoolCourses
+      addOns
       status
       createdAt
       updatedAt
@@ -10439,6 +10452,7 @@ export const deleteCustomerLibary = /* GraphQL */ `
     deleteCustomerLibary(input: $input, condition: $condition) {
       id
       displayName
+      slug
       description
       link
       logo
@@ -10448,8 +10462,9 @@ export const deleteCustomerLibary = /* GraphQL */ `
       pdf
       slide
       video
-      offered
-      offerings
+      clientCourses
+      pschoolCourses
+      addOns
       status
       createdAt
       updatedAt

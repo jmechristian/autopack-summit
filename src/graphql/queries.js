@@ -2216,7 +2216,10 @@ export const getBoschForm = /* GraphQL */ `
       email
       company
       title
-      topic
+      topicOne
+      topicTwo
+      topicThree
+      topicFour
       approved
       id
       createdAt
@@ -2236,7 +2239,10 @@ export const listBoschForms = /* GraphQL */ `
         email
         company
         title
-        topic
+        topicOne
+        topicTwo
+        topicThree
+        topicFour
         approved
         id
         createdAt
@@ -7094,6 +7100,7 @@ export const getCustomerLibary = /* GraphQL */ `
     getCustomerLibary(id: $id) {
       id
       displayName
+      slug
       description
       link
       logo
@@ -7103,8 +7110,9 @@ export const getCustomerLibary = /* GraphQL */ `
       pdf
       slide
       video
-      offered
-      offerings
+      clientCourses
+      pschoolCourses
+      addOns
       status
       createdAt
       updatedAt
@@ -7125,6 +7133,7 @@ export const listCustomerLibaries = /* GraphQL */ `
       items {
         id
         displayName
+        slug
         description
         link
         logo
@@ -7134,8 +7143,48 @@ export const listCustomerLibaries = /* GraphQL */ `
         pdf
         slide
         video
-        offered
-        offerings
+        clientCourses
+        pschoolCourses
+        addOns
+        status
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const customerLibariesBySlug = /* GraphQL */ `
+  query CustomerLibariesBySlug(
+    $slug: String!
+    $sortDirection: ModelSortDirection
+    $filter: ModelCustomerLibaryFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    customerLibariesBySlug(
+      slug: $slug
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        displayName
+        slug
+        description
+        link
+        logo
+        email
+        primaryColor
+        highlightColor
+        pdf
+        slide
+        video
+        clientCourses
+        pschoolCourses
+        addOns
         status
         createdAt
         updatedAt

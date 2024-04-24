@@ -347,3 +347,32 @@ export const sendSurgereWelcome = async (email) => {
 
   return (await res).status;
 };
+
+export const sendBosch = async (data) => {
+  const res = fetch('/api/send-bosch', {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      data,
+    }),
+  });
+
+  return (await res).status;
+};
+
+export const sendBoschWelcome = async (email, topics) => {
+  const res = fetch('/api/send-bosch-approval', {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      email,
+      topics,
+    }),
+  });
+};

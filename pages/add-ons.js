@@ -177,10 +177,10 @@ const Page = () => {
               logo={'https://packschool.s3.amazonaws.com/surgere-logo.png'}
             />
             <AddOnCard
-              url={'#'}
+              url={'/workshops/bosch'}
               title={'Bosch Rexroth Packaging Innovation Workshop'}
               time={'Tuesday, October 22nd 2:30 PM - 3:30 PM'}
-              buttonText={'Registration Opening Soon'}
+              buttonText={'Register'}
               description={
                 <div className='text-sm'>
                   Bosch is inviting you to participate in this interactive

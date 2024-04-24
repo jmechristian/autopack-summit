@@ -2843,7 +2843,10 @@ export const onCreateBoschForm = /* GraphQL */ `
       email
       company
       title
-      topic
+      topicOne
+      topicTwo
+      topicThree
+      topicFour
       approved
       id
       createdAt
@@ -2858,7 +2861,10 @@ export const onUpdateBoschForm = /* GraphQL */ `
       email
       company
       title
-      topic
+      topicOne
+      topicTwo
+      topicThree
+      topicFour
       approved
       id
       createdAt
@@ -2873,7 +2879,10 @@ export const onDeleteBoschForm = /* GraphQL */ `
       email
       company
       title
-      topic
+      topicOne
+      topicTwo
+      topicThree
+      topicFour
       approved
       id
       createdAt
@@ -9972,6 +9981,7 @@ export const onCreateCustomerLibary = /* GraphQL */ `
     onCreateCustomerLibary {
       id
       displayName
+      slug
       description
       link
       logo
@@ -9981,8 +9991,9 @@ export const onCreateCustomerLibary = /* GraphQL */ `
       pdf
       slide
       video
-      offered
-      offerings
+      clientCourses
+      pschoolCourses
+      addOns
       status
       createdAt
       updatedAt
@@ -9994,6 +10005,7 @@ export const onUpdateCustomerLibary = /* GraphQL */ `
     onUpdateCustomerLibary {
       id
       displayName
+      slug
       description
       link
       logo
@@ -10003,8 +10015,9 @@ export const onUpdateCustomerLibary = /* GraphQL */ `
       pdf
       slide
       video
-      offered
-      offerings
+      clientCourses
+      pschoolCourses
+      addOns
       status
       createdAt
       updatedAt
@@ -10016,6 +10029,7 @@ export const onDeleteCustomerLibary = /* GraphQL */ `
     onDeleteCustomerLibary {
       id
       displayName
+      slug
       description
       link
       logo
@@ -10025,8 +10039,9 @@ export const onDeleteCustomerLibary = /* GraphQL */ `
       pdf
       slide
       video
-      offered
-      offerings
+      clientCourses
+      pschoolCourses
+      addOns
       status
       createdAt
       updatedAt

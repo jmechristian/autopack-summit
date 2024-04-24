@@ -332,7 +332,10 @@ type BoschForm @model @auth(rules: [{ allow: public }]) {
   email: String!
   company: String!
   title: String!
-  topic: String!
+  topicOne: Boolean
+  topicTwo: Boolean
+  topicThree: Boolean
+  topicFour: Boolean
   approved: Boolean!
 }
 
@@ -614,6 +617,8 @@ type Staff @model @auth(rules: [{ allow: public }]) {
   linkedIn: String
 }
 
+######### Library #########
+
 ######### Customer #########
 
 type TrackedCourse @model @auth(rules: [{ allow: public }]) {
@@ -645,6 +650,7 @@ type Customer @model @auth(rules: [{ allow: public }]) {
 type CustomerLibary @model @auth(rules: [{ allow: public }]) {
   id: ID!
   displayName: String!
+  slug: String! @index(name: "libraryBySlug")
   description: String
   link: String
   logo: String
@@ -654,8 +660,9 @@ type CustomerLibary @model @auth(rules: [{ allow: public }]) {
   pdf: String
   slide: String
   video: String
-  offered: [String]
-  offerings: [String]
+  clientCourses: [String]
+  pschoolCourses: [String]
+  addOns: [String]
   status: String @default(value: "DRAFT")
 }
 
