@@ -50,7 +50,7 @@ export const SendGuardianEmail = ({ data }: SendGuardianEmailProps) => {
               <Row>
                 <Column className='md:w-[80%]'>
                   <Text className='text-3xl font-[HelveticaNeue-Bold] leading-tight tracking-tight'>
-                    Guardian Tour
+                    Guardian Workshop
                     <br />
                     Form Submission
                   </Text>
@@ -81,7 +81,7 @@ export const SendGuardianEmail = ({ data }: SendGuardianEmailProps) => {
                 </Column>
                 <Column className='w-3/5'>
                   <Text className='font-[HelveticaNeue-Bold]'>
-                    {data.data.name}
+                    {data.data.fullname}
                   </Text>
                 </Column>
               </Row>
