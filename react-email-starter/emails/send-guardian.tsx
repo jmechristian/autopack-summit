@@ -20,7 +20,7 @@ import * as React from 'react';
 interface SendGuardianEmailProps {
   data: {
     data: {
-      fullname: String;
+      name: String;
       email: String;
       company: String;
       title: String;
@@ -81,7 +81,7 @@ export const SendGuardianEmail = ({ data }: SendGuardianEmailProps) => {
                 </Column>
                 <Column className='w-3/5'>
                   <Text className='font-[HelveticaNeue-Bold]'>
-                    {data.data.fullname}
+                    {data.data.name}
                   </Text>
                 </Column>
               </Row>
