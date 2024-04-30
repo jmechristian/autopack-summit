@@ -16,6 +16,10 @@ export const navMenu = [
     link: '/travel',
   },
   {
+    name: 'Add-Ons',
+    link: '/add-ons',
+  },
+  {
     name: 'OEM/ Tier 1',
     link: '/register',
   },

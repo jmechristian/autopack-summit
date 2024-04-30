@@ -79,6 +79,14 @@ const PowerConsole = () => {
                   fn={() => router.push('/register')}
                 />
                 <ConsoleItem
+                  title={'Registration Add-Ons'}
+                  color={'bg-white'}
+                  hoverColor={'hover:bg-amber-400'}
+                  iconBack={'bg-black'}
+                  icon={<MdConfirmationNumber color='white' size={'20px'} />}
+                  fn={() => router.push('/add-ons')}
+                />
+                <ConsoleItem
                   title={"I'd like to Speak"}
                   iconBack={'bg-black/30'}
                   color={'bg-amber-300'}
