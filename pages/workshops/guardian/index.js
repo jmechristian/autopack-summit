@@ -270,6 +270,7 @@ const Page = () => {
                 text={isSending ? 'Sending...' : 'Submit'}
                 fn={clickHandler}
                 disabled={!formValid}
+                loading={isSending}
               />
             </div>
           </div>
