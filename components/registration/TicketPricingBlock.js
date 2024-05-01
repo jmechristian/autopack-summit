@@ -95,17 +95,17 @@ const TicketPricingBlock = ({
     //     email: email,
     //   }),
     // });
-    router.push('https://buy.stripe.com/28o00W2REdXWb049AB');
+    router.push('https://buy.stripe.com/dR6bJE77U2fe5FKcMO');
   };
 
   return (
     <div className='flex flex-col gap-3 items-center justify-between w-full h-full px-6'>
       <p className='font-medium bg-ap-yellow px-3 py-1 rounded text-white text-sm'>
-        Limited Early-Bird Discount!
+        Limited Summer Special!
       </p>
       <div className='flex flex-col gap-2 justify-center'>
         <div className='flex items-center justify-center text-5xl font-bold tracking-tight text-gray-900'>
-          <span>$846</span>
+          <span>$932</span>
 
           <span className='ml-2 text-sm font-medium tracking-normal text-gray-900'>
             USD

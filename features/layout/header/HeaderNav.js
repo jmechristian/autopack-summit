@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { toggleRegistrationModal } from '../layoutSlice';
 
 const HeaderNav = ({ show }) => {
-  const menuLinks = navMenu.slice(0, 6);
+  const menuLinks = navMenu.slice(0, 7);
   const dispatch = useDispatch();
 
   return (
