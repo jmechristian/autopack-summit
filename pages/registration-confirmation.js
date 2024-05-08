@@ -41,11 +41,9 @@ const Page = () => {
           headline={'We will see you in Greenville.'}
           message={
             <p>
-              Be sure to check your inbox for registration confirmation shortly.
-              For questions please email{' '}
-              <a href='mailto:lars@packagingschool.com'>
-                Lars@Packagingschool.com
-              </a>
+              Once availability is confirmed and if space permits, you will
+              receive a confirmation email within a few days. We appreciate your
+              patience and look forward to hosting you!
             </p>
           }
         />

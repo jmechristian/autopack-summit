@@ -9,8 +9,9 @@ const Page = () => {
             Registration Submitted.
           </div>
           <div className='w-full max-w-sm leading-snug text-center'>
-            Please allow up to 48 hours for approval. Check your inbox for your
-            2024 Automotive Packaging Summit Welcome email.
+            Once availability is confirmed and if space permits, you will
+            receive a confirmation email within a few days. We appreciate your
+            patience and look forward to hosting you!
           </div>
         </div>
       </div>
