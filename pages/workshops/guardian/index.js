@@ -263,7 +263,7 @@ const Page = () => {
 
           {/* BUTTON */}
           <div className='flex justify-between w-full pt-10 border-t-2 border-black col-span-2'>
-            <div className='max-w-3xl w-full'>
+            <div className='max-w-3xl text-sm lg:text-base w-full pr-6'>
               Once availability is confirmed and if space permits, you will
               receive a confirmation email within a few days. We appreciate your
               patience and look forward to hosting you!
