@@ -270,6 +270,11 @@ const TicketForm = ({ codes, submitted, params }) => {
                   setSubmit={() => submitted()}
                 />
               </div>
+              <div className='text-sm px-6 text-center mt-5'>
+                Once availability is confirmed and if space permits, you will
+                receive a confirmation email within a few days. We appreciate
+                your patience and look forward to hosting you!
+              </div>
               <div className='text-slate-600 text-xs text-center mt-4 px-6 font-medium pb-9 md:pt-6 lg:pb-0'>
                 By clicking GET CODE or REGISTER you agree to accept our{' '}
                 <a href='/policies'>

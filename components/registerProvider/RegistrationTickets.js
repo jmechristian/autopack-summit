@@ -150,6 +150,7 @@ const RegistrationTickets = ({ ticketCount }) => {
                   {isLoading ? 'Sending Data' : 'Proceed to Payment'}
                 </div>
               </button>
+
               <div className='text-slate-500 text-sm'>
                 By clicking PROCEED TO PAYMENT you agree to accept our{' '}
                 <a href='/policies'>
