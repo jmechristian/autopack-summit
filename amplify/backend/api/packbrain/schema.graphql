@@ -13,7 +13,8 @@ type LessonLink @model @auth(rules: [{ allow: public }]) {
 
 type Tags @model @auth(rules: [{ allow: public }]) {
   id: ID!
-  tag: String!
+  tag: String! @index(name: "tagByTag")
+  lesson: [Lesson] @manyToMany(relationName: "LessonTags")
 }
 
 enum ModuleType {
@@ -95,7 +96,7 @@ type Lesson @model @auth(rules: [{ allow: public }]) {
   content: String
   sources: [LessonSource] @hasMany
   links: [LessonLink] @hasMany
-  tags: [Tags] @hasMany
+  tags: [Tags] @manyToMany(relationName: "LessonTags")
   objectives: [String]
   actionCTA: String
   actionSubhead: String
@@ -110,6 +111,7 @@ type Lesson @model @auth(rules: [{ allow: public }]) {
   createdBy: String
   lastEditedBy: String
   videoLink: String
+  screengrab: String
 }
 
 type Author @model @auth(rules: [{ allow: public }]) {
@@ -119,6 +121,7 @@ type Author @model @auth(rules: [{ allow: public }]) {
   linkedIn: String
   title: String
   company: String
+  templates: [IndexTemplate] @manyToMany(relationName: "AuthorTemplates")
   # lessons: [Lesson] @manyToMany(relationName: "AuthorLessons")
 }
 
@@ -129,7 +132,7 @@ type Blog @model @auth(rules: [{ allow: public }]) {
   media: String
   content: String!
   author: String
-  tags: [Tags] @hasMany
+  tags: [String]
   date: String
 }
 
@@ -141,7 +144,7 @@ type Article @model @auth(rules: [{ allow: public }]) {
   media: String
   seoImage: String
   content: String
-  tags: [Tags] @hasMany
+  tags: [String]
   relatedCourses: [Course] @manyToMany(relationName: "ArticleRelatedCourses")
 }
 
@@ -449,6 +452,33 @@ type AppStart
   sourceUrl: String
 }
 
+type ApplicationStart @model @auth(rules: [{ allow: public }]) {
+  id: ID! @primaryKey(sortKeyFields: ["createdAt"])
+  createdAt: String!
+  firstName: String!
+  lastName: String!
+  email: String! @index(name: "applicationStartByEmail")
+  phone: String
+  source: String
+  sourceUrl: String
+}
+
+type CertAppStart @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  type: String!
+    @index(name: "certAppStartByType", sortKeyFields: ["createdAt"])
+    @default(value: "APP_START")
+  createdAt: String!
+  firstName: String!
+  lastName: String!
+  email: String! @index(name: "certAppStartByEmail")
+  phone: String
+  source: String
+  sourceUrl: String
+  country: String
+  ipAddress: String
+}
+
 ######### LMS #########
 
 type LMSCollection @model @auth(rules: [{ allow: public }]) {
@@ -506,28 +536,10 @@ type LMSCourse @model @auth(rules: [{ allow: public }]) {
   demo: Boolean @default(value: "false")
   partOf: [String]
   altLink: String
-}
-
-type CourseClick @model @auth(rules: [{ allow: public }]) {
-  id: ID!
-  courseID: String! @index(name: "clicksByCourse")
-  page: String
-  ipAddress: String
-  country: String
-  lat: String
-  long: String
-  referrer: String
-}
-
-type LessonClick @model @auth(rules: [{ allow: public }]) {
-  id: ID!
-  LessonID: String! @index(name: "clicksByLesson")
-  page: String
-  ipAddress: String
-  country: String
-  lat: String
-  long: String
-  referrer: String
+  shortDescription: String
+  subscriptionLink: String
+  subscriptionPrice: String
+  stripeLink: String
 }
 
 type LMSLesson @model @auth(rules: [{ allow: public }]) {
@@ -629,6 +641,13 @@ type TrackedCourse @model @auth(rules: [{ allow: public }]) {
   customerId: ID! @index(name: "trackedByCustomer", sortKeyFields: ["clicks"])
 }
 
+type IncludedCourse @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  courseId: String!
+  customer: Customer @belongsTo(fields: ["customerId"])
+  customerId: ID! @index(name: "includedCourseByCustomer")
+}
+
 type Customer @model @auth(rules: [{ allow: public }]) {
   id: ID!
   displayName: String!
@@ -641,6 +660,8 @@ type Customer @model @auth(rules: [{ allow: public }]) {
   slide: String
   video: String
   offered: [String]
+  pscourses: [IncludedCourse]
+    @hasMany(indexName: "includedCourseByCustomer", fields: ["id"])
   courses: [TrackedCourse]
     @hasMany(indexName: "trackedByCustomer", fields: ["id"])
   offerings: [String]
@@ -673,6 +694,7 @@ type SalesBar @model @auth(rules: [{ allow: public }]) {
   text: String!
   link: String!
   icon: String @default(value: "BoltIcon")
+  type: String
 }
 
 ######### Testimonials #########
@@ -710,6 +732,48 @@ type WorkshopForm
 
 ######### Tracking #########
 
+type CourseClick @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  courseID: String! @index(name: "clicksByCourse")
+  page: String
+  ipAddress: String
+  country: String
+  lat: String
+  long: String
+  referrer: String
+  nextPath: String
+  format: String
+}
+
+type SalesbarClick @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  page: String
+  ipAddress: String
+  country: String
+  link: String
+}
+
+type LessonClick @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  LessonID: String! @index(name: "clicksByLesson")
+  page: String
+  ipAddress: String
+  country: String
+  lat: String
+  long: String
+  referrer: String
+  format: String
+}
+
+type CourseSearch @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  term: String! @index(name: "courseSearchByTerm")
+  ipAddress: String
+  country: String
+}
+
+######### INDIA #########
+
 type Click @model @auth(rules: [{ allow: public }]) {
   id: ID!
   ref: String
@@ -719,4 +783,44 @@ type Click @model @auth(rules: [{ allow: public }]) {
   nextPath: String
   ipAddress: String
   location: String
+}
+
+type IndiaClick @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  courseID: String! @index(name: "indiaClicksByCourse")
+  page: String
+  ipAddress: String
+  country: String
+  lat: String
+  long: String
+  referrer: String
+  nextPath: String
+  format: String
+}
+
+type IndiaCourseSearch @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  term: String! @index(name: "indiaCourseSearchByTerm")
+  ipAddress: String
+  country: String
+}
+
+######### INDEX TEMPLATES #########
+
+type IndexTemplate @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  slug: String! @index(name: "indexBySlug")
+  title: String!
+  subhead: String
+  authors: [Author] @manyToMany(relationName: "AuthorTemplates")
+  rows: [IndexRow] @manyToMany(relationName: "IndexTemplateRows")
+}
+
+type IndexRow @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  headline: String
+  subhead: String
+  type: String
+  content: [String]
+  templates: [IndexTemplate] @manyToMany(relationName: "IndexTemplateRows")
 }

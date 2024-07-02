@@ -46,7 +46,7 @@ const Page = () => {
   return (
     <>
       <Head>
-        <title>Automotive Packaging Summit | Register</title>
+        <title>Automotive Packaging Summit | Sponsor Register</title>
         <meta
           property='og:title'
           content='Automotive Packaging Summit | Register'
@@ -81,7 +81,7 @@ const Page = () => {
               codes={codes && codes}
               submitted={() => setSubmitted(true)}
               params={params}
-              type={'OEM/ TIER 1'}
+              type={'SPONSOR'}
             />
           </div>
         </AnimatePresence>

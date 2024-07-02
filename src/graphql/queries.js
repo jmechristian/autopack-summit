@@ -70,11 +70,53 @@ export const getTags = /* GraphQL */ `
     getTags(id: $id) {
       id
       tag
+      lesson {
+        items {
+          id
+          tagsId
+          lessonId
+          tags {
+            id
+            tag
+            createdAt
+            updatedAt
+          }
+          lesson {
+            id
+            slug
+            title
+            subhead
+            type
+            media
+            mediaType
+            slides
+            seoImage
+            content
+            objectives
+            actionCTA
+            actionSubhead
+            actionLink
+            actionLinkTitle
+            actionExample
+            author
+            status
+            related
+            featured
+            backdate
+            createdBy
+            lastEditedBy
+            videoLink
+            screengrab
+            createdAt
+            updatedAt
+          }
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       createdAt
       updatedAt
-      lessonTagsId
-      blogTagsId
-      articleTagsId
     }
   }
 `;
@@ -88,11 +130,53 @@ export const listTags = /* GraphQL */ `
       items {
         id
         tag
+        lesson {
+          items {
+            id
+            tagsId
+            lessonId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
         createdAt
         updatedAt
-        lessonTagsId
-        blogTagsId
-        articleTagsId
+      }
+      nextToken
+    }
+  }
+`;
+export const tagsByTag = /* GraphQL */ `
+  query TagsByTag(
+    $tag: String!
+    $sortDirection: ModelSortDirection
+    $filter: ModelTagsFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    tagsByTag(
+      tag: $tag
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        tag
+        lesson {
+          items {
+            id
+            tagsId
+            lessonId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        createdAt
+        updatedAt
       }
       nextToken
     }
@@ -323,6 +407,7 @@ export const getCourse = /* GraphQL */ `
             media
             seoImage
             content
+            tags
             createdAt
             updatedAt
           }
@@ -526,12 +611,45 @@ export const getLesson = /* GraphQL */ `
       tags {
         items {
           id
-          tag
+          tagsId
+          lessonId
+          tags {
+            id
+            tag
+            createdAt
+            updatedAt
+          }
+          lesson {
+            id
+            slug
+            title
+            subhead
+            type
+            media
+            mediaType
+            slides
+            seoImage
+            content
+            objectives
+            actionCTA
+            actionSubhead
+            actionLink
+            actionLinkTitle
+            actionExample
+            author
+            status
+            related
+            featured
+            backdate
+            createdBy
+            lastEditedBy
+            videoLink
+            screengrab
+            createdAt
+            updatedAt
+          }
           createdAt
           updatedAt
-          lessonTagsId
-          blogTagsId
-          articleTagsId
         }
         nextToken
       }
@@ -549,6 +667,7 @@ export const getLesson = /* GraphQL */ `
       createdBy
       lastEditedBy
       videoLink
+      screengrab
       createdAt
       updatedAt
     }
@@ -598,12 +717,10 @@ export const listLessons = /* GraphQL */ `
         tags {
           items {
             id
-            tag
+            tagsId
+            lessonId
             createdAt
             updatedAt
-            lessonTagsId
-            blogTagsId
-            articleTagsId
           }
           nextToken
         }
@@ -621,6 +738,7 @@ export const listLessons = /* GraphQL */ `
         createdBy
         lastEditedBy
         videoLink
+        screengrab
         createdAt
         updatedAt
       }
@@ -680,12 +798,10 @@ export const lessonsBySlug = /* GraphQL */ `
         tags {
           items {
             id
-            tag
+            tagsId
+            lessonId
             createdAt
             updatedAt
-            lessonTagsId
-            blogTagsId
-            articleTagsId
           }
           nextToken
         }
@@ -703,6 +819,7 @@ export const lessonsBySlug = /* GraphQL */ `
         createdBy
         lastEditedBy
         videoLink
+        screengrab
         createdAt
         updatedAt
       }
@@ -719,6 +836,34 @@ export const getAuthor = /* GraphQL */ `
       linkedIn
       title
       company
+      templates {
+        items {
+          id
+          authorId
+          indexTemplateId
+          author {
+            id
+            name
+            headshot
+            linkedIn
+            title
+            company
+            createdAt
+            updatedAt
+          }
+          indexTemplate {
+            id
+            slug
+            title
+            subhead
+            createdAt
+            updatedAt
+          }
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -738,6 +883,16 @@ export const listAuthors = /* GraphQL */ `
         linkedIn
         title
         company
+        templates {
+          items {
+            id
+            authorId
+            indexTemplateId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
         createdAt
         updatedAt
       }
@@ -754,18 +909,7 @@ export const getBlog = /* GraphQL */ `
       media
       content
       author
-      tags {
-        items {
-          id
-          tag
-          createdAt
-          updatedAt
-          lessonTagsId
-          blogTagsId
-          articleTagsId
-        }
-        nextToken
-      }
+      tags
       date
       createdAt
       updatedAt
@@ -786,18 +930,7 @@ export const listBlogs = /* GraphQL */ `
         media
         content
         author
-        tags {
-          items {
-            id
-            tag
-            createdAt
-            updatedAt
-            lessonTagsId
-            blogTagsId
-            articleTagsId
-          }
-          nextToken
-        }
+        tags
         date
         createdAt
         updatedAt
@@ -828,18 +961,7 @@ export const blogsBySlug = /* GraphQL */ `
         media
         content
         author
-        tags {
-          items {
-            id
-            tag
-            createdAt
-            updatedAt
-            lessonTagsId
-            blogTagsId
-            articleTagsId
-          }
-          nextToken
-        }
+        tags
         date
         createdAt
         updatedAt
@@ -858,18 +980,7 @@ export const getArticle = /* GraphQL */ `
       media
       seoImage
       content
-      tags {
-        items {
-          id
-          tag
-          createdAt
-          updatedAt
-          lessonTagsId
-          blogTagsId
-          articleTagsId
-        }
-        nextToken
-      }
+      tags
       relatedCourses {
         items {
           id
@@ -898,6 +1009,7 @@ export const getArticle = /* GraphQL */ `
             media
             seoImage
             content
+            tags
             createdAt
             updatedAt
           }
@@ -926,18 +1038,7 @@ export const listArticles = /* GraphQL */ `
         media
         seoImage
         content
-        tags {
-          items {
-            id
-            tag
-            createdAt
-            updatedAt
-            lessonTagsId
-            blogTagsId
-            articleTagsId
-          }
-          nextToken
-        }
+        tags
         relatedCourses {
           items {
             id
@@ -978,18 +1079,7 @@ export const articlesBySlug = /* GraphQL */ `
         media
         seoImage
         content
-        tags {
-          items {
-            id
-            tag
-            createdAt
-            updatedAt
-            lessonTagsId
-            blogTagsId
-            articleTagsId
-          }
-          nextToken
-        }
+        tags
         relatedCourses {
           items {
             id
@@ -2819,6 +2909,10 @@ export const getUser = /* GraphQL */ `
             demo
             partOf
             altLink
+            shortDescription
+            subscriptionLink
+            subscriptionPrice
+            stripeLink
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -4657,6 +4751,194 @@ export const appStartsByEmail = /* GraphQL */ `
     }
   }
 `;
+export const getApplicationStart = /* GraphQL */ `
+  query GetApplicationStart($id: ID!, $createdAt: String!) {
+    getApplicationStart(id: $id, createdAt: $createdAt) {
+      id
+      createdAt
+      firstName
+      lastName
+      email
+      phone
+      source
+      sourceUrl
+      updatedAt
+    }
+  }
+`;
+export const listApplicationStarts = /* GraphQL */ `
+  query ListApplicationStarts(
+    $id: ID
+    $createdAt: ModelStringKeyConditionInput
+    $filter: ModelApplicationStartFilterInput
+    $limit: Int
+    $nextToken: String
+    $sortDirection: ModelSortDirection
+  ) {
+    listApplicationStarts(
+      id: $id
+      createdAt: $createdAt
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      sortDirection: $sortDirection
+    ) {
+      items {
+        id
+        createdAt
+        firstName
+        lastName
+        email
+        phone
+        source
+        sourceUrl
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const applicationStartsByEmail = /* GraphQL */ `
+  query ApplicationStartsByEmail(
+    $email: String!
+    $sortDirection: ModelSortDirection
+    $filter: ModelApplicationStartFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    applicationStartsByEmail(
+      email: $email
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        createdAt
+        firstName
+        lastName
+        email
+        phone
+        source
+        sourceUrl
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getCertAppStart = /* GraphQL */ `
+  query GetCertAppStart($id: ID!) {
+    getCertAppStart(id: $id) {
+      id
+      type
+      createdAt
+      firstName
+      lastName
+      email
+      phone
+      source
+      sourceUrl
+      country
+      ipAddress
+      updatedAt
+    }
+  }
+`;
+export const listCertAppStarts = /* GraphQL */ `
+  query ListCertAppStarts(
+    $filter: ModelCertAppStartFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listCertAppStarts(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        type
+        createdAt
+        firstName
+        lastName
+        email
+        phone
+        source
+        sourceUrl
+        country
+        ipAddress
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const certAppStartsByTypeAndCreatedAt = /* GraphQL */ `
+  query CertAppStartsByTypeAndCreatedAt(
+    $type: String!
+    $createdAt: ModelStringKeyConditionInput
+    $sortDirection: ModelSortDirection
+    $filter: ModelCertAppStartFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    certAppStartsByTypeAndCreatedAt(
+      type: $type
+      createdAt: $createdAt
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        type
+        createdAt
+        firstName
+        lastName
+        email
+        phone
+        source
+        sourceUrl
+        country
+        ipAddress
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const certAppStartsByEmail = /* GraphQL */ `
+  query CertAppStartsByEmail(
+    $email: String!
+    $sortDirection: ModelSortDirection
+    $filter: ModelCertAppStartFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    certAppStartsByEmail(
+      email: $email
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        type
+        createdAt
+        firstName
+        lastName
+        email
+        phone
+        source
+        sourceUrl
+        country
+        ipAddress
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
 export const getLMSCollection = /* GraphQL */ `
   query GetLMSCollection($id: ID!) {
     getLMSCollection(id: $id) {
@@ -4795,6 +5077,10 @@ export const getLMSCirriculum = /* GraphQL */ `
             demo
             partOf
             altLink
+            shortDescription
+            subscriptionLink
+            subscriptionPrice
+            stripeLink
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -4886,6 +5172,10 @@ export const getLMSCourse = /* GraphQL */ `
             demo
             partOf
             altLink
+            shortDescription
+            subscriptionLink
+            subscriptionPrice
+            stripeLink
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -4925,6 +5215,10 @@ export const getLMSCourse = /* GraphQL */ `
             demo
             partOf
             altLink
+            shortDescription
+            subscriptionLink
+            subscriptionPrice
+            stripeLink
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -4976,6 +5270,10 @@ export const getLMSCourse = /* GraphQL */ `
             demo
             partOf
             altLink
+            shortDescription
+            subscriptionLink
+            subscriptionPrice
+            stripeLink
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -5010,6 +5308,10 @@ export const getLMSCourse = /* GraphQL */ `
       demo
       partOf
       altLink
+      shortDescription
+      subscriptionLink
+      subscriptionPrice
+      stripeLink
       createdAt
       updatedAt
       studentCourseEnrolledId
@@ -5078,6 +5380,10 @@ export const listLMSCourses = /* GraphQL */ `
         demo
         partOf
         altLink
+        shortDescription
+        subscriptionLink
+        subscriptionPrice
+        stripeLink
         createdAt
         updatedAt
         studentCourseEnrolledId
@@ -5156,149 +5462,13 @@ export const lMSCoursesBySlug = /* GraphQL */ `
         demo
         partOf
         altLink
+        shortDescription
+        subscriptionLink
+        subscriptionPrice
+        stripeLink
         createdAt
         updatedAt
         studentCourseEnrolledId
-      }
-      nextToken
-    }
-  }
-`;
-export const getCourseClick = /* GraphQL */ `
-  query GetCourseClick($id: ID!) {
-    getCourseClick(id: $id) {
-      id
-      courseID
-      page
-      ipAddress
-      country
-      lat
-      long
-      referrer
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const listCourseClicks = /* GraphQL */ `
-  query ListCourseClicks(
-    $filter: ModelCourseClickFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listCourseClicks(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        courseID
-        page
-        ipAddress
-        country
-        lat
-        long
-        referrer
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-  }
-`;
-export const courseClicksByCourseID = /* GraphQL */ `
-  query CourseClicksByCourseID(
-    $courseID: String!
-    $sortDirection: ModelSortDirection
-    $filter: ModelCourseClickFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    courseClicksByCourseID(
-      courseID: $courseID
-      sortDirection: $sortDirection
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-    ) {
-      items {
-        id
-        courseID
-        page
-        ipAddress
-        country
-        lat
-        long
-        referrer
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-  }
-`;
-export const getLessonClick = /* GraphQL */ `
-  query GetLessonClick($id: ID!) {
-    getLessonClick(id: $id) {
-      id
-      LessonID
-      page
-      ipAddress
-      country
-      lat
-      long
-      referrer
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const listLessonClicks = /* GraphQL */ `
-  query ListLessonClicks(
-    $filter: ModelLessonClickFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listLessonClicks(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        LessonID
-        page
-        ipAddress
-        country
-        lat
-        long
-        referrer
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-  }
-`;
-export const lessonClicksByLessonID = /* GraphQL */ `
-  query LessonClicksByLessonID(
-    $LessonID: String!
-    $sortDirection: ModelSortDirection
-    $filter: ModelLessonClickFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    lessonClicksByLessonID(
-      LessonID: $LessonID
-      sortDirection: $sortDirection
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-    ) {
-      items {
-        id
-        LessonID
-        page
-        ipAddress
-        country
-        lat
-        long
-        referrer
-        createdAt
-        updatedAt
       }
       nextToken
     }
@@ -5339,6 +5509,10 @@ export const getLMSLesson = /* GraphQL */ `
             demo
             partOf
             altLink
+            shortDescription
+            subscriptionLink
+            subscriptionPrice
+            stripeLink
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -6207,6 +6381,10 @@ export const getStudent = /* GraphQL */ `
           demo
           partOf
           altLink
+          shortDescription
+          subscriptionLink
+          subscriptionPrice
+          stripeLink
           createdAt
           updatedAt
           studentCourseEnrolledId
@@ -6355,6 +6533,10 @@ export const listStudents = /* GraphQL */ `
             demo
             partOf
             altLink
+            shortDescription
+            subscriptionLink
+            subscriptionPrice
+            stripeLink
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -6609,6 +6791,10 @@ export const getInstructor = /* GraphQL */ `
             demo
             partOf
             altLink
+            shortDescription
+            subscriptionLink
+            subscriptionPrice
+            stripeLink
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -6897,6 +7083,16 @@ export const getTrackedCourse = /* GraphQL */ `
         slide
         video
         offered
+        pscourses {
+          items {
+            id
+            courseId
+            customerId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
         courses {
           items {
             id
@@ -6942,6 +7138,9 @@ export const listTrackedCourses = /* GraphQL */ `
           slide
           video
           offered
+          pscourses {
+            nextToken
+          }
           courses {
             nextToken
           }
@@ -6991,6 +7190,148 @@ export const trackedCoursesByCustomerIdAndClicks = /* GraphQL */ `
           slide
           video
           offered
+          pscourses {
+            nextToken
+          }
+          courses {
+            nextToken
+          }
+          offerings
+          status
+          createdAt
+          updatedAt
+        }
+        customerId
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getIncludedCourse = /* GraphQL */ `
+  query GetIncludedCourse($id: ID!) {
+    getIncludedCourse(id: $id) {
+      id
+      courseId
+      customer {
+        id
+        displayName
+        link
+        logo
+        email
+        primaryColor
+        highlightColor
+        pdf
+        slide
+        video
+        offered
+        pscourses {
+          items {
+            id
+            courseId
+            customerId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        courses {
+          items {
+            id
+            courseId
+            clicks
+            customerId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        offerings
+        status
+        createdAt
+        updatedAt
+      }
+      customerId
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listIncludedCourses = /* GraphQL */ `
+  query ListIncludedCourses(
+    $filter: ModelIncludedCourseFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listIncludedCourses(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        courseId
+        customer {
+          id
+          displayName
+          link
+          logo
+          email
+          primaryColor
+          highlightColor
+          pdf
+          slide
+          video
+          offered
+          pscourses {
+            nextToken
+          }
+          courses {
+            nextToken
+          }
+          offerings
+          status
+          createdAt
+          updatedAt
+        }
+        customerId
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const includedCoursesByCustomerId = /* GraphQL */ `
+  query IncludedCoursesByCustomerId(
+    $customerId: ID!
+    $sortDirection: ModelSortDirection
+    $filter: ModelIncludedCourseFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    includedCoursesByCustomerId(
+      customerId: $customerId
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        courseId
+        customer {
+          id
+          displayName
+          link
+          logo
+          email
+          primaryColor
+          highlightColor
+          pdf
+          slide
+          video
+          offered
+          pscourses {
+            nextToken
+          }
           courses {
             nextToken
           }
@@ -7021,6 +7362,33 @@ export const getCustomer = /* GraphQL */ `
       slide
       video
       offered
+      pscourses {
+        items {
+          id
+          courseId
+          customer {
+            id
+            displayName
+            link
+            logo
+            email
+            primaryColor
+            highlightColor
+            pdf
+            slide
+            video
+            offered
+            offerings
+            status
+            createdAt
+            updatedAt
+          }
+          customerId
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       courses {
         items {
           id
@@ -7075,6 +7443,16 @@ export const listCustomers = /* GraphQL */ `
         slide
         video
         offered
+        pscourses {
+          items {
+            id
+            courseId
+            customerId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
         courses {
           items {
             id
@@ -7200,6 +7578,7 @@ export const getSalesBar = /* GraphQL */ `
       text
       link
       icon
+      type
       createdAt
       updatedAt
     }
@@ -7217,6 +7596,7 @@ export const listSalesBars = /* GraphQL */ `
         text
         link
         icon
+        type
         createdAt
         updatedAt
       }
@@ -7347,6 +7727,246 @@ export const workshopFormsByEmail = /* GraphQL */ `
     }
   }
 `;
+export const getCourseClick = /* GraphQL */ `
+  query GetCourseClick($id: ID!) {
+    getCourseClick(id: $id) {
+      id
+      courseID
+      page
+      ipAddress
+      country
+      lat
+      long
+      referrer
+      nextPath
+      format
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listCourseClicks = /* GraphQL */ `
+  query ListCourseClicks(
+    $filter: ModelCourseClickFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listCourseClicks(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        courseID
+        page
+        ipAddress
+        country
+        lat
+        long
+        referrer
+        nextPath
+        format
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const courseClicksByCourseID = /* GraphQL */ `
+  query CourseClicksByCourseID(
+    $courseID: String!
+    $sortDirection: ModelSortDirection
+    $filter: ModelCourseClickFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    courseClicksByCourseID(
+      courseID: $courseID
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        courseID
+        page
+        ipAddress
+        country
+        lat
+        long
+        referrer
+        nextPath
+        format
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getSalesbarClick = /* GraphQL */ `
+  query GetSalesbarClick($id: ID!) {
+    getSalesbarClick(id: $id) {
+      id
+      page
+      ipAddress
+      country
+      link
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listSalesbarClicks = /* GraphQL */ `
+  query ListSalesbarClicks(
+    $filter: ModelSalesbarClickFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listSalesbarClicks(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        page
+        ipAddress
+        country
+        link
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getLessonClick = /* GraphQL */ `
+  query GetLessonClick($id: ID!) {
+    getLessonClick(id: $id) {
+      id
+      LessonID
+      page
+      ipAddress
+      country
+      lat
+      long
+      referrer
+      format
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listLessonClicks = /* GraphQL */ `
+  query ListLessonClicks(
+    $filter: ModelLessonClickFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listLessonClicks(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        LessonID
+        page
+        ipAddress
+        country
+        lat
+        long
+        referrer
+        format
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const lessonClicksByLessonID = /* GraphQL */ `
+  query LessonClicksByLessonID(
+    $LessonID: String!
+    $sortDirection: ModelSortDirection
+    $filter: ModelLessonClickFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    lessonClicksByLessonID(
+      LessonID: $LessonID
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        LessonID
+        page
+        ipAddress
+        country
+        lat
+        long
+        referrer
+        format
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getCourseSearch = /* GraphQL */ `
+  query GetCourseSearch($id: ID!) {
+    getCourseSearch(id: $id) {
+      id
+      term
+      ipAddress
+      country
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listCourseSearches = /* GraphQL */ `
+  query ListCourseSearches(
+    $filter: ModelCourseSearchFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listCourseSearches(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        term
+        ipAddress
+        country
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const courseSearchesByTerm = /* GraphQL */ `
+  query CourseSearchesByTerm(
+    $term: String!
+    $sortDirection: ModelSortDirection
+    $filter: ModelCourseSearchFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    courseSearchesByTerm(
+      term: $term
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        term
+        ipAddress
+        country
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
 export const getClick = /* GraphQL */ `
   query GetClick($id: ID!) {
     getClick(id: $id) {
@@ -7379,6 +7999,667 @@ export const listClicks = /* GraphQL */ `
         nextPath
         ipAddress
         location
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getIndiaClick = /* GraphQL */ `
+  query GetIndiaClick($id: ID!) {
+    getIndiaClick(id: $id) {
+      id
+      courseID
+      page
+      ipAddress
+      country
+      lat
+      long
+      referrer
+      nextPath
+      format
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listIndiaClicks = /* GraphQL */ `
+  query ListIndiaClicks(
+    $filter: ModelIndiaClickFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listIndiaClicks(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        courseID
+        page
+        ipAddress
+        country
+        lat
+        long
+        referrer
+        nextPath
+        format
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const indiaClicksByCourseID = /* GraphQL */ `
+  query IndiaClicksByCourseID(
+    $courseID: String!
+    $sortDirection: ModelSortDirection
+    $filter: ModelIndiaClickFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    indiaClicksByCourseID(
+      courseID: $courseID
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        courseID
+        page
+        ipAddress
+        country
+        lat
+        long
+        referrer
+        nextPath
+        format
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getIndiaCourseSearch = /* GraphQL */ `
+  query GetIndiaCourseSearch($id: ID!) {
+    getIndiaCourseSearch(id: $id) {
+      id
+      term
+      ipAddress
+      country
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listIndiaCourseSearches = /* GraphQL */ `
+  query ListIndiaCourseSearches(
+    $filter: ModelIndiaCourseSearchFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listIndiaCourseSearches(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        term
+        ipAddress
+        country
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const indiaCourseSearchesByTerm = /* GraphQL */ `
+  query IndiaCourseSearchesByTerm(
+    $term: String!
+    $sortDirection: ModelSortDirection
+    $filter: ModelIndiaCourseSearchFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    indiaCourseSearchesByTerm(
+      term: $term
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        term
+        ipAddress
+        country
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getIndexTemplate = /* GraphQL */ `
+  query GetIndexTemplate($id: ID!) {
+    getIndexTemplate(id: $id) {
+      id
+      slug
+      title
+      subhead
+      authors {
+        items {
+          id
+          authorId
+          indexTemplateId
+          author {
+            id
+            name
+            headshot
+            linkedIn
+            title
+            company
+            createdAt
+            updatedAt
+          }
+          indexTemplate {
+            id
+            slug
+            title
+            subhead
+            createdAt
+            updatedAt
+          }
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      rows {
+        items {
+          id
+          indexTemplateId
+          indexRowId
+          indexTemplate {
+            id
+            slug
+            title
+            subhead
+            createdAt
+            updatedAt
+          }
+          indexRow {
+            id
+            headline
+            subhead
+            type
+            content
+            createdAt
+            updatedAt
+          }
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listIndexTemplates = /* GraphQL */ `
+  query ListIndexTemplates(
+    $filter: ModelIndexTemplateFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listIndexTemplates(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        slug
+        title
+        subhead
+        authors {
+          items {
+            id
+            authorId
+            indexTemplateId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        rows {
+          items {
+            id
+            indexTemplateId
+            indexRowId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const indexTemplatesBySlug = /* GraphQL */ `
+  query IndexTemplatesBySlug(
+    $slug: String!
+    $sortDirection: ModelSortDirection
+    $filter: ModelIndexTemplateFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    indexTemplatesBySlug(
+      slug: $slug
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        slug
+        title
+        subhead
+        authors {
+          items {
+            id
+            authorId
+            indexTemplateId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        rows {
+          items {
+            id
+            indexTemplateId
+            indexRowId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getIndexRow = /* GraphQL */ `
+  query GetIndexRow($id: ID!) {
+    getIndexRow(id: $id) {
+      id
+      headline
+      subhead
+      type
+      content
+      templates {
+        items {
+          id
+          indexTemplateId
+          indexRowId
+          indexTemplate {
+            id
+            slug
+            title
+            subhead
+            createdAt
+            updatedAt
+          }
+          indexRow {
+            id
+            headline
+            subhead
+            type
+            content
+            createdAt
+            updatedAt
+          }
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listIndexRows = /* GraphQL */ `
+  query ListIndexRows(
+    $filter: ModelIndexRowFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listIndexRows(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        headline
+        subhead
+        type
+        content
+        templates {
+          items {
+            id
+            indexTemplateId
+            indexRowId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getLessonTags = /* GraphQL */ `
+  query GetLessonTags($id: ID!) {
+    getLessonTags(id: $id) {
+      id
+      tagsId
+      lessonId
+      tags {
+        id
+        tag
+        lesson {
+          items {
+            id
+            tagsId
+            lessonId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      lesson {
+        id
+        slug
+        title
+        subhead
+        type
+        media
+        mediaType
+        slides
+        seoImage
+        content
+        sources {
+          items {
+            id
+            name
+            link
+            position
+            createdAt
+            updatedAt
+            lessonSourcesId
+          }
+          nextToken
+        }
+        links {
+          items {
+            id
+            name
+            link
+            createdAt
+            updatedAt
+            lessonLinksId
+          }
+          nextToken
+        }
+        tags {
+          items {
+            id
+            tagsId
+            lessonId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        objectives
+        actionCTA
+        actionSubhead
+        actionLink
+        actionLinkTitle
+        actionExample
+        author
+        status
+        related
+        featured
+        backdate
+        createdBy
+        lastEditedBy
+        videoLink
+        screengrab
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listLessonTags = /* GraphQL */ `
+  query ListLessonTags(
+    $filter: ModelLessonTagsFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listLessonTags(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        tagsId
+        lessonId
+        tags {
+          id
+          tag
+          lesson {
+            nextToken
+          }
+          createdAt
+          updatedAt
+        }
+        lesson {
+          id
+          slug
+          title
+          subhead
+          type
+          media
+          mediaType
+          slides
+          seoImage
+          content
+          sources {
+            nextToken
+          }
+          links {
+            nextToken
+          }
+          tags {
+            nextToken
+          }
+          objectives
+          actionCTA
+          actionSubhead
+          actionLink
+          actionLinkTitle
+          actionExample
+          author
+          status
+          related
+          featured
+          backdate
+          createdBy
+          lastEditedBy
+          videoLink
+          screengrab
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const lessonTagsByTagsId = /* GraphQL */ `
+  query LessonTagsByTagsId(
+    $tagsId: ID!
+    $sortDirection: ModelSortDirection
+    $filter: ModelLessonTagsFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    lessonTagsByTagsId(
+      tagsId: $tagsId
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        tagsId
+        lessonId
+        tags {
+          id
+          tag
+          lesson {
+            nextToken
+          }
+          createdAt
+          updatedAt
+        }
+        lesson {
+          id
+          slug
+          title
+          subhead
+          type
+          media
+          mediaType
+          slides
+          seoImage
+          content
+          sources {
+            nextToken
+          }
+          links {
+            nextToken
+          }
+          tags {
+            nextToken
+          }
+          objectives
+          actionCTA
+          actionSubhead
+          actionLink
+          actionLinkTitle
+          actionExample
+          author
+          status
+          related
+          featured
+          backdate
+          createdBy
+          lastEditedBy
+          videoLink
+          screengrab
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const lessonTagsByLessonId = /* GraphQL */ `
+  query LessonTagsByLessonId(
+    $lessonId: ID!
+    $sortDirection: ModelSortDirection
+    $filter: ModelLessonTagsFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    lessonTagsByLessonId(
+      lessonId: $lessonId
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        tagsId
+        lessonId
+        tags {
+          id
+          tag
+          lesson {
+            nextToken
+          }
+          createdAt
+          updatedAt
+        }
+        lesson {
+          id
+          slug
+          title
+          subhead
+          type
+          media
+          mediaType
+          slides
+          seoImage
+          content
+          sources {
+            nextToken
+          }
+          links {
+            nextToken
+          }
+          tags {
+            nextToken
+          }
+          objectives
+          actionCTA
+          actionSubhead
+          actionLink
+          actionLinkTitle
+          actionExample
+          author
+          status
+          related
+          featured
+          backdate
+          createdBy
+          lastEditedBy
+          videoLink
+          screengrab
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
       }
@@ -7741,18 +9022,7 @@ export const getArticleRelatedCourses = /* GraphQL */ `
         media
         seoImage
         content
-        tags {
-          items {
-            id
-            tag
-            createdAt
-            updatedAt
-            lessonTagsId
-            blogTagsId
-            articleTagsId
-          }
-          nextToken
-        }
+        tags
         relatedCourses {
           items {
             id
@@ -7815,9 +9085,7 @@ export const listArticleRelatedCourses = /* GraphQL */ `
           media
           seoImage
           content
-          tags {
-            nextToken
-          }
+          tags
           relatedCourses {
             nextToken
           }
@@ -7879,9 +9147,7 @@ export const articleRelatedCoursesByCourseId = /* GraphQL */ `
           media
           seoImage
           content
-          tags {
-            nextToken
-          }
+          tags
           relatedCourses {
             nextToken
           }
@@ -7943,10 +9209,218 @@ export const articleRelatedCoursesByArticleId = /* GraphQL */ `
           media
           seoImage
           content
-          tags {
+          tags
+          relatedCourses {
             nextToken
           }
-          relatedCourses {
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getAuthorTemplates = /* GraphQL */ `
+  query GetAuthorTemplates($id: ID!) {
+    getAuthorTemplates(id: $id) {
+      id
+      authorId
+      indexTemplateId
+      author {
+        id
+        name
+        headshot
+        linkedIn
+        title
+        company
+        templates {
+          items {
+            id
+            authorId
+            indexTemplateId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      indexTemplate {
+        id
+        slug
+        title
+        subhead
+        authors {
+          items {
+            id
+            authorId
+            indexTemplateId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        rows {
+          items {
+            id
+            indexTemplateId
+            indexRowId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listAuthorTemplates = /* GraphQL */ `
+  query ListAuthorTemplates(
+    $filter: ModelAuthorTemplatesFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listAuthorTemplates(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        authorId
+        indexTemplateId
+        author {
+          id
+          name
+          headshot
+          linkedIn
+          title
+          company
+          templates {
+            nextToken
+          }
+          createdAt
+          updatedAt
+        }
+        indexTemplate {
+          id
+          slug
+          title
+          subhead
+          authors {
+            nextToken
+          }
+          rows {
+            nextToken
+          }
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const authorTemplatesByAuthorId = /* GraphQL */ `
+  query AuthorTemplatesByAuthorId(
+    $authorId: ID!
+    $sortDirection: ModelSortDirection
+    $filter: ModelAuthorTemplatesFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    authorTemplatesByAuthorId(
+      authorId: $authorId
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        authorId
+        indexTemplateId
+        author {
+          id
+          name
+          headshot
+          linkedIn
+          title
+          company
+          templates {
+            nextToken
+          }
+          createdAt
+          updatedAt
+        }
+        indexTemplate {
+          id
+          slug
+          title
+          subhead
+          authors {
+            nextToken
+          }
+          rows {
+            nextToken
+          }
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const authorTemplatesByIndexTemplateId = /* GraphQL */ `
+  query AuthorTemplatesByIndexTemplateId(
+    $indexTemplateId: ID!
+    $sortDirection: ModelSortDirection
+    $filter: ModelAuthorTemplatesFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    authorTemplatesByIndexTemplateId(
+      indexTemplateId: $indexTemplateId
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        authorId
+        indexTemplateId
+        author {
+          id
+          name
+          headshot
+          linkedIn
+          title
+          company
+          templates {
+            nextToken
+          }
+          createdAt
+          updatedAt
+        }
+        indexTemplate {
+          id
+          slug
+          title
+          subhead
+          authors {
+            nextToken
+          }
+          rows {
             nextToken
           }
           createdAt
@@ -9030,6 +10504,10 @@ export const getCirriculumCourses = /* GraphQL */ `
         demo
         partOf
         altLink
+        shortDescription
+        subscriptionLink
+        subscriptionPrice
+        stripeLink
         createdAt
         updatedAt
         studentCourseEnrolledId
@@ -9100,6 +10578,10 @@ export const listCirriculumCourses = /* GraphQL */ `
           demo
           partOf
           altLink
+          shortDescription
+          subscriptionLink
+          subscriptionPrice
+          stripeLink
           createdAt
           updatedAt
           studentCourseEnrolledId
@@ -9176,6 +10658,10 @@ export const cirriculumCoursesByLMSCirriculumId = /* GraphQL */ `
           demo
           partOf
           altLink
+          shortDescription
+          subscriptionLink
+          subscriptionPrice
+          stripeLink
           createdAt
           updatedAt
           studentCourseEnrolledId
@@ -9252,6 +10738,10 @@ export const cirriculumCoursesByLMSCourseId = /* GraphQL */ `
           demo
           partOf
           altLink
+          shortDescription
+          subscriptionLink
+          subscriptionPrice
+          stripeLink
           createdAt
           updatedAt
           studentCourseEnrolledId
@@ -9324,6 +10814,10 @@ export const getCourseLessons = /* GraphQL */ `
         demo
         partOf
         altLink
+        shortDescription
+        subscriptionLink
+        subscriptionPrice
+        stripeLink
         createdAt
         updatedAt
         studentCourseEnrolledId
@@ -9417,6 +10911,10 @@ export const listCourseLessons = /* GraphQL */ `
           demo
           partOf
           altLink
+          shortDescription
+          subscriptionLink
+          subscriptionPrice
+          stripeLink
           createdAt
           updatedAt
           studentCourseEnrolledId
@@ -9499,6 +10997,10 @@ export const courseLessonsByLMSCourseId = /* GraphQL */ `
           demo
           partOf
           altLink
+          shortDescription
+          subscriptionLink
+          subscriptionPrice
+          stripeLink
           createdAt
           updatedAt
           studentCourseEnrolledId
@@ -9581,6 +11083,10 @@ export const courseLessonsByLMSLessonId = /* GraphQL */ `
           demo
           partOf
           altLink
+          shortDescription
+          subscriptionLink
+          subscriptionPrice
+          stripeLink
           createdAt
           updatedAt
           studentCourseEnrolledId
@@ -9671,6 +11177,10 @@ export const getCourseInstructors = /* GraphQL */ `
         demo
         partOf
         altLink
+        shortDescription
+        subscriptionLink
+        subscriptionPrice
+        stripeLink
         createdAt
         updatedAt
         studentCourseEnrolledId
@@ -9846,6 +11356,10 @@ export const listCourseInstructors = /* GraphQL */ `
           demo
           partOf
           altLink
+          shortDescription
+          subscriptionLink
+          subscriptionPrice
+          stripeLink
           createdAt
           updatedAt
           studentCourseEnrolledId
@@ -9942,6 +11456,10 @@ export const courseInstructorsByLMSCourseId = /* GraphQL */ `
           demo
           partOf
           altLink
+          shortDescription
+          subscriptionLink
+          subscriptionPrice
+          stripeLink
           createdAt
           updatedAt
           studentCourseEnrolledId
@@ -10038,6 +11556,10 @@ export const courseInstructorsByInstructorId = /* GraphQL */ `
           demo
           partOf
           altLink
+          shortDescription
+          subscriptionLink
+          subscriptionPrice
+          stripeLink
           createdAt
           updatedAt
           studentCourseEnrolledId
@@ -10069,6 +11591,216 @@ export const courseInstructorsByInstructorId = /* GraphQL */ `
             userStudentIdId
           }
           coursesTaught {
+            nextToken
+          }
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getIndexTemplateRows = /* GraphQL */ `
+  query GetIndexTemplateRows($id: ID!) {
+    getIndexTemplateRows(id: $id) {
+      id
+      indexTemplateId
+      indexRowId
+      indexTemplate {
+        id
+        slug
+        title
+        subhead
+        authors {
+          items {
+            id
+            authorId
+            indexTemplateId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        rows {
+          items {
+            id
+            indexTemplateId
+            indexRowId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      indexRow {
+        id
+        headline
+        subhead
+        type
+        content
+        templates {
+          items {
+            id
+            indexTemplateId
+            indexRowId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listIndexTemplateRows = /* GraphQL */ `
+  query ListIndexTemplateRows(
+    $filter: ModelIndexTemplateRowsFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listIndexTemplateRows(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        indexTemplateId
+        indexRowId
+        indexTemplate {
+          id
+          slug
+          title
+          subhead
+          authors {
+            nextToken
+          }
+          rows {
+            nextToken
+          }
+          createdAt
+          updatedAt
+        }
+        indexRow {
+          id
+          headline
+          subhead
+          type
+          content
+          templates {
+            nextToken
+          }
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const indexTemplateRowsByIndexTemplateId = /* GraphQL */ `
+  query IndexTemplateRowsByIndexTemplateId(
+    $indexTemplateId: ID!
+    $sortDirection: ModelSortDirection
+    $filter: ModelIndexTemplateRowsFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    indexTemplateRowsByIndexTemplateId(
+      indexTemplateId: $indexTemplateId
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        indexTemplateId
+        indexRowId
+        indexTemplate {
+          id
+          slug
+          title
+          subhead
+          authors {
+            nextToken
+          }
+          rows {
+            nextToken
+          }
+          createdAt
+          updatedAt
+        }
+        indexRow {
+          id
+          headline
+          subhead
+          type
+          content
+          templates {
+            nextToken
+          }
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const indexTemplateRowsByIndexRowId = /* GraphQL */ `
+  query IndexTemplateRowsByIndexRowId(
+    $indexRowId: ID!
+    $sortDirection: ModelSortDirection
+    $filter: ModelIndexTemplateRowsFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    indexTemplateRowsByIndexRowId(
+      indexRowId: $indexRowId
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        indexTemplateId
+        indexRowId
+        indexTemplate {
+          id
+          slug
+          title
+          subhead
+          authors {
+            nextToken
+          }
+          rows {
+            nextToken
+          }
+          createdAt
+          updatedAt
+        }
+        indexRow {
+          id
+          headline
+          subhead
+          type
+          content
+          templates {
             nextToken
           }
           createdAt

@@ -81,11 +81,53 @@ export const onCreateTags = /* GraphQL */ `
     onCreateTags {
       id
       tag
+      lesson {
+        items {
+          id
+          tagsId
+          lessonId
+          tags {
+            id
+            tag
+            createdAt
+            updatedAt
+          }
+          lesson {
+            id
+            slug
+            title
+            subhead
+            type
+            media
+            mediaType
+            slides
+            seoImage
+            content
+            objectives
+            actionCTA
+            actionSubhead
+            actionLink
+            actionLinkTitle
+            actionExample
+            author
+            status
+            related
+            featured
+            backdate
+            createdBy
+            lastEditedBy
+            videoLink
+            screengrab
+            createdAt
+            updatedAt
+          }
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       createdAt
       updatedAt
-      lessonTagsId
-      blogTagsId
-      articleTagsId
     }
   }
 `;
@@ -94,11 +136,53 @@ export const onUpdateTags = /* GraphQL */ `
     onUpdateTags {
       id
       tag
+      lesson {
+        items {
+          id
+          tagsId
+          lessonId
+          tags {
+            id
+            tag
+            createdAt
+            updatedAt
+          }
+          lesson {
+            id
+            slug
+            title
+            subhead
+            type
+            media
+            mediaType
+            slides
+            seoImage
+            content
+            objectives
+            actionCTA
+            actionSubhead
+            actionLink
+            actionLinkTitle
+            actionExample
+            author
+            status
+            related
+            featured
+            backdate
+            createdBy
+            lastEditedBy
+            videoLink
+            screengrab
+            createdAt
+            updatedAt
+          }
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       createdAt
       updatedAt
-      lessonTagsId
-      blogTagsId
-      articleTagsId
     }
   }
 `;
@@ -107,11 +191,53 @@ export const onDeleteTags = /* GraphQL */ `
     onDeleteTags {
       id
       tag
+      lesson {
+        items {
+          id
+          tagsId
+          lessonId
+          tags {
+            id
+            tag
+            createdAt
+            updatedAt
+          }
+          lesson {
+            id
+            slug
+            title
+            subhead
+            type
+            media
+            mediaType
+            slides
+            seoImage
+            content
+            objectives
+            actionCTA
+            actionSubhead
+            actionLink
+            actionLinkTitle
+            actionExample
+            author
+            status
+            related
+            featured
+            backdate
+            createdBy
+            lastEditedBy
+            videoLink
+            screengrab
+            createdAt
+            updatedAt
+          }
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       createdAt
       updatedAt
-      lessonTagsId
-      blogTagsId
-      articleTagsId
     }
   }
 `;
@@ -400,6 +526,7 @@ export const onCreateCourse = /* GraphQL */ `
             media
             seoImage
             content
+            tags
             createdAt
             updatedAt
           }
@@ -506,6 +633,7 @@ export const onUpdateCourse = /* GraphQL */ `
             media
             seoImage
             content
+            tags
             createdAt
             updatedAt
           }
@@ -612,6 +740,7 @@ export const onDeleteCourse = /* GraphQL */ `
             media
             seoImage
             content
+            tags
             createdAt
             updatedAt
           }
@@ -715,12 +844,45 @@ export const onCreateLesson = /* GraphQL */ `
       tags {
         items {
           id
-          tag
+          tagsId
+          lessonId
+          tags {
+            id
+            tag
+            createdAt
+            updatedAt
+          }
+          lesson {
+            id
+            slug
+            title
+            subhead
+            type
+            media
+            mediaType
+            slides
+            seoImage
+            content
+            objectives
+            actionCTA
+            actionSubhead
+            actionLink
+            actionLinkTitle
+            actionExample
+            author
+            status
+            related
+            featured
+            backdate
+            createdBy
+            lastEditedBy
+            videoLink
+            screengrab
+            createdAt
+            updatedAt
+          }
           createdAt
           updatedAt
-          lessonTagsId
-          blogTagsId
-          articleTagsId
         }
         nextToken
       }
@@ -738,6 +900,7 @@ export const onCreateLesson = /* GraphQL */ `
       createdBy
       lastEditedBy
       videoLink
+      screengrab
       createdAt
       updatedAt
     }
@@ -782,12 +945,45 @@ export const onUpdateLesson = /* GraphQL */ `
       tags {
         items {
           id
-          tag
+          tagsId
+          lessonId
+          tags {
+            id
+            tag
+            createdAt
+            updatedAt
+          }
+          lesson {
+            id
+            slug
+            title
+            subhead
+            type
+            media
+            mediaType
+            slides
+            seoImage
+            content
+            objectives
+            actionCTA
+            actionSubhead
+            actionLink
+            actionLinkTitle
+            actionExample
+            author
+            status
+            related
+            featured
+            backdate
+            createdBy
+            lastEditedBy
+            videoLink
+            screengrab
+            createdAt
+            updatedAt
+          }
           createdAt
           updatedAt
-          lessonTagsId
-          blogTagsId
-          articleTagsId
         }
         nextToken
       }
@@ -805,6 +1001,7 @@ export const onUpdateLesson = /* GraphQL */ `
       createdBy
       lastEditedBy
       videoLink
+      screengrab
       createdAt
       updatedAt
     }
@@ -849,12 +1046,45 @@ export const onDeleteLesson = /* GraphQL */ `
       tags {
         items {
           id
-          tag
+          tagsId
+          lessonId
+          tags {
+            id
+            tag
+            createdAt
+            updatedAt
+          }
+          lesson {
+            id
+            slug
+            title
+            subhead
+            type
+            media
+            mediaType
+            slides
+            seoImage
+            content
+            objectives
+            actionCTA
+            actionSubhead
+            actionLink
+            actionLinkTitle
+            actionExample
+            author
+            status
+            related
+            featured
+            backdate
+            createdBy
+            lastEditedBy
+            videoLink
+            screengrab
+            createdAt
+            updatedAt
+          }
           createdAt
           updatedAt
-          lessonTagsId
-          blogTagsId
-          articleTagsId
         }
         nextToken
       }
@@ -872,6 +1102,7 @@ export const onDeleteLesson = /* GraphQL */ `
       createdBy
       lastEditedBy
       videoLink
+      screengrab
       createdAt
       updatedAt
     }
@@ -886,6 +1117,34 @@ export const onCreateAuthor = /* GraphQL */ `
       linkedIn
       title
       company
+      templates {
+        items {
+          id
+          authorId
+          indexTemplateId
+          author {
+            id
+            name
+            headshot
+            linkedIn
+            title
+            company
+            createdAt
+            updatedAt
+          }
+          indexTemplate {
+            id
+            slug
+            title
+            subhead
+            createdAt
+            updatedAt
+          }
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -900,6 +1159,34 @@ export const onUpdateAuthor = /* GraphQL */ `
       linkedIn
       title
       company
+      templates {
+        items {
+          id
+          authorId
+          indexTemplateId
+          author {
+            id
+            name
+            headshot
+            linkedIn
+            title
+            company
+            createdAt
+            updatedAt
+          }
+          indexTemplate {
+            id
+            slug
+            title
+            subhead
+            createdAt
+            updatedAt
+          }
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -914,6 +1201,34 @@ export const onDeleteAuthor = /* GraphQL */ `
       linkedIn
       title
       company
+      templates {
+        items {
+          id
+          authorId
+          indexTemplateId
+          author {
+            id
+            name
+            headshot
+            linkedIn
+            title
+            company
+            createdAt
+            updatedAt
+          }
+          indexTemplate {
+            id
+            slug
+            title
+            subhead
+            createdAt
+            updatedAt
+          }
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -928,18 +1243,7 @@ export const onCreateBlog = /* GraphQL */ `
       media
       content
       author
-      tags {
-        items {
-          id
-          tag
-          createdAt
-          updatedAt
-          lessonTagsId
-          blogTagsId
-          articleTagsId
-        }
-        nextToken
-      }
+      tags
       date
       createdAt
       updatedAt
@@ -955,18 +1259,7 @@ export const onUpdateBlog = /* GraphQL */ `
       media
       content
       author
-      tags {
-        items {
-          id
-          tag
-          createdAt
-          updatedAt
-          lessonTagsId
-          blogTagsId
-          articleTagsId
-        }
-        nextToken
-      }
+      tags
       date
       createdAt
       updatedAt
@@ -982,18 +1275,7 @@ export const onDeleteBlog = /* GraphQL */ `
       media
       content
       author
-      tags {
-        items {
-          id
-          tag
-          createdAt
-          updatedAt
-          lessonTagsId
-          blogTagsId
-          articleTagsId
-        }
-        nextToken
-      }
+      tags
       date
       createdAt
       updatedAt
@@ -1010,18 +1292,7 @@ export const onCreateArticle = /* GraphQL */ `
       media
       seoImage
       content
-      tags {
-        items {
-          id
-          tag
-          createdAt
-          updatedAt
-          lessonTagsId
-          blogTagsId
-          articleTagsId
-        }
-        nextToken
-      }
+      tags
       relatedCourses {
         items {
           id
@@ -1050,6 +1321,7 @@ export const onCreateArticle = /* GraphQL */ `
             media
             seoImage
             content
+            tags
             createdAt
             updatedAt
           }
@@ -1073,18 +1345,7 @@ export const onUpdateArticle = /* GraphQL */ `
       media
       seoImage
       content
-      tags {
-        items {
-          id
-          tag
-          createdAt
-          updatedAt
-          lessonTagsId
-          blogTagsId
-          articleTagsId
-        }
-        nextToken
-      }
+      tags
       relatedCourses {
         items {
           id
@@ -1113,6 +1374,7 @@ export const onUpdateArticle = /* GraphQL */ `
             media
             seoImage
             content
+            tags
             createdAt
             updatedAt
           }
@@ -1136,18 +1398,7 @@ export const onDeleteArticle = /* GraphQL */ `
       media
       seoImage
       content
-      tags {
-        items {
-          id
-          tag
-          createdAt
-          updatedAt
-          lessonTagsId
-          blogTagsId
-          articleTagsId
-        }
-        nextToken
-      }
+      tags
       relatedCourses {
         items {
           id
@@ -1176,6 +1427,7 @@ export const onDeleteArticle = /* GraphQL */ `
             media
             seoImage
             content
+            tags
             createdAt
             updatedAt
           }
@@ -3457,6 +3709,10 @@ export const onCreateUser = /* GraphQL */ `
             demo
             partOf
             altLink
+            shortDescription
+            subscriptionLink
+            subscriptionPrice
+            stripeLink
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -4044,6 +4300,10 @@ export const onUpdateUser = /* GraphQL */ `
             demo
             partOf
             altLink
+            shortDescription
+            subscriptionLink
+            subscriptionPrice
+            stripeLink
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -4631,6 +4891,10 @@ export const onDeleteUser = /* GraphQL */ `
             demo
             partOf
             altLink
+            shortDescription
+            subscriptionLink
+            subscriptionPrice
+            stripeLink
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -6184,6 +6448,105 @@ export const onDeleteAppStart = /* GraphQL */ `
     }
   }
 `;
+export const onCreateApplicationStart = /* GraphQL */ `
+  subscription OnCreateApplicationStart {
+    onCreateApplicationStart {
+      id
+      createdAt
+      firstName
+      lastName
+      email
+      phone
+      source
+      sourceUrl
+      updatedAt
+    }
+  }
+`;
+export const onUpdateApplicationStart = /* GraphQL */ `
+  subscription OnUpdateApplicationStart {
+    onUpdateApplicationStart {
+      id
+      createdAt
+      firstName
+      lastName
+      email
+      phone
+      source
+      sourceUrl
+      updatedAt
+    }
+  }
+`;
+export const onDeleteApplicationStart = /* GraphQL */ `
+  subscription OnDeleteApplicationStart {
+    onDeleteApplicationStart {
+      id
+      createdAt
+      firstName
+      lastName
+      email
+      phone
+      source
+      sourceUrl
+      updatedAt
+    }
+  }
+`;
+export const onCreateCertAppStart = /* GraphQL */ `
+  subscription OnCreateCertAppStart {
+    onCreateCertAppStart {
+      id
+      type
+      createdAt
+      firstName
+      lastName
+      email
+      phone
+      source
+      sourceUrl
+      country
+      ipAddress
+      updatedAt
+    }
+  }
+`;
+export const onUpdateCertAppStart = /* GraphQL */ `
+  subscription OnUpdateCertAppStart {
+    onUpdateCertAppStart {
+      id
+      type
+      createdAt
+      firstName
+      lastName
+      email
+      phone
+      source
+      sourceUrl
+      country
+      ipAddress
+      updatedAt
+    }
+  }
+`;
+export const onDeleteCertAppStart = /* GraphQL */ `
+  subscription OnDeleteCertAppStart {
+    onDeleteCertAppStart {
+      id
+      type
+      createdAt
+      firstName
+      lastName
+      email
+      phone
+      source
+      sourceUrl
+      country
+      ipAddress
+      updatedAt
+    }
+  }
+`;
 export const onCreateLMSCollection = /* GraphQL */ `
   subscription OnCreateLMSCollection {
     onCreateLMSCollection {
@@ -6300,6 +6663,10 @@ export const onCreateLMSCirriculum = /* GraphQL */ `
             demo
             partOf
             altLink
+            shortDescription
+            subscriptionLink
+            subscriptionPrice
+            stripeLink
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -6361,6 +6728,10 @@ export const onUpdateLMSCirriculum = /* GraphQL */ `
             demo
             partOf
             altLink
+            shortDescription
+            subscriptionLink
+            subscriptionPrice
+            stripeLink
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -6422,6 +6793,10 @@ export const onDeleteLMSCirriculum = /* GraphQL */ `
             demo
             partOf
             altLink
+            shortDescription
+            subscriptionLink
+            subscriptionPrice
+            stripeLink
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -6483,6 +6858,10 @@ export const onCreateLMSCourse = /* GraphQL */ `
             demo
             partOf
             altLink
+            shortDescription
+            subscriptionLink
+            subscriptionPrice
+            stripeLink
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -6522,6 +6901,10 @@ export const onCreateLMSCourse = /* GraphQL */ `
             demo
             partOf
             altLink
+            shortDescription
+            subscriptionLink
+            subscriptionPrice
+            stripeLink
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -6573,6 +6956,10 @@ export const onCreateLMSCourse = /* GraphQL */ `
             demo
             partOf
             altLink
+            shortDescription
+            subscriptionLink
+            subscriptionPrice
+            stripeLink
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -6607,6 +6994,10 @@ export const onCreateLMSCourse = /* GraphQL */ `
       demo
       partOf
       altLink
+      shortDescription
+      subscriptionLink
+      subscriptionPrice
+      stripeLink
       createdAt
       updatedAt
       studentCourseEnrolledId
@@ -6660,6 +7051,10 @@ export const onUpdateLMSCourse = /* GraphQL */ `
             demo
             partOf
             altLink
+            shortDescription
+            subscriptionLink
+            subscriptionPrice
+            stripeLink
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -6699,6 +7094,10 @@ export const onUpdateLMSCourse = /* GraphQL */ `
             demo
             partOf
             altLink
+            shortDescription
+            subscriptionLink
+            subscriptionPrice
+            stripeLink
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -6750,6 +7149,10 @@ export const onUpdateLMSCourse = /* GraphQL */ `
             demo
             partOf
             altLink
+            shortDescription
+            subscriptionLink
+            subscriptionPrice
+            stripeLink
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -6784,6 +7187,10 @@ export const onUpdateLMSCourse = /* GraphQL */ `
       demo
       partOf
       altLink
+      shortDescription
+      subscriptionLink
+      subscriptionPrice
+      stripeLink
       createdAt
       updatedAt
       studentCourseEnrolledId
@@ -6837,6 +7244,10 @@ export const onDeleteLMSCourse = /* GraphQL */ `
             demo
             partOf
             altLink
+            shortDescription
+            subscriptionLink
+            subscriptionPrice
+            stripeLink
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -6876,6 +7287,10 @@ export const onDeleteLMSCourse = /* GraphQL */ `
             demo
             partOf
             altLink
+            shortDescription
+            subscriptionLink
+            subscriptionPrice
+            stripeLink
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -6927,6 +7342,10 @@ export const onDeleteLMSCourse = /* GraphQL */ `
             demo
             partOf
             altLink
+            shortDescription
+            subscriptionLink
+            subscriptionPrice
+            stripeLink
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -6961,105 +7380,13 @@ export const onDeleteLMSCourse = /* GraphQL */ `
       demo
       partOf
       altLink
+      shortDescription
+      subscriptionLink
+      subscriptionPrice
+      stripeLink
       createdAt
       updatedAt
       studentCourseEnrolledId
-    }
-  }
-`;
-export const onCreateCourseClick = /* GraphQL */ `
-  subscription OnCreateCourseClick {
-    onCreateCourseClick {
-      id
-      courseID
-      page
-      ipAddress
-      country
-      lat
-      long
-      referrer
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onUpdateCourseClick = /* GraphQL */ `
-  subscription OnUpdateCourseClick {
-    onUpdateCourseClick {
-      id
-      courseID
-      page
-      ipAddress
-      country
-      lat
-      long
-      referrer
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onDeleteCourseClick = /* GraphQL */ `
-  subscription OnDeleteCourseClick {
-    onDeleteCourseClick {
-      id
-      courseID
-      page
-      ipAddress
-      country
-      lat
-      long
-      referrer
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onCreateLessonClick = /* GraphQL */ `
-  subscription OnCreateLessonClick {
-    onCreateLessonClick {
-      id
-      LessonID
-      page
-      ipAddress
-      country
-      lat
-      long
-      referrer
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onUpdateLessonClick = /* GraphQL */ `
-  subscription OnUpdateLessonClick {
-    onUpdateLessonClick {
-      id
-      LessonID
-      page
-      ipAddress
-      country
-      lat
-      long
-      referrer
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onDeleteLessonClick = /* GraphQL */ `
-  subscription OnDeleteLessonClick {
-    onDeleteLessonClick {
-      id
-      LessonID
-      page
-      ipAddress
-      country
-      lat
-      long
-      referrer
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -7098,6 +7425,10 @@ export const onCreateLMSLesson = /* GraphQL */ `
             demo
             partOf
             altLink
+            shortDescription
+            subscriptionLink
+            subscriptionPrice
+            stripeLink
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -7209,6 +7540,10 @@ export const onUpdateLMSLesson = /* GraphQL */ `
             demo
             partOf
             altLink
+            shortDescription
+            subscriptionLink
+            subscriptionPrice
+            stripeLink
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -7320,6 +7655,10 @@ export const onDeleteLMSLesson = /* GraphQL */ `
             demo
             partOf
             altLink
+            shortDescription
+            subscriptionLink
+            subscriptionPrice
+            stripeLink
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -8260,6 +8599,10 @@ export const onCreateStudent = /* GraphQL */ `
           demo
           partOf
           altLink
+          shortDescription
+          subscriptionLink
+          subscriptionPrice
+          stripeLink
           createdAt
           updatedAt
           studentCourseEnrolledId
@@ -8517,6 +8860,10 @@ export const onUpdateStudent = /* GraphQL */ `
           demo
           partOf
           altLink
+          shortDescription
+          subscriptionLink
+          subscriptionPrice
+          stripeLink
           createdAt
           updatedAt
           studentCourseEnrolledId
@@ -8774,6 +9121,10 @@ export const onDeleteStudent = /* GraphQL */ `
           demo
           partOf
           altLink
+          shortDescription
+          subscriptionLink
+          subscriptionPrice
+          stripeLink
           createdAt
           updatedAt
           studentCourseEnrolledId
@@ -9026,6 +9377,10 @@ export const onCreateInstructor = /* GraphQL */ `
             demo
             partOf
             altLink
+            shortDescription
+            subscriptionLink
+            subscriptionPrice
+            stripeLink
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -9287,6 +9642,10 @@ export const onUpdateInstructor = /* GraphQL */ `
             demo
             partOf
             altLink
+            shortDescription
+            subscriptionLink
+            subscriptionPrice
+            stripeLink
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -9548,6 +9907,10 @@ export const onDeleteInstructor = /* GraphQL */ `
             demo
             partOf
             altLink
+            shortDescription
+            subscriptionLink
+            subscriptionPrice
+            stripeLink
             createdAt
             updatedAt
             studentCourseEnrolledId
@@ -9727,6 +10090,16 @@ export const onCreateTrackedCourse = /* GraphQL */ `
         slide
         video
         offered
+        pscourses {
+          items {
+            id
+            courseId
+            customerId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
         courses {
           items {
             id
@@ -9767,6 +10140,16 @@ export const onUpdateTrackedCourse = /* GraphQL */ `
         slide
         video
         offered
+        pscourses {
+          items {
+            id
+            courseId
+            customerId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
         courses {
           items {
             id
@@ -9807,6 +10190,163 @@ export const onDeleteTrackedCourse = /* GraphQL */ `
         slide
         video
         offered
+        pscourses {
+          items {
+            id
+            courseId
+            customerId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        courses {
+          items {
+            id
+            courseId
+            clicks
+            customerId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        offerings
+        status
+        createdAt
+        updatedAt
+      }
+      customerId
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateIncludedCourse = /* GraphQL */ `
+  subscription OnCreateIncludedCourse {
+    onCreateIncludedCourse {
+      id
+      courseId
+      customer {
+        id
+        displayName
+        link
+        logo
+        email
+        primaryColor
+        highlightColor
+        pdf
+        slide
+        video
+        offered
+        pscourses {
+          items {
+            id
+            courseId
+            customerId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        courses {
+          items {
+            id
+            courseId
+            clicks
+            customerId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        offerings
+        status
+        createdAt
+        updatedAt
+      }
+      customerId
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateIncludedCourse = /* GraphQL */ `
+  subscription OnUpdateIncludedCourse {
+    onUpdateIncludedCourse {
+      id
+      courseId
+      customer {
+        id
+        displayName
+        link
+        logo
+        email
+        primaryColor
+        highlightColor
+        pdf
+        slide
+        video
+        offered
+        pscourses {
+          items {
+            id
+            courseId
+            customerId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        courses {
+          items {
+            id
+            courseId
+            clicks
+            customerId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        offerings
+        status
+        createdAt
+        updatedAt
+      }
+      customerId
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteIncludedCourse = /* GraphQL */ `
+  subscription OnDeleteIncludedCourse {
+    onDeleteIncludedCourse {
+      id
+      courseId
+      customer {
+        id
+        displayName
+        link
+        logo
+        email
+        primaryColor
+        highlightColor
+        pdf
+        slide
+        video
+        offered
+        pscourses {
+          items {
+            id
+            courseId
+            customerId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
         courses {
           items {
             id
@@ -9843,6 +10383,33 @@ export const onCreateCustomer = /* GraphQL */ `
       slide
       video
       offered
+      pscourses {
+        items {
+          id
+          courseId
+          customer {
+            id
+            displayName
+            link
+            logo
+            email
+            primaryColor
+            highlightColor
+            pdf
+            slide
+            video
+            offered
+            offerings
+            status
+            createdAt
+            updatedAt
+          }
+          customerId
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       courses {
         items {
           id
@@ -9892,6 +10459,33 @@ export const onUpdateCustomer = /* GraphQL */ `
       slide
       video
       offered
+      pscourses {
+        items {
+          id
+          courseId
+          customer {
+            id
+            displayName
+            link
+            logo
+            email
+            primaryColor
+            highlightColor
+            pdf
+            slide
+            video
+            offered
+            offerings
+            status
+            createdAt
+            updatedAt
+          }
+          customerId
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       courses {
         items {
           id
@@ -9941,6 +10535,33 @@ export const onDeleteCustomer = /* GraphQL */ `
       slide
       video
       offered
+      pscourses {
+        items {
+          id
+          courseId
+          customer {
+            id
+            displayName
+            link
+            logo
+            email
+            primaryColor
+            highlightColor
+            pdf
+            slide
+            video
+            offered
+            offerings
+            status
+            createdAt
+            updatedAt
+          }
+          customerId
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       courses {
         items {
           id
@@ -10055,6 +10676,7 @@ export const onCreateSalesBar = /* GraphQL */ `
       text
       link
       icon
+      type
       createdAt
       updatedAt
     }
@@ -10067,6 +10689,7 @@ export const onUpdateSalesBar = /* GraphQL */ `
       text
       link
       icon
+      type
       createdAt
       updatedAt
     }
@@ -10079,6 +10702,7 @@ export const onDeleteSalesBar = /* GraphQL */ `
       text
       link
       icon
+      type
       createdAt
       updatedAt
     }
@@ -10198,6 +10822,186 @@ export const onDeleteWorkshopForm = /* GraphQL */ `
     }
   }
 `;
+export const onCreateCourseClick = /* GraphQL */ `
+  subscription OnCreateCourseClick {
+    onCreateCourseClick {
+      id
+      courseID
+      page
+      ipAddress
+      country
+      lat
+      long
+      referrer
+      nextPath
+      format
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateCourseClick = /* GraphQL */ `
+  subscription OnUpdateCourseClick {
+    onUpdateCourseClick {
+      id
+      courseID
+      page
+      ipAddress
+      country
+      lat
+      long
+      referrer
+      nextPath
+      format
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteCourseClick = /* GraphQL */ `
+  subscription OnDeleteCourseClick {
+    onDeleteCourseClick {
+      id
+      courseID
+      page
+      ipAddress
+      country
+      lat
+      long
+      referrer
+      nextPath
+      format
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateSalesbarClick = /* GraphQL */ `
+  subscription OnCreateSalesbarClick {
+    onCreateSalesbarClick {
+      id
+      page
+      ipAddress
+      country
+      link
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateSalesbarClick = /* GraphQL */ `
+  subscription OnUpdateSalesbarClick {
+    onUpdateSalesbarClick {
+      id
+      page
+      ipAddress
+      country
+      link
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteSalesbarClick = /* GraphQL */ `
+  subscription OnDeleteSalesbarClick {
+    onDeleteSalesbarClick {
+      id
+      page
+      ipAddress
+      country
+      link
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateLessonClick = /* GraphQL */ `
+  subscription OnCreateLessonClick {
+    onCreateLessonClick {
+      id
+      LessonID
+      page
+      ipAddress
+      country
+      lat
+      long
+      referrer
+      format
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateLessonClick = /* GraphQL */ `
+  subscription OnUpdateLessonClick {
+    onUpdateLessonClick {
+      id
+      LessonID
+      page
+      ipAddress
+      country
+      lat
+      long
+      referrer
+      format
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteLessonClick = /* GraphQL */ `
+  subscription OnDeleteLessonClick {
+    onDeleteLessonClick {
+      id
+      LessonID
+      page
+      ipAddress
+      country
+      lat
+      long
+      referrer
+      format
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateCourseSearch = /* GraphQL */ `
+  subscription OnCreateCourseSearch {
+    onCreateCourseSearch {
+      id
+      term
+      ipAddress
+      country
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateCourseSearch = /* GraphQL */ `
+  subscription OnUpdateCourseSearch {
+    onUpdateCourseSearch {
+      id
+      term
+      ipAddress
+      country
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteCourseSearch = /* GraphQL */ `
+  subscription OnDeleteCourseSearch {
+    onDeleteCourseSearch {
+      id
+      term
+      ipAddress
+      country
+      createdAt
+      updatedAt
+    }
+  }
+`;
 export const onCreateClick = /* GraphQL */ `
   subscription OnCreateClick {
     onCreateClick {
@@ -10241,6 +11045,684 @@ export const onDeleteClick = /* GraphQL */ `
       nextPath
       ipAddress
       location
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateIndiaClick = /* GraphQL */ `
+  subscription OnCreateIndiaClick {
+    onCreateIndiaClick {
+      id
+      courseID
+      page
+      ipAddress
+      country
+      lat
+      long
+      referrer
+      nextPath
+      format
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateIndiaClick = /* GraphQL */ `
+  subscription OnUpdateIndiaClick {
+    onUpdateIndiaClick {
+      id
+      courseID
+      page
+      ipAddress
+      country
+      lat
+      long
+      referrer
+      nextPath
+      format
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteIndiaClick = /* GraphQL */ `
+  subscription OnDeleteIndiaClick {
+    onDeleteIndiaClick {
+      id
+      courseID
+      page
+      ipAddress
+      country
+      lat
+      long
+      referrer
+      nextPath
+      format
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateIndiaCourseSearch = /* GraphQL */ `
+  subscription OnCreateIndiaCourseSearch {
+    onCreateIndiaCourseSearch {
+      id
+      term
+      ipAddress
+      country
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateIndiaCourseSearch = /* GraphQL */ `
+  subscription OnUpdateIndiaCourseSearch {
+    onUpdateIndiaCourseSearch {
+      id
+      term
+      ipAddress
+      country
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteIndiaCourseSearch = /* GraphQL */ `
+  subscription OnDeleteIndiaCourseSearch {
+    onDeleteIndiaCourseSearch {
+      id
+      term
+      ipAddress
+      country
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateIndexTemplate = /* GraphQL */ `
+  subscription OnCreateIndexTemplate {
+    onCreateIndexTemplate {
+      id
+      slug
+      title
+      subhead
+      authors {
+        items {
+          id
+          authorId
+          indexTemplateId
+          author {
+            id
+            name
+            headshot
+            linkedIn
+            title
+            company
+            createdAt
+            updatedAt
+          }
+          indexTemplate {
+            id
+            slug
+            title
+            subhead
+            createdAt
+            updatedAt
+          }
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      rows {
+        items {
+          id
+          indexTemplateId
+          indexRowId
+          indexTemplate {
+            id
+            slug
+            title
+            subhead
+            createdAt
+            updatedAt
+          }
+          indexRow {
+            id
+            headline
+            subhead
+            type
+            content
+            createdAt
+            updatedAt
+          }
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateIndexTemplate = /* GraphQL */ `
+  subscription OnUpdateIndexTemplate {
+    onUpdateIndexTemplate {
+      id
+      slug
+      title
+      subhead
+      authors {
+        items {
+          id
+          authorId
+          indexTemplateId
+          author {
+            id
+            name
+            headshot
+            linkedIn
+            title
+            company
+            createdAt
+            updatedAt
+          }
+          indexTemplate {
+            id
+            slug
+            title
+            subhead
+            createdAt
+            updatedAt
+          }
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      rows {
+        items {
+          id
+          indexTemplateId
+          indexRowId
+          indexTemplate {
+            id
+            slug
+            title
+            subhead
+            createdAt
+            updatedAt
+          }
+          indexRow {
+            id
+            headline
+            subhead
+            type
+            content
+            createdAt
+            updatedAt
+          }
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteIndexTemplate = /* GraphQL */ `
+  subscription OnDeleteIndexTemplate {
+    onDeleteIndexTemplate {
+      id
+      slug
+      title
+      subhead
+      authors {
+        items {
+          id
+          authorId
+          indexTemplateId
+          author {
+            id
+            name
+            headshot
+            linkedIn
+            title
+            company
+            createdAt
+            updatedAt
+          }
+          indexTemplate {
+            id
+            slug
+            title
+            subhead
+            createdAt
+            updatedAt
+          }
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      rows {
+        items {
+          id
+          indexTemplateId
+          indexRowId
+          indexTemplate {
+            id
+            slug
+            title
+            subhead
+            createdAt
+            updatedAt
+          }
+          indexRow {
+            id
+            headline
+            subhead
+            type
+            content
+            createdAt
+            updatedAt
+          }
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateIndexRow = /* GraphQL */ `
+  subscription OnCreateIndexRow {
+    onCreateIndexRow {
+      id
+      headline
+      subhead
+      type
+      content
+      templates {
+        items {
+          id
+          indexTemplateId
+          indexRowId
+          indexTemplate {
+            id
+            slug
+            title
+            subhead
+            createdAt
+            updatedAt
+          }
+          indexRow {
+            id
+            headline
+            subhead
+            type
+            content
+            createdAt
+            updatedAt
+          }
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateIndexRow = /* GraphQL */ `
+  subscription OnUpdateIndexRow {
+    onUpdateIndexRow {
+      id
+      headline
+      subhead
+      type
+      content
+      templates {
+        items {
+          id
+          indexTemplateId
+          indexRowId
+          indexTemplate {
+            id
+            slug
+            title
+            subhead
+            createdAt
+            updatedAt
+          }
+          indexRow {
+            id
+            headline
+            subhead
+            type
+            content
+            createdAt
+            updatedAt
+          }
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteIndexRow = /* GraphQL */ `
+  subscription OnDeleteIndexRow {
+    onDeleteIndexRow {
+      id
+      headline
+      subhead
+      type
+      content
+      templates {
+        items {
+          id
+          indexTemplateId
+          indexRowId
+          indexTemplate {
+            id
+            slug
+            title
+            subhead
+            createdAt
+            updatedAt
+          }
+          indexRow {
+            id
+            headline
+            subhead
+            type
+            content
+            createdAt
+            updatedAt
+          }
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateLessonTags = /* GraphQL */ `
+  subscription OnCreateLessonTags {
+    onCreateLessonTags {
+      id
+      tagsId
+      lessonId
+      tags {
+        id
+        tag
+        lesson {
+          items {
+            id
+            tagsId
+            lessonId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      lesson {
+        id
+        slug
+        title
+        subhead
+        type
+        media
+        mediaType
+        slides
+        seoImage
+        content
+        sources {
+          items {
+            id
+            name
+            link
+            position
+            createdAt
+            updatedAt
+            lessonSourcesId
+          }
+          nextToken
+        }
+        links {
+          items {
+            id
+            name
+            link
+            createdAt
+            updatedAt
+            lessonLinksId
+          }
+          nextToken
+        }
+        tags {
+          items {
+            id
+            tagsId
+            lessonId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        objectives
+        actionCTA
+        actionSubhead
+        actionLink
+        actionLinkTitle
+        actionExample
+        author
+        status
+        related
+        featured
+        backdate
+        createdBy
+        lastEditedBy
+        videoLink
+        screengrab
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateLessonTags = /* GraphQL */ `
+  subscription OnUpdateLessonTags {
+    onUpdateLessonTags {
+      id
+      tagsId
+      lessonId
+      tags {
+        id
+        tag
+        lesson {
+          items {
+            id
+            tagsId
+            lessonId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      lesson {
+        id
+        slug
+        title
+        subhead
+        type
+        media
+        mediaType
+        slides
+        seoImage
+        content
+        sources {
+          items {
+            id
+            name
+            link
+            position
+            createdAt
+            updatedAt
+            lessonSourcesId
+          }
+          nextToken
+        }
+        links {
+          items {
+            id
+            name
+            link
+            createdAt
+            updatedAt
+            lessonLinksId
+          }
+          nextToken
+        }
+        tags {
+          items {
+            id
+            tagsId
+            lessonId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        objectives
+        actionCTA
+        actionSubhead
+        actionLink
+        actionLinkTitle
+        actionExample
+        author
+        status
+        related
+        featured
+        backdate
+        createdBy
+        lastEditedBy
+        videoLink
+        screengrab
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteLessonTags = /* GraphQL */ `
+  subscription OnDeleteLessonTags {
+    onDeleteLessonTags {
+      id
+      tagsId
+      lessonId
+      tags {
+        id
+        tag
+        lesson {
+          items {
+            id
+            tagsId
+            lessonId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      lesson {
+        id
+        slug
+        title
+        subhead
+        type
+        media
+        mediaType
+        slides
+        seoImage
+        content
+        sources {
+          items {
+            id
+            name
+            link
+            position
+            createdAt
+            updatedAt
+            lessonSourcesId
+          }
+          nextToken
+        }
+        links {
+          items {
+            id
+            name
+            link
+            createdAt
+            updatedAt
+            lessonLinksId
+          }
+          nextToken
+        }
+        tags {
+          items {
+            id
+            tagsId
+            lessonId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        objectives
+        actionCTA
+        actionSubhead
+        actionLink
+        actionLinkTitle
+        actionExample
+        author
+        status
+        related
+        featured
+        backdate
+        createdBy
+        lastEditedBy
+        videoLink
+        screengrab
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
     }
@@ -10541,18 +12023,7 @@ export const onCreateArticleRelatedCourses = /* GraphQL */ `
         media
         seoImage
         content
-        tags {
-          items {
-            id
-            tag
-            createdAt
-            updatedAt
-            lessonTagsId
-            blogTagsId
-            articleTagsId
-          }
-          nextToken
-        }
+        tags
         relatedCourses {
           items {
             id
@@ -10620,18 +12091,7 @@ export const onUpdateArticleRelatedCourses = /* GraphQL */ `
         media
         seoImage
         content
-        tags {
-          items {
-            id
-            tag
-            createdAt
-            updatedAt
-            lessonTagsId
-            blogTagsId
-            articleTagsId
-          }
-          nextToken
-        }
+        tags
         relatedCourses {
           items {
             id
@@ -10699,23 +12159,189 @@ export const onDeleteArticleRelatedCourses = /* GraphQL */ `
         media
         seoImage
         content
-        tags {
-          items {
-            id
-            tag
-            createdAt
-            updatedAt
-            lessonTagsId
-            blogTagsId
-            articleTagsId
-          }
-          nextToken
-        }
+        tags
         relatedCourses {
           items {
             id
             courseId
             articleId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateAuthorTemplates = /* GraphQL */ `
+  subscription OnCreateAuthorTemplates {
+    onCreateAuthorTemplates {
+      id
+      authorId
+      indexTemplateId
+      author {
+        id
+        name
+        headshot
+        linkedIn
+        title
+        company
+        templates {
+          items {
+            id
+            authorId
+            indexTemplateId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      indexTemplate {
+        id
+        slug
+        title
+        subhead
+        authors {
+          items {
+            id
+            authorId
+            indexTemplateId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        rows {
+          items {
+            id
+            indexTemplateId
+            indexRowId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateAuthorTemplates = /* GraphQL */ `
+  subscription OnUpdateAuthorTemplates {
+    onUpdateAuthorTemplates {
+      id
+      authorId
+      indexTemplateId
+      author {
+        id
+        name
+        headshot
+        linkedIn
+        title
+        company
+        templates {
+          items {
+            id
+            authorId
+            indexTemplateId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      indexTemplate {
+        id
+        slug
+        title
+        subhead
+        authors {
+          items {
+            id
+            authorId
+            indexTemplateId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        rows {
+          items {
+            id
+            indexTemplateId
+            indexRowId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteAuthorTemplates = /* GraphQL */ `
+  subscription OnDeleteAuthorTemplates {
+    onDeleteAuthorTemplates {
+      id
+      authorId
+      indexTemplateId
+      author {
+        id
+        name
+        headshot
+        linkedIn
+        title
+        company
+        templates {
+          items {
+            id
+            authorId
+            indexTemplateId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      indexTemplate {
+        id
+        slug
+        title
+        subhead
+        authors {
+          items {
+            id
+            authorId
+            indexTemplateId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        rows {
+          items {
+            id
+            indexTemplateId
+            indexRowId
             createdAt
             updatedAt
           }
@@ -11949,6 +13575,10 @@ export const onCreateCirriculumCourses = /* GraphQL */ `
         demo
         partOf
         altLink
+        shortDescription
+        subscriptionLink
+        subscriptionPrice
+        stripeLink
         createdAt
         updatedAt
         studentCourseEnrolledId
@@ -12038,6 +13668,10 @@ export const onUpdateCirriculumCourses = /* GraphQL */ `
         demo
         partOf
         altLink
+        shortDescription
+        subscriptionLink
+        subscriptionPrice
+        stripeLink
         createdAt
         updatedAt
         studentCourseEnrolledId
@@ -12127,6 +13761,10 @@ export const onDeleteCirriculumCourses = /* GraphQL */ `
         demo
         partOf
         altLink
+        shortDescription
+        subscriptionLink
+        subscriptionPrice
+        stripeLink
         createdAt
         updatedAt
         studentCourseEnrolledId
@@ -12197,6 +13835,10 @@ export const onCreateCourseLessons = /* GraphQL */ `
         demo
         partOf
         altLink
+        shortDescription
+        subscriptionLink
+        subscriptionPrice
+        stripeLink
         createdAt
         updatedAt
         studentCourseEnrolledId
@@ -12306,6 +13948,10 @@ export const onUpdateCourseLessons = /* GraphQL */ `
         demo
         partOf
         altLink
+        shortDescription
+        subscriptionLink
+        subscriptionPrice
+        stripeLink
         createdAt
         updatedAt
         studentCourseEnrolledId
@@ -12415,6 +14061,10 @@ export const onDeleteCourseLessons = /* GraphQL */ `
         demo
         partOf
         altLink
+        shortDescription
+        subscriptionLink
+        subscriptionPrice
+        stripeLink
         createdAt
         updatedAt
         studentCourseEnrolledId
@@ -12524,6 +14174,10 @@ export const onCreateCourseInstructors = /* GraphQL */ `
         demo
         partOf
         altLink
+        shortDescription
+        subscriptionLink
+        subscriptionPrice
+        stripeLink
         createdAt
         updatedAt
         studentCourseEnrolledId
@@ -12711,6 +14365,10 @@ export const onUpdateCourseInstructors = /* GraphQL */ `
         demo
         partOf
         altLink
+        shortDescription
+        subscriptionLink
+        subscriptionPrice
+        stripeLink
         createdAt
         updatedAt
         studentCourseEnrolledId
@@ -12898,6 +14556,10 @@ export const onDeleteCourseInstructors = /* GraphQL */ `
         demo
         partOf
         altLink
+        shortDescription
+        subscriptionLink
+        subscriptionPrice
+        stripeLink
         createdAt
         updatedAt
         studentCourseEnrolledId
@@ -13011,6 +14673,180 @@ export const onDeleteCourseInstructors = /* GraphQL */ `
             id
             lMSCourseId
             instructorId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateIndexTemplateRows = /* GraphQL */ `
+  subscription OnCreateIndexTemplateRows {
+    onCreateIndexTemplateRows {
+      id
+      indexTemplateId
+      indexRowId
+      indexTemplate {
+        id
+        slug
+        title
+        subhead
+        authors {
+          items {
+            id
+            authorId
+            indexTemplateId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        rows {
+          items {
+            id
+            indexTemplateId
+            indexRowId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      indexRow {
+        id
+        headline
+        subhead
+        type
+        content
+        templates {
+          items {
+            id
+            indexTemplateId
+            indexRowId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateIndexTemplateRows = /* GraphQL */ `
+  subscription OnUpdateIndexTemplateRows {
+    onUpdateIndexTemplateRows {
+      id
+      indexTemplateId
+      indexRowId
+      indexTemplate {
+        id
+        slug
+        title
+        subhead
+        authors {
+          items {
+            id
+            authorId
+            indexTemplateId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        rows {
+          items {
+            id
+            indexTemplateId
+            indexRowId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      indexRow {
+        id
+        headline
+        subhead
+        type
+        content
+        templates {
+          items {
+            id
+            indexTemplateId
+            indexRowId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteIndexTemplateRows = /* GraphQL */ `
+  subscription OnDeleteIndexTemplateRows {
+    onDeleteIndexTemplateRows {
+      id
+      indexTemplateId
+      indexRowId
+      indexTemplate {
+        id
+        slug
+        title
+        subhead
+        authors {
+          items {
+            id
+            authorId
+            indexTemplateId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        rows {
+          items {
+            id
+            indexTemplateId
+            indexRowId
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      indexRow {
+        id
+        headline
+        subhead
+        type
+        content
+        templates {
+          items {
+            id
+            indexTemplateId
+            indexRowId
             createdAt
             updatedAt
           }

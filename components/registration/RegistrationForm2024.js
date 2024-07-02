@@ -7,7 +7,7 @@ import RegBlockPricing from './RegBlockPricing';
 import BrutalistButton from '../../shared/BrutalistButton';
 import { createAPSUserFromCodeRequest } from '../../util/api';
 
-const RegistrationForm2024 = ({ codes, submitted, params }) => {
+const RegistrationForm2024 = ({ codes, submitted, params, type }) => {
   const router = useRouter();
   const [name, setName] = useState('');
   const [isSending, setIsSending] = useState(false);
@@ -108,7 +108,7 @@ const RegistrationForm2024 = ({ codes, submitted, params }) => {
         </div>
         <div className='w-full max-w-sm leading-snug flex lg:justify-end items-center'>
           <div className='bg-amber-400 rounded-3xl font-bold text-sm md:text-xl text-neutral-900 border border-neutral-900 px-3 py-1.5'>
-            OEM/ TIER 1
+            {type}
           </div>
         </div>
       </div>
