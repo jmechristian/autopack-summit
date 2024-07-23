@@ -3,6 +3,7 @@ import { XCircleIcon } from '@heroicons/react/24/solid';
 import BioSession from './BioSession';
 import { SocialIcon } from 'react-social-icons';
 import { useRouter } from 'next/router';
+import { FaLinkedin } from 'react-icons/fa';
 
 const SpeakerModal = ({
   open,
@@ -53,10 +54,7 @@ const SpeakerModal = ({
                     </div>
                     {linkedin && (
                       <div onClick={() => window.open(linkedin, '_blank')}>
-                        <SocialIcon
-                          url={linkedin}
-                          style={{ width: '32px', height: '32px' }}
-                        />
+                        <FaLinkedin color='white' size={30} />
                       </div>
                     )}
                   </div>
