@@ -62,7 +62,7 @@ export const MorrisetteWelcomeEmail = ({
                   <br /> and Cookout
                 </Text>
                 <Text className='font-[HelveticaNeue] leading-tight text-[18px] px-6 lg:px-16 mb-10 text-neutral-600'>
-                  Monday, October 21th 10:30 AM - 1:00 PM
+                  Monday, October 21st 10:30 AM - 1:00 PM
                 </Text>
               </Row>
               <Row>

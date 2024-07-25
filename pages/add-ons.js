@@ -45,7 +45,7 @@ const Page = () => {
               buttonText={'Register'}
               url={'/tours/morrisette'}
               title={'Morrisette Packaging Tour & Cookout'}
-              time={'Monday, October 21th 10:30 AM - 1:00 PM'}
+              time={'Monday, October 21st 10:30 AM - 1:00 PM'}
               description={
                 <div className='flex flex-col gap-5 text-sm mt-1.5'>
                   <p>

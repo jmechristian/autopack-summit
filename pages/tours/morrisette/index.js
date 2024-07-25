@@ -67,7 +67,7 @@ const Page = () => {
             Morrisette Packaging Tour and Cookout Registration
           </div>
           <div className='text-lg font-bold text-ap-darkblue'>
-            Monday, October 21th 10:30 AM - 1:00 PM
+            Monday, October 21st 10:30 AM - 1:00 PM
           </div>
         </div>
         <div className='flex flex-col lg:flex-row gap-10 pt-10'>
