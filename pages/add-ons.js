@@ -89,11 +89,9 @@ const Page = () => {
             />
             <AddOnCard
               url={'#'}
-              title={"Aristo's Rack Manufacturing presented by Freudenberg"}
+              title={'TBD'}
               time={'TBD'}
-              description={
-                'Will feature Rack Manufacturing, Tote, Inserts which all show cases various Evolon textile class a fabric products.'
-              }
+              description={'TDB'}
               buttonText={'Registration Opening Soon'}
             />
           </div>
