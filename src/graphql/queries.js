@@ -8367,6 +8367,39 @@ export const listIndexRows = /* GraphQL */ `
     }
   }
 `;
+export const getFaq = /* GraphQL */ `
+  query GetFaq($id: ID!) {
+    getFaq(id: $id) {
+      id
+      question
+      answer
+      type
+      order
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listFaqs = /* GraphQL */ `
+  query ListFaqs(
+    $filter: ModelFaqFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listFaqs(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        question
+        answer
+        type
+        order
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
 export const getLessonTags = /* GraphQL */ `
   query GetLessonTags($id: ID!) {
     getLessonTags(id: $id) {

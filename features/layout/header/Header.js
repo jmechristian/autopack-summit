@@ -94,7 +94,7 @@ const Header = ({ openMenu }) => {
       <motion.div className='w-24 h-24 fixed bottom-6 right-6 z-[80]'>
         <motion.div
           className='aspect-square rounded-full '
-          animate={showMenu ? { opacity: 1 } : { opacity: 0 }}
+          animate={showMenu && !powerOpen ? { opacity: 1 } : { opacity: 0 }}
           initial={{ opacity: 0 }}
           transition={{ delay: 0.5, ease: 'easeInOut', duration: 0.75 }}
           onClick={() =>

@@ -824,3 +824,13 @@ type IndexRow @model @auth(rules: [{ allow: public }]) {
   content: [String]
   templates: [IndexTemplate] @manyToMany(relationName: "IndexTemplateRows")
 }
+
+######### FAQs #########
+
+type Faq @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  question: String
+  answer: String
+  type: String
+  order: Int! @default(value: "0")
+}

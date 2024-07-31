@@ -11461,6 +11461,45 @@ export const onDeleteIndexRow = /* GraphQL */ `
     }
   }
 `;
+export const onCreateFaq = /* GraphQL */ `
+  subscription OnCreateFaq {
+    onCreateFaq {
+      id
+      question
+      answer
+      type
+      order
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateFaq = /* GraphQL */ `
+  subscription OnUpdateFaq {
+    onUpdateFaq {
+      id
+      question
+      answer
+      type
+      order
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteFaq = /* GraphQL */ `
+  subscription OnDeleteFaq {
+    onDeleteFaq {
+      id
+      question
+      answer
+      type
+      order
+      createdAt
+      updatedAt
+    }
+  }
+`;
 export const onCreateLessonTags = /* GraphQL */ `
   subscription OnCreateLessonTags {
     onCreateLessonTags {
