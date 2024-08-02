@@ -95,30 +95,21 @@ const TicketPricingBlock = ({
     //     email: email,
     //   }),
     // });
-    router.push('https://buy.stripe.com/dR6bJE77U2fe5FKcMO');
+    router.push('https://buy.stripe.com/dR6eVQ0Jw5rq5FKdR6');
   };
 
   return (
     <div className='flex flex-col gap-3 items-center justify-between w-full h-full px-6'>
       <p className='font-medium bg-ap-yellow px-3 py-1 rounded text-white text-sm'>
-        Limited Summer Special!
+        Ticket quantities are limited!
       </p>
       <div className='flex flex-col gap-2 justify-center'>
         <div className='flex items-center justify-center text-5xl font-bold tracking-tight text-gray-900'>
-          <span>$932</span>
+          <span>$1015</span>
 
           <span className='ml-2 text-sm font-medium tracking-normal text-gray-900'>
             USD
           </span>
-        </div>
-        <div>
-          <div className='flex items-center justify-center text-3xl font-medium tracking-tight text-gray-500'>
-            <span className='line-through'>$1015</span>
-
-            <span className='ml-2 text-xs font-medium tracking-normal text-slate-500'>
-              USD
-            </span>
-          </div>
         </div>
       </div>
       <button
