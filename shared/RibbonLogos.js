@@ -92,6 +92,11 @@ const LogoItemsTop = () => (
       name='Surgere'
       link={'https://surgere.com/'}
     />
+    <LogoItem
+      image={'https://packschool.s3.amazonaws.com/JTEKT_only_Black.png'}
+      name='JTEKT'
+      link={'https://jtekt-na.com/'}
+    />
   </>
 );
 
