@@ -23,7 +23,7 @@ export default async function handler(req, res) {
         ],
         BccAddresses: [
           'jamie@packagingschool.com',
-          'diana@packagingschool.com',
+          'suzy@packagingschool.com',
           'bianca@packagingschool.com',
           'lars@packagingschool.com',
         ],

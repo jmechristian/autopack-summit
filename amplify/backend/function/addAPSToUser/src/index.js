@@ -2,7 +2,7 @@ const { default: fetch, Request } = require('node-fetch');
 
 const GRAPHQL_ENDPOINT =
   'https://c6pkoby5rbgtxcum5slz7hgem4.appsync-api.us-east-1.amazonaws.com/graphql';
-const GRAPHQL_API_KEY = 'da2-e5j64foa3jay5kmhsj763maqla';
+const GRAPHQL_API_KEY = 'da2-xwgvfy5tfjdozdwqq7ecamil2y';
 
 const query = /* GraphQL */ `
   mutation CreateAPSUser($input: CreateAPSUserInput!) {

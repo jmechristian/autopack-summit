@@ -318,12 +318,12 @@ export default async function handler(req, res) {
         CcAddresses: [
           /* more items */
         ],
-        ToAddresses: [
-          toAddress,
-          body.email,
-          //   'diana@packagingschool.com',
-          //   'bianca@packagingschool.com',
+        BccAddresses: [
+          'lars@packagingschool.com',
+          'suzy@packagingschool.com',
+          'bianca@packagingschool.com',
         ],
+        ToAddresses: [toAddress, body.email],
       },
       Message: {
         /* required */
