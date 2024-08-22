@@ -1,7 +1,7 @@
 import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses';
 import { render } from '@react-email/render';
-import { CodeRequestEmail } from '../../react-email-starter/emails/code-request-email';
-import SendGuardianEmail from '../../react-email-starter/emails/send-guardian';
+import GuardianWelcomeEmail from '../../react-email-starter/emails/guardian-confirmation';
+import ClemsonWelcomeEmail from '../../react-email-starter/emails/clemson-confirmation';
 const REGION = 'us-east-1';
 const creds = {
   accessKeyId: process.env.AWSACCESSKEYID,
@@ -13,7 +13,7 @@ export { sesClient };
 
 export default async function handler(req, res) {
   const body = req.body;
-  const emailHtml = render(<SendGuardianEmail data={body} />);
+  const emailHtml = render(<ClemsonWelcomeEmail />);
 
   const createSendEmailCommand = (toAddress, fromAddress) => {
     return new SendEmailCommand({
@@ -22,12 +22,13 @@ export default async function handler(req, res) {
         CcAddresses: [
           /* more items */
         ],
-        ToAddresses: [
-          toAddress,
+        BccAddresses: [
+          'jamie@packagingschool.com',
           'suzy@packagingschool.com',
           'bianca@packagingschool.com',
           'lars@packagingschool.com',
         ],
+        ToAddresses: [toAddress],
       },
       Message: {
         /* required */
@@ -43,7 +44,7 @@ export default async function handler(req, res) {
         },
         Subject: {
           Charset: 'UTF-8',
-          Data: 'Guardian Workshop Submission Form',
+          Data: 'Clemson Tour Confirmation',
         },
       },
       Source: fromAddress,
@@ -55,10 +56,7 @@ export default async function handler(req, res) {
 
   try {
     await sesClient.send(
-      createSendEmailCommand(
-        'jamie@packagingschool.com',
-        'jamie@packagingschool.com'
-      )
+      createSendEmailCommand(body.email, 'info@packagingschool.com')
     );
     res.status(200).json({ message: 'success' });
   } catch (error) {

@@ -2,6 +2,7 @@ import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses';
 import { render } from '@react-email/render';
 import { CodeRequestEmail } from '../../react-email-starter/emails/code-request-email';
 import SendGuardianEmail from '../../react-email-starter/emails/send-guardian';
+import SendClemsonEmail from '../../react-email-starter/emails/send-clemson';
 const REGION = 'us-east-1';
 const creds = {
   accessKeyId: process.env.AWSACCESSKEYID,
@@ -13,7 +14,7 @@ export { sesClient };
 
 export default async function handler(req, res) {
   const body = req.body;
-  const emailHtml = render(<SendGuardianEmail data={body} />);
+  const emailHtml = render(<SendClemsonEmail data={body} />);
 
   const createSendEmailCommand = (toAddress, fromAddress) => {
     return new SendEmailCommand({
@@ -43,7 +44,7 @@ export default async function handler(req, res) {
         },
         Subject: {
           Charset: 'UTF-8',
-          Data: 'Guardian Workshop Submission Form',
+          Data: 'Clemson Tour Submission Form',
         },
       },
       Source: fromAddress,
