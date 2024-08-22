@@ -18,20 +18,6 @@ export type AmplifyDependentResourcesAttributes = {
         }
     },
     "function": {
-        "addAPSToUser": {
-            "Name": "string",
-            "Arn": "string",
-            "Region": "string",
-            "LambdaExecutionRole": "string",
-            "LambdaExecutionRoleArn": "string"
-        },
-        "addNewUser": {
-            "Name": "string",
-            "Arn": "string",
-            "Region": "string",
-            "LambdaExecutionRole": "string",
-            "LambdaExecutionRoleArn": "string"
-        },
         "sendEmailFn": {
             "Name": "string",
             "Arn": "string",

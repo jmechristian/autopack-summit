@@ -3253,6 +3253,57 @@ export const deleteGuardianForm = /* GraphQL */ `
     }
   }
 `;
+export const createClemsonForm = /* GraphQL */ `
+  mutation CreateClemsonForm(
+    $input: CreateClemsonFormInput!
+    $condition: ModelClemsonFormConditionInput
+  ) {
+    createClemsonForm(input: $input, condition: $condition) {
+      name
+      email
+      company
+      title
+      approved
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateClemsonForm = /* GraphQL */ `
+  mutation UpdateClemsonForm(
+    $input: UpdateClemsonFormInput!
+    $condition: ModelClemsonFormConditionInput
+  ) {
+    updateClemsonForm(input: $input, condition: $condition) {
+      name
+      email
+      company
+      title
+      approved
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteClemsonForm = /* GraphQL */ `
+  mutation DeleteClemsonForm(
+    $input: DeleteClemsonFormInput!
+    $condition: ModelClemsonFormConditionInput
+  ) {
+    deleteClemsonForm(input: $input, condition: $condition) {
+      name
+      email
+      company
+      title
+      approved
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
 export const createSurgereForm = /* GraphQL */ `
   mutation CreateSurgereForm(
     $input: CreateSurgereFormInput!

@@ -2264,6 +2264,41 @@ export const listGuardianForms = /* GraphQL */ `
     }
   }
 `;
+export const getClemsonForm = /* GraphQL */ `
+  query GetClemsonForm($id: ID!) {
+    getClemsonForm(id: $id) {
+      name
+      email
+      company
+      title
+      approved
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listClemsonForms = /* GraphQL */ `
+  query ListClemsonForms(
+    $filter: ModelClemsonFormFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listClemsonForms(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        name
+        email
+        company
+        title
+        approved
+        id
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
 export const getSurgereForm = /* GraphQL */ `
   query GetSurgereForm($id: ID!) {
     getSurgereForm(id: $id) {

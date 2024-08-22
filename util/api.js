@@ -318,6 +318,36 @@ export const sendGuardianWelcome = async (email) => {
   return (await res).status;
 };
 
+export const sendClemson = async (data) => {
+  const res = fetch('/api/send-clemson', {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      data,
+    }),
+  });
+
+  return (await res).status;
+};
+
+export const sendClemsonWelcome = async (email) => {
+  const res = fetch('/api/send-clemson-approval', {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      email,
+    }),
+  });
+
+  return (await res).status;
+};
+
 export const sendSurgere = async (data) => {
   const res = fetch('/api/send-surgere', {
     method: 'POST',

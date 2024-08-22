@@ -3046,6 +3046,48 @@ export const onDeleteGuardianForm = /* GraphQL */ `
     }
   }
 `;
+export const onCreateClemsonForm = /* GraphQL */ `
+  subscription OnCreateClemsonForm {
+    onCreateClemsonForm {
+      name
+      email
+      company
+      title
+      approved
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateClemsonForm = /* GraphQL */ `
+  subscription OnUpdateClemsonForm {
+    onUpdateClemsonForm {
+      name
+      email
+      company
+      title
+      approved
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteClemsonForm = /* GraphQL */ `
+  subscription OnDeleteClemsonForm {
+    onDeleteClemsonForm {
+      name
+      email
+      company
+      title
+      approved
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
 export const onCreateSurgereForm = /* GraphQL */ `
   subscription OnCreateSurgereForm {
     onCreateSurgereForm {

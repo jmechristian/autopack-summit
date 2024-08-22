@@ -10,11 +10,12 @@
                         }
                     ],
                     "defaultAuthentication": {
+                        "authenticationType": "API_KEY",
                         "apiKeyConfig": {
-                            "apiKeyExpirationDays": 30,
-                            "description": "api key description"
-                        },
-                        "authenticationType": "API_KEY"
+                            "apiKeyExpirationDays": 365,
+                            "apiKeyExpirationDate": "2025-08-16T13:57:24.415Z",
+                            "description": "newish one"
+                        }
                     }
                 }
             },
@@ -56,38 +57,6 @@
         }
     },
     "function": {
-        "addAPSToUser": {
-            "build": true,
-            "dependsOn": [
-                {
-                    "attributes": [
-                        "GraphQLAPIIdOutput",
-                        "GraphQLAPIEndpointOutput",
-                        "GraphQLAPIKeyOutput"
-                    ],
-                    "category": "api",
-                    "resourceName": "packbrain"
-                }
-            ],
-            "providerPlugin": "awscloudformation",
-            "service": "Lambda"
-        },
-        "addNewUser": {
-            "build": true,
-            "dependsOn": [
-                {
-                    "attributes": [
-                        "GraphQLAPIIdOutput",
-                        "GraphQLAPIEndpointOutput",
-                        "GraphQLAPIKeyOutput"
-                    ],
-                    "category": "api",
-                    "resourceName": "packbrain"
-                }
-            ],
-            "providerPlugin": "awscloudformation",
-            "service": "Lambda"
-        },
         "sendEmailFn": {
             "build": true,
             "providerPlugin": "awscloudformation",
