@@ -88,11 +88,95 @@ const Page = () => {
               }
             />
             <AddOnCard
-              url={'#'}
-              title={'TBD'}
-              time={'TBD'}
-              description={'TDB'}
-              buttonText={'Registration Opening Soon'}
+              title={'Clemson University'}
+              time={'Wednesday, October 23rd 10:00 AM - 12:00 PM'}
+              description={
+                <div className='flex flex-col gap-5 text-sm mt-1.5'>
+                  <div className='font-bold'>
+                    Join us for an exclusive tour of Clemson University and the
+                    Harris A. Smith Building (Sonoco Institute of Packaging
+                    Design and Graphics), including a visit to their
+                    cutting-edge testing lab.
+                  </div>
+                  <div>
+                    The Harris A. Smith building stands as a distinguished hub
+                    for education, research, and industry collaboration,
+                    dedicated to pioneering advanced solutions and resources for
+                    the future of the printing and packaging value chain. During
+                    the tour, you'll also have the opportunity to explore the
+                    Center for Flexible Packaging, which features
+                    state-of-the-art research lab facilities and distribution
+                    testing equipment.
+                  </div>
+                  <div>
+                    Please note that the tour involves walking across campus, so
+                    we recommend wearing comfortable clothing and appropriate
+                    footwear.
+                  </div>
+                  <div>Limited Space Available!</div>
+                  <div>
+                    <i>Transportation and parking are not provided.</i>
+                  </div>
+                  <div className='flex flex-col gap-0'>
+                    <div className='font-bold'>Meeting Point:</div>
+                    <div>Front Entrance of the Harris A. Smith Building</div>
+                    <div>
+                      (Sonoco Institute of Packaging Design and Graphics)
+                    </div>
+                    <div>320 Fernow Street </div>
+                    <div>Clemson, SC 29634-001 </div>
+                  </div>
+                  <div className='flex flex-col gap-0'>
+                    <div>
+                      <strong>Tour start time:</strong> 10am
+                    </div>
+                    <div>
+                      <strong>Recommended Arrival Time:</strong> 9:30am
+                    </div>
+                  </div>
+                  <div>
+                    <strong>Parking Information:</strong> Please familiarize
+                    yourself with the attached{' '}
+                    <span className='font-bold text-ap-blue cursor-pointer'>
+                      <a
+                        href='https://packschool.s3.amazonaws.com/Clemson-Tour-Map.pdf'
+                        target='_blank'
+                        rel='noreferrer'
+                      >
+                        campus and parking map.
+                      </a>
+                    </span>{' '}
+                    We highly recommend using the METERED PARKING areas.
+                  </div>
+                  <div>
+                    <div>
+                      For questions regarding this tour please reach out to Lars
+                      or Bianca: <br />
+                      <span className='font-bold text-ap-blue cursor-pointer'>
+                        <a
+                          href='mailto:Lars@packagingschool.com'
+                          target='_blank'
+                          rel='noreferrer'
+                        >
+                          Lars@packagingschool.com
+                        </a>
+                      </span>
+                      <br />
+                      <span className='font-bold text-ap-blue cursor-pointer'>
+                        <a
+                          href='mailto:Bianca@packagingschool.com'
+                          target='_blank'
+                          rel='noreferrer'
+                        >
+                          Bianca@packagingschool.com
+                        </a>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              }
+              url={'/tours/clemson'}
+              buttonText={'Register'}
             />
           </div>
           <div className='flex flex-col gap-4 mt-10'>
