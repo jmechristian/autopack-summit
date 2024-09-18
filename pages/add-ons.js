@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import BrutalistButton from '../shared/BrutalistButton';
 import AddOnCard from '../shared/AddOnCard';
-import { PowerIcon } from '@heroicons/react/24/solid';
+import { MapPinIcon, ArrowDownCircleIcon } from '@heroicons/react/24/solid';
 
 const Page = () => {
   const [name, setName] = useState('');
@@ -176,6 +176,121 @@ const Page = () => {
                 </div>
               }
               url={'/tours/clemson'}
+              buttonText={'Register'}
+            />
+            <AddOnCard
+              title={'BMW Exclusive Glimpse Tour (Limited Space!)'}
+              time={'Wednesday, October 23rd 9:45 AM - 10:45 PM'}
+              description={
+                <div className='flex flex-col gap-5 text-sm mt-1.5'>
+                  <div className='font-bold'>
+                    Join us for an exclusive look into the world of BMW
+                    manufacturing. This special "Glimpse Tour" provides an
+                    insider’s view of three key areas of the BMW Plant:
+                  </div>
+                  <div>
+                    <ul>
+                      <li className='font-bold ml-4'>Body Shop (Best Fit)</li>
+                      <li className='font-bold ml-4'>The Assembly Line</li>
+                      <li className='font-bold ml-4'>The Paint Area</li>
+                    </ul>
+                  </div>
+                  <div className='flex flex-col gap-0'>
+                    <div className='underline font-bold mb-2'>
+                      What You Need to Know:
+                    </div>
+                    <div>
+                      <ul className='list-disc list-inside space-y-2'>
+                        <li>
+                          Cost: $15 per person (payable upon registration).
+                        </li>
+                        <li>
+                          Please reference “AutoPackSummit” at registration
+                          subject line.
+                        </li>
+                        <li>
+                          Transportation: You are responsible for arranging your
+                          own transportation.
+                        </li>
+                        <li>
+                          Check-in: Arrive at the BMW Visitor’s Center no later
+                          than 9:00 AM for check-in. The tour will begin
+                          promptly at 9:45 AM.
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div className='flex flex-col gap-0'>
+                    <div>
+                      After completing your online reservation, each registrant
+                      will receive a confirmation packet with driving directions
+                      to the BMW Zentrum Visitor Center.
+                    </div>
+                  </div>
+                  <div>
+                    <div className='font-bold underline mb-2'>
+                      Important Tour Guidelines:
+                    </div>
+                    <div>
+                      <ul className='list-disc list-inside space-y-2'>
+                        <li>
+                          <span className='font-bold'>Footwear:</span> All
+                          participants must wear fully enclosed shoes.
+                          Open-toed, open-heeled, or open-sided shoes (including
+                          sandals, slides, crocs, or flip-flops) are not
+                          permitted. High not permitted. High heels are also
+                          prohibited. Sneakers are recommended as the tour
+                          involves approximately 1 mile of walking.
+                        </li>
+                        <li>
+                          <span className='font-bold'>Waiver:</span> All tour
+                          participants are required to complete the attached
+                          waiver form before the tour.
+                        </li>
+                        <li>
+                          <span className='font-bold'>Photo ID:</span>
+                          Each guest must present a valid photo ID at check-in.
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div>
+                    <div className='flex items-center gap-1'>
+                      <div>
+                        <ArrowDownCircleIcon className='w-6 h-6 text-ap-blue' />
+                      </div>
+                      <div className='font-bold text-ap-blue cursor-pointer underline'>
+                        <a
+                          href='https://packschool.s3.amazonaws.com/Zentrum_Tour_Waiver_Version2-1-revisedas52824.pdf'
+                          target='_blank'
+                          rel='noreferrer'
+                        >
+                          Download Waiver Form
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div className='flex items-center gap-1'>
+                      <div>
+                        <MapPinIcon className='w-6 h-6 text-ap-blue' />
+                      </div>
+                      <div className='font-bold text-ap-blue cursor-pointer underline'>
+                        <a
+                          href='https://packschool.s3.amazonaws.com/Directions-to-the-Zentrum+.pdf'
+                          target='_blank'
+                          rel='noreferrer'
+                        >
+                          Directions to Zentrum
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              }
+              url={
+                'https://fareharbor.com/embeds/book/bmwusfactory/items/565904/availability/1512103020/book/?full-items=yes'
+              }
               buttonText={'Register'}
             />
           </div>
