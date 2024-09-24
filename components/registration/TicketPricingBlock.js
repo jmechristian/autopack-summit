@@ -101,7 +101,7 @@ const TicketPricingBlock = ({
   return (
     <div className='flex flex-col gap-3 items-center justify-between w-full h-full px-6'>
       <p className='font-medium bg-ap-yellow px-3 py-1 rounded text-white text-sm'>
-        Ticket quantities are limited!
+        Ticket quantities are SOLD OUT!
       </p>
       <div className='flex flex-col gap-2 justify-center'>
         <div className='flex items-center justify-center text-5xl font-bold tracking-tight text-gray-900'>
@@ -117,11 +117,12 @@ const TicketPricingBlock = ({
           formIsValid === 'VALID' ? 'bg-ap-yellow' : 'bg-slate-400'
         } w-full mt-2 shadow-[4px_4px_0_black] hover:shadow-[1px_1px_0_black] hover:translate-x-[3px] hover:translate-y-[3px] transition-all`}
         disabled={
-          formIsValid === 'NOTVALID'
-            ? true
-            : formIsValid === 'VALID'
-            ? false
-            : true
+          true
+          // formIsValid === 'NOTVALID'
+          //   ? true
+          //   : formIsValid === 'VALID'
+          //   ? false
+          //   : true
         }
         onClick={regInitHandler}
       >
@@ -130,7 +131,7 @@ const TicketPricingBlock = ({
             formIsValid === 'VALID' ? 'text-slate-900' : 'text-slate-500'
           } uppercase text-sm lg:text-base font-bold py-3 px-6 tracking-widest`}
         >
-          {formIsValid === 'VALID' ? 'Register' : 'Complete Form'}
+          {formIsValid === 'VALID' ? 'Sold Out' : 'Sold Out'}
         </div>
       </button>
       {/* {formIsValid === 'NOTVALID' && (
