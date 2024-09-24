@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import { MdCellTower } from 'react-icons/md';
 import { createAPSUserFromCodeRequest } from '../../util/api';
 import TicketPricingBlock from './TicketPricingBlock';
 
@@ -40,9 +41,29 @@ const TicketForm = ({ codes, submitted, params }) => {
           </div>
         </div>
       </div>
+
       <div className='grid grid-cols-1 lg:grid-cols-12 md:gap-9'>
         <div className='lg:col-span-12 xl:col-span-8 rounded-2xl md:border md:border-neutral-900 w-full h-full bg-white md:shadow-[4px_6px_0_black]'>
-          <div className='grid md:grid-cols-2 gap-x-5 md:gap-x-10 gap-y-8 px-5 xl:px-10 py-5 overflow-hidden'>
+          <div className='grid md:grid-cols-2 gap-x-5 md:gap-x-10 gap-y-8 px-5 xl:px-10 py-5 overflow-hidden w-full'>
+            <div
+              className='bg-yellow-300 border-2 border-black  w-full p-4 flex items-center gap-5 col-span-full cursor-pointer'
+              onClick={() =>
+                window.open('https://forms.gle/k4KFagWajT7WACBx5', '_blank')
+              }
+            >
+              <div>
+                <MdCellTower color='black' size='40px' />
+              </div>
+              <div>
+                <div className='text-lg font-bold'>
+                  Join the Ticket Waitlist
+                </div>
+                <div className='leading-tight'>
+                  Tickets for 2024 are sold out, but you can join the waitlist.
+                  We'll notify you when tickets are available.
+                </div>
+              </div>
+            </div>
             <div className='flex flex-col gap-2 text-left py-3 lg:col-span-2'>
               <p className='text-xl font-medium leading-6 text-gray-900'>
                 1. Personal Information

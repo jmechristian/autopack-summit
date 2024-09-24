@@ -10,6 +10,7 @@ import {
   MdConfirmationNumber,
   MdChevronRight,
   MdDiversity1,
+  MdAccessAlarm,
 } from 'react-icons/md';
 import ConsoleItem from './ConsoleItem';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -64,12 +65,22 @@ const PowerConsole = () => {
               <motion.div className='w-full px-3 py-2 flex flex-col gap-2 item-center'>
                 <ConsoleItem
                   title={'General Admission Tickets'}
+                  color={'bg-neutral-500'}
+                  hoverColor={'hover:bg-amber-400'}
+                  iconBack={'bg-black/50'}
+                  icon={<MdConfirmationNumber color='gray' size={'20px'} />}
+                  fn={() => router.push('/')}
+                  soldOut={true}
+                />
+                <ConsoleItem
+                  title={'Join the Ticket Waitlist'}
                   color={'bg-white'}
                   hoverColor={'hover:bg-amber-400'}
                   iconBack={'bg-black'}
-                  icon={<MdConfirmationNumber color='white' size={'20px'} />}
-                  fn={() => router.push('/')}
-                  soldOut={true}
+                  icon={<MdAccessAlarm color='white' size={'20px'} />}
+                  fn={() =>
+                    window.open('https://forms.gle/k4KFagWajT7WACBx5', '_blank')
+                  }
                 />
                 <ConsoleItem
                   title={'OEM/ Tier 1 Registration'}

@@ -90,16 +90,29 @@ const Page = ({ homepageData, speakers, testimonials }) => {
                 logistics.
               </div>
             </Reveal>
-            <motion.button
-              className='bg-ap-yellow w-fit text-white text-base md:text-lg font-medium px-8 py-2 shadow-[3px_3px_0_black] hover:shadow-[1px_1px_0_black] hover:translate-x-[3px] hover:translate-y-[3px] transition-all'
-              animate={{ opacity: 1 }}
-              initial={{ opacity: 0 }}
-              transition={{ delay: 0.45, ease: 'easeIn', duration: 0.5 }}
-              disabled={true}
-              onClick={() => dispatch(openPowerConsole())}
-            >
-              Tickets are SOLD OUT!
-            </motion.button>
+            <div className='flex flex-col md:flex-row md:items-center gap-7'>
+              <motion.button
+                className='bg-ap-yellow w-fit text-white text-base md:text-lg font-medium px-8 py-2 shadow-[3px_3px_0_black] hover:shadow-[1px_1px_0_black] hover:translate-x-[3px] hover:translate-y-[3px] transition-all'
+                animate={{ opacity: 1 }}
+                initial={{ opacity: 0 }}
+                transition={{ delay: 0.45, ease: 'easeIn', duration: 0.5 }}
+                disabled={true}
+                onClick={() => dispatch(openPowerConsole())}
+              >
+                Tickets are SOLD OUT!
+              </motion.button>
+              <motion.div
+                className='text-center underline text-neutral-900 font-medium cursor-pointer'
+                animate={{ opacity: 1 }}
+                initial={{ opacity: 0 }}
+                transition={{ delay: 0.6, ease: 'easeIn', duration: 0.5 }}
+                onClick={() =>
+                  window.open('https://forms.gle/k4KFagWajT7WACBx5', '_blank')
+                }
+              >
+                Join the Waitlist
+              </motion.div>
+            </div>
           </div>
           <Reveal delay={0.55} bgColor={'white'}>
             <div className='flex flex-col lg:flex-row gap-3 pt-12 lg:pt-0 max-w-xl md:mx-auto w-full'>
