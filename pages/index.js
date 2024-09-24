@@ -102,7 +102,7 @@ const Page = ({ homepageData, speakers, testimonials }) => {
                 Tickets are SOLD OUT!
               </motion.button>
               <motion.div
-                className='text-center underline text-neutral-900 font-medium cursor-pointer'
+                className='underline text-neutral-900 font-medium cursor-pointer'
                 animate={{ opacity: 1 }}
                 initial={{ opacity: 0 }}
                 transition={{ delay: 0.6, ease: 'easeIn', duration: 0.5 }}
