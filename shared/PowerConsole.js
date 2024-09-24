@@ -68,7 +68,8 @@ const PowerConsole = () => {
                   hoverColor={'hover:bg-amber-400'}
                   iconBack={'bg-black'}
                   icon={<MdConfirmationNumber color='white' size={'20px'} />}
-                  fn={() => router.push('/tickets')}
+                  fn={() => router.push('/')}
+                  soldOut={true}
                 />
                 <ConsoleItem
                   title={'OEM/ Tier 1 Registration'}

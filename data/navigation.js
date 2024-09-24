@@ -23,8 +23,4 @@ export const navMenu = [
     name: 'OEM/ Tier 1',
     link: '/register',
   },
-  {
-    name: 'Tickets',
-    link: '/tickets',
-  },
 ];

@@ -15,6 +15,12 @@ const HeaderNav = ({ show }) => {
             <a href={item.link}>{item.name}</a>
           </div>
         ))}
+        <div className='text-black font-bold relative'>
+          <span>Tickets</span>
+          <div className='absolute top-0 left-0 transform -rotate-45 whitespace-nowrap bg-red-500 text-white px-2 py-1 text-xs font-bold'>
+            Sold Out!
+          </div>
+        </div>
       </div>
       {/* <div className='flex gap-2'>
         <button

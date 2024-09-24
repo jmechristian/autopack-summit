@@ -95,9 +95,10 @@ const Page = ({ homepageData, speakers, testimonials }) => {
               animate={{ opacity: 1 }}
               initial={{ opacity: 0 }}
               transition={{ delay: 0.45, ease: 'easeIn', duration: 0.5 }}
+              disabled={true}
               onClick={() => dispatch(openPowerConsole())}
             >
-              Tickets are Limited! Register Now
+              Tickets are SOLD OUT!
             </motion.button>
           </div>
           <Reveal delay={0.55} bgColor={'white'}>
