@@ -372,6 +372,56 @@ const RegistrationForm2024 = ({ codes, submitted, params, type }) => {
                     </option>
                   </select>
                 </div>
+                <div className='relative w-full flex flex-col gap-2 mt-3'>
+                  <div className='font-bold flex items-center justify-between'>
+                    <div>Packaging Provider Plant Tour</div>
+                    <div className='text-xs font-medium text-red-100 uppercase'>
+                      *Required
+                    </div>
+                  </div>
+                  <select
+                    id='plantTour'
+                    name='plantTour'
+                    className='mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6'
+                    defaultValue='Please Select Answer'
+                    onChange={(e) => setPlantTour(e.target.value)}
+                  >
+                    <option value={'none'}>Please Select Answer</option>
+                    <option value={'yes'}>
+                      Yes, I am interested in attending the Packaging Provider
+                      Plant Tour.
+                    </option>
+                    <option value={'no'}>
+                      No, I am not interested in attending the Packaging
+                      Provider Plant Tour.
+                    </option>
+                  </select>
+                </div>
+                <div className='relative w-full flex flex-col gap-2 mt-3'>
+                  <div className='font-bold flex items-center justify-between'>
+                    <div>Packaging Provider Plant Tour</div>
+                    <div className='text-xs font-medium text-red-100 uppercase'>
+                      *Required
+                    </div>
+                  </div>
+                  <select
+                    id='plantTour'
+                    name='plantTour'
+                    className='mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6'
+                    defaultValue='Please Select Answer'
+                    onChange={(e) => setPlantTour(e.target.value)}
+                  >
+                    <option value={'none'}>Please Select Answer</option>
+                    <option value={'yes'}>
+                      Yes, I am interested in attending the Packaging Provider
+                      Plant Tour.
+                    </option>
+                    <option value={'no'}>
+                      No, I am not interested in attending the Packaging
+                      Provider Plant Tour.
+                    </option>
+                  </select>
+                </div>
               </div>
             </div>
             {/* REGISTRATION BUTTON */}

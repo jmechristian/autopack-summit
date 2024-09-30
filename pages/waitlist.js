@@ -4,11 +4,11 @@ import { API } from 'aws-amplify';
 import { listAPSTickets } from '../src/graphql/queries';
 import TicketForm from '../components/registration/TicketForm';
 
-const Tickets = ({ tickets }) => {
+const Waitlist = ({ tickets }) => {
   return (
     <>
       <Head>
-        <title>Automotive Packaging Summit | Solution Providers</title>
+        <title>Automotive Packaging Summit | Waitlist</title>
         <meta
           property='og:title'
           content='Automotive Packaging Summit | General Admission'
@@ -34,7 +34,11 @@ const Tickets = ({ tickets }) => {
         />
       </Head>
       <div className='flex flex-col max-w-6xl mx-auto px-5 xl:px-0'>
-        <TicketForm callout={true} live={false} buttonText={'Sold Out'} />
+        <TicketForm
+          callout={false}
+          live={true}
+          buttonText={'Purchase Ticket'}
+        />
       </div>
     </>
   );
@@ -50,4 +54,4 @@ export async function getServerSideProps() {
   };
 }
 
-export default Tickets;
+export default Waitlist;

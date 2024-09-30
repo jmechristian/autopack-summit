@@ -23,12 +23,15 @@ const TicketPricingBlock = ({
   speedNetworking,
   innovationWorkshop,
   plantTour,
+  live,
+  buttonText,
 }) => {
   const router = useRouter();
   const dispatch = useDispatch();
 
   const [errors, setErrors] = useState({ message: '', isError: false });
   const [formIsValid, setFormIsValid] = useState('INIT');
+  const [isSending, setIsSending] = useState(false);
   const regCode = 'TICKET';
 
   useEffect(() => {
@@ -60,6 +63,7 @@ const TicketPricingBlock = ({
   ]);
 
   const regInitHandler = async () => {
+    setIsSending(true);
     await handleRegInit(
       name,
       title,
@@ -117,7 +121,7 @@ const TicketPricingBlock = ({
           formIsValid === 'VALID' ? 'bg-ap-yellow' : 'bg-slate-400'
         } w-full mt-2 shadow-[4px_4px_0_black] hover:shadow-[1px_1px_0_black] hover:translate-x-[3px] hover:translate-y-[3px] transition-all`}
         disabled={
-          true
+          live ? false : true
           // formIsValid === 'NOTVALID'
           //   ? true
           //   : formIsValid === 'VALID'
@@ -129,9 +133,11 @@ const TicketPricingBlock = ({
         <div
           className={`${
             formIsValid === 'VALID' ? 'text-slate-900' : 'text-slate-500'
-          } uppercase text-sm lg:text-base font-bold py-3 px-6 tracking-widest`}
+          } uppercase text-sm lg:text-base font-bold py-3 px-6 tracking-widest ${
+            isSending ? 'animate-pulse' : ''
+          }`}
         >
-          {formIsValid === 'VALID' ? 'Sold Out' : 'Sold Out'}
+          {formIsValid === 'VALID' ? `${buttonText}` : 'Fill Out All Fields'}
         </div>
       </button>
       {/* {formIsValid === 'NOTVALID' && (
