@@ -8,7 +8,9 @@ export const sendEmail = async (
   worksWith,
   speedNetworking,
   innovationWorkshop,
-  plantTour
+  plantTour,
+  clemsonTour,
+  bmwTour
 ) => {
   const res = fetch(
     'https://9i9gb4ccxe.execute-api.us-east-1.amazonaws.com/default/sendEmailFn-staging',
@@ -29,6 +31,8 @@ export const sendEmail = async (
         speedNetworking,
         innovationWorkshop,
         plantTour,
+        clemsonTour,
+        bmwTour,
       }),
     }
   );

@@ -23,6 +23,8 @@ const RegBlockPricing = ({
   speedNetworking,
   innovationWorkshop,
   plantTour,
+  clemsonTour,
+  bmwTour,
 }) => {
   const countUpRef = useRef(null);
   const router = useRouter();
@@ -37,6 +39,7 @@ const RegBlockPricing = ({
 
   const [errors, setErrors] = useState({ message: '', isError: false });
   const [formIsValid, setFormIsValid] = useState(false);
+  const [isSending, setIsSending] = useState(false);
 
   useEffect(() => {
     if (startCounter) {
@@ -85,6 +88,7 @@ const RegBlockPricing = ({
   ]);
 
   const regInitHandler = async () => {
+    setIsSending(true);
     await handleRegInit(
       name,
       title,
@@ -107,7 +111,9 @@ const RegBlockPricing = ({
       worksWith,
       speedNetworking,
       innovationWorkshop,
-      plantTour
+      plantTour,
+      clemsonTour,
+      bmwTour
     );
 
     router.push('/registration-thank-you');
@@ -137,7 +143,9 @@ const RegBlockPricing = ({
         <div
           className={`${
             formIsValid ? 'text-slate-900' : 'text-slate-500'
-          } uppercase text-sm lg:text-base font-bold py-3 px-6 tracking-widest`}
+          } uppercase text-sm lg:text-base font-bold py-3 px-6 tracking-widest ${
+            isSending ? 'animate-pulse' : ''
+          }`}
         >
           {formIsValid ? 'Register' : 'Enter Code'}
         </div>

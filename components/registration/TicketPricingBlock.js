@@ -22,9 +22,11 @@ const TicketPricingBlock = ({
   worksWith,
   speedNetworking,
   innovationWorkshop,
-  plantTour,
+  clemsonTour,
+  bmwTour,
   live,
   buttonText,
+  plantTour,
 }) => {
   const router = useRouter();
   const dispatch = useDispatch();
@@ -44,7 +46,8 @@ const TicketPricingBlock = ({
       worksWith != 'none' &&
       speedNetworking != 'none' &&
       innovationWorkshop != 'none' &&
-      plantTour != 'none'
+      clemsonTour != 'none' &&
+      bmwTour != 'none'
     ) {
       setFormIsValid('VALID');
     } else {
@@ -60,6 +63,8 @@ const TicketPricingBlock = ({
     plantTour,
     innovationWorkshop,
     speedNetworking,
+    clemsonTour,
+    bmwTour,
   ]);
 
   const regInitHandler = async () => {
@@ -86,7 +91,9 @@ const TicketPricingBlock = ({
       worksWith,
       speedNetworking,
       innovationWorkshop,
-      plantTour
+      plantTour,
+      clemsonTour,
+      bmwTour
     );
 
     // const response = await fetch('/api/create-early-bird-checkout', {
