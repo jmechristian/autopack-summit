@@ -97,6 +97,11 @@ const LogoItemsTop = () => (
       name='JTEKT'
       link={'https://jtekt-na.com/'}
     />
+    <LogoItem
+      image={'https://packschool.s3.amazonaws.com/Conteyor-Logo.png'}
+      name='Conteyor Group'
+      link={'https://www.conteyor.com'}
+    />
   </>
 );
 
