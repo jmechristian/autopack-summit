@@ -31,7 +31,7 @@ const NewSpeakersMain = ({ headline, subheadline, text, speakers }) => {
         </h2>
         <p className='text-center text-lg mt-2 max-w-2xl mx-auto'>
           Thank You to our industry veterans for their contributions to the
-          Autmotive Packaging Summit.
+          Automotive Packaging Summit.
         </p>
       </div>
       <div
