@@ -120,6 +120,10 @@ export const PersonalAgenda = ({ registrant }: PersonalAgendaProps) => {
                             We will guide you as you pull into the facility if
                             you choose to drive separately from the group).
                           </Text>
+                          <Text className='font-[HelveticaNeue-Bold] text-[14px] leading-[20px]'>
+                            Transportation Preference:{' '}
+                            {registrant.transportation}
+                          </Text>
                         </Column>
                       </Row>
                     )}
@@ -469,7 +473,7 @@ PersonalAgenda.PreviewProps = {
     first: 'Jamie',
     last: 'Sood',
     email: 'aastha.sood@bmwmcext.com',
-    morisette: null,
+    morisette: true,
     transportation: 'Shuttle',
     clemson: null,
     bosch: true,
