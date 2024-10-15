@@ -71,7 +71,6 @@ const Addons = () => {
                       ) : (
                         <>
                           <FaEnvelope className='inline mr-1' size={12} />
-                          Send Agenda
                         </>
                       )}
                     </button>
