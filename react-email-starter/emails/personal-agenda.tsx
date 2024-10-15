@@ -17,27 +17,25 @@ import {
 import { Tailwind } from '@react-email/tailwind';
 import * as React from 'react';
 
-interface WelcomeEmailProps {
+interface PersonalAgendaProps {
   registrant: {
-    name: String;
-    email: String;
-    company: String;
-    title: String;
-    phone: String;
-  };
-  addons: {
-    morrisette: boolean;
-    clemson: boolean;
-    bmw: boolean;
-    guardian: boolean;
-    ai: boolean;
-    bosch: boolean;
-    speedNetworkingProduction: boolean;
-    speedNetworkingAftersales: boolean;
+    first: string;
+    last: string;
+    email: string;
+    morisette: boolean | null;
+    transportation: string | null;
+    clemson: boolean | null;
+    bosch: boolean | null;
+    surgere: boolean | null;
+    guardian: boolean | null;
+    speedReturnable: boolean | null;
+    speedAftersales: boolean | null;
+    bmw: boolean | null;
+    advisory: string | null;
   };
 }
 
-export const WelcomeEmail = ({ registrant, addons }: WelcomeEmailProps) => {
+export const PersonalAgenda = ({ registrant }: PersonalAgendaProps) => {
   return (
     <Html>
       <Tailwind>
@@ -73,8 +71,8 @@ export const WelcomeEmail = ({ registrant, addons }: WelcomeEmailProps) => {
             <Section className='bg-white'>
               <Row>
                 <Text className='font-[HelveticaNeue-Bold] text-2xl mt-10 mb-10'>
-                  Hello {registrant.name},<br /> please find your personal
-                  agenda below.
+                  Hello {registrant.first.trim()},<br /> please find your
+                  personal agenda below.
                 </Text>
                 <Text className='font-[HelveticaNeue] leading-tight text-[18px] px-6 lg:px-16 mb-10'>
                   We look forward to seeing you in Greenville, South Carolina,
@@ -105,7 +103,7 @@ export const WelcomeEmail = ({ registrant, addons }: WelcomeEmailProps) => {
                       Monday October 21st
                     </Text>
                     {/* MORRISETTE */}
-                    {addons.morrisette && (
+                    {registrant.morisette && (
                       <Row className='bg-[#fffbc7] px-4'>
                         <Column className='w-1/5'>
                           <Text className='font-[HelveticaNeue-Bold] text-[14px] leading-[20px]'>
@@ -180,7 +178,7 @@ export const WelcomeEmail = ({ registrant, addons }: WelcomeEmailProps) => {
                     </Row>
                     <Hr className='my-[16px] border-gray-300' />
                     {/* Guardian */}
-                    {addons.guardian && (
+                    {registrant.guardian && (
                       <Row className='bg-[#fffbc7] px-4'>
                         <Column className='w-1/5'>
                           <Text className='font-[HelveticaNeue-Bold] text-[14px] leading-[20px]'>
@@ -199,9 +197,11 @@ export const WelcomeEmail = ({ registrant, addons }: WelcomeEmailProps) => {
                         </Column>
                       </Row>
                     )}
-                    <Hr className='my-[16px] border-gray-300' />
+                    {registrant.guardian && (
+                      <Hr className='my-[16px] border-gray-300' />
+                    )}
                     {/* Surgere */}
-                    {addons.ai && (
+                    {registrant.surgere && (
                       <Row className='bg-[#fffbc7] px-4'>
                         <Column className='w-1/5'>
                           <Text className='font-[HelveticaNeue-Bold] text-[14px] leading-[20px]'>
@@ -219,9 +219,11 @@ export const WelcomeEmail = ({ registrant, addons }: WelcomeEmailProps) => {
                         </Column>
                       </Row>
                     )}
-                    <Hr className='my-[16px] border-gray-300' />
+                    {registrant.surgere && (
+                      <Hr className='my-[16px] border-gray-300' />
+                    )}
                     {/* Bosch */}
-                    {addons.bosch && (
+                    {registrant.bosch && (
                       <Row className='bg-[#fffbc7] px-4'>
                         <Column className='w-1/5'>
                           <Text className='font-[HelveticaNeue-Bold] text-[14px] leading-[20px]'>
@@ -238,9 +240,11 @@ export const WelcomeEmail = ({ registrant, addons }: WelcomeEmailProps) => {
                         </Column>
                       </Row>
                     )}
-                    <Hr className='my-[16px] border-gray-300' />
+                    {registrant.bosch && (
+                      <Hr className='my-[16px] border-gray-300' />
+                    )}
                     {/* Speed Networking 1 */}
-                    {addons.speedNetworkingProduction && (
+                    {registrant.speedReturnable && (
                       <Row className='bg-[#fffbc7] px-4'>
                         <Column className='w-1/5'>
                           <Text className='font-[HelveticaNeue-Bold] text-[14px] leading-[20px]'>
@@ -257,8 +261,10 @@ export const WelcomeEmail = ({ registrant, addons }: WelcomeEmailProps) => {
                         </Column>
                       </Row>
                     )}
-                    <Hr className='my-[16px] border-gray-300' />
-                    {addons.speedNetworkingAftersales && (
+                    {registrant.speedReturnable && (
+                      <Hr className='my-[16px] border-gray-300' />
+                    )}
+                    {registrant.speedAftersales && (
                       <Row className='bg-[#fffbc7] px-4'>
                         <Column className='w-1/5'>
                           <Text className='font-[HelveticaNeue-Bold] text-[14px] leading-[20px]'>
@@ -276,7 +282,9 @@ export const WelcomeEmail = ({ registrant, addons }: WelcomeEmailProps) => {
                         </Column>
                       </Row>
                     )}
-                    <Hr className='my-[16px] border-gray-300' />
+                    {registrant.speedAftersales && (
+                      <Hr className='my-[16px] border-gray-300' />
+                    )}
                     <Row className='bg-[#fff] px-4'>
                       <Column className='w-1/5'>
                         <Text className='font-[HelveticaNeue-Bold] text-[14px] leading-[20px]'>
@@ -303,7 +311,7 @@ export const WelcomeEmail = ({ registrant, addons }: WelcomeEmailProps) => {
                     </Text>
 
                     {/* BMW */}
-                    {addons.bmw && (
+                    {registrant.bmw && (
                       <Row className='bg-[#fffbc7] px-4'>
                         <Column className='w-1/5'>
                           <Text className='font-[HelveticaNeue-Bold] text-[14px] leading-[20px]'>
@@ -328,9 +336,11 @@ export const WelcomeEmail = ({ registrant, addons }: WelcomeEmailProps) => {
                         </Column>
                       </Row>
                     )}
-                    <Hr className='my-[16px] border-gray-300' />
+                    {registrant.bmw && (
+                      <Hr className='my-[16px] border-gray-300' />
+                    )}
                     {/* Clemson */}
-                    {addons.clemson && (
+                    {registrant.clemson && (
                       <Row className='bg-[#fffbc7] px-4'>
                         <Column className='w-1/5'>
                           <Text className='font-[HelveticaNeue-Bold] text-[14px] leading-[20px]'>
@@ -355,7 +365,9 @@ export const WelcomeEmail = ({ registrant, addons }: WelcomeEmailProps) => {
                         </Column>
                       </Row>
                     )}
-                    <Hr className='my-[16px] border-gray-300' />
+                    {registrant.clemson && (
+                      <Hr className='my-[16px] border-gray-300' />
+                    )}
 
                     <Row className='bg-[#fff] px-4'>
                       <Column className='w-1/5'>
@@ -425,28 +437,7 @@ export const WelcomeEmail = ({ registrant, addons }: WelcomeEmailProps) => {
                 </Column>
               </Row>
             </Section>
-            {/* <Section className='bg-white px-6'>
-              <Img
-                src='https://packschool.s3.amazonaws.com/aps-surgere.png'
-                width={300}
-                height={29}
-                className='mx-auto mt-9'
-              />
-              <Text className='max-w-lg mx-auto leading-tight font-[HelveticaNeue]'>
-                Surgere is an IoT supply chain solutions provider that brings
-                source-of-truth data to your daily operations. Leveraging our
-                Interius software, Surgere customers experience insight and
-                certainty across asset management, packaging specification
-                management and localization needs.
-              </Text>
-              <Text className='max-w-lg mx-auto leading-tight font-[HelveticaNeue] mb-12'>
-                Surgere works with customers to align IoT sensors, hardware and
-                environmental factors in solving warehouse, yard and inventory
-                challenges. Learn more about how Surgere can deliver certainty
-                to your organization and we look forward to meeting you at the
-                show!
-              </Text>
-            </Section> */}
+
             <Section style={{ backgroundColor: '#E4A800' }}>
               <Row className='mt-4 mb-4 px-6'>
                 <Column>
@@ -473,24 +464,22 @@ export const WelcomeEmail = ({ registrant, addons }: WelcomeEmailProps) => {
   );
 };
 
-WelcomeEmail.PreviewProps = {
+PersonalAgenda.PreviewProps = {
   registrant: {
-    name: 'Jamie Christian',
-    email: 'jmechristian@gmail.com',
-    company: 'Packaging School',
-    title: 'Web Director',
-    phone: '5122893696',
-  },
-  addons: {
-    morrisette: true,
-    clemson: true,
-    bmw: true,
-    guardian: true,
-    ai: true,
+    first: 'Jamie',
+    last: 'Sood',
+    email: 'aastha.sood@bmwmcext.com',
+    morisette: null,
+    transportation: 'Shuttle',
+    clemson: null,
     bosch: true,
-    speedNetworkingProduction: true,
-    speedNetworkingAftersales: true,
+    surgere: null,
+    guardian: null,
+    speedReturnable: true,
+    speedAftersales: null,
+    bmw: null,
+    advisory: null,
   },
-} as WelcomeEmailProps;
+} as PersonalAgendaProps;
 
-export default WelcomeEmail;
+export default PersonalAgenda;

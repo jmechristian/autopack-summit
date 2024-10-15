@@ -406,3 +406,18 @@ export const sendBoschWelcome = async (email, topics) => {
     }),
   });
 };
+
+export const sendAgenda = async (registrant) => {
+  const res = fetch('/api/send-agenda', {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      registrant,
+    }),
+  });
+
+  return (await res).status;
+};
