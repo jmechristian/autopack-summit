@@ -31,7 +31,7 @@ interface PersonalAgendaProps {
     speedReturnable: boolean | null;
     speedAftersales: boolean | null;
     bmw: boolean | null;
-    advisory: string | null;
+    advisory: boolean | null;
   };
 }
 
@@ -308,88 +308,98 @@ export const PersonalAgenda = ({ registrant }: PersonalAgendaProps) => {
                   </Column>
                 </Row>
                 {/* WEDNESDAY */}
-                <Row className='w-full max-w-[96%] mx-auto mb-6'>
-                  <Column className='bg-white text-left align-top px-0 py-4 border-r border-r-black border-solid border-t-0 border-l-0 border-b-0 w-full'>
-                    <Text className='uppercase text-[16px] leading-[20px] font-[HelveticaNeue-Bold] mb-5 px-4'>
-                      Wednesday October 23rd
-                    </Text>
-
-                    {/* BMW */}
-                    {registrant.bmw && (
-                      <Row className='bg-[#fffbc7] px-4'>
-                        <Column className='w-1/5'>
-                          <Text className='font-[HelveticaNeue-Bold] text-[14px] leading-[20px]'>
-                            9:45AM - 10:45AM
-                          </Text>
-                        </Column>
-                        <Column className='w-4/5'>
-                          <Text className='font-[HelveticaNeue] text-[14px] leading-[20px]'>
-                            <span className='font-[HelveticaNeue-Bold] text-[16px] text-[#005a94] block mb-2'>
-                              BMW Exclusive Glimpse Tour
-                            </span>
-                            Check-in: Arrive at the BMW Visitor’s Center no
-                            later than 9:00 AM for check-in. The tour will begin
-                            promptly at 9:45 AM.
-                          </Text>
-                          <Link
-                            href='https://packschool.s3.amazonaws.com/Directions-to-the-Zentrum+.pdf'
-                            className='font-[HelveticaNeue-Bold] text-[14px] underline text-[#005a94] block my-4'
-                          >
-                            Directions
-                          </Link>
-                        </Column>
-                      </Row>
-                    )}
-                    {registrant.bmw && (
-                      <Hr className='my-[16px] border-gray-300' />
-                    )}
-                    {/* Clemson */}
-                    {registrant.clemson && (
-                      <Row className='bg-[#fffbc7] px-4'>
-                        <Column className='w-1/5'>
-                          <Text className='font-[HelveticaNeue-Bold] text-[14px] leading-[20px]'>
-                            10:00AM - 12:00PM
-                          </Text>
-                        </Column>
-                        <Column className='w-4/5'>
-                          <Text className='font-[HelveticaNeue] text-[14px] leading-[20px]'>
-                            <span className='font-[HelveticaNeue-Bold] text-[16px] text-[#005a94] block mb-2'>
-                              Clemson University
-                            </span>
-                            Front Entrance of the Harris A. Smith Building
-                            (Sonoco Institute of Packaging Design and Graphics)
-                            320 Fernow Street Clemson, SC 29634-001
-                          </Text>
-                          <Link
-                            href='https://packschool.s3.amazonaws.com/Clemson-Tour-Map.pdf'
-                            className='font-[HelveticaNeue-Bold] text-[14px] underline text-[#005a94] block my-4'
-                          >
-                            Campus and Parking Map
-                          </Link>
-                        </Column>
-                      </Row>
-                    )}
-                    {registrant.clemson && (
-                      <Hr className='my-[16px] border-gray-300' />
-                    )}
-
-                    <Row className='bg-[#fff] px-4'>
-                      <Column className='w-1/5'>
-                        <Text className='font-[HelveticaNeue-Bold] text-[14px] leading-[20px]'>
-                          11:00AM - 12:30PM
-                        </Text>
-                      </Column>
-                      <Column className='w-4/5'>
-                        <Text className='font-[HelveticaNeue] text-[14px] leading-[20px]'>
-                          <span className='font-[HelveticaNeue-Bold] text-[16px] text-[#005a94] block mb-2'>
-                            Advisory Board Meeting
-                          </span>
-                          Roost Restaurant, 220 N Main St, Greenville, SC 29601
-                        </Text>
-                      </Column>
-                    </Row>
-                  </Column>
-                </Row>
+                {(registrant.advisory ||
+                  registrant.bmw ||
+                  registrant.clemson) && (
+                  <Row className='w-full max-w-[96%] mx-auto mb-6'>
+                    <Column className='bg-white text-left align-top px-0 py-4 border-r border-r-black border-solid border-t-0 border-l-0 border-b-0 w-full'>
+                      <Text className='uppercase text-[16px] leading-[20px] font-[HelveticaNeue-Bold] mb-5 px-4'>
+                        Wednesday October 23rd
+                      </Text>
+                      {/* BMW */}
+                      {registrant.bmw && (
+                        <>
+                          <Row className='bg-[#fffbc7] px-4'>
+                            <Column className='w-1/5'>
+                              <Text className='font-[HelveticaNeue-Bold] text-[14px] leading-[20px]'>
+                                9:45AM - 10:45AM
+                              </Text>
+                            </Column>
+                            <Column className='w-4/5'>
+                              <Text className='font-[HelveticaNeue] text-[14px] leading-[20px]'>
+                                <span className='font-[HelveticaNeue-Bold] text-[16px] text-[#005a94] block mb-2'>
+                                  BMW Exclusive Glimpse Tour
+                                </span>
+                                Check-in: Arrive at the BMW Visitor’s Center no
+                                later than 9:00 AM for check-in. The tour will
+                                begin promptly at 9:45 AM.
+                              </Text>
+                              <Link
+                                href='https://packschool.s3.amazonaws.com/Directions-to-the-Zentrum+.pdf'
+                                className='font-[HelveticaNeue-Bold] text-[14px] underline text-[#005a94] block my-4'
+                              >
+                                Directions
+                              </Link>
+                            </Column>
+                          </Row>
+                          <Hr className='my-[16px] border-gray-300' />
+                        </>
+                      )}
+                      {/* Clemson */}
+                      {registrant.clemson && (
+                        <>
+                          <Row className='bg-[#fffbc7] px-4'>
+                            <Column className='w-1/5'>
+                              <Text className='font-[HelveticaNeue-Bold] text-[14px] leading-[20px]'>
+                                10:00AM - 12:00PM
+                              </Text>
+                            </Column>
+                            <Column className='w-4/5'>
+                              <Text className='font-[HelveticaNeue] text-[14px] leading-[20px]'>
+                                <span className='font-[HelveticaNeue-Bold] text-[16px] text-[#005a94] block mb-2'>
+                                  Clemson University
+                                </span>
+                                Front Entrance of the Harris A. Smith Building
+                                (Sonoco Institute of Packaging Design and
+                                Graphics) 320 Fernow Street Clemson, SC
+                                29634-001
+                              </Text>
+                              <Link
+                                href='https://packschool.s3.amazonaws.com/Clemson-Tour-Map.pdf'
+                                className='font-[HelveticaNeue-Bold] text-[14px] underline text-[#005a94] block my-4'
+                              >
+                                Campus and Parking Map
+                              </Link>
+                            </Column>
+                          </Row>
+                          <Hr className='my-[16px] border-gray-300' />
+                        </>
+                      )}
+                      {/* Advisory */}
+                      {registrant.advisory && (
+                        <>
+                          <Row className='bg-[#fffbc7] px-4'>
+                            <Column className='w-1/5'>
+                              <Text className='font-[HelveticaNeue-Bold] text-[14px] leading-[20px]'>
+                                11:00AM - 12:30PM
+                              </Text>
+                            </Column>
+                            <Column className='w-4/5'>
+                              <Text className='font-[HelveticaNeue] text-[14px] leading-[20px]'>
+                                <span className='font-[HelveticaNeue-Bold] text-[16px] text-[#005a94] block mb-2'>
+                                  Advisory Board Meeting
+                                </span>
+                                Roost Restaurant, 220 N Main St, Greenville, SC
+                                29601
+                              </Text>
+                            </Column>
+                          </Row>
+                          <Hr className='my-[16px] border-gray-300' />
+                        </>
+                      )}
+                    </Column>
+                  </Row>
+                )}
                 <Row className='mb-5'>
                   <Button
                     href='https://www.autopacksummit.com/agenda'
