@@ -6,6 +6,7 @@ const Addons = () => {
   const [isAuth, setIsAuth] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredAddons, setFilteredAddons] = useState(addons);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -22,8 +23,10 @@ const Addons = () => {
   }, [searchTerm]);
 
   const handleEmailClick = async (registrant) => {
+    setIsLoading(true);
     const res = await sendAgenda(registrant);
     console.log(res);
+    setIsLoading(false);
   };
 
   return (
@@ -61,8 +64,16 @@ const Addons = () => {
                     <button
                       onClick={() => handleEmailClick(addon)}
                       className='text-blue-600 hover:text-blue-800'
+                      disabled={isLoading}
                     >
-                      <FaEnvelope className='inline mr-1' size={12} />
+                      {isLoading ? (
+                        '...'
+                      ) : (
+                        <>
+                          <FaEnvelope className='inline mr-1' size={12} />
+                          Send Agenda
+                        </>
+                      )}
                     </button>
                   </td>
                   {Object.entries(addon).map(([key, value], idx) => (

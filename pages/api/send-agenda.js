@@ -42,7 +42,7 @@ export default async function handler(req, res) {
         },
         Subject: {
           Charset: 'UTF-8',
-          Data: 'TEST: Your 2024 Autmotive Packaging Summit Agenda',
+          Data: 'TEST: Your 2024 Automotive Packaging Summit Agenda',
         },
       },
       Source: fromAddress,
