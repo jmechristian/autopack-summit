@@ -67,7 +67,7 @@ const Addons = () => {
                       disabled={isLoading}
                     >
                       {isLoading ? (
-                        '...'
+                        <div className='animate-pulse'>...</div>
                       ) : (
                         <>
                           <FaEnvelope className='inline mr-1' size={12} />
