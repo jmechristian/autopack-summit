@@ -15,23 +15,25 @@ const Addons = () => {
     }
   }, []);
 
-  useEffect(() => {
-    const filtered = addons.filter((addon) =>
-      addon.email.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    setFilteredAddons(filtered);
-  }, [searchTerm]);
+  // useEffect(() => {
+  //   const filtered = addons.filter((addon) =>
+  //     addon.email.toLowerCase().includes(searchTerm.toLowerCase())
+  //   );
+  //   setFilteredAddons(filtered);
+  // }, [searchTerm]);
 
   const handleEmailClick = async (registrant) => {
     setIsLoading(true);
-    const res = await sendAgenda(registrant);
-    console.log(res);
+    // const res = await sendAgenda(registrant);
+    console.log('clicked');
     setIsLoading(false);
   };
 
   return (
     <div className='w-full max-w-[1600px] mx-auto py-20'>
-      <h1 className='text-xl font-bold mb-2'>Addon List</h1>
+      <h1 className='text-xl font-bold mb-2'>
+        Addon List: {addons.length} Registrants (minus staff and students)
+      </h1>
       <input
         type='text'
         placeholder='Search by email'
@@ -58,7 +60,7 @@ const Addons = () => {
               </tr>
             </thead>
             <tbody className='divide-y divide-gray-200'>
-              {filteredAddons.map((addon, index) => (
+              {addons.map((addon, index) => (
                 <tr key={index}>
                   <td className='px-2 py-1 whitespace-nowrap'>
                     <button
