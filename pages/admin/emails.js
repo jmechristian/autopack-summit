@@ -20,7 +20,9 @@ const Page = () => {
 
   return (
     <div className='container mx-auto px-4 py-8'>
-      <h1 className='text-3xl font-bold mb-6'>Email Tracking</h1>
+      <h1 className='text-3xl font-bold mb-6'>
+        Email Tracking: {emailTracking.length} Sent
+      </h1>
       <div className='mb-4'>
         <input
           type='text'
