@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { addons } from '../../data/addons';
 import { FaEnvelope } from 'react-icons/fa'; // Import the email icon
-import { sendAgenda } from '../../util/api';
+import { sendAgenda, trackEmail } from '../../util/api';
 const Addons = () => {
   const [isAuth, setIsAuth] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
@@ -39,7 +39,8 @@ const Addons = () => {
       bmw: registrant.bmw,
       advisory: registrant.advisory,
     };
-    const res = await sendAgenda(regObject);
+    const track = await trackEmail(registrant.email);
+    const res = await sendAgenda(regObject, track.createEmailTracking.id);
     console.log(res);
     setIsLoading(false);
   };

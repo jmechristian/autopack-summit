@@ -33,9 +33,10 @@ interface PersonalAgendaProps {
     bmw: boolean | null;
     advisory: boolean | null;
   };
+  id: string;
 }
 
-export const PersonalAgenda = ({ registrant }: PersonalAgendaProps) => {
+export const PersonalAgenda = ({ registrant, id }: PersonalAgendaProps) => {
   return (
     <Html>
       <Tailwind>
@@ -48,7 +49,7 @@ export const PersonalAgenda = ({ registrant }: PersonalAgendaProps) => {
             <Section className='bg-[#005a94] rounded-t-xl'>
               <Row className='w-full'>
                 <img
-                  src={`https://autopacksummit.com/api/email-tracking?email=${registrant.email}`}
+                  src={`https://autopacksummit.com/api/email-tracking?email=${registrant.email}&id=${id}`}
                   className='hidden w-1 h-1'
                 />
 
@@ -499,6 +500,7 @@ PersonalAgenda.PreviewProps = {
     bmw: null,
     advisory: null,
   },
+  id: '123',
 } as PersonalAgendaProps;
 
 export default PersonalAgenda;

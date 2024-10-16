@@ -5,6 +5,8 @@ import {
   createAPSTicketRegistrant,
   updateAPSRegistrant,
   updateAPSTicketRegistrant,
+  createEmailTracking,
+  updateEmailTracking,
 } from '../src/graphql/mutations';
 import {
   aPSRegistrantsByEmail,
@@ -407,7 +409,7 @@ export const sendBoschWelcome = async (email, topics) => {
   });
 };
 
-export const sendAgenda = async (registrant) => {
+export const sendAgenda = async (registrant, id) => {
   const res = fetch('/api/send-agenda', {
     method: 'POST',
     headers: {
@@ -416,8 +418,35 @@ export const sendAgenda = async (registrant) => {
     },
     body: JSON.stringify({
       registrant,
+      id,
     }),
   });
 
   return (await res).status;
+};
+
+export const trackEmail = async (email) => {
+  const res = await API.graphql({
+    query: createEmailTracking,
+    variables: {
+      input: {
+        email: email,
+        opened: false,
+        sent: new Date().toISOString(),
+      },
+    },
+  });
+
+  return res.data;
+};
+
+export const trackEmailOpen = async (id) => {
+  const res = await API.graphql({
+    query: updateEmailTracking,
+    variables: {
+      input: { id: id, opened: true, openedDate: new Date().toISOString() },
+    },
+  });
+
+  return res.data;
 };

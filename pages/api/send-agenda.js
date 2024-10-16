@@ -11,8 +11,8 @@ const sesClient = new SESClient({ region: REGION, credentials: creds });
 export { sesClient };
 
 export default async function handler(req, res) {
-  const { registrant } = req.body;
-  const emailHtml = render(<PersonalAgenda registrant={registrant} />);
+  const { registrant, id } = req.body;
+  const emailHtml = render(<PersonalAgenda registrant={registrant} id={id} />);
 
   const createSendEmailCommand = (toAddress, fromAddress) => {
     return new SendEmailCommand({

@@ -2382,6 +2382,7 @@ export const getEmailTracking = /* GraphQL */ `
     getEmailTracking(id: $id) {
       id
       email
+      sent
       opened
       openedDate
       createdAt
@@ -2399,6 +2400,7 @@ export const listEmailTrackings = /* GraphQL */ `
       items {
         id
         email
+        sent
         opened
         openedDate
         createdAt
@@ -2426,6 +2428,7 @@ export const emailTrackingsByEmail = /* GraphQL */ `
       items {
         id
         email
+        sent
         opened
         openedDate
         createdAt

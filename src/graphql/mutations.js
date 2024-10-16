@@ -3426,6 +3426,7 @@ export const createEmailTracking = /* GraphQL */ `
     createEmailTracking(input: $input, condition: $condition) {
       id
       email
+      sent
       opened
       openedDate
       createdAt
@@ -3441,6 +3442,7 @@ export const updateEmailTracking = /* GraphQL */ `
     updateEmailTracking(input: $input, condition: $condition) {
       id
       email
+      sent
       opened
       openedDate
       createdAt
@@ -3456,6 +3458,7 @@ export const deleteEmailTracking = /* GraphQL */ `
     deleteEmailTracking(input: $input, condition: $condition) {
       id
       email
+      sent
       opened
       openedDate
       createdAt
