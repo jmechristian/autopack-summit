@@ -45,6 +45,13 @@ const Addons = () => {
     setIsLoading(false);
   };
 
+  const sendAllHandler = async () => {
+    for (const addon of addons) {
+      console.log(addon);
+    }
+    setIsLoading(false);
+  };
+
   return (
     <div className='w-full max-w-[1600px] mx-auto py-20 flex flex-col gap-20'>
       <div className='flex flex-col gap-2'>
@@ -58,6 +65,12 @@ const Addons = () => {
           onChange={(e) => setSearchTerm(e.target.value)}
           className='mb-2 p-1 border rounded text-sm w-1/3'
         />
+        <div
+          className='flex flex-col gap-2 p-10 border-black cursor-pointer'
+          onClick={sendAllHandler}
+        >
+          Send All
+        </div>
         <div className='overflow-x-auto'>
           <div className='max-h-[70vh] overflow-y-auto'>
             <table className='min-w-full bg-white text-xs'>

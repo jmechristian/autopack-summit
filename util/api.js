@@ -11,6 +11,7 @@ import {
 import {
   aPSRegistrantsByEmail,
   aPSTicketRegistrantsByEmail,
+  listEmailTrackings,
 } from '../src/graphql/queries';
 
 Amplify.configure({ ...awsExports, ssr: true });
@@ -434,6 +435,17 @@ export const trackEmail = async (email) => {
         opened: false,
         sent: new Date().toISOString(),
       },
+    },
+  });
+
+  return res.data;
+};
+
+export const getEmailTracking = async () => {
+  const res = await API.graphql({
+    query: listEmailTrackings,
+    variables: {
+      limit: 1000,
     },
   });
 
