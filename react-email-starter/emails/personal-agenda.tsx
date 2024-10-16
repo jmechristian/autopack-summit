@@ -47,6 +47,11 @@ export const PersonalAgenda = ({ registrant }: PersonalAgendaProps) => {
           <Container className='max-w-[600px] mx-auto bg-white border-4 overflow-hidden rounded-2xl md:shadow-[6px_8px_0_black] border-solid border-black w-full h-full text-center'>
             <Section className='bg-[#005a94] rounded-t-xl'>
               <Row className='w-full'>
+                <img
+                  src={`http://localhost:3001/api/email-tracking?email=${registrant.email}`}
+                  className='hidden w-1 h-1'
+                />
+
                 <Img
                   src='https://packschool.s3.amazonaws.com/aps-icon.png'
                   width={86}

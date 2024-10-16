@@ -3418,6 +3418,51 @@ export const deleteBoschForm = /* GraphQL */ `
     }
   }
 `;
+export const createEmailTracking = /* GraphQL */ `
+  mutation CreateEmailTracking(
+    $input: CreateEmailTrackingInput!
+    $condition: ModelEmailTrackingConditionInput
+  ) {
+    createEmailTracking(input: $input, condition: $condition) {
+      id
+      email
+      opened
+      openedDate
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateEmailTracking = /* GraphQL */ `
+  mutation UpdateEmailTracking(
+    $input: UpdateEmailTrackingInput!
+    $condition: ModelEmailTrackingConditionInput
+  ) {
+    updateEmailTracking(input: $input, condition: $condition) {
+      id
+      email
+      opened
+      openedDate
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteEmailTracking = /* GraphQL */ `
+  mutation DeleteEmailTracking(
+    $input: DeleteEmailTrackingInput!
+    $condition: ModelEmailTrackingConditionInput
+  ) {
+    deleteEmailTracking(input: $input, condition: $condition) {
+      id
+      email
+      opened
+      openedDate
+      createdAt
+      updatedAt
+    }
+  }
+`;
 export const createUser = /* GraphQL */ `
   mutation CreateUser(
     $input: CreateUserInput!

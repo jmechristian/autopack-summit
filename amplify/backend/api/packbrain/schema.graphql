@@ -350,6 +350,13 @@ type BoschForm @model @auth(rules: [{ allow: public }]) {
   approved: Boolean!
 }
 
+type EmailTracking @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  email: String! @index(name: "emailTrackingByEmail")
+  opened: Boolean!
+  openedDate: String
+}
+
 # User //////////
 
 type User @model @auth(rules: [{ allow: public }]) {

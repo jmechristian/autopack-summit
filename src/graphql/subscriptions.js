@@ -3184,6 +3184,42 @@ export const onDeleteBoschForm = /* GraphQL */ `
     }
   }
 `;
+export const onCreateEmailTracking = /* GraphQL */ `
+  subscription OnCreateEmailTracking {
+    onCreateEmailTracking {
+      id
+      email
+      opened
+      openedDate
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateEmailTracking = /* GraphQL */ `
+  subscription OnUpdateEmailTracking {
+    onUpdateEmailTracking {
+      id
+      email
+      opened
+      openedDate
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteEmailTracking = /* GraphQL */ `
+  subscription OnDeleteEmailTracking {
+    onDeleteEmailTracking {
+      id
+      email
+      opened
+      openedDate
+      createdAt
+      updatedAt
+    }
+  }
+`;
 export const onCreateUser = /* GraphQL */ `
   subscription OnCreateUser {
     onCreateUser {

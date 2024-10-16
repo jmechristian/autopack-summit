@@ -2377,6 +2377,64 @@ export const listBoschForms = /* GraphQL */ `
     }
   }
 `;
+export const getEmailTracking = /* GraphQL */ `
+  query GetEmailTracking($id: ID!) {
+    getEmailTracking(id: $id) {
+      id
+      email
+      opened
+      openedDate
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listEmailTrackings = /* GraphQL */ `
+  query ListEmailTrackings(
+    $filter: ModelEmailTrackingFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listEmailTrackings(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        email
+        opened
+        openedDate
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const emailTrackingsByEmail = /* GraphQL */ `
+  query EmailTrackingsByEmail(
+    $email: String!
+    $sortDirection: ModelSortDirection
+    $filter: ModelEmailTrackingFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    emailTrackingsByEmail(
+      email: $email
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        email
+        opened
+        openedDate
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
 export const getUser = /* GraphQL */ `
   query GetUser($id: ID!) {
     getUser(id: $id) {
