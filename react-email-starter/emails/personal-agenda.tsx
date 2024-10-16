@@ -48,7 +48,7 @@ export const PersonalAgenda = ({ registrant }: PersonalAgendaProps) => {
             <Section className='bg-[#005a94] rounded-t-xl'>
               <Row className='w-full'>
                 <img
-                  src={`http://localhost:3001/api/email-tracking?email=${registrant.email}`}
+                  src={`https://autopacksummit.com/api/email-tracking?email=${registrant.email}`}
                   className='hidden w-1 h-1'
                 />
 
