@@ -5627,7 +5627,7 @@ export const addons = [
     surgere: 'TRUE',
     guardian: null,
     speedReturnable: 'TRUE',
-    speedAftersales: 'confrmed',
+    speedAftersales: 'TRUE',
     advisory: null,
     bmw: null,
   },
