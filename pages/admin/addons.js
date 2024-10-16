@@ -109,7 +109,7 @@ const Addons = () => {
           </div>
         </div>
       </div>
-      <div className='grid grid-cols-3 gap-10 w-full'>
+      <div className='grid lg:grid-cols-3 gap-10 w-full'>
         <div className='flex flex-col gap-2 border border-black p-4'>
           <h1 className='text-xl font-bold mb-2'>
             Morrisette:{' '}
