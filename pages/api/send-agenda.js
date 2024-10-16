@@ -42,11 +42,12 @@ export default async function handler(req, res) {
         },
         Subject: {
           Charset: 'UTF-8',
-          Data: 'TEST: Your 2024 Automotive Packaging Summit Agenda',
+          Data: 'Your 2024 Automotive Packaging Summit Agenda',
         },
       },
       Source: fromAddress,
       ReplyToAddresses: [
+        'info@packagingschool.com',
         /* more items */
       ],
     });
@@ -54,10 +55,7 @@ export default async function handler(req, res) {
 
   try {
     await sesClient.send(
-      createSendEmailCommand(
-        'jamie@packagingschool.com',
-        'jamie@packagingschool.com'
-      )
+      createSendEmailCommand(registrant.email, 'info@packagingschool.com')
     );
     res.status(200).json({ message: 'success' });
   } catch (error) {
