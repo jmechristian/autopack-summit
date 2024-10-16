@@ -24,8 +24,23 @@ const Addons = () => {
 
   const handleEmailClick = async (registrant) => {
     setIsLoading(true);
-    // const res = await sendAgenda(registrant);
-    console.log('clicked');
+    const regObject = {
+      first: registrant.first,
+      last: registrant.last,
+      email: registrant.email,
+      morisette: registrant.morisette,
+      transportation: registrant.transportation,
+      clemson: registrant.clemson,
+      bosch: registrant.bosch,
+      surgere: registrant.surgere,
+      guardian: registrant.guardian,
+      speedReturnable: registrant.speedReturnable,
+      speedAftersales: registrant.speedAftersales,
+      bmw: registrant.bmw,
+      advisory: registrant.advisory,
+    };
+    const res = await sendAgenda(regObject);
+    console.log(res);
     setIsLoading(false);
   };
 
@@ -103,6 +118,7 @@ const Addons = () => {
           <div className='grid grid-cols-2 gap-2.5'>
             {addons
               .filter((addon) => addon.morrisette === 'TRUE')
+              .sort((a, b) => a.email.localeCompare(b.email))
               .map((addon, index) => (
                 <div key={index} className='flex flex-col gap-0'>
                   <div className='font-bold text-sm'>
@@ -120,6 +136,7 @@ const Addons = () => {
           <div className='grid grid-cols-2 gap-2.5'>
             {addons
               .filter((addon) => addon.clemson === 'TRUE')
+              .sort((a, b) => a.email.localeCompare(b.email))
               .map((addon, index) => (
                 <div key={index} className='flex flex-col gap-0'>
                   <div className='font-bold text-sm'>
@@ -137,6 +154,7 @@ const Addons = () => {
           <div className='grid grid-cols-2 gap-2.5'>
             {addons
               .filter((addon) => addon.bosch === 'TRUE')
+              .sort((a, b) => a.email.localeCompare(b.email))
               .map((addon, index) => (
                 <div key={index} className='flex flex-col gap-0'>
                   <div className='font-bold text-sm'>
@@ -155,6 +173,7 @@ const Addons = () => {
           <div className='grid grid-cols-2 gap-2.5'>
             {addons
               .filter((addon) => addon.guardian === 'TRUE')
+              .sort((a, b) => a.email.localeCompare(b.email))
               .map((addon, index) => (
                 <div key={index} className='flex flex-col gap-0'>
                   <div className='font-bold text-sm'>
@@ -172,6 +191,7 @@ const Addons = () => {
           <div className='grid grid-cols-2 gap-2.5'>
             {addons
               .filter((addon) => addon.surgere === 'TRUE')
+              .sort((a, b) => a.email.localeCompare(b.email))
               .map((addon, index) => (
                 <div key={index} className='flex flex-col gap-0'>
                   <div className='font-bold text-sm'>
@@ -189,6 +209,7 @@ const Addons = () => {
           <div className='grid grid-cols-2 gap-2.5'>
             {addons
               .filter((addon) => addon.bmw === 'TRUE')
+              .sort((a, b) => a.email.localeCompare(b.email))
               .map((addon, index) => (
                 <div key={index} className='flex flex-col gap-0'>
                   <div className='font-bold text-sm'>
@@ -207,6 +228,7 @@ const Addons = () => {
           <div className='grid grid-cols-2 gap-2.5'>
             {addons
               .filter((addon) => addon.speedReturnable === 'TRUE')
+              .sort((a, b) => a.email.localeCompare(b.email))
               .map((addon, index) => (
                 <div key={index} className='flex flex-col gap-0'>
                   <div className='font-bold text-sm'>
@@ -225,6 +247,7 @@ const Addons = () => {
           <div className='grid grid-cols-2 gap-2.5'>
             {addons
               .filter((addon) => addon.speedAftersales === 'TRUE')
+              .sort((a, b) => a.email.localeCompare(b.email))
               .map((addon, index) => (
                 <div key={index} className='flex flex-col gap-0'>
                   <div className='font-bold text-sm'>
@@ -243,6 +266,7 @@ const Addons = () => {
           <div className='grid grid-cols-2 gap-2.5'>
             {addons
               .filter((addon) => addon.advisory === 'TRUE')
+              .sort((a, b) => a.email.localeCompare(b.email))
               .map((addon, index) => (
                 <div key={index} className='flex flex-col gap-0'>
                   <div className='font-bold text-sm'>

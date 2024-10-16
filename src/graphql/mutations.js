@@ -12052,6 +12052,57 @@ export const deleteIndexRow = /* GraphQL */ `
     }
   }
 `;
+export const createIndexPage = /* GraphQL */ `
+  mutation CreateIndexPage(
+    $input: CreateIndexPageInput!
+    $condition: ModelIndexPageConditionInput
+  ) {
+    createIndexPage(input: $input, condition: $condition) {
+      id
+      content
+      slug
+      discount
+      status
+      type
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateIndexPage = /* GraphQL */ `
+  mutation UpdateIndexPage(
+    $input: UpdateIndexPageInput!
+    $condition: ModelIndexPageConditionInput
+  ) {
+    updateIndexPage(input: $input, condition: $condition) {
+      id
+      content
+      slug
+      discount
+      status
+      type
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteIndexPage = /* GraphQL */ `
+  mutation DeleteIndexPage(
+    $input: DeleteIndexPageInput!
+    $condition: ModelIndexPageConditionInput
+  ) {
+    deleteIndexPage(input: $input, condition: $condition) {
+      id
+      content
+      slug
+      discount
+      status
+      type
+      createdAt
+      updatedAt
+    }
+  }
+`;
 export const createFaq = /* GraphQL */ `
   mutation CreateFaq(
     $input: CreateFaqInput!

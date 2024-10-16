@@ -96,7 +96,7 @@ exports.handler = async function (event) {
     '                    "' +
     '                  >' +
     '                    <img' +
-    '                      src="https://packschool.s3.amazonaws.com/magic-parts-land-landscape.png"' +
+    '                      src="https://apsmedia.s3.amazonaws.com/images/email_header.png"' +
     '                      width="640"' +
     '                      alt=""' +
     '                      style="width: 100%; height: auto"' +
@@ -115,7 +115,7 @@ exports.handler = async function (event) {
     '                        font-weight: bold;' +
     '                      "' +
     '                    >' +
-    '                      Hello APS Team!' +
+    '                      Hello Diana and Bianca!' +
     '                    </h1>' +
     '                  </td>' +
     '                </tr>' +
@@ -498,330 +498,6 @@ exports.handler = async function (event) {
     '                </div>' +
     '                <!--[if mso]> ' +
     '            </td> ' +
-    '            <td style="width:50%;padding:10px;" valign="middle"> ' +
-    '            <![endif]-->' +
-    '                <div' +
-    '                  class="column"' +
-    '                  style="width: 100%; max-width: 330px; display: inline-block"' +
-    '                >' +
-    '                  <div style="padding: 10px">' +
-    '                    <p' +
-    '                      style="' +
-    '                        margin: 0;' +
-    '                        font-family: Arial, sans-serif;' +
-    '                        font-size: 20px;' +
-    '                        line-height: 18px;' +
-    '                      "' +
-    '                    >' +
-    '                      Works With' +
-    '                    </p>' +
-    '                  </div>' +
-    '                </div>' +
-    '                <!--[if mso]> ' +
-    '            </td> ' +
-    '            <td style="width:50%;padding:10px;" valign="middle"> ' +
-    '            <![endif]-->' +
-    '                <div' +
-    '                  class="column"' +
-    '                  style="' +
-    '                    width: 100%;' +
-    '                    max-width: 330px;' +
-    '                    display: inline-block;' +
-    '                    vertical-align: middle;' +
-    '                  "' +
-    '                >' +
-    '                  <div' +
-    '                    style="' +
-    '                      padding: 10px;' +
-    '                      font-size: 20px;' +
-    '                      line-height: 18px;' +
-    '                      text-align: left;' +
-    '                    "' +
-    '                  >' +
-    '                    <p' +
-    '                      style="' +
-    '                        margin-top: 0;' +
-    '                        margin-bottom: 12px;' +
-    '                        font-family: Arial, sans-serif;' +
-    '                        font-weight: bold;' +
-    '                      "' +
-    '                    >' +
-    `                      ${body.worksWith}` +
-    '                    </p>' +
-    '                  </div>' +
-    '                </div>' +
-    '                <!--[if mso]> ' +
-    '            </td> ' +
-    '            <td style="width:50%;padding:10px;" valign="middle"> ' +
-    '            <![endif]-->' +
-    '                <div' +
-    '                  class="column"' +
-    '                  style="width: 100%; max-width: 330px; display: inline-block"' +
-    '                >' +
-    '                  <div style="padding: 10px">' +
-    '                    <p' +
-    '                      style="' +
-    '                        margin: 0;' +
-    '                        font-family: Arial, sans-serif;' +
-    '                        font-size: 20px;' +
-    '                        line-height: 18px;' +
-    '                      "' +
-    '                    >' +
-    '                      Speed Networking' +
-    '                    </p>' +
-    '                  </div>' +
-    '                </div>' +
-    '                <!--[if mso]> ' +
-    '            </td> ' +
-    '            <td style="width:50%;padding:10px;" valign="middle"> ' +
-    '            <![endif]-->' +
-    '                <div' +
-    '                  class="column"' +
-    '                  style="' +
-    '                    width: 100%;' +
-    '                    max-width: 330px;' +
-    '                    display: inline-block;' +
-    '                    vertical-align: middle;' +
-    '                  "' +
-    '                >' +
-    '                  <div' +
-    '                    style="' +
-    '                      padding: 10px;' +
-    '                      font-size: 20px;' +
-    '                      line-height: 18px;' +
-    '                      text-align: left;' +
-    '                    "' +
-    '                  >' +
-    '                    <p' +
-    '                      style="' +
-    '                        margin-top: 0;' +
-    '                        margin-bottom: 12px;' +
-    '                        font-family: Arial, sans-serif;' +
-    '                        font-weight: bold;' +
-    '                      "' +
-    '                    >' +
-    `                      ${body.speedNetworking}` +
-    '                    </p>' +
-    '                  </div>' +
-    '                </div>' +
-    '                <!--[if mso]> ' +
-    '            </td> ' +
-    '            <td style="width:50%;padding:10px;" valign="middle"> ' +
-    '            <![endif]-->' +
-    '                <div' +
-    '                  class="column"' +
-    '                  style="width: 100%; max-width: 330px; display: inline-block"' +
-    '                >' +
-    '                  <div style="padding: 10px">' +
-    '                    <p' +
-    '                      style="' +
-    '                        margin: 0;' +
-    '                        font-family: Arial, sans-serif;' +
-    '                        font-size: 20px;' +
-    '                        line-height: 18px;' +
-    '                      "' +
-    '                    >' +
-    '                      Innovation Workshop' +
-    '                    </p>' +
-    '                  </div>' +
-    '                </div>' +
-    '                <!--[if mso]> ' +
-    '            </td> ' +
-    '            <td style="width:50%;padding:10px;" valign="middle"> ' +
-    '            <![endif]-->' +
-    '                <div' +
-    '                  class="column"' +
-    '                  style="' +
-    '                    width: 100%;' +
-    '                    max-width: 330px;' +
-    '                    display: inline-block;' +
-    '                    vertical-align: middle;' +
-    '                  "' +
-    '                >' +
-    '                  <div' +
-    '                    style="' +
-    '                      padding: 10px;' +
-    '                      font-size: 20px;' +
-    '                      line-height: 18px;' +
-    '                      text-align: left;' +
-    '                    "' +
-    '                  >' +
-    '                    <p' +
-    '                      style="' +
-    '                        margin-top: 0;' +
-    '                        margin-bottom: 12px;' +
-    '                        font-family: Arial, sans-serif;' +
-    '                        font-weight: bold;' +
-    '                      "' +
-    '                    >' +
-    `                      ${body.innovationWorkshop}` +
-    '                    </p>' +
-    '                  </div>' +
-    '                </div>' +
-    '                <!--[if mso]> ' +
-    '            </td> ' +
-    '            <td style="width:50%;padding:10px;" valign="middle"> ' +
-    '            <![endif]-->' +
-    '                <div' +
-    '                  class="column"' +
-    '                  style="width: 100%; max-width: 330px; display: inline-block"' +
-    '                >' +
-    '                  <div style="padding: 10px">' +
-    '                    <p' +
-    '                      style="' +
-    '                        margin: 0;' +
-    '                        font-family: Arial, sans-serif;' +
-    '                        font-size: 20px;' +
-    '                        line-height: 18px;' +
-    '                      "' +
-    '                    >' +
-    '                      Plant Tour' +
-    '                    </p>' +
-    '                  </div>' +
-    '                </div>' +
-    '                <!--[if mso]> ' +
-    '            </td> ' +
-    '            <td style="width:50%;padding:10px;" valign="middle"> ' +
-    '            <![endif]-->' +
-    '                <div' +
-    '                  class="column"' +
-    '                  style="' +
-    '                    width: 100%;' +
-    '                    max-width: 330px;' +
-    '                    display: inline-block;' +
-    '                    vertical-align: middle;' +
-    '                  "' +
-    '                >' +
-    '                  <div' +
-    '                    style="' +
-    '                      padding: 10px;' +
-    '                      font-size: 20px;' +
-    '                      line-height: 18px;' +
-    '                      text-align: left;' +
-    '                    "' +
-    '                  >' +
-    '                    <p' +
-    '                      style="' +
-    '                        margin-top: 0;' +
-    '                        margin-bottom: 12px;' +
-    '                        font-family: Arial, sans-serif;' +
-    '                        font-weight: bold;' +
-    '                      "' +
-    '                    >' +
-    `                      ${body.plantTour}` +
-    '                    </p>' +
-    '                  </div>' +
-    '                </div>' +
-    '                <!--[if mso]> ' +
-    '            </td> ' +
-    '            <td style="width:50%;padding:10px;" valign="middle"> ' +
-    '            <![endif]-->' +
-    '                <div' +
-    '                  class="column"' +
-    '                  style="width: 100%; max-width: 330px; display: inline-block"' +
-    '                >' +
-    '                  <div style="padding: 10px">' +
-    '                    <p' +
-    '                      style="' +
-    '                        margin: 0;' +
-    '                        font-family: Arial, sans-serif;' +
-    '                        font-size: 20px;' +
-    '                        line-height: 18px;' +
-    '                      "' +
-    '                    >' +
-    '                      Clemson Tour' +
-    '                    </p>' +
-    '                  </div>' +
-    '                </div>' +
-    '                <!--[if mso]> ' +
-    '            </td> ' +
-    '            <td style="width:50%;padding:10px;" valign="middle"> ' +
-    '            <![endif]-->' +
-    '                <div' +
-    '                  class="column"' +
-    '                  style="' +
-    '                    width: 100%;' +
-    '                    max-width: 330px;' +
-    '                    display: inline-block;' +
-    '                    vertical-align: middle;' +
-    '                  "' +
-    '                >' +
-    '                  <div' +
-    '                    style="' +
-    '                      padding: 10px;' +
-    '                      font-size: 20px;' +
-    '                      line-height: 18px;' +
-    '                      text-align: left;' +
-    '                    "' +
-    '                  >' +
-    '                    <p' +
-    '                      style="' +
-    '                        margin-top: 0;' +
-    '                        margin-bottom: 12px;' +
-    '                        font-family: Arial, sans-serif;' +
-    '                        font-weight: bold;' +
-    '                      "' +
-    '                    >' +
-    `                      ${body.clemsonTour}` +
-    '                    </p>' +
-    '                  </div>' +
-    '                </div>' +
-    '                <!--[if mso]> ' +
-    '            </td> ' +
-    '            <td style="width:50%;padding:10px;" valign="middle"> ' +
-    '            <![endif]-->' +
-    '                <div' +
-    '                  class="column"' +
-    '                  style="width: 100%; max-width: 330px; display: inline-block"' +
-    '                >' +
-    '                  <div style="padding: 10px">' +
-    '                    <p' +
-    '                      style="' +
-    '                        margin: 0;' +
-    '                        font-family: Arial, sans-serif;' +
-    '                        font-size: 20px;' +
-    '                        line-height: 18px;' +
-    '                      "' +
-    '                    >' +
-    '                      BMW Tour' +
-    '                    </p>' +
-    '                  </div>' +
-    '                </div>' +
-    '                <!--[if mso]> ' +
-    '            </td> ' +
-    '            <td style="width:50%;padding:10px;" valign="middle"> ' +
-    '            <![endif]-->' +
-    '                <div' +
-    '                  class="column"' +
-    '                  style="' +
-    '                    width: 100%;' +
-    '                    max-width: 330px;' +
-    '                    display: inline-block;' +
-    '                    vertical-align: middle;' +
-    '                  "' +
-    '                >' +
-    '                  <div' +
-    '                    style="' +
-    '                      padding: 10px;' +
-    '                      font-size: 20px;' +
-    '                      line-height: 18px;' +
-    '                      text-align: left;' +
-    '                    "' +
-    '                  >' +
-    '                    <p' +
-    '                      style="' +
-    '                        margin-top: 0;' +
-    '                        margin-bottom: 12px;' +
-    '                        font-family: Arial, sans-serif;' +
-    '                        font-weight: bold;' +
-    '                      "' +
-    '                    >' +
-    `                      ${body.bmwTour}` +
-    '                    </p>' +
-    '                  </div>' +
-    '                </div>' +
-    '                <!--[if mso]> ' +
-    '            </td> ' +
     '            </tr> ' +
     '            </table> ' +
     '            <![endif]-->' +
@@ -871,7 +547,7 @@ exports.handler = async function (event) {
     '                      "' +
     '                    >' +
     '                      <a' +
-    `                        href="https://autopacksummit.com/approve-registration?email=${body.email}&name=${body.name}&company=${body.company}&title=${body.title}&phone=${body.phone}"` +
+    `                        href="https://4mwprd7rph.execute-api.us-east-1.amazonaws.com/default/handleRegistrationv2?email=${body.email}&name=${body.name}&company=${body.company}&title=${body.title}&phone=${body.phone}"` +
     '                        style="' +
     '                          color: white;' +
     '                          font-weight: bold;' +
@@ -962,10 +638,8 @@ exports.handler = async function (event) {
     Destination: {
       ToAddresses: [
         'jamie@packagingschool.com',
-        'suzy@packagingschool.com',
-        'info@packagingschool.com',
+        'diana@packagingschool.com',
         'bianca@packagingschool.com',
-        'lars@packagingschool.com',
       ],
     },
     Message: {

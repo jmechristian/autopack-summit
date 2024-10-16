@@ -8402,6 +8402,70 @@ export const listIndexRows = /* GraphQL */ `
     }
   }
 `;
+export const getIndexPage = /* GraphQL */ `
+  query GetIndexPage($id: ID!) {
+    getIndexPage(id: $id) {
+      id
+      content
+      slug
+      discount
+      status
+      type
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listIndexPages = /* GraphQL */ `
+  query ListIndexPages(
+    $filter: ModelIndexPageFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listIndexPages(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        content
+        slug
+        discount
+        status
+        type
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const indexPagesBySlug = /* GraphQL */ `
+  query IndexPagesBySlug(
+    $slug: String!
+    $sortDirection: ModelSortDirection
+    $filter: ModelIndexPageFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    indexPagesBySlug(
+      slug: $slug
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        content
+        slug
+        discount
+        status
+        type
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
 export const getFaq = /* GraphQL */ `
   query GetFaq($id: ID!) {
     getFaq(id: $id) {

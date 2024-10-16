@@ -23,9 +23,9 @@ export default async function handler(req, res) {
         ],
         ToAddresses: [
           toAddress,
-          'suzy@packagingschool.com',
-          'bianca@packagingschool.com',
-          'lars@packagingschool.com',
+          // 'suzy@packagingschool.com',
+          // 'bianca@packagingschool.com',
+          // 'lars@packagingschool.com',
         ],
       },
       Message: {

@@ -833,6 +833,15 @@ type IndexRow @model @auth(rules: [{ allow: public }]) {
   templates: [IndexTemplate] @manyToMany(relationName: "IndexTemplateRows")
 }
 
+type IndexPage @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  content: String
+  slug: String! @index(name: "indexPageBySlug")
+  discount: Int
+  status: String @default(value: "DRAFT")
+  type: String @default(value: "INDEX")
+}
+
 ######### FAQs #########
 
 type Faq @model @auth(rules: [{ allow: public }]) {

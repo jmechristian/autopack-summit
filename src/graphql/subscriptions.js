@@ -11503,6 +11503,48 @@ export const onDeleteIndexRow = /* GraphQL */ `
     }
   }
 `;
+export const onCreateIndexPage = /* GraphQL */ `
+  subscription OnCreateIndexPage {
+    onCreateIndexPage {
+      id
+      content
+      slug
+      discount
+      status
+      type
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateIndexPage = /* GraphQL */ `
+  subscription OnUpdateIndexPage {
+    onUpdateIndexPage {
+      id
+      content
+      slug
+      discount
+      status
+      type
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteIndexPage = /* GraphQL */ `
+  subscription OnDeleteIndexPage {
+    onDeleteIndexPage {
+      id
+      content
+      slug
+      discount
+      status
+      type
+      createdAt
+      updatedAt
+    }
+  }
+`;
 export const onCreateFaq = /* GraphQL */ `
   subscription OnCreateFaq {
     onCreateFaq {
