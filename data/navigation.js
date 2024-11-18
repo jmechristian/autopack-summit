@@ -16,11 +16,15 @@ export const navMenu = [
     link: '/travel',
   },
   {
-    name: 'Add-Ons',
-    link: '/add-ons',
+    name: '2024 Media',
+    link: 'https://www.packagingschool.com/events/aps-2024',
   },
-  {
-    name: 'OEM/ Tier 1',
-    link: '/register',
-  },
+  // {
+  //   name: 'Add-Ons',
+  //   link: '/add-ons',
+  // },
+  // {
+  //   name: 'OEM/ Tier 1',
+  //   link: '/register',
+  // },
 ];

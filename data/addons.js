@@ -2137,7 +2137,7 @@ export const addons = [
     first: 'Jonathan',
     last: 'Farnsworth',
     company: 'Subaru of Indiana Automotive, Inc.',
-    email: 'Jonathan.Fararnsworth@subaru-sia.com',
+    email: 'Jonathan.Farnsworth@subaru-sia.com',
     phone: '4253081583',
     count: 1.0,
     table: '10',

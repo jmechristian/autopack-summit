@@ -15,6 +15,7 @@ function classNames(...classes) {
 }
 
 const Agenda = ({ sessionData, tourists }) => {
+  console.log(sessionData);
   const [enabled, setEnabled] = useState(false);
   const [isDay, setDay] = useState(1);
 
