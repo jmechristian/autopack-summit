@@ -99,9 +99,9 @@ const Page = ({ homepageData, speakers, testimonials }) => {
                 disabled={true}
                 onClick={() => dispatch(openPowerConsole())}
               >
-                Tickets are SOLD OUT!
+                Stay Tuned for 2025 Details
               </motion.button>
-              <motion.div
+              {/* <motion.div
                 className='underline text-neutral-900 font-medium cursor-pointer'
                 animate={{ opacity: 1 }}
                 initial={{ opacity: 0 }}
@@ -111,13 +111,13 @@ const Page = ({ homepageData, speakers, testimonials }) => {
                 }
               >
                 Join the Waitlist
-              </motion.div>
+              </motion.div> */}
             </div>
           </div>
           <Reveal delay={0.55} bgColor={'white'}>
             <div className='flex flex-col lg:flex-row gap-3 pt-12 lg:pt-0 max-w-xl md:mx-auto w-full'>
               <div className='text-5xl font-medium text-ap-blue font-oswald tracking-tight'>
-                OCT 21-23, 2024
+                OCT 15-17, 2025
               </div>
               <div className='flex gap-2 lg:flex-col lg:gap-0 font-medium'>
                 <div>Hyatt Regency</div>
