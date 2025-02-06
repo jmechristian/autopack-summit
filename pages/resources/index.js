@@ -82,6 +82,7 @@ function classNames(...classes) {
 }
 
 const Page = ({ resourceData }) => {
+  console.log(resourceData);
   return (
     <>
       <Head>

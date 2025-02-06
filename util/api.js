@@ -7,11 +7,19 @@ import {
   updateAPSTicketRegistrant,
   createEmailTracking,
   updateEmailTracking,
+  createAPSCompany,
+  createAPSRegistrant2025,
+  createAPSActivity2025,
 } from '../src/graphql/mutations';
 import {
   aPSRegistrantsByEmail,
   aPSTicketRegistrantsByEmail,
   listEmailTrackings,
+  listAPSBoards,
+  listAPSCompanies,
+  listAPSAddOn2025s,
+  getAPSRegistrant2025,
+  listAPSCode2025s,
 } from '../src/graphql/queries';
 
 Amplify.configure({ ...awsExports, ssr: true });
@@ -458,6 +466,107 @@ export const trackEmailOpen = async (id) => {
     variables: {
       input: { id: id, opened: true, openedDate: new Date().toISOString() },
     },
+  });
+
+  return res.data;
+};
+
+export const getBoardMembers = async () => {
+  const res = await API.graphql({
+    query: listAPSBoards,
+  });
+
+  return res.data.listAPSBoards.items;
+};
+
+export const getAPSCompanies = async () => {
+  const res = await API.graphql({
+    query: listAPSCompanies,
+  });
+
+  return res.data.listAPSCompanies.items;
+};
+
+export const createCompany = async (data) => {
+  const res = await API.graphql({
+    query: createAPSCompany,
+    variables: { input: data },
+  });
+
+  return res.data.createAPSCompany;
+};
+
+export const getAPS25AddOns = async () => {
+  const res = await API.graphql({
+    query: listAPSAddOn2025s,
+  });
+
+  return res.data.listAPSAddOn2025s.items;
+};
+
+export const createNewAPS25Registrant = async (data) => {
+  const res = await API.graphql({
+    query: createAPSRegistrant2025,
+    variables: {
+      input: {
+        email: data.email,
+        aPSRegistrant2025CompanyNameId: data.aPSRegistrant2025CompanyNameId,
+        attendeeType: data.attendeeType,
+        billingAddressCity: data.billingAddress.city,
+        billingAddressEmail: data.billingAddress.email,
+        billingAddressFirstName: data.billingAddress.firstName,
+        billingAddressLastName: data.billingAddress.lastName,
+        billingAddressPhone: data.billingAddress.phone,
+        billingAddressState: data.billingAddress.state,
+        billingAddressStreet: data.billingAddress.street,
+        billingAddressZip: data.billingAddress.zip,
+        discountCode: data.discountCode,
+        firstName: data.firstName,
+        interests: data.interests,
+        jobTitle: data.jobTitle,
+        lastName: data.lastName,
+        learningObjectives: data.learningObjectives,
+        otherInterest: data.otherInterest,
+        paymentConfirmation: data.paymentConfirmation,
+        phone: data.phone,
+        sameAsAttendee: data.sameAsAttendee,
+        speakerTopic: data.speakerTopic,
+        speedNetworking: data.speedNetworking,
+        status: 'PENDING',
+        termsAccepted: data.termsAccepted,
+        totalAmount: data.totalAmount,
+        welcomeEmailSent: false,
+        registrationEmailReceived: false,
+        morrisetteStatus: data.morrisetteStatus,
+        morrisetteTransportation: data.morrisetteTransportation,
+      },
+    },
+  });
+
+  return res.data;
+};
+
+export const getCurrentAPS25Registrant = async (id) => {
+  const res = await API.graphql({
+    query: getAPSRegistrant2025,
+    variables: { id: id },
+  });
+
+  return res.data.getAPSRegistrant2025;
+};
+
+export const getAPS25Codes = async () => {
+  const res = await API.graphql({
+    query: listAPSCode2025s,
+  });
+
+  return res.data.listAPSCode2025s.items;
+};
+
+export const createAPS25Notification = async (data) => {
+  const res = await API.graphql({
+    query: createAPSActivity2025,
+    variables: { input: data },
   });
 
   return res.data;
