@@ -2013,6 +2013,7 @@ export const getAPSCompany = /* GraphQL */ `
           interests
           otherInterest
           speedNetworking
+          speedNetworkingStatus
           billingAddressFirstName
           billingAddressLastName
           billingAddressEmail
@@ -2033,10 +2034,19 @@ export const getAPSCompany = /* GraphQL */ `
           morrisetteTransportation
           morrisetteStatus
           paymentConfirmation
+          registrationEmailSent
           registrationEmailReceived
           welcomeEmailSent
+          welcomeEmailReceived
           paymentMethod
           paymentLast4
+          approvedAt
+          headshot
+          presentation
+          presentationTitle
+          presentationSummary
+          mangaStatus
+          mangaTransportation
           createdAt
           updatedAt
           aPSCompanyApsRegistrantsId
@@ -2073,6 +2083,7 @@ export const listAPSCompanies = /* GraphQL */ `
             interests
             otherInterest
             speedNetworking
+            speedNetworkingStatus
             billingAddressFirstName
             billingAddressLastName
             billingAddressEmail
@@ -2090,10 +2101,19 @@ export const listAPSCompanies = /* GraphQL */ `
             morrisetteTransportation
             morrisetteStatus
             paymentConfirmation
+            registrationEmailSent
             registrationEmailReceived
             welcomeEmailSent
+            welcomeEmailReceived
             paymentMethod
             paymentLast4
+            approvedAt
+            headshot
+            presentation
+            presentationTitle
+            presentationSummary
+            mangaStatus
+            mangaTransportation
             createdAt
             updatedAt
             aPSCompanyApsRegistrantsId
@@ -2140,6 +2160,7 @@ export const aPSCompaniesByEmail = /* GraphQL */ `
             interests
             otherInterest
             speedNetworking
+            speedNetworkingStatus
             billingAddressFirstName
             billingAddressLastName
             billingAddressEmail
@@ -2157,10 +2178,19 @@ export const aPSCompaniesByEmail = /* GraphQL */ `
             morrisetteTransportation
             morrisetteStatus
             paymentConfirmation
+            registrationEmailSent
             registrationEmailReceived
             welcomeEmailSent
+            welcomeEmailReceived
             paymentMethod
             paymentLast4
+            approvedAt
+            headshot
+            presentation
+            presentationTitle
+            presentationSummary
+            mangaStatus
+            mangaTransportation
             createdAt
             updatedAt
             aPSCompanyApsRegistrantsId
@@ -2218,6 +2248,7 @@ export const getAPSAddOn2025 = /* GraphQL */ `
             interests
             otherInterest
             speedNetworking
+            speedNetworkingStatus
             billingAddressFirstName
             billingAddressLastName
             billingAddressEmail
@@ -2235,10 +2266,19 @@ export const getAPSAddOn2025 = /* GraphQL */ `
             morrisetteTransportation
             morrisetteStatus
             paymentConfirmation
+            registrationEmailSent
             registrationEmailReceived
             welcomeEmailSent
+            welcomeEmailReceived
             paymentMethod
             paymentLast4
+            approvedAt
+            headshot
+            presentation
+            presentationTitle
+            presentationSummary
+            mangaStatus
+            mangaTransportation
             createdAt
             updatedAt
             aPSCompanyApsRegistrantsId
@@ -2315,6 +2355,7 @@ export const getAPSRegistrant2025 = /* GraphQL */ `
             interests
             otherInterest
             speedNetworking
+            speedNetworkingStatus
             billingAddressFirstName
             billingAddressLastName
             billingAddressEmail
@@ -2332,10 +2373,19 @@ export const getAPSRegistrant2025 = /* GraphQL */ `
             morrisetteTransportation
             morrisetteStatus
             paymentConfirmation
+            registrationEmailSent
             registrationEmailReceived
             welcomeEmailSent
+            welcomeEmailReceived
             paymentMethod
             paymentLast4
+            approvedAt
+            headshot
+            presentation
+            presentationTitle
+            presentationSummary
+            mangaStatus
+            mangaTransportation
             createdAt
             updatedAt
             aPSCompanyApsRegistrantsId
@@ -2353,6 +2403,7 @@ export const getAPSRegistrant2025 = /* GraphQL */ `
       interests
       otherInterest
       speedNetworking
+      speedNetworkingStatus
       billingAddressFirstName
       billingAddressLastName
       billingAddressEmail
@@ -2398,6 +2449,7 @@ export const getAPSRegistrant2025 = /* GraphQL */ `
             interests
             otherInterest
             speedNetworking
+            speedNetworkingStatus
             billingAddressFirstName
             billingAddressLastName
             billingAddressEmail
@@ -2415,10 +2467,19 @@ export const getAPSRegistrant2025 = /* GraphQL */ `
             morrisetteTransportation
             morrisetteStatus
             paymentConfirmation
+            registrationEmailSent
             registrationEmailReceived
             welcomeEmailSent
+            welcomeEmailReceived
             paymentMethod
             paymentLast4
+            approvedAt
+            headshot
+            presentation
+            presentationTitle
+            presentationSummary
+            mangaStatus
+            mangaTransportation
             createdAt
             updatedAt
             aPSCompanyApsRegistrantsId
@@ -2432,10 +2493,19 @@ export const getAPSRegistrant2025 = /* GraphQL */ `
       morrisetteTransportation
       morrisetteStatus
       paymentConfirmation
+      registrationEmailSent
       registrationEmailReceived
       welcomeEmailSent
+      welcomeEmailReceived
       paymentMethod
       paymentLast4
+      approvedAt
+      headshot
+      presentation
+      presentationTitle
+      presentationSummary
+      mangaStatus
+      mangaTransportation
       createdAt
       updatedAt
       aPSCompanyApsRegistrantsId
@@ -2476,6 +2546,7 @@ export const listAPSRegistrant2025s = /* GraphQL */ `
         interests
         otherInterest
         speedNetworking
+        speedNetworkingStatus
         billingAddressFirstName
         billingAddressLastName
         billingAddressEmail
@@ -2503,10 +2574,19 @@ export const listAPSRegistrant2025s = /* GraphQL */ `
         morrisetteTransportation
         morrisetteStatus
         paymentConfirmation
+        registrationEmailSent
         registrationEmailReceived
         welcomeEmailSent
+        welcomeEmailReceived
         paymentMethod
         paymentLast4
+        approvedAt
+        headshot
+        presentation
+        presentationTitle
+        presentationSummary
+        mangaStatus
+        mangaTransportation
         createdAt
         updatedAt
         aPSCompanyApsRegistrantsId
@@ -2553,6 +2633,7 @@ export const aPSRegistrant2025sByEmail = /* GraphQL */ `
         interests
         otherInterest
         speedNetworking
+        speedNetworkingStatus
         billingAddressFirstName
         billingAddressLastName
         billingAddressEmail
@@ -2580,10 +2661,19 @@ export const aPSRegistrant2025sByEmail = /* GraphQL */ `
         morrisetteTransportation
         morrisetteStatus
         paymentConfirmation
+        registrationEmailSent
         registrationEmailReceived
         welcomeEmailSent
+        welcomeEmailReceived
         paymentMethod
         paymentLast4
+        approvedAt
+        headshot
+        presentation
+        presentationTitle
+        presentationSummary
+        mangaStatus
+        mangaTransportation
         createdAt
         updatedAt
         aPSCompanyApsRegistrantsId
@@ -12650,6 +12740,7 @@ export const getApsRegistrantAddOns25 = /* GraphQL */ `
         interests
         otherInterest
         speedNetworking
+        speedNetworkingStatus
         billingAddressFirstName
         billingAddressLastName
         billingAddressEmail
@@ -12677,10 +12768,19 @@ export const getApsRegistrantAddOns25 = /* GraphQL */ `
         morrisetteTransportation
         morrisetteStatus
         paymentConfirmation
+        registrationEmailSent
         registrationEmailReceived
         welcomeEmailSent
+        welcomeEmailReceived
         paymentMethod
         paymentLast4
+        approvedAt
+        headshot
+        presentation
+        presentationTitle
+        presentationSummary
+        mangaStatus
+        mangaTransportation
         createdAt
         updatedAt
         aPSCompanyApsRegistrantsId
@@ -12742,6 +12842,7 @@ export const listApsRegistrantAddOns25s = /* GraphQL */ `
           interests
           otherInterest
           speedNetworking
+          speedNetworkingStatus
           billingAddressFirstName
           billingAddressLastName
           billingAddressEmail
@@ -12762,10 +12863,19 @@ export const listApsRegistrantAddOns25s = /* GraphQL */ `
           morrisetteTransportation
           morrisetteStatus
           paymentConfirmation
+          registrationEmailSent
           registrationEmailReceived
           welcomeEmailSent
+          welcomeEmailReceived
           paymentMethod
           paymentLast4
+          approvedAt
+          headshot
+          presentation
+          presentationTitle
+          presentationSummary
+          mangaStatus
+          mangaTransportation
           createdAt
           updatedAt
           aPSCompanyApsRegistrantsId
@@ -12833,6 +12943,7 @@ export const apsRegistrantAddOns25sByAPSAddOn2025Id = /* GraphQL */ `
           interests
           otherInterest
           speedNetworking
+          speedNetworkingStatus
           billingAddressFirstName
           billingAddressLastName
           billingAddressEmail
@@ -12853,10 +12964,19 @@ export const apsRegistrantAddOns25sByAPSAddOn2025Id = /* GraphQL */ `
           morrisetteTransportation
           morrisetteStatus
           paymentConfirmation
+          registrationEmailSent
           registrationEmailReceived
           welcomeEmailSent
+          welcomeEmailReceived
           paymentMethod
           paymentLast4
+          approvedAt
+          headshot
+          presentation
+          presentationTitle
+          presentationSummary
+          mangaStatus
+          mangaTransportation
           createdAt
           updatedAt
           aPSCompanyApsRegistrantsId
@@ -12924,6 +13044,7 @@ export const apsRegistrantAddOns25sByAPSRegistrant2025Id = /* GraphQL */ `
           interests
           otherInterest
           speedNetworking
+          speedNetworkingStatus
           billingAddressFirstName
           billingAddressLastName
           billingAddressEmail
@@ -12944,10 +13065,19 @@ export const apsRegistrantAddOns25sByAPSRegistrant2025Id = /* GraphQL */ `
           morrisetteTransportation
           morrisetteStatus
           paymentConfirmation
+          registrationEmailSent
           registrationEmailReceived
           welcomeEmailSent
+          welcomeEmailReceived
           paymentMethod
           paymentLast4
+          approvedAt
+          headshot
+          presentation
+          presentationTitle
+          presentationSummary
+          mangaStatus
+          mangaTransportation
           createdAt
           updatedAt
           aPSCompanyApsRegistrantsId

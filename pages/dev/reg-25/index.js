@@ -916,6 +916,17 @@ const RegistrationForm = () => {
                         setAddOnsSelected((prev) => [...prev, addOns[0]]);
                       }}
                     />
+                    <AddOnCard
+                      addOn={addOns[1]}
+                      onUpdate={(value) => {
+                        setFormData((prev) => ({
+                          ...prev,
+                          mangaTransportation: value,
+                          mangaStatus: 'PENDING',
+                        }));
+                        setAddOnsSelected((prev) => [...prev, addOns[1]]);
+                      }}
+                    />
                   </div>
                 )}
 

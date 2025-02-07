@@ -6,7 +6,7 @@ const AddOnCard = ({ addOn, onUpdate }) => {
     <div className='flex flex-col gap-3 justify-between bg-white border border-gray-300 p-3 rounded'>
       <div className='flex justify-between'>
         <div className='flex flex-col gap-0 max-w-[50%]'>
-          <div className='font-bold text-lg'>{addOn.title}</div>
+          <div className='font-bold text-lg leading-tight'>{addOn.title}</div>
           <div className='text-sm text-gray-500'>{addOn.location}</div>
         </div>
         <div className='flex flex-col gap-0'>
