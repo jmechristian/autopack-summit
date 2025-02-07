@@ -1314,7 +1314,7 @@ const RegistrationForm = () => {
                   onClick={() => router.push(`/aps25/${formDataId}`)}
                 >
                   <QRCodeSVG
-                    value={`http://localhost:3000/aps25/${formDataId}`}
+                    value={`/aps25/${formDataId}`}
                     size={144}
                     bgColor='#ffffff'
                     fgColor='#000000'
