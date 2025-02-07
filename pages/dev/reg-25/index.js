@@ -1314,7 +1314,7 @@ const RegistrationForm = () => {
                   onClick={() => router.push(`/aps25/${formDataId}`)}
                 >
                   <QRCodeSVG
-                    value={`/aps25/${formDataId}`}
+                    value={`https://www.autopacksummit.com/aps25/${formDataId}`}
                     size={144}
                     bgColor='#ffffff'
                     fgColor='#000000'
