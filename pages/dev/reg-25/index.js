@@ -110,7 +110,6 @@ const RegistrationForm = () => {
 
     const fetchCodes = async () => {
       const codes = await getAPS25Codes();
-      console.log('codes', codes);
       setCodes(codes);
     };
 
@@ -1212,7 +1211,8 @@ const RegistrationForm = () => {
                 </div>
 
                 {(formData.attendeeType === 'OEM' ||
-                  formData.attendeeType === 'Tier1') && (
+                  formData.attendeeType === 'Tier1' ||
+                  formData.attendeeType === 'Sponsor') && (
                   <div className='flex flex-col gap-2 py-6'>
                     <label className='text-sm font-bold'>Discount Code</label>
                     <input
@@ -1223,7 +1223,7 @@ const RegistrationForm = () => {
                     />
                     <button
                       onClick={handleApplyDiscount}
-                      className='px-4 py-2 bg-gray-500 text-white rounded hover:bg-blue-600 mt-2'
+                      className='px-4 py-2 bg-indigo-500 text-white rounded hover:bg-blue-600 mt-2'
                     >
                       Apply Discount
                     </button>
