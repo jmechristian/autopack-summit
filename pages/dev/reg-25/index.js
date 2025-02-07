@@ -419,6 +419,17 @@ const RegistrationForm = () => {
     return Object.keys(newErrors).length === 0;
   };
 
+  const validateTermsAccepted = () => {
+    if (!formData.termsAccepted) {
+      setErrors((prev) => ({
+        ...prev,
+        termsAccepted: 'You must accept the terms and conditions',
+      }));
+      return false;
+    }
+    return true;
+  };
+
   const handlePaymentSubmit = async () => {
     // Check all previous steps are valid
     if (!validateStep(1) || !validateStep(2) || !validateBillingInfo()) {
@@ -454,7 +465,7 @@ const RegistrationForm = () => {
   };
 
   const handleFreeRegistration = async () => {
-    if (!validateStep(1) || !validateStep(2)) {
+    if (!validateStep(1) || !validateStep(2) || !validateTermsAccepted()) {
       return;
     }
 
@@ -1210,9 +1221,7 @@ const RegistrationForm = () => {
                   <p>Phone: {formData.phone}</p>
                 </div>
 
-                {(formData.attendeeType === 'OEM' ||
-                  formData.attendeeType === 'Tier1' ||
-                  formData.attendeeType === 'Sponsor') && (
+                {formData.attendeeType != 'Solution-Provider' && (
                   <div className='flex flex-col gap-2 py-6'>
                     <label className='text-sm font-bold'>Discount Code</label>
                     <input
