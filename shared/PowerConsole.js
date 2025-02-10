@@ -72,7 +72,7 @@ const PowerConsole = () => {
                   fn={() => router.push('/')}
                   soldOut={true}
                 />
-                <ConsoleItem
+                {/* <ConsoleItem
                   title={'Join the Ticket Waitlist'}
                   color={'bg-white'}
                   hoverColor={'hover:bg-amber-400'}
@@ -81,8 +81,8 @@ const PowerConsole = () => {
                   fn={() =>
                     window.open('https://forms.gle/k4KFagWajT7WACBx5', '_blank')
                   }
-                />
-                <ConsoleItem
+                /> */}
+                {/* <ConsoleItem
                   title={'OEM/ Tier 1 Registration'}
                   color={'bg-white'}
                   hoverColor={'hover:bg-amber-400'}
@@ -97,7 +97,7 @@ const PowerConsole = () => {
                   iconBack={'bg-black'}
                   icon={<MdConfirmationNumber color='white' size={'20px'} />}
                   fn={() => router.push('/add-ons')}
-                />
+                /> */}
                 <ConsoleItem
                   title={"I'd like to Speak"}
                   iconBack={'bg-black/30'}
