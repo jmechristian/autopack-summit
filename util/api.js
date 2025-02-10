@@ -539,6 +539,8 @@ export const createNewAPS25Registrant = async (data) => {
         registrationEmailReceived: false,
         morrisetteStatus: data.morrisetteStatus,
         morrisetteTransportation: data.morrisetteTransportation,
+        mangaStatus: data.mangaStatus,
+        mangaTransportation: data.mangaTransportation,
       },
     },
   });

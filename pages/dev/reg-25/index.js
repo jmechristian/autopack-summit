@@ -58,6 +58,9 @@ const RegistrationForm = () => {
     discountCode: '',
     morrisetteTransportation: '',
     paymentConfirmation: '',
+    morrisetteStatus: '',
+    mangaStatus: '',
+    mangaTransportation: '',
   });
 
   const interests = [
@@ -906,22 +909,34 @@ const RegistrationForm = () => {
                   <div className='flex flex-col gap-2 w-full'>
                     <div>Tours</div>
                     <AddOnCard
+                      id='morrisette'
                       addOn={addOns[0]}
                       onUpdate={(value) => {
                         setFormData((prev) => ({
                           ...prev,
                           morrisetteTransportation: value,
+                        }));
+                      }}
+                      onRegister={() => {
+                        setFormData((prev) => ({
+                          ...prev,
                           morrisetteStatus: 'PENDING',
                         }));
                         setAddOnsSelected((prev) => [...prev, addOns[0]]);
                       }}
                     />
                     <AddOnCard
+                      id='manga'
                       addOn={addOns[1]}
                       onUpdate={(value) => {
                         setFormData((prev) => ({
                           ...prev,
                           mangaTransportation: value,
+                        }));
+                      }}
+                      onRegister={() => {
+                        setFormData((prev) => ({
+                          ...prev,
                           mangaStatus: 'PENDING',
                         }));
                         setAddOnsSelected((prev) => [...prev, addOns[1]]);

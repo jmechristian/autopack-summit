@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
-
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { API, graphqlOperation } from 'aws-amplify';
 import { useSelector } from 'react-redux';
@@ -55,7 +55,7 @@ const Page = () => {
       {/* <div className='lg:hidden'>
         <RegistrationFormMobile codes={codes && codes} />
       </div> */}
-      {submitted ? (
+      {/* {submitted ? (
         <AnimatePresence>
           <div className='max-w-xl lg:max-w-3xl text-center px-10 my-24 mx-auto'>
             <h2 className='text-3xl font-bold tracking-tight text-ap-darkblue sm:text-5xl lg:text-5xl'>
@@ -85,7 +85,17 @@ const Page = () => {
             />
           </div>
         </AnimatePresence>
-      )}
+      )} */}
+      <div className='w-full h-[600px] flex justify-center items-center'>
+        <div className='w-full max-w-[600px]'>
+          <Image
+            src='https://packschool.s3.us-east-1.amazonaws.com/reg-holder.png'
+            alt='APS Logo'
+            width={600}
+            height={363}
+          />
+        </div>
+      </div>
     </>
   );
 };
