@@ -945,7 +945,7 @@ const RegistrationForm = () => {
                   </div>
                 )}
 
-                {formData.attendeeType === 'OEM' ||
+                {/* {formData.attendeeType === 'OEM' ||
                 formData.attendeeType === 'Tier1' ? (
                   <div className='flex flex-col gap-2 w-full bg-gray-300 p-5'>
                     <div className='flex gap-2 justify-between border border-gray-300 p-4 rounded'>
@@ -961,7 +961,7 @@ const RegistrationForm = () => {
                       </label>
                     </div>
                   </div>
-                ) : null}
+                ) : null} */}
               </div>
             </div>
           </div>
