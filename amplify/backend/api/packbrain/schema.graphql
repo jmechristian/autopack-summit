@@ -342,8 +342,8 @@ type APSRegistrant2025 @model @auth(rules: [{ allow: public }]) {
   presentation: String
   presentationTitle: String
   presentationSummary: String
-  mangaStatus: String
-  mangaTransportation: String
+  magnaStatus: String
+  magnaTransportation: String
 }
 
 type APSCode2025 @model @auth(rules: [{ allow: public }]) {

@@ -59,8 +59,8 @@ const RegistrationForm = () => {
     morrisetteTransportation: '',
     paymentConfirmation: '',
     morrisetteStatus: '',
-    mangaStatus: '',
-    mangaTransportation: '',
+    magnaStatus: '',
+    magnaTransportation: '',
   });
 
   const interests = [
@@ -926,18 +926,18 @@ const RegistrationForm = () => {
                       }}
                     />
                     <AddOnCard
-                      id='manga'
+                      id='magna'
                       addOn={addOns[1]}
                       onUpdate={(value) => {
                         setFormData((prev) => ({
                           ...prev,
-                          mangaTransportation: value,
+                          magnaTransportation: value,
                         }));
                       }}
                       onRegister={() => {
                         setFormData((prev) => ({
                           ...prev,
-                          mangaStatus: 'PENDING',
+                          magnaStatus: 'PENDING',
                         }));
                         setAddOnsSelected((prev) => [...prev, addOns[1]]);
                       }}
@@ -1340,7 +1340,14 @@ const RegistrationForm = () => {
                   We're reviewing your information and will send you a
                   confirmation email soon once it's approved. Scan the QR code
                   to view your registration information and download a virtual
-                  ticket once confirmed.
+                  ticket once confirmed. You can check your status{' '}
+                  <a
+                    href={`/aps25/${formDataId}`}
+                    className='underline text-ap-yellow font-bold'
+                  >
+                    here
+                  </a>
+                  .
                 </p>
               </div>
               <div className='flex flex-col gap-2 w-1/4 items-center'>

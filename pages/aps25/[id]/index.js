@@ -118,8 +118,8 @@ export const Page = ({ registrant }) => {
           <div className='w-full grid lg:grid-cols-3 gap-7'>
             <div className='w-full p-8 bg-white rounded-lg flex flex-col gap-2'>
               <div className='text-sm font-bold text-ap-blue mb-2'>Tours</div>
-              <div className='flex flex-col gap-2'>
-                {registrant.morrisetteStatus === 'PENDING' ? (
+              <div className='flex flex-col gap-5 divide-y divide-gray-300'>
+                {registrant.morrisetteStatus === 'PENDING' && (
                   <div className='flex flex-col gap-1'>
                     <div className='font-bold'>Morrisette Tour</div>
                     <div className='text-sm text-gray-500'>
@@ -147,14 +147,61 @@ export const Page = ({ registrant }) => {
                         }`}
                       >
                         {' '}
-                        {registrant.morrisetteStatus === 'PENDING'
-                          ? 'Pending'
-                          : 'Not Registered'}
+                        {registrant.morrisetteStatus === 'PENDING' ? (
+                          <div className='flex items-center gap-1'>
+                            <div>
+                              <MdAccessTime color='#eab308' size={20} />
+                            </div>
+                            <div>Pending</div>
+                          </div>
+                        ) : (
+                          <div>Not Registered</div>
+                        )}
                       </span>
                     </div>
                   </div>
-                ) : (
-                  'No Tours Registered'
+                )}
+                {registrant.magnaStatus === 'PENDING' && (
+                  <div className='flex flex-col gap-1 pt-5'>
+                    <div className='font-bold'>Magna Mirrors Tour</div>
+                    <div className='text-sm text-gray-500'>
+                      Friday, October 17th
+                      <br /> 10:00 AM - 12:00 PM
+                    </div>
+                    <div className='text-sm'>
+                      1150 S Danzler Rd.
+                      <br /> Duncan, SC 29334
+                    </div>
+                    <div className='text-sm font-semibold mt-2'>
+                      Transportation Preference:
+                      <span className='capitalize'>
+                        {' '}
+                        {registrant.magnaTransportation}
+                      </span>
+                    </div>
+                    <div className='text-sm font-semibold mt-2'>
+                      Tour Registration Status:
+                      <span
+                        className={`font-bold ${
+                          registrant.magnaStatus === 'PENDING'
+                            ? 'text-yellow-500'
+                            : 'text-green-500'
+                        }`}
+                      >
+                        {' '}
+                        {registrant.magnaStatus === 'PENDING' ? (
+                          <div className='flex items-center gap-1'>
+                            <div>
+                              <MdAccessTime color='#eab308' size={20} />
+                            </div>
+                            <div>Pending</div>
+                          </div>
+                        ) : (
+                          <div>Not Registered</div>
+                        )}
+                      </span>
+                    </div>
+                  </div>
                 )}
               </div>
             </div>
@@ -162,8 +209,9 @@ export const Page = ({ registrant }) => {
               <div className='text-sm font-bold text-ap-blue mb-2'>
                 Workshops
               </div>
-              <div className='flex flex-col gap-2 w-full'>
-                No Workshops Registered
+              <div className='flex flex-col gap-2 w-full h-full justify-center items-center text-sm text-gray-500'>
+                The complimentary workshops do not require registrations.
+                Walk-ins are welcome! More details will be provided shortly.
               </div>
             </div>
             <div className='w-full p-8 bg-white rounded-lg'>

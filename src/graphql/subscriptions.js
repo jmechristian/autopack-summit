@@ -2650,8 +2650,8 @@ export const onCreateAPSCompany = /* GraphQL */ `
           presentation
           presentationTitle
           presentationSummary
-          mangaStatus
-          mangaTransportation
+          magnaStatus
+          magnaTransportation
           createdAt
           updatedAt
           aPSCompanyApsRegistrantsId
@@ -2722,8 +2722,8 @@ export const onUpdateAPSCompany = /* GraphQL */ `
           presentation
           presentationTitle
           presentationSummary
-          mangaStatus
-          mangaTransportation
+          magnaStatus
+          magnaTransportation
           createdAt
           updatedAt
           aPSCompanyApsRegistrantsId
@@ -2794,8 +2794,8 @@ export const onDeleteAPSCompany = /* GraphQL */ `
           presentation
           presentationTitle
           presentationSummary
-          mangaStatus
-          mangaTransportation
+          magnaStatus
+          magnaTransportation
           createdAt
           updatedAt
           aPSCompanyApsRegistrantsId
@@ -2880,8 +2880,8 @@ export const onCreateAPSAddOn2025 = /* GraphQL */ `
             presentation
             presentationTitle
             presentationSummary
-            mangaStatus
-            mangaTransportation
+            magnaStatus
+            magnaTransportation
             createdAt
             updatedAt
             aPSCompanyApsRegistrantsId
@@ -2970,8 +2970,8 @@ export const onUpdateAPSAddOn2025 = /* GraphQL */ `
             presentation
             presentationTitle
             presentationSummary
-            mangaStatus
-            mangaTransportation
+            magnaStatus
+            magnaTransportation
             createdAt
             updatedAt
             aPSCompanyApsRegistrantsId
@@ -3060,8 +3060,8 @@ export const onDeleteAPSAddOn2025 = /* GraphQL */ `
             presentation
             presentationTitle
             presentationSummary
-            mangaStatus
-            mangaTransportation
+            magnaStatus
+            magnaTransportation
             createdAt
             updatedAt
             aPSCompanyApsRegistrantsId
@@ -3132,8 +3132,8 @@ export const onCreateAPSRegistrant2025 = /* GraphQL */ `
             presentation
             presentationTitle
             presentationSummary
-            mangaStatus
-            mangaTransportation
+            magnaStatus
+            magnaTransportation
             createdAt
             updatedAt
             aPSCompanyApsRegistrantsId
@@ -3226,8 +3226,8 @@ export const onCreateAPSRegistrant2025 = /* GraphQL */ `
             presentation
             presentationTitle
             presentationSummary
-            mangaStatus
-            mangaTransportation
+            magnaStatus
+            magnaTransportation
             createdAt
             updatedAt
             aPSCompanyApsRegistrantsId
@@ -3252,8 +3252,8 @@ export const onCreateAPSRegistrant2025 = /* GraphQL */ `
       presentation
       presentationTitle
       presentationSummary
-      mangaStatus
-      mangaTransportation
+      magnaStatus
+      magnaTransportation
       createdAt
       updatedAt
       aPSCompanyApsRegistrantsId
@@ -3314,8 +3314,8 @@ export const onUpdateAPSRegistrant2025 = /* GraphQL */ `
             presentation
             presentationTitle
             presentationSummary
-            mangaStatus
-            mangaTransportation
+            magnaStatus
+            magnaTransportation
             createdAt
             updatedAt
             aPSCompanyApsRegistrantsId
@@ -3408,8 +3408,8 @@ export const onUpdateAPSRegistrant2025 = /* GraphQL */ `
             presentation
             presentationTitle
             presentationSummary
-            mangaStatus
-            mangaTransportation
+            magnaStatus
+            magnaTransportation
             createdAt
             updatedAt
             aPSCompanyApsRegistrantsId
@@ -3434,8 +3434,8 @@ export const onUpdateAPSRegistrant2025 = /* GraphQL */ `
       presentation
       presentationTitle
       presentationSummary
-      mangaStatus
-      mangaTransportation
+      magnaStatus
+      magnaTransportation
       createdAt
       updatedAt
       aPSCompanyApsRegistrantsId
@@ -3496,8 +3496,8 @@ export const onDeleteAPSRegistrant2025 = /* GraphQL */ `
             presentation
             presentationTitle
             presentationSummary
-            mangaStatus
-            mangaTransportation
+            magnaStatus
+            magnaTransportation
             createdAt
             updatedAt
             aPSCompanyApsRegistrantsId
@@ -3590,8 +3590,8 @@ export const onDeleteAPSRegistrant2025 = /* GraphQL */ `
             presentation
             presentationTitle
             presentationSummary
-            mangaStatus
-            mangaTransportation
+            magnaStatus
+            magnaTransportation
             createdAt
             updatedAt
             aPSCompanyApsRegistrantsId
@@ -3616,8 +3616,8 @@ export const onDeleteAPSRegistrant2025 = /* GraphQL */ `
       presentation
       presentationTitle
       presentationSummary
-      mangaStatus
-      mangaTransportation
+      magnaStatus
+      magnaTransportation
       createdAt
       updatedAt
       aPSCompanyApsRegistrantsId
@@ -16223,8 +16223,8 @@ export const onCreateApsRegistrantAddOns25 = /* GraphQL */ `
         presentation
         presentationTitle
         presentationSummary
-        mangaStatus
-        mangaTransportation
+        magnaStatus
+        magnaTransportation
         createdAt
         updatedAt
         aPSCompanyApsRegistrantsId
@@ -16326,8 +16326,8 @@ export const onUpdateApsRegistrantAddOns25 = /* GraphQL */ `
         presentation
         presentationTitle
         presentationSummary
-        mangaStatus
-        mangaTransportation
+        magnaStatus
+        magnaTransportation
         createdAt
         updatedAt
         aPSCompanyApsRegistrantsId
@@ -16429,8 +16429,8 @@ export const onDeleteApsRegistrantAddOns25 = /* GraphQL */ `
         presentation
         presentationTitle
         presentationSummary
-        mangaStatus
-        mangaTransportation
+        magnaStatus
+        magnaTransportation
         createdAt
         updatedAt
         aPSCompanyApsRegistrantsId
