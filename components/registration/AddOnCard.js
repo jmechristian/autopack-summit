@@ -1,8 +1,16 @@
 import React, { useState } from 'react';
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
-const AddOnCard = ({ id, addOn, onUpdate, onRegister }) => {
+
+const AddOnCard = ({
+  id,
+  addOn,
+  onUpdate,
+  onRegister,
+  transportationError,
+}) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [registered, setRegistered] = useState(null);
+
   return (
     <div className='flex flex-col gap-3 justify-between bg-white border border-gray-300 p-3 rounded'>
       <div className='flex justify-between'>
@@ -35,7 +43,7 @@ const AddOnCard = ({ id, addOn, onUpdate, onRegister }) => {
       </div>
       <div className='flex justify-between border-t border-gray-300 pt-3'>
         {registered ? (
-          <div className='flex flex-col gap-2 w-full '>
+          <div className='flex flex-col gap-2 w-full'>
             <div className='flex items-center gap-2 p-1'>
               <input
                 type='radio'
@@ -60,6 +68,9 @@ const AddOnCard = ({ id, addOn, onUpdate, onRegister }) => {
                 I would like to take the shuttle from the Hyatt.
               </label>
             </div>
+            {transportationError && (
+              <p className='text-red-500 text-sm mt-1'>{transportationError}</p>
+            )}
           </div>
         ) : (
           <div className='flex flex-col gap-2 w-full '>

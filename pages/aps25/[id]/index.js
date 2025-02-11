@@ -171,7 +171,13 @@ export const Page = ({ registrant }) => {
                 )}
                 {(registrant.magnaStatus === 'PENDING' ||
                   registrant.magnaStatus === 'APPROVED') && (
-                  <div className='flex flex-col gap-1 pt-5'>
+                  <div
+                    className={`flex flex-col gap-1 ${
+                      registrant.morrisetteStatus === 'PENDING'
+                        ? 'pt-5'
+                        : 'pt-0'
+                    }`}
+                  >
                     <div className='font-bold'>Magna Mirrors Tour</div>
                     <div className='text-sm text-gray-500'>
                       Friday, October 17th
@@ -238,7 +244,7 @@ export const Page = ({ registrant }) => {
               </div>
             </div>
             <div className='w-full p-8 bg-white rounded-lg'>
-              <div className='text-sm font-bold text-ap-blue mb-2'>
+              <div className='text-sm font-bold text-ap-blue mb-5'>
                 Speed Networking
               </div>
               <div className='flex flex-col gap-1'>

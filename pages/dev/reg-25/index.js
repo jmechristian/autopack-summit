@@ -101,6 +101,7 @@ const RegistrationForm = () => {
   const dropdownRef = useRef(null);
   const [formDataId, setFormDataId] = useState(null);
   const [codes, setCodes] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     const fetchCompanies = async () => {
       const companies = await getAPSCompanies();
@@ -167,6 +168,7 @@ const RegistrationForm = () => {
     const [processing, setProcessing] = useState(false);
 
     const handlePaymentSubmit = async (e) => {
+      setIsLoading(true);
       e.preventDefault();
       if (!stripe || !elements) return;
 
@@ -176,6 +178,7 @@ const RegistrationForm = () => {
       if (submitError) {
         setError(submitError.message);
         setProcessing(false);
+        setIsLoading(false);
         return;
       }
 
@@ -215,6 +218,7 @@ const RegistrationForm = () => {
       }
 
       setProcessing(false);
+      setIsLoading(false);
     };
 
     return (
@@ -253,6 +257,19 @@ const RegistrationForm = () => {
     } else if (stepToValidate === 2) {
       if (formData.interests.length === 0)
         newErrors.interests = 'At least one interest is required';
+
+      // Add validation for transportation if registered for tours
+      if (
+        formData.morrisetteStatus === 'PENDING' &&
+        !formData.morrisetteTransportation
+      ) {
+        newErrors.morrisetteTransportation =
+          'Please select a transportation option for Morrisette tour';
+      }
+      if (formData.magnaStatus === 'PENDING' && !formData.magnaTransportation) {
+        newErrors.magnaTransportation =
+          'Please select a transportation option for Magna tour';
+      }
     } else if (stepToValidate === 3) {
       if (!formData.termsAccepted)
         newErrors.termsAccepted = 'You must accept the terms';
@@ -472,6 +489,7 @@ const RegistrationForm = () => {
       return;
     }
 
+    setIsLoading(true);
     const res = await createNewAPS25Registrant(formData);
     setFormDataId(res.createAPSRegistrant2025.id);
     await createAPS25Notification({
@@ -484,6 +502,7 @@ const RegistrationForm = () => {
         formData.lastName,
     });
     setStep(4);
+    setIsLoading(false);
   };
 
   const hasStepErrors = (stepNumber) => {
@@ -697,8 +716,16 @@ const RegistrationForm = () => {
                 <div className='relative'>
                   <input
                     type='text'
-                    placeholder='Search and select company...'
-                    value={companySearch}
+                    placeholder={
+                      formData.companyName
+                        ? formData.companyName
+                        : 'No company selected'
+                    }
+                    value={
+                      isDropdownOpen
+                        ? companySearch
+                        : formData.companyName || ''
+                    }
                     onChange={(e) => {
                       setCompanySearch(e.target.value);
                       setIsDropdownOpen(true);
@@ -711,10 +738,17 @@ const RegistrationForm = () => {
                         }));
                       }
                     }}
-                    onClick={() => setIsDropdownOpen(true)}
-                    className='p-2 pr-8 border border-gray-300 rounded w-full'
+                    onClick={() => {
+                      setIsDropdownOpen(true);
+                      setCompanySearch('');
+                    }}
+                    className={`p-2 pr-8 border border-gray-300 rounded w-full ${
+                      !formData.companyName && !isDropdownOpen
+                        ? 'text-gray-500'
+                        : ''
+                    }`}
                   />
-                  {companySearch && (
+                  {(companySearch || formData.companyName) && (
                     <button
                       onClick={() => {
                         setCompanySearch('');
@@ -723,6 +757,7 @@ const RegistrationForm = () => {
                           companyName: '',
                           aPSCompanyApsRegistrantsId: '',
                         }));
+                        setIsDropdownOpen(false);
                       }}
                       className='absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600'
                     >
@@ -924,6 +959,7 @@ const RegistrationForm = () => {
                         }));
                         setAddOnsSelected((prev) => [...prev, addOns[0]]);
                       }}
+                      transportationError={errors.morrisetteTransportation}
                     />
                     <AddOnCard
                       id='magna'
@@ -941,6 +977,7 @@ const RegistrationForm = () => {
                         }));
                         setAddOnsSelected((prev) => [...prev, addOns[1]]);
                       }}
+                      transportationError={errors.magnaTransportation}
                     />
                   </div>
                 )}
