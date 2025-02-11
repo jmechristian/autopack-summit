@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import { getCurrentAPS25Registrant } from '../../../util/api';
-import { MdDownload, MdAccessTime } from 'react-icons/md';
+import { MdDownload, MdAccessTime, MdCheckCircle } from 'react-icons/md';
 
 export const Page = ({ registrant }) => {
   console.log(registrant);
@@ -119,7 +119,8 @@ export const Page = ({ registrant }) => {
             <div className='w-full p-8 bg-white rounded-lg flex flex-col gap-2'>
               <div className='text-sm font-bold text-ap-blue mb-2'>Tours</div>
               <div className='flex flex-col gap-5 divide-y divide-gray-300'>
-                {registrant.morrisetteStatus === 'PENDING' && (
+                {(registrant.morrisetteStatus === 'PENDING' ||
+                  registrant.morrisetteStatus === 'APPROVED') && (
                   <div className='flex flex-col gap-1'>
                     <div className='font-bold'>Morrisette Tour</div>
                     <div className='text-sm text-gray-500'>
@@ -154,6 +155,13 @@ export const Page = ({ registrant }) => {
                             </div>
                             <div>Pending</div>
                           </div>
+                        ) : registrant.morrisetteStatus === 'APPROVED' ? (
+                          <div className='flex items-center gap-1'>
+                            <div>
+                              <MdCheckCircle color='green' size={20} />
+                            </div>
+                            <div>Approved</div>
+                          </div>
                         ) : (
                           <div>Not Registered</div>
                         )}
@@ -161,7 +169,8 @@ export const Page = ({ registrant }) => {
                     </div>
                   </div>
                 )}
-                {registrant.magnaStatus === 'PENDING' && (
+                {(registrant.magnaStatus === 'PENDING' ||
+                  registrant.magnaStatus === 'APPROVED') && (
                   <div className='flex flex-col gap-1 pt-5'>
                     <div className='font-bold'>Magna Mirrors Tour</div>
                     <div className='text-sm text-gray-500'>
@@ -196,10 +205,24 @@ export const Page = ({ registrant }) => {
                             </div>
                             <div>Pending</div>
                           </div>
+                        ) : registrant.magnaStatus === 'APPROVED' ? (
+                          <div className='flex items-center gap-1'>
+                            <div>
+                              <MdCheckCircle color='green' size={20} />
+                            </div>
+                            <div>Approved</div>
+                          </div>
                         ) : (
                           <div>Not Registered</div>
                         )}
                       </span>
+                    </div>
+                  </div>
+                )}
+                {!registrant.magnaStatus && !registrant.morrisetteStatus && (
+                  <div className='flex flex-col gap-1 pt-5'>
+                    <div className='text-sm text-gray-500'>
+                      No Tours Registered
                     </div>
                   </div>
                 )}
