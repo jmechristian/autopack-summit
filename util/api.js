@@ -10,6 +10,7 @@ import {
   createAPSCompany,
   createAPSRegistrant2025,
   createAPSActivity2025,
+  updateAPSRegistrant2025,
 } from '../src/graphql/mutations';
 import {
   aPSRegistrantsByEmail,
@@ -572,4 +573,39 @@ export const createAPS25Notification = async (data) => {
   });
 
   return res.data;
+};
+
+export const trackRegistrationEmailOpen = async (id) => {
+  const res = await API.graphql({
+    query: updateAPSRegistrant2025,
+    variables: { input: { id: id, registrationEmailReceived: true } },
+  });
+
+  return res.data;
+};
+
+export const sendRegistrationConfirmation = async (data) => {
+  const res = await fetch('/api/send-registration-confirmation', {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  });
+
+  if (res.ok) {
+    const updateRes = await API.graphql({
+      query: updateAPSRegistrant2025,
+      variables: {
+        input: {
+          id: data.formDataId,
+          registrationEmailSent: true,
+        },
+      },
+    });
+    return updateRes.data;
+  }
+
+  return null;
 };

@@ -17,6 +17,7 @@ import {
   createNewAPS25Registrant,
   getAPS25Codes,
   createAPS25Notification,
+  sendRegistrationConfirmation,
 } from '../../../util/api';
 import AddOnCard from '../../../components/registration/AddOnCard';
 // Initialize Stripe (put this outside the component)
@@ -210,11 +211,20 @@ const RegistrationForm = () => {
             ' ' +
             formData.lastName,
         });
+        await sendRegistrationConfirmation({
+          formData,
+          totalAmount,
+          formDataId: res.createAPSRegistrant2025.id,
+          addOnsSelected,
+        });
+        await createAPS25Notification({
+          type: 'REGISTRATION_EMAIL_SENT',
+          activity:
+            formData.attendeeType +
+            ' Registration email sent to ' +
+            formData.email,
+        });
         setStep(4);
-
-        // Send payment method ID to the server
-        console.log('payment', result);
-        console.log('formData', formData);
       }
 
       setProcessing(false);
@@ -500,6 +510,17 @@ const RegistrationForm = () => {
         formData.firstName +
         ' ' +
         formData.lastName,
+    });
+    await sendRegistrationConfirmation({
+      formData,
+      totalAmount,
+      formDataId: res.createAPSRegistrant2025.id,
+      addOnsSelected,
+    });
+    await createAPS25Notification({
+      type: 'REGISTRATION_EMAIL_SENT',
+      activity:
+        formData.attendeeType + ' Registration email sent to ' + formData.email,
     });
     setStep(4);
     setIsLoading(false);

@@ -331,10 +331,10 @@ type APSRegistrant2025 @model @auth(rules: [{ allow: public }]) {
   morrisetteTransportation: String
   morrisetteStatus: String
   paymentConfirmation: String
-  registrationEmailSent: String
-  registrationEmailReceived: String
-  welcomeEmailSent: String
-  welcomeEmailReceived: String
+  registrationEmailSent: Boolean
+  registrationEmailReceived: Boolean
+  welcomeEmailSent: Boolean
+  welcomeEmailReceived: Boolean
   paymentMethod: String
   paymentLast4: String
   approvedAt: String
