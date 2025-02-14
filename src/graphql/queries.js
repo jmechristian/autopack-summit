@@ -2035,9 +2035,13 @@ export const getAPSCompany = /* GraphQL */ `
           morrisetteStatus
           paymentConfirmation
           registrationEmailSent
+          registrationEmailSentDate
           registrationEmailReceived
+          registrationEmailReceivedDate
           welcomeEmailSent
+          welcomeEmailSentDate
           welcomeEmailReceived
+          welcomeEmailReceivedDate
           paymentMethod
           paymentLast4
           approvedAt
@@ -2102,9 +2106,13 @@ export const listAPSCompanies = /* GraphQL */ `
             morrisetteStatus
             paymentConfirmation
             registrationEmailSent
+            registrationEmailSentDate
             registrationEmailReceived
+            registrationEmailReceivedDate
             welcomeEmailSent
+            welcomeEmailSentDate
             welcomeEmailReceived
+            welcomeEmailReceivedDate
             paymentMethod
             paymentLast4
             approvedAt
@@ -2179,9 +2187,13 @@ export const aPSCompaniesByEmail = /* GraphQL */ `
             morrisetteStatus
             paymentConfirmation
             registrationEmailSent
+            registrationEmailSentDate
             registrationEmailReceived
+            registrationEmailReceivedDate
             welcomeEmailSent
+            welcomeEmailSentDate
             welcomeEmailReceived
+            welcomeEmailReceivedDate
             paymentMethod
             paymentLast4
             approvedAt
@@ -2267,9 +2279,13 @@ export const getAPSAddOn2025 = /* GraphQL */ `
             morrisetteStatus
             paymentConfirmation
             registrationEmailSent
+            registrationEmailSentDate
             registrationEmailReceived
+            registrationEmailReceivedDate
             welcomeEmailSent
+            welcomeEmailSentDate
             welcomeEmailReceived
+            welcomeEmailReceivedDate
             paymentMethod
             paymentLast4
             approvedAt
@@ -2374,9 +2390,13 @@ export const getAPSRegistrant2025 = /* GraphQL */ `
             morrisetteStatus
             paymentConfirmation
             registrationEmailSent
+            registrationEmailSentDate
             registrationEmailReceived
+            registrationEmailReceivedDate
             welcomeEmailSent
+            welcomeEmailSentDate
             welcomeEmailReceived
+            welcomeEmailReceivedDate
             paymentMethod
             paymentLast4
             approvedAt
@@ -2468,9 +2488,13 @@ export const getAPSRegistrant2025 = /* GraphQL */ `
             morrisetteStatus
             paymentConfirmation
             registrationEmailSent
+            registrationEmailSentDate
             registrationEmailReceived
+            registrationEmailReceivedDate
             welcomeEmailSent
+            welcomeEmailSentDate
             welcomeEmailReceived
+            welcomeEmailReceivedDate
             paymentMethod
             paymentLast4
             approvedAt
@@ -2494,9 +2518,13 @@ export const getAPSRegistrant2025 = /* GraphQL */ `
       morrisetteStatus
       paymentConfirmation
       registrationEmailSent
+      registrationEmailSentDate
       registrationEmailReceived
+      registrationEmailReceivedDate
       welcomeEmailSent
+      welcomeEmailSentDate
       welcomeEmailReceived
+      welcomeEmailReceivedDate
       paymentMethod
       paymentLast4
       approvedAt
@@ -2575,9 +2603,13 @@ export const listAPSRegistrant2025s = /* GraphQL */ `
         morrisetteStatus
         paymentConfirmation
         registrationEmailSent
+        registrationEmailSentDate
         registrationEmailReceived
+        registrationEmailReceivedDate
         welcomeEmailSent
+        welcomeEmailSentDate
         welcomeEmailReceived
+        welcomeEmailReceivedDate
         paymentMethod
         paymentLast4
         approvedAt
@@ -2662,9 +2694,13 @@ export const aPSRegistrant2025sByEmail = /* GraphQL */ `
         morrisetteStatus
         paymentConfirmation
         registrationEmailSent
+        registrationEmailSentDate
         registrationEmailReceived
+        registrationEmailReceivedDate
         welcomeEmailSent
+        welcomeEmailSentDate
         welcomeEmailReceived
+        welcomeEmailReceivedDate
         paymentMethod
         paymentLast4
         approvedAt
@@ -12769,9 +12805,13 @@ export const getApsRegistrantAddOns25 = /* GraphQL */ `
         morrisetteStatus
         paymentConfirmation
         registrationEmailSent
+        registrationEmailSentDate
         registrationEmailReceived
+        registrationEmailReceivedDate
         welcomeEmailSent
+        welcomeEmailSentDate
         welcomeEmailReceived
+        welcomeEmailReceivedDate
         paymentMethod
         paymentLast4
         approvedAt
@@ -12864,9 +12904,13 @@ export const listApsRegistrantAddOns25s = /* GraphQL */ `
           morrisetteStatus
           paymentConfirmation
           registrationEmailSent
+          registrationEmailSentDate
           registrationEmailReceived
+          registrationEmailReceivedDate
           welcomeEmailSent
+          welcomeEmailSentDate
           welcomeEmailReceived
+          welcomeEmailReceivedDate
           paymentMethod
           paymentLast4
           approvedAt
@@ -12965,9 +13009,13 @@ export const apsRegistrantAddOns25sByAPSAddOn2025Id = /* GraphQL */ `
           morrisetteStatus
           paymentConfirmation
           registrationEmailSent
+          registrationEmailSentDate
           registrationEmailReceived
+          registrationEmailReceivedDate
           welcomeEmailSent
+          welcomeEmailSentDate
           welcomeEmailReceived
+          welcomeEmailReceivedDate
           paymentMethod
           paymentLast4
           approvedAt
@@ -13066,9 +13114,13 @@ export const apsRegistrantAddOns25sByAPSRegistrant2025Id = /* GraphQL */ `
           morrisetteStatus
           paymentConfirmation
           registrationEmailSent
+          registrationEmailSentDate
           registrationEmailReceived
+          registrationEmailReceivedDate
           welcomeEmailSent
+          welcomeEmailSentDate
           welcomeEmailReceived
+          welcomeEmailReceivedDate
           paymentMethod
           paymentLast4
           approvedAt

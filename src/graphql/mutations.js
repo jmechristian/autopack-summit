@@ -2805,9 +2805,13 @@ export const createAPSCompany = /* GraphQL */ `
           morrisetteStatus
           paymentConfirmation
           registrationEmailSent
+          registrationEmailSentDate
           registrationEmailReceived
+          registrationEmailReceivedDate
           welcomeEmailSent
+          welcomeEmailSentDate
           welcomeEmailReceived
+          welcomeEmailReceivedDate
           paymentMethod
           paymentLast4
           approvedAt
@@ -2880,9 +2884,13 @@ export const updateAPSCompany = /* GraphQL */ `
           morrisetteStatus
           paymentConfirmation
           registrationEmailSent
+          registrationEmailSentDate
           registrationEmailReceived
+          registrationEmailReceivedDate
           welcomeEmailSent
+          welcomeEmailSentDate
           welcomeEmailReceived
+          welcomeEmailReceivedDate
           paymentMethod
           paymentLast4
           approvedAt
@@ -2955,9 +2963,13 @@ export const deleteAPSCompany = /* GraphQL */ `
           morrisetteStatus
           paymentConfirmation
           registrationEmailSent
+          registrationEmailSentDate
           registrationEmailReceived
+          registrationEmailReceivedDate
           welcomeEmailSent
+          welcomeEmailSentDate
           welcomeEmailReceived
+          welcomeEmailReceivedDate
           paymentMethod
           paymentLast4
           approvedAt
@@ -3044,9 +3056,13 @@ export const createAPSAddOn2025 = /* GraphQL */ `
             morrisetteStatus
             paymentConfirmation
             registrationEmailSent
+            registrationEmailSentDate
             registrationEmailReceived
+            registrationEmailReceivedDate
             welcomeEmailSent
+            welcomeEmailSentDate
             welcomeEmailReceived
+            welcomeEmailReceivedDate
             paymentMethod
             paymentLast4
             approvedAt
@@ -3137,9 +3153,13 @@ export const updateAPSAddOn2025 = /* GraphQL */ `
             morrisetteStatus
             paymentConfirmation
             registrationEmailSent
+            registrationEmailSentDate
             registrationEmailReceived
+            registrationEmailReceivedDate
             welcomeEmailSent
+            welcomeEmailSentDate
             welcomeEmailReceived
+            welcomeEmailReceivedDate
             paymentMethod
             paymentLast4
             approvedAt
@@ -3230,9 +3250,13 @@ export const deleteAPSAddOn2025 = /* GraphQL */ `
             morrisetteStatus
             paymentConfirmation
             registrationEmailSent
+            registrationEmailSentDate
             registrationEmailReceived
+            registrationEmailReceivedDate
             welcomeEmailSent
+            welcomeEmailSentDate
             welcomeEmailReceived
+            welcomeEmailReceivedDate
             paymentMethod
             paymentLast4
             approvedAt
@@ -3305,9 +3329,13 @@ export const createAPSRegistrant2025 = /* GraphQL */ `
             morrisetteStatus
             paymentConfirmation
             registrationEmailSent
+            registrationEmailSentDate
             registrationEmailReceived
+            registrationEmailReceivedDate
             welcomeEmailSent
+            welcomeEmailSentDate
             welcomeEmailReceived
+            welcomeEmailReceivedDate
             paymentMethod
             paymentLast4
             approvedAt
@@ -3399,9 +3427,13 @@ export const createAPSRegistrant2025 = /* GraphQL */ `
             morrisetteStatus
             paymentConfirmation
             registrationEmailSent
+            registrationEmailSentDate
             registrationEmailReceived
+            registrationEmailReceivedDate
             welcomeEmailSent
+            welcomeEmailSentDate
             welcomeEmailReceived
+            welcomeEmailReceivedDate
             paymentMethod
             paymentLast4
             approvedAt
@@ -3425,9 +3457,13 @@ export const createAPSRegistrant2025 = /* GraphQL */ `
       morrisetteStatus
       paymentConfirmation
       registrationEmailSent
+      registrationEmailSentDate
       registrationEmailReceived
+      registrationEmailReceivedDate
       welcomeEmailSent
+      welcomeEmailSentDate
       welcomeEmailReceived
+      welcomeEmailReceivedDate
       paymentMethod
       paymentLast4
       approvedAt
@@ -3490,9 +3526,13 @@ export const updateAPSRegistrant2025 = /* GraphQL */ `
             morrisetteStatus
             paymentConfirmation
             registrationEmailSent
+            registrationEmailSentDate
             registrationEmailReceived
+            registrationEmailReceivedDate
             welcomeEmailSent
+            welcomeEmailSentDate
             welcomeEmailReceived
+            welcomeEmailReceivedDate
             paymentMethod
             paymentLast4
             approvedAt
@@ -3584,9 +3624,13 @@ export const updateAPSRegistrant2025 = /* GraphQL */ `
             morrisetteStatus
             paymentConfirmation
             registrationEmailSent
+            registrationEmailSentDate
             registrationEmailReceived
+            registrationEmailReceivedDate
             welcomeEmailSent
+            welcomeEmailSentDate
             welcomeEmailReceived
+            welcomeEmailReceivedDate
             paymentMethod
             paymentLast4
             approvedAt
@@ -3610,9 +3654,13 @@ export const updateAPSRegistrant2025 = /* GraphQL */ `
       morrisetteStatus
       paymentConfirmation
       registrationEmailSent
+      registrationEmailSentDate
       registrationEmailReceived
+      registrationEmailReceivedDate
       welcomeEmailSent
+      welcomeEmailSentDate
       welcomeEmailReceived
+      welcomeEmailReceivedDate
       paymentMethod
       paymentLast4
       approvedAt
@@ -3675,9 +3723,13 @@ export const deleteAPSRegistrant2025 = /* GraphQL */ `
             morrisetteStatus
             paymentConfirmation
             registrationEmailSent
+            registrationEmailSentDate
             registrationEmailReceived
+            registrationEmailReceivedDate
             welcomeEmailSent
+            welcomeEmailSentDate
             welcomeEmailReceived
+            welcomeEmailReceivedDate
             paymentMethod
             paymentLast4
             approvedAt
@@ -3769,9 +3821,13 @@ export const deleteAPSRegistrant2025 = /* GraphQL */ `
             morrisetteStatus
             paymentConfirmation
             registrationEmailSent
+            registrationEmailSentDate
             registrationEmailReceived
+            registrationEmailReceivedDate
             welcomeEmailSent
+            welcomeEmailSentDate
             welcomeEmailReceived
+            welcomeEmailReceivedDate
             paymentMethod
             paymentLast4
             approvedAt
@@ -3795,9 +3851,13 @@ export const deleteAPSRegistrant2025 = /* GraphQL */ `
       morrisetteStatus
       paymentConfirmation
       registrationEmailSent
+      registrationEmailSentDate
       registrationEmailReceived
+      registrationEmailReceivedDate
       welcomeEmailSent
+      welcomeEmailSentDate
       welcomeEmailReceived
+      welcomeEmailReceivedDate
       paymentMethod
       paymentLast4
       approvedAt
@@ -17071,9 +17131,13 @@ export const createApsRegistrantAddOns25 = /* GraphQL */ `
         morrisetteStatus
         paymentConfirmation
         registrationEmailSent
+        registrationEmailSentDate
         registrationEmailReceived
+        registrationEmailReceivedDate
         welcomeEmailSent
+        welcomeEmailSentDate
         welcomeEmailReceived
+        welcomeEmailReceivedDate
         paymentMethod
         paymentLast4
         approvedAt
@@ -17177,9 +17241,13 @@ export const updateApsRegistrantAddOns25 = /* GraphQL */ `
         morrisetteStatus
         paymentConfirmation
         registrationEmailSent
+        registrationEmailSentDate
         registrationEmailReceived
+        registrationEmailReceivedDate
         welcomeEmailSent
+        welcomeEmailSentDate
         welcomeEmailReceived
+        welcomeEmailReceivedDate
         paymentMethod
         paymentLast4
         approvedAt
@@ -17283,9 +17351,13 @@ export const deleteApsRegistrantAddOns25 = /* GraphQL */ `
         morrisetteStatus
         paymentConfirmation
         registrationEmailSent
+        registrationEmailSentDate
         registrationEmailReceived
+        registrationEmailReceivedDate
         welcomeEmailSent
+        welcomeEmailSentDate
         welcomeEmailReceived
+        welcomeEmailReceivedDate
         paymentMethod
         paymentLast4
         approvedAt

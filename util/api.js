@@ -576,15 +576,31 @@ export const createAPS25Notification = async (data) => {
 };
 
 export const trackRegistrationEmailOpen = async (id) => {
+  const date = new Date();
+  const estDate = new Date(
+    date.toLocaleString('en-US', { timeZone: 'America/New_York' })
+  );
+
   const res = await API.graphql({
     query: updateAPSRegistrant2025,
-    variables: { input: { id: id, registrationEmailReceived: true } },
+    variables: {
+      input: {
+        id: id,
+        registrationEmailReceived: true,
+        registrationEmailReceivedDate: estDate.toISOString(),
+      },
+    },
   });
 
   return res.data;
 };
 
 export const sendRegistrationConfirmation = async (data) => {
+  const date = new Date();
+  const estDate = new Date(
+    date.toLocaleString('en-US', { timeZone: 'America/New_York' })
+  );
+
   const res = await fetch('/api/send-registration-confirmation', {
     method: 'POST',
     headers: {
@@ -601,6 +617,7 @@ export const sendRegistrationConfirmation = async (data) => {
         input: {
           id: data.formDataId,
           registrationEmailSent: true,
+          welcomeEmailSentDate: estDate.toISOString(),
         },
       },
     });
