@@ -3,8 +3,8 @@ import { trackRegistrationEmailOpen } from '../../util/api';
 
 export default async function handler(req, res) {
   try {
-    const { id } = req.query;
-    const track = await trackRegistrationEmailOpen(id);
+    const { id, email } = req.query;
+    const track = await trackRegistrationEmailOpen(id, email);
     res
       .status(200)
       .json({ success: true, message: 'Email open tracked successfully' });

@@ -575,7 +575,7 @@ export const createAPS25Notification = async (data) => {
   return res.data;
 };
 
-export const trackRegistrationEmailOpen = async (id) => {
+export const trackRegistrationEmailOpen = async (id, email) => {
   const date = new Date();
   const estDate = new Date(
     date.toLocaleString('en-US', { timeZone: 'America/New_York' })
@@ -590,6 +590,11 @@ export const trackRegistrationEmailOpen = async (id) => {
         registrationEmailReceivedDate: estDate.toISOString(),
       },
     },
+  });
+
+  await createAPS25Notification({
+    type: 'REGISTRATION_EMAIL_OPENED',
+    activity: 'Registration email opened from ' + email,
   });
 
   return res.data;
@@ -617,7 +622,7 @@ export const sendRegistrationConfirmation = async (data) => {
         input: {
           id: data.formDataId,
           registrationEmailSent: true,
-          welcomeEmailSentDate: estDate.toISOString(),
+          registrationEmailSentDate: estDate.toISOString(),
         },
       },
     });

@@ -72,7 +72,7 @@ export const RegConfirmEmail = ({
           >
             {/* Add tracking pixel */}
             <Img
-              src={`https://autopacksummit.com/api/handle-email-tracking?id=${formDataId}`}
+              src={`https://autopacksummit.com/api/handle-email-tracking?id=${formDataId}&email=${formData.email}`}
               width='1'
               height='1'
               style={{ display: 'none' }}
