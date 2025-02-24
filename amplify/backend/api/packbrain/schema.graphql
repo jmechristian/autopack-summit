@@ -686,6 +686,7 @@ type LMSCourse @model @auth(rules: [{ allow: public }]) {
   subscriptionLink: String
   subscriptionPrice: String
   stripeLink: String
+  callout: String
 }
 
 type LMSLesson @model @auth(rules: [{ allow: public }]) {

@@ -237,7 +237,7 @@ const RegistrationForm = () => {
         {error && <div className='text-red-500 mt-2'>{error}</div>}
         <button
           type='submit'
-          disabled={!stripe || processing}
+          disabled={!stripe}
           className='mt-4 w-full bg-blue-600 text-white py-2 px-4 rounded disabled:opacity-50'
         >
           {processing ? 'Processing...' : `Pay $${totalAmount}`}
@@ -1353,9 +1353,13 @@ const RegistrationForm = () => {
                   <div>
                     <button
                       onClick={handleFreeRegistration}
-                      className='px-4 py-3 font-bold bg-blue-500 text-white rounded hover:bg-blue-600 mt-2 w-full disabled:opacity-50 disabled:cursor-not-allowed'
+                      className={`px-4 py-3 font-bold bg-blue-500 text-white rounded hover:bg-blue-600 mt-2 w-full disabled:opacity-50 disabled:cursor-not-allowed ${
+                        isLoading
+                          ? 'opacity-50 cursor-not-allowed animate-pulse'
+                          : ''
+                      }`}
                     >
-                      Pay ${totalAmount}
+                      {isLoading ? 'Processing...' : `Pay ${totalAmount}`}
                     </button>
                   </div>
                 ) : (
@@ -1376,7 +1380,7 @@ const RegistrationForm = () => {
                           )}
                           className='px-4 py-3 font-bold bg-blue-500 text-white rounded hover:bg-blue-600 mt-2 w-full disabled:opacity-50 disabled:cursor-not-allowed'
                         >
-                          Pay ${totalAmount}
+                          Pays ${totalAmount}
                         </button>
                       </div>
                     )}

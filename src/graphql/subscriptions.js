@@ -7325,6 +7325,7 @@ export const onCreateLMSCirriculum = /* GraphQL */ `
             subscriptionLink
             subscriptionPrice
             stripeLink
+            callout
             createdAt
             updatedAt
           }
@@ -7390,6 +7391,7 @@ export const onUpdateLMSCirriculum = /* GraphQL */ `
             subscriptionLink
             subscriptionPrice
             stripeLink
+            callout
             createdAt
             updatedAt
           }
@@ -7455,6 +7457,7 @@ export const onDeleteLMSCirriculum = /* GraphQL */ `
             subscriptionLink
             subscriptionPrice
             stripeLink
+            callout
             createdAt
             updatedAt
           }
@@ -7521,6 +7524,7 @@ export const onCreateLMSCourse = /* GraphQL */ `
             subscriptionLink
             subscriptionPrice
             stripeLink
+            callout
             createdAt
             updatedAt
           }
@@ -7564,6 +7568,7 @@ export const onCreateLMSCourse = /* GraphQL */ `
             subscriptionLink
             subscriptionPrice
             stripeLink
+            callout
             createdAt
             updatedAt
           }
@@ -7619,6 +7624,7 @@ export const onCreateLMSCourse = /* GraphQL */ `
             subscriptionLink
             subscriptionPrice
             stripeLink
+            callout
             createdAt
             updatedAt
           }
@@ -7656,6 +7662,7 @@ export const onCreateLMSCourse = /* GraphQL */ `
       subscriptionLink
       subscriptionPrice
       stripeLink
+      callout
       createdAt
       updatedAt
     }
@@ -7714,6 +7721,7 @@ export const onUpdateLMSCourse = /* GraphQL */ `
             subscriptionLink
             subscriptionPrice
             stripeLink
+            callout
             createdAt
             updatedAt
           }
@@ -7757,6 +7765,7 @@ export const onUpdateLMSCourse = /* GraphQL */ `
             subscriptionLink
             subscriptionPrice
             stripeLink
+            callout
             createdAt
             updatedAt
           }
@@ -7812,6 +7821,7 @@ export const onUpdateLMSCourse = /* GraphQL */ `
             subscriptionLink
             subscriptionPrice
             stripeLink
+            callout
             createdAt
             updatedAt
           }
@@ -7849,6 +7859,7 @@ export const onUpdateLMSCourse = /* GraphQL */ `
       subscriptionLink
       subscriptionPrice
       stripeLink
+      callout
       createdAt
       updatedAt
     }
@@ -7907,6 +7918,7 @@ export const onDeleteLMSCourse = /* GraphQL */ `
             subscriptionLink
             subscriptionPrice
             stripeLink
+            callout
             createdAt
             updatedAt
           }
@@ -7950,6 +7962,7 @@ export const onDeleteLMSCourse = /* GraphQL */ `
             subscriptionLink
             subscriptionPrice
             stripeLink
+            callout
             createdAt
             updatedAt
           }
@@ -8005,6 +8018,7 @@ export const onDeleteLMSCourse = /* GraphQL */ `
             subscriptionLink
             subscriptionPrice
             stripeLink
+            callout
             createdAt
             updatedAt
           }
@@ -8042,6 +8056,7 @@ export const onDeleteLMSCourse = /* GraphQL */ `
       subscriptionLink
       subscriptionPrice
       stripeLink
+      callout
       createdAt
       updatedAt
     }
@@ -8087,6 +8102,7 @@ export const onCreateLMSLesson = /* GraphQL */ `
             subscriptionLink
             subscriptionPrice
             stripeLink
+            callout
             createdAt
             updatedAt
           }
@@ -8202,6 +8218,7 @@ export const onUpdateLMSLesson = /* GraphQL */ `
             subscriptionLink
             subscriptionPrice
             stripeLink
+            callout
             createdAt
             updatedAt
           }
@@ -8317,6 +8334,7 @@ export const onDeleteLMSLesson = /* GraphQL */ `
             subscriptionLink
             subscriptionPrice
             stripeLink
+            callout
             createdAt
             updatedAt
           }
@@ -9050,6 +9068,7 @@ export const onCreateInstructor = /* GraphQL */ `
             subscriptionLink
             subscriptionPrice
             stripeLink
+            callout
             createdAt
             updatedAt
           }
@@ -9109,6 +9128,7 @@ export const onUpdateInstructor = /* GraphQL */ `
             subscriptionLink
             subscriptionPrice
             stripeLink
+            callout
             createdAt
             updatedAt
           }
@@ -9168,6 +9188,7 @@ export const onDeleteInstructor = /* GraphQL */ `
             subscriptionLink
             subscriptionPrice
             stripeLink
+            callout
             createdAt
             updatedAt
           }
@@ -17141,6 +17162,7 @@ export const onCreateCirriculumCourses = /* GraphQL */ `
         subscriptionLink
         subscriptionPrice
         stripeLink
+        callout
         createdAt
         updatedAt
       }
@@ -17234,6 +17256,7 @@ export const onUpdateCirriculumCourses = /* GraphQL */ `
         subscriptionLink
         subscriptionPrice
         stripeLink
+        callout
         createdAt
         updatedAt
       }
@@ -17327,6 +17350,7 @@ export const onDeleteCirriculumCourses = /* GraphQL */ `
         subscriptionLink
         subscriptionPrice
         stripeLink
+        callout
         createdAt
         updatedAt
       }
@@ -17401,6 +17425,7 @@ export const onCreateCourseLessons = /* GraphQL */ `
         subscriptionLink
         subscriptionPrice
         stripeLink
+        callout
         createdAt
         updatedAt
       }
@@ -17514,6 +17539,7 @@ export const onUpdateCourseLessons = /* GraphQL */ `
         subscriptionLink
         subscriptionPrice
         stripeLink
+        callout
         createdAt
         updatedAt
       }
@@ -17627,6 +17653,7 @@ export const onDeleteCourseLessons = /* GraphQL */ `
         subscriptionLink
         subscriptionPrice
         stripeLink
+        callout
         createdAt
         updatedAt
       }
@@ -17740,6 +17767,7 @@ export const onCreateCourseInstructors = /* GraphQL */ `
         subscriptionLink
         subscriptionPrice
         stripeLink
+        callout
         createdAt
         updatedAt
       }
@@ -17830,6 +17858,7 @@ export const onUpdateCourseInstructors = /* GraphQL */ `
         subscriptionLink
         subscriptionPrice
         stripeLink
+        callout
         createdAt
         updatedAt
       }
@@ -17920,6 +17949,7 @@ export const onDeleteCourseInstructors = /* GraphQL */ `
         subscriptionLink
         subscriptionPrice
         stripeLink
+        callout
         createdAt
         updatedAt
       }

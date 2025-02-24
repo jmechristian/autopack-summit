@@ -5712,6 +5712,7 @@ export const getLMSCirriculum = /* GraphQL */ `
             subscriptionLink
             subscriptionPrice
             stripeLink
+            callout
             createdAt
             updatedAt
           }
@@ -5808,6 +5809,7 @@ export const getLMSCourse = /* GraphQL */ `
             subscriptionLink
             subscriptionPrice
             stripeLink
+            callout
             createdAt
             updatedAt
           }
@@ -5851,6 +5853,7 @@ export const getLMSCourse = /* GraphQL */ `
             subscriptionLink
             subscriptionPrice
             stripeLink
+            callout
             createdAt
             updatedAt
           }
@@ -5906,6 +5909,7 @@ export const getLMSCourse = /* GraphQL */ `
             subscriptionLink
             subscriptionPrice
             stripeLink
+            callout
             createdAt
             updatedAt
           }
@@ -5943,6 +5947,7 @@ export const getLMSCourse = /* GraphQL */ `
       subscriptionLink
       subscriptionPrice
       stripeLink
+      callout
       createdAt
       updatedAt
     }
@@ -6015,6 +6020,7 @@ export const listLMSCourses = /* GraphQL */ `
         subscriptionLink
         subscriptionPrice
         stripeLink
+        callout
         createdAt
         updatedAt
       }
@@ -6097,6 +6103,7 @@ export const lMSCoursesByThinkificId = /* GraphQL */ `
         subscriptionLink
         subscriptionPrice
         stripeLink
+        callout
         createdAt
         updatedAt
       }
@@ -6179,6 +6186,7 @@ export const lMSCoursesBySlug = /* GraphQL */ `
         subscriptionLink
         subscriptionPrice
         stripeLink
+        callout
         createdAt
         updatedAt
       }
@@ -6226,6 +6234,7 @@ export const getLMSLesson = /* GraphQL */ `
             subscriptionLink
             subscriptionPrice
             stripeLink
+            callout
             createdAt
             updatedAt
           }
@@ -6887,6 +6896,7 @@ export const getInstructor = /* GraphQL */ `
             subscriptionLink
             subscriptionPrice
             stripeLink
+            callout
             createdAt
             updatedAt
           }
@@ -13797,6 +13807,7 @@ export const getCirriculumCourses = /* GraphQL */ `
         subscriptionLink
         subscriptionPrice
         stripeLink
+        callout
         createdAt
         updatedAt
       }
@@ -13871,6 +13882,7 @@ export const listCirriculumCourses = /* GraphQL */ `
           subscriptionLink
           subscriptionPrice
           stripeLink
+          callout
           createdAt
           updatedAt
         }
@@ -13951,6 +13963,7 @@ export const cirriculumCoursesByLMSCirriculumId = /* GraphQL */ `
           subscriptionLink
           subscriptionPrice
           stripeLink
+          callout
           createdAt
           updatedAt
         }
@@ -14031,6 +14044,7 @@ export const cirriculumCoursesByLMSCourseId = /* GraphQL */ `
           subscriptionLink
           subscriptionPrice
           stripeLink
+          callout
           createdAt
           updatedAt
         }
@@ -14107,6 +14121,7 @@ export const getCourseLessons = /* GraphQL */ `
         subscriptionLink
         subscriptionPrice
         stripeLink
+        callout
         createdAt
         updatedAt
       }
@@ -14204,6 +14219,7 @@ export const listCourseLessons = /* GraphQL */ `
           subscriptionLink
           subscriptionPrice
           stripeLink
+          callout
           createdAt
           updatedAt
         }
@@ -14290,6 +14306,7 @@ export const courseLessonsByLMSCourseId = /* GraphQL */ `
           subscriptionLink
           subscriptionPrice
           stripeLink
+          callout
           createdAt
           updatedAt
         }
@@ -14376,6 +14393,7 @@ export const courseLessonsByLMSLessonId = /* GraphQL */ `
           subscriptionLink
           subscriptionPrice
           stripeLink
+          callout
           createdAt
           updatedAt
         }
@@ -14470,6 +14488,7 @@ export const getCourseInstructors = /* GraphQL */ `
         subscriptionLink
         subscriptionPrice
         stripeLink
+        callout
         createdAt
         updatedAt
       }
@@ -14548,6 +14567,7 @@ export const listCourseInstructors = /* GraphQL */ `
           subscriptionLink
           subscriptionPrice
           stripeLink
+          callout
           createdAt
           updatedAt
         }
@@ -14625,6 +14645,7 @@ export const courseInstructorsByLMSCourseId = /* GraphQL */ `
           subscriptionLink
           subscriptionPrice
           stripeLink
+          callout
           createdAt
           updatedAt
         }
@@ -14702,6 +14723,7 @@ export const courseInstructorsByInstructorId = /* GraphQL */ `
           subscriptionLink
           subscriptionPrice
           stripeLink
+          callout
           createdAt
           updatedAt
         }
