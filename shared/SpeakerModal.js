@@ -70,7 +70,7 @@ const SpeakerModal = ({
                 Bio
               </div>
               <div className='text-gray-700'>{bio}</div>
-              {session && (
+              {session && session.length > 0 && (
                 <div>
                   <hr className='my-4' />
                   <div className='uppercase font-oswald text-lg text-ap-darkblue font-bold'>
