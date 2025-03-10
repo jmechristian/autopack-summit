@@ -52,7 +52,7 @@ const NewSponsorsMainHead = ({ titleSponsor }) => {
       >
         <div className='p-9 flex-1 h-full flex flex-col justify-between'>
           <div className='font-bold text-4xl max-w-xl tracking-tight leading-none'>
-            Thank You To Our 2024 Sponsors
+            Thank You To Our 2025 Sponsors
           </div>
 
           <div className='flex flex-col gap-3 pt-6 text-lg leading-snug'>
