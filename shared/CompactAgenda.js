@@ -13,7 +13,8 @@ const CompactAgenda = ({ dayOne, dayTwo, dayThree, enabled }) => {
     >
       <motion.div className='bg-black rounded-xl w-full px-6 py-4 flex'>
         <motion.div className='text-ap-yellow font-medium text-lg lg:text-xl font-oswald uppercase'>
-          <span className='text-white'>Day One</span> Monday, October 21, 2024
+          <span className='text-white'>Day One</span> Wednesday, October 15,
+          2025
         </motion.div>
       </motion.div>
       {dayOne &&
@@ -32,7 +33,7 @@ const CompactAgenda = ({ dayOne, dayTwo, dayThree, enabled }) => {
         ))}
       <motion.div className='bg-black rounded-xl w-full px-6 py-4 flex'>
         <motion.div className='text-ap-yellow font-medium text-lg lg:text-xl font-oswald uppercase'>
-          <span className='text-white'>Day Two</span> Tuesday, October 22, 2024
+          <span className='text-white'>Day Two</span> Thursday, October 16, 2025
         </motion.div>
       </motion.div>
       {dayTwo &&
@@ -51,8 +52,7 @@ const CompactAgenda = ({ dayOne, dayTwo, dayThree, enabled }) => {
         ))}
       <motion.div className='bg-black rounded-xl w-full px-6 py-4 flex'>
         <motion.div className='text-ap-yellow font-medium text-lg lg:text-xl font-oswald uppercase'>
-          <span className='text-white'>Day Three</span> Wednesday, October 23,
-          2024
+          <span className='text-white'>Day Three</span> Friday, October 17, 2025
         </motion.div>
       </motion.div>
       {dayThree &&
