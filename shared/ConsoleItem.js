@@ -8,11 +8,13 @@ const ConsoleItem = ({
   iconBack,
   fn,
   soldOut,
+  disabled,
+  callout,
 }) => {
   return (
     <div
       className={`w-full h-full ${color} ${hoverColor} relative group transition-colors ease-in px-3 py-3 flex items-center rounded-xl`}
-      onClick={() => fn()}
+      onClick={disabled ? () => {} : () => fn()}
     >
       <div className='flex gap-3 items-center cursor-pointer'>
         <div
@@ -22,7 +24,16 @@ const ConsoleItem = ({
             {icon}
           </div>
         </div>
-        <div className='font-bold text-neutral-900 text-lg'>{title}</div>
+        <div className='flex flex-col gap-0'>
+          <div className='font-bold text-neutral-900 text-lg leading-none'>
+            {title}
+          </div>
+          {callout && (
+            <div className='text-neutral-100 text-sm font-medium'>
+              {callout}
+            </div>
+          )}
+        </div>
       </div>
       {soldOut && (
         <div className='absolute top-1/2 -translate-y-1/2 right-3 transform -rotate-[30deg] whitespace-nowrap bg-red-500 text-white px-2 py-1 text-xs font-bold'>
