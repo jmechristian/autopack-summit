@@ -13,7 +13,6 @@ const MemberCard = ({ member, onReadBio }) => (
       <h3 className='text-lg font-semibold'>{member.name}</h3>
       <p className='text-sm text-gray-600'>{member.company}</p>
       <p className='text-sm text-gray-600'>{member.title}</p>
-      <p className='text-sm text-gray-600'>{member.email}</p>
       <button
         onClick={() => onReadBio(member)}
         className='mt-2 bg-blue-500 text-white py-1 px-3 rounded hover:bg-blue-600'
