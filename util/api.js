@@ -11,6 +11,7 @@ import {
   createAPSRegistrant2025,
   createAPSActivity2025,
   updateAPSRegistrant2025,
+  updateAPSCode2025,
 } from '../src/graphql/mutations';
 import {
   aPSRegistrantsByEmail,
@@ -630,4 +631,25 @@ export const sendRegistrationConfirmation = async (data) => {
   }
 
   return null;
+};
+
+export const sendStaffRegistrationConfirmation = async (data) => {
+  const res = await fetch('/api/send-staff-reg-confirmation', {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  });
+
+  return res.data;
+};
+
+export const addCodeUsage = async (code) => {
+  const res = await API.graphql({
+    query: updateAPSCode2025,
+    variables: { input: { id: code.id, used: code.used + 1 } },
+  });
+  return res.data;
 };

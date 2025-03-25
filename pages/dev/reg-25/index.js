@@ -18,6 +18,8 @@ import {
   getAPS25Codes,
   createAPS25Notification,
   sendRegistrationConfirmation,
+  addCodeUsage,
+  sendStaffRegistrationConfirmation,
 } from '../../../util/api';
 import AddOnCard from '../../../components/registration/AddOnCard';
 // Initialize Stripe (put this outside the component)
@@ -89,6 +91,7 @@ const RegistrationForm = () => {
 
   const [errors, setErrors] = useState({});
   const [completedSteps, setCompletedSteps] = useState({ 1: false, 2: false });
+  const [oldTotal, setOldTotal] = useState(0);
   const [discountCode, setDiscountCode] = useState('');
   const [clientSecret, setClientSecret] = useState(null);
   const [companies, setCompanies] = useState([]);
@@ -115,6 +118,7 @@ const RegistrationForm = () => {
 
     const fetchCodes = async () => {
       const codes = await getAPS25Codes();
+      console.log('codes', codes);
       setCodes(codes);
     };
 
@@ -212,6 +216,12 @@ const RegistrationForm = () => {
             formData.lastName,
         });
         await sendRegistrationConfirmation({
+          formData,
+          totalAmount,
+          formDataId: res.createAPSRegistrant2025.id,
+          addOnsSelected,
+        });
+        await sendStaffRegistrationConfirmation({
           formData,
           totalAmount,
           formDataId: res.createAPSRegistrant2025.id,
@@ -422,6 +432,8 @@ const RegistrationForm = () => {
         totalAmount: 0,
         discountCode: discountCode,
       }));
+      setOldTotal(totalAmount);
+      addCodeUsage(matchingCode);
       setDiscountCodeError('');
     } else {
       // Optionally show an error message for invalid codes
@@ -512,6 +524,12 @@ const RegistrationForm = () => {
         formData.lastName,
     });
     await sendRegistrationConfirmation({
+      formData,
+      totalAmount,
+      formDataId: res.createAPSRegistrant2025.id,
+      addOnsSelected,
+    });
+    await sendStaffRegistrationConfirmation({
       formData,
       totalAmount,
       formDataId: res.createAPSRegistrant2025.id,
@@ -1339,14 +1357,31 @@ const RegistrationForm = () => {
                   <div className='flex justify-between px-2'>
                     <span>General Admission</span>
                     <span>1</span>
-                    <span>${totalAmount}</span>
+                    {formData.discountCode ? (
+                      <div className='flex gap-2'>
+                        <span className='line-through text-gray-500'>
+                          ${oldTotal}
+                        </span>{' '}
+                        <span>${totalAmount}</span>
+                      </div>
+                    ) : (
+                      <span>${totalAmount}</span>
+                    )}
                   </div>
                   {/* Add more ticket items as needed */}
                 </div>
                 <div className='flex justify-between mt-4 font-bold bg-black text-white p-2 rounded'>
                   <span>Total</span>
-                  <span>${totalAmount}</span>{' '}
-                  {/* Update with actual total calculation */}
+                  {formData.discountCode ? (
+                    <div className='flex gap-2'>
+                      <span className='line-through text-gray-500'>
+                        ${oldTotal}
+                      </span>{' '}
+                      <span>${totalAmount}</span>
+                    </div>
+                  ) : (
+                    <span>${totalAmount}</span>
+                  )}
                 </div>
 
                 {formData.discountCode ? (
@@ -1359,7 +1394,7 @@ const RegistrationForm = () => {
                           : ''
                       }`}
                     >
-                      {isLoading ? 'Processing...' : `Pay ${totalAmount}`}
+                      {isLoading ? 'Processing...' : `Pay $${totalAmount}`}
                     </button>
                   </div>
                 ) : (
@@ -1499,14 +1534,31 @@ const RegistrationForm = () => {
                   <div className='flex justify-between px-2'>
                     <span>General Admission</span>
                     <span>1</span>
-                    <span>${totalAmount}</span>
+                    {formData.discountCode ? (
+                      <div className='flex gap-2'>
+                        <span className='line-through text-gray-500'>
+                          ${oldTotal}
+                        </span>{' '}
+                        <span>${totalAmount}</span>
+                      </div>
+                    ) : (
+                      <span>${totalAmount}</span>
+                    )}
                   </div>
                   {/* Add more ticket items as needed */}
                 </div>
                 <div className='flex justify-between mt-4 font-bold bg-black text-white p-2 rounded'>
                   <span>Paid</span>
-                  <span>${totalAmount}</span>{' '}
-                  {/* Update with actual total calculation */}
+                  {formData.discountCode ? (
+                    <div className='flex gap-2'>
+                      <span className='line-through text-gray-500'>
+                        ${oldTotal}
+                      </span>{' '}
+                      <span>${totalAmount}</span>
+                    </div>
+                  ) : (
+                    <span>${totalAmount}</span>
+                  )}
                 </div>
               </div>
             </div>

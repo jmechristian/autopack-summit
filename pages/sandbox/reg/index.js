@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { API, graphqlOperation } from 'aws-amplify';
-import RegistrationFormDesktop from '../../../components/registration/RegistrationFormDesktop';
+
 import { useSelector } from 'react-redux';
 import { AnimatePresence } from 'framer-motion';
 import RegistrationForm2024 from '../../../components/registration/RegistrationForm2024';

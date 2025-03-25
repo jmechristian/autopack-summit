@@ -1,6 +1,6 @@
 import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses';
 import { render } from '@react-email/render';
-import { RegConfirmEmail } from '../../react-email-starter/emails/reg-confirm';
+import { StaffRegConfirmEmail } from '../../react-email-starter/emails/staff-confirmation';
 
 const REGION = 'us-east-1';
 const creds = {
@@ -15,7 +15,7 @@ export default async function handler(req, res) {
   const body = req.body;
 
   const emailHtml = render(
-    <RegConfirmEmail
+    <StaffRegConfirmEmail
       formData={body.formData}
       totalAmount={body.totalAmount}
       formDataId={body.formDataId}
@@ -67,7 +67,10 @@ export default async function handler(req, res) {
 
   try {
     await sesClient.send(
-      createSendEmailCommand(body.formData.email, 'info@packagingschool.com')
+      createSendEmailCommand(
+        'jamie@packagingschool.com',
+        'info@packagingschool.com'
+      )
     );
     res.status(200).json({ message: 'success' });
   } catch (error) {
