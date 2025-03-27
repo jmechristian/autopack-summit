@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import { getCurrentAPS25Registrant } from '../../../util/api';
 import { MdDownload, MdAccessTime, MdCheckCircle } from 'react-icons/md';
@@ -7,6 +7,9 @@ export const Page = ({ registrant }) => {
   const router = useRouter();
   const billingPhone = registrant.billingAddressPhone;
   const billingEmail = registrant.billingAddressEmail;
+  const [showMorrisetteDetails, setShowMorrisetteDetails] = useState(false);
+  const [showMagnaDetails, setShowMagnaDetails] = useState(false);
+  const [showAristoDetails, setShowAristoDetails] = useState(false);
   return (
     <div className='w-full py-10'>
       {registrant ? (
@@ -166,125 +169,191 @@ export const Page = ({ registrant }) => {
                 )}
               </div>
               <div className='w-full grid lg:grid-cols-3 gap-7'>
-                <div className='w-full p-8 bg-white/70 rounded-lg flex flex-col gap-2'>
+                <div className='w-full flex flex-col gap-2'>
                   <div className='text-sm font-bold text-ap-blue mb-2'>
                     Tours
                   </div>
-                  <div className='flex flex-col gap-5 divide-y divide-gray-300'>
-                    {(registrant.morrisetteStatus === 'PENDING' ||
-                      registrant.morrisetteStatus === 'APPROVED') && (
-                      <div className='flex flex-col gap-1'>
-                        <div className='font-bold'>Morrisette Tour</div>
-                        <div className='text-sm text-gray-500'>
-                          Wednesday, October 15th
-                          <br /> 10:30 AM - 01:00 PM
-                        </div>
-                        <div className='text-sm'>
-                          24 Tyger River Dr.
-                          <br /> Duncan, SC 29334
-                        </div>
-                        <div className='text-sm font-semibold mt-2'>
-                          Transportation Preference:
-                          <span className='capitalize'>
-                            {' '}
-                            {registrant.morrisetteTransportation}
-                          </span>
-                        </div>
-                        <div className='text-sm font-semibold mt-2'>
-                          Tour Registration Status:
-                          <span
-                            className={`font-bold ${
-                              registrant.morrisetteStatus === 'PENDING'
-                                ? 'text-yellow-500'
-                                : 'text-green-500'
-                            }`}
-                          >
-                            {' '}
-                            {registrant.morrisetteStatus === 'PENDING' ? (
-                              <div className='flex items-center gap-1'>
-                                <div>
-                                  <MdAccessTime color='#eab308' size={20} />
-                                </div>
-                                <div>Pending</div>
-                              </div>
-                            ) : registrant.morrisetteStatus === 'APPROVED' ? (
-                              <div className='flex items-center gap-1'>
-                                <div>
-                                  <MdCheckCircle color='green' size={20} />
-                                </div>
-                                <div>Approved</div>
-                              </div>
-                            ) : (
-                              <div>Not Registered</div>
-                            )}
-                          </span>
-                        </div>
-                      </div>
-                    )}
-                    {(registrant.magnaStatus === 'PENDING' ||
-                      registrant.magnaStatus === 'APPROVED') && (
+                  <div className='flex flex-col gap-3 divide-y divide-gray-300'>
+                    <div className='flex flex-col gap-1'>
                       <div
-                        className={`flex flex-col gap-1 ${
-                          registrant.morrisetteStatus === 'PENDING'
-                            ? 'pt-5'
-                            : 'pt-0'
-                        }`}
+                        className='font-bold flex items-center justify-between cursor-pointer'
+                        onClick={() =>
+                          setShowMorrisetteDetails(!showMorrisetteDetails)
+                        }
                       >
-                        <div className='font-bold'>Magna Mirrors Tour</div>
-                        <div className='text-sm text-gray-500'>
-                          Friday, October 17th
-                          <br /> 10:00 AM - 12:00 PM
-                        </div>
-                        <div className='text-sm'>
-                          1150 S Danzler Rd.
-                          <br /> Duncan, SC 29334
-                        </div>
-                        <div className='text-sm font-semibold mt-2'>
-                          Transportation Preference:
-                          <span className='capitalize'>
-                            {' '}
-                            {registrant.magnaTransportation}
-                          </span>
-                        </div>
-                        <div className='text-sm font-semibold mt-2'>
-                          Tour Registration Status:
-                          <span
-                            className={`font-bold ${
-                              registrant.magnaStatus === 'PENDING'
-                                ? 'text-yellow-500'
-                                : 'text-green-500'
-                            }`}
-                          >
-                            {' '}
-                            {registrant.magnaStatus === 'PENDING' ? (
-                              <div className='flex items-center gap-1'>
-                                <div>
-                                  <MdAccessTime color='#eab308' size={20} />
-                                </div>
-                                <div>Pending</div>
-                              </div>
-                            ) : registrant.magnaStatus === 'APPROVED' ? (
-                              <div className='flex items-center gap-1'>
-                                <div>
-                                  <MdCheckCircle color='green' size={20} />
-                                </div>
-                                <div>Approved</div>
-                              </div>
-                            ) : (
-                              <div>Not Registered</div>
-                            )}
-                          </span>
-                        </div>
+                        <span>Morrisette Tour</span>
+                        <span className='text-sm'>
+                          {showMorrisetteDetails ? '▼' : '▶'}
+                        </span>
                       </div>
-                    )}
-                    {!registrant.magnaStatus &&
-                      !registrant.morrisetteStatus && (
-                        <div className='flex flex-col gap-1 pt-5'>
+                      {showMorrisetteDetails && (
+                        <>
                           <div className='text-sm text-gray-500'>
-                            No Tours Registered
+                            Wednesday, October 15th
+                            <br /> 10:30 AM - 01:00 PM
                           </div>
-                        </div>
+                          <div className='text-sm'>
+                            24 Tyger River Dr.
+                            <br /> Duncan, SC 29334
+                          </div>
+                          <div className='text-sm font-semibold mt-2'>
+                            Transportation Preference:
+                            <span className='capitalize'>
+                              {' '}
+                              {registrant.morrisetteTransportation}
+                            </span>
+                          </div>
+                          <div className='text-sm font-semibold mt-2'>
+                            Tour Registration Status:
+                            <span
+                              className={`font-bold ${
+                                registrant.morrisetteStatus === 'PENDING'
+                                  ? 'text-yellow-500'
+                                  : 'text-green-500'
+                              }`}
+                            >
+                              {' '}
+                              {registrant.morrisetteStatus === 'PENDING' ? (
+                                <div className='flex items-center gap-1'>
+                                  <div>
+                                    <MdAccessTime color='#eab308' size={20} />
+                                  </div>
+                                  <div>Pending</div>
+                                </div>
+                              ) : registrant.morrisetteStatus === 'APPROVED' ? (
+                                <div className='flex items-center gap-1'>
+                                  <div>
+                                    <MdCheckCircle color='green' size={20} />
+                                  </div>
+                                  <div>Approved</div>
+                                </div>
+                              ) : (
+                                <div>Not Registered</div>
+                              )}
+                            </span>
+                          </div>
+                        </>
                       )}
+                    </div>
+
+                    <div className={`flex flex-col gap-1 pt-3`}>
+                      <div
+                        className='font-bold flex items-center justify-between cursor-pointer'
+                        onClick={() => setShowAristoDetails(!showAristoDetails)}
+                      >
+                        <span>Aristo Tour</span>
+                        <span className='text-sm'>
+                          {showAristoDetails ? '▼' : '▶'}
+                        </span>
+                      </div>
+                      {showAristoDetails && (
+                        <>
+                          <div className='text-sm text-gray-500'>
+                            Wednesday, October 15th
+                            <br /> 2:00 - 4:00 PM
+                          </div>
+                          <div className='text-sm'>
+                            2006 Perimeter Road <br />
+                            Greenville 29605
+                          </div>
+                          <div className='text-sm font-semibold mt-2'>
+                            Transportation Preference:
+                            <span className='capitalize'>
+                              {' '}
+                              {registrant.aristoTransportation}
+                            </span>
+                          </div>
+                          <div className='text-sm font-semibold mt-2'>
+                            Tour Registration Status:
+                            <span
+                              className={`font-bold ${
+                                registrant.aristoStatus === 'PENDING'
+                                  ? 'text-yellow-500'
+                                  : 'text-green-500'
+                              }`}
+                            >
+                              {' '}
+                              {registrant.aristoStatus === 'PENDING' ? (
+                                <div className='flex items-center gap-1'>
+                                  <div>
+                                    <MdAccessTime color='#eab308' size={20} />
+                                  </div>
+                                  <div>Pending</div>
+                                </div>
+                              ) : registrant.aristoStatus === 'APPROVED' ? (
+                                <div className='flex items-center gap-1'>
+                                  <div>
+                                    <MdCheckCircle color='green' size={20} />
+                                  </div>
+                                  <div>Approved</div>
+                                </div>
+                              ) : (
+                                <div>Not Registered</div>
+                              )}
+                            </span>
+                          </div>
+                        </>
+                      )}
+                    </div>
+                    <div className={`flex flex-col gap-1 pt-3`}>
+                      <div
+                        className='font-bold flex items-center justify-between cursor-pointer'
+                        onClick={() => setShowMagnaDetails(!showMagnaDetails)}
+                      >
+                        <span>Magna Mirrors Tour</span>
+                        <span className='text-sm'>
+                          {showMagnaDetails ? '▼' : '▶'}
+                        </span>
+                      </div>
+                      {showMagnaDetails && (
+                        <>
+                          <div className='text-sm text-gray-500'>
+                            Friday, October 17th
+                            <br /> 10:00 AM - 12:00 PM
+                          </div>
+                          <div className='text-sm'>
+                            1150 S Danzler Rd.
+                            <br /> Duncan, SC 29334
+                          </div>
+                          <div className='text-sm font-semibold mt-2'>
+                            Transportation Preference:
+                            <span className='capitalize'>
+                              {' '}
+                              {registrant.magnaTransportation}
+                            </span>
+                          </div>
+                          <div className='text-sm font-semibold mt-2'>
+                            Tour Registration Status:
+                            <span
+                              className={`font-bold ${
+                                registrant.magnaStatus === 'PENDING'
+                                  ? 'text-yellow-500'
+                                  : 'text-green-500'
+                              }`}
+                            >
+                              {' '}
+                              {registrant.magnaStatus === 'PENDING' ? (
+                                <div className='flex items-center gap-1'>
+                                  <div>
+                                    <MdAccessTime color='#eab308' size={20} />
+                                  </div>
+                                  <div>Pending</div>
+                                </div>
+                              ) : registrant.magnaStatus === 'APPROVED' ? (
+                                <div className='flex items-center gap-1'>
+                                  <div>
+                                    <MdCheckCircle color='green' size={20} />
+                                  </div>
+                                  <div>Approved</div>
+                                </div>
+                              ) : (
+                                <div>Not Registered</div>
+                              )}
+                            </span>
+                          </div>
+                        </>
+                      )}
+                    </div>
                   </div>
                 </div>
                 <div className='w-full p-8 bg-white/70 rounded-lg'>

@@ -1563,16 +1563,7 @@ const RegistrationForm = () => {
               </div>
               <div className='flex flex-col gap-2'>
                 <h4 className='text-lg font-bold'> Your Ticket Details:</h4>
-                <div className='flex flex-wrap gap-1'>
-                  <strong>Add Ons:</strong>
-                  {addOnsSelected.map((addOn) => (
-                    <div key={addOn.id}>{addOn.title}</div>
-                  ))}
-                </div>
-                <div>
-                  <strong>Networking Events:</strong>
-                  {formData.speedNetworking ? ' Speed Networking' : ' None'}
-                </div>
+
                 <div className='flex flex-col gap-1 mt-4'>
                   <div className='flex justify-between bg-gray-300 p-2 rounded text-sm'>
                     <span>Ticket Name</span>
@@ -1580,19 +1571,49 @@ const RegistrationForm = () => {
                     <span>Total</span>
                   </div>
                   {/* Example ticket item */}
-                  <div className='flex justify-between px-2'>
-                    <span>General Admission</span>
-                    <span>1</span>
-                    {formData.discountCode ? (
-                      <div className='flex gap-2'>
-                        <span className='line-through text-gray-500'>
-                          ${oldTotal}
-                        </span>{' '}
+                  <div className='flex flex-col gap-2'>
+                    <div className='flex justify-between px-2 border-b border-gray-300 pb-2'>
+                      <span>General Admission</span>
+                      <span>1</span>
+                      {formData.discountCode ? (
+                        <div className='flex gap-2'>
+                          <span className='line-through text-gray-500'>
+                            ${oldTotal}
+                          </span>{' '}
+                          <span>${totalAmount}</span>
+                        </div>
+                      ) : (
                         <span>${totalAmount}</span>
-                      </div>
-                    ) : (
-                      <span>${totalAmount}</span>
-                    )}
+                      )}
+                    </div>
+                    <div className='flex flex-col gap-1'>
+                      <div className='pl-6 font-bold text-sm'>Addons:</div>
+                      {addOnsSelected.length > 0 ? (
+                        addOnsSelected.map((addon) => (
+                          <div
+                            key={addon.id}
+                            className='flex justify-between pl-6'
+                          >
+                            <span className='text-sm'>{addon.title}</span>
+                            <span className='text-gray-700 text-sm'>
+                              PENDING
+                            </span>
+                          </div>
+                        ))
+                      ) : (
+                        <div className='flex items-center pl-6 gap-2'>
+                          <button
+                            onClick={() => setStep(2)}
+                            className='text-gray-700'
+                          >
+                            <PlusIcon className='w-4 h-4' />
+                          </button>
+                          <div className=' text-sm text-gray-700'>
+                            No addons selected, would you like to add one?
+                          </div>
+                        </div>
+                      )}
+                    </div>
                   </div>
                   {/* Add more ticket items as needed */}
                 </div>
