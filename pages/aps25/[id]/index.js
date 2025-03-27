@@ -69,8 +69,8 @@ export const Page = ({ registrant }) => {
                     <div
                       className={`flex items-center gap-1 text-lg font-oswald uppercase w-fit ${
                         registrant.status === 'PENDING'
-                          ? 'bg-ap-yellow px-3 py-1 rounded-lg'
-                          : 'bg-green-600 px-3 py-1 rounded-lg'
+                          ? 'bg-ap-yellow px-2 py-0.5 rounded-lg'
+                          : 'bg-green-600 px-2 py-0.5 rounded-lg'
                       }`}
                     >
                       <div>
@@ -83,7 +83,7 @@ export const Page = ({ registrant }) => {
                       <div
                         className={`${
                           registrant.status === 'PENDING'
-                            ? 'text-neutral-800'
+                            ? 'text-neutral-600'
                             : 'text-white'
                         }`}
                       >
