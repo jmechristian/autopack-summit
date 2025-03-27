@@ -100,9 +100,9 @@ export const Page = ({ registrant }) => {
           {/* MAIN CONTENT */}
           <div className='col-span-12 lg:col-span-9'>
             <div className='w-full h-full p-8 bg-ap-yellow/10 flex flex-col gap-12'>
-              <div className='grid lg:grid-cols-3 gap-10 w-full'>
-                <div className='flex flex-col gap-0.5 leading-tight col-span-1 bg-white/70 rounded-lg p-4'>
-                  <div className='font-bold text-gray-900 mb-2'>
+              <div className='grid lg:grid-cols-3 gap-12 w-full'>
+                <div className='flex flex-col gap-0.5 leading-tight col-span-1'>
+                  <div className='font-bold text-ap-blue mb-2 text-sm'>
                     Billing Details
                   </div>
                   <div className='text-gray-600 text-sm'>
@@ -119,7 +119,7 @@ export const Page = ({ registrant }) => {
                     {registrant.billingAddressState},{' '}
                     {registrant.billingAddressZip}
                   </div>
-                  <div className='w-fit gap-1 bg-gray-900 hover:bg-gray-700 flex items-center justify-center cursor-pointer mt-2 border border-black px-2 py-2 rounded-lg'>
+                  <div className='w-fit gap-1 bg-gray-900 hover:bg-gray-700 flex items-center justify-center cursor-pointer mt-2 border border-black px-2 py-1 rounded-lg'>
                     <div>
                       <MdDownload color='white' size={18} />
                     </div>
@@ -172,7 +172,7 @@ export const Page = ({ registrant }) => {
                     </div>
                   </div>
                 )}
-                <div className='w-full'>
+                <div className='w-full pr-5'>
                   <div className='text-sm font-bold text-ap-blue mb-3'>
                     Workshops
                   </div>
@@ -209,30 +209,34 @@ export const Page = ({ registrant }) => {
                       Status:
                       <span
                         className={`font-bold ${
-                          registrant.speedNetworking &&
-                          registrant.status === 'PENDING'
+                          registrant.speedNetworkingStatus === 'APPROVED'
+                            ? 'text-green-500'
+                            : registrant.speedNetworkingStatus === 'PENDING'
                             ? 'text-yellow-500'
                             : 'text-red-500'
                         }`}
                       >
                         {' '}
-                        {registrant.speedNetworking &&
-                        registrant.status === 'PENDING'
+                        {registrant.speedNetworkingStatus === 'APPROVED'
+                          ? 'Approved'
+                          : registrant.speedNetworkingStatus === 'PENDING'
                           ? 'Pending'
                           : 'Not Registered'}
                       </span>
                     </div>
-                    <div className='flex items-center w-full gap-1 mt-2 cursor-pointer border-t border-gray-300 pt-2'>
-                      <button
-                        onClick={() => {}}
-                        className='text-gray-700 w-5 h-5 bg-ap-blue hover:bg-ap-blue/80 rounded-full flex items-center justify-center'
-                      >
-                        <PlusIcon className='w-4 h-4 text-white' />
-                      </button>
-                      <div className=' text-sm text-gray-700'>
-                        Register for Speed Networking
+                    {registrant.speedNetworkingStatus !== 'APPROVED' && (
+                      <div className='flex items-center w-full gap-1 mt-2 cursor-pointer border-t border-gray-300 pt-2'>
+                        <button
+                          onClick={() => {}}
+                          className='text-gray-700 w-5 h-5 bg-ap-blue hover:bg-ap-blue/80 rounded-full flex items-center justify-center'
+                        >
+                          <PlusIcon className='w-4 h-4 text-white' />
+                        </button>
+                        <div className=' text-sm text-gray-700'>
+                          Register for Speed Networking
+                        </div>
                       </div>
-                    </div>
+                    )}
                   </div>
                 </div>
               </div>
