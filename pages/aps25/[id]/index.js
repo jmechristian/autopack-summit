@@ -53,9 +53,9 @@ export const Page = ({ registrant }) => {
                     </div>
                   </div>
                 </div>
-                <div className='flex flex-col gap-5'>
-                  <div className='flex flex-col gap-1'>
-                    <div className='text-sm font-bold text-white'>
+                <div className='flex flex-col gap-3'>
+                  <div className='flex flex-col gap-0'>
+                    <div className='text-sm font-bold text-ap-yellow'>
                       Registration Type
                     </div>
                     <div className='text-white text-lg font-oswald uppercase'>
@@ -63,7 +63,7 @@ export const Page = ({ registrant }) => {
                     </div>
                   </div>
                   <div className='flex flex-col gap-2'>
-                    <div className='text-sm font-bold text-white'>
+                    <div className='text-sm font-bold text-ap-yellow'>
                       Registration Status
                     </div>
                     <div
