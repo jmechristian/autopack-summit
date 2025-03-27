@@ -16,17 +16,9 @@ import {
 import { Tailwind } from '@react-email/tailwind';
 import * as React from 'react';
 
-interface WelcomeEmailProps {
-  registrant: {
-    name: String;
-    email: String;
-    company: String;
-    title: String;
-    phone: String;
-  };
-}
+interface WelcomeEmailProps {}
 
-export const WelcomeEmail = ({ registrant }: WelcomeEmailProps) => {
+export const WelcomeEmail = () => {
   return (
     <Html>
       <Tailwind>
@@ -66,7 +58,7 @@ export const WelcomeEmail = ({ registrant }: WelcomeEmailProps) => {
                 </Text>
                 <Text className='font-[HelveticaNeue] leading-tight text-[18px] px-6 lg:px-16 mb-10'>
                   Your registration has been confirmed and you have successfully
-                  registered to the 2024 Automotive Packaging Summit.
+                  registered to the 2025 Automotive Packaging Summit.
                 </Text>
               </Row>
             </Section>
@@ -75,16 +67,16 @@ export const WelcomeEmail = ({ registrant }: WelcomeEmailProps) => {
                 <Row>
                   <Column>
                     <Text className='font-bold text-white font-[HelveticaNeue-Bold] text-lg'>
-                      2024 AutoPack Summit Details
+                      2025 AutoPack Summit Details
                     </Text>
                   </Column>
                 </Row>
                 <Row className='w-full max-w-[96%] mx-auto mb-6'>
                   <Column className='bg-white align-top py-4 border-r border-r-black border-solid border-t-0 border-l-0 border-b-0 w-1/3'>
                     <Text className='uppercase text-[16px] leading-[20px] font-[HelveticaNeue-Bold]'>
-                      Monday
+                      Wednesday
                       <br />
-                      Oct 21
+                      Oct 15
                     </Text>
                     <Text className='font-[HelveticaNeue]'>
                       Tours
@@ -96,9 +88,9 @@ export const WelcomeEmail = ({ registrant }: WelcomeEmailProps) => {
                   </Column>
                   <Column className='bg-white align-top py-4 border-r border-r-black border-solid border-t-0 border-l-0 border-b-0 w-1/3'>
                     <Text className='uppercase text-[16px] leading-[20px] font-[HelveticaNeue-Bold]'>
-                      Tuesday
+                      Thursday
                       <br />
-                      Oct 22
+                      Oct 16
                     </Text>
                     <Text className='font-[HelveticaNeue] px-2 leading-snug'>
                       Doors Open 7:30 AM
@@ -114,9 +106,9 @@ export const WelcomeEmail = ({ registrant }: WelcomeEmailProps) => {
                   </Column>
                   <Column className='align-top bg-white py-4 border-r border-r-black border-solid border-t-0 border-l-0 border-b-0 w-1/3'>
                     <Text className='uppercase text-[16px] leading-[20px] font-[HelveticaNeue-Bold]'>
-                      Wednesday
+                      Friday
                       <br />
-                      Oct 23
+                      Oct 17
                     </Text>
                     <Text className='font-[HelveticaNeue] leading-snug'>
                       Tours
@@ -237,15 +229,5 @@ export const WelcomeEmail = ({ registrant }: WelcomeEmailProps) => {
     </Html>
   );
 };
-
-WelcomeEmail.PreviewProps = {
-  registrant: {
-    name: 'Jamie Christian',
-    email: 'jmechristian@gmail.com',
-    company: 'Packaging School',
-    title: 'Web Director',
-    phone: '5122893696',
-  },
-} as WelcomeEmailProps;
 
 export default WelcomeEmail;
