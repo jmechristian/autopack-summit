@@ -55,7 +55,7 @@ export default async function handler(req, res) {
         },
         Subject: {
           Charset: 'UTF-8',
-          Data: 'Automotive Packaging Summit 2025 Registration Confirmation',
+          Data: 'Automotive Packaging Summit 2025 Registration Pending',
         },
       },
       Source: fromAddress,
