@@ -655,3 +655,25 @@ export const addCodeUsage = async (code) => {
   });
   return res.data;
 };
+
+export const registerSpeedNetworking = async (id) => {
+  const res = await API.graphql({
+    query: updateAPSRegistrant2025,
+    variables: {
+      input: {
+        id: id,
+        speedNetworkingStatus: 'PENDING',
+      },
+    },
+  });
+
+  return res.data;
+};
+
+export const sendActivity = async (data) => {
+  const res = await API.graphql({
+    query: createAPSActivity2025,
+    variables: { input: data },
+  });
+  return res.data;
+};

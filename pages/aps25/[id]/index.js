@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
-import { getCurrentAPS25Registrant } from '../../../util/api';
+import {
+  getCurrentAPS25Registrant,
+  registerSpeedNetworking,
+  sendActivity,
+} from '../../../util/api';
 import {
   MdDownload,
   MdAccessTime,
@@ -99,7 +103,7 @@ export const Page = ({ registrant }) => {
           </div>
           {/* MAIN CONTENT */}
           <div className='col-span-12 lg:col-span-9'>
-            <div className='w-full h-full p-8 bg-ap-yellow/10 flex flex-col gap-12'>
+            <div className='w-full h-full px-8 py-10 bg-ap-yellow/10 flex flex-col gap-12'>
               <div className='grid lg:grid-cols-3 gap-12 w-full'>
                 <div className='flex flex-col gap-0.5 leading-tight col-span-1'>
                   <div className='font-bold text-ap-blue mb-2 text-sm'>
@@ -227,7 +231,13 @@ export const Page = ({ registrant }) => {
                     {registrant.speedNetworkingStatus !== 'APPROVED' && (
                       <div className='flex items-center w-full gap-1 mt-2 cursor-pointer border-t border-gray-300 pt-2'>
                         <button
-                          onClick={() => {}}
+                          onClick={() => {
+                            registerSpeedNetworking(registrant.id);
+                            sendActivity({
+                              type: 'SPEED_NETWORKING_REGISTERED',
+                              activity: `${registrant.firstName} ${registrant.lastName} Speed Networking Registered`,
+                            });
+                          }}
                           className='text-gray-700 w-5 h-5 bg-ap-blue hover:bg-ap-blue/80 rounded-full flex items-center justify-center'
                         >
                           <PlusIcon className='w-4 h-4 text-white' />
