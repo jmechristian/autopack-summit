@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import { getCurrentAPS25Registrant } from '../../../util/api';
-import { MdDownload, MdAccessTime, MdCheckCircle } from 'react-icons/md';
-
+import {
+  MdDownload,
+  MdAccessTime,
+  MdCheckCircle,
+  MdCancel,
+} from 'react-icons/md';
+import { PlusIcon } from '@heroicons/react/24/solid';
 export const Page = ({ registrant }) => {
   const router = useRouter();
   const billingPhone = registrant.billingAddressPhone;
@@ -24,12 +29,12 @@ export const Page = ({ registrant }) => {
         <div className='w-full max-w-7xl mx-auto border border-gray-300 p-5 grid grid-cols-1 lg:grid-cols-12'>
           <div className='col-span-12 lg:col-span-3'>
             <div
-              className='w-full h-full min-h-[550px] bg-ap-blue p-6 bg-cover bg-center bg-no-repeat'
+              className='w-full h-full  bg-ap-blue p-6 bg-cover bg-center bg-no-repeat'
               style={{
                 backgroundImage: `url('https://apsmedia.s3.us-east-1.amazonaws.com/profile-header.png')`,
               }}
             >
-              <div className='flex flex-col gap-7 h-full'>
+              <div className='flex flex-col gap-5 h-full'>
                 <div className='w-full flex flex-col gap-2'>
                   <div className='text-3xl text-ap-yellow font-oswald uppercase'>
                     Welcome!
@@ -48,7 +53,7 @@ export const Page = ({ registrant }) => {
                     </div>
                   </div>
                 </div>
-                <div className='flex flex-col gap-7'>
+                <div className='flex flex-col gap-5'>
                   <div className='flex flex-col gap-1'>
                     <div className='text-sm font-bold text-white'>
                       Registration Type
@@ -70,7 +75,7 @@ export const Page = ({ registrant }) => {
                     >
                       <div>
                         {registrant.status === 'PENDING' ? (
-                          <MdAccessTime color='gray' size={24} />
+                          <MdAccessTime color='black' size={24} />
                         ) : (
                           <MdCheckCircle color='green' size={24} />
                         )}
@@ -78,7 +83,7 @@ export const Page = ({ registrant }) => {
                       <div
                         className={`${
                           registrant.status === 'PENDING'
-                            ? 'text-neutral-600'
+                            ? 'text-neutral-800'
                             : 'text-white'
                         }`}
                       >
@@ -94,8 +99,8 @@ export const Page = ({ registrant }) => {
           </div>
           {/* MAIN CONTENT */}
           <div className='col-span-12 lg:col-span-9'>
-            <div className='w-full h-full p-6 bg-ap-yellow/10 flex flex-col gap-6'>
-              <div className='grid lg:grid-cols-3 gap-6 w-full'>
+            <div className='w-full h-full p-8 bg-ap-yellow/10 flex flex-col gap-12'>
+              <div className='grid lg:grid-cols-3 gap-10 w-full'>
                 <div className='flex flex-col gap-0.5 leading-tight col-span-1 bg-white/70 rounded-lg p-4'>
                   <div className='font-bold text-gray-900 mb-2'>
                     Billing Details
@@ -168,8 +173,8 @@ export const Page = ({ registrant }) => {
                   </div>
                 )}
               </div>
-              <div className='w-full grid lg:grid-cols-3 gap-7'>
-                <div className='w-full flex flex-col gap-2 justify-center'>
+              <div className='w-full grid lg:grid-cols-3 gap-12'>
+                <div className='w-full flex flex-col gap-2'>
                   <div className='text-sm font-bold text-ap-blue mb-2'>
                     Tours
                   </div>
@@ -181,7 +186,22 @@ export const Page = ({ registrant }) => {
                           setShowMorrisetteDetails(!showMorrisetteDetails)
                         }
                       >
-                        <span>Morrisette Tour</span>
+                        <div className='flex items-center gap-2'>
+                          {registrant.morrisetteStatus === 'APPROVED' ? (
+                            <div>
+                              <MdCheckCircle color='green' size={20} />
+                            </div>
+                          ) : registrant.morrisetteStatus === 'PENDING' ? (
+                            <div>
+                              <MdAccessTime color='#eab308' size={20} />
+                            </div>
+                          ) : (
+                            <div>
+                              <MdCancel color='red' size={20} />
+                            </div>
+                          )}
+                          <span>Morrisette Tour</span>
+                        </div>
                         <span className='text-sm'>
                           {showMorrisetteDetails ? '▼' : '▶'}
                         </span>
@@ -241,7 +261,22 @@ export const Page = ({ registrant }) => {
                         className='font-bold flex items-center justify-between cursor-pointer'
                         onClick={() => setShowAristoDetails(!showAristoDetails)}
                       >
-                        <span>Aristo Tour</span>
+                        <div className='flex items-center gap-2'>
+                          {registrant.aristoStatus === 'APPROVED' ? (
+                            <div>
+                              <MdCheckCircle color='green' size={20} />
+                            </div>
+                          ) : registrant.aristoStatus === 'PENDING' ? (
+                            <div>
+                              <MdAccessTime color='#eab308' size={20} />
+                            </div>
+                          ) : (
+                            <div>
+                              <MdCancel color='red' size={20} />
+                            </div>
+                          )}
+                          <span>Aristo Tour</span>
+                        </div>
                         <span className='text-sm'>
                           {showAristoDetails ? '▼' : '▶'}
                         </span>
@@ -300,7 +335,22 @@ export const Page = ({ registrant }) => {
                         className='font-bold flex items-center justify-between cursor-pointer'
                         onClick={() => setShowMagnaDetails(!showMagnaDetails)}
                       >
-                        <span>Magna Mirrors Tour</span>
+                        <div className='flex items-center gap-2'>
+                          {registrant.magnaStatus === 'APPROVED' ? (
+                            <div>
+                              <MdCheckCircle color='green' size={20} />
+                            </div>
+                          ) : registrant.magnaStatus === 'PENDING' ? (
+                            <div>
+                              <MdAccessTime color='#eab308' size={20} />
+                            </div>
+                          ) : (
+                            <div>
+                              <MdCancel color='red' size={20} />
+                            </div>
+                          )}
+                          <span>Magna Mirrors Tour</span>
+                        </div>
                         <span className='text-sm'>
                           {showMagnaDetails ? '▼' : '▶'}
                         </span>
@@ -356,21 +406,33 @@ export const Page = ({ registrant }) => {
                     </div>
                   </div>
                 </div>
-                <div className='w-full p-8 bg-white/70 rounded-lg'>
-                  <div className='text-sm font-bold text-ap-blue mb-2'>
+                <div className='w-full'>
+                  <div className='text-sm font-bold text-ap-blue mb-3'>
                     Workshops
                   </div>
-                  <div className='flex flex-col gap-2 w-full h-full justify-center items-center text-sm text-gray-500'>
+                  <div className='text-sm text-gray-500 border-b border-gray-300 pb-2'>
                     The complimentary workshops do not require registrations.
-                    Walk-ins are welcome! More details will be provided shortly.
+                  </div>
+                  <div className='flex flex-col gap-2 justify-center mt-4'>
+                    <div className='flex flex-col gap-1 leading-tight'>
+                      <div className='font-semibold'>
+                        Thursday, October 15th
+                      </div>
+                      <div className='text-sm text-gray-500'>
+                        01:30 PM - 02:30 PM
+                      </div>
+                      <div className='text-sm text-gray-500'>
+                        Conference Room Crepe Myrtle
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <div className='w-full p-8 bg-white/70 rounded-lg'>
-                  <div className='text-sm font-bold text-ap-blue mb-5'>
+                <div className='w-full '>
+                  <div className='text-sm font-bold text-ap-blue mb-3'>
                     Speed Networking
                   </div>
                   <div className='flex flex-col gap-1'>
-                    <div className='font-bold'>
+                    <div className='font-bold text-sm'>
                       Wednesday, October 15th
                       <br /> 2:30 PM - 3:30 PM
                     </div>
@@ -378,7 +440,7 @@ export const Page = ({ registrant }) => {
                       Conference Room Redbud A/B/C
                     </div>
                     <div className='text-sm font-semibold mt-2'>
-                      Speed Networking Registration Status:
+                      Status:
                       <span
                         className={`font-bold ${
                           registrant.speedNetworking &&
@@ -393,6 +455,17 @@ export const Page = ({ registrant }) => {
                           ? 'Pending'
                           : 'Not Registered'}
                       </span>
+                    </div>
+                    <div className='flex items-center w-full gap-1 mt-2 cursor-pointer border-t border-gray-300 pt-2'>
+                      <button
+                        onClick={() => {}}
+                        className='text-gray-700 w-5 h-5 bg-ap-blue hover:bg-ap-blue/80 rounded-full flex items-center justify-center'
+                      >
+                        <PlusIcon className='w-4 h-4 text-white' />
+                      </button>
+                      <div className=' text-sm text-gray-700'>
+                        Register for Speed Networking
+                      </div>
                     </div>
                   </div>
                 </div>
