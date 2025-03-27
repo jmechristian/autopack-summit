@@ -4,81 +4,15 @@ import { getCurrentAPS25Registrant } from '../../../util/api';
 import { MdDownload, MdAccessTime, MdCheckCircle } from 'react-icons/md';
 
 export const Page = ({ registrant }) => {
-  console.log(registrant);
   const router = useRouter();
+  const billingPhone = registrant.billingAddressPhone;
+  const billingEmail = registrant.billingAddressEmail;
   return (
     <div className='w-full py-10'>
       {registrant ? (
         // <div className='flex flex-col gap-6 max-w-5xl mx-auto w-full'>
         //   <div className='w-full p-8 rounded-lg bg-white'>
-        //     <div className='grid lg:grid-cols-3 gap-12 w-full'>
-        //       <div className='flex flex-col gap-1'>
-        //         <div className='text-sm font-bold text-ap-blue mb-2'>
-        //           Registration Details
-        //         </div>
-        //         <div className='text-xl font-bold'>
-        //           {registrant.firstName} {registrant.lastName}
-        //         </div>
-        //         <div>{registrant.email}</div>
-        //         <div>{registrant.phone}</div>
-        //         <div>{registrant.companyName.name}</div>
-        //         <div>{registrant.jobTitle}</div>
-        //       </div>
-        //       <div className='flex flex-col gap-1'>
-        //         <div className='text-sm font-bold text-ap-blue mb-2'>
-        //           Billing Details
-        //         </div>
-        //         <div>
-        //           {registrant.billingAddressFirstName}{' '}
-        //           {registrant.billingAddressLastName}
-        //         </div>
-        //         <div>{registrant.billingAddressStreet}</div>
-        //         <div>
-        //           {registrant.billingAddressCity},{' '}
-        //           {registrant.billingAddressState},{' '}
-        //           {registrant.billingAddressZip}
-        //         </div>
-        //         <div className='w-fit gap-1 hover:bg-gray-100 flex items-center justify-center cursor-pointer mt-2 border border-black px-2 py-2 rounded-lg'>
-        //           <div>
-        //             <MdDownload color='black' size={20} />
-        //           </div>
-        //           <div className='text-sm font-medium'>Download Invoice</div>
-        //         </div>
-        //       </div>
-        //       <div className='flex flex-col gap-10'>
-        //         <div className='flex flex-col gap-1'>
-        //           <div className='text-sm font-bold text-ap-blue mb-2'>
-        //             Registration Type
-        //           </div>
-        //           <div>{registrant.attendeeType}</div>
-        //         </div>
-        //         <div className='flex flex-col gap-1'>
-        //           <div className='text-sm font-bold text-ap-blue mb-2'>
-        //             Registration Status
-        //           </div>
-        //           <div className='flex items-center gap-1 font-bold'>
-        //             <div>
-        //               <MdAccessTime
-        //                 color={
-        //                   registrant.status === 'PENDING' ? '#eab308' : 'green'
-        //                 }
-        //                 size={20}
-        //               />
-        //             </div>
-        //             <div
-        //               className={`${
-        //                 registrant.status === 'PENDING'
-        //                   ? 'text-yellow-500'
-        //                   : 'text-green-500'
-        //               }`}
-        //             >
-        //               {registrant.status === 'PENDING'
-        //                 ? 'Pending'
-        //                 : 'Registered'}
-        //             </div>
-        //           </div>
-        //         </div>
-        //       </div>
+
         //     </div>
         //   </div>
         //   {registrant.attendeeType === 'Speaker' && (
@@ -276,16 +210,106 @@ export const Page = ({ registrant }) => {
         //     </div>
         //   </div>
         // </div>
-        <div className='w-full max-w-6xl mx-auto border border-gray-300 p-8 grid grid-cols-1 lg:grid-cols-12 gap-8'>
-          <div className='col-span-12 lg:col-span-5'>
-            <div className='w-full h-[500px] bg-ap-blue p-6'>
-              <div className='w-full h-full flex flex-col gap-2'>
-                <div className='text-4xl text-ap-yellow font-oswald uppercase'>
-                  Welcome!
+        <div className='w-full max-w-7xl mx-auto border border-gray-300 p-8 grid grid-cols-1 lg:grid-cols-12'>
+          <div className='col-span-12 lg:col-span-3'>
+            <div
+              className='w-full h-[550px] bg-ap-blue p-6 bg-cover bg-center bg-no-repeat'
+              style={{
+                backgroundImage: `url('https://apsmedia.s3.us-east-1.amazonaws.com/profile-header.png')`,
+              }}
+            >
+              <div className='flex flex-col justify-between h-full'>
+                <div className='w-full h-full flex flex-col gap-2'>
+                  <div className='text-3xl text-ap-yellow font-oswald uppercase'>
+                    Welcome!
+                  </div>
+                  <div className='w-full flex flex-col gap-0'>
+                    <div className='text-white text-5xl font-oswald uppercase'>
+                      {registrant.firstName} <br /> {registrant.lastName}
+                    </div>
+                  </div>
+                  <div className='w-full flex flex-col gap-0 mt-3'>
+                    <div className='text-white text-xl font-oswald uppercase'>
+                      {registrant.companyName.name}
+                    </div>
+                    <div className='text-white text-lg max-w-[200px] font-oswald text-white/60 leading-tight'>
+                      {registrant.jobTitle}
+                    </div>
+                  </div>
                 </div>
-                <div className='w-full flex flex-col gap-0'>
-                  <div className='text-white text-6xl font-oswald uppercase'>
-                    {registrant.firstName} <br /> {registrant.lastName}
+                <div className='flex flex-col gap-10'>
+                  <div className='flex flex-col gap-1'>
+                    <div className='text-sm font-bold text-white'>
+                      Registration Type
+                    </div>
+                    <div className='text-white text-lg font-oswald uppercase'>
+                      {registrant.attendeeType}
+                    </div>
+                  </div>
+                  <div className='flex flex-col gap-2'>
+                    <div className='text-sm font-bold text-white'>
+                      Registration Status
+                    </div>
+                    <div
+                      className={`flex items-center gap-1 text-lg font-oswald uppercase w-fit ${
+                        registrant.status === 'PENDING'
+                          ? 'bg-ap-yellow px-3 py-1 rounded-lg'
+                          : 'bg-green-600 px-3 py-1 rounded-lg'
+                      }`}
+                    >
+                      <div>
+                        {registrant.status === 'PENDING' ? (
+                          <MdAccessTime color='gray' size={24} />
+                        ) : (
+                          <MdCheckCircle color='green' size={24} />
+                        )}
+                      </div>
+                      <div
+                        className={`${
+                          registrant.status === 'PENDING'
+                            ? 'text-neutral-600'
+                            : 'text-white'
+                        }`}
+                      >
+                        {registrant.status === 'PENDING'
+                          ? 'Pending'
+                          : 'Registered'}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* MAIN CONTENT */}
+          <div className='col-span-12 lg:col-span-9'>
+            <div className='w-full h-full bg-white p-8 bg-ap-yellow/10'>
+              <div className='grid lg:grid-cols-3 gap-12 w-full'>
+                <div className='flex flex-col gap-1 leading-tight'>
+                  <div className='font-bold text-gray-900 mb-2'>
+                    Billing Details
+                  </div>
+                  <div className='text-gray-600'>
+                    {registrant.billingAddressFirstName}{' '}
+                    {registrant.billingAddressLastName}
+                  </div>
+                  <div className='text-gray-600'>{billingPhone}</div>
+                  <div className='text-gray-600'>{billingEmail}</div>
+                  <div className='text-gray-600'>
+                    {registrant.billingAddressStreet}
+                  </div>
+                  <div className='text-gray-600'>
+                    {registrant.billingAddressCity},{' '}
+                    {registrant.billingAddressState},{' '}
+                    {registrant.billingAddressZip}
+                  </div>
+                  <div className='w-fit gap-1 bg-gray-900 hover:bg-gray-700 flex items-center justify-center cursor-pointer mt-2 border border-black px-2 py-2 rounded-lg'>
+                    <div>
+                      <MdDownload color='white' size={18} />
+                    </div>
+                    <div className='text-xs font-medium text-white'>
+                      Download Invoice
+                    </div>
                   </div>
                 </div>
               </div>
