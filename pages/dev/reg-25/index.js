@@ -515,6 +515,7 @@ const RegistrationForm = () => {
 
     setIsLoading(true);
     const res = await createNewAPS25Registrant(formData);
+    console.log('res', res, formData);
     setFormDataId(res.createAPSRegistrant2025.id);
     await createAPS25Notification({
       type: 'REGISTRATION_SENT',

@@ -543,6 +543,8 @@ export const createNewAPS25Registrant = async (data) => {
         morrisetteTransportation: data.morrisetteTransportation,
         magnaStatus: data.magnaStatus,
         magnaTransportation: data.magnaTransportation,
+        aristoStatus: data.aristoStatus,
+        aristoTransportation: data.aristoTransportation,
       },
     },
   });
