@@ -64,6 +64,8 @@ const RegistrationForm = () => {
     morrisetteStatus: '',
     magnaStatus: '',
     magnaTransportation: '',
+    aristoStatus: '',
+    aristoTransportation: '',
   });
 
   const interests = [

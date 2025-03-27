@@ -2933,6 +2933,7 @@ export const onCreateAPSCompany = /* GraphQL */ `
           magnaStatus
           magnaTransportation
           aristoStatus
+          aristoTransportation
           createdAt
           updatedAt
           aPSCompanyApsRegistrantsId
@@ -3010,6 +3011,7 @@ export const onUpdateAPSCompany = /* GraphQL */ `
           magnaStatus
           magnaTransportation
           aristoStatus
+          aristoTransportation
           createdAt
           updatedAt
           aPSCompanyApsRegistrantsId
@@ -3087,6 +3089,7 @@ export const onDeleteAPSCompany = /* GraphQL */ `
           magnaStatus
           magnaTransportation
           aristoStatus
+          aristoTransportation
           createdAt
           updatedAt
           aPSCompanyApsRegistrantsId
@@ -3178,6 +3181,7 @@ export const onCreateAPSAddOn2025 = /* GraphQL */ `
             magnaStatus
             magnaTransportation
             aristoStatus
+            aristoTransportation
             createdAt
             updatedAt
             aPSCompanyApsRegistrantsId
@@ -3273,6 +3277,7 @@ export const onUpdateAPSAddOn2025 = /* GraphQL */ `
             magnaStatus
             magnaTransportation
             aristoStatus
+            aristoTransportation
             createdAt
             updatedAt
             aPSCompanyApsRegistrantsId
@@ -3368,6 +3373,7 @@ export const onDeleteAPSAddOn2025 = /* GraphQL */ `
             magnaStatus
             magnaTransportation
             aristoStatus
+            aristoTransportation
             createdAt
             updatedAt
             aPSCompanyApsRegistrantsId
@@ -3445,6 +3451,7 @@ export const onCreateAPSRegistrant2025 = /* GraphQL */ `
             magnaStatus
             magnaTransportation
             aristoStatus
+            aristoTransportation
             createdAt
             updatedAt
             aPSCompanyApsRegistrantsId
@@ -3544,6 +3551,7 @@ export const onCreateAPSRegistrant2025 = /* GraphQL */ `
             magnaStatus
             magnaTransportation
             aristoStatus
+            aristoTransportation
             createdAt
             updatedAt
             aPSCompanyApsRegistrantsId
@@ -3575,6 +3583,7 @@ export const onCreateAPSRegistrant2025 = /* GraphQL */ `
       magnaStatus
       magnaTransportation
       aristoStatus
+      aristoTransportation
       createdAt
       updatedAt
       aPSCompanyApsRegistrantsId
@@ -3642,6 +3651,7 @@ export const onUpdateAPSRegistrant2025 = /* GraphQL */ `
             magnaStatus
             magnaTransportation
             aristoStatus
+            aristoTransportation
             createdAt
             updatedAt
             aPSCompanyApsRegistrantsId
@@ -3741,6 +3751,7 @@ export const onUpdateAPSRegistrant2025 = /* GraphQL */ `
             magnaStatus
             magnaTransportation
             aristoStatus
+            aristoTransportation
             createdAt
             updatedAt
             aPSCompanyApsRegistrantsId
@@ -3772,6 +3783,7 @@ export const onUpdateAPSRegistrant2025 = /* GraphQL */ `
       magnaStatus
       magnaTransportation
       aristoStatus
+      aristoTransportation
       createdAt
       updatedAt
       aPSCompanyApsRegistrantsId
@@ -3839,6 +3851,7 @@ export const onDeleteAPSRegistrant2025 = /* GraphQL */ `
             magnaStatus
             magnaTransportation
             aristoStatus
+            aristoTransportation
             createdAt
             updatedAt
             aPSCompanyApsRegistrantsId
@@ -3938,6 +3951,7 @@ export const onDeleteAPSRegistrant2025 = /* GraphQL */ `
             magnaStatus
             magnaTransportation
             aristoStatus
+            aristoTransportation
             createdAt
             updatedAt
             aPSCompanyApsRegistrantsId
@@ -3969,6 +3983,7 @@ export const onDeleteAPSRegistrant2025 = /* GraphQL */ `
       magnaStatus
       magnaTransportation
       aristoStatus
+      aristoTransportation
       createdAt
       updatedAt
       aPSCompanyApsRegistrantsId
@@ -19482,6 +19497,7 @@ export const onCreateApsRegistrantAddOns25 = /* GraphQL */ `
         magnaStatus
         magnaTransportation
         aristoStatus
+        aristoTransportation
         createdAt
         updatedAt
         aPSCompanyApsRegistrantsId
@@ -19590,6 +19606,7 @@ export const onUpdateApsRegistrantAddOns25 = /* GraphQL */ `
         magnaStatus
         magnaTransportation
         aristoStatus
+        aristoTransportation
         createdAt
         updatedAt
         aPSCompanyApsRegistrantsId
@@ -19698,6 +19715,7 @@ export const onDeleteApsRegistrantAddOns25 = /* GraphQL */ `
         magnaStatus
         magnaTransportation
         aristoStatus
+        aristoTransportation
         createdAt
         updatedAt
         aPSCompanyApsRegistrantsId

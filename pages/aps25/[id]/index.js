@@ -169,7 +169,7 @@ export const Page = ({ registrant }) => {
                 )}
               </div>
               <div className='w-full grid lg:grid-cols-3 gap-7'>
-                <div className='w-full flex flex-col gap-2'>
+                <div className='w-full flex flex-col gap-2 justify-center'>
                   <div className='text-sm font-bold text-ap-blue mb-2'>
                     Tours
                   </div>

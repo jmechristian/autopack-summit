@@ -350,6 +350,7 @@ type APSRegistrant2025 @model @auth(rules: [{ allow: public }]) {
   magnaStatus: String
   magnaTransportation: String
   aristoStatus: String
+  aristoTransportation: String
 }
 
 type APSCode2025 @model @auth(rules: [{ allow: public }]) {
