@@ -172,6 +172,69 @@ export const Page = ({ registrant }) => {
                     </div>
                   </div>
                 )}
+                <div className='w-full'>
+                  <div className='text-sm font-bold text-ap-blue mb-3'>
+                    Workshops
+                  </div>
+                  <div className='text-sm text-gray-500 border-b border-gray-300 pb-2'>
+                    The complimentary workshops do not require registrations.
+                  </div>
+                  <div className='flex flex-col gap-2 justify-center mt-4'>
+                    <div className='flex flex-col gap-1 leading-tight'>
+                      <div className='font-semibold'>
+                        Thursday, October 15th
+                      </div>
+                      <div className='text-sm text-gray-500'>
+                        01:30 PM - 02:30 PM
+                      </div>
+                      <div className='text-sm text-gray-500'>
+                        Conference Room Crepe Myrtle
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className='w-full '>
+                  <div className='text-sm font-bold text-ap-blue mb-3'>
+                    Speed Networking
+                  </div>
+                  <div className='flex flex-col gap-1'>
+                    <div className='font-bold text-sm'>
+                      Wednesday, October 15th
+                      <br /> 2:30 PM - 3:30 PM
+                    </div>
+                    <div className='text-sm text-gray-500'>
+                      Conference Room Redbud A/B/C
+                    </div>
+                    <div className='text-sm font-semibold mt-2'>
+                      Status:
+                      <span
+                        className={`font-bold ${
+                          registrant.speedNetworking &&
+                          registrant.status === 'PENDING'
+                            ? 'text-yellow-500'
+                            : 'text-red-500'
+                        }`}
+                      >
+                        {' '}
+                        {registrant.speedNetworking &&
+                        registrant.status === 'PENDING'
+                          ? 'Pending'
+                          : 'Not Registered'}
+                      </span>
+                    </div>
+                    <div className='flex items-center w-full gap-1 mt-2 cursor-pointer border-t border-gray-300 pt-2'>
+                      <button
+                        onClick={() => {}}
+                        className='text-gray-700 w-5 h-5 bg-ap-blue hover:bg-ap-blue/80 rounded-full flex items-center justify-center'
+                      >
+                        <PlusIcon className='w-4 h-4 text-white' />
+                      </button>
+                      <div className=' text-sm text-gray-700'>
+                        Register for Speed Networking
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div className='w-full grid lg:grid-cols-3 gap-12'>
                 <div className='w-full flex flex-col gap-2'>
@@ -403,69 +466,6 @@ export const Page = ({ registrant }) => {
                           </div>
                         </>
                       )}
-                    </div>
-                  </div>
-                </div>
-                <div className='w-full'>
-                  <div className='text-sm font-bold text-ap-blue mb-3'>
-                    Workshops
-                  </div>
-                  <div className='text-sm text-gray-500 border-b border-gray-300 pb-2'>
-                    The complimentary workshops do not require registrations.
-                  </div>
-                  <div className='flex flex-col gap-2 justify-center mt-4'>
-                    <div className='flex flex-col gap-1 leading-tight'>
-                      <div className='font-semibold'>
-                        Thursday, October 15th
-                      </div>
-                      <div className='text-sm text-gray-500'>
-                        01:30 PM - 02:30 PM
-                      </div>
-                      <div className='text-sm text-gray-500'>
-                        Conference Room Crepe Myrtle
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className='w-full '>
-                  <div className='text-sm font-bold text-ap-blue mb-3'>
-                    Speed Networking
-                  </div>
-                  <div className='flex flex-col gap-1'>
-                    <div className='font-bold text-sm'>
-                      Wednesday, October 15th
-                      <br /> 2:30 PM - 3:30 PM
-                    </div>
-                    <div className='text-sm text-gray-500'>
-                      Conference Room Redbud A/B/C
-                    </div>
-                    <div className='text-sm font-semibold mt-2'>
-                      Status:
-                      <span
-                        className={`font-bold ${
-                          registrant.speedNetworking &&
-                          registrant.status === 'PENDING'
-                            ? 'text-yellow-500'
-                            : 'text-red-500'
-                        }`}
-                      >
-                        {' '}
-                        {registrant.speedNetworking &&
-                        registrant.status === 'PENDING'
-                          ? 'Pending'
-                          : 'Not Registered'}
-                      </span>
-                    </div>
-                    <div className='flex items-center w-full gap-1 mt-2 cursor-pointer border-t border-gray-300 pt-2'>
-                      <button
-                        onClick={() => {}}
-                        className='text-gray-700 w-5 h-5 bg-ap-blue hover:bg-ap-blue/80 rounded-full flex items-center justify-center'
-                      >
-                        <PlusIcon className='w-4 h-4 text-white' />
-                      </button>
-                      <div className=' text-sm text-gray-700'>
-                        Register for Speed Networking
-                      </div>
                     </div>
                   </div>
                 </div>
