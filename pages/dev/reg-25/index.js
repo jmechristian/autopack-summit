@@ -9,7 +9,7 @@ import {
   useElements,
   PaymentElement,
 } from '@stripe/react-stripe-js';
-import { ExclamationCircleIcon } from '@heroicons/react/24/solid';
+import { ExclamationCircleIcon, PlusIcon } from '@heroicons/react/24/solid';
 import {
   getAPSCompanies,
   createCompany,
@@ -29,7 +29,7 @@ const stripePromise = loadStripe(
 
 const RegistrationForm = () => {
   const router = useRouter();
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(2);
   const [discountCodeError, setDiscountCodeError] = useState('');
   const [formData, setFormData] = useState({
     firstName: '',
@@ -691,6 +691,7 @@ const RegistrationForm = () => {
                 type='text'
                 name='firstName'
                 placeholder='First Name'
+                autoComplete='first-name'
                 value={formData.firstName}
                 onChange={handleChange}
                 className='p-2 border border-gray-300 rounded'
@@ -1001,8 +1002,26 @@ const RegistrationForm = () => {
                       transportationError={errors.morrisetteTransportation}
                     />
                     <AddOnCard
-                      id='magna'
+                      id='aristo'
                       addOn={addOns[1]}
+                      onUpdate={(value) => {
+                        setFormData((prev) => ({
+                          ...prev,
+                          aristoTransportation: value,
+                        }));
+                      }}
+                      onRegister={() => {
+                        setFormData((prev) => ({
+                          ...prev,
+                          aristoStatus: 'PENDING',
+                        }));
+                        setAddOnsSelected((prev) => [...prev, addOns[1]]);
+                      }}
+                      transportationError={errors.aristoTransportation}
+                    />
+                    <AddOnCard
+                      id='magna'
+                      addOn={addOns[2]}
                       onUpdate={(value) => {
                         setFormData((prev) => ({
                           ...prev,
@@ -1014,7 +1033,7 @@ const RegistrationForm = () => {
                           ...prev,
                           magnaStatus: 'PENDING',
                         }));
-                        setAddOnsSelected((prev) => [...prev, addOns[1]]);
+                        setAddOnsSelected((prev) => [...prev, addOns[2]]);
                       }}
                       transportationError={errors.magnaTransportation}
                     />
@@ -1354,19 +1373,49 @@ const RegistrationForm = () => {
                     <span>Total</span>
                   </div>
                   {/* Example ticket item */}
-                  <div className='flex justify-between px-2'>
-                    <span>General Admission</span>
-                    <span>1</span>
-                    {formData.discountCode ? (
-                      <div className='flex gap-2'>
-                        <span className='line-through text-gray-500'>
-                          ${oldTotal}
-                        </span>{' '}
+                  <div className='flex flex-col gap-2'>
+                    <div className='flex justify-between px-2 border-b border-gray-300 pb-2'>
+                      <span>General Admission</span>
+                      <span>1</span>
+                      {formData.discountCode ? (
+                        <div className='flex gap-2'>
+                          <span className='line-through text-gray-500'>
+                            ${oldTotal}
+                          </span>{' '}
+                          <span>${totalAmount}</span>
+                        </div>
+                      ) : (
                         <span>${totalAmount}</span>
-                      </div>
-                    ) : (
-                      <span>${totalAmount}</span>
-                    )}
+                      )}
+                    </div>
+                    <div className='flex flex-col gap-1'>
+                      <div className='pl-6 font-bold text-sm'>Addons:</div>
+                      {addOnsSelected.length > 0 ? (
+                        addOnsSelected.map((addon) => (
+                          <div
+                            key={addon.id}
+                            className='flex justify-between pl-6'
+                          >
+                            <span className='text-sm'>{addon.title}</span>
+                            <span className='text-gray-700 text-sm'>
+                              PENDING
+                            </span>
+                          </div>
+                        ))
+                      ) : (
+                        <div className='flex items-center pl-6 gap-2'>
+                          <button
+                            onClick={() => setStep(2)}
+                            className='text-gray-700'
+                          >
+                            <PlusIcon className='w-4 h-4' />
+                          </button>
+                          <div className=' text-sm text-gray-700'>
+                            No addons selected, would you like to add one?
+                          </div>
+                        </div>
+                      )}
+                    </div>
                   </div>
                   {/* Add more ticket items as needed */}
                 </div>

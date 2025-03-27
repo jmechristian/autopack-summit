@@ -26,8 +26,8 @@ export const Page = ({ registrant }) => {
                 backgroundImage: `url('https://apsmedia.s3.us-east-1.amazonaws.com/profile-header.png')`,
               }}
             >
-              <div className='flex flex-col justify-between h-full'>
-                <div className='w-full h-full flex flex-col gap-2'>
+              <div className='flex flex-col gap-7 h-full'>
+                <div className='w-full flex flex-col gap-2'>
                   <div className='text-3xl text-ap-yellow font-oswald uppercase'>
                     Welcome!
                   </div>
@@ -45,7 +45,7 @@ export const Page = ({ registrant }) => {
                     </div>
                   </div>
                 </div>
-                <div className='flex flex-col gap-10'>
+                <div className='flex flex-col gap-7'>
                   <div className='flex flex-col gap-1'>
                     <div className='text-sm font-bold text-white'>
                       Registration Type
@@ -166,7 +166,7 @@ export const Page = ({ registrant }) => {
                 )}
               </div>
               <div className='w-full grid lg:grid-cols-3 gap-7'>
-                <div className='w-full p-8 bg-white rounded-lg flex flex-col gap-2'>
+                <div className='w-full p-8 bg-white/70 rounded-lg flex flex-col gap-2'>
                   <div className='text-sm font-bold text-ap-blue mb-2'>
                     Tours
                   </div>
@@ -287,7 +287,7 @@ export const Page = ({ registrant }) => {
                       )}
                   </div>
                 </div>
-                <div className='w-full p-8 bg-white rounded-lg'>
+                <div className='w-full p-8 bg-white/70 rounded-lg'>
                   <div className='text-sm font-bold text-ap-blue mb-2'>
                     Workshops
                   </div>
@@ -296,7 +296,7 @@ export const Page = ({ registrant }) => {
                     Walk-ins are welcome! More details will be provided shortly.
                   </div>
                 </div>
-                <div className='w-full p-8 bg-white rounded-lg'>
+                <div className='w-full p-8 bg-white/70 rounded-lg'>
                   <div className='text-sm font-bold text-ap-blue mb-5'>
                     Speed Networking
                   </div>
