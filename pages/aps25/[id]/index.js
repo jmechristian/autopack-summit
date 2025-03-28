@@ -538,7 +538,8 @@ export const Page = ({ registrant }) => {
                           {registrant.morrisetteTransportation && (
                             <div className='text-sm font-semibold mt-2'>
                               Transportation Preference:
-                              <span className='capitalize'>
+                              <br />
+                              <span className='capitalize font-medium text-gray-500'>
                                 {' '}
                                 {registrant.morrisetteTransportation}
                               </span>
