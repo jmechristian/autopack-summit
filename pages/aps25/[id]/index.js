@@ -24,7 +24,6 @@ import {
 import { PlusIcon, MinusIcon } from '@heroicons/react/24/solid';
 
 export const RegistrantPage = ({ registrant }) => {
-  console.log(registrant);
   const [showEditSpeakerProfile, setShowEditSpeakerProfile] = useState(false);
   const router = useRouter();
   const billingPhone = registrant && registrant.billingAddressPhone;
@@ -40,6 +39,8 @@ export const RegistrantPage = ({ registrant }) => {
     learningObjectives: (registrant && registrant.learningObjectives) || '',
     bio: (registrant && registrant.bio) || '',
   });
+
+  const [registrant, setRegistrant] = useState(registrant);
 
   const handleFileUpload = async (file, type) => {
     if (!file) return;
@@ -69,8 +70,10 @@ export const RegistrantPage = ({ registrant }) => {
     }
   };
 
-  const refreshData = () => {
-    router.replace(router.asPath);
+  const refreshData = async () => {
+    const updatedRegistrant = await getCurrentAPS25Registrant(registrant.id);
+    // Update the registrant data directly
+    setRegistrant(updatedRegistrant);
   };
 
   return (
