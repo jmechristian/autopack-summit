@@ -3,6 +3,13 @@ import { useRouter } from 'next/router';
 import {
   getCurrentAPS25Registrant,
   registerSpeedNetworking,
+  unregisterSpeedNetworking,
+  registerMorrisette,
+  unregisterMorrisette,
+  registerMagna,
+  unregisterMagna,
+  registerAristo,
+  unregisterAristo,
   sendActivity,
 } from '../../../util/api';
 import {
@@ -11,7 +18,7 @@ import {
   MdCheckCircle,
   MdCancel,
 } from 'react-icons/md';
-import { PlusIcon } from '@heroicons/react/24/solid';
+import { PlusIcon, MinusIcon } from '@heroicons/react/24/solid';
 export const Page = ({ registrant }) => {
   const router = useRouter();
   const billingPhone = registrant.billingAddressPhone;
@@ -19,6 +26,11 @@ export const Page = ({ registrant }) => {
   const [showMorrisetteDetails, setShowMorrisetteDetails] = useState(false);
   const [showMagnaDetails, setShowMagnaDetails] = useState(false);
   const [showAristoDetails, setShowAristoDetails] = useState(false);
+
+  const refreshData = () => {
+    router.replace(router.asPath);
+  };
+
   return (
     <div className='w-full py-10'>
       {registrant ? (
@@ -228,7 +240,8 @@ export const Page = ({ registrant }) => {
                           : 'Not Registered'}
                       </span>
                     </div>
-                    {registrant.speedNetworkingStatus !== 'APPROVED' && (
+                    {registrant.speedNetworkingStatus !== 'APPROVED' &&
+                    registrant.speedNetworkingStatus !== 'PENDING' ? (
                       <div className='flex items-center w-full gap-1 mt-2 cursor-pointer border-t border-gray-300 pt-2'>
                         <button
                           onClick={() => {
@@ -237,6 +250,7 @@ export const Page = ({ registrant }) => {
                               type: 'SPEED_NETWORKING_REGISTERED',
                               activity: `${registrant.firstName} ${registrant.lastName} Speed Networking Registered`,
                             });
+                            refreshData();
                           }}
                           className='text-gray-700 w-5 h-5 bg-ap-blue hover:bg-ap-blue/80 rounded-full flex items-center justify-center'
                         >
@@ -244,6 +258,25 @@ export const Page = ({ registrant }) => {
                         </button>
                         <div className=' text-sm text-gray-700'>
                           Register for Speed Networking
+                        </div>
+                      </div>
+                    ) : (
+                      <div className='flex items-center w-full gap-1 mt-2 cursor-pointer border-t border-gray-300 pt-2'>
+                        <button
+                          onClick={() => {
+                            unregisterSpeedNetworking(registrant.id);
+                            sendActivity({
+                              type: 'SPEED_NETWORKING_UNREGISTERED',
+                              activity: `${registrant.firstName} ${registrant.lastName} Speed Networking Unregistered`,
+                            });
+                            refreshData();
+                          }}
+                          className='text-gray-700 w-5 h-5 bg-ap-blue hover:bg-ap-blue/80 rounded-full flex items-center justify-center'
+                        >
+                          <MinusIcon className='w-4 h-4 text-white' />
+                        </button>
+                        <div className=' text-sm text-gray-700'>
+                          Unregister for Speed Networking
                         </div>
                       </div>
                     )}
@@ -596,54 +629,92 @@ export const Page = ({ registrant }) => {
                             <span>Aristo Tour</span>
                           </div>
                         </div>
-                        <>
-                          <div className='text-sm text-gray-500'>
-                            Wednesday, October 15th
-                            <br /> 2:00 - 4:00 PM
-                          </div>
-                          <div className='text-sm'>
-                            2006 Perimeter Road <br />
-                            Greenville 29605
-                          </div>
-                          {registrant.aristoTransportation && (
-                            <div className='text-sm font-semibold mt-2'>
-                              Transportation Preference:
-                              <span className='capitalize'>
-                                {' '}
-                                {registrant.aristoTransportation}
-                              </span>
-                            </div>
-                          )}
+                        <div className='text-sm text-gray-500'>
+                          Wednesday, October 15th
+                          <br /> 2:00 - 4:00 PM
+                        </div>
+                        <div className='text-sm'>
+                          2006 Perimeter Road <br />
+                          Greenville 29605
+                        </div>
+                        {registrant.aristoTransportation && (
                           <div className='text-sm font-semibold mt-2'>
-                            Tour Registration Status:
-                            <span
-                              className={`font-bold ${
-                                registrant.aristoStatus === 'PENDING'
-                                  ? 'text-yellow-500'
-                                  : 'text-green-500'
-                              }`}
-                            >
+                            Transportation Preference:
+                            <span className='capitalize'>
                               {' '}
-                              {registrant.aristoStatus === 'PENDING' ? (
-                                <div className='flex items-center gap-1'>
-                                  <div>
-                                    <MdAccessTime color='#eab308' size={20} />
-                                  </div>
-                                  <div>Pending</div>
-                                </div>
-                              ) : registrant.aristoStatus === 'APPROVED' ? (
-                                <div className='flex items-center gap-1'>
-                                  <div>
-                                    <MdCheckCircle color='green' size={20} />
-                                  </div>
-                                  <div>Approved</div>
-                                </div>
-                              ) : (
-                                <div>Not Registered</div>
-                              )}
+                              {registrant.aristoTransportation}
                             </span>
                           </div>
-                        </>
+                        )}
+                        <div className='text-sm font-semibold mt-2'>
+                          Tour Registration Status:
+                          <span
+                            className={`font-bold ${
+                              registrant.aristoStatus === 'PENDING'
+                                ? 'text-yellow-500'
+                                : 'text-green-500'
+                            }`}
+                          >
+                            {' '}
+                            {registrant.aristoStatus === 'PENDING' ? (
+                              <div className='flex items-center gap-1'>
+                                <div>
+                                  <MdAccessTime color='#eab308' size={20} />
+                                </div>
+                                <div>Pending</div>
+                              </div>
+                            ) : registrant.aristoStatus === 'APPROVED' ? (
+                              <div className='flex items-center gap-1'>
+                                <div>
+                                  <MdCheckCircle color='green' size={20} />
+                                </div>
+                                <div>Approved</div>
+                              </div>
+                            ) : (
+                              <div>Not Registered</div>
+                            )}
+                          </span>
+                        </div>
+                        {registrant.aristoStatus !== 'APPROVED' &&
+                        registrant.aristoStatus !== 'PENDING' ? (
+                          <div className='flex items-center w-full gap-1 mt-2 cursor-pointer border-t border-gray-300 pt-2'>
+                            <button
+                              onClick={() => {
+                                registerAristo(registrant.id);
+                                sendActivity({
+                                  type: 'ARISTO_REGISTERED',
+                                  activity: `${registrant.firstName} ${registrant.lastName} Aristo Registered`,
+                                });
+                                refreshData();
+                              }}
+                              className='text-gray-700 w-5 h-5 bg-ap-blue hover:bg-ap-blue/80 rounded-full flex items-center justify-center'
+                            >
+                              <PlusIcon className='w-4 h-4 text-white' />
+                            </button>
+                            <div className=' text-sm text-gray-700'>
+                              Register for Aristo Tour
+                            </div>
+                          </div>
+                        ) : (
+                          <div className='flex items-center w-full gap-1 mt-2 cursor-pointer border-t border-gray-300 pt-2'>
+                            <button
+                              onClick={() => {
+                                unregisterAristo(registrant.id);
+                                sendActivity({
+                                  type: 'ARISTO_UNREGISTERED',
+                                  activity: `${registrant.firstName} ${registrant.lastName} Aristo Unregistered`,
+                                });
+                                refreshData();
+                              }}
+                              className='text-gray-700 w-5 h-5 bg-ap-blue hover:bg-ap-blue/80 rounded-full flex items-center justify-center'
+                            >
+                              <MinusIcon className='w-4 h-4 text-white' />
+                            </button>
+                            <div className=' text-sm text-gray-700'>
+                              Unregister for Aristo Tour
+                            </div>
+                          </div>
+                        )}
                       </div>
                       {/* MAGNA MIRRORS */}
                       <div className={`flex flex-col gap-1`}>
@@ -665,54 +736,52 @@ export const Page = ({ registrant }) => {
                             <span>Magna Mirrors Tour</span>
                           </div>
                         </div>
-                        <>
-                          <div className='text-sm text-gray-500'>
-                            Friday, October 17th
-                            <br /> 10:00 AM - 12:00 PM
-                          </div>
-                          <div className='text-sm'>
-                            1150 S Danzler Rd.
-                            <br /> Duncan, SC 29334
-                          </div>
-                          {registrant.magnaTransportation && (
-                            <div className='text-sm font-semibold mt-2'>
-                              Transportation Preference:
-                              <span className='capitalize'>
-                                {' '}
-                                {registrant.magnaTransportation}
-                              </span>
-                            </div>
-                          )}
+                        <div className='text-sm text-gray-500'>
+                          Friday, October 17th
+                          <br /> 10:00 AM - 12:00 PM
+                        </div>
+                        <div className='text-sm'>
+                          1150 S Danzler Rd.
+                          <br /> Duncan, SC 29334
+                        </div>
+                        {registrant.magnaTransportation && (
                           <div className='text-sm font-semibold mt-2'>
-                            Tour Registration Status:
-                            <span
-                              className={`font-bold ${
-                                registrant.magnaStatus === 'PENDING'
-                                  ? 'text-yellow-500'
-                                  : 'text-green-500'
-                              }`}
-                            >
+                            Transportation Preference:
+                            <span className='capitalize'>
                               {' '}
-                              {registrant.magnaStatus === 'PENDING' ? (
-                                <div className='flex items-center gap-1'>
-                                  <div>
-                                    <MdAccessTime color='#eab308' size={20} />
-                                  </div>
-                                  <div>Pending</div>
-                                </div>
-                              ) : registrant.magnaStatus === 'APPROVED' ? (
-                                <div className='flex items-center gap-1'>
-                                  <div>
-                                    <MdCheckCircle color='green' size={20} />
-                                  </div>
-                                  <div>Approved</div>
-                                </div>
-                              ) : (
-                                <div>Not Registered</div>
-                              )}
+                              {registrant.magnaTransportation}
                             </span>
                           </div>
-                        </>
+                        )}
+                        <div className='text-sm font-semibold mt-2'>
+                          Tour Registration Status:
+                          <span
+                            className={`font-bold ${
+                              registrant.magnaStatus === 'PENDING'
+                                ? 'text-yellow-500'
+                                : 'text-green-500'
+                            }`}
+                          >
+                            {' '}
+                            {registrant.magnaStatus === 'PENDING' ? (
+                              <div className='flex items-center gap-1'>
+                                <div>
+                                  <MdAccessTime color='#eab308' size={20} />
+                                </div>
+                                <div>Pending</div>
+                              </div>
+                            ) : registrant.magnaStatus === 'APPROVED' ? (
+                              <div className='flex items-center gap-1'>
+                                <div>
+                                  <MdCheckCircle color='green' size={20} />
+                                </div>
+                                <div>Approved</div>
+                              </div>
+                            ) : (
+                              <div>Not Registered</div>
+                            )}
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </div>

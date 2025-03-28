@@ -670,10 +670,66 @@ export const registerSpeedNetworking = async (id) => {
   return res.data;
 };
 
+export const unregisterSpeedNetworking = async (id) => {
+  const res = await API.graphql({
+    query: updateAPSRegistrant2025,
+    variables: { input: { id: id, speedNetworkingStatus: null } },
+  });
+  return res.data;
+};
+
 export const sendActivity = async (data) => {
   const res = await API.graphql({
     query: createAPSActivity2025,
     variables: { input: data },
+  });
+  return res.data;
+};
+
+export const registerMorrisette = async (id) => {
+  const res = await API.graphql({
+    query: updateAPSRegistrant2025,
+    variables: { input: { id: id, morrisetteStatus: 'PENDING' } },
+  });
+  return res.data;
+};
+
+export const registerMagna = async (id) => {
+  const res = await API.graphql({
+    query: updateAPSRegistrant2025,
+    variables: { input: { id: id, magnaStatus: 'PENDING' } },
+  });
+  return res.data;
+};
+
+export const registerAristo = async (id) => {
+  const res = await API.graphql({
+    query: updateAPSRegistrant2025,
+    variables: { input: { id: id, aristoStatus: 'PENDING' } },
+  });
+  return res.data;
+};
+
+export const unregisterMorrisette = async (id) => {
+  const res = await API.graphql({
+    query: updateAPSRegistrant2025,
+    variables: { input: { id: id, morrisetteStatus: null } },
+  });
+  return res.data;
+};
+
+export const unregisterMagna = async (id) => {
+  const res = await API.graphql({
+    query: updateAPSRegistrant2025,
+    variables: { input: { id: id, magnaStatus: null } },
+  });
+  return res.data;
+};
+
+export const unregisterAristo = async (id) => {
+  const res = await API.graphql({
+    query: updateAPSRegistrant2025,
+    variables: { input: { id: id, aristoStatus: null } },
   });
   return res.data;
 };
