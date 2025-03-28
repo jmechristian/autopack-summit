@@ -675,15 +675,17 @@ export const Page = ({ registrant }) => {
                           2006 Perimeter Road <br />
                           Greenville 29605
                         </div>
-                        {registrant.aristoTransportation && (
-                          <div className='text-sm font-semibold mt-2'>
-                            Transportation Preference:
-                            <span className='capitalize'>
-                              {' '}
-                              {registrant.aristoTransportation}
-                            </span>
-                          </div>
-                        )}
+
+                        <div className='text-sm font-semibold mt-2'>
+                          Transportation Preference:
+                          <br />
+                          <span className='capitalize text-gray-500 font-medium'>
+                            {' '}
+                            {registrant.aristoTransportation
+                              ? registrant.aristoTransportation
+                              : 'Not Registered'}
+                          </span>
+                        </div>
                         <div className='text-sm font-semibold mt-2'>
                           Tour Registration Status:
                           <span
@@ -782,15 +784,16 @@ export const Page = ({ registrant }) => {
                           1150 S Danzler Rd.
                           <br /> Duncan, SC 29334
                         </div>
-                        {registrant.magnaTransportation && (
-                          <div className='text-sm font-semibold mt-2'>
-                            Transportation Preference:
-                            <span className='capitalize'>
-                              {' '}
-                              {registrant.magnaTransportation}
-                            </span>
-                          </div>
-                        )}
+                        <div className='text-sm font-semibold mt-2'>
+                          Transportation Preference:
+                          <br />
+                          <span className='capitalize text-gray-500 font-medium'>
+                            {' '}
+                            {registrant.magnaTransportation
+                              ? registrant.magnaTransportation
+                              : 'Not Registered'}
+                          </span>
+                        </div>
                         <div className='text-sm font-semibold mt-2'>
                           Tour Registration Status:
                           <span
