@@ -1370,6 +1370,15 @@ const RegistrationForm = () => {
 
                 <div className='flex flex-col gap-1 pt-6 border-t border-gray-300'>
                   <h4 className='font-bold mb-2'>Order Summary</h4>
+                  {formData.attendeeType === 'Solution-Provider' && (
+                    <div className='text-sm text-gray-600 mb-4'>
+                      Note: Solution Provider tickets are limited to three per
+                      company, with tiered pricing for the second and third
+                      tickets. If you are interested in bringing additional team
+                      members, please inquire about our sponsorship
+                      opportunities.
+                    </div>
+                  )}
                   <div className='flex justify-between bg-gray-300 p-2 rounded text-sm'>
                     <span>Ticket Name</span>
                     <span>Quantity</span>
