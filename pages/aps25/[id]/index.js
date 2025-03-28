@@ -559,55 +559,93 @@ export const Page = ({ registrant }) => {
                             <span>Morrisette Tour</span>
                           </div>
                         </div>
-                        <>
-                          <div className='text-sm text-gray-500'>
-                            Wednesday, October 15th
-                            <br /> 10:30 AM - 01:00 PM
-                          </div>
-                          <div className='text-sm'>
-                            24 Tyger River Dr.
-                            <br /> Duncan, SC 29334
-                          </div>
-                          {registrant.morrisetteTransportation && (
-                            <div className='text-sm font-semibold mt-2'>
-                              Transportation Preference:
-                              <br />
-                              <span className='capitalize font-medium text-gray-500'>
-                                {' '}
-                                {registrant.morrisetteTransportation}
-                              </span>
-                            </div>
-                          )}
+                        <div className='text-sm text-gray-500'>
+                          Wednesday, October 15th
+                          <br /> 10:30 AM - 01:00 PM
+                        </div>
+                        <div className='text-sm'>
+                          24 Tyger River Dr.
+                          <br /> Duncan, SC 29334
+                        </div>
+                        {registrant.morrisetteTransportation && (
                           <div className='text-sm font-semibold mt-2'>
-                            Tour Registration Status:
-                            <span
-                              className={`font-bold ${
-                                registrant.morrisetteStatus === 'PENDING'
-                                  ? 'text-yellow-500'
-                                  : 'text-green-500'
-                              }`}
-                            >
+                            Transportation Preference:
+                            <br />
+                            <span className='capitalize font-medium text-gray-500'>
                               {' '}
-                              {registrant.morrisetteStatus === 'PENDING' ? (
-                                <div className='flex items-center gap-1'>
-                                  <div>
-                                    <MdAccessTime color='#eab308' size={20} />
-                                  </div>
-                                  <div>Pending</div>
-                                </div>
-                              ) : registrant.morrisetteStatus === 'APPROVED' ? (
-                                <div className='flex items-center gap-1'>
-                                  <div>
-                                    <MdCheckCircle color='green' size={20} />
-                                  </div>
-                                  <div>Approved</div>
-                                </div>
-                              ) : (
-                                <div>Not Registered</div>
-                              )}
+                              {registrant.morrisetteTransportation}
                             </span>
                           </div>
-                        </>
+                        )}
+                        <div className='text-sm font-semibold mt-2'>
+                          Tour Registration Status:
+                          <span
+                            className={`font-bold ${
+                              registrant.morrisetteStatus === 'PENDING'
+                                ? 'text-yellow-500'
+                                : 'text-green-500'
+                            }`}
+                          >
+                            {' '}
+                            {registrant.morrisetteStatus === 'PENDING' ? (
+                              <div className='flex items-center gap-1'>
+                                <div>
+                                  <MdAccessTime color='#eab308' size={20} />
+                                </div>
+                                <div>Pending</div>
+                              </div>
+                            ) : registrant.morrisetteStatus === 'APPROVED' ? (
+                              <div className='flex items-center gap-1'>
+                                <div>
+                                  <MdCheckCircle color='green' size={20} />
+                                </div>
+                                <div>Approved</div>
+                              </div>
+                            ) : (
+                              <div>Not Registered</div>
+                            )}
+                          </span>
+                        </div>
+                        {registrant.morrisetteStatus !== 'APPROVED' &&
+                        registrant.morrisetteStatus !== 'PENDING' ? (
+                          <div className='flex items-center w-full gap-1 mt-2 cursor-pointer border-t border-gray-300 pt-2'>
+                            <button
+                              onClick={() => {
+                                registerMorrisette(registrant.id);
+                                sendActivity({
+                                  type: 'MORISSETTE_REGISTERED',
+                                  activity: `${registrant.firstName} ${registrant.lastName} Morrisette Registered`,
+                                });
+                                refreshData();
+                              }}
+                              className='text-gray-700 w-5 h-5 bg-ap-blue hover:bg-ap-blue/80 rounded-full flex items-center justify-center'
+                            >
+                              <PlusIcon className='w-4 h-4 text-white' />
+                            </button>
+                            <div className=' text-sm text-gray-700'>
+                              Register for Morrisette Tour
+                            </div>
+                          </div>
+                        ) : (
+                          <div className='flex items-center w-full gap-1 mt-2 cursor-pointer border-t border-gray-300 pt-2'>
+                            <button
+                              onClick={() => {
+                                unregisterMorrisette(registrant.id);
+                                sendActivity({
+                                  type: 'MORISSETTE_UNREGISTERED',
+                                  activity: `${registrant.firstName} ${registrant.lastName} Morrisette Unregistered`,
+                                });
+                                refreshData();
+                              }}
+                              className='text-gray-700 w-5 h-5 bg-ap-blue hover:bg-ap-blue/80 rounded-full flex items-center justify-center'
+                            >
+                              <MinusIcon className='w-4 h-4 text-white' />
+                            </button>
+                            <div className=' text-sm text-gray-700'>
+                              Unregister for Morrisette Tour
+                            </div>
+                          </div>
+                        )}
                       </div>
                       {/* ARISTO TOUR */}
                       <div className={`flex flex-col gap-1`}>
@@ -782,6 +820,46 @@ export const Page = ({ registrant }) => {
                             )}
                           </span>
                         </div>
+                        {registrant.magnaStatus !== 'APPROVED' &&
+                        registrant.magnaStatus !== 'PENDING' ? (
+                          <div className='flex items-center w-full gap-1 mt-2 cursor-pointer border-t border-gray-300 pt-2'>
+                            <button
+                              onClick={() => {
+                                registerMagna(registrant.id);
+                                sendActivity({
+                                  type: 'MAGNA_REGISTERED',
+                                  activity: `${registrant.firstName} ${registrant.lastName} Magna Registered`,
+                                });
+                                refreshData();
+                              }}
+                              className='text-gray-700 w-5 h-5 bg-ap-blue hover:bg-ap-blue/80 rounded-full flex items-center justify-center'
+                            >
+                              <PlusIcon className='w-4 h-4 text-white' />
+                            </button>
+                            <div className=' text-sm text-gray-700'>
+                              Register for Magna Mirrors Tour
+                            </div>
+                          </div>
+                        ) : (
+                          <div className='flex items-center w-full gap-1 mt-2 cursor-pointer border-t border-gray-300 pt-2'>
+                            <button
+                              onClick={() => {
+                                unregisterMagna(registrant.id);
+                                sendActivity({
+                                  type: 'MAGNA_UNREGISTERED',
+                                  activity: `${registrant.firstName} ${registrant.lastName} Magna Unregistered`,
+                                });
+                                refreshData();
+                              }}
+                              className='text-gray-700 w-5 h-5 bg-ap-blue hover:bg-ap-blue/80 rounded-full flex items-center justify-center'
+                            >
+                              <MinusIcon className='w-4 h-4 text-white' />
+                            </button>
+                            <div className=' text-sm text-gray-700'>
+                              Unregister for Magna Mirrors Tour
+                            </div>
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>
