@@ -20,22 +20,23 @@ import {
   MdEdit,
 } from 'react-icons/md';
 import { PlusIcon, MinusIcon } from '@heroicons/react/24/solid';
-export const Page = ({ registrant }) => {
+
+export const RegistrantPage = ({ registrant }) => {
   console.log(registrant);
   const [showEditSpeakerProfile, setShowEditSpeakerProfile] = useState(false);
   const router = useRouter();
-  const billingPhone = registrant.billingAddressPhone;
-  const billingEmail = registrant.billingAddressEmail;
+  const billingPhone = registrant && registrant.billingAddressPhone;
+  const billingEmail = registrant && registrant.billingAddressEmail;
   const [showMorrisetteDetails, setShowMorrisetteDetails] = useState(false);
   const [showMagnaDetails, setShowMagnaDetails] = useState(false);
   const [showAristoDetails, setShowAristoDetails] = useState(false);
 
   const [speakerProfile, setSpeakerProfile] = useState({
-    headshot: registrant.headshot || '',
-    presentationTitle: registrant.presentationTitle || '',
-    presentationSummary: registrant.presentationSummary || '',
-    learningObjectives: registrant.learningObjectives || '',
-    presentation: registrant.presentation || '',
+    headshot: (registrant && registrant.headshot) || '',
+    presentationTitle: (registrant && registrant.presentationTitle) || '',
+    presentationSummary: (registrant && registrant.presentationSummary) || '',
+    learningObjectives: (registrant && registrant.learningObjectives) || '',
+    presentation: (registrant && registrant.presentation) || '',
   });
 
   const handleFileUpload = async (file, type) => {
@@ -72,7 +73,7 @@ export const Page = ({ registrant }) => {
   };
 
   return (
-    <div className='w-full py-10'>
+    <div className='w-full pt-10 pb-16'>
       {registrant ? (
         <div className='w-full max-w-7xl mx-auto border border-gray-300 p-5 grid grid-cols-1 lg:grid-cols-12'>
           <div className='col-span-12 lg:col-span-3'>
@@ -143,7 +144,7 @@ export const Page = ({ registrant }) => {
                   </div>
                 </div>
                 {/* SPEAKER PROFILE */}
-                {registrant.attendeeType === 'SPEAKER' && (
+                {registrant.attendeeType === 'Speaker' && (
                   <div className='flex items-end flex-1 gap-2'>
                     <div
                       className='flex items-center gap-2 cursor-pointer'
@@ -199,14 +200,6 @@ export const Page = ({ registrant }) => {
                     {registrant.billingAddressCity},{' '}
                     {registrant.billingAddressState},{' '}
                     {registrant.billingAddressZip}
-                  </div>
-                  <div className='w-fit gap-1 bg-gray-900 hover:bg-gray-700 flex items-center justify-center cursor-pointer mt-2 border border-black px-2 py-1 rounded-lg'>
-                    <div>
-                      <MdDownload color='white' size={18} />
-                    </div>
-                    <div className='text-xs font-medium text-white'>
-                      Download Invoice
-                    </div>
                   </div>
                 </div>
                 {/* WORKSHOPS */}
@@ -824,4 +817,4 @@ export const getServerSideProps = async ({ params }) => {
   };
 };
 
-export default Page;
+export default RegistrantPage;
