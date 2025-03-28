@@ -11,6 +11,8 @@ import {
   registerAristo,
   unregisterAristo,
   sendActivity,
+  uploadToAPS3,
+  updateSpeakerProfile,
 } from '../../../util/api';
 import {
   MdDownload,
@@ -36,22 +38,21 @@ export const RegistrantPage = ({ registrant }) => {
     presentationTitle: (registrant && registrant.presentationTitle) || '',
     presentationSummary: (registrant && registrant.presentationSummary) || '',
     learningObjectives: (registrant && registrant.learningObjectives) || '',
-    presentation: (registrant && registrant.presentation) || '',
+    bio: (registrant && registrant.bio) || '',
   });
 
   const handleFileUpload = async (file, type) => {
-    // Add your file upload logic here
-    // You might want to use FormData to send the file to your server
-    const formData = new FormData();
-    formData.append(type, file);
+    if (!file) return;
 
     try {
-      // Add your API call to upload the file
-      // const response = await uploadFile(formData);
-      // setSpeakerProfile(prev => ({
-      //   ...prev,
-      //   [type]: response.url
-      // }));
+      const url = await uploadToAPS3(file);
+      console.log(url);
+      setSpeakerProfile((prev) => ({
+        ...prev,
+        headshot: url,
+      }));
+
+      refreshData();
     } catch (error) {
       console.error('Error uploading file:', error);
     }
@@ -60,7 +61,7 @@ export const RegistrantPage = ({ registrant }) => {
   const handleSaveChanges = async () => {
     try {
       // Add your API call to save the changes
-      // await updateSpeakerProfile(registrant.id, speakerProfile);
+      await updateSpeakerProfile(registrant.id, speakerProfile);
       setShowEditSpeakerProfile(false);
       refreshData();
     } catch (error) {
@@ -651,8 +652,8 @@ export const RegistrantPage = ({ registrant }) => {
       )}
       {showEditSpeakerProfile && (
         <div className='fixed inset-0 bg-black/50 flex items-center justify-center'>
-          <div className='w-full max-w-6xl mx-auto bg-white p-10 rounded-lg'>
-            <div className='flex flex-col gap-6'>
+          <div className='w-full max-w-4xl mx-auto bg-white p-6 rounded-lg'>
+            <div className='flex flex-col gap-4'>
               <div className='flex justify-between items-center'>
                 <h2 className='text-2xl font-bold text-ap-blue'>
                   Edit Speaker Profile
@@ -665,74 +666,63 @@ export const RegistrantPage = ({ registrant }) => {
                 </button>
               </div>
 
-              <div className='grid grid-cols-2 gap-8'>
-                {/* Left Column */}
+              <div className='grid gap-8'>
                 <div className='flex flex-col gap-6'>
-                  {/* Headshot Upload */}
-                  <div className='flex flex-col gap-2 bg-ap-yellow/10 rounded-lg p-4'>
-                    <label className='text-sm font-bold text-ap-blue'>
-                      Speaker Photo
-                    </label>
-                    <label
-                      className='w-28 h-32 border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center cursor-pointer relative bg-cover bg-center bg-no-repeat'
-                      style={
-                        registrant.headshot
-                          ? { backgroundImage: `url(${registrant.headshot})` }
-                          : {}
-                      }
-                    >
-                      {!registrant.headshot && (
-                        <div className='text-gray-500 text-sm text-center px-2'>
-                          Click to upload photo
-                        </div>
-                      )}
-                      <input
-                        type='file'
-                        className='absolute inset-0 w-full h-full opacity-0 cursor-pointer'
-                        accept='image/*'
-                        onChange={(e) =>
-                          handleFileUpload(e.target.files[0], 'headshot')
+                  <div className='flex gap-6 bg-ap-yellow/10 rounded-lg p-4'>
+                    {/* Headshot Upload */}
+                    <div className='flex flex-col gap-2'>
+                      <label className='text-sm font-bold text-ap-blue'>
+                        Speaker Photo
+                      </label>
+                      <label
+                        className='w-28 h-32 border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center cursor-pointer relative bg-cover bg-center bg-no-repeat'
+                        style={
+                          speakerProfile.headshot
+                            ? {
+                                backgroundImage: `url(${speakerProfile.headshot})`,
+                              }
+                            : {}
                         }
-                      />
-                    </label>
-                    <p className='text-xs text-gray-500'>
-                      2MB max, 1024x1024px
-                    </p>
-                  </div>
-
-                  {/* Presentation File Upload */}
-                  <div className='flex flex-col gap-2 bg-ap-blue/10 rounded-lg p-4'>
-                    <label className='text-sm font-bold text-ap-blue'>
-                      Presentation File
-                    </label>
-                    <div
-                      className='p-4 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer'
-                      onClick={() =>
-                        document.getElementById('presentation-upload').click()
-                      }
-                    >
-                      <div className='text-center'>
-                        <div className='text-gray-500 text-sm'>
-                          Click to upload presentation
-                        </div>
-                        <div className='text-xs text-gray-400'>
-                          PDF, PPTX, or PPT (max 50MB)
-                        </div>
-                      </div>
-                      <input
-                        type='file'
-                        id='presentation-upload'
-                        className='hidden'
-                        accept='.pdf,.pptx,.ppt'
+                      >
+                        {!speakerProfile.headshot && (
+                          <div className='text-gray-500 text-sm text-center px-2'>
+                            Click to upload photo
+                          </div>
+                        )}
+                        <input
+                          type='file'
+                          className='absolute inset-0 w-full h-full opacity-0 cursor-pointer'
+                          accept='image/*'
+                          onChange={(e) => {
+                            if (e.target.files?.[0]) {
+                              handleFileUpload(e.target.files[0], 'headshot');
+                            }
+                          }}
+                        />
+                      </label>
+                      <p className='text-xs text-gray-500 text-center'>
+                        2MB max
+                      </p>
+                    </div>
+                    {/* Bio */}
+                    <div className='flex flex-col gap-2 w-full'>
+                      <label className='text-sm font-bold text-ap-blue'>
+                        Bio
+                      </label>
+                      <textarea
+                        value={speakerProfile.bio}
                         onChange={(e) => {
-                          // Handle file upload
+                          setSpeakerProfile((prev) => ({
+                            ...prev,
+                            bio: e.target.value,
+                          }));
                         }}
+                        className='p-2 border border-gray-300 rounded h-32'
+                        placeholder='Provide a brief bio of yourself'
                       />
                     </div>
                   </div>
                 </div>
-
-                {/* Right Column */}
                 <div className='flex flex-col gap-6'>
                   {/* Presentation Title - Moved to top */}
                   <div className='flex flex-col gap-2'>
@@ -741,7 +731,7 @@ export const RegistrantPage = ({ registrant }) => {
                     </label>
                     <input
                       type='text'
-                      value={registrant.presentationTitle || ''}
+                      value={speakerProfile.presentationTitle || ''}
                       onChange={(e) =>
                         setSpeakerProfile((prev) => ({
                           ...prev,
@@ -759,11 +749,14 @@ export const RegistrantPage = ({ registrant }) => {
                       Presentation Summary
                     </label>
                     <textarea
-                      value={registrant.presentationSummary || ''}
+                      value={speakerProfile.presentationSummary}
                       onChange={(e) => {
-                        // Handle summary change
+                        setSpeakerProfile((prev) => ({
+                          ...prev,
+                          presentationSummary: e.target.value,
+                        }));
                       }}
-                      className='p-2 border border-gray-300 rounded h-32'
+                      className='p-2 border border-gray-300 rounded h-24'
                       placeholder='Provide a brief summary of your presentation'
                     />
                   </div>
@@ -774,11 +767,14 @@ export const RegistrantPage = ({ registrant }) => {
                       Learning Objectives
                     </label>
                     <textarea
-                      value={registrant.learningObjectives || ''}
+                      value={speakerProfile.learningObjectives}
                       onChange={(e) => {
-                        // Handle objectives change
+                        setSpeakerProfile((prev) => ({
+                          ...prev,
+                          learningObjectives: e.target.value,
+                        }));
                       }}
-                      className='p-2 border border-gray-300 rounded h-32'
+                      className='p-2 border border-gray-300 rounded h-20'
                       placeholder='List the key learning objectives of your presentation'
                     />
                   </div>
@@ -795,7 +791,7 @@ export const RegistrantPage = ({ registrant }) => {
                 </button>
                 <button
                   onClick={() => {
-                    // Handle save changes
+                    handleSaveChanges();
                   }}
                   className='px-4 py-2 bg-ap-blue text-white rounded hover:bg-ap-blue/80'
                 >

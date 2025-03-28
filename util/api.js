@@ -1,4 +1,4 @@
-import { API, Amplify } from 'aws-amplify';
+import { API, Amplify, Storage } from 'aws-amplify';
 import awsExports from '../src/aws-exports';
 import {
   createAPSRegistrant,
@@ -730,6 +730,36 @@ export const unregisterAristo = async (id) => {
   const res = await API.graphql({
     query: updateAPSRegistrant2025,
     variables: { input: { id: id, aristoStatus: null } },
+  });
+  return res.data;
+};
+
+export const uploadToAPS3 = async (file) => {
+  if (!file) return;
+
+  try {
+    // Replace spaces with hyphens in the filename
+    const fileName = `speakers/${file.name.replace(/\s+/g, '-')}`;
+
+    const res = await Storage.put(fileName, file, {
+      contentType: file.type,
+      resumable: true,
+    });
+
+    console.log(res);
+
+    const photoUrl = `https://packmedia54032-staging.s3.us-east-1.amazonaws.com/public/${res.params.Key}`;
+
+    return photoUrl;
+  } catch (error) {
+    console.error('Error uploading file:', error);
+  }
+};
+
+export const updateSpeakerProfile = async (id, data) => {
+  const res = await API.graphql({
+    query: updateAPSRegistrant2025,
+    variables: { input: { id: id, ...data } },
   });
   return res.data;
 };
