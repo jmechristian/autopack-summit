@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import {
   getCurrentAPS25Registrant,
@@ -40,7 +40,8 @@ export const RegistrantPage = ({ registrant }) => {
     bio: (registrant && registrant.bio) || '',
   });
 
-  const [registrant, setRegistrant] = useState(registrant);
+  const [registrantData, setRegistrantData] = useState(registrant);
+  const [refreshKey, setRefreshKey] = useState(0);
 
   const handleFileUpload = async (file, type) => {
     if (!file) return;
@@ -72,13 +73,21 @@ export const RegistrantPage = ({ registrant }) => {
 
   const refreshData = async () => {
     const updatedRegistrant = await getCurrentAPS25Registrant(registrant.id);
-    // Update the registrant data directly
-    setRegistrant(updatedRegistrant);
+    setRegistrantData(updatedRegistrant);
+    setRefreshKey((prev) => prev + 1);
   };
+
+  useEffect(() => {
+    if (refreshKey > 0) {
+      getCurrentAPS25Registrant(registrant.id).then((data) => {
+        setRegistrantData(data);
+      });
+    }
+  }, [refreshKey]);
 
   return (
     <div className='w-full pt-10 pb-16'>
-      {registrant ? (
+      {registrantData ? (
         <div className='w-full max-w-7xl mx-auto border border-gray-300 p-5 grid grid-cols-1 lg:grid-cols-12'>
           <div className='col-span-12 lg:col-span-3'>
             <div
@@ -94,15 +103,16 @@ export const RegistrantPage = ({ registrant }) => {
                   </div>
                   <div className='w-full flex flex-col gap-0'>
                     <div className='text-white text-5xl font-oswald uppercase'>
-                      {registrant.firstName} <br /> {registrant.lastName}
+                      {registrantData.firstName} <br />{' '}
+                      {registrantData.lastName}
                     </div>
                   </div>
                   <div className='w-full flex flex-col gap-0 mt-3'>
                     <div className='text-white text-xl font-oswald uppercase'>
-                      {registrant.companyName.name}
+                      {registrantData.companyName.name}
                     </div>
                     <div className='text-white text-lg max-w-[200px] font-oswald text-white/60 leading-tight'>
-                      {registrant.jobTitle}
+                      {registrantData.jobTitle}
                     </div>
                   </div>
                 </div>
@@ -112,7 +122,7 @@ export const RegistrantPage = ({ registrant }) => {
                       Registration Type
                     </div>
                     <div className='text-white text-lg font-oswald uppercase'>
-                      {registrant.attendeeType}
+                      {registrantData.attendeeType}
                     </div>
                   </div>
                   <div className='flex flex-col gap-2'>
@@ -121,13 +131,13 @@ export const RegistrantPage = ({ registrant }) => {
                     </div>
                     <div
                       className={`flex items-center gap-1 text-lg font-oswald uppercase w-fit ${
-                        registrant.status === 'PENDING'
+                        registrantData.status === 'PENDING'
                           ? 'bg-ap-yellow px-2 py-0.5 rounded-lg'
                           : 'bg-green-600 px-2 py-0.5 rounded-lg'
                       }`}
                     >
                       <div>
-                        {registrant.status === 'PENDING' ? (
+                        {registrantData.status === 'PENDING' ? (
                           <MdAccessTime color='black' size={24} />
                         ) : (
                           <MdCheckCircle color='green' size={24} />
@@ -135,12 +145,12 @@ export const RegistrantPage = ({ registrant }) => {
                       </div>
                       <div
                         className={`${
-                          registrant.status === 'PENDING'
+                          registrantData.status === 'PENDING'
                             ? 'text-neutral-600'
                             : 'text-white'
                         }`}
                       >
-                        {registrant.status === 'PENDING'
+                        {registrantData.status === 'PENDING'
                           ? 'Pending'
                           : 'Registered'}
                       </div>
@@ -148,24 +158,24 @@ export const RegistrantPage = ({ registrant }) => {
                   </div>
                 </div>
                 {/* SPEAKER PROFILE */}
-                {registrant.attendeeType === 'Speaker' && (
+                {registrantData.attendeeType === 'Speaker' && (
                   <div className='flex items-end flex-1 gap-2'>
                     <div
                       className='flex items-center gap-4 cursor-pointer'
                       onClick={() => setShowEditSpeakerProfile(true)}
                     >
-                      {registrant.headshot ? (
+                      {speakerProfile.headshot ? (
                         <div
                           className='w-16 h-20 bg-cover bg-center bg-no-repeat'
                           style={{
-                            backgroundImage: `url(${registrant.headshot})`,
+                            backgroundImage: `url(${speakerProfile.headshot})`,
                           }}
                         ></div>
                       ) : (
                         <div className='w-12 h-16 bg-ap-blue rounded flex items-center justify-center'>
                           <div className='text-white/70 text-3xl font-oswald uppercase'>
-                            {registrant.firstName.charAt(0)}
-                            {registrant.lastName.charAt(0)}
+                            {registrantData.firstName.charAt(0)}
+                            {registrantData.lastName.charAt(0)}
                           </div>
                         </div>
                       )}
@@ -192,18 +202,18 @@ export const RegistrantPage = ({ registrant }) => {
                     Billing Details
                   </div>
                   <div className='text-gray-600 text-sm'>
-                    {registrant.billingAddressFirstName}{' '}
-                    {registrant.billingAddressLastName}
+                    {registrantData.billingAddressFirstName}{' '}
+                    {registrantData.billingAddressLastName}
                   </div>
                   <div className='text-gray-600 text-sm'>{billingPhone}</div>
                   <div className='text-gray-600 text-sm'>{billingEmail}</div>
                   <div className='text-gray-600 text-sm'>
-                    {registrant.billingAddressStreet}
+                    {registrantData.billingAddressStreet}
                   </div>
                   <div className='text-gray-600 text-sm'>
-                    {registrant.billingAddressCity},{' '}
-                    {registrant.billingAddressState},{' '}
-                    {registrant.billingAddressZip}
+                    {registrantData.billingAddressCity},{' '}
+                    {registrantData.billingAddressState},{' '}
+                    {registrantData.billingAddressZip}
                   </div>
                 </div>
                 {/* WORKSHOPS */}
@@ -245,30 +255,30 @@ export const RegistrantPage = ({ registrant }) => {
                       Status:
                       <span
                         className={`font-bold ${
-                          registrant.speedNetworkingStatus === 'APPROVED'
+                          registrantData.speedNetworkingStatus === 'APPROVED'
                             ? 'text-green-500'
-                            : registrant.speedNetworkingStatus === 'PENDING'
+                            : registrantData.speedNetworkingStatus === 'PENDING'
                             ? 'text-yellow-500'
                             : 'text-red-500'
                         }`}
                       >
                         {' '}
-                        {registrant.speedNetworkingStatus === 'APPROVED'
+                        {registrantData.speedNetworkingStatus === 'APPROVED'
                           ? 'Approved'
-                          : registrant.speedNetworkingStatus === 'PENDING'
+                          : registrantData.speedNetworkingStatus === 'PENDING'
                           ? 'Pending'
                           : 'Not Registered'}
                       </span>
                     </div>
-                    {registrant.speedNetworkingStatus !== 'APPROVED' &&
-                    registrant.speedNetworkingStatus !== 'PENDING' ? (
+                    {registrantData.speedNetworkingStatus !== 'APPROVED' &&
+                    registrantData.speedNetworkingStatus !== 'PENDING' ? (
                       <div className='flex items-center w-full gap-1 mt-2 cursor-pointer border-t border-gray-300 pt-2'>
                         <button
                           onClick={() => {
                             registerSpeedNetworking(registrant.id);
                             sendActivity({
                               type: 'SPEED_NETWORKING_REGISTERED',
-                              activity: `${registrant.firstName} ${registrant.lastName} Speed Networking Registered`,
+                              activity: `${registrantData.firstName} ${registrantData.lastName} Speed Networking Registered`,
                             });
                             refreshData();
                           }}
@@ -287,7 +297,7 @@ export const RegistrantPage = ({ registrant }) => {
                             unregisterSpeedNetworking(registrant.id);
                             sendActivity({
                               type: 'SPEED_NETWORKING_UNREGISTERED',
-                              activity: `${registrant.firstName} ${registrant.lastName} Speed Networking Unregistered`,
+                              activity: `${registrantData.firstName} ${registrantData.lastName} Speed Networking Unregistered`,
                             });
                             refreshData();
                           }}
@@ -319,11 +329,11 @@ export const RegistrantPage = ({ registrant }) => {
                         }
                       >
                         <div className='flex items-center gap-2'>
-                          {registrant.morrisetteStatus === 'APPROVED' ? (
+                          {registrantData.morrisetteStatus === 'APPROVED' ? (
                             <div>
                               <MdCheckCircle color='green' size={20} />
                             </div>
-                          ) : registrant.morrisetteStatus === 'PENDING' ? (
+                          ) : registrantData.morrisetteStatus === 'PENDING' ? (
                             <div>
                               <MdAccessTime color='#eab308' size={20} />
                             </div>
@@ -348,8 +358,8 @@ export const RegistrantPage = ({ registrant }) => {
                         <br />
                         <span className='capitalize font-medium text-gray-500'>
                           {' '}
-                          {registrant.morrisetteTransportation
-                            ? registrant.morrisetteTransportation
+                          {registrantData.morrisetteTransportation
+                            ? registrantData.morrisetteTransportation
                             : 'Not Registered'}
                         </span>
                       </div>
@@ -357,20 +367,20 @@ export const RegistrantPage = ({ registrant }) => {
                         Tour Registration Status:
                         <span
                           className={`font-bold ${
-                            registrant.morrisetteStatus === 'PENDING'
+                            registrantData.morrisetteStatus === 'PENDING'
                               ? 'text-yellow-500'
                               : 'text-green-500'
                           }`}
                         >
                           {' '}
-                          {registrant.morrisetteStatus === 'PENDING' ? (
+                          {registrantData.morrisetteStatus === 'PENDING' ? (
                             <div className='flex items-center gap-1'>
                               <div>
                                 <MdAccessTime color='#eab308' size={20} />
                               </div>
                               <div>Pending</div>
                             </div>
-                          ) : registrant.morrisetteStatus === 'APPROVED' ? (
+                          ) : registrantData.morrisetteStatus === 'APPROVED' ? (
                             <div className='flex items-center gap-1'>
                               <div>
                                 <MdCheckCircle color='green' size={20} />
@@ -382,15 +392,15 @@ export const RegistrantPage = ({ registrant }) => {
                           )}
                         </span>
                       </div>
-                      {registrant.morrisetteStatus !== 'APPROVED' &&
-                      registrant.morrisetteStatus !== 'PENDING' ? (
+                      {registrantData.morrisetteStatus !== 'APPROVED' &&
+                      registrantData.morrisetteStatus !== 'PENDING' ? (
                         <div className='flex items-center w-full gap-1 mt-2 cursor-pointer border-t border-gray-300 pt-2'>
                           <button
                             onClick={() => {
                               registerMorrisette(registrant.id);
                               sendActivity({
                                 type: 'MORISSETTE_REGISTERED',
-                                activity: `${registrant.firstName} ${registrant.lastName} Morrisette Registered`,
+                                activity: `${registrantData.firstName} ${registrantData.lastName} Morrisette Registered`,
                               });
                               refreshData();
                             }}
@@ -409,7 +419,7 @@ export const RegistrantPage = ({ registrant }) => {
                               unregisterMorrisette(registrant.id);
                               sendActivity({
                                 type: 'MORISSETTE_UNREGISTERED',
-                                activity: `${registrant.firstName} ${registrant.lastName} Morrisette Unregistered`,
+                                activity: `${registrantData.firstName} ${registrantData.lastName} Morrisette Unregistered`,
                               });
                               refreshData();
                             }}
@@ -427,11 +437,11 @@ export const RegistrantPage = ({ registrant }) => {
                     <div className={`flex flex-col gap-1`}>
                       <div className='font-bold flex items-center justify-between cursor-pointer'>
                         <div className='flex items-center gap-2'>
-                          {registrant.aristoStatus === 'APPROVED' ? (
+                          {registrantData.aristoStatus === 'APPROVED' ? (
                             <div>
                               <MdCheckCircle color='green' size={20} />
                             </div>
-                          ) : registrant.aristoStatus === 'PENDING' ? (
+                          ) : registrantData.aristoStatus === 'PENDING' ? (
                             <div>
                               <MdAccessTime color='#eab308' size={20} />
                             </div>
@@ -457,8 +467,8 @@ export const RegistrantPage = ({ registrant }) => {
                         <br />
                         <span className='capitalize text-gray-500 font-medium'>
                           {' '}
-                          {registrant.aristoTransportation
-                            ? registrant.aristoTransportation
+                          {registrantData.aristoTransportation
+                            ? registrantData.aristoTransportation
                             : 'Not Registered'}
                         </span>
                       </div>
@@ -466,20 +476,20 @@ export const RegistrantPage = ({ registrant }) => {
                         Tour Registration Status:
                         <span
                           className={`font-bold ${
-                            registrant.aristoStatus === 'PENDING'
+                            registrantData.aristoStatus === 'PENDING'
                               ? 'text-yellow-500'
                               : 'text-green-500'
                           }`}
                         >
                           {' '}
-                          {registrant.aristoStatus === 'PENDING' ? (
+                          {registrantData.aristoStatus === 'PENDING' ? (
                             <div className='flex items-center gap-1'>
                               <div>
                                 <MdAccessTime color='#eab308' size={20} />
                               </div>
                               <div>Pending</div>
                             </div>
-                          ) : registrant.aristoStatus === 'APPROVED' ? (
+                          ) : registrantData.aristoStatus === 'APPROVED' ? (
                             <div className='flex items-center gap-1'>
                               <div>
                                 <MdCheckCircle color='green' size={20} />
@@ -491,15 +501,15 @@ export const RegistrantPage = ({ registrant }) => {
                           )}
                         </span>
                       </div>
-                      {registrant.aristoStatus !== 'APPROVED' &&
-                      registrant.aristoStatus !== 'PENDING' ? (
+                      {registrantData.aristoStatus !== 'APPROVED' &&
+                      registrantData.aristoStatus !== 'PENDING' ? (
                         <div className='flex items-center w-full gap-1 mt-2 cursor-pointer border-t border-gray-300 pt-2'>
                           <button
                             onClick={() => {
                               registerAristo(registrant.id);
                               sendActivity({
                                 type: 'ARISTO_REGISTERED',
-                                activity: `${registrant.firstName} ${registrant.lastName} Aristo Registered`,
+                                activity: `${registrantData.firstName} ${registrantData.lastName} Aristo Registered`,
                               });
                               refreshData();
                             }}
@@ -518,7 +528,7 @@ export const RegistrantPage = ({ registrant }) => {
                               unregisterAristo(registrant.id);
                               sendActivity({
                                 type: 'ARISTO_UNREGISTERED',
-                                activity: `${registrant.firstName} ${registrant.lastName} Aristo Unregistered`,
+                                activity: `${registrantData.firstName} ${registrantData.lastName} Aristo Unregistered`,
                               });
                               refreshData();
                             }}
@@ -536,11 +546,11 @@ export const RegistrantPage = ({ registrant }) => {
                     <div className={`flex flex-col gap-1`}>
                       <div className='font-bold flex items-center justify-between cursor-pointer'>
                         <div className='flex items-center gap-2'>
-                          {registrant.magnaStatus === 'APPROVED' ? (
+                          {registrantData.magnaStatus === 'APPROVED' ? (
                             <div>
                               <MdCheckCircle color='green' size={20} />
                             </div>
-                          ) : registrant.magnaStatus === 'PENDING' ? (
+                          ) : registrantData.magnaStatus === 'PENDING' ? (
                             <div>
                               <MdAccessTime color='#eab308' size={20} />
                             </div>
@@ -565,8 +575,8 @@ export const RegistrantPage = ({ registrant }) => {
                         <br />
                         <span className='capitalize text-gray-500 font-medium'>
                           {' '}
-                          {registrant.magnaTransportation
-                            ? registrant.magnaTransportation
+                          {registrantData.magnaTransportation
+                            ? registrantData.magnaTransportation
                             : 'Not Registered'}
                         </span>
                       </div>
@@ -574,20 +584,20 @@ export const RegistrantPage = ({ registrant }) => {
                         Tour Registration Status:
                         <span
                           className={`font-bold ${
-                            registrant.magnaStatus === 'PENDING'
+                            registrantData.magnaStatus === 'PENDING'
                               ? 'text-yellow-500'
                               : 'text-green-500'
                           }`}
                         >
                           {' '}
-                          {registrant.magnaStatus === 'PENDING' ? (
+                          {registrantData.magnaStatus === 'PENDING' ? (
                             <div className='flex items-center gap-1'>
                               <div>
                                 <MdAccessTime color='#eab308' size={20} />
                               </div>
                               <div>Pending</div>
                             </div>
-                          ) : registrant.magnaStatus === 'APPROVED' ? (
+                          ) : registrantData.magnaStatus === 'APPROVED' ? (
                             <div className='flex items-center gap-1'>
                               <div>
                                 <MdCheckCircle color='green' size={20} />
@@ -599,15 +609,15 @@ export const RegistrantPage = ({ registrant }) => {
                           )}
                         </span>
                       </div>
-                      {registrant.magnaStatus !== 'APPROVED' &&
-                      registrant.magnaStatus !== 'PENDING' ? (
+                      {registrantData.magnaStatus !== 'APPROVED' &&
+                      registrantData.magnaStatus !== 'PENDING' ? (
                         <div className='flex items-center w-full gap-1 mt-2 cursor-pointer border-t border-gray-300 pt-2'>
                           <button
                             onClick={() => {
                               registerMagna(registrant.id);
                               sendActivity({
                                 type: 'MAGNA_REGISTERED',
-                                activity: `${registrant.firstName} ${registrant.lastName} Magna Registered`,
+                                activity: `${registrantData.firstName} ${registrantData.lastName} Magna Registered`,
                               });
                               refreshData();
                             }}
@@ -626,7 +636,7 @@ export const RegistrantPage = ({ registrant }) => {
                               unregisterMagna(registrant.id);
                               sendActivity({
                                 type: 'MAGNA_UNREGISTERED',
-                                activity: `${registrant.firstName} ${registrant.lastName} Magna Unregistered`,
+                                activity: `${registrantData.firstName} ${registrantData.lastName} Magna Unregistered`,
                               });
                               refreshData();
                             }}
