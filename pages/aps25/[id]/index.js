@@ -17,15 +17,55 @@ import {
   MdAccessTime,
   MdCheckCircle,
   MdCancel,
+  MdEdit,
 } from 'react-icons/md';
 import { PlusIcon, MinusIcon } from '@heroicons/react/24/solid';
 export const Page = ({ registrant }) => {
+  console.log(registrant);
+  const [showEditSpeakerProfile, setShowEditSpeakerProfile] = useState(false);
   const router = useRouter();
   const billingPhone = registrant.billingAddressPhone;
   const billingEmail = registrant.billingAddressEmail;
   const [showMorrisetteDetails, setShowMorrisetteDetails] = useState(false);
   const [showMagnaDetails, setShowMagnaDetails] = useState(false);
   const [showAristoDetails, setShowAristoDetails] = useState(false);
+
+  const [speakerProfile, setSpeakerProfile] = useState({
+    headshot: registrant.headshot || '',
+    presentationTitle: registrant.presentationTitle || '',
+    presentationSummary: registrant.presentationSummary || '',
+    learningObjectives: registrant.learningObjectives || '',
+    presentation: registrant.presentation || '',
+  });
+
+  const handleFileUpload = async (file, type) => {
+    // Add your file upload logic here
+    // You might want to use FormData to send the file to your server
+    const formData = new FormData();
+    formData.append(type, file);
+
+    try {
+      // Add your API call to upload the file
+      // const response = await uploadFile(formData);
+      // setSpeakerProfile(prev => ({
+      //   ...prev,
+      //   [type]: response.url
+      // }));
+    } catch (error) {
+      console.error('Error uploading file:', error);
+    }
+  };
+
+  const handleSaveChanges = async () => {
+    try {
+      // Add your API call to save the changes
+      // await updateSpeakerProfile(registrant.id, speakerProfile);
+      setShowEditSpeakerProfile(false);
+      refreshData();
+    } catch (error) {
+      console.error('Error saving changes:', error);
+    }
+  };
 
   const refreshData = () => {
     router.replace(router.asPath);
@@ -98,6 +138,36 @@ export const Page = ({ registrant }) => {
                         {registrant.status === 'PENDING'
                           ? 'Pending'
                           : 'Registered'}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className='flex items-end flex-1 gap-2'>
+                  <div
+                    className='flex items-center gap-2 cursor-pointer'
+                    onClick={() => setShowEditSpeakerProfile(true)}
+                  >
+                    {registrant.headshot ? (
+                      <div
+                        className='w-16 h-20 rounded-full bg-cover bg-center bg-no-repeat'
+                        style={{
+                          backgroundImage: `url(${registrant.headshot})`,
+                        }}
+                      ></div>
+                    ) : (
+                      <div className='w-12 h-16 bg-ap-blue rounded flex items-center justify-center'>
+                        <div className='text-white/70 text-3xl font-oswald uppercase'>
+                          {registrant.firstName.charAt(0)}
+                          {registrant.lastName.charAt(0)}
+                        </div>
+                      </div>
+                    )}
+                    <div className='flex items-center gap-1'>
+                      <div>
+                        <MdEdit color='white' size={20} />
+                      </div>
+                      <div className='text-sm font-medium text-white hover:text-ap-yellow'>
+                        Edit Speaker Profile
                       </div>
                     </div>
                   </div>
@@ -580,6 +650,163 @@ export const Page = ({ registrant }) => {
         <div className='flex flex-col gap-6 max-w-6xl mx-auto'>
           <div className='flex flex-col gap-2 font-bold text-lg'>
             Loading...
+          </div>
+        </div>
+      )}
+      {showEditSpeakerProfile && (
+        <div className='fixed inset-0 bg-black/50 flex items-center justify-center'>
+          <div className='w-full max-w-6xl mx-auto bg-white p-10 rounded-lg'>
+            <div className='flex flex-col gap-6'>
+              <div className='flex justify-between items-center'>
+                <h2 className='text-2xl font-bold text-ap-blue'>
+                  Edit Speaker Profile
+                </h2>
+                <button
+                  onClick={() => setShowEditSpeakerProfile(false)}
+                  className='text-gray-500 hover:text-gray-700'
+                >
+                  ×
+                </button>
+              </div>
+
+              <div className='grid grid-cols-2 gap-8'>
+                {/* Left Column */}
+                <div className='flex flex-col gap-6'>
+                  {/* Headshot Upload */}
+                  <div className='flex flex-col gap-2 bg-ap-yellow/10 rounded-lg p-4'>
+                    <label className='text-sm font-bold text-ap-blue'>
+                      Speaker Photo
+                    </label>
+                    <label
+                      className='w-28 h-32 border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center cursor-pointer relative bg-cover bg-center bg-no-repeat'
+                      style={
+                        registrant.headshot
+                          ? { backgroundImage: `url(${registrant.headshot})` }
+                          : {}
+                      }
+                    >
+                      {!registrant.headshot && (
+                        <div className='text-gray-500 text-sm text-center px-2'>
+                          Click to upload photo
+                        </div>
+                      )}
+                      <input
+                        type='file'
+                        className='absolute inset-0 w-full h-full opacity-0 cursor-pointer'
+                        accept='image/*'
+                        onChange={(e) =>
+                          handleFileUpload(e.target.files[0], 'headshot')
+                        }
+                      />
+                    </label>
+                    <p className='text-xs text-gray-500'>
+                      2MB max, 1024x1024px
+                    </p>
+                  </div>
+
+                  {/* Presentation File Upload */}
+                  <div className='flex flex-col gap-2 bg-ap-blue/10 rounded-lg p-4'>
+                    <label className='text-sm font-bold text-ap-blue'>
+                      Presentation File
+                    </label>
+                    <div
+                      className='p-4 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer'
+                      onClick={() =>
+                        document.getElementById('presentation-upload').click()
+                      }
+                    >
+                      <div className='text-center'>
+                        <div className='text-gray-500 text-sm'>
+                          Click to upload presentation
+                        </div>
+                        <div className='text-xs text-gray-400'>
+                          PDF, PPTX, or PPT (max 50MB)
+                        </div>
+                      </div>
+                      <input
+                        type='file'
+                        id='presentation-upload'
+                        className='hidden'
+                        accept='.pdf,.pptx,.ppt'
+                        onChange={(e) => {
+                          // Handle file upload
+                        }}
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right Column */}
+                <div className='flex flex-col gap-6'>
+                  {/* Presentation Title - Moved to top */}
+                  <div className='flex flex-col gap-2'>
+                    <label className='text-sm font-bold text-ap-blue'>
+                      Presentation Title
+                    </label>
+                    <input
+                      type='text'
+                      value={registrant.presentationTitle || ''}
+                      onChange={(e) =>
+                        setSpeakerProfile((prev) => ({
+                          ...prev,
+                          presentationTitle: e.target.value,
+                        }))
+                      }
+                      className='p-2 border border-gray-300 rounded'
+                      placeholder='Enter your presentation title'
+                    />
+                  </div>
+
+                  {/* Presentation Summary */}
+                  <div className='flex flex-col gap-2'>
+                    <label className='text-sm font-bold text-ap-blue'>
+                      Presentation Summary
+                    </label>
+                    <textarea
+                      value={registrant.presentationSummary || ''}
+                      onChange={(e) => {
+                        // Handle summary change
+                      }}
+                      className='p-2 border border-gray-300 rounded h-32'
+                      placeholder='Provide a brief summary of your presentation'
+                    />
+                  </div>
+
+                  {/* Learning Objectives */}
+                  <div className='flex flex-col gap-2'>
+                    <label className='text-sm font-bold text-ap-blue'>
+                      Learning Objectives
+                    </label>
+                    <textarea
+                      value={registrant.learningObjectives || ''}
+                      onChange={(e) => {
+                        // Handle objectives change
+                      }}
+                      className='p-2 border border-gray-300 rounded h-32'
+                      placeholder='List the key learning objectives of your presentation'
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Footer Actions */}
+              <div className='flex justify-end gap-3 mt-4 pt-4 border-t border-gray-200'>
+                <button
+                  onClick={() => setShowEditSpeakerProfile(false)}
+                  className='px-4 py-2 text-gray-600 hover:text-gray-800'
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={() => {
+                    // Handle save changes
+                  }}
+                  className='px-4 py-2 bg-ap-blue text-white rounded hover:bg-ap-blue/80'
+                >
+                  Save Changes
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       )}
