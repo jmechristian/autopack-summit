@@ -148,12 +148,12 @@ export const RegistrantPage = ({ registrant }) => {
                 {registrant.attendeeType === 'Speaker' && (
                   <div className='flex items-end flex-1 gap-2'>
                     <div
-                      className='flex items-center gap-2 cursor-pointer'
+                      className='flex items-center gap-4 cursor-pointer'
                       onClick={() => setShowEditSpeakerProfile(true)}
                     >
                       {registrant.headshot ? (
                         <div
-                          className='w-16 h-20 rounded-full bg-cover bg-center bg-no-repeat'
+                          className='w-16 h-20 bg-cover bg-center bg-no-repeat'
                           style={{
                             backgroundImage: `url(${registrant.headshot})`,
                           }}
