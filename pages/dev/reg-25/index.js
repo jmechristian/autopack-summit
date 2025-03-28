@@ -29,7 +29,7 @@ const stripePromise = loadStripe(
 
 const RegistrationForm = () => {
   const router = useRouter();
-  const [step, setStep] = useState(2);
+  const [step, setStep] = useState(1);
   const [discountCodeError, setDiscountCodeError] = useState('');
   const [formData, setFormData] = useState({
     firstName: '',
