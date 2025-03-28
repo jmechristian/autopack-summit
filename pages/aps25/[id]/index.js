@@ -142,36 +142,39 @@ export const Page = ({ registrant }) => {
                     </div>
                   </div>
                 </div>
-                <div className='flex items-end flex-1 gap-2'>
-                  <div
-                    className='flex items-center gap-2 cursor-pointer'
-                    onClick={() => setShowEditSpeakerProfile(true)}
-                  >
-                    {registrant.headshot ? (
-                      <div
-                        className='w-16 h-20 rounded-full bg-cover bg-center bg-no-repeat'
-                        style={{
-                          backgroundImage: `url(${registrant.headshot})`,
-                        }}
-                      ></div>
-                    ) : (
-                      <div className='w-12 h-16 bg-ap-blue rounded flex items-center justify-center'>
-                        <div className='text-white/70 text-3xl font-oswald uppercase'>
-                          {registrant.firstName.charAt(0)}
-                          {registrant.lastName.charAt(0)}
+                {/* SPEAKER PROFILE */}
+                {registrant.attendeeType === 'SPEAKER' && (
+                  <div className='flex items-end flex-1 gap-2'>
+                    <div
+                      className='flex items-center gap-2 cursor-pointer'
+                      onClick={() => setShowEditSpeakerProfile(true)}
+                    >
+                      {registrant.headshot ? (
+                        <div
+                          className='w-16 h-20 rounded-full bg-cover bg-center bg-no-repeat'
+                          style={{
+                            backgroundImage: `url(${registrant.headshot})`,
+                          }}
+                        ></div>
+                      ) : (
+                        <div className='w-12 h-16 bg-ap-blue rounded flex items-center justify-center'>
+                          <div className='text-white/70 text-3xl font-oswald uppercase'>
+                            {registrant.firstName.charAt(0)}
+                            {registrant.lastName.charAt(0)}
+                          </div>
                         </div>
-                      </div>
-                    )}
-                    <div className='flex items-center gap-1'>
-                      <div>
-                        <MdEdit color='white' size={20} />
-                      </div>
-                      <div className='text-sm font-medium text-white hover:text-ap-yellow'>
-                        Edit Speaker Profile
+                      )}
+                      <div className='flex items-center gap-1'>
+                        <div>
+                          <MdEdit color='white' size={20} />
+                        </div>
+                        <div className='text-sm font-medium text-white hover:text-ap-yellow'>
+                          Edit Speaker Profile
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                )}
               </div>
             </div>
           </div>
