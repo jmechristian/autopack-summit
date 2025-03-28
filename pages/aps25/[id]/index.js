@@ -107,7 +107,7 @@ export const Page = ({ registrant }) => {
           </div>
           {/* MAIN CONTENT */}
           <div className='col-span-12 lg:col-span-9'>
-            <div className='w-full h-full px-8 py-10 bg-ap-yellow/10 flex flex-col gap-12'>
+            <div className='w-full h-full px-8 pt-8 pb-10 bg-ap-yellow/10 flex flex-col gap-12'>
               <div className='grid lg:grid-cols-3 gap-12 w-full'>
                 <div className='flex flex-col gap-0.5 leading-tight col-span-1'>
                   <div className='font-bold text-ap-blue mb-2 text-sm'>
