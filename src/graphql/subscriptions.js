@@ -2881,9 +2881,10 @@ export const onCreateAPSCompany = /* GraphQL */ `
           lastName
           email
           phone
-          companyName {
+          company {
             name
             email
+            type
             id
             createdAt
             updatedAt
@@ -2938,7 +2939,77 @@ export const onCreateAPSCompany = /* GraphQL */ `
           createdAt
           updatedAt
           aPSCompanyApsRegistrantsId
-          aPSRegistrant2025CompanyNameId
+          aPSCompanyRegistrantsId
+        }
+        nextToken
+      }
+      type
+      registrants {
+        items {
+          id
+          firstName
+          lastName
+          email
+          phone
+          company {
+            name
+            email
+            type
+            id
+            createdAt
+            updatedAt
+          }
+          jobTitle
+          attendeeType
+          termsAccepted
+          interests
+          otherInterest
+          speedNetworking
+          speedNetworkingStatus
+          billingAddressFirstName
+          billingAddressLastName
+          billingAddressEmail
+          billingAddressPhone
+          billingAddressStreet
+          billingAddressCity
+          billingAddressState
+          billingAddressZip
+          sameAsAttendee
+          speakerTopic
+          learningObjectives
+          totalAmount
+          discountCode
+          status
+          addOns {
+            nextToken
+          }
+          morrisetteTransportation
+          morrisetteStatus
+          paymentConfirmation
+          registrationEmailSent
+          registrationEmailSentDate
+          registrationEmailReceived
+          registrationEmailReceivedDate
+          welcomeEmailSent
+          welcomeEmailSentDate
+          welcomeEmailReceived
+          welcomeEmailReceivedDate
+          paymentMethod
+          paymentLast4
+          approvedAt
+          headshot
+          presentation
+          presentationTitle
+          presentationSummary
+          magnaStatus
+          magnaTransportation
+          aristoStatus
+          aristoTransportation
+          bio
+          createdAt
+          updatedAt
+          aPSCompanyApsRegistrantsId
+          aPSCompanyRegistrantsId
         }
         nextToken
       }
@@ -2960,9 +3031,10 @@ export const onUpdateAPSCompany = /* GraphQL */ `
           lastName
           email
           phone
-          companyName {
+          company {
             name
             email
+            type
             id
             createdAt
             updatedAt
@@ -3017,7 +3089,77 @@ export const onUpdateAPSCompany = /* GraphQL */ `
           createdAt
           updatedAt
           aPSCompanyApsRegistrantsId
-          aPSRegistrant2025CompanyNameId
+          aPSCompanyRegistrantsId
+        }
+        nextToken
+      }
+      type
+      registrants {
+        items {
+          id
+          firstName
+          lastName
+          email
+          phone
+          company {
+            name
+            email
+            type
+            id
+            createdAt
+            updatedAt
+          }
+          jobTitle
+          attendeeType
+          termsAccepted
+          interests
+          otherInterest
+          speedNetworking
+          speedNetworkingStatus
+          billingAddressFirstName
+          billingAddressLastName
+          billingAddressEmail
+          billingAddressPhone
+          billingAddressStreet
+          billingAddressCity
+          billingAddressState
+          billingAddressZip
+          sameAsAttendee
+          speakerTopic
+          learningObjectives
+          totalAmount
+          discountCode
+          status
+          addOns {
+            nextToken
+          }
+          morrisetteTransportation
+          morrisetteStatus
+          paymentConfirmation
+          registrationEmailSent
+          registrationEmailSentDate
+          registrationEmailReceived
+          registrationEmailReceivedDate
+          welcomeEmailSent
+          welcomeEmailSentDate
+          welcomeEmailReceived
+          welcomeEmailReceivedDate
+          paymentMethod
+          paymentLast4
+          approvedAt
+          headshot
+          presentation
+          presentationTitle
+          presentationSummary
+          magnaStatus
+          magnaTransportation
+          aristoStatus
+          aristoTransportation
+          bio
+          createdAt
+          updatedAt
+          aPSCompanyApsRegistrantsId
+          aPSCompanyRegistrantsId
         }
         nextToken
       }
@@ -3039,9 +3181,10 @@ export const onDeleteAPSCompany = /* GraphQL */ `
           lastName
           email
           phone
-          companyName {
+          company {
             name
             email
+            type
             id
             createdAt
             updatedAt
@@ -3096,7 +3239,77 @@ export const onDeleteAPSCompany = /* GraphQL */ `
           createdAt
           updatedAt
           aPSCompanyApsRegistrantsId
-          aPSRegistrant2025CompanyNameId
+          aPSCompanyRegistrantsId
+        }
+        nextToken
+      }
+      type
+      registrants {
+        items {
+          id
+          firstName
+          lastName
+          email
+          phone
+          company {
+            name
+            email
+            type
+            id
+            createdAt
+            updatedAt
+          }
+          jobTitle
+          attendeeType
+          termsAccepted
+          interests
+          otherInterest
+          speedNetworking
+          speedNetworkingStatus
+          billingAddressFirstName
+          billingAddressLastName
+          billingAddressEmail
+          billingAddressPhone
+          billingAddressStreet
+          billingAddressCity
+          billingAddressState
+          billingAddressZip
+          sameAsAttendee
+          speakerTopic
+          learningObjectives
+          totalAmount
+          discountCode
+          status
+          addOns {
+            nextToken
+          }
+          morrisetteTransportation
+          morrisetteStatus
+          paymentConfirmation
+          registrationEmailSent
+          registrationEmailSentDate
+          registrationEmailReceived
+          registrationEmailReceivedDate
+          welcomeEmailSent
+          welcomeEmailSentDate
+          welcomeEmailReceived
+          welcomeEmailReceivedDate
+          paymentMethod
+          paymentLast4
+          approvedAt
+          headshot
+          presentation
+          presentationTitle
+          presentationSummary
+          magnaStatus
+          magnaTransportation
+          aristoStatus
+          aristoTransportation
+          bio
+          createdAt
+          updatedAt
+          aPSCompanyApsRegistrantsId
+          aPSCompanyRegistrantsId
         }
         nextToken
       }
@@ -3189,7 +3402,7 @@ export const onCreateAPSAddOn2025 = /* GraphQL */ `
             createdAt
             updatedAt
             aPSCompanyApsRegistrantsId
-            aPSRegistrant2025CompanyNameId
+            aPSCompanyRegistrantsId
           }
           createdAt
           updatedAt
@@ -3286,7 +3499,7 @@ export const onUpdateAPSAddOn2025 = /* GraphQL */ `
             createdAt
             updatedAt
             aPSCompanyApsRegistrantsId
-            aPSRegistrant2025CompanyNameId
+            aPSCompanyRegistrantsId
           }
           createdAt
           updatedAt
@@ -3383,7 +3596,7 @@ export const onDeleteAPSAddOn2025 = /* GraphQL */ `
             createdAt
             updatedAt
             aPSCompanyApsRegistrantsId
-            aPSRegistrant2025CompanyNameId
+            aPSCompanyRegistrantsId
           }
           createdAt
           updatedAt
@@ -3405,7 +3618,7 @@ export const onCreateAPSRegistrant2025 = /* GraphQL */ `
       lastName
       email
       phone
-      companyName {
+      company {
         name
         email
         apsRegistrants {
@@ -3462,7 +3675,66 @@ export const onCreateAPSRegistrant2025 = /* GraphQL */ `
             createdAt
             updatedAt
             aPSCompanyApsRegistrantsId
-            aPSRegistrant2025CompanyNameId
+            aPSCompanyRegistrantsId
+          }
+          nextToken
+        }
+        type
+        registrants {
+          items {
+            id
+            firstName
+            lastName
+            email
+            phone
+            jobTitle
+            attendeeType
+            termsAccepted
+            interests
+            otherInterest
+            speedNetworking
+            speedNetworkingStatus
+            billingAddressFirstName
+            billingAddressLastName
+            billingAddressEmail
+            billingAddressPhone
+            billingAddressStreet
+            billingAddressCity
+            billingAddressState
+            billingAddressZip
+            sameAsAttendee
+            speakerTopic
+            learningObjectives
+            totalAmount
+            discountCode
+            status
+            morrisetteTransportation
+            morrisetteStatus
+            paymentConfirmation
+            registrationEmailSent
+            registrationEmailSentDate
+            registrationEmailReceived
+            registrationEmailReceivedDate
+            welcomeEmailSent
+            welcomeEmailSentDate
+            welcomeEmailReceived
+            welcomeEmailReceivedDate
+            paymentMethod
+            paymentLast4
+            approvedAt
+            headshot
+            presentation
+            presentationTitle
+            presentationSummary
+            magnaStatus
+            magnaTransportation
+            aristoStatus
+            aristoTransportation
+            bio
+            createdAt
+            updatedAt
+            aPSCompanyApsRegistrantsId
+            aPSCompanyRegistrantsId
           }
           nextToken
         }
@@ -3563,7 +3835,7 @@ export const onCreateAPSRegistrant2025 = /* GraphQL */ `
             createdAt
             updatedAt
             aPSCompanyApsRegistrantsId
-            aPSRegistrant2025CompanyNameId
+            aPSCompanyRegistrantsId
           }
           createdAt
           updatedAt
@@ -3596,7 +3868,7 @@ export const onCreateAPSRegistrant2025 = /* GraphQL */ `
       createdAt
       updatedAt
       aPSCompanyApsRegistrantsId
-      aPSRegistrant2025CompanyNameId
+      aPSCompanyRegistrantsId
     }
   }
 `;
@@ -3608,7 +3880,7 @@ export const onUpdateAPSRegistrant2025 = /* GraphQL */ `
       lastName
       email
       phone
-      companyName {
+      company {
         name
         email
         apsRegistrants {
@@ -3665,7 +3937,66 @@ export const onUpdateAPSRegistrant2025 = /* GraphQL */ `
             createdAt
             updatedAt
             aPSCompanyApsRegistrantsId
-            aPSRegistrant2025CompanyNameId
+            aPSCompanyRegistrantsId
+          }
+          nextToken
+        }
+        type
+        registrants {
+          items {
+            id
+            firstName
+            lastName
+            email
+            phone
+            jobTitle
+            attendeeType
+            termsAccepted
+            interests
+            otherInterest
+            speedNetworking
+            speedNetworkingStatus
+            billingAddressFirstName
+            billingAddressLastName
+            billingAddressEmail
+            billingAddressPhone
+            billingAddressStreet
+            billingAddressCity
+            billingAddressState
+            billingAddressZip
+            sameAsAttendee
+            speakerTopic
+            learningObjectives
+            totalAmount
+            discountCode
+            status
+            morrisetteTransportation
+            morrisetteStatus
+            paymentConfirmation
+            registrationEmailSent
+            registrationEmailSentDate
+            registrationEmailReceived
+            registrationEmailReceivedDate
+            welcomeEmailSent
+            welcomeEmailSentDate
+            welcomeEmailReceived
+            welcomeEmailReceivedDate
+            paymentMethod
+            paymentLast4
+            approvedAt
+            headshot
+            presentation
+            presentationTitle
+            presentationSummary
+            magnaStatus
+            magnaTransportation
+            aristoStatus
+            aristoTransportation
+            bio
+            createdAt
+            updatedAt
+            aPSCompanyApsRegistrantsId
+            aPSCompanyRegistrantsId
           }
           nextToken
         }
@@ -3766,7 +4097,7 @@ export const onUpdateAPSRegistrant2025 = /* GraphQL */ `
             createdAt
             updatedAt
             aPSCompanyApsRegistrantsId
-            aPSRegistrant2025CompanyNameId
+            aPSCompanyRegistrantsId
           }
           createdAt
           updatedAt
@@ -3799,7 +4130,7 @@ export const onUpdateAPSRegistrant2025 = /* GraphQL */ `
       createdAt
       updatedAt
       aPSCompanyApsRegistrantsId
-      aPSRegistrant2025CompanyNameId
+      aPSCompanyRegistrantsId
     }
   }
 `;
@@ -3811,7 +4142,7 @@ export const onDeleteAPSRegistrant2025 = /* GraphQL */ `
       lastName
       email
       phone
-      companyName {
+      company {
         name
         email
         apsRegistrants {
@@ -3868,7 +4199,66 @@ export const onDeleteAPSRegistrant2025 = /* GraphQL */ `
             createdAt
             updatedAt
             aPSCompanyApsRegistrantsId
-            aPSRegistrant2025CompanyNameId
+            aPSCompanyRegistrantsId
+          }
+          nextToken
+        }
+        type
+        registrants {
+          items {
+            id
+            firstName
+            lastName
+            email
+            phone
+            jobTitle
+            attendeeType
+            termsAccepted
+            interests
+            otherInterest
+            speedNetworking
+            speedNetworkingStatus
+            billingAddressFirstName
+            billingAddressLastName
+            billingAddressEmail
+            billingAddressPhone
+            billingAddressStreet
+            billingAddressCity
+            billingAddressState
+            billingAddressZip
+            sameAsAttendee
+            speakerTopic
+            learningObjectives
+            totalAmount
+            discountCode
+            status
+            morrisetteTransportation
+            morrisetteStatus
+            paymentConfirmation
+            registrationEmailSent
+            registrationEmailSentDate
+            registrationEmailReceived
+            registrationEmailReceivedDate
+            welcomeEmailSent
+            welcomeEmailSentDate
+            welcomeEmailReceived
+            welcomeEmailReceivedDate
+            paymentMethod
+            paymentLast4
+            approvedAt
+            headshot
+            presentation
+            presentationTitle
+            presentationSummary
+            magnaStatus
+            magnaTransportation
+            aristoStatus
+            aristoTransportation
+            bio
+            createdAt
+            updatedAt
+            aPSCompanyApsRegistrantsId
+            aPSCompanyRegistrantsId
           }
           nextToken
         }
@@ -3969,7 +4359,7 @@ export const onDeleteAPSRegistrant2025 = /* GraphQL */ `
             createdAt
             updatedAt
             aPSCompanyApsRegistrantsId
-            aPSRegistrant2025CompanyNameId
+            aPSCompanyRegistrantsId
           }
           createdAt
           updatedAt
@@ -4002,7 +4392,7 @@ export const onDeleteAPSRegistrant2025 = /* GraphQL */ `
       createdAt
       updatedAt
       aPSCompanyApsRegistrantsId
-      aPSRegistrant2025CompanyNameId
+      aPSCompanyRegistrantsId
     }
   }
 `;
@@ -19450,10 +19840,14 @@ export const onCreateApsRegistrantAddOns25 = /* GraphQL */ `
         lastName
         email
         phone
-        companyName {
+        company {
           name
           email
           apsRegistrants {
+            nextToken
+          }
+          type
+          registrants {
             nextToken
           }
           id
@@ -19517,7 +19911,7 @@ export const onCreateApsRegistrantAddOns25 = /* GraphQL */ `
         createdAt
         updatedAt
         aPSCompanyApsRegistrantsId
-        aPSRegistrant2025CompanyNameId
+        aPSCompanyRegistrantsId
       }
       createdAt
       updatedAt
@@ -19560,10 +19954,14 @@ export const onUpdateApsRegistrantAddOns25 = /* GraphQL */ `
         lastName
         email
         phone
-        companyName {
+        company {
           name
           email
           apsRegistrants {
+            nextToken
+          }
+          type
+          registrants {
             nextToken
           }
           id
@@ -19627,7 +20025,7 @@ export const onUpdateApsRegistrantAddOns25 = /* GraphQL */ `
         createdAt
         updatedAt
         aPSCompanyApsRegistrantsId
-        aPSRegistrant2025CompanyNameId
+        aPSCompanyRegistrantsId
       }
       createdAt
       updatedAt
@@ -19670,10 +20068,14 @@ export const onDeleteApsRegistrantAddOns25 = /* GraphQL */ `
         lastName
         email
         phone
-        companyName {
+        company {
           name
           email
           apsRegistrants {
+            nextToken
+          }
+          type
+          registrants {
             nextToken
           }
           id
@@ -19737,7 +20139,7 @@ export const onDeleteApsRegistrantAddOns25 = /* GraphQL */ `
         createdAt
         updatedAt
         aPSCompanyApsRegistrantsId
-        aPSRegistrant2025CompanyNameId
+        aPSCompanyRegistrantsId
       }
       createdAt
       updatedAt

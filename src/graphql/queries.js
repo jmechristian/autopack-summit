@@ -2112,9 +2112,10 @@ export const getAPSCompany = /* GraphQL */ `
           lastName
           email
           phone
-          companyName {
+          company {
             name
             email
+            type
             id
             createdAt
             updatedAt
@@ -2169,7 +2170,77 @@ export const getAPSCompany = /* GraphQL */ `
           createdAt
           updatedAt
           aPSCompanyApsRegistrantsId
-          aPSRegistrant2025CompanyNameId
+          aPSCompanyRegistrantsId
+        }
+        nextToken
+      }
+      type
+      registrants {
+        items {
+          id
+          firstName
+          lastName
+          email
+          phone
+          company {
+            name
+            email
+            type
+            id
+            createdAt
+            updatedAt
+          }
+          jobTitle
+          attendeeType
+          termsAccepted
+          interests
+          otherInterest
+          speedNetworking
+          speedNetworkingStatus
+          billingAddressFirstName
+          billingAddressLastName
+          billingAddressEmail
+          billingAddressPhone
+          billingAddressStreet
+          billingAddressCity
+          billingAddressState
+          billingAddressZip
+          sameAsAttendee
+          speakerTopic
+          learningObjectives
+          totalAmount
+          discountCode
+          status
+          addOns {
+            nextToken
+          }
+          morrisetteTransportation
+          morrisetteStatus
+          paymentConfirmation
+          registrationEmailSent
+          registrationEmailSentDate
+          registrationEmailReceived
+          registrationEmailReceivedDate
+          welcomeEmailSent
+          welcomeEmailSentDate
+          welcomeEmailReceived
+          welcomeEmailReceivedDate
+          paymentMethod
+          paymentLast4
+          approvedAt
+          headshot
+          presentation
+          presentationTitle
+          presentationSummary
+          magnaStatus
+          magnaTransportation
+          aristoStatus
+          aristoTransportation
+          bio
+          createdAt
+          updatedAt
+          aPSCompanyApsRegistrantsId
+          aPSCompanyRegistrantsId
         }
         nextToken
       }
@@ -2243,7 +2314,66 @@ export const listAPSCompanies = /* GraphQL */ `
             createdAt
             updatedAt
             aPSCompanyApsRegistrantsId
-            aPSRegistrant2025CompanyNameId
+            aPSCompanyRegistrantsId
+          }
+          nextToken
+        }
+        type
+        registrants {
+          items {
+            id
+            firstName
+            lastName
+            email
+            phone
+            jobTitle
+            attendeeType
+            termsAccepted
+            interests
+            otherInterest
+            speedNetworking
+            speedNetworkingStatus
+            billingAddressFirstName
+            billingAddressLastName
+            billingAddressEmail
+            billingAddressPhone
+            billingAddressStreet
+            billingAddressCity
+            billingAddressState
+            billingAddressZip
+            sameAsAttendee
+            speakerTopic
+            learningObjectives
+            totalAmount
+            discountCode
+            status
+            morrisetteTransportation
+            morrisetteStatus
+            paymentConfirmation
+            registrationEmailSent
+            registrationEmailSentDate
+            registrationEmailReceived
+            registrationEmailReceivedDate
+            welcomeEmailSent
+            welcomeEmailSentDate
+            welcomeEmailReceived
+            welcomeEmailReceivedDate
+            paymentMethod
+            paymentLast4
+            approvedAt
+            headshot
+            presentation
+            presentationTitle
+            presentationSummary
+            magnaStatus
+            magnaTransportation
+            aristoStatus
+            aristoTransportation
+            bio
+            createdAt
+            updatedAt
+            aPSCompanyApsRegistrantsId
+            aPSCompanyRegistrantsId
           }
           nextToken
         }
@@ -2327,7 +2457,66 @@ export const aPSCompaniesByEmail = /* GraphQL */ `
             createdAt
             updatedAt
             aPSCompanyApsRegistrantsId
-            aPSRegistrant2025CompanyNameId
+            aPSCompanyRegistrantsId
+          }
+          nextToken
+        }
+        type
+        registrants {
+          items {
+            id
+            firstName
+            lastName
+            email
+            phone
+            jobTitle
+            attendeeType
+            termsAccepted
+            interests
+            otherInterest
+            speedNetworking
+            speedNetworkingStatus
+            billingAddressFirstName
+            billingAddressLastName
+            billingAddressEmail
+            billingAddressPhone
+            billingAddressStreet
+            billingAddressCity
+            billingAddressState
+            billingAddressZip
+            sameAsAttendee
+            speakerTopic
+            learningObjectives
+            totalAmount
+            discountCode
+            status
+            morrisetteTransportation
+            morrisetteStatus
+            paymentConfirmation
+            registrationEmailSent
+            registrationEmailSentDate
+            registrationEmailReceived
+            registrationEmailReceivedDate
+            welcomeEmailSent
+            welcomeEmailSentDate
+            welcomeEmailReceived
+            welcomeEmailReceivedDate
+            paymentMethod
+            paymentLast4
+            approvedAt
+            headshot
+            presentation
+            presentationTitle
+            presentationSummary
+            magnaStatus
+            magnaTransportation
+            aristoStatus
+            aristoTransportation
+            bio
+            createdAt
+            updatedAt
+            aPSCompanyApsRegistrantsId
+            aPSCompanyRegistrantsId
           }
           nextToken
         }
@@ -2422,7 +2611,7 @@ export const getAPSAddOn2025 = /* GraphQL */ `
             createdAt
             updatedAt
             aPSCompanyApsRegistrantsId
-            aPSRegistrant2025CompanyNameId
+            aPSCompanyRegistrantsId
           }
           createdAt
           updatedAt
@@ -2479,7 +2668,7 @@ export const getAPSRegistrant2025 = /* GraphQL */ `
       lastName
       email
       phone
-      companyName {
+      company {
         name
         email
         apsRegistrants {
@@ -2536,7 +2725,66 @@ export const getAPSRegistrant2025 = /* GraphQL */ `
             createdAt
             updatedAt
             aPSCompanyApsRegistrantsId
-            aPSRegistrant2025CompanyNameId
+            aPSCompanyRegistrantsId
+          }
+          nextToken
+        }
+        type
+        registrants {
+          items {
+            id
+            firstName
+            lastName
+            email
+            phone
+            jobTitle
+            attendeeType
+            termsAccepted
+            interests
+            otherInterest
+            speedNetworking
+            speedNetworkingStatus
+            billingAddressFirstName
+            billingAddressLastName
+            billingAddressEmail
+            billingAddressPhone
+            billingAddressStreet
+            billingAddressCity
+            billingAddressState
+            billingAddressZip
+            sameAsAttendee
+            speakerTopic
+            learningObjectives
+            totalAmount
+            discountCode
+            status
+            morrisetteTransportation
+            morrisetteStatus
+            paymentConfirmation
+            registrationEmailSent
+            registrationEmailSentDate
+            registrationEmailReceived
+            registrationEmailReceivedDate
+            welcomeEmailSent
+            welcomeEmailSentDate
+            welcomeEmailReceived
+            welcomeEmailReceivedDate
+            paymentMethod
+            paymentLast4
+            approvedAt
+            headshot
+            presentation
+            presentationTitle
+            presentationSummary
+            magnaStatus
+            magnaTransportation
+            aristoStatus
+            aristoTransportation
+            bio
+            createdAt
+            updatedAt
+            aPSCompanyApsRegistrantsId
+            aPSCompanyRegistrantsId
           }
           nextToken
         }
@@ -2637,7 +2885,7 @@ export const getAPSRegistrant2025 = /* GraphQL */ `
             createdAt
             updatedAt
             aPSCompanyApsRegistrantsId
-            aPSRegistrant2025CompanyNameId
+            aPSCompanyRegistrantsId
           }
           createdAt
           updatedAt
@@ -2670,7 +2918,7 @@ export const getAPSRegistrant2025 = /* GraphQL */ `
       createdAt
       updatedAt
       aPSCompanyApsRegistrantsId
-      aPSRegistrant2025CompanyNameId
+      aPSCompanyRegistrantsId
     }
   }
 `;
@@ -2691,10 +2939,14 @@ export const listAPSRegistrant2025s = /* GraphQL */ `
         lastName
         email
         phone
-        companyName {
+        company {
           name
           email
           apsRegistrants {
+            nextToken
+          }
+          type
+          registrants {
             nextToken
           }
           id
@@ -2758,7 +3010,7 @@ export const listAPSRegistrant2025s = /* GraphQL */ `
         createdAt
         updatedAt
         aPSCompanyApsRegistrantsId
-        aPSRegistrant2025CompanyNameId
+        aPSCompanyRegistrantsId
       }
       nextToken
     }
@@ -2785,10 +3037,14 @@ export const aPSRegistrant2025sByEmail = /* GraphQL */ `
         lastName
         email
         phone
-        companyName {
+        company {
           name
           email
           apsRegistrants {
+            nextToken
+          }
+          type
+          registrants {
             nextToken
           }
           id
@@ -2852,7 +3108,7 @@ export const aPSRegistrant2025sByEmail = /* GraphQL */ `
         createdAt
         updatedAt
         aPSCompanyApsRegistrantsId
-        aPSRegistrant2025CompanyNameId
+        aPSCompanyRegistrantsId
       }
       nextToken
     }
@@ -14907,10 +15163,14 @@ export const getApsRegistrantAddOns25 = /* GraphQL */ `
         lastName
         email
         phone
-        companyName {
+        company {
           name
           email
           apsRegistrants {
+            nextToken
+          }
+          type
+          registrants {
             nextToken
           }
           id
@@ -14974,7 +15234,7 @@ export const getApsRegistrantAddOns25 = /* GraphQL */ `
         createdAt
         updatedAt
         aPSCompanyApsRegistrantsId
-        aPSRegistrant2025CompanyNameId
+        aPSCompanyRegistrantsId
       }
       createdAt
       updatedAt
@@ -15019,9 +15279,10 @@ export const listApsRegistrantAddOns25s = /* GraphQL */ `
           lastName
           email
           phone
-          companyName {
+          company {
             name
             email
+            type
             id
             createdAt
             updatedAt
@@ -15076,7 +15337,7 @@ export const listApsRegistrantAddOns25s = /* GraphQL */ `
           createdAt
           updatedAt
           aPSCompanyApsRegistrantsId
-          aPSRegistrant2025CompanyNameId
+          aPSCompanyRegistrantsId
         }
         createdAt
         updatedAt
@@ -15127,9 +15388,10 @@ export const apsRegistrantAddOns25sByAPSAddOn2025Id = /* GraphQL */ `
           lastName
           email
           phone
-          companyName {
+          company {
             name
             email
+            type
             id
             createdAt
             updatedAt
@@ -15184,7 +15446,7 @@ export const apsRegistrantAddOns25sByAPSAddOn2025Id = /* GraphQL */ `
           createdAt
           updatedAt
           aPSCompanyApsRegistrantsId
-          aPSRegistrant2025CompanyNameId
+          aPSCompanyRegistrantsId
         }
         createdAt
         updatedAt
@@ -15235,9 +15497,10 @@ export const apsRegistrantAddOns25sByAPSRegistrant2025Id = /* GraphQL */ `
           lastName
           email
           phone
-          companyName {
+          company {
             name
             email
+            type
             id
             createdAt
             updatedAt
@@ -15292,7 +15555,7 @@ export const apsRegistrantAddOns25sByAPSRegistrant2025Id = /* GraphQL */ `
           createdAt
           updatedAt
           aPSCompanyApsRegistrantsId
-          aPSRegistrant2025CompanyNameId
+          aPSCompanyRegistrantsId
         }
         createdAt
         updatedAt

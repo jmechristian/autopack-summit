@@ -31,6 +31,7 @@ export const RegistrantPage = ({ registrant }) => {
   const [showMorrisetteDetails, setShowMorrisetteDetails] = useState(false);
   const [showMagnaDetails, setShowMagnaDetails] = useState(false);
   const [showAristoDetails, setShowAristoDetails] = useState(false);
+  console.log('registrant', registrant);
 
   const [speakerProfile, setSpeakerProfile] = useState({
     headshot: (registrant && registrant.headshot) || '',
@@ -109,7 +110,7 @@ export const RegistrantPage = ({ registrant }) => {
                   </div>
                   <div className='w-full flex flex-col gap-0 mt-3'>
                     <div className='text-white text-xl font-oswald uppercase'>
-                      {registrantData.companyName.name}
+                      {registrantData.company.name}
                     </div>
                     <div className='text-white text-lg max-w-[200px] font-oswald text-white/60 leading-tight'>
                       {registrantData.jobTitle}

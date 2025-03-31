@@ -25,6 +25,11 @@ enum ModuleType {
   ARTICLE
 }
 
+enum CompanyType {
+  OEMTIER1
+  SOLUTIONPROVIDER
+}
+
 enum CategoryType {
   MATERIALS
   INDUSTRY
@@ -284,6 +289,8 @@ type APSCompany @model @auth(rules: [{ allow: public }]) {
   name: String!
   email: String! @index(name: "apsCompanyByEmail")
   apsRegistrants: [APSRegistrant2025] @hasMany
+  type: CompanyType
+  registrants: [APSRegistrant2025] @hasMany
 }
 
 type APSAddOn2025 @model @auth(rules: [{ allow: public }]) {
@@ -306,7 +313,7 @@ type APSRegistrant2025 @model @auth(rules: [{ allow: public }]) {
   lastName: String
   email: String! @index(name: "apsRegistrantByEmail25")
   phone: String
-  companyName: APSCompany @hasOne
+  company: APSCompany @belongsTo
   jobTitle: String
   attendeeType: String
   termsAccepted: Boolean

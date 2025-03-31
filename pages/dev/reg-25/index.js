@@ -111,6 +111,7 @@ const RegistrationForm = () => {
   useEffect(() => {
     const fetchCompanies = async () => {
       const companies = await getAPSCompanies();
+      console.log('companies', companies);
       setCompanies(companies);
     };
     const fetchAddOns = async () => {

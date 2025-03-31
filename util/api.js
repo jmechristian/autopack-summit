@@ -484,6 +484,9 @@ export const getBoardMembers = async () => {
 export const getAPSCompanies = async () => {
   const res = await API.graphql({
     query: listAPSCompanies,
+    variables: {
+      limit: 1000,
+    },
   });
 
   return res.data.listAPSCompanies.items;
@@ -512,7 +515,7 @@ export const createNewAPS25Registrant = async (data) => {
     variables: {
       input: {
         email: data.email,
-        aPSRegistrant2025CompanyNameId: data.aPSRegistrant2025CompanyNameId,
+        aPSCompanyApsRegistrantsId: data.aPSRegistrant2025CompanyNameId,
         attendeeType: data.attendeeType,
         billingAddressCity: data.billingAddress.city,
         billingAddressEmail: data.billingAddress.email,
@@ -564,6 +567,9 @@ export const getCurrentAPS25Registrant = async (id) => {
 export const getAPS25Codes = async () => {
   const res = await API.graphql({
     query: listAPSCode2025s,
+    variables: {
+      limit: 1000,
+    },
   });
 
   return res.data.listAPSCode2025s.items;
