@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getBoardMembers } from '../../util/api';
+import Head from 'next/head';
 
 const MemberCard = ({ member, onReadBio }) => (
   <div className='bg-white border border-gray-900 p-4 flex items-center gap-4'>
@@ -52,6 +53,14 @@ const Index = () => {
 
   return (
     <div className='py-16 max-w-7xl mx-auto'>
+      <Head>
+        <title>2025 Advisory Board</title>
+        <meta
+          name='description'
+          content='Meet the 2025 Advisory Board members of the Future of Work Institute'
+        />
+        <meta name='robots' content='noindex, nofollow' />
+      </Head>
       <h1 className='text-4xl tracking-tight uppercase font-medium font-oswald mb-16'>
         2025 Advisory Board
       </h1>
