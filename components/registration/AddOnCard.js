@@ -81,7 +81,8 @@ const AddOnCard = ({
                 onRegister();
               }}
             >
-              Register
+              <span className='font-bold'>Register</span> (
+              {addOn.apsRegistrants.items.length}/{addOn.limit})
             </button>
           </div>
         )}

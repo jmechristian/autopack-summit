@@ -28,6 +28,7 @@ enum ModuleType {
 enum CompanyType {
   OEMTIER1
   SOLUTIONPROVIDER
+  SPONSOR
 }
 
 enum CategoryType {
@@ -305,6 +306,7 @@ type APSAddOn2025 @model @auth(rules: [{ allow: public }]) {
   apsRegistrants: [APSRegistrant2025]
     @manyToMany(relationName: "apsRegistrantAddOns25")
   type: String
+  limit: Int
 }
 
 type APSRegistrant2025 @model @auth(rules: [{ allow: public }]) {
@@ -540,6 +542,7 @@ type User @model @auth(rules: [{ allow: public }]) {
   allAccessStartDate: String
   allAccessEndDate: String
   lessonsCompleted: [Lesson] @manyToMany(relationName: "userCompletedLessons")
+  learningPaths: [LearningPath] @manyToMany(relationName: "LearningPathUsers")
 }
 
 type Cohort @model @auth(rules: [{ allow: public }]) {
@@ -553,6 +556,25 @@ type Cohort @model @auth(rules: [{ allow: public }]) {
   instructor: Instructor @hasOne
   description: String
   link: String
+}
+
+type LearningPath @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  title: String!
+  description: String
+  courses: [LearningPathCourse] @hasMany
+  users: [User] @manyToMany(relationName: "LearningPathUsers")
+  displayOrder: Int
+  hours: Int
+  slug: String! @index(name: "learningPathBySlug")
+}
+
+type LearningPathCourse @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  courseId: String
+  learningPath: LearningPath @belongsTo
+  order: Int
+  thinkificId: String
 }
 
 type CMPMSession @model @auth(rules: [{ allow: public }]) {
@@ -1165,6 +1187,15 @@ type IndexClick @model @auth(rules: [{ allow: public }]) {
   country: String
   type: String
   device: String
+}
+
+type EmailSubscription @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  email: String! @index(name: "emailSubscriptionByEmail")
+  ipAddress: String
+  country: String
+  device: String
+  page: String
 }
 
 ######### IMAGES #########

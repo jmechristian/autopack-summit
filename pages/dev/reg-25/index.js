@@ -116,6 +116,7 @@ const RegistrationForm = () => {
     };
     const fetchAddOns = async () => {
       const addOns = await getAPS25AddOns();
+      console.log('addOns', addOns);
       setAddOns(addOns);
     };
 
