@@ -1368,22 +1368,30 @@ const RegistrationForm = () => {
                         {discountCodeError}
                       </p>
                     )}
-                    <div
-                      className='flex items-end gap-1.5'
-                      onClick={handleCodeRequest}
-                    >
-                      {codeRequestLoading && (
-                        //animated spinner
-                        <div className='animate-spin rounded-full h-4 w-4 border-b-2 border-t-2 border-gray-900'></div>
-                      )}
+                    <div className='flex flex-col items-center gap-1 text-center'>
+                      <div
+                        className='flex items-end gap-1.5'
+                        onClick={handleCodeRequest}
+                      >
+                        {codeRequestLoading && (
+                          //animated spinner
+                          <div className='animate-spin rounded-full h-4 w-4 border-b-2 border-t-2 border-gray-900'></div>
+                        )}
+                        {codeRequestSent && (
+                          <div className='text-green-600'>
+                            <MdCheckCircle size={22} />
+                          </div>
+                        )}
+                        <p className='text-sm text-gray-600 mt-2 cursor-pointer underline'>
+                          Don't have a code? Request one here.
+                        </p>
+                      </div>
                       {codeRequestSent && (
-                        <div className='text-green-600'>
-                          <MdCheckCircle size={22} />
-                        </div>
+                        <p className='text-sm text-gray-600 mt-2 w-full'>
+                          If approved, your code will be sent to{' '}
+                          {formData.email}
+                        </p>
                       )}
-                      <p className='text-sm text-gray-600 mt-2 cursor-pointer underline'>
-                        Don't have a code? Request one here.
-                      </p>
                     </div>
                   </div>
                 )}
