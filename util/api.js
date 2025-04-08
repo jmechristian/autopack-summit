@@ -13,6 +13,7 @@ import {
   updateAPSRegistrant2025,
   updateAPSCode2025,
   createAPSCodeRequest25,
+  updateAPSCodeRequest25,
 } from '../src/graphql/mutations';
 import {
   aPSRegistrantsByEmail,
@@ -804,9 +805,16 @@ export const updateSentRegistrantCode = async (email) => {
     variables: { email: email },
   });
 
+  console.log('id', id);
+
   const res = await API.graphql({
-    query: updateAPSCode2025,
-    variables: { input: { id: id, status: 'SENT' } },
+    query: updateAPSCodeRequest25,
+    variables: {
+      input: {
+        id: id.data.aPSCodeRequest25sByEmail.items[0].id,
+        status: 'SENT',
+      },
+    },
   });
   return res.data;
 };

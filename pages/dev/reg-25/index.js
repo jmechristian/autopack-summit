@@ -2,6 +2,7 @@ import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 import { QRCodeSVG } from 'qrcode.react';
 import { loadStripe } from '@stripe/stripe-js';
+import { MdCheckCircle } from 'react-icons/md';
 import {
   Elements,
   CardElement,
@@ -109,21 +110,20 @@ const RegistrationForm = () => {
   const [formDataId, setFormDataId] = useState(null);
   const [codes, setCodes] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [codeRequestLoading, setCodeRequestLoading] = useState(false);
+  const [codeRequestSent, setCodeRequestSent] = useState(false);
   useEffect(() => {
     const fetchCompanies = async () => {
       const companies = await getAPSCompanies();
-      console.log('companies', companies);
       setCompanies(companies);
     };
     const fetchAddOns = async () => {
       const addOns = await getAPS25AddOns();
-      console.log('addOns', addOns);
       setAddOns(addOns);
     };
 
     const fetchCodes = async () => {
       const codes = await getAPS25Codes();
-      console.log('codes', codes);
       setCodes(codes);
     };
 
@@ -1368,12 +1368,23 @@ const RegistrationForm = () => {
                         {discountCodeError}
                       </p>
                     )}
-                    <p
-                      className='text-sm text-gray-600 mt-2 cursor-pointer underline'
+                    <div
+                      className='flex items-end gap-1.5'
                       onClick={handleCodeRequest}
                     >
-                      Don't have a code? Request one here.
-                    </p>
+                      {codeRequestLoading && (
+                        //animated spinner
+                        <div className='animate-spin rounded-full h-4 w-4 border-b-2 border-t-2 border-gray-900'></div>
+                      )}
+                      {codeRequestSent && (
+                        <div className='text-green-600'>
+                          <MdCheckCircle size={22} />
+                        </div>
+                      )}
+                      <p className='text-sm text-gray-600 mt-2 cursor-pointer underline'>
+                        Don't have a code? Request one here.
+                      </p>
+                    </div>
                   </div>
                 )}
 
@@ -1665,12 +1676,15 @@ const RegistrationForm = () => {
   };
 
   const handleCodeRequest = () => {
+    setCodeRequestLoading(true);
     sendCodeRequest(
       formData.email,
       formData.companyName,
       formData.firstName,
       formData.lastName
     );
+    setCodeRequestLoading(false);
+    setCodeRequestSent(true);
   };
 
   return (
