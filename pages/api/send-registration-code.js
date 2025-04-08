@@ -1,6 +1,7 @@
 import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses';
 import { render } from '@react-email/render';
 import { CodeRequestEmail } from '../../react-email-starter/emails/code-request-email';
+import { updateSentRegistrantCode } from '../../util/api';
 const REGION = 'us-east-1';
 const creds = {
   accessKeyId: process.env.AWSACCESSKEYID,
@@ -63,6 +64,7 @@ export default async function handler(req, res) {
         'info@packagingschool.com'
       )
     );
+    await updateSentRegistrantCode(query.email);
     res.status(200).json({ message: 'success' });
   } catch (error) {
     res.status(410).json({ message: 'error', error });

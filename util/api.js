@@ -23,6 +23,7 @@ import {
   listAPSAddOn2025s,
   getAPSRegistrant2025,
   listAPSCode2025s,
+  aPSCodeRequest25sByEmail,
 } from '../src/graphql/queries';
 
 Amplify.configure({ ...awsExports, ssr: true });
@@ -797,7 +798,12 @@ export const sendCodeRequest = async (email, company, firstName, lastName) => {
   return res.status;
 };
 
-export const updateSentRegistrantCode = async (id) => {
+export const updateSentRegistrantCode = async (email) => {
+  const id = await API.graphql({
+    query: aPSCodeRequest25sByEmail,
+    variables: { email: email },
+  });
+
   const res = await API.graphql({
     query: updateAPSCode2025,
     variables: { input: { id: id, status: 'SENT' } },
