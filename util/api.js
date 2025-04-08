@@ -796,3 +796,11 @@ export const sendCodeRequest = async (email, company, firstName, lastName) => {
   }
   return res.status;
 };
+
+export const updateSentRegistrantCode = async (id) => {
+  const res = await API.graphql({
+    query: updateAPSCode2025,
+    variables: { input: { id: id, status: 'SENT' } },
+  });
+  return res.data;
+};

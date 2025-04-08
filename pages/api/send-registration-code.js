@@ -11,8 +11,8 @@ const sesClient = new SESClient({ region: REGION, credentials: creds });
 export { sesClient };
 
 export default async function handler(req, res) {
-  const body = req.body;
-  const emailHtml = render(<CodeRequestEmail registrant={body} />);
+  const query = req.query;
+  const emailHtml = render(<CodeRequestEmail />);
 
   const createSendEmailCommand = (toAddress, fromAddress) => {
     return new SendEmailCommand({
@@ -27,7 +27,7 @@ export default async function handler(req, res) {
         ],
         ToAddresses: [
           toAddress,
-          body.email,
+          query.email,
           // 'diana@packagingschool.com',
           // 'bianca@packagingschool.com',
         ],
@@ -65,6 +65,6 @@ export default async function handler(req, res) {
     );
     res.status(200).json({ message: 'success' });
   } catch (error) {
-    res.status(410).json({ message: 'error' });
+    res.status(410).json({ message: 'error', error });
   }
 }

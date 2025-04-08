@@ -15,16 +15,7 @@ import {
 import { Tailwind } from '@react-email/tailwind';
 import * as React from 'react';
 
-interface CodeRequestEmailProps {
-  registrant: {
-    firstName: String;
-    lastName: String;
-    email: String;
-    company: String;
-  };
-}
-
-export const CodeRequestEmail = ({ registrant }: CodeRequestEmailProps) => {
+export const CodeRequestEmail = () => {
   return (
     <Html>
       <Tailwind>
@@ -66,14 +57,5 @@ export const CodeRequestEmail = ({ registrant }: CodeRequestEmailProps) => {
     </Html>
   );
 };
-
-CodeRequestEmail.PreviewProps = {
-  registrant: {
-    firstName: 'Jamie',
-    lastName: 'Christian',
-    email: 'jmechristian@gmail.com',
-    company: 'Packaging School',
-  },
-} as CodeRequestEmailProps;
 
 export default CodeRequestEmail;
