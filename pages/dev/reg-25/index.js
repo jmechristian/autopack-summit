@@ -20,6 +20,7 @@ import {
   sendRegistrationConfirmation,
   addCodeUsage,
   sendStaffRegistrationConfirmation,
+  sendCodeRequest,
 } from '../../../util/api';
 import AddOnCard from '../../../components/registration/AddOnCard';
 // Initialize Stripe (put this outside the component)
@@ -1367,7 +1368,10 @@ const RegistrationForm = () => {
                         {discountCodeError}
                       </p>
                     )}
-                    <p className='text-sm text-gray-600 mt-2 cursor-pointer underline'>
+                    <p
+                      className='text-sm text-gray-600 mt-2 cursor-pointer underline'
+                      onClick={handleCodeRequest}
+                    >
                       Don't have a code? Request one here.
                     </p>
                   </div>
@@ -1658,6 +1662,15 @@ const RegistrationForm = () => {
           </div>
         );
     }
+  };
+
+  const handleCodeRequest = () => {
+    sendCodeRequest(
+      formData.email,
+      formData.companyName,
+      formData.firstName,
+      formData.lastName
+    );
   };
 
   return (

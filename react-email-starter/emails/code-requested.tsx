@@ -50,7 +50,7 @@ export const CodeRequestedEmail = ({ registrant }: CodeRequestedEmailProps) => {
                 {registrant.company}
               </Text>
               <Link
-                href={`http://localhost:3001/api/send-registration-code?email=${registrant.email}&firstName=${registrant.firstName}&lastName=${registrant.lastName}&company=${registrant.company}`}
+                href={`https://autopacksummit.com/api/send-registration-code?email=${registrant.email}&firstName=${registrant.firstName}&lastName=${registrant.lastName}&company=${registrant.company}`}
                 className='cursor-pointer text-black'
               >
                 <Section className='cursor-pointer w-[300px] bg-amber-300 border-2 border-solid border-black my-7 align-middle mx-auto rounded'>
