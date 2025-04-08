@@ -23,14 +23,14 @@ const AddOnCard = ({
           <div className='text-sm text-gray-500'>{addOn.time}</div>
         </div>
       </div>
-      <div className='flex flex-col gap-2'>
+      <div className='flex flex-col gap-3'>
         <div
           className='text-sm flex flex-col gap-4'
           dangerouslySetInnerHTML={{ __html: addOn.subheadline }}
         />
         {isExpanded && (
           <div
-            className='text-sm flex flex-col gap-4'
+            className='text-sm flex flex-col gap-3'
             dangerouslySetInnerHTML={{ __html: addOn.description }}
           />
         )}
