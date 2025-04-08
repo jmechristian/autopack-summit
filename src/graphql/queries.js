@@ -2663,6 +2663,74 @@ export const listAPSAddOn2025s = /* GraphQL */ `
     }
   }
 `;
+export const getAPSCodeRequest25 = /* GraphQL */ `
+  query GetAPSCodeRequest25($id: ID!) {
+    getAPSCodeRequest25(id: $id) {
+      id
+      email
+      company
+      status
+      firstName
+      lastName
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listAPSCodeRequest25s = /* GraphQL */ `
+  query ListAPSCodeRequest25s(
+    $filter: ModelAPSCodeRequest25FilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listAPSCodeRequest25s(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        email
+        company
+        status
+        firstName
+        lastName
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const aPSCodeRequest25sByEmail = /* GraphQL */ `
+  query APSCodeRequest25sByEmail(
+    $email: String!
+    $sortDirection: ModelSortDirection
+    $filter: ModelAPSCodeRequest25FilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    aPSCodeRequest25sByEmail(
+      email: $email
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        email
+        company
+        status
+        firstName
+        lastName
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
 export const getAPSRegistrant2025 = /* GraphQL */ `
   query GetAPSRegistrant2025($id: ID!) {
     getAPSRegistrant2025(id: $id) {

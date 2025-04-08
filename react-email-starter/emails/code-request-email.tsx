@@ -17,11 +17,10 @@ import * as React from 'react';
 
 interface CodeRequestEmailProps {
   registrant: {
-    name: String;
+    firstName: String;
+    lastName: String;
     email: String;
     company: String;
-    title: String;
-    phone: String;
   };
 }
 
@@ -44,16 +43,12 @@ export const CodeRequestEmail = ({ registrant }: CodeRequestEmailProps) => {
               <Text className='text-black text-2xl leading-tight py-0 m-0 px-6  font-[HelveticaNeue] font-medium'>
                 Enter the following code to finish registration.
               </Text>
-              <Link
-                className='text-black'
-                href={`https://autopacksummit.com/register?email=${registrant.email}&name=${registrant.name}&company=${registrant.company}&title=${registrant.title}&phone=${registrant.phone}&code=AUTOPACK3862`}
-              >
-                <Section className='cursor-pointer w-[325px] bg-amber-300 border-2 border-solid border-black my-7 align-middle mx-auto rounded'>
-                  <Text className='text-2xl py-2 tracking-wide font-[HelveticaNeue-Bold]'>
-                    AUTOPACK3862
-                  </Text>
-                </Section>
-              </Link>
+
+              <Section className='cursor-pointer w-[325px] bg-amber-300 border-2 border-solid border-black my-7 align-middle mx-auto rounded'>
+                <Text className='text-2xl py-2 tracking-wide font-[HelveticaNeue-Bold]'>
+                  AUTOPACK3862
+                </Text>
+              </Section>
               <Text className='text-neutral-500 text-sm font-[HelveticaNeue] max-w-xs mx-auto leading-tight'>
                 Not expecting this email? Contact info@packagingschool.com if
                 you did not request a registration code.
@@ -74,11 +69,10 @@ export const CodeRequestEmail = ({ registrant }: CodeRequestEmailProps) => {
 
 CodeRequestEmail.PreviewProps = {
   registrant: {
-    name: 'Jamie Christian',
+    firstName: 'Jamie',
+    lastName: 'Christian',
     email: 'jmechristian@gmail.com',
     company: 'Packaging School',
-    title: 'Web Director',
-    phone: '5122893696',
   },
 } as CodeRequestEmailProps;
 

@@ -1367,6 +1367,9 @@ const RegistrationForm = () => {
                         {discountCodeError}
                       </p>
                     )}
+                    <p className='text-sm text-gray-600 mt-2 cursor-pointer underline'>
+                      Don't have a code? Request one here.
+                    </p>
                   </div>
                 )}
 

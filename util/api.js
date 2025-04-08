@@ -12,6 +12,7 @@ import {
   createAPSActivity2025,
   updateAPSRegistrant2025,
   updateAPSCode2025,
+  createAPSCodeRequest25,
 } from '../src/graphql/mutations';
 import {
   aPSRegistrantsByEmail,
@@ -75,7 +76,7 @@ export const ApproveRegistrantCode = async (id) => {
   return updated.data;
 };
 
-export const sendRegCode = async (name, email, company, title, phone) => {
+export const sendRegCode = async (firstName, lastName, email, company) => {
   const res = fetch('/api/send-registration-code', {
     method: 'POST',
     headers: {
@@ -83,11 +84,10 @@ export const sendRegCode = async (name, email, company, title, phone) => {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      name,
+      firstName,
+      lastName,
       email,
       company,
-      title,
-      phone,
     }),
   });
 
@@ -768,4 +768,31 @@ export const updateSpeakerProfile = async (id, data) => {
     variables: { input: { id: id, ...data } },
   });
   return res.data;
+};
+
+export const sendCodeRequest = async (email, company, firstName, lastName) => {
+  const res = await fetch('/api/send-code-request', {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ email, company, firstName, lastName }),
+  });
+
+  if (res.ok) {
+    const createItem = await API.graphql({
+      query: createAPSCodeRequest25,
+      variables: {
+        input: {
+          email: email,
+          company: company,
+          firstName: firstName,
+          lastName: lastName,
+        },
+      },
+    });
+    return createItem.data;
+  }
+  return res.status;
 };

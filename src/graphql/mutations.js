@@ -3796,6 +3796,57 @@ export const deleteAPSAddOn2025 = /* GraphQL */ `
     }
   }
 `;
+export const createAPSCodeRequest25 = /* GraphQL */ `
+  mutation CreateAPSCodeRequest25(
+    $input: CreateAPSCodeRequest25Input!
+    $condition: ModelAPSCodeRequest25ConditionInput
+  ) {
+    createAPSCodeRequest25(input: $input, condition: $condition) {
+      id
+      email
+      company
+      status
+      firstName
+      lastName
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateAPSCodeRequest25 = /* GraphQL */ `
+  mutation UpdateAPSCodeRequest25(
+    $input: UpdateAPSCodeRequest25Input!
+    $condition: ModelAPSCodeRequest25ConditionInput
+  ) {
+    updateAPSCodeRequest25(input: $input, condition: $condition) {
+      id
+      email
+      company
+      status
+      firstName
+      lastName
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteAPSCodeRequest25 = /* GraphQL */ `
+  mutation DeleteAPSCodeRequest25(
+    $input: DeleteAPSCodeRequest25Input!
+    $condition: ModelAPSCodeRequest25ConditionInput
+  ) {
+    deleteAPSCodeRequest25(input: $input, condition: $condition) {
+      id
+      email
+      company
+      status
+      firstName
+      lastName
+      createdAt
+      updatedAt
+    }
+  }
+`;
 export const createAPSRegistrant2025 = /* GraphQL */ `
   mutation CreateAPSRegistrant2025(
     $input: CreateAPSRegistrant2025Input!

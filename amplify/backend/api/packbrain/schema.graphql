@@ -309,6 +309,15 @@ type APSAddOn2025 @model @auth(rules: [{ allow: public }]) {
   limit: Int
 }
 
+type APSCodeRequest25 @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  email: String! @index(name: "apsCodeRequestByEmail")
+  company: String
+  status: String @default(value: "PENDING")
+  firstName: String
+  lastName: String
+}
+
 type APSRegistrant2025 @model @auth(rules: [{ allow: public }]) {
   id: ID!
   firstName: String

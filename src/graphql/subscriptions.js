@@ -3616,6 +3616,48 @@ export const onDeleteAPSAddOn2025 = /* GraphQL */ `
     }
   }
 `;
+export const onCreateAPSCodeRequest25 = /* GraphQL */ `
+  subscription OnCreateAPSCodeRequest25 {
+    onCreateAPSCodeRequest25 {
+      id
+      email
+      company
+      status
+      firstName
+      lastName
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateAPSCodeRequest25 = /* GraphQL */ `
+  subscription OnUpdateAPSCodeRequest25 {
+    onUpdateAPSCodeRequest25 {
+      id
+      email
+      company
+      status
+      firstName
+      lastName
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteAPSCodeRequest25 = /* GraphQL */ `
+  subscription OnDeleteAPSCodeRequest25 {
+    onDeleteAPSCodeRequest25 {
+      id
+      email
+      company
+      status
+      firstName
+      lastName
+      createdAt
+      updatedAt
+    }
+  }
+`;
 export const onCreateAPSRegistrant2025 = /* GraphQL */ `
   subscription OnCreateAPSRegistrant2025 {
     onCreateAPSRegistrant2025 {

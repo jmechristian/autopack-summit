@@ -1,6 +1,6 @@
 import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses';
 import { render } from '@react-email/render';
-import { CodeRequestEmail } from '../../react-email-starter/emails/code-request-email';
+import { CodeRequestedEmail } from '../../react-email-starter/emails/code-requested';
 const REGION = 'us-east-1';
 const creds = {
   accessKeyId: process.env.AWSACCESSKEYID,
@@ -12,7 +12,7 @@ export { sesClient };
 
 export default async function handler(req, res) {
   const body = req.body;
-  const emailHtml = render(<CodeRequestEmail registrant={body} />);
+  const emailHtml = render(<CodeRequestedEmail registrant={body} />);
 
   const createSendEmailCommand = (toAddress, fromAddress) => {
     return new SendEmailCommand({
@@ -21,15 +21,10 @@ export default async function handler(req, res) {
         CcAddresses: [
           /* more items */
         ],
-        BccAddresses: [
-          'lars@packagingschool.com',
-          'bianca@packagingschool.com',
-        ],
         ToAddresses: [
           toAddress,
-          body.email,
-          // 'diana@packagingschool.com',
-          // 'bianca@packagingschool.com',
+          //   'lars@packagingschool.com',
+          'bianca@packagingschool.com',
         ],
       },
       Message: {
@@ -46,7 +41,7 @@ export default async function handler(req, res) {
         },
         Subject: {
           Charset: 'UTF-8',
-          Data: 'Automotive Packaging Summit Registration Code',
+          Data: 'Automotive Packaging Summit Code Request',
         },
       },
       Source: fromAddress,
