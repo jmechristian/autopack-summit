@@ -37,7 +37,7 @@ export const CodeRequestEmail = () => {
 
               <Section className='cursor-pointer w-[325px] bg-amber-300 border-2 border-solid border-black my-7 align-middle mx-auto rounded'>
                 <Text className='text-2xl py-2 tracking-wide font-[HelveticaNeue-Bold]'>
-                  AUTOPACK3862
+                  AUTOPACK4829
                 </Text>
               </Section>
               <Text className='text-neutral-500 text-sm font-[HelveticaNeue] max-w-xs mx-auto leading-tight'>
