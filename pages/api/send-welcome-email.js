@@ -15,7 +15,7 @@ export { sesClient };
 export default async function handler(req, res) {
   const body = req.body;
   const emailHtml = render(
-    <WelcomeEmail2025 formDataId={body.formDataId} email={body.email} />
+    <WelcomeEmail2025 formDataId={body.id} email={body.email} />
   );
 
   const createSendEmailCommand = (toAddress, fromAddress) => {
