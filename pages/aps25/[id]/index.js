@@ -36,7 +36,7 @@ export const RegistrantPage = ({ registrant }) => {
   const [speakerProfile, setSpeakerProfile] = useState({
     headshot: (registrant && registrant.headshot) || '',
     presentationTitle: (registrant && registrant.presentationTitle) || '',
-    presentationSummary: (registrant && registrant.presentationSummary) || '',
+    speakerTopic: (registrant && registrant.speakerTopic) || '',
     learningObjectives: (registrant && registrant.learningObjectives) || '',
     bio: (registrant && registrant.bio) || '',
   });
@@ -180,11 +180,11 @@ export const RegistrantPage = ({ registrant }) => {
                           </div>
                         </div>
                       )}
-                      <div className='flex items-center gap-1'>
-                        <div>
-                          <MdEdit color='white' size={20} />
+                      <div className='flex items-center gap-2'>
+                        <div className='w-7 h-7 bg-white rounded-full flex items-center justify-center'>
+                          <MdEdit color='black' size={20} />
                         </div>
-                        <div className='text-sm font-medium text-white hover:text-ap-yellow'>
+                        <div className='text-sm font-semibold text-white hover:text-ap-yellow'>
                           Edit Speaker Profile
                         </div>
                       </div>
@@ -715,7 +715,7 @@ export const RegistrantPage = ({ registrant }) => {
                         />
                       </label>
                       <p className='text-xs text-gray-500 text-center'>
-                        2MB max
+                        10MB max
                       </p>
                     </div>
                     {/* Bio */}
@@ -763,11 +763,11 @@ export const RegistrantPage = ({ registrant }) => {
                       Presentation Summary
                     </label>
                     <textarea
-                      value={speakerProfile.presentationSummary}
+                      value={speakerProfile.speakerTopic}
                       onChange={(e) => {
                         setSpeakerProfile((prev) => ({
                           ...prev,
-                          presentationSummary: e.target.value,
+                          speakerTopic: e.target.value,
                         }));
                       }}
                       className='p-2 border border-gray-300 rounded h-24'

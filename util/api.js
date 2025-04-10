@@ -805,8 +805,6 @@ export const updateSentRegistrantCode = async (email) => {
     variables: { email: email },
   });
 
-  console.log('id', id);
-
   const res = await API.graphql({
     query: updateAPSCodeRequest25,
     variables: {
