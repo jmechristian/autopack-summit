@@ -1,7 +1,7 @@
 import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses';
 import { render } from '@react-email/render';
 
-import { WelcomeEmail2025 } from '../../react-email-starter/emails/welcome-email-2025';
+import { WelcomeEmail } from '../../react-email-starter/emails/welcome-email';
 
 const REGION = 'us-east-1';
 const creds = {
@@ -14,7 +14,7 @@ export { sesClient };
 
 export default async function handler(req, res) {
   const body = req.body;
-  const emailHtml = render(<WelcomeEmail2025 />);
+  const emailHtml = render(<WelcomeEmail />);
 
   const createSendEmailCommand = (toAddress, fromAddress) => {
     return new SendEmailCommand({
