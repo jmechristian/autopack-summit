@@ -17,32 +17,13 @@ import { Tailwind } from '@react-email/tailwind';
 import * as React from 'react';
 
 interface WelcomeEmail2025Props {
-  formData: {
-    firstName: string;
-    lastName: string;
-    email: string;
-    companyName: string;
-    jobTitle: string;
-    phone: string;
-    attendeeType: string;
-    billingAddress: {
-      street: string;
-      city: string;
-      state: string;
-      zip: string;
-    };
-    speedNetworking: boolean;
-  };
   formDataId: string;
-  totalAmount: number;
-  addOnsSelected: Array<{ id: string; title: string }>;
+  email: string;
 }
 
 export const WelcomeEmail2025 = ({
-  formData,
   formDataId,
-  totalAmount,
-  addOnsSelected,
+  email,
 }: WelcomeEmail2025Props) => {
   const baseStyles = {
     fontFamily: 'HelveticaNeue, Helvetica, Arial, sans-serif',
@@ -72,7 +53,7 @@ export const WelcomeEmail2025 = ({
           >
             {/* Add tracking pixel */}
             <Img
-              src={`https://autopacksummit.com/api/handle-email-tracking?id=${formDataId}&email=${formData.email}`}
+              src={`https://autopacksummit.com/api/handle-email-tracking?id=${formDataId}&email=${email}`}
               width='1'
               height='1'
               style={{ display: 'none' }}
@@ -308,25 +289,8 @@ export const WelcomeEmail2025 = ({
 };
 
 WelcomeEmail2025.PreviewProps = {
-  formData: {
-    firstName: 'Jamie Christian',
-    lastName: 'Christian',
-    email: 'jmechristian@gmail.com',
-    companyName: '', // Note: this wasn't in the object but is required by interface
-    jobTitle: 'ssss',
-    phone: '(512) 289-3696',
-    attendeeType: 'OEM',
-    billingAddress: {
-      street: '1015 Atlantic Dr',
-      city: 'Stafford',
-      state: 'VA',
-      zip: '22554',
-    },
-    speedNetworking: false,
-  },
+  email: 'test@test.com',
   formDataId: '4e041c79-2aba-4198-a01b-8576cc58a1fd',
-  totalAmount: 0,
-  addOnsSelected: [], // Empty array since no add-ons were specified in the data
 };
 
 export default WelcomeEmail2025;
