@@ -37,8 +37,8 @@ export default async function handler(req, res) {
         ToAddresses: [
           toAddress,
           //   body.email,
-          //   'diana@packagingschool.com',
-          //   'bianca@packagingschool.com',
+          'lars@packagingschool.com',
+          'bianca@packagingschool.com',
         ],
       },
       Message: {
