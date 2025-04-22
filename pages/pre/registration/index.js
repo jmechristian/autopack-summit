@@ -22,6 +22,7 @@ import {
   addCodeUsage,
   sendStaffRegistrationConfirmation,
   sendCodeRequest,
+  checkForExistingRegistrant,
 } from '../../../util/api';
 import AddOnCard from '../../../components/registration/AddOnCard';
 // Initialize Stripe (put this outside the component)
@@ -261,9 +262,12 @@ const RegistrationForm = () => {
     );
   };
 
-  const validateStep = (stepToValidate) => {
+  const validateStep = async (stepToValidate) => {
     const newErrors = {};
     if (stepToValidate === 1) {
+      if (await checkForExistingRegistrant(formData.email)) {
+        newErrors.email = 'Email already registered';
+      }
       if (!formData.firstName) newErrors.firstName = 'First Name is required';
       if (!formData.lastName) newErrors.lastName = 'Last Name is required';
       if (!formData.email) newErrors.email = 'Email is required';
@@ -672,7 +676,7 @@ const RegistrationForm = () => {
                   {stepNumber}
                   {hasErrors && (
                     <ExclamationCircleIcon
-                      className='w-5 h-5 text-red-500 absolute -right-4 -top-1'
+                      className='w-8 h-8 text-red-500 absolute right-10 -top-1'
                       aria-hidden='true'
                     />
                   )}
