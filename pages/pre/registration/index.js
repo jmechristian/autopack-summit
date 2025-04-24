@@ -23,6 +23,7 @@ import {
   sendStaffRegistrationConfirmation,
   sendCodeRequest,
   checkForExistingRegistrant,
+  getSolutionProviderRegistrants,
 } from '../../../util/api';
 import AddOnCard from '../../../components/registration/AddOnCard';
 // Initialize Stripe (put this outside the component)
@@ -99,6 +100,8 @@ const RegistrationForm = () => {
   const [oldTotal, setOldTotal] = useState(0);
   const [discountCode, setDiscountCode] = useState('');
   const [clientSecret, setClientSecret] = useState(null);
+  const [paymentStatus, setPaymentStatus] = useState('idle');
+  const [paymentIntentId, setPaymentIntentId] = useState(null);
   const [companies, setCompanies] = useState([]);
   const [showAddCompanyModal, setShowAddCompanyModal] = useState(false);
   const [newCompanyName, setNewCompanyName] = useState('');
@@ -113,6 +116,9 @@ const RegistrationForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [codeRequestLoading, setCodeRequestLoading] = useState(false);
   const [codeRequestSent, setCodeRequestSent] = useState(false);
+  const [processing, setProcessing] = useState(false);
+  const [showPaymentForm, setShowPaymentForm] = useState(false);
+
   useEffect(() => {
     const fetchCompanies = async () => {
       const companies = await getAPSCompanies();
@@ -172,91 +178,159 @@ const RegistrationForm = () => {
       );
   }, [companies, companySearch]);
 
+  const initializePayment = async () => {
+    if (!validateStep(1) || !validateStep(2) || !validateBillingInfo()) {
+      return;
+    }
+
+    if (totalAmount === 0 && validateStep(3)) {
+      setStep(4);
+      return;
+    }
+
+    setProcessing(true);
+    try {
+      const response = await fetch('/api/handle-stripe-payment', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          amount: totalAmount,
+          currency: 'usd',
+          description: `APS Registration ${formData.lastName} -- ${formData.attendeeType}`,
+          metadata: {
+            firstName: formData.firstName,
+            lastName: formData.lastName,
+            attendeeType: formData.attendeeType,
+            email: formData.email,
+            phone: formData.phone,
+            companyName: formData.companyName,
+          },
+        }),
+      });
+      const data = await response.json();
+      setClientSecret(data.clientSecret);
+      setProcessing(false);
+    } catch (error) {
+      console.error('Error initializing payment:', error);
+      setProcessing(false);
+      setError('Failed to initialize payment. Please try again.');
+    }
+  };
+
   const PaymentForm = () => {
     const stripe = useStripe();
     const elements = useElements();
     const [error, setError] = useState(null);
-    const [processing, setProcessing] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const handlePaymentSubmit = async (e) => {
-      setIsLoading(true);
       e.preventDefault();
-      if (!stripe || !elements) return;
+      console.log('Payment submission started');
 
-      setProcessing(true);
-
-      const { error: submitError } = await elements.submit();
-      if (submitError) {
-        setError(submitError.message);
-        setProcessing(false);
-        setIsLoading(false);
+      if (!stripe || !elements) {
+        console.log('Stripe or Elements not ready:', { stripe, elements });
+        setError('Payment system is not ready. Please try again.');
         return;
       }
 
-      const result = await stripe.confirmPayment({
-        elements,
-        confirmParams: {
-          payment_method_data: {
-            billing_details: {
-              email: formData.email,
-              name: `${formData.firstName} ${formData.lastName}`,
+      setIsSubmitting(true);
+      setError(null);
+
+      try {
+        console.log('Submitting payment element...');
+        const { error: submitError } = await elements.submit();
+        if (submitError) {
+          console.log('Submit error:', submitError);
+          setError(submitError.message);
+          setIsSubmitting(false);
+          return;
+        }
+
+        console.log('Confirming payment...');
+        const result = await stripe.confirmPayment({
+          elements,
+          confirmParams: {
+            payment_method_data: {
+              billing_details: {
+                email: formData.email,
+                name: `${formData.firstName} ${formData.lastName}`,
+              },
             },
           },
-        },
-        redirect: 'if_required', // This prevents automatic redirect
-      });
+          redirect: 'if_required',
+        });
 
-      if (result.error) {
-        setError(result.error.message);
-      } else if (result.paymentIntent) {
-        formData.paymentConfirmation = result.paymentIntent.id;
-        const res = await createNewAPS25Registrant(formData);
-        setFormDataId(res.createAPSRegistrant2025.id);
-        await createAPS25Notification({
-          type: 'REGISTRATION_SENT',
-          activity:
-            formData.attendeeType +
-            ' Registration sent from ' +
-            formData.firstName +
-            ' ' +
-            formData.lastName,
-        });
-        await sendRegistrationConfirmation({
-          formData,
-          totalAmount,
-          formDataId: res.createAPSRegistrant2025.id,
-          addOnsSelected,
-        });
-        await sendStaffRegistrationConfirmation({
-          formData,
-          totalAmount,
-          formDataId: res.createAPSRegistrant2025.id,
-          addOnsSelected,
-        });
-        await createAPS25Notification({
-          type: 'REGISTRATION_EMAIL_SENT',
-          activity:
-            formData.attendeeType +
-            ' Registration email sent to ' +
-            formData.email,
-        });
-        setStep(4);
+        console.log('Payment confirmation result:', result);
+
+        if (result.error) {
+          console.log('Payment error:', result.error);
+          setError(result.error.message);
+          setIsSubmitting(false);
+        } else if (result.paymentIntent) {
+          console.log('Payment successful, creating registration...');
+          formData.paymentConfirmation = result.paymentIntent.id;
+
+          try {
+            const res = await createNewAPS25Registrant(formData);
+            console.log('Registration created:', res);
+            setFormDataId(res.createAPSRegistrant2025.id);
+
+            await Promise.all([
+              createAPS25Notification({
+                type: 'REGISTRATION_SENT',
+                activity: `${formData.attendeeType} Registration sent from ${formData.firstName} ${formData.lastName}`,
+              }),
+              sendRegistrationConfirmation({
+                formData,
+                totalAmount,
+                formDataId: res.createAPSRegistrant2025.id,
+                addOnsSelected,
+              }),
+              sendStaffRegistrationConfirmation({
+                formData,
+                totalAmount,
+                formDataId: res.createAPSRegistrant2025.id,
+                addOnsSelected,
+              }),
+              createAPS25Notification({
+                type: 'REGISTRATION_EMAIL_SENT',
+                activity: `${formData.attendeeType} Registration email sent to ${formData.email}`,
+              }),
+            ]);
+
+            console.log('Registration completed, moving to step 4');
+            setStep(4);
+          } catch (err) {
+            console.error('Registration error:', err);
+            setError(
+              'Registration created but there was an error sending notifications. Please contact support.'
+            );
+            setIsSubmitting(false);
+          }
+        }
+      } catch (err) {
+        console.error('Unexpected error:', err);
+        setError(
+          'An unexpected error occurred. Please try again or contact support.'
+        );
+        setIsSubmitting(false);
       }
-
-      setProcessing(false);
-      setIsLoading(false);
     };
 
     return (
       <form onSubmit={handlePaymentSubmit}>
         <PaymentElement />
-        {error && <div className='text-red-500 mt-2'>{error}</div>}
+        {error && (
+          <div className='text-red-500 mt-2 p-2 bg-red-50 rounded'>{error}</div>
+        )}
         <button
           type='submit'
-          disabled={!stripe}
+          disabled={!stripe || !elements || isSubmitting}
           className='mt-4 w-full bg-blue-600 text-white py-2 px-4 rounded disabled:opacity-50'
         >
-          {processing ? 'Processing...' : `Pay $${totalAmount}`}
+          {isSubmitting ? 'Processing...' : `Pay $${totalAmount}`}
         </button>
       </form>
     );
@@ -267,6 +341,13 @@ const RegistrationForm = () => {
     if (stepToValidate === 1) {
       if (await checkForExistingRegistrant(formData.email)) {
         newErrors.email = 'Email already registered';
+      }
+      if (formData.attendeeType === 'Solution Provider') {
+        const registrants = await getSolutionProviderRegistrants(
+          formData.aPSRegistrant2025CompanyNameId
+        );
+        if (registrants >= 2)
+          newErrors.email = 'Company already has 2 registrants';
       }
       if (!formData.firstName) newErrors.firstName = 'First Name is required';
       if (!formData.lastName) newErrors.lastName = 'Last Name is required';
@@ -479,40 +560,6 @@ const RegistrationForm = () => {
       return false;
     }
     return true;
-  };
-
-  const handlePaymentSubmit = async () => {
-    // Check all previous steps are valid
-    if (!validateStep(1) || !validateStep(2) || !validateBillingInfo()) {
-      return;
-    }
-
-    if (totalAmount === 0 && validateStep(3)) {
-      setStep(4);
-      return;
-    } else {
-      const response = await fetch('/api/handle-stripe-payment', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          amount: totalAmount,
-          currency: 'usd',
-          description: `APS Registration ${formData.lastName} -- ${formData.attendeeType}`,
-          metadata: {
-            firstName: formData.firstName,
-            lastName: formData.lastName,
-            attendeeType: formData.attendeeType,
-            email: formData.email,
-            phone: formData.phone,
-            companyName: formData.companyName,
-          },
-        }),
-      });
-      const data = await response.json();
-      setClientSecret(data.clientSecret);
-    }
   };
 
   const handleFreeRegistration = async () => {
@@ -1379,7 +1426,7 @@ const RegistrationForm = () => {
                       >
                         {codeRequestLoading && (
                           //animated spinner
-                          <div className='animate-spin rounded-full h-4 w-4 border-b-2 border-t-2 border-gray-900'></div>
+                          <div className='animate-spin rounded-full h-4 w-4 border-b-2 border-gray-900'></div>
                         )}
                         {codeRequestSent && (
                           <div className='text-green-600'>
@@ -1495,20 +1542,34 @@ const RegistrationForm = () => {
                     {clientSecret ? (
                       <Elements
                         stripe={stripePromise}
-                        options={{ clientSecret }}
+                        options={{
+                          clientSecret,
+                          appearance: {
+                            theme: 'stripe',
+                            variables: {
+                              colorPrimary: '#2563eb',
+                            },
+                          },
+                        }}
                       >
-                        <PaymentForm />
+                        <div className='min-h-[200px]'>
+                          <PaymentForm />
+                        </div>
                       </Elements>
                     ) : (
                       <div>
                         <button
-                          onClick={handlePaymentSubmit}
-                          disabled={Object.keys(errors).some((key) =>
-                            key.startsWith('billing')
-                          )}
+                          onClick={initializePayment}
+                          disabled={
+                            Object.keys(errors).some((key) =>
+                              key.startsWith('billing')
+                            ) || processing
+                          }
                           className='px-4 py-3 font-bold bg-blue-500 text-white rounded hover:bg-blue-600 mt-2 w-full disabled:opacity-50 disabled:cursor-not-allowed'
                         >
-                          Pays ${totalAmount}
+                          {processing
+                            ? 'Initializing...'
+                            : `Pay $${totalAmount}`}
                         </button>
                       </div>
                     )}

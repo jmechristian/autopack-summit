@@ -26,6 +26,7 @@ import {
   listAPSCode2025s,
   aPSCodeRequest25sByEmail,
   aPSRegistrant2025sByEmail,
+  getAPSCompany,
 } from '../src/graphql/queries';
 
 Amplify.configure({ ...awsExports, ssr: true });
@@ -828,4 +829,13 @@ export const checkForExistingRegistrant = async (email) => {
     return true;
   }
   return false;
+};
+
+export const getSolutionProviderRegistrants = async (id) => {
+  const res = await API.graphql({
+    query: getAPSCompany,
+    variables: { id: id },
+  });
+
+  return res.data.getAPSCompany.apsRegistrants.items.length;
 };
