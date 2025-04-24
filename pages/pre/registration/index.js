@@ -24,6 +24,7 @@ import {
   sendCodeRequest,
   checkForExistingRegistrant,
   getSolutionProviderRegistrants,
+  checkCodeUsage,
 } from '../../../util/api';
 import AddOnCard from '../../../components/registration/AddOnCard';
 // Initialize Stripe (put this outside the component)
@@ -513,11 +514,16 @@ const RegistrationForm = () => {
     setDiscountCode(e.target.value);
   };
 
-  const handleApplyDiscount = () => {
+  const handleApplyDiscount = async () => {
     const matchingCode = codes.find(
       (code) => code.code.toLowerCase() === discountCode.toLowerCase()
     );
     if (matchingCode) {
+      const isCodeUsed = await checkCodeUsage(matchingCode.id);
+      if (isCodeUsed) {
+        setDiscountCodeError('Code has reached max usage.');
+        return;
+      }
       setFormData((prev) => ({
         ...prev,
         totalAmount: 0,
@@ -1416,7 +1422,7 @@ const RegistrationForm = () => {
                       Apply Discount
                     </button>
                     {discountCodeError && (
-                      <p className='text-red-500 text-sm'>
+                      <p className='text-red-500 text-sm text-center mt-2'>
                         {discountCodeError}
                       </p>
                     )}

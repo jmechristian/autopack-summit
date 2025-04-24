@@ -27,6 +27,7 @@ import {
   aPSCodeRequest25sByEmail,
   aPSRegistrant2025sByEmail,
   getAPSCompany,
+  getAPSCode2025,
 } from '../src/graphql/queries';
 
 Amplify.configure({ ...awsExports, ssr: true });
@@ -838,4 +839,16 @@ export const getSolutionProviderRegistrants = async (id) => {
   });
 
   return res.data.getAPSCompany.apsRegistrants.items.length;
+};
+
+export const checkCodeUsage = async (id) => {
+  const res = await API.graphql({
+    query: getAPSCode2025,
+    variables: { id: id },
+  });
+
+  if (res.data.getAPSCode2025.used >= res.data.getAPSCode2025.limit) {
+    return true;
+  }
+  return false;
 };
