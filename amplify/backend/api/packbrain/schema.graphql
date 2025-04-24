@@ -103,6 +103,8 @@ type CertificateObject @model @auth(rules: [{ allow: public }]) {
   howText: String
   deadline: String
   sessions: [CMPMSession] @hasMany
+  status: String @default(value: "DRAFT")
+  displayOrder: Int
 }
 
 type Course @model @auth(rules: [{ allow: public }]) {
@@ -373,7 +375,7 @@ type APSRegistrant2025 @model @auth(rules: [{ allow: public }]) {
 }
 
 type APSCode2025 @model @auth(rules: [{ allow: public }]) {
-  code: String!
+  code: String! @index(name: "apsCode2025ByCode")
   limit: Int!
   used: Int!
   discount: Int!
@@ -552,6 +554,20 @@ type User @model @auth(rules: [{ allow: public }]) {
   allAccessEndDate: String
   lessonsCompleted: [Lesson] @manyToMany(relationName: "userCompletedLessons")
   learningPaths: [LearningPath] @manyToMany(relationName: "LearningPathUsers")
+  userXp: UserXp @hasOne
+}
+
+type UserXp @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  user: User @belongsTo
+  totalXp: Int
+  thinkificXp: Int
+  psXp: Int
+  level: Int
+  xpToNextLevel: Int
+  lastLogin: String
+  dailyStreak: Int
+  progress: Float
 }
 
 type Cohort @model @auth(rules: [{ allow: public }]) {
@@ -576,11 +592,13 @@ type LearningPath @model @auth(rules: [{ allow: public }]) {
   displayOrder: Int
   hours: Int
   slug: String! @index(name: "learningPathBySlug")
+  status: String @default(value: "DRAFT")
 }
 
 type LearningPathCourse @model @auth(rules: [{ allow: public }]) {
   id: ID!
   courseId: String
+  course: LMSCourse @belongsTo
   learningPath: LearningPath @belongsTo
   order: Int
   thinkificId: String
@@ -729,6 +747,7 @@ type LMSCirriculum @model @auth(rules: [{ allow: public }]) {
 type LMSCourse @model @auth(rules: [{ allow: public }]) {
   id: ID!
   thinkificId: String! @index(name: "LMSCourseByThinkificId")
+  learningPaths: [LearningPathCourse] @hasMany
   courseId: String
   category: CategoryType @default(value: "MATERIALS")
   categoryArray: [String]
@@ -760,6 +779,7 @@ type LMSCourse @model @auth(rules: [{ allow: public }]) {
   subscriptionPrice: String
   stripeLink: String
   callout: String
+  achievements: [Achievement] @manyToMany(relationName: "AchievementCourses")
 }
 
 type LMSLesson @model @auth(rules: [{ allow: public }]) {
@@ -1261,7 +1281,7 @@ type Achievement @model @auth(rules: [{ allow: public }]) {
   title: String
   description: String
   image: String
-  courses: [String]
+  courses: [LMSCourse] @manyToMany(relationName: "AchievementCourses")
   coursesRequired: Int
   users: [User] @manyToMany(relationName: "AchievementUsers")
 }
