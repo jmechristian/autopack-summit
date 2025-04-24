@@ -342,7 +342,7 @@ const RegistrationForm = () => {
       if (await checkForExistingRegistrant(formData.email)) {
         newErrors.email = 'Email already registered';
       }
-      if (formData.attendeeType === 'Solution Provider') {
+      if (formData.attendeeType === 'Solution-Provider') {
         const registrants = await getSolutionProviderRegistrants(
           formData.aPSRegistrant2025CompanyNameId
         );
@@ -388,8 +388,9 @@ const RegistrationForm = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleNext = () => {
-    if (validateStep(step)) {
+  const handleNext = async () => {
+    const isValid = await validateStep(step);
+    if (isValid) {
       setCompletedSteps((prev) => ({ ...prev, [step]: true }));
       setStep((prevStep) => prevStep + 1);
     }
