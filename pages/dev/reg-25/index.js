@@ -10,7 +10,11 @@ import {
   useElements,
   PaymentElement,
 } from '@stripe/react-stripe-js';
-import { ExclamationCircleIcon, PlusIcon } from '@heroicons/react/24/solid';
+import {
+  ExclamationCircleIcon,
+  PlusIcon,
+  XCircleIcon,
+} from '@heroicons/react/24/solid';
 import {
   getAPSCompanies,
   createCompany,
@@ -22,6 +26,9 @@ import {
   addCodeUsage,
   sendStaffRegistrationConfirmation,
   sendCodeRequest,
+  checkForExistingRegistrant,
+  getSolutionProviderRegistrants,
+  checkCodeUsage,
 } from '../../../util/api';
 import AddOnCard from '../../../components/registration/AddOnCard';
 // Initialize Stripe (put this outside the component)
@@ -98,6 +105,8 @@ const RegistrationForm = () => {
   const [oldTotal, setOldTotal] = useState(0);
   const [discountCode, setDiscountCode] = useState('');
   const [clientSecret, setClientSecret] = useState(null);
+  const [paymentStatus, setPaymentStatus] = useState('idle');
+  const [paymentIntentId, setPaymentIntentId] = useState(null);
   const [companies, setCompanies] = useState([]);
   const [showAddCompanyModal, setShowAddCompanyModal] = useState(false);
   const [newCompanyName, setNewCompanyName] = useState('');
@@ -112,6 +121,13 @@ const RegistrationForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [codeRequestLoading, setCodeRequestLoading] = useState(false);
   const [codeRequestSent, setCodeRequestSent] = useState(false);
+  const [processing, setProcessing] = useState(false);
+  const [showPaymentForm, setShowPaymentForm] = useState(false);
+  const [previousCompanyRegistrants, setPreviousCompanyRegistrants] = useState(
+    []
+  );
+  const [ticketQuantity, setTicketQuantity] = useState(1);
+
   useEffect(() => {
     const fetchCompanies = async () => {
       const companies = await getAPSCompanies();
@@ -142,19 +158,68 @@ const RegistrationForm = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  const calculateSolutionProviderPrice = (previousRegistrantsCount) => {
+    switch (previousRegistrantsCount) {
+      case 0:
+        return 1015; // First ticket: $1,015
+      case 1:
+        return 3015; // Second ticket: $1,015 + $2,000
+      case 2:
+        return 6015; // Third ticket: $1,015 + $2,000 + $3,000
+      default:
+        return 0; // No more tickets allowed
+    }
+  };
+
+  const calculateSolutionProviderTotal = (
+    previousRegistrantsCount,
+    currentTicketQuantity
+  ) => {
+    let total = 0;
+    // Start from the next ticket after previous registrants
+    for (
+      let i = previousRegistrantsCount;
+      i < previousRegistrantsCount + currentTicketQuantity;
+      i++
+    ) {
+      switch (i) {
+        case 0:
+          total += 1015; // First ticket
+          break;
+        case 1:
+          total += 2000 + 1015; // Second ticket
+          break;
+        case 2:
+          total += 3000 + 2000 + 1015; // Third ticket
+          break;
+        default:
+          total += 0;
+      }
+    }
+    return total;
+  };
+
   const totalAmount = useMemo(() => {
     if (formData.discountCode) {
       return 0;
     }
 
-    if (formData.attendeeType === 'Solution Provider') {
-      return 1015;
+    if (formData.attendeeType === 'Solution-Provider') {
+      return calculateSolutionProviderTotal(
+        previousCompanyRegistrants.length,
+        ticketQuantity
+      );
     } else if (formData.attendeeType === 'Sponsor') {
       return 799;
     } else {
       return 1015;
     }
-  }, [formData.attendeeType, formData.discountCode]);
+  }, [
+    formData.attendeeType,
+    formData.discountCode,
+    previousCompanyRegistrants.length,
+    ticketQuantity,
+  ]);
 
   useEffect(() => {
     setFormData((prev) => ({
@@ -171,99 +236,178 @@ const RegistrationForm = () => {
       );
   }, [companies, companySearch]);
 
+  const initializePayment = async () => {
+    if (!validateStep(1) || !validateStep(2) || !validateBillingInfo()) {
+      return;
+    }
+
+    if (totalAmount === 0 && validateStep(3)) {
+      setStep(4);
+      return;
+    }
+
+    setProcessing(true);
+    try {
+      const response = await fetch('/api/handle-stripe-payment', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          amount: totalAmount,
+          currency: 'usd',
+          description: `APS Registration ${formData.lastName} -- ${formData.attendeeType}`,
+          metadata: {
+            firstName: formData.firstName,
+            lastName: formData.lastName,
+            attendeeType: formData.attendeeType,
+            email: formData.email,
+            phone: formData.phone,
+            companyName: formData.companyName,
+          },
+        }),
+      });
+      const data = await response.json();
+      setClientSecret(data.clientSecret);
+      setProcessing(false);
+    } catch (error) {
+      console.error('Error initializing payment:', error);
+      setProcessing(false);
+      setError('Failed to initialize payment. Please try again.');
+    }
+  };
+
   const PaymentForm = () => {
     const stripe = useStripe();
     const elements = useElements();
     const [error, setError] = useState(null);
-    const [processing, setProcessing] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const handlePaymentSubmit = async (e) => {
-      setIsLoading(true);
       e.preventDefault();
-      if (!stripe || !elements) return;
+      console.log('Payment submission started');
 
-      setProcessing(true);
-
-      const { error: submitError } = await elements.submit();
-      if (submitError) {
-        setError(submitError.message);
-        setProcessing(false);
-        setIsLoading(false);
+      if (!stripe || !elements) {
+        console.log('Stripe or Elements not ready:', { stripe, elements });
+        setError('Payment system is not ready. Please try again.');
         return;
       }
 
-      const result = await stripe.confirmPayment({
-        elements,
-        confirmParams: {
-          payment_method_data: {
-            billing_details: {
-              email: formData.email,
-              name: `${formData.firstName} ${formData.lastName}`,
+      setIsSubmitting(true);
+      setError(null);
+
+      try {
+        console.log('Submitting payment element...');
+        const { error: submitError } = await elements.submit();
+        if (submitError) {
+          console.log('Submit error:', submitError);
+          setError(submitError.message);
+          setIsSubmitting(false);
+          return;
+        }
+
+        console.log('Confirming payment...');
+        const result = await stripe.confirmPayment({
+          elements,
+          confirmParams: {
+            payment_method_data: {
+              billing_details: {
+                email: formData.email,
+                name: `${formData.firstName} ${formData.lastName}`,
+              },
             },
           },
-        },
-        redirect: 'if_required', // This prevents automatic redirect
-      });
+          redirect: 'if_required',
+        });
 
-      if (result.error) {
-        setError(result.error.message);
-      } else if (result.paymentIntent) {
-        formData.paymentConfirmation = result.paymentIntent.id;
-        const res = await createNewAPS25Registrant(formData);
-        setFormDataId(res.createAPSRegistrant2025.id);
-        await createAPS25Notification({
-          type: 'REGISTRATION_SENT',
-          activity:
-            formData.attendeeType +
-            ' Registration sent from ' +
-            formData.firstName +
-            ' ' +
-            formData.lastName,
-        });
-        await sendRegistrationConfirmation({
-          formData,
-          totalAmount,
-          formDataId: res.createAPSRegistrant2025.id,
-          addOnsSelected,
-        });
-        await sendStaffRegistrationConfirmation({
-          formData,
-          totalAmount,
-          formDataId: res.createAPSRegistrant2025.id,
-          addOnsSelected,
-        });
-        await createAPS25Notification({
-          type: 'REGISTRATION_EMAIL_SENT',
-          activity:
-            formData.attendeeType +
-            ' Registration email sent to ' +
-            formData.email,
-        });
-        setStep(4);
+        console.log('Payment confirmation result:', result);
+
+        if (result.error) {
+          console.log('Payment error:', result.error);
+          setError(result.error.message);
+          setIsSubmitting(false);
+        } else if (result.paymentIntent) {
+          console.log('Payment successful, creating registration...');
+          formData.paymentConfirmation = result.paymentIntent.id;
+
+          try {
+            const res = await createNewAPS25Registrant(formData);
+            setFormDataId(res.createAPSRegistrant2025.id);
+
+            await Promise.all([
+              createAPS25Notification({
+                type: 'REGISTRATION_SENT',
+                activity: `${formData.attendeeType} Registration sent from ${formData.firstName} ${formData.lastName}`,
+              }),
+              sendRegistrationConfirmation({
+                formData,
+                totalAmount,
+                formDataId: res.createAPSRegistrant2025.id,
+                addOnsSelected,
+              }),
+              sendStaffRegistrationConfirmation({
+                formData,
+                totalAmount,
+                formDataId: res.createAPSRegistrant2025.id,
+                addOnsSelected,
+              }),
+              createAPS25Notification({
+                type: 'REGISTRATION_EMAIL_SENT',
+                activity: `${formData.attendeeType} Registration email sent to ${formData.email}`,
+              }),
+            ]);
+
+            console.log('Registration completed, moving to step 4');
+            setStep(4);
+          } catch (err) {
+            console.error('Registration error:', err);
+            setError(
+              'Registration created but there was an error sending notifications. Please contact support.'
+            );
+            setIsSubmitting(false);
+          }
+        }
+      } catch (err) {
+        console.error('Unexpected error:', err);
+        setError(
+          'An unexpected error occurred. Please try again or contact support.'
+        );
+        setIsSubmitting(false);
       }
-
-      setProcessing(false);
-      setIsLoading(false);
     };
 
     return (
       <form onSubmit={handlePaymentSubmit}>
         <PaymentElement />
-        {error && <div className='text-red-500 mt-2'>{error}</div>}
+        {error && (
+          <div className='text-red-500 mt-2 p-2 bg-red-50 rounded'>{error}</div>
+        )}
         <button
           type='submit'
-          disabled={!stripe}
+          disabled={!stripe || !elements || isSubmitting}
           className='mt-4 w-full bg-blue-600 text-white py-2 px-4 rounded disabled:opacity-50'
         >
-          {processing ? 'Processing...' : `Pay $${totalAmount}`}
+          {isSubmitting ? 'Processing...' : `Pay $${totalAmount}`}
         </button>
       </form>
     );
   };
 
-  const validateStep = (stepToValidate) => {
+  const validateStep = async (stepToValidate) => {
     const newErrors = {};
     if (stepToValidate === 1) {
+      if (await checkForExistingRegistrant(formData.email)) {
+        newErrors.email = 'Email already registered';
+      }
+      if (formData.attendeeType === 'Solution-Provider') {
+        const registrants = await getSolutionProviderRegistrants(
+          formData.aPSRegistrant2025CompanyNameId
+        );
+        setPreviousCompanyRegistrants(registrants);
+        console.log('registrants', registrants);
+        if (registrants.length >= 3)
+          newErrors.email = 'Company has MAX registrants';
+      }
       if (!formData.firstName) newErrors.firstName = 'First Name is required';
       if (!formData.lastName) newErrors.lastName = 'Last Name is required';
       if (!formData.email) newErrors.email = 'Email is required';
@@ -303,8 +447,9 @@ const RegistrationForm = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleNext = () => {
-    if (validateStep(step)) {
+  const handleNext = async () => {
+    const isValid = await validateStep(step);
+    if (isValid) {
       setCompletedSteps((prev) => ({ ...prev, [step]: true }));
       setStep((prevStep) => prevStep + 1);
     }
@@ -427,11 +572,16 @@ const RegistrationForm = () => {
     setDiscountCode(e.target.value);
   };
 
-  const handleApplyDiscount = () => {
+  const handleApplyDiscount = async () => {
     const matchingCode = codes.find(
       (code) => code.code.toLowerCase() === discountCode.toLowerCase()
     );
     if (matchingCode) {
+      const isCodeUsed = await checkCodeUsage(matchingCode.id);
+      if (isCodeUsed) {
+        setDiscountCodeError('Code has reached max usage.');
+        return;
+      }
       setFormData((prev) => ({
         ...prev,
         totalAmount: 0,
@@ -475,40 +625,6 @@ const RegistrationForm = () => {
       return false;
     }
     return true;
-  };
-
-  const handlePaymentSubmit = async () => {
-    // Check all previous steps are valid
-    if (!validateStep(1) || !validateStep(2) || !validateBillingInfo()) {
-      return;
-    }
-
-    if (totalAmount === 0 && validateStep(3)) {
-      setStep(4);
-      return;
-    } else {
-      const response = await fetch('/api/handle-stripe-payment', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          amount: totalAmount,
-          currency: 'usd',
-          description: `APS Registration ${formData.lastName} -- ${formData.attendeeType}`,
-          metadata: {
-            firstName: formData.firstName,
-            lastName: formData.lastName,
-            attendeeType: formData.attendeeType,
-            email: formData.email,
-            phone: formData.phone,
-            companyName: formData.companyName,
-          },
-        }),
-      });
-      const data = await response.json();
-      setClientSecret(data.clientSecret);
-    }
   };
 
   const handleFreeRegistration = async () => {
@@ -672,7 +788,7 @@ const RegistrationForm = () => {
                   {stepNumber}
                   {hasErrors && (
                     <ExclamationCircleIcon
-                      className='w-5 h-5 text-red-500 absolute -right-4 -top-1'
+                      className='w-8 h-8 text-red-500 absolute right-10 -top-1'
                       aria-hidden='true'
                     />
                   )}
@@ -1070,7 +1186,7 @@ const RegistrationForm = () => {
       case 3:
         return (
           <div className='w-full border border-gray-300 p-5'>
-            <div className='grid lg:grid-cols-5 gap-10'>
+            <div className='grid lg:grid-cols-5 gap-5'>
               <div className='flex flex-col gap-5 col-span-3 w-full p-5'>
                 <h3 className='text-lg font-bold'>Billing Information</h3>
 
@@ -1364,7 +1480,7 @@ const RegistrationForm = () => {
                       Apply Discount
                     </button>
                     {discountCodeError && (
-                      <p className='text-red-500 text-sm'>
+                      <p className='text-red-500 text-sm text-center mt-2'>
                         {discountCodeError}
                       </p>
                     )}
@@ -1375,7 +1491,7 @@ const RegistrationForm = () => {
                       >
                         {codeRequestLoading && (
                           //animated spinner
-                          <div className='animate-spin rounded-full h-4 w-4 border-b-2 border-t-2 border-gray-900'></div>
+                          <div className='animate-spin rounded-full h-4 w-4 border-b-2 border-gray-900'></div>
                         )}
                         {codeRequestSent && (
                           <div className='text-green-600'>
@@ -1399,12 +1515,16 @@ const RegistrationForm = () => {
                 <div className='flex flex-col gap-1 pt-6 border-t border-gray-300'>
                   <h4 className='font-bold mb-2'>Order Summary</h4>
                   {formData.attendeeType === 'Solution-Provider' && (
-                    <div className='text-sm text-gray-600 mb-4'>
-                      Note: Solution Provider tickets are limited to three per
-                      company, with tiered pricing for the second and third
-                      tickets. If you are interested in bringing additional team
-                      members, please inquire about our sponsorship
-                      opportunities.
+                    <div className=' text-gray-700 mb-4'>
+                      <strong>Note:</strong> Solution Provider tickets are
+                      limited to <strong>three per company</strong>, with tiered
+                      pricing for the second and third tickets. If you are
+                      interested in bringing additional team members, please
+                      inquire about our{' '}
+                      <span className='underline cursor-pointer text-ap-blue'>
+                        sponsorship opportunities
+                      </span>
+                      .
                     </div>
                   )}
                   <div className='flex justify-between bg-gray-300 p-2 rounded text-sm'>
@@ -1413,53 +1533,194 @@ const RegistrationForm = () => {
                     <span>Total</span>
                   </div>
                   {/* Example ticket item */}
-                  <div className='flex flex-col gap-2'>
-                    <div className='flex justify-between px-2 border-b border-gray-300 pb-2'>
-                      <span>General Admission</span>
-                      <span>1</span>
-                      {formData.discountCode ? (
-                        <div className='flex gap-2'>
-                          <span className='line-through text-gray-500'>
-                            ${oldTotal}
-                          </span>{' '}
-                          <span>${totalAmount}</span>
-                        </div>
-                      ) : (
-                        <span>${totalAmount}</span>
-                      )}
-                    </div>
-                    <div className='flex flex-col gap-1'>
-                      <div className='pl-6 font-bold text-sm'>Addons:</div>
-                      {addOnsSelected.length > 0 ? (
-                        addOnsSelected.map((addon) => (
-                          <div
-                            key={addon.id}
-                            className='flex justify-between pl-6'
-                          >
-                            <span className='text-sm'>{addon.title}</span>
-                            <span className='text-gray-700 text-sm'>
-                              PENDING
+                  {formData.attendeeType === 'Solution-Provider' &&
+                  previousCompanyRegistrants.length > 0 ? (
+                    <div className='flex flex-col gap-2 mt-2'>
+                      <div className='text-sm font-bold w-full border-b border-gray-300 pb-2'>
+                        Previous Company Registrations:{' '}
+                        {previousCompanyRegistrants.length}
+                      </div>
+                      {previousCompanyRegistrants.map((registrant, index) => (
+                        <div className='flex justify-between px-2 border-b border-gray-300 pb-2 text-sm'>
+                          <div className='flex gap-1 w-[200px] text-gray-400'>
+                            <span>General Admission</span>
+                            <span className='text-white bg-gray-400 px-1 rounded text-xs flex items-center'>
+                              {formatDate(registrant.createdAt)}
                             </span>
                           </div>
-                        ))
-                      ) : (
-                        <div className='flex items-center pl-6 gap-2'>
-                          <button
-                            onClick={() => setStep(2)}
-                            className='text-gray-700'
+                          <span className='text-gray-400'>1</span>
+                          <span className='text-gray-400'>
+                            ${calculateSolutionProviderPrice(index)}
+                          </span>
+                        </div>
+                      ))}
+                      {Array.from({ length: ticketQuantity }).map(
+                        (_, index) => (
+                          <div
+                            key={index}
+                            className='flex justify-between px-2 border-b border-gray-300 pb-2 '
                           >
-                            <PlusIcon className='w-4 h-4' />
-                          </button>
-                          <div className=' text-sm text-gray-700'>
-                            No addons selected, would you like to add one?
+                            <div className='flex items-center gap-2 w-[210px]'>
+                              <div
+                                className='text-red-500 cursor-pointer'
+                                onClick={() =>
+                                  setTicketQuantity(ticketQuantity - 1)
+                                }
+                              >
+                                <XCircleIcon className='w-6 h-6' />
+                              </div>
+                              <span>General Admission</span>
+                            </div>
+                            <span>1</span>
+                            {formData.discountCode ? (
+                              <div className='flex gap-2'>
+                                <span className='line-through text-gray-500'>
+                                  ${oldTotal}
+                                </span>{' '}
+                                <span>${totalAmount}</span>
+                              </div>
+                            ) : (
+                              <span>
+                                $
+                                {calculateSolutionProviderPrice(
+                                  previousCompanyRegistrants.length + index
+                                )}
+                              </span>
+                            )}
+                          </div>
+                        )
+                      )}
+
+                      <div className='flex flex-col gap-1'>
+                        <div className='pl-6 font-bold text-sm'>Addons:</div>
+                        {addOnsSelected.length > 0 ? (
+                          addOnsSelected.map((addon) => (
+                            <div
+                              key={addon.id}
+                              className='flex justify-between pl-6'
+                            >
+                              <span className='text-sm'>{addon.title}</span>
+                              <span className='text-gray-700 text-sm'>
+                                PENDING
+                              </span>
+                            </div>
+                          ))
+                        ) : (
+                          <div className='flex items-center pl-6 gap-2'>
+                            <button
+                              onClick={() => setStep(2)}
+                              className='text-gray-700'
+                            >
+                              <PlusIcon className='w-4 h-4' />
+                            </button>
+                            <div className=' text-sm text-gray-700'>
+                              No addons selected, would you like to add one?
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                      {previousCompanyRegistrants.length + ticketQuantity <
+                        3 && (
+                        <div
+                          className='flex w-full mt-3 bg-gray-400 py-2 px-4 rounded cursor-pointer hover:bg-gray-500 transition-colors'
+                          onClick={() => setTicketQuantity(ticketQuantity + 1)}
+                        >
+                          <div className='flex gap-2 text-gray-100 text-sm font-semibold items-center '>
+                            <div className='bg-gray-100 rounded-full p-1 flex items-center justify-center'>
+                              <PlusIcon className='w-4 h-4 text-gray-800' />
+                            </div>
+                            <div>Add New Ticket</div>
                           </div>
                         </div>
                       )}
                     </div>
-                  </div>
+                  ) : (
+                    <div className='flex flex-col gap-2'>
+                      {/* TICKET ITEM */}
+                      {Array.from({ length: ticketQuantity }).map(
+                        (_, index) => (
+                          <div
+                            key={index}
+                            className='flex justify-between px-2 border-b border-gray-300 pb-2'
+                          >
+                            <div className='flex items-center gap-2'>
+                              <div
+                                className='text-red-500 cursor-pointer'
+                                onClick={() =>
+                                  setTicketQuantity(ticketQuantity - 1)
+                                }
+                              >
+                                <XCircleIcon className='w-6 h-6' />
+                              </div>
+                              <span>General Admission</span>
+                            </div>
+                            <span>1</span>
+                            {formData.discountCode ? (
+                              <div className='flex gap-2'>
+                                <span className='line-through text-gray-500'>
+                                  ${oldTotal}
+                                </span>{' '}
+                                <span>${totalAmount}</span>
+                              </div>
+                            ) : (
+                              <span>
+                                ${calculateSolutionProviderPrice(index)}
+                              </span>
+                            )}
+                          </div>
+                        )
+                      )}
+                      <div className='flex flex-col gap-1'>
+                        <div className='pl-6 font-bold text-sm'>Addons:</div>
+                        {addOnsSelected.length > 0 ? (
+                          addOnsSelected.map((addon) => (
+                            <div
+                              key={addon.id}
+                              className='flex justify-between pl-6'
+                            >
+                              <span className='text-sm'>{addon.title}</span>
+                              <span className='text-gray-700 text-sm'>
+                                PENDING
+                              </span>
+                            </div>
+                          ))
+                        ) : (
+                          <div className='flex items-center pl-6 gap-2'>
+                            <button
+                              onClick={() => setStep(2)}
+                              className='text-gray-700'
+                            >
+                              <PlusIcon className='w-4 h-4' />
+                            </button>
+                            <div className=' text-sm text-gray-700'>
+                              No addons selected, would you like to add one?
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                      {/* ADD TICKET BUTTON */}
+                      {formData.attendeeType === 'Solution-Provider' &&
+                        previousCompanyRegistrants.length + ticketQuantity <
+                          3 && (
+                          <div
+                            className='flex w-full mt-3 bg-gray-400 py-2 px-4 rounded cursor-pointer hover:bg-gray-500 transition-colors'
+                            onClick={() =>
+                              setTicketQuantity(ticketQuantity + 1)
+                            }
+                          >
+                            <div className='flex gap-2 text-gray-100 text-sm font-semibold items-center '>
+                              <div className='bg-gray-100 rounded-full p-1 flex items-center justify-center'>
+                                <PlusIcon className='w-4 h-4 text-gray-800' />
+                              </div>
+                              <div>Add New Ticket</div>
+                            </div>
+                          </div>
+                        )}
+                    </div>
+                  )}
                   {/* Add more ticket items as needed */}
                 </div>
-                <div className='flex justify-between mt-4 font-bold bg-black text-white p-2 rounded'>
+                <div className='flex justify-between font-bold bg-black text-white p-2 rounded mt-2'>
                   <span>Total</span>
                   {formData.discountCode ? (
                     <div className='flex gap-2'>
@@ -1491,20 +1752,34 @@ const RegistrationForm = () => {
                     {clientSecret ? (
                       <Elements
                         stripe={stripePromise}
-                        options={{ clientSecret }}
+                        options={{
+                          clientSecret,
+                          appearance: {
+                            theme: 'stripe',
+                            variables: {
+                              colorPrimary: '#2563eb',
+                            },
+                          },
+                        }}
                       >
-                        <PaymentForm />
+                        <div className='min-h-[200px]'>
+                          <PaymentForm />
+                        </div>
                       </Elements>
                     ) : (
                       <div>
                         <button
-                          onClick={handlePaymentSubmit}
-                          disabled={Object.keys(errors).some((key) =>
-                            key.startsWith('billing')
-                          )}
+                          onClick={initializePayment}
+                          disabled={
+                            Object.keys(errors).some((key) =>
+                              key.startsWith('billing')
+                            ) || processing
+                          }
                           className='px-4 py-3 font-bold bg-blue-500 text-white rounded hover:bg-blue-600 mt-2 w-full disabled:opacity-50 disabled:cursor-not-allowed'
                         >
-                          Pays ${totalAmount}
+                          {processing
+                            ? 'Initializing...'
+                            : `Pay $${totalAmount}`}
                         </button>
                       </div>
                     )}
@@ -1614,7 +1889,7 @@ const RegistrationForm = () => {
                   <div className='flex flex-col gap-2'>
                     <div className='flex justify-between px-2 border-b border-gray-300 pb-2'>
                       <span>General Admission</span>
-                      <span>1</span>
+                      <span>{ticketQuantity}</span>
                       {formData.discountCode ? (
                         <div className='flex gap-2'>
                           <span className='line-through text-gray-500'>
@@ -1693,6 +1968,14 @@ const RegistrationForm = () => {
     );
     setCodeRequestLoading(false);
     setCodeRequestSent(true);
+  };
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = String(date.getFullYear()).slice(-2);
+    return `${month}/${day}/${year}`;
   };
 
   return (

@@ -838,7 +838,7 @@ export const getSolutionProviderRegistrants = async (id) => {
     variables: { id: id },
   });
 
-  return res.data.getAPSCompany.apsRegistrants.items.length;
+  return res.data.getAPSCompany.apsRegistrants.items;
 };
 
 export const checkCodeUsage = async (id) => {
