@@ -38,6 +38,7 @@ const stripePromise = loadStripe(
 
 const RegistrationForm = () => {
   const router = useRouter();
+  const [isTestMode, setIsTestMode] = useState(true);
   const [step, setStep] = useState(1);
   const [discountCodeError, setDiscountCodeError] = useState('');
   const [formData, setFormData] = useState({
@@ -200,6 +201,10 @@ const RegistrationForm = () => {
   };
 
   const totalAmount = useMemo(() => {
+    if (isTestMode) {
+      return 1;
+    }
+
     if (formData.discountCode) {
       return 0;
     }
