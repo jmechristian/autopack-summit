@@ -128,6 +128,10 @@ const RegistrationForm = () => {
     []
   );
   const [ticketQuantity, setTicketQuantity] = useState(1);
+  const [paymentSuccess, setPaymentSuccess] = useState({
+    success: '',
+    message: '',
+  });
 
   useEffect(() => {
     const fetchCompanies = async () => {
@@ -278,7 +282,10 @@ const RegistrationForm = () => {
     } catch (error) {
       console.error('Error initializing payment:', error);
       setProcessing(false);
-      setError('Failed to initialize payment. Please try again.');
+      setPaymentSuccess({
+        success: 'error',
+        message: 'Failed to initialize payment. Please try again.',
+      });
     }
   };
 
@@ -302,7 +309,6 @@ const RegistrationForm = () => {
       setError(null);
 
       try {
-        console.log('Submitting payment element...');
         const { error: submitError } = await elements.submit();
         if (submitError) {
           console.log('Submit error:', submitError);
@@ -311,7 +317,6 @@ const RegistrationForm = () => {
           return;
         }
 
-        console.log('Confirming payment...');
         const result = await stripe.confirmPayment({
           elements,
           confirmParams: {
@@ -325,15 +330,21 @@ const RegistrationForm = () => {
           redirect: 'if_required',
         });
 
-        console.log('Payment confirmation result:', result);
-
         if (result.error) {
           console.log('Payment error:', result.error);
           setError(result.error.message);
           setIsSubmitting(false);
+          setPaymentSuccess({
+            success: 'error',
+            message: result.error.message,
+          });
         } else if (result.paymentIntent) {
           console.log('Payment successful, creating registration...');
           formData.paymentConfirmation = result.paymentIntent.id;
+          setPaymentSuccess({
+            success: 'success',
+            message: 'Payment successful, Creating registration...',
+          });
 
           try {
             const res = await createNewAPS25Registrant(formData);
@@ -1738,7 +1749,20 @@ const RegistrationForm = () => {
                     <span>${totalAmount}</span>
                   )}
                 </div>
-
+                {paymentSuccess.success === 'success' && (
+                  <div className=' bg-green-600 text-white p-2 rounded mt-2 flex items-center gap-2'>
+                    <div>
+                      <MdCheckCircle size={22} />
+                    </div>
+                    <div className='animate-pulse'>
+                      {' '}
+                      {paymentSuccess.message}
+                    </div>
+                  </div>
+                )}
+                {paymentSuccess.success === 'error' && (
+                  <div className='text-red-600'>{paymentSuccess.message}</div>
+                )}
                 {formData.discountCode ? (
                   <div>
                     <button

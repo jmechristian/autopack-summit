@@ -119,6 +119,13 @@ const RegistrationForm = () => {
   const [codeRequestSent, setCodeRequestSent] = useState(false);
   const [processing, setProcessing] = useState(false);
   const [showPaymentForm, setShowPaymentForm] = useState(false);
+  const [previousCompanyRegistrants, setPreviousCompanyRegistrants] = useState(
+    []
+  );
+  const [paymentSuccess, setPaymentSuccess] = useState({
+    success: '',
+    message: '',
+  });
 
   useEffect(() => {
     const fetchCompanies = async () => {
@@ -150,19 +157,36 @@ const RegistrationForm = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  const calculateSolutionProviderPrice = (previousRegistrantsCount) => {
+    switch (previousRegistrantsCount) {
+      case 0:
+        return 1015; // First ticket: $1,015
+      case 1:
+        return 3015; // Second ticket: $1,015 + $2,000
+      case 2:
+        return 6015; // Third ticket: $1,015 + $2,000 + $3,000
+      default:
+        return 0; // No more tickets allowed
+    }
+  };
+
   const totalAmount = useMemo(() => {
     if (formData.discountCode) {
       return 0;
     }
 
-    if (formData.attendeeType === 'Solution Provider') {
-      return 1015;
+    if (formData.attendeeType === 'Solution-Provider') {
+      return calculateSolutionProviderPrice(previousCompanyRegistrants.length);
     } else if (formData.attendeeType === 'Sponsor') {
       return 799;
     } else {
       return 1015;
     }
-  }, [formData.attendeeType, formData.discountCode]);
+  }, [
+    formData.attendeeType,
+    formData.discountCode,
+    previousCompanyRegistrants.length,
+  ]);
 
   useEffect(() => {
     setFormData((prev) => ({
@@ -215,8 +239,11 @@ const RegistrationForm = () => {
       setProcessing(false);
     } catch (error) {
       console.error('Error initializing payment:', error);
+      setPaymentSuccess({
+        success: 'error',
+        message: 'Failed to initialize payment. Please try again.',
+      });
       setProcessing(false);
-      setError('Failed to initialize payment. Please try again.');
     }
   };
 
@@ -228,10 +255,8 @@ const RegistrationForm = () => {
 
     const handlePaymentSubmit = async (e) => {
       e.preventDefault();
-      console.log('Payment submission started');
 
       if (!stripe || !elements) {
-        console.log('Stripe or Elements not ready:', { stripe, elements });
         setError('Payment system is not ready. Please try again.');
         return;
       }
@@ -249,7 +274,6 @@ const RegistrationForm = () => {
           return;
         }
 
-        console.log('Confirming payment...');
         const result = await stripe.confirmPayment({
           elements,
           confirmParams: {
@@ -263,19 +287,22 @@ const RegistrationForm = () => {
           redirect: 'if_required',
         });
 
-        console.log('Payment confirmation result:', result);
-
         if (result.error) {
-          console.log('Payment error:', result.error);
+          setPaymentSuccess({
+            success: 'error',
+            message: result.error.message,
+          });
           setError(result.error.message);
           setIsSubmitting(false);
         } else if (result.paymentIntent) {
-          console.log('Payment successful, creating registration...');
+          setPaymentSuccess({
+            success: 'success',
+            message: 'Payment successful, Creating registration...',
+          });
           formData.paymentConfirmation = result.paymentIntent.id;
 
           try {
             const res = await createNewAPS25Registrant(formData);
-            console.log('Registration created:', res);
             setFormDataId(res.createAPSRegistrant2025.id);
 
             await Promise.all([
@@ -301,7 +328,6 @@ const RegistrationForm = () => {
               }),
             ]);
 
-            console.log('Registration completed, moving to step 4');
             setStep(4);
           } catch (err) {
             console.error('Registration error:', err);
@@ -347,8 +373,10 @@ const RegistrationForm = () => {
         const registrants = await getSolutionProviderRegistrants(
           formData.aPSRegistrant2025CompanyNameId
         );
-        if (registrants >= 2)
-          newErrors.email = 'Company already has 2 registrants';
+        setPreviousCompanyRegistrants(registrants);
+        console.log('registrants', registrants);
+        if (registrants.length >= 3)
+          newErrors.email = 'Company already has 3 registrants';
       }
       if (!formData.firstName) newErrors.firstName = 'First Name is required';
       if (!formData.lastName) newErrors.lastName = 'Last Name is required';
@@ -1456,65 +1484,116 @@ const RegistrationForm = () => {
 
                 <div className='flex flex-col gap-1 pt-6 border-t border-gray-300'>
                   <h4 className='font-bold mb-2'>Order Summary</h4>
-                  {formData.attendeeType === 'Solution-Provider' && (
-                    <div className='text-sm text-gray-600 mb-4'>
-                      Note: Solution Provider tickets are limited to three per
-                      company, with tiered pricing for the second and third
-                      tickets. If you are interested in bringing additional team
-                      members, please inquire about our sponsorship
-                      opportunities.
+                  {formData.attendeeType === 'Solution-Provider' &&
+                  previousCompanyRegistrants.length > 0 ? (
+                    <div className=' text-gray-700 mb-4'>
+                      <strong>Note:</strong> Solution Provider tickets are
+                      limited to <strong>three per company</strong>, with tiered
+                      pricing for the second and third tickets. If you are
+                      interested in bringing additional team members, please
+                      inquire about our{' '}
+                      <span className='underline cursor-pointer text-ap-blue'>
+                        sponsorship opportunities
+                      </span>
+                      .
                     </div>
-                  )}
+                  ) : null}
                   <div className='flex justify-between bg-gray-300 p-2 rounded text-sm'>
                     <span>Ticket Name</span>
                     <span>Quantity</span>
                     <span>Total</span>
                   </div>
                   {/* Example ticket item */}
-                  <div className='flex flex-col gap-2'>
-                    <div className='flex justify-between px-2 border-b border-gray-300 pb-2'>
-                      <span>General Admission</span>
-                      <span>1</span>
-                      {formData.discountCode ? (
-                        <div className='flex gap-2'>
-                          <span className='line-through text-gray-500'>
-                            ${oldTotal}
-                          </span>{' '}
-                          <span>${totalAmount}</span>
-                        </div>
-                      ) : (
-                        <span>${totalAmount}</span>
-                      )}
-                    </div>
-                    <div className='flex flex-col gap-1'>
-                      <div className='pl-6 font-bold text-sm'>Addons:</div>
-                      {addOnsSelected.length > 0 ? (
-                        addOnsSelected.map((addon) => (
-                          <div
-                            key={addon.id}
-                            className='flex justify-between pl-6'
-                          >
-                            <span className='text-sm'>{addon.title}</span>
-                            <span className='text-gray-700 text-sm'>
-                              PENDING
+                  {formData.attendeeType === 'Solution-Provider' &&
+                  previousCompanyRegistrants.length > 0 ? (
+                    <div className='flex flex-col gap-2'>
+                      {previousCompanyRegistrants.map((registrant, index) => (
+                        <div className='flex justify-between px-2 border-b border-gray-300 pb-2 text-sm'>
+                          <div className='flex gap-1'>
+                            <span>General Admission</span>
+                            <span className='text-white bg-gray-400 px-1 rounded text-xs flex items-center'>
+                              {formatDate(registrant.createdAt)}
                             </span>
                           </div>
-                        ))
-                      ) : (
-                        <div className='flex items-center pl-6 gap-2'>
-                          <button
-                            onClick={() => setStep(2)}
-                            className='text-gray-700'
-                          >
-                            <PlusIcon className='w-4 h-4' />
-                          </button>
-                          <div className=' text-sm text-gray-700'>
-                            No addons selected, would you like to add one?
-                          </div>
+                          <span>1</span>
+                          <span>${calculateSolutionProviderPrice(index)}</span>
                         </div>
-                      )}
+                      ))}
+                      <div className='flex flex-col gap-1'>
+                        <div className='pl-6 font-bold text-sm'>Addons:</div>
+                        {addOnsSelected.length > 0 ? (
+                          addOnsSelected.map((addon) => (
+                            <div
+                              key={addon.id}
+                              className='flex justify-between pl-6'
+                            >
+                              <span className='text-sm'>{addon.title}</span>
+                              <span className='text-gray-700 text-sm'>
+                                PENDING
+                              </span>
+                            </div>
+                          ))
+                        ) : (
+                          <div className='flex items-center pl-6 gap-2'>
+                            <button
+                              onClick={() => setStep(2)}
+                              className='text-gray-700'
+                            >
+                              <PlusIcon className='w-4 h-4' />
+                            </button>
+                            <div className=' text-sm text-gray-700'>
+                              No addons selected, would you like to add one?
+                            </div>
+                          </div>
+                        )}
+                      </div>
                     </div>
-                  </div>
+                  ) : (
+                    <div className='flex flex-col gap-2'>
+                      <div className='flex justify-between px-2 border-b border-gray-300 pb-2'>
+                        <span>General Admission</span>
+                        <span>1</span>
+                        {formData.discountCode ? (
+                          <div className='flex gap-2'>
+                            <span className='line-through text-gray-500'>
+                              ${oldTotal}
+                            </span>{' '}
+                            <span>${totalAmount}</span>
+                          </div>
+                        ) : (
+                          <span>${totalAmount}</span>
+                        )}
+                      </div>
+                      <div className='flex flex-col gap-1'>
+                        <div className='pl-6 font-bold text-sm'>Addons:</div>
+                        {addOnsSelected.length > 0 ? (
+                          addOnsSelected.map((addon) => (
+                            <div
+                              key={addon.id}
+                              className='flex justify-between pl-6'
+                            >
+                              <span className='text-sm'>{addon.title}</span>
+                              <span className='text-gray-700 text-sm'>
+                                PENDING
+                              </span>
+                            </div>
+                          ))
+                        ) : (
+                          <div className='flex items-center pl-6 gap-2'>
+                            <button
+                              onClick={() => setStep(2)}
+                              className='text-gray-700'
+                            >
+                              <PlusIcon className='w-4 h-4' />
+                            </button>
+                            <div className=' text-sm text-gray-700'>
+                              No addons selected, would you like to add one?
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  )}
                   {/* Add more ticket items as needed */}
                 </div>
                 <div className='flex justify-between mt-4 font-bold bg-black text-white p-2 rounded'>
@@ -1530,7 +1609,20 @@ const RegistrationForm = () => {
                     <span>${totalAmount}</span>
                   )}
                 </div>
-
+                {paymentSuccess.success === 'success' && (
+                  <div className=' bg-green-600 text-white p-2 rounded mt-2 flex items-center gap-2'>
+                    <div>
+                      <MdCheckCircle size={22} />
+                    </div>
+                    <div className='animate-pulse'>
+                      {' '}
+                      {paymentSuccess.message}
+                    </div>
+                  </div>
+                )}
+                {paymentSuccess.success === 'error' && (
+                  <div className='text-red-600'>{paymentSuccess.message}</div>
+                )}
                 {formData.discountCode ? (
                   <div>
                     <button
@@ -1765,6 +1857,14 @@ const RegistrationForm = () => {
     );
     setCodeRequestLoading(false);
     setCodeRequestSent(true);
+  };
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = String(date.getFullYear()).slice(-2);
+    return `${month}/${day}/${year}`;
   };
 
   return (
