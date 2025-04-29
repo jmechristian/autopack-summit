@@ -205,10 +205,6 @@ const RegistrationForm = () => {
   };
 
   const totalAmount = useMemo(() => {
-    if (isTestMode) {
-      return 1;
-    }
-
     if (formData.discountCode) {
       return 0;
     }
@@ -1479,8 +1475,8 @@ const RegistrationForm = () => {
                   <p>Title: {formData.jobTitle}</p>
                   <p>Phone: {formData.phone}</p>
                 </div>
-
-                {formData.attendeeType != 'Solution-Provider' && (
+                {/* DISCOUNT CODE */}
+                {formData.attendeeType !== 'Solution-Provider' && (
                   <div className='flex flex-col gap-2 py-6'>
                     <label className='text-sm font-bold'>Discount Code</label>
                     <input
@@ -1530,6 +1526,7 @@ const RegistrationForm = () => {
 
                 <div className='flex flex-col gap-1 pt-6 border-t border-gray-300'>
                   <h4 className='font-bold mb-2'>Order Summary</h4>
+                  {/* SOLUTION PROVIDER NOTE */}
                   {formData.attendeeType === 'Solution-Provider' && (
                     <div className=' text-gray-700 mb-4'>
                       <strong>Note:</strong> Solution Provider tickets are
@@ -1650,7 +1647,7 @@ const RegistrationForm = () => {
                         </div>
                       )}
                     </div>
-                  ) : (
+                  ) : formData.attendeeType === 'Solution-Provider' ? (
                     <div className='flex flex-col gap-2'>
                       {/* TICKET ITEM */}
                       {Array.from({ length: ticketQuantity }).map(
@@ -1732,6 +1729,54 @@ const RegistrationForm = () => {
                             </div>
                           </div>
                         )}
+                    </div>
+                  ) : (
+                    <div className='flex flex-col gap-2'>
+                      {/* TICKET ITEM */}
+                      <div className='flex flex-col gap-2'>
+                        <div className='flex justify-between px-2 border-b border-gray-300 pb-2'>
+                          <span>General Admission</span>
+                          <span>1</span>
+                          {formData.discountCode ? (
+                            <div className='flex gap-2'>
+                              <span className='line-through text-gray-500'>
+                                ${oldTotal}
+                              </span>{' '}
+                              <span>${totalAmount}</span>
+                            </div>
+                          ) : (
+                            <span>${totalAmount}</span>
+                          )}
+                        </div>
+                        <div className='flex flex-col gap-1'>
+                          <div className='pl-6 font-bold text-sm'>Addons:</div>
+                          {addOnsSelected.length > 0 ? (
+                            addOnsSelected.map((addon) => (
+                              <div
+                                key={addon.id}
+                                className='flex justify-between pl-6'
+                              >
+                                <span className='text-sm'>{addon.title}</span>
+                                <span className='text-gray-700 text-sm'>
+                                  PENDING
+                                </span>
+                              </div>
+                            ))
+                          ) : (
+                            <div className='flex items-center pl-6 gap-2'>
+                              <button
+                                onClick={() => setStep(2)}
+                                className='text-gray-700'
+                              >
+                                <PlusIcon className='w-4 h-4' />
+                              </button>
+                              <div className=' text-sm text-gray-700'>
+                                No addons selected, would you like to add one?
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      </div>
                     </div>
                   )}
                   {/* Add more ticket items as needed */}
