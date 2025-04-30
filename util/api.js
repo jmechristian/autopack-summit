@@ -646,6 +646,19 @@ export const sendRegistrationConfirmation = async (data) => {
   return null;
 };
 
+export const sendAdditionalRegistrationConfirmation = async (data) => {
+  const res = await fetch('/api/send-additional-registration', {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  });
+
+  return res.data;
+};
+
 export const sendStaffRegistrationConfirmation = async (data) => {
   const res = await fetch('/api/send-staff-reg-confirmation', {
     method: 'POST',
@@ -851,4 +864,24 @@ export const checkCodeUsage = async (id) => {
     return true;
   }
   return false;
+};
+
+export const createAdditionalAPS25Registrant = async (data) => {
+  const res = await API.graphql({
+    query: createAPSRegistrant2025,
+    variables: {
+      input: {
+        firstName: data.firstName,
+        lastName: data.lastName,
+        email: data.email,
+        phone: data.phone,
+        aPSCompanyApsRegistrantsId: data.aPSRegistrant2025CompanyNameId,
+        jobTitle: data.jobTitle,
+        attendeeType: data.attendeeType,
+        termsAccepted: data.termsAccepted,
+        status: 'PENDING',
+      },
+    },
+  });
+  return res.data;
 };
