@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { QRCodeSVG } from 'qrcode.react';
 import { loadStripe } from '@stripe/stripe-js';
 import { MdCheckCircle } from 'react-icons/md';
+import NewTicketForm from '../../../components/registration/NewTicketForm';
 import {
   Elements,
   CardElement,
@@ -10,12 +11,18 @@ import {
   useElements,
   PaymentElement,
 } from '@stripe/react-stripe-js';
-import { ExclamationCircleIcon, PlusIcon } from '@heroicons/react/24/solid';
+import {
+  ExclamationCircleIcon,
+  PlusIcon,
+  XCircleIcon,
+  InformationCircleIcon,
+} from '@heroicons/react/24/solid';
 import {
   getAPSCompanies,
   createCompany,
   getAPS25AddOns,
   createNewAPS25Registrant,
+  createAdditionalAPS25Registrant,
   getAPS25Codes,
   createAPS25Notification,
   sendRegistrationConfirmation,
@@ -25,6 +32,7 @@ import {
   checkForExistingRegistrant,
   getSolutionProviderRegistrants,
   checkCodeUsage,
+  sendAdditionalRegistrationConfirmation,
 } from '../../../util/api';
 import AddOnCard from '../../../components/registration/AddOnCard';
 // Initialize Stripe (put this outside the component)
@@ -34,6 +42,7 @@ const stripePromise = loadStripe(
 
 const RegistrationForm = () => {
   const router = useRouter();
+
   const [step, setStep] = useState(1);
   const [discountCodeError, setDiscountCodeError] = useState('');
   const [formData, setFormData] = useState({
@@ -101,8 +110,7 @@ const RegistrationForm = () => {
   const [oldTotal, setOldTotal] = useState(0);
   const [discountCode, setDiscountCode] = useState('');
   const [clientSecret, setClientSecret] = useState(null);
-  const [paymentStatus, setPaymentStatus] = useState('idle');
-  const [paymentIntentId, setPaymentIntentId] = useState(null);
+
   const [companies, setCompanies] = useState([]);
   const [showAddCompanyModal, setShowAddCompanyModal] = useState(false);
   const [newCompanyName, setNewCompanyName] = useState('');
@@ -118,14 +126,19 @@ const RegistrationForm = () => {
   const [codeRequestLoading, setCodeRequestLoading] = useState(false);
   const [codeRequestSent, setCodeRequestSent] = useState(false);
   const [processing, setProcessing] = useState(false);
-  const [showPaymentForm, setShowPaymentForm] = useState(false);
+
   const [previousCompanyRegistrants, setPreviousCompanyRegistrants] = useState(
     []
   );
+  const [ticketQuantity, setTicketQuantity] = useState(1);
+  const [showNewTicketForm, setShowNewTicketForm] = useState(false);
+
+  const [additionalRegistrants, setAdditionalRegistrants] = useState([]);
   const [paymentSuccess, setPaymentSuccess] = useState({
     success: '',
     message: '',
   });
+  const [showTooltip, setShowTooltip] = useState(false);
 
   useEffect(() => {
     const fetchCompanies = async () => {
@@ -162,12 +175,40 @@ const RegistrationForm = () => {
       case 0:
         return 1015; // First ticket: $1,015
       case 1:
-        return 3015; // Second ticket: $1,015 + $2,000
+        return 2000; // Second ticket: $1,015 + $2,000
       case 2:
-        return 6015; // Third ticket: $1,015 + $2,000 + $3,000
+        return 3000; // Third ticket: $1,015 + $2,000 + $3,000
       default:
         return 0; // No more tickets allowed
     }
+  };
+
+  const calculateSolutionProviderTotal = (
+    previousRegistrantsCount,
+    currentTicketQuantity
+  ) => {
+    let total = 0;
+    // Start from the next ticket after previous registrants
+    for (
+      let i = previousRegistrantsCount;
+      i < previousRegistrantsCount + currentTicketQuantity;
+      i++
+    ) {
+      switch (i) {
+        case 0:
+          total += 1015; // First ticket
+          break;
+        case 1:
+          total += 2000; // Second ticket
+          break;
+        case 2:
+          total += 3000; // Third ticket
+          break;
+        default:
+          total += 0;
+      }
+    }
+    return total;
   };
 
   const totalAmount = useMemo(() => {
@@ -176,7 +217,10 @@ const RegistrationForm = () => {
     }
 
     if (formData.attendeeType === 'Solution-Provider') {
-      return calculateSolutionProviderPrice(previousCompanyRegistrants.length);
+      return calculateSolutionProviderTotal(
+        previousCompanyRegistrants.length,
+        ticketQuantity
+      );
     } else if (formData.attendeeType === 'Sponsor') {
       return 799;
     } else {
@@ -186,6 +230,7 @@ const RegistrationForm = () => {
     formData.attendeeType,
     formData.discountCode,
     previousCompanyRegistrants.length,
+    ticketQuantity,
   ]);
 
   useEffect(() => {
@@ -223,6 +268,7 @@ const RegistrationForm = () => {
         body: JSON.stringify({
           amount: totalAmount,
           currency: 'usd',
+          quantity: ticketQuantity,
           description: `APS Registration ${formData.lastName} -- ${formData.attendeeType}`,
           metadata: {
             firstName: formData.firstName,
@@ -239,11 +285,11 @@ const RegistrationForm = () => {
       setProcessing(false);
     } catch (error) {
       console.error('Error initializing payment:', error);
+      setProcessing(false);
       setPaymentSuccess({
         success: 'error',
         message: 'Failed to initialize payment. Please try again.',
       });
-      setProcessing(false);
     }
   };
 
@@ -255,8 +301,10 @@ const RegistrationForm = () => {
 
     const handlePaymentSubmit = async (e) => {
       e.preventDefault();
+      console.log('Payment submission started');
 
       if (!stripe || !elements) {
+        console.log('Stripe or Elements not ready:', { stripe, elements });
         setError('Payment system is not ready. Please try again.');
         return;
       }
@@ -265,7 +313,6 @@ const RegistrationForm = () => {
       setError(null);
 
       try {
-        console.log('Submitting payment element...');
         const { error: submitError } = await elements.submit();
         if (submitError) {
           console.log('Submit error:', submitError);
@@ -288,18 +335,20 @@ const RegistrationForm = () => {
         });
 
         if (result.error) {
+          console.log('Payment error:', result.error);
+          setError(result.error.message);
+          setIsSubmitting(false);
           setPaymentSuccess({
             success: 'error',
             message: result.error.message,
           });
-          setError(result.error.message);
-          setIsSubmitting(false);
         } else if (result.paymentIntent) {
+          console.log('Payment successful, creating registration...');
+          formData.paymentConfirmation = result.paymentIntent.id;
           setPaymentSuccess({
             success: 'success',
             message: 'Payment successful, Creating registration...',
           });
-          formData.paymentConfirmation = result.paymentIntent.id;
 
           try {
             const res = await createNewAPS25Registrant(formData);
@@ -328,6 +377,28 @@ const RegistrationForm = () => {
               }),
             ]);
 
+            if (additionalRegistrants.length > 0) {
+              for (const registrant of additionalRegistrants) {
+                const newId = await createAdditionalAPS25Registrant(registrant);
+                await Promise.all([
+                  createAPS25Notification({
+                    type: 'REGISTRATION_SENT',
+                    activity: `${registrant.attendeeType} Registration sent from ${registrant.firstName} ${registrant.lastName}`,
+                  }),
+                  sendAdditionalRegistrationConfirmation({
+                    formData: registrant,
+                    formDataId: newId.createAPSRegistrant2025.id,
+                  }),
+
+                  createAPS25Notification({
+                    type: 'REGISTRATION_EMAIL_SENT',
+                    activity: `${registrant.attendeeType} Registration email sent to ${registrant.email}`,
+                  }),
+                ]);
+              }
+            }
+
+            console.log('Registration completed, moving to step 4');
             setStep(4);
           } catch (err) {
             console.error('Registration error:', err);
@@ -374,9 +445,8 @@ const RegistrationForm = () => {
           formData.aPSRegistrant2025CompanyNameId
         );
         setPreviousCompanyRegistrants(registrants);
-        console.log('registrants', registrants);
         if (registrants.length >= 3)
-          newErrors.email = 'Company already has 3 registrants';
+          newErrors.email = 'Company has MAX registrants';
       }
       if (!formData.firstName) newErrors.firstName = 'First Name is required';
       if (!formData.lastName) newErrors.lastName = 'Last Name is required';
@@ -1156,7 +1226,7 @@ const RegistrationForm = () => {
       case 3:
         return (
           <div className='w-full border border-gray-300 p-5'>
-            <div className='grid lg:grid-cols-5 gap-10'>
+            <div className='grid lg:grid-cols-5 gap-5'>
               <div className='flex flex-col gap-5 col-span-3 w-full p-5'>
                 <h3 className='text-lg font-bold'>Billing Information</h3>
 
@@ -1433,8 +1503,8 @@ const RegistrationForm = () => {
                   <p>Title: {formData.jobTitle}</p>
                   <p>Phone: {formData.phone}</p>
                 </div>
-
-                {formData.attendeeType != 'Solution-Provider' && (
+                {/* DISCOUNT CODE */}
+                {formData.attendeeType !== 'Solution-Provider' && (
                   <div className='flex flex-col gap-2 py-6'>
                     <label className='text-sm font-bold'>Discount Code</label>
                     <input
@@ -1482,43 +1552,136 @@ const RegistrationForm = () => {
                   </div>
                 )}
 
-                <div className='flex flex-col gap-1 pt-6 border-t border-gray-300'>
-                  <h4 className='font-bold mb-2'>Order Summary</h4>
-                  {formData.attendeeType === 'Solution-Provider' &&
-                  previousCompanyRegistrants.length > 0 ? (
+                <div className='flex flex-col gap-1.5 pt-6 border-t border-gray-300'>
+                  <div className='flex items-center justify-between relative'>
+                    {showTooltip && (
+                      <div className='absolute bottom-full right-0'>
+                        <div className='bg-white p-2 rounded shadow-md w-40 text-sm'>
+                          <div className='flex flex-col gap-1.5'>
+                            <div>
+                              <strong>Ticket 1:</strong> $1015
+                            </div>
+                            <div>
+                              <strong>Ticket 2:</strong> $2000
+                            </div>
+                            <div>
+                              <strong>Ticket 3:</strong> $3000
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    <h4 className='font-bold mb-2'>Order Summary</h4>
+                    {formData.attendeeType === 'Solution-Provider' && (
+                      <div
+                        className='text-ap-darkblue text-sm cursor-pointer flex items-center gap-1'
+                        onClick={() => setShowTooltip(!showTooltip)}
+                      >
+                        Tiered Pricing{' '}
+                        <InformationCircleIcon className='w-4 h-4' />
+                      </div>
+                    )}
+                  </div>
+                  {/* SOLUTION PROVIDER NOTE */}
+                  {formData.attendeeType === 'Solution-Provider' && (
                     <div className=' text-gray-700 mb-4'>
                       <strong>Note:</strong> Solution Provider tickets are
                       limited to <strong>three per company</strong>, with tiered
                       pricing for the second and third tickets. If you are
                       interested in bringing additional team members, please
                       inquire about our{' '}
-                      <span className='underline cursor-pointer text-ap-blue'>
+                      <span
+                        className='underline cursor-pointer text-ap-blue'
+                        onClick={() => window.open('/sponsorship', '_blank')}
+                      >
                         sponsorship opportunities
                       </span>
                       .
                     </div>
-                  ) : null}
+                  )}
                   <div className='flex justify-between bg-gray-300 p-2 rounded text-sm'>
                     <span>Ticket Name</span>
                     <span>Quantity</span>
                     <span>Total</span>
                   </div>
-                  {/* Example ticket item */}
-                  {formData.attendeeType === 'Solution-Provider' &&
-                  previousCompanyRegistrants.length > 0 ? (
-                    <div className='flex flex-col gap-2'>
+                  {/* Solution Provider Additional Registrants */}
+                  {formData.attendeeType === 'Solution-Provider' ? (
+                    <div className='flex flex-col gap-2 mt-2'>
+                      <div className='text-sm font-bold w-full border-b border-gray-300 pb-2'>
+                        Previous Company Registrations:{' '}
+                        {previousCompanyRegistrants.length}
+                      </div>
                       {previousCompanyRegistrants.map((registrant, index) => (
                         <div className='flex justify-between px-2 border-b border-gray-300 pb-2 text-sm'>
-                          <div className='flex gap-1'>
-                            <span>General Admission</span>
+                          <div className='flex gap-1.5 w-[200px] text-gray-500 line-clamp-1'>
+                            <span>
+                              {registrant.firstName} {registrant.lastName}
+                            </span>
                             <span className='text-white bg-gray-400 px-1 rounded text-xs flex items-center'>
                               {formatDate(registrant.createdAt)}
                             </span>
                           </div>
-                          <span>1</span>
-                          <span>${calculateSolutionProviderPrice(index)}</span>
+                          <span className='text-gray-400'>1</span>
+                          <span className='text-gray-400'>
+                            ${calculateSolutionProviderPrice(index)}
+                          </span>
                         </div>
                       ))}
+                      {/* Current Ticket */}
+                      <div className='flex justify-between px-2 border-b border-gray-300 pb-2 text-sm'>
+                        <span className='w-[210px]'>
+                          General Admission - {formData.lastName}
+                        </span>
+                        <span>1</span>
+                        <span>
+                          $
+                          {calculateSolutionProviderPrice(
+                            previousCompanyRegistrants.length
+                          )}
+                        </span>
+                      </div>
+                      {/* ADDITIONAL SOLUTION PROVIDER TICKET ITEM */}
+                      {additionalRegistrants.length > 0 && (
+                        <div className='flex flex-col gap-2 mt-2'>
+                          <div className='text-sm font-bold w-full border-b border-gray-300 pb-2'>
+                            Additional Registrants:{' '}
+                            {additionalRegistrants.length}
+                          </div>
+                          {additionalRegistrants.map((registrant, index) => (
+                            <div
+                              key={index}
+                              className='flex justify-between px-2 border-b border-gray-300 pb-2'
+                            >
+                              <div className='flex items-center gap-1 w-[210px]'>
+                                <div
+                                  className='text-red-500 cursor-pointer'
+                                  onClick={() => {
+                                    setTicketQuantity((t) => t - 1);
+                                    setAdditionalRegistrants(
+                                      additionalRegistrants.filter(
+                                        (_, i) => i !== index
+                                      )
+                                    );
+                                  }}
+                                >
+                                  <XCircleIcon className='w-6 h-6' />
+                                </div>
+                                <span className='line-clamp-1 text-sm'>
+                                  General Admission - {registrant.lastName}
+                                </span>
+                              </div>
+                              <span className='text-sm'>1</span>
+                              <span className='text-sm'>
+                                $
+                                {calculateSolutionProviderPrice(
+                                  previousCompanyRegistrants.length + 1 + index
+                                )}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+
                       <div className='flex flex-col gap-1'>
                         <div className='pl-6 font-bold text-sm'>Addons:</div>
                         {addOnsSelected.length > 0 ? (
@@ -1547,56 +1710,75 @@ const RegistrationForm = () => {
                           </div>
                         )}
                       </div>
+                      {previousCompanyRegistrants.length + ticketQuantity <
+                        3 && (
+                        <div
+                          className='flex w-full mt-3 bg-gray-400 py-2 px-4 rounded cursor-pointer hover:bg-gray-500 transition-colors'
+                          onClick={() => {
+                            setShowNewTicketForm(true);
+                          }}
+                        >
+                          <div className='flex gap-2 text-gray-100 text-sm font-semibold items-center '>
+                            <div className='bg-gray-100 rounded-full p-1 flex items-center justify-center'>
+                              <PlusIcon className='w-4 h-4 text-gray-800' />
+                            </div>
+                            <div>Add New Ticket</div>
+                          </div>
+                        </div>
+                      )}
                     </div>
                   ) : (
                     <div className='flex flex-col gap-2'>
-                      <div className='flex justify-between px-2 border-b border-gray-300 pb-2'>
-                        <span>General Admission</span>
-                        <span>1</span>
-                        {formData.discountCode ? (
-                          <div className='flex gap-2'>
-                            <span className='line-through text-gray-500'>
-                              ${oldTotal}
-                            </span>{' '}
+                      {/* NON SOLUTION PROVIDER TICKET ITEM */}
+                      <div className='flex flex-col gap-2'>
+                        <div className='flex justify-between px-2 border-b border-gray-300 pb-2'>
+                          <span>General Admission</span>
+                          <span>1</span>
+                          {formData.discountCode ? (
+                            <div className='flex gap-2'>
+                              <span className='line-through text-gray-500'>
+                                ${oldTotal}
+                              </span>{' '}
+                              <span>${totalAmount}</span>
+                            </div>
+                          ) : (
                             <span>${totalAmount}</span>
-                          </div>
-                        ) : (
-                          <span>${totalAmount}</span>
-                        )}
-                      </div>
-                      <div className='flex flex-col gap-1'>
-                        <div className='pl-6 font-bold text-sm'>Addons:</div>
-                        {addOnsSelected.length > 0 ? (
-                          addOnsSelected.map((addon) => (
-                            <div
-                              key={addon.id}
-                              className='flex justify-between pl-6'
-                            >
-                              <span className='text-sm'>{addon.title}</span>
-                              <span className='text-gray-700 text-sm'>
-                                PENDING
-                              </span>
+                          )}
+                        </div>
+                        <div className='flex flex-col gap-1'>
+                          <div className='pl-6 font-bold text-sm'>Addons:</div>
+                          {addOnsSelected.length > 0 ? (
+                            addOnsSelected.map((addon) => (
+                              <div
+                                key={addon.id}
+                                className='flex justify-between pl-6'
+                              >
+                                <span className='text-sm'>{addon.title}</span>
+                                <span className='text-gray-700 text-sm'>
+                                  PENDING
+                                </span>
+                              </div>
+                            ))
+                          ) : (
+                            <div className='flex items-center pl-6 gap-2'>
+                              <button
+                                onClick={() => setStep(2)}
+                                className='text-gray-700'
+                              >
+                                <PlusIcon className='w-4 h-4' />
+                              </button>
+                              <div className=' text-sm text-gray-700'>
+                                No addons selected, would you like to add one?
+                              </div>
                             </div>
-                          ))
-                        ) : (
-                          <div className='flex items-center pl-6 gap-2'>
-                            <button
-                              onClick={() => setStep(2)}
-                              className='text-gray-700'
-                            >
-                              <PlusIcon className='w-4 h-4' />
-                            </button>
-                            <div className=' text-sm text-gray-700'>
-                              No addons selected, would you like to add one?
-                            </div>
-                          </div>
-                        )}
+                          )}
+                        </div>
                       </div>
                     </div>
                   )}
                   {/* Add more ticket items as needed */}
                 </div>
-                <div className='flex justify-between mt-4 font-bold bg-black text-white p-2 rounded'>
+                <div className='flex justify-between font-bold bg-black text-white p-2 rounded mt-2'>
                   <span>Total</span>
                   {formData.discountCode ? (
                     <div className='flex gap-2'>
@@ -1609,6 +1791,7 @@ const RegistrationForm = () => {
                     <span>${totalAmount}</span>
                   )}
                 </div>
+                {/* PAYMENT SUCCESS */}
                 {paymentSuccess.success === 'success' && (
                   <div className=' bg-green-600 text-white p-2 rounded mt-2 flex items-center gap-2'>
                     <div>
@@ -1637,7 +1820,7 @@ const RegistrationForm = () => {
                     </button>
                   </div>
                 ) : (
-                  <div className='py-6 flex flex-col gap-2 col-span-2 w-full'>
+                  <div className='pb-6 flex flex-col gap-2 col-span-2 w-full'>
                     {clientSecret ? (
                       <Elements
                         stripe={stripePromise}
@@ -1778,7 +1961,7 @@ const RegistrationForm = () => {
                   <div className='flex flex-col gap-2'>
                     <div className='flex justify-between px-2 border-b border-gray-300 pb-2'>
                       <span>General Admission</span>
-                      <span>1</span>
+                      <span>{ticketQuantity}</span>
                       {formData.discountCode ? (
                         <div className='flex gap-2'>
                           <span className='line-through text-gray-500'>
@@ -1868,7 +2051,7 @@ const RegistrationForm = () => {
   };
 
   return (
-    <div className='max-w-6xl mx-auto py-10 flex flex-col gap-6'>
+    <div className='max-w-6xl mx-auto py-10 flex flex-col gap-6 relative'>
       <header>{renderProgress()}</header>
       {renderStep()}
       <div className='flex justify-center gap-6'>
@@ -1949,6 +2132,17 @@ const RegistrationForm = () => {
             </form>
           </div>
         </div>
+      )}
+      {showNewTicketForm && (
+        <NewTicketForm
+          setRegistrant={(registrant) => {
+            setAdditionalRegistrants([...additionalRegistrants, registrant]);
+            setTicketQuantity(ticketQuantity + 1);
+          }}
+          company={formData.companyName}
+          companyId={formData.aPSRegistrant2025CompanyNameId}
+          close={() => setShowNewTicketForm(false)}
+        />
       )}
     </div>
   );
