@@ -96,10 +96,10 @@ const Page = ({ homepageData, speakers, testimonials }) => {
                 animate={{ opacity: 1 }}
                 initial={{ opacity: 0 }}
                 transition={{ delay: 0.45, ease: 'easeIn', duration: 0.5 }}
-                disabled={true}
-                onClick={() => dispatch(openPowerConsole())}
+                disabled={false}
+                onClick={() => router.push('/register')}
               >
-                Stay Tuned for 2025 Details
+                Register Now!
               </motion.button>
               {/* <motion.div
                 className='underline text-neutral-900 font-medium cursor-pointer'
