@@ -19,6 +19,11 @@ const nextConfig = {
         destination: '/register',
         permanent: true,
       },
+      {
+        source: '/tickets',
+        destination: '/register',
+        permanent: true,
+      },
     ];
   },
 };
