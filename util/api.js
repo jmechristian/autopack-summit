@@ -789,6 +789,19 @@ export const updateSpeakerProfile = async (id, data) => {
 };
 
 export const sendCodeRequest = async (email, company, firstName, lastName) => {
+  console.log('Sending code request to: ', email);
+  await API.graphql({
+    query: createAPSCodeRequest25,
+    variables: {
+      input: {
+        email: email,
+        company: company,
+        firstName: firstName,
+        lastName: lastName,
+      },
+    },
+  });
+
   const res = await fetch('/api/send-code-request', {
     method: 'POST',
     headers: {
@@ -798,20 +811,6 @@ export const sendCodeRequest = async (email, company, firstName, lastName) => {
     body: JSON.stringify({ email, company, firstName, lastName }),
   });
 
-  if (res.ok) {
-    const createItem = await API.graphql({
-      query: createAPSCodeRequest25,
-      variables: {
-        input: {
-          email: email,
-          company: company,
-          firstName: firstName,
-          lastName: lastName,
-        },
-      },
-    });
-    return createItem.data;
-  }
   return res.status;
 };
 
