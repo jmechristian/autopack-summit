@@ -3,6 +3,7 @@ import { motion, useInView } from 'framer-motion';
 import SpeakerBlock from '../../shared/SpeakerBlock';
 
 const NewSpeakersMain = ({ headline, subheadline, text, speakers }) => {
+  console.log('speakers', speakers);
   const textRef = useRef();
   const textInView = useInView(textRef);
 
@@ -39,23 +40,25 @@ const NewSpeakersMain = ({ headline, subheadline, text, speakers }) => {
         id='scrollers'
       >
         {speakers &&
-          speakers.map((speaker, i) => (
-            <div
-              key={speaker.name}
-              className='w-full h-full min-w-[300px] bg-white border-4 border-black rounded-2xl flex flex-col group'
-            >
-              <SpeakerBlock
-                name={speaker.name}
-                url={speaker.profilePic ? speaker.profilePic.asset.url : ''}
-                title={speaker.title}
-                company={speaker.company}
-                linkedin={speaker.linkedin}
-                bio={speaker.bio}
-                session={speaker.speakerSessions}
-                id={speaker._id}
-              />
-            </div>
-          ))}
+          speakers
+            .filter((speaker) => speaker.hidden !== true)
+            .map((speaker, i) => (
+              <div
+                key={speaker.name}
+                className='w-full h-full min-w-[300px] bg-white border-4 border-black rounded-2xl flex flex-col group'
+              >
+                <SpeakerBlock
+                  name={speaker.name}
+                  url={speaker.profilePic ? speaker.profilePic.asset.url : ''}
+                  title={speaker.title}
+                  company={speaker.company}
+                  linkedin={speaker.linkedin}
+                  bio={speaker.bio}
+                  session={speaker.speakerSessions}
+                  id={speaker._id}
+                />
+              </div>
+            ))}
       </div>
     </div>
   );
