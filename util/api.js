@@ -506,6 +506,18 @@ export const createCompany = async (data) => {
   return res.data.createAPSCompany;
 };
 
+export const checkForExistingCompany = async (email) => {
+  const res = await API.graphql({
+    query: listAPSCompanies,
+    variables: { filter: { email: { contains: email } } },
+  });
+
+  if (res.data.listAPSCompanies.items.length > 0) {
+    return res.data.listAPSCompanies.items[0];
+  }
+  return null;
+};
+
 export const getAPS25AddOns = async () => {
   const res = await API.graphql({
     query: listAPSAddOn2025s,

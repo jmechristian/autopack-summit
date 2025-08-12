@@ -33,6 +33,7 @@ import {
   getSolutionProviderRegistrants,
   checkCodeUsage,
   sendAdditionalRegistrationConfirmation,
+  checkForExistingCompany,
 } from '../util/api';
 import AddOnCard from '../components/registration/AddOnCard';
 // Initialize Stripe (put this outside the component)
@@ -756,7 +757,13 @@ const RegistrationForm = () => {
       // Or alternatively: const domain = formData.email.substring(formData.email.indexOf('@'));
 
       const newCompany = { name: newCompanyName, email: domain };
-
+      const existingCompany = await checkForExistingCompany(domain);
+      if (existingCompany) {
+        setAddCompanyError(
+          `Company ${existingCompany.name} already exists. Please select it from the dropdown.`
+        );
+        return;
+      }
       const response = await createCompany(newCompany);
       console.log('new company', response);
 
@@ -777,6 +784,7 @@ const RegistrationForm = () => {
       setNewCompanyName('');
       setAddCompanyError('');
     } catch (error) {
+      console.log('error', error);
       setAddCompanyError('Failed to add company. Please try again.');
     }
   };
