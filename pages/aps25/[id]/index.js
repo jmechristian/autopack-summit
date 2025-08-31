@@ -134,11 +134,15 @@ export const RegistrantPage = ({ registrant }) => {
                       className={`flex items-center gap-1 text-lg font-oswald uppercase w-fit ${
                         registrantData.status === 'PENDING'
                           ? 'bg-ap-yellow px-2 py-0.5 rounded-lg'
+                          : registrantData.status === 'WAITLIST'
+                          ? 'bg-yellow-500 px-2 py-0.5 rounded-lg'
                           : 'bg-green-600 px-2 py-0.5 rounded-lg'
                       }`}
                     >
                       <div>
                         {registrantData.status === 'PENDING' ? (
+                          <MdAccessTime color='black' size={24} />
+                        ) : registrantData.status === 'WAITLIST' ? (
                           <MdAccessTime color='black' size={24} />
                         ) : (
                           <MdCheckCircle color='green' size={24} />
@@ -148,11 +152,15 @@ export const RegistrantPage = ({ registrant }) => {
                         className={`${
                           registrantData.status === 'PENDING'
                             ? 'text-neutral-600'
+                            : registrantData.status === 'WAITLIST'
+                            ? 'text-black'
                             : 'text-white'
                         }`}
                       >
                         {registrantData.status === 'PENDING'
                           ? 'Pending'
+                          : registrantData.status === 'WAITLIST'
+                          ? 'Waitlist'
                           : 'Registered'}
                       </div>
                     </div>

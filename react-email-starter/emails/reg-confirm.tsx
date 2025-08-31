@@ -48,6 +48,8 @@ export const RegConfirmEmail = ({
     fontFamily: 'HelveticaNeue, Helvetica, Arial, sans-serif',
   };
 
+  const isWaitlist = formData.attendeeType === 'Solution-Provider';
+
   return (
     <Html>
       <Tailwind>
@@ -136,7 +138,9 @@ export const RegConfirmEmail = ({
                       ...baseStyles,
                     }}
                   >
-                    Thank you for completing your registration.
+                    {isWaitlist
+                      ? 'Thank you for joining the waitlist.'
+                      : 'Thank you for completing your registration.'}
                   </Text>
                   <Text
                     style={{
@@ -147,9 +151,9 @@ export const RegConfirmEmail = ({
                       ...baseStyles,
                     }}
                   >
-                    We're reviewing your information and will send you a
-                    confirmation email soon once it's approved. You can check
-                    your status{' '}
+                    {isWaitlist
+                      ? 'We will notify you if a ticket becomes available. You can check your status '
+                      : "We're reviewing your information and will send you a confirmation email soon once it's approved. You can check your status "}
                     <Link
                       href={`https://www.autopacksummit.com/aps25/${formDataId}`}
                       style={{
@@ -373,7 +377,7 @@ export const RegConfirmEmail = ({
                             ...baseStyles,
                           }}
                         >
-                          Paid
+                          {isWaitlist ? 'To Be Paid' : 'Paid'}
                         </Text>
                       </Column>
                       <Column style={{ width: '50%', textAlign: 'right' }}>

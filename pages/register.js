@@ -2,7 +2,7 @@ import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 import { QRCodeSVG } from 'qrcode.react';
 import { loadStripe } from '@stripe/stripe-js';
-import { MdCheckCircle } from 'react-icons/md';
+import { MdCheckCircle, MdOutlineErrorOutline } from 'react-icons/md';
 import NewTicketForm from '../components/registration/NewTicketForm';
 import {
   Elements,
@@ -45,6 +45,7 @@ const RegistrationForm = () => {
   const router = useRouter();
 
   const [step, setStep] = useState(1);
+  const [solutionProviderFull, setSolutionProviderFull] = useState(true);
   const [discountCodeError, setDiscountCodeError] = useState('');
   const [formData, setFormData] = useState({
     firstName: '',
@@ -787,6 +788,58 @@ const RegistrationForm = () => {
       console.log('error', error);
       setAddCompanyError('Failed to add company. Please try again.');
     }
+  };
+
+  const handleJoinWaitlist = async () => {
+    const res = await createNewAPS25Registrant(formData);
+    setFormDataId(res.createAPSRegistrant2025.id);
+
+    await Promise.all([
+      createAPS25Notification({
+        type: 'REGISTRATION_SENT',
+        activity: `${formData.attendeeType} Registration sent from ${formData.firstName} ${formData.lastName}`,
+      }),
+      sendRegistrationConfirmation({
+        formData,
+        totalAmount,
+        formDataId: res.createAPSRegistrant2025.id,
+        addOnsSelected,
+      }),
+      sendStaffRegistrationConfirmation({
+        formData,
+        totalAmount,
+        formDataId: res.createAPSRegistrant2025.id,
+        addOnsSelected,
+      }),
+      createAPS25Notification({
+        type: 'REGISTRATION_EMAIL_SENT',
+        activity: `${formData.attendeeType} Registration email sent to ${formData.email}`,
+      }),
+    ]);
+
+    if (additionalRegistrants.length > 0) {
+      for (const registrant of additionalRegistrants) {
+        const newId = await createAdditionalAPS25Registrant(registrant);
+        await Promise.all([
+          createAPS25Notification({
+            type: 'REGISTRATION_SENT',
+            activity: `${registrant.attendeeType} Registration sent from ${registrant.firstName} ${registrant.lastName}`,
+          }),
+          sendAdditionalRegistrationConfirmation({
+            formData: registrant,
+            formDataId: newId.createAPSRegistrant2025.id,
+          }),
+
+          createAPS25Notification({
+            type: 'REGISTRATION_EMAIL_SENT',
+            activity: `${registrant.attendeeType} Registration email sent to ${registrant.email}`,
+          }),
+        ]);
+      }
+    }
+
+    console.log('Registration completed, moving to step 4');
+    setStep(4);
   };
 
   const handleCompanySelect = (company) => {
@@ -1591,22 +1644,31 @@ const RegistrationForm = () => {
                     )}
                   </div>
                   {/* SOLUTION PROVIDER NOTE */}
-                  {formData.attendeeType === 'Solution-Provider' && (
-                    <div className=' text-gray-700 mb-4'>
-                      <strong>Note:</strong> Solution Provider tickets are
-                      limited to <strong>three per company</strong>, with tiered
-                      pricing for the second and third tickets. If you are
-                      interested in bringing additional team members, please
-                      inquire about our{' '}
-                      <span
-                        className='underline cursor-pointer text-ap-blue'
-                        onClick={() => window.open('/sponsorship', '_blank')}
-                      >
-                        sponsorship opportunities
-                      </span>
-                      .
-                    </div>
-                  )}
+                  {formData.attendeeType === 'Solution-Provider' &&
+                    !solutionProviderFull && (
+                      <div className=' text-gray-700 mb-4'>
+                        <strong>Note:</strong> Solution Provider tickets are
+                        limited to <strong>three per company</strong>, with
+                        tiered pricing for the second and third tickets. If you
+                        are interested in bringing additional team members,
+                        please inquire about our{' '}
+                        <span
+                          className='underline cursor-pointer text-ap-blue'
+                          onClick={() => window.open('/sponsorship', '_blank')}
+                        >
+                          sponsorship opportunities
+                        </span>
+                        .
+                      </div>
+                    )}
+                  {formData.attendeeType === 'Solution-Provider' &&
+                    solutionProviderFull && (
+                      <div className='text-gray-700 mb-4 mt-4'>
+                        <strong>Note:</strong> Solution Provider tickets are
+                        <span className='font-bold'> SOLD OUT</span>. Please
+                        continue to join the waitlist.
+                      </div>
+                    )}
                   <div className='flex justify-between bg-gray-300 p-2 rounded text-sm'>
                     <span>Ticket Name</span>
                     <span>Quantity</span>
@@ -1814,7 +1876,7 @@ const RegistrationForm = () => {
                 {paymentSuccess.success === 'error' && (
                   <div className='text-red-600'>{paymentSuccess.message}</div>
                 )}
-                {formData.discountCode ? (
+                {formData.discountCode && !solutionProviderFull ? (
                   <div>
                     <button
                       onClick={handleFreeRegistration}
@@ -1846,7 +1908,7 @@ const RegistrationForm = () => {
                           <PaymentForm />
                         </div>
                       </Elements>
-                    ) : (
+                    ) : !solutionProviderFull ? (
                       <div>
                         <button
                           onClick={initializePayment}
@@ -1862,6 +1924,15 @@ const RegistrationForm = () => {
                             : `Pay $${totalAmount}`}
                         </button>
                       </div>
+                    ) : (
+                      <div>
+                        <button
+                          onClick={handleJoinWaitlist}
+                          className='px-4 py-3 font-bold bg-blue-500 text-white rounded hover:bg-blue-600 mt-2 w-full disabled:opacity-50 disabled:cursor-not-allowed'
+                        >
+                          Join Waitlist
+                        </button>
+                      </div>
                     )}
                   </div>
                 )}
@@ -1875,13 +1946,14 @@ const RegistrationForm = () => {
             <div className='flex gap-16 w-full px-10 py-16 items-center bg-ap-darkblue'>
               <div className='flex flex-col gap-5 '>
                 <h3 className='text-3xl font-bold text-white'>
-                  Thank you for completing your registration!
+                  {formData.attendeeType === 'Solution-Provider'
+                    ? 'Thank you for joining the waitlist!'
+                    : 'Thank you for completing your registration!'}
                 </h3>
                 <p className='text-white text-lg max-w-prose leading-snug'>
-                  We're reviewing your information and will send you a
-                  confirmation email soon once it's approved. Scan the QR code
-                  to view your registration information and download a virtual
-                  ticket once confirmed. You can check your status{' '}
+                  {formData.attendeeType === 'Solution-Provider'
+                    ? 'We will notify you if a ticket becomes available. You can check your status '
+                    : "We're reviewing your information and will send you a confirmation email soon once it's approved. You can check your status "}
                   <a
                     href={`/aps25/${formDataId}`}
                     className='underline text-ap-yellow font-bold'
@@ -2062,6 +2134,17 @@ const RegistrationForm = () => {
     <div className='max-w-6xl mx-auto py-10 flex flex-col gap-6 relative'>
       <header>{renderProgress()}</header>
       {renderStep()}
+      {formData.attendeeType === 'Solution-Provider' &&
+        solutionProviderFull && (
+          <div className='flex justify-center bg-ap-blue/20 p-4 rounded-lg text-center items-center gap-1'>
+            <div>
+              <MdOutlineErrorOutline className='text-black' size={24} />
+            </div>
+            Solution Providers tickets are
+            <span className='font-bold'>sold out</span>. Please continue to join
+            the waitlist.
+          </div>
+        )}
       <div className='flex justify-center gap-6'>
         {step > 1 && step < 4 && (
           <button
