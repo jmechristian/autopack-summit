@@ -1908,7 +1908,8 @@ const RegistrationForm = () => {
                           <PaymentForm />
                         </div>
                       </Elements>
-                    ) : !solutionProviderFull ? (
+                    ) : !solutionProviderFull ||
+                      formData.attendeeType !== 'Solution-Provider' ? (
                       <div>
                         <button
                           onClick={initializePayment}
