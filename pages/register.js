@@ -1912,7 +1912,11 @@ const RegistrationForm = () => {
                       formData.attendeeType !== 'Solution-Provider' ? (
                       <div>
                         <button
-                          onClick={initializePayment}
+                          onClick={
+                            totalAmount === 0
+                              ? handleFreeRegistration
+                              : initializePayment
+                          }
                           disabled={
                             Object.keys(errors).some((key) =>
                               key.startsWith('billing')
