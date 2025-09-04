@@ -128,6 +128,9 @@ const RegistrationForm = () => {
   const [codeRequestLoading, setCodeRequestLoading] = useState(false);
   const [codeRequestSent, setCodeRequestSent] = useState(false);
   const [processing, setProcessing] = useState(false);
+  const [isWaitlistSubmitting, setIsWaitlistSubmitting] = useState(false);
+  const [isRegistrationSubmitting, setIsRegistrationSubmitting] =
+    useState(false);
 
   const [previousCompanyRegistrants, setPreviousCompanyRegistrants] = useState(
     []
@@ -311,6 +314,11 @@ const RegistrationForm = () => {
         return;
       }
 
+      if (isSubmitting || isRegistrationSubmitting) {
+        console.log('Payment already in progress');
+        return;
+      }
+
       setIsSubmitting(true);
       setError(null);
 
@@ -353,6 +361,7 @@ const RegistrationForm = () => {
           });
 
           try {
+            setIsRegistrationSubmitting(true);
             const res = await createNewAPS25Registrant(formData);
             setFormDataId(res.createAPSRegistrant2025.id);
 
@@ -402,12 +411,14 @@ const RegistrationForm = () => {
 
             console.log('Registration completed, moving to step 4');
             setStep(4);
+            setIsRegistrationSubmitting(false);
           } catch (err) {
             console.error('Registration error:', err);
             setError(
               'Registration created but there was an error sending notifications. Please contact support.'
             );
             setIsSubmitting(false);
+            setIsRegistrationSubmitting(false);
           }
         }
       } catch (err) {
@@ -674,6 +685,12 @@ const RegistrationForm = () => {
       return;
     }
 
+    if (isRegistrationSubmitting) {
+      console.log('Registration already in progress');
+      return;
+    }
+
+    setIsRegistrationSubmitting(true);
     setIsLoading(true);
     const res = await createNewAPS25Registrant(formData);
     console.log('res', res, formData);
@@ -706,6 +723,7 @@ const RegistrationForm = () => {
     });
     setStep(4);
     setIsLoading(false);
+    setIsRegistrationSubmitting(false);
   };
 
   const hasStepErrors = (stepNumber) => {
@@ -791,6 +809,12 @@ const RegistrationForm = () => {
   };
 
   const handleJoinWaitlist = async () => {
+    if (isWaitlistSubmitting) {
+      console.log('Waitlist submission already in progress');
+      return;
+    }
+
+    setIsWaitlistSubmitting(true);
     const res = await createNewAPS25Registrant(formData);
     setFormDataId(res.createAPSRegistrant2025.id);
 
@@ -840,6 +864,7 @@ const RegistrationForm = () => {
 
     console.log('Registration completed, moving to step 4');
     setStep(4);
+    setIsWaitlistSubmitting(false);
   };
 
   const handleCompanySelect = (company) => {
@@ -1880,13 +1905,16 @@ const RegistrationForm = () => {
                   <div>
                     <button
                       onClick={handleFreeRegistration}
+                      disabled={isLoading || isRegistrationSubmitting}
                       className={`px-4 py-3 font-bold bg-blue-500 text-white rounded hover:bg-blue-600 mt-2 w-full disabled:opacity-50 disabled:cursor-not-allowed ${
-                        isLoading
+                        isLoading || isRegistrationSubmitting
                           ? 'opacity-50 cursor-not-allowed animate-pulse'
                           : ''
                       }`}
                     >
-                      {isLoading ? 'Processing...' : `Pay $${totalAmount}`}
+                      {isLoading || isRegistrationSubmitting
+                        ? 'Processing...'
+                        : `Pay $${totalAmount}`}
                     </button>
                   </div>
                 ) : (
@@ -1920,12 +1948,16 @@ const RegistrationForm = () => {
                           disabled={
                             Object.keys(errors).some((key) =>
                               key.startsWith('billing')
-                            ) || processing
+                            ) ||
+                            processing ||
+                            isRegistrationSubmitting
                           }
                           className='px-4 py-3 font-bold bg-blue-500 text-white rounded hover:bg-blue-600 mt-2 w-full disabled:opacity-50 disabled:cursor-not-allowed'
                         >
                           {processing
                             ? 'Initializing...'
+                            : isRegistrationSubmitting
+                            ? 'Processing...'
                             : `Pay $${totalAmount}`}
                         </button>
                       </div>
@@ -1933,9 +1965,12 @@ const RegistrationForm = () => {
                       <div>
                         <button
                           onClick={handleJoinWaitlist}
+                          disabled={isWaitlistSubmitting}
                           className='px-4 py-3 font-bold bg-blue-500 text-white rounded hover:bg-blue-600 mt-2 w-full disabled:opacity-50 disabled:cursor-not-allowed'
                         >
-                          Join Waitlist
+                          {isWaitlistSubmitting
+                            ? 'Joining Waitlist...'
+                            : 'Join Waitlist'}
                         </button>
                       </div>
                     )}
