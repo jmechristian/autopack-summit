@@ -227,7 +227,7 @@ const RegistrationForm = () => {
         ticketQuantity
       );
     } else if (formData.attendeeType === 'Sponsor') {
-      return 799;
+      return 0;
     } else {
       return 1015;
     }
@@ -2185,6 +2185,16 @@ const RegistrationForm = () => {
             the waitlist.
           </div>
         )}
+      {formData.attendeeType === 'Sponsor' && (
+        <div className='flex justify-center bg-ap-blue/20 p-4 rounded-lg text-center items-center gap-1'>
+          <div>
+            <MdOutlineErrorOutline className='text-black' size={24} />
+          </div>
+          Sponsor tickets are
+          <span className='font-bold'>sold out</span>. Please continue to join
+          the waitlist.
+        </div>
+      )}
       <div className='flex justify-center gap-6'>
         {step > 1 && step < 4 && (
           <button

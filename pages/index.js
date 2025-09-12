@@ -99,7 +99,7 @@ const Page = ({ homepageData, speakers, testimonials }) => {
                 disabled={false}
                 onClick={() => router.push('/register')}
               >
-                Register Now!
+                Ticket are Sold Out! Register for Waitlist
               </motion.button>
               {/* <motion.div
                 className='underline text-neutral-900 font-medium cursor-pointer'

@@ -555,7 +555,10 @@ export const createNewAPS25Registrant = async (data) => {
         speakerTopic: data.speakerTopic,
         speedNetworking: data.speedNetworking,
         status:
-          data.attendeeType === 'Solution-Provider' ? 'WAITLIST' : 'PENDING',
+          data.attendeeType === 'Solution-Provider' ||
+          data.attendeeType === 'Sponsor'
+            ? 'WAITLIST'
+            : 'PENDING',
         termsAccepted: data.termsAccepted,
         totalAmount: data.totalAmount,
         welcomeEmailSent: false,
