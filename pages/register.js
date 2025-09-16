@@ -1936,15 +1936,10 @@ const RegistrationForm = () => {
                           <PaymentForm />
                         </div>
                       </Elements>
-                    ) : !solutionProviderFull ||
-                      formData.attendeeType !== 'Solution-Provider' ? (
+                    ) : formData.discountCode ? (
                       <div>
                         <button
-                          onClick={
-                            totalAmount === 0
-                              ? handleFreeRegistration
-                              : initializePayment
-                          }
+                          onClick={handleFreeRegistration}
                           disabled={
                             Object.keys(errors).some((key) =>
                               key.startsWith('billing')
@@ -1958,7 +1953,7 @@ const RegistrationForm = () => {
                             ? 'Initializing...'
                             : isRegistrationSubmitting
                             ? 'Processing...'
-                            : `Pay $${totalAmount}`}
+                            : 'Register with Code'}
                         </button>
                       </div>
                     ) : (
