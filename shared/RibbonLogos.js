@@ -73,8 +73,8 @@ const LogoItemsTop = () => (
       link={'https://www.magna.com/'}
     />
     <LogoItem
-      image={'https://packschool.s3.amazonaws.com/plastic-0.png'}
-      name='Plastic Omnium'
+      image={'https://packschool.s3.us-east-1.amazonaws.com/opmobility2.png'}
+      name='OP Mobility'
       link={'https://www.plasticomnium.com/en/'}
     />
     <LogoItem
@@ -98,7 +98,7 @@ const LogoItemsTop = () => (
       link={'https://jtekt-na.com/'}
     />
     <LogoItem
-      image={'https://packschool.s3.amazonaws.com/Conteyor-Logo.png'}
+      image={'https://packschool.s3.us-east-1.amazonaws.com/conteyor.png'}
       name='Conteyor Group'
       link={'https://www.conteyor.com'}
     />
