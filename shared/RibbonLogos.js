@@ -99,7 +99,7 @@ const LogoItemsTop = () => (
     />
     <LogoItem
       image={'https://packschool.s3.us-east-1.amazonaws.com/conteyor.png'}
-      name='KTP Conteyor'
+      name='KTPconTeyor'
       link={'https://www.ktpconteyor.com/en'}
     />
   </>
