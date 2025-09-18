@@ -227,7 +227,7 @@ const RegistrationForm = () => {
         ticketQuantity
       );
     } else if (formData.attendeeType === 'Sponsor') {
-      return 0;
+      return 799;
     } else {
       return 1015;
     }
@@ -1901,76 +1901,50 @@ const RegistrationForm = () => {
                 {paymentSuccess.success === 'error' && (
                   <div className='text-red-600'>{paymentSuccess.message}</div>
                 )}
-                {formData.discountCode && !solutionProviderFull ? (
-                  <div>
-                    <button
-                      onClick={handleFreeRegistration}
-                      disabled={isLoading || isRegistrationSubmitting}
-                      className={`px-4 py-3 font-bold bg-blue-500 text-white rounded hover:bg-blue-600 mt-2 w-full disabled:opacity-50 disabled:cursor-not-allowed ${
-                        isLoading || isRegistrationSubmitting
-                          ? 'opacity-50 cursor-not-allowed animate-pulse'
-                          : ''
-                      }`}
-                    >
-                      {isLoading || isRegistrationSubmitting
-                        ? 'Processing...'
-                        : `Pay $${totalAmount}`}
-                    </button>
-                  </div>
-                ) : (
-                  <div className='pb-6 flex flex-col gap-2 col-span-2 w-full'>
-                    {clientSecret ? (
-                      <Elements
-                        stripe={stripePromise}
-                        options={{
-                          clientSecret,
-                          appearance: {
-                            theme: 'stripe',
-                            variables: {
-                              colorPrimary: '#2563eb',
-                            },
-                          },
-                        }}
+                <div className='pb-6 flex flex-col gap-2 col-span-2 w-full'>
+                  {(formData.attendeeType === 'OEM' ||
+                    formData.attendeeType === 'Tier1') &&
+                  formData.discountCode ? (
+                    <div>
+                      <button
+                        onClick={handleFreeRegistration}
+                        disabled={
+                          Object.keys(errors).some((key) =>
+                            key.startsWith('billing')
+                          ) ||
+                          processing ||
+                          isRegistrationSubmitting
+                        }
+                        className='px-4 py-3 font-bold bg-blue-500 text-white rounded hover:bg-blue-600 mt-2 w-full disabled:opacity-50 disabled:cursor-not-allowed'
                       >
-                        <div className='min-h-[200px]'>
-                          <PaymentForm />
-                        </div>
-                      </Elements>
-                    ) : formData.discountCode ? (
-                      <div>
-                        <button
-                          onClick={handleFreeRegistration}
-                          disabled={
-                            Object.keys(errors).some((key) =>
-                              key.startsWith('billing')
-                            ) ||
-                            processing ||
-                            isRegistrationSubmitting
-                          }
-                          className='px-4 py-3 font-bold bg-blue-500 text-white rounded hover:bg-blue-600 mt-2 w-full disabled:opacity-50 disabled:cursor-not-allowed'
-                        >
-                          {processing
-                            ? 'Initializing...'
-                            : isRegistrationSubmitting
-                            ? 'Processing...'
-                            : 'Register with Code'}
-                        </button>
+                        {processing
+                          ? 'Initializing...'
+                          : isRegistrationSubmitting
+                          ? 'Processing...'
+                          : 'Register with Code'}
+                      </button>
+                    </div>
+                  ) : formData.attendeeType === 'OEM' ||
+                    formData.attendeeType === 'Tier1' ? (
+                    <div>
+                      <div className='px-4 py-3 bg-gray-300 text-gray-600 rounded text-center'>
+                        Discount code required to register
                       </div>
-                    ) : (
-                      <div>
-                        <button
-                          onClick={handleJoinWaitlist}
-                          disabled={isWaitlistSubmitting}
-                          className='px-4 py-3 font-bold bg-blue-500 text-white rounded hover:bg-blue-600 mt-2 w-full disabled:opacity-50 disabled:cursor-not-allowed'
-                        >
-                          {isWaitlistSubmitting
-                            ? 'Joining Waitlist...'
-                            : 'Join Waitlist'}
-                        </button>
-                      </div>
-                    )}
-                  </div>
-                )}
+                    </div>
+                  ) : (
+                    <div>
+                      <button
+                        onClick={handleJoinWaitlist}
+                        disabled={isWaitlistSubmitting}
+                        className='px-4 py-3 font-bold bg-blue-500 text-white rounded hover:bg-blue-600 mt-2 w-full disabled:opacity-50 disabled:cursor-not-allowed'
+                      >
+                        {isWaitlistSubmitting
+                          ? 'Joining Waitlist...'
+                          : 'Join Waitlist'}
+                      </button>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           </div>

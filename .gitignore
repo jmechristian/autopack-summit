@@ -54,3 +54,8 @@ amplifytools.xcconfig
 .secret-*
 **.sample
 #amplify-do-not-edit-end
+
+# Email logs
+/logs
+/logs/*.tmp
+/logs/*-backup-*.json

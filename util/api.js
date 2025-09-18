@@ -900,3 +900,68 @@ export const createAdditionalAPS25Registrant = async (data) => {
   });
   return res.data;
 };
+
+export const listApprovedAPS25Registrants = async () => {
+  const query = `query MyQuery($nextToken: String) {
+  listAPSRegistrant2025s(filter: {status: {eq: "APPROVED"}}, nextToken: $nextToken) {
+    nextToken
+    items {
+      email
+      id
+      firstName
+      lastName
+      company {
+        name
+      }
+    }
+  }
+}`;
+
+  let allItems = [];
+  let nextToken = null;
+
+  do {
+    const res = await API.graphql({
+      query: query,
+      variables: { nextToken },
+    });
+
+    const data = res.data.listAPSRegistrant2025s;
+    allItems = allItems.concat(data.items);
+    nextToken = data.nextToken;
+  } while (nextToken);
+
+  return allItems;
+};
+
+export const sendPreEmail = async (id, email) => {
+  const res = await fetch('/api/send-pre-email', {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ id, email }),
+  });
+  return res.json();
+};
+
+export const logEmailResponse = async (registrant, response, status) => {
+  try {
+    await fetch('/api/log-email-response', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        registrant,
+        response,
+        timestamp: new Date().toISOString(),
+        status,
+      }),
+    });
+  } catch (error) {
+    console.error('Error logging email response:', error);
+  }
+};
