@@ -236,7 +236,7 @@ export const RegistrantPage = ({ registrant }) => {
                   <div className='flex flex-col gap-2 justify-center mt-4'>
                     <div className='flex flex-col gap-1 leading-tight'>
                       <div className='font-semibold'>
-                        Thursday, October 15th
+                        Thursday, October 16th
                       </div>
                       <div className='text-sm text-gray-500'>
                         01:30 PM - 02:30 PM
