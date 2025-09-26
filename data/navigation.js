@@ -20,6 +20,10 @@ export const navMenu = [
     link: 'https://www.packagingschool.com/events/aps-2024',
   },
   {
+    name: 'Board',
+    link: '/advisory-board',
+  },
+  {
     name: 'Register',
     link: '/register',
   },
